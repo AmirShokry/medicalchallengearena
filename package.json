@@ -1,19 +1,25 @@
 {
-  "name": "with-vue-nuxt",
-  "private": true,
-  "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
-  },
-  "devDependencies": {
-    "prettier": "^3.2.5",
-    "turbo": "^2.5.4"
-  },
-  "packageManager": "npm@10.9.2",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+	"name": "medicalchallengearena",
+	"private": true,
+	"scripts": {
+		"build": "turbo run build",
+		"db:push": "turbo run db:push",
+		"dev": "turbo run dev",
+		"lint": "turbo run lint",
+		"format": "prettier --write \"**/*.{ts,tsx,md}\""
+	},
+	"devDependencies": {
+		"prettier": "^3.2.5",
+		"turbo": "^2.5.4"
+	},
+	"packageManager": "npm@10.9.2",
+	"workspaces": [
+		"apps/*",
+		"packages/*"
+	],
+	"dependencies": {
+		"@t3-oss/env-core": "^0.13.8",
+		"dotenv": "^17.0.1",
+		"zod": "^3.25.74"
+	}
 }

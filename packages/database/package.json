@@ -1,0 +1,26 @@
+{
+	"name": "database",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"exports": {
+		".": "./src/index.ts"
+	},
+	"scripts": {
+		"dev2": "tsx ./src/test.ts",
+		"db:push": "drizzle-kit push",
+		"build": "echo 'Add build script here'",
+		"test": "echo 'Add test script here'",
+		"lint": "echo 'Add lint script here'"
+	},
+	"dependencies": {
+		"cross-dirname": "^0.1.0",
+		"drizzle-orm": "^0.44.2",
+		"postgres": "^3.4.7"
+	},
+	"devDependencies": {
+		"drizzle-kit": "^0.31.4",
+		"tsconfig": "*",
+		"tsx": "^4.20.3"
+	}
+}
