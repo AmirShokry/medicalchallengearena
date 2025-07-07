@@ -1,10 +1,4 @@
-<script setup lang="ts">
-console.log(import.meta.env);
-
-$fetch("/api/hello").then((data) => {
-	console.log(data);
-});
-</script>
+<script setup lang="ts"></script>
 <template>
 	<NuxtLayout>
 		<header
