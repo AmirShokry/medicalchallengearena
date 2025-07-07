@@ -50,7 +50,7 @@ const activeContent = ref<keyof typeof contentComponents>("ContentDefault");
 		<SidebarHeader>
 			<RoleSwitcher :roles="data.roles" />
 		</SidebarHeader>
-		<SidebarContent>
+		<SidebarContent class="thin-scrollbar">
 			<component
 				:is="contentComponents[activeContent]"
 				v-model:active-content="activeContent" />

@@ -122,3 +122,8 @@
 		@apply bg-background text-foreground;
 	}
 }
+
+.thin-scrollbar {
+	scrollbar-width: thin;
+	scrollbar-color: var(--sidebar-ring) transparent;
+}
