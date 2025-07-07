@@ -33,14 +33,10 @@ export async function checkConnection() {
 		process.exit(1);
 	});
 	console.log("✅ Database connection established successfully.");
-	// console.clearLine();
-	// console.log(
-	// 	`Database@${process.env.POSTGRES_PORT}✅ [${__filenameFromCWD}]`
-	// );
 }
 
 export { db };
 export * from "drizzle-orm";
-export * from "./helpers";
+// export * from "./helpers";
 
 export * from "./schema";

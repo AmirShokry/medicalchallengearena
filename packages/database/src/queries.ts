@@ -2,7 +2,7 @@
  * @fileoverview Most common queries will be placed here;
  */
 import {
-	caseWhen,
+	// caseWhen,
 	db,
 	sql,
 	eq,
@@ -11,10 +11,12 @@ import {
 	getTableColumns,
 	inArray,
 	notInArray,
-	jsonAggBuildObject,
+	// jsonAggBuildObject,
 	isNull,
 	notExists,
 } from ".";
+
+import { caseWhen, jsonAggBuildObject } from "./helpers";
 
 // import type { PlayerData } from "@server/types";
 
@@ -688,7 +690,7 @@ async function populate() {
 								`${choice_index}` in choiceExplanation
 									? choiceExplanation[
 											`${choice_index}` as explanationX
-									  ]
+										]
 									: "",
 						});
 					}

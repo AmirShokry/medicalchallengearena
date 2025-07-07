@@ -4,7 +4,8 @@
 	"private": true,
 	"type": "module",
 	"exports": {
-		".": "./src/index.ts"
+		".": "./src/index.ts",
+		"./helpers": "./src/helpers.ts"
 	},
 	"scripts": {
 		"dev2": "tsx ./src/test.ts",
@@ -15,7 +16,7 @@
 		"postgres": "^3.4.7"
 	},
 	"devDependencies": {
-		"drizzle-kit": "^0.31.4",
+		"drizzle-kit": "^0.18.1",
 		"tsconfig": "*",
 		"tsx": "^4.20.3"
 	}

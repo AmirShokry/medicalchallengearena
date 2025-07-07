@@ -21,35 +21,19 @@ import { getTableColumns } from "drizzle-orm";
 
 export function getTableColumnsExcept<
 	T extends Table,
-	K extends keyof T["_"]["columns"]
+	K extends keyof T["_"]["columns"],
 >(table: T, columnsToExclude: K[]): Omit<T["_"]["columns"], K> {
 	const result = {} as any;
 	for (const [key, value] of Object.entries(getTableColumns(table))) {
 		if (!columnsToExclude.includes(key as K)) result[key] = value;
 	}
 	return result;
-	// const allColumns = getTableColumns(table);
-	// for (const column of columnsToExclude)
-	// 	if (allColumns[column]) delete allColumns[column];
-
-	// return allColumns;
 }
-
-// export function getTableColumnsExcept<T extends Table>(
-// 	table: T,
-// 	columnsToExclude: (keyof T["$inferSelect"])[]
-// ): Omit<T["_"]["columns"], (typeof columnsToExclude)[number]> {
-// 	const allColumns = getTableColumns(table);
-// 	for (const column of columnsToExclude)
-// 		if (allColumns[column]) delete allColumns[column];
-
-// 	return allColumns;
-// }
 
 export function pickJsonbField<
 	U,
 	K extends keyof U,
-	T extends PgColumn = PgColumn
+	T extends PgColumn = PgColumn,
 >(column: T, field: K, cast?: "uuid") {
 	return sql<U[K]>`((${column}->${field})${
 		cast ? sql.raw(`::${cast}`) : undefined
@@ -70,10 +54,10 @@ export type ExtractCTETypes<T> = {
 		: never]: T[K] extends AnyPgColumn<infer R>
 		? R["data"]
 		: T[K] extends SQL.Aliased<infer M>
-		? M extends never
-			? never
-			: M
-		: never;
+			? M extends never
+				? never
+				: M
+			: never;
 } & unknown;
 
 export const jsonAgg = <Column extends AnyColumn>(column: Column) =>
@@ -109,7 +93,7 @@ export function jsonBuildObject<T extends SelectedFields>(shape: T) {
 
 export function jsonAggBuildObject<
 	T extends SelectedFields,
-	Column extends AnyColumn
+	Column extends AnyColumn,
 >(
 	shape: T,
 	options?: { orderBy?: { colName: Column; direction: "ASC" | "DESC" } }
@@ -120,7 +104,7 @@ export function jsonAggBuildObject<
 		options?.orderBy
 			? sql`ORDER BY ${options.orderBy.colName} ${sql.raw(
 					options.orderBy.direction
-			  )}`
+				)}`
 			: undefined
 	})
     ,'${sql`[]`}')`;
