@@ -6,7 +6,7 @@ import { PgTable } from "drizzle-orm/pg-core";
 import { drizzle, PostgresJsDatabase } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 import * as schema from "./schema";
-// import "../load-env";
+
 import { env } from "../env";
 
 const pg = postgres(

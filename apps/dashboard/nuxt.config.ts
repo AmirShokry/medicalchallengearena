@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import tailwindcss from "@tailwindcss/vite";
+
 export default defineNuxtConfig({
 	devtools: { enabled: true },
 	ssr: false,
@@ -12,6 +13,7 @@ export default defineNuxtConfig({
 	css: ["~/assets/css/tailwind.css"],
 	vite: {
 		plugins: [tailwindcss()],
+
 		cacheDir: "../../node_modules/.vite/dashboard",
 	},
 });

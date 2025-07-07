@@ -1,7 +1,9 @@
 import { createEnv } from "@t3-oss/env-core";
 import { z } from "zod";
+
 import loadEnv from "./load-env";
-loadEnv(); // Ensure the load-env file is executed to load environment variables
+
+loadEnv();
 
 export const env = createEnv({
 	server: {
