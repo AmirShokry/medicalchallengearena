@@ -1,36 +1,38 @@
 <script setup lang="ts">
 import { sidebarWidth, sidebarWidthMobile } from "~/components/ui/sidebar";
-import { ChevronDown } from "lucide-vue-next";
-sidebarWidth.value = "20rem";
-sidebarWidthMobile.value = "20rem";
+import { ChevronRightIcon, LucideSyringe, ChevronDown } from "lucide-vue-next";
+import {
+	SvgoCardiology,
+	SvgoGeneralPathology,
+	SvgoGeneralPharmacology,
+	SvgoSocialSciences,
+} from "#components";
+sidebarWidth.value = "24rem";
+sidebarWidthMobile.value = "22rem";
 const activeContent = defineModel("activeContent", {
 	type: String,
 	required: true,
 });
-const items = ref([
-	{
-		title: "Pulmonology",
-		url: "#",
+const systemIcons = {
+	SvgoCardiology,
+	SvgoGeneralPathology,
+	SvgoGeneralPharmacology,
+	SvgoSocialSciences,
+};
+// Lazy fetch does not block the navigation;
+const { data: systems, pending } = await useLazyFetch("/api/hello", {
+	transform: (data) => {
+		return data.map((system) => {
+			return {
+				...system,
+				icon:
+					systemIcons[
+						`Svgo${system.name.replace(" ", "").split(" (")[0]}` as keyof typeof systemIcons
+					] || LucideSyringe,
+			};
+		});
 	},
-	{
-		title: "Cardiology",
-		url: "#",
-		// items: [
-		// 	{
-		// 		title: "General",
-		// 		url: "#",
-		// 	},
-		// 	{
-		// 		title: "Roles",
-		// 		url: "#",
-		// 	},
-		// 	{
-		// 		title: "Preferences",
-		// 		url: "#",
-		// 	},
-		// ],
-	},
-]);
+});
 </script>
 <template>
 	<SidebarGroup>
@@ -39,33 +41,38 @@ const items = ref([
 			<ChevronDown />
 		</div>
 		<SidebarMenu>
+			<div
+				v-if="pending"
+				class="h-[20dvh] flex items-center justify-center">
+				<SvgoLoader class="text-6xl text-primary" />
+			</div>
 			<Collapsible
-				v-for="item in items"
-				:key="item.title"
+				v-else
+				v-for="system in systems"
+				:key="system.id"
 				as-child
 				class="group/collapsible">
 				<SidebarMenuItem>
 					<CollapsibleTrigger as-child class="cursor-pointer">
-						<SidebarMenuButton :tooltip="item.title">
-							<span>{{ item.title }}</span>
-							<!-- <ChevronRight
-								v-if="item.items?.length"
-								class="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" /> -->
+						<SidebarMenuButton :tooltip="system.name">
+							<component :is="system.icon" />
+							<span>{{ system.name }}</span>
+							<ChevronRightIcon
+								v-if="system.categories.length"
+								class="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
 						</SidebarMenuButton>
 					</CollapsibleTrigger>
-					<!-- <CollapsibleContent v-if="item.items?.length">
-						<SidebarMenuSub>
+					<CollapsibleContent>
+						<SidebarMenuSub class="p-1 cursor-pointer">
 							<SidebarMenuSubItem
-								v-for="subItem in item.items"
-								:key="subItem.title">
+								v-for="category in system.categories"
+								:key="category.id">
 								<SidebarMenuSubButton as-child>
-									<a :href="subItem.url">
-										<span>{{ subItem.title }}</span>
-									</a>
+									<span>{{ category.name }}</span>
 								</SidebarMenuSubButton>
 							</SidebarMenuSubItem>
 						</SidebarMenuSub>
-					</CollapsibleContent> -->
+					</CollapsibleContent>
 				</SidebarMenuItem>
 			</Collapsible>
 		</SidebarMenu>
