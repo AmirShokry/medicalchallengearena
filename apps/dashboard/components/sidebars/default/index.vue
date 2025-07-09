@@ -36,7 +36,6 @@ const data = {
 		},
 	],
 };
-
 const contentComponents = {
 	ContentDefault,
 	ContentEntry: defineAsyncComponent(() => import("./ContentEntry.vue")),
@@ -50,13 +49,10 @@ const activeContent = ref<keyof typeof contentComponents>("ContentDefault");
 			<RoleSwitcher :roles="data.roles" />
 		</SidebarHeader>
 		<SidebarContent class="thin-scrollbar">
-			<component
-				:is="contentComponents[activeContent]"
-				v-model:active-content="activeContent" />
+			<component :is="contentComponents[activeContent]" v-model:active-content="activeContent" />
 		</SidebarContent>
 		<SidebarFooter>
 			<NavUser :user="data.user" />
 		</SidebarFooter>
-		<!-- <SidebarRail /> -->
 	</Sidebar>
 </template>

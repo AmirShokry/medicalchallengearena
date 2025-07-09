@@ -3,13 +3,18 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
 	devtools: { enabled: true },
-
+	experimental: {
+		typedPages: true,
+	},
 	ssr: false,
 	modules: ["shadcn-nuxt", "nuxt-svgo"],
 	telemetry: false,
 	shadcn: {
 		prefix: "",
 		componentDir: "./components/ui",
+	},
+	build: {
+		transpile: ["trpc-nuxt"],
 	},
 	svgo: {
 		dts: true,
