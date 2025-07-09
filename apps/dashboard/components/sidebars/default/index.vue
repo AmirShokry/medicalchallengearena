@@ -11,7 +11,6 @@ import {
 	SidebarContent,
 	SidebarFooter,
 	SidebarHeader,
-	SidebarRail,
 } from "@/components/ui/sidebar";
 
 const props = withDefaults(defineProps<SidebarProps>(), {
@@ -58,6 +57,6 @@ const activeContent = ref<keyof typeof contentComponents>("ContentDefault");
 		<SidebarFooter>
 			<NavUser :user="data.user" />
 		</SidebarFooter>
-		<SidebarRail />
+		<!-- <SidebarRail /> -->
 	</Sidebar>
 </template>

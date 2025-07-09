@@ -10,17 +10,7 @@
 					orientation="vertical"
 					class="mr-2 data-[orientation=vertical]:h-4" />
 				<Breadcrumb>
-					<BreadcrumbList>
-						<!-- <BreadcrumbItem class="hidden md:block">
-							<BreadcrumbLink href="#">
-								Building Your Application
-							</BreadcrumbLink>
-						</BreadcrumbItem>
-						<BreadcrumbSeparator class="hidden md:block" />
-						<BreadcrumbItem>
-							<BreadcrumbPage>Data Fetching</BreadcrumbPage>
-						</BreadcrumbItem> -->
-					</BreadcrumbList>
+					<BreadcrumbList> </BreadcrumbList>
 				</Breadcrumb>
 			</div>
 		</header>

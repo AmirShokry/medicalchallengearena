@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { sidebarWidth, sidebarWidthMobile } from "~/components/ui/sidebar";
-import { ChevronRightIcon, LucideSyringe, ChevronDown } from "lucide-vue-next";
+import { ChevronRightIcon, LucideSyringe, SearchIcon } from "lucide-vue-next";
 import {
 	SvgoCardiology,
 	SvgoGeneralPathology,
@@ -25,10 +25,11 @@ const { data: systems, pending } = await useLazyFetch("/api/hello", {
 		return data.map((system) => {
 			return {
 				...system,
-				icon:
+				icon: shallowRef(
 					systemIcons[
 						`Svgo${system.name.replace(" ", "").split(" (")[0]}` as keyof typeof systemIcons
-					] || LucideSyringe,
+					] || LucideSyringe
+				),
 			};
 		});
 	},
@@ -38,8 +39,20 @@ const { data: systems, pending } = await useLazyFetch("/api/hello", {
 	<SidebarGroup>
 		<div class="flex justify-between">
 			<SidebarGroupLabel>Systems</SidebarGroupLabel>
-			<ChevronDown />
+			<SvgoEllipsis class="mr-1 cursor-pointer" />
 		</div>
+		<div class="relative w-full max-w-sm items-center mb-3">
+			<Input
+				id="search"
+				type="text"
+				placeholder="Search..."
+				class="pl-9" />
+			<span
+				class="absolute start-0 inset-y-0 flex items-center justify-center px-2">
+				<SearchIcon class="size-4 text-muted-foreground" />
+			</span>
+		</div>
+
 		<SidebarMenu>
 			<div
 				v-if="pending"
