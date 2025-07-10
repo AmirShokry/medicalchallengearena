@@ -2,7 +2,8 @@
 import type { SidebarProps } from "@/components/ui/sidebar";
 
 import { AudioWaveform, GalleryVerticalEnd } from "lucide-vue-next";
-import ContentDefault from "./ContentDefault.vue";
+import {activeContentComponent} from "./utils";
+
 import NavUser from "~/components/sidebars/default/NavUser.vue";
 import RoleSwitcher from "~/components/sidebars/default/RoleSwitcher.vue";
 
@@ -36,11 +37,8 @@ const data = {
 		},
 	],
 };
-const contentComponents = {
-	ContentDefault,
-	ContentEntry: defineAsyncComponent(() => import("./ContentEntry.vue")),
-};
-const activeContent = ref<keyof typeof contentComponents>("ContentDefault");
+
+
 </script>
 
 <template>
@@ -49,7 +47,7 @@ const activeContent = ref<keyof typeof contentComponents>("ContentDefault");
 			<RoleSwitcher :roles="data.roles" />
 		</SidebarHeader>
 		<SidebarContent class="thin-scrollbar">
-			<component :is="contentComponents[activeContent]" v-model:active-content="activeContent" />
+			<component :is="activeContentComponent" />
 		</SidebarContent>
 		<SidebarFooter>
 			<NavUser :user="data.user" />

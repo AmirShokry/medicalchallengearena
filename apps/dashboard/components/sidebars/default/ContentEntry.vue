@@ -7,54 +7,37 @@ import {
 	SvgoGeneralPharmacology,
 	SvgoSocialSciences,
 } from "#components";
-sidebarWidth.value = "24rem";
-sidebarWidthMobile.value = "22rem";
-const activeContent = defineModel("activeContent", {
-	type: String,
-	required: true,
-});
+
+
+const props = defineProps<{
+	defaultActiveSystem?: string;
+	defaultActiveCategory?: string;
+}>();
+
+
 const systemIcons = {
 	SvgoCardiology,
 	SvgoGeneralPathology,
 	SvgoGeneralPharmacology,
 	SvgoSocialSciences,
 };
-// Lazy fetch does not block the navigation;
-const {$trpc} = useNuxtApp();
-const {data: systems, pending} = useLazyAsyncData(async ()=>await $trpc.systems.categories.useQuery(), {
-	transform: (response) => response.data.value?.map((system) => {
+
+const activeSystem = ref(props.defaultActiveSystem || "");
+const activeCategory = ref(props.defaultActiveCategory || "");
+
+sidebarWidth.value = "24rem";
+sidebarWidthMobile.value = "22rem";
+
+
+const { $trpc } = useNuxtApp();
+const {data: systems, pending} = await useLazyAsyncData(()=>$trpc.systems.categories.query(), {
+	transform: (response) => response.map((system) => {
 			return {
 				...system,
-				icon: shallowRef(
-					systemIcons[
-						`Svgo${system.name.replace(" ", "").split(" (")[0]}` as keyof typeof systemIcons
-					] || LucideSyringe
-				),
+				icon: shallowRef(systemIcons[(`Svgo${system.name.replace(" ", "").split(" (")[0]}`) as keyof typeof systemIcons] ),
 			};
-		})
-} )
-
-// systems.value?.data
-// const { data: systems, pending } = await useLazyFetch("/api/hello", {
-// 	transform: (data) => {
-// 		return data.map((system) => {
-// 			return {
-// 				...system,
-// 				icon: shallowRef(
-// 					systemIcons[
-// 						`Svgo${system.name.replace(" ", "").split(" (")[0]}` as keyof typeof systemIcons
-// 					] || LucideSyringe
-// 				),
-// 			};
-// 		});
-// 	},
-// });
-// const router = useRouter();
-// function handleCategoryClick(system: string, category: string) {
-// 	router.push({
-// 	path: `/entry/${system}/${category}`,
-// 	})
-// }
+		}),
+});
 </script>
 <template>
 	<SidebarGroup>
@@ -73,11 +56,12 @@ const {data: systems, pending} = useLazyAsyncData(async ()=>await $trpc.systems.
 			<div v-if="pending" class="h-[20dvh] flex items-center justify-center">
 				<SvgoLoader class="text-6xl text-primary" />
 			</div>
-			<Collapsible v-else v-for="system in systems" :key="system.id" as-child class="group/collapsible">
+			<Collapsible :default-open='activeSystem === system.name' v-else v-for="system in systems" :key="system.id"
+				as-child class="group/collapsible">
 				<SidebarMenuItem>
 					<CollapsibleTrigger as-child class="cursor-pointer">
 						<SidebarMenuButton :tooltip="system.name">
-							<component :is="system.icon" />
+							<component :is="system?.icon || LucideSyringe" />
 							<span>{{ system.name }}</span>
 							<ChevronRightIcon v-if="system.categories.length"
 								class="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
@@ -86,7 +70,11 @@ const {data: systems, pending} = useLazyAsyncData(async ()=>await $trpc.systems.
 					<CollapsibleContent>
 						<SidebarMenuSub class="p-1 cursor-pointer">
 							<SidebarMenuSubItem v-for="category in system.categories" :key="category.id">
-								<SidebarMenuSubButton as-child>
+								<SidebarMenuSubButton @click='() => {
+										activeSystem = system.name;
+										activeCategory = category.name;
+									}' :class='activeSystem===system.name && activeCategory === category.name ?`bg-sidebar-accent`: undefined'
+									as-child>
 									<router-link :to='`/entry/${system.name}/${category.name}`'>{{ category.name
 										}}</router-link>
 								</SidebarMenuSubButton>

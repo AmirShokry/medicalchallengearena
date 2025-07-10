@@ -1,11 +1,11 @@
 <script setup lang="ts">
-const route = useRoute("entry-system-category");
-const routeParams = computed(() => route.params);
-console.log(routeParams.value);
+import { activeContentName, setActiveContent } from '~/components/sidebars/default/utils';
+const params = computed(() => useRoute("entry-system-category").params);
+const { $trpc } = useNuxtApp();
 
-const { $trpc } = useNuxtApp()
+if(activeContentName.value !== "ContentEntry")
+setActiveContent('ContentEntry', {defaultActiveSystem: params.value.system, defaultActiveCategory: params.value.category, });
 
-const { data } = await $trpc.systems.categories.useQuery();
 </script>
 
 <template>
@@ -17,17 +17,14 @@ const { data } = await $trpc.systems.categories.useQuery();
 			<Separator orientation="vertical" class="mr-2 data-[orientation=vertical]:h-4" />
 			<Breadcrumb>
 				<BreadcrumbList>
-					<BreadcrumbItem>{{ routeParams.system }} </BreadcrumbItem>
+					<BreadcrumbItem>{{ params.system }} </BreadcrumbItem>
 					<BreadcrumbSeparator />
-					<BreadcrumbItem>{{ routeParams.category }}</BreadcrumbItem>
+					<BreadcrumbItem>{{ params.category }}</BreadcrumbItem>
 				</BreadcrumbList>
 			</Breadcrumb>
 		</div>
 	</header>
-	<main class="flex flex-1 flex-col gap-4 p-4 pt-0 text-red-500">
-		<pre>
-{{ JSON.stringify(data, null, 2) }}
-		</pre>
+	<main class="flex flex-1 flex-col gap-4 p-4 pt-0 ">
 
 	</main>
 
