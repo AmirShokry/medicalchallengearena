@@ -7,7 +7,7 @@ export default defineNuxtConfig({
 		typedPages: true,
 	},
 	ssr: false,
-	modules: ["shadcn-nuxt", "nuxt-svgo"],
+	modules: ["shadcn-nuxt", "nuxt-svgo", "@pinia/nuxt"],
 	telemetry: false,
 	shadcn: {
 		prefix: "",
