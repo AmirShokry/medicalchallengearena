@@ -8,6 +8,8 @@ import {
 	SvgoSocialSciences,
 } from "#components";
 
+import Fuse from "fuse.js";
+
 
 const props = defineProps<{
 	defaultActiveSystem?: string;
@@ -30,7 +32,7 @@ sidebarWidthMobile.value = "22rem";
 
 
 const { $trpc } = useNuxtApp();
-const {data: systems, pending} = await useLazyAsyncData(()=>$trpc.systems.categories.query(), {
+const {data: systems, pending} =  $trpc.systems.categories.useQuery(undefined, {
 	transform: (response) => response.map((system) => {
 			return {
 				...system,
@@ -38,6 +40,29 @@ const {data: systems, pending} = await useLazyAsyncData(()=>$trpc.systems.catego
 			};
 		}),
 });
+
+const fuse = computed(() => {
+	if (!systems.value) return null;
+	return new Fuse(systems.value, {
+		keys: ["name", "categories.name"],
+		threshold: 0.3,
+	});
+});
+
+
+const isSearching = ref(false);
+const searchQuery = ref("");
+function handleSearchStart(){
+	if(!searchQuery.value.trim()) {
+		isSearching.value = false;
+		return;
+	}
+	isSearching.value = true;
+
+}
+
+const systemTarget = computed(()=> isSearching.value? fuse.value && fuse.value.search(searchQuery.value).map(result => result.item) : systems.value!);
+
 </script>
 <template>
 	<SidebarGroup>
@@ -46,7 +71,8 @@ const {data: systems, pending} = await useLazyAsyncData(()=>$trpc.systems.catego
 			<SvgoEllipsis class="mr-1 cursor-pointer" />
 		</div>
 		<div class="relative w-full max-w-sm items-center mb-3">
-			<Input id="search" type="text" placeholder="Search..." class="pl-9" />
+			<Input id="search" type="text" placeholder="Search..." class="pl-9" v-model='searchQuery'
+				@update:model-value='handleSearchStart' />
 			<span class="absolute start-0 inset-y-0 flex items-center justify-center px-2">
 				<SearchIcon class="size-4 text-muted-foreground" />
 			</span>
@@ -56,8 +82,8 @@ const {data: systems, pending} = await useLazyAsyncData(()=>$trpc.systems.catego
 			<div v-if="pending" class="h-[20dvh] flex items-center justify-center">
 				<SvgoLoader class="text-6xl text-primary" />
 			</div>
-			<Collapsible :default-open='activeSystem === system.name' v-else v-for="system in systems" :key="system.id"
-				as-child class="group/collapsible">
+			<Collapsible :default-open='activeSystem === system.name' v-else v-for="system in systemTarget"
+				:key="system.id" as-child class="group/collapsible">
 				<SidebarMenuItem>
 					<CollapsibleTrigger as-child class="cursor-pointer">
 						<SidebarMenuButton :tooltip="system.name">
