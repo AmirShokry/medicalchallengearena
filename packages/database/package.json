@@ -5,7 +5,8 @@
 	"type": "module",
 	"exports": {
 		".": "./src/index.ts",
-		"./helpers": "./src/helpers.ts"
+		"./helpers": "./src/helpers.ts",
+		"./ctes": "./src/ctes.ts"
 	},
 	"scripts": {
 		"dev2": "tsx ./src/test.ts",
