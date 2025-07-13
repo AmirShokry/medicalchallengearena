@@ -1,7 +1,6 @@
 import { z } from "zod";
 import { baseProcedure, createTRPCRouter } from "../init";
-import { and, db, eq, getTableColumns } from "database";
-// import { getTableColumnsExcept } from "database/helpers";
+import { and, db, eq } from "database";
 import { CasesQuestionsChoicesCTE } from "database/ctes";
 import { TRPCError } from "@trpc/server";
 export const block = createTRPCRouter({
@@ -10,25 +9,42 @@ export const block = createTRPCRouter({
 			z.object({
 				system: z.string(),
 				category: z.string(),
+				caseType: z.enum(["STEP 1", "STEP 2", "STEP 3"]),
 			})
 		)
 		.query(async ({ input }) => {
 			const result = await db
-				.selectDistinct()
-				.from(db.table.systems)
-				.innerJoin(
-					db.table.categories,
-					eq(db.table.systems.id, db.table.categories.system_id)
-				)
+				.with(CasesQuestionsChoicesCTE)
+				.select()
+				.from(CasesQuestionsChoicesCTE)
 				.where(
 					and(
-						eq(db.table.systems.name, input.system),
-						eq(db.table.categories.name, input.category)
+						eq(
+							CasesQuestionsChoicesCTE.category_id,
+							db
+								.selectDistinct({ id: db.table.categories.id })
+								.from(db.table.systems)
+								.innerJoin(
+									db.table.categories,
+									eq(
+										db.table.systems.id,
+										db.table.categories.system_id
+									)
+								)
+								.where(
+									and(
+										eq(db.table.systems.name, input.system),
+										eq(
+											db.table.categories.name,
+											input.category
+										)
+									)
+								)
+								.limit(1)
+						),
+						eq(CasesQuestionsChoicesCTE.type, input.caseType)
 					)
-				)
-				.limit(1);
-
-			// console.log(result);
+				);
 
 			if (!result.length)
 				throw new TRPCError({
@@ -37,17 +53,6 @@ export const block = createTRPCRouter({
 					code: "NOT_FOUND",
 				});
 
-			return await db
-				.with(CasesQuestionsChoicesCTE)
-				.select()
-				.from(CasesQuestionsChoicesCTE)
-				.where(
-					eq(
-						CasesQuestionsChoicesCTE.category_id,
-						result[0].categories.id
-					)
-				);
-
-			// return result[0];
+			return result;
 		}),
 });
