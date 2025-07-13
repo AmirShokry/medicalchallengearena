@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import {
 	DEFAULT_ENTRY_PANEL_SIZE,
+	DEFAULT_CASE_TYPE,
+	CASE_TYPES,
 	IS_SIDEBAR_OPEN,
-	resetInputData,
 } from "~/components/entry";
 import {
 	activeContentName,
@@ -10,11 +11,16 @@ import {
 } from "~/components/sidebars/default/utils";
 import { useSidebar } from "~/components/ui/sidebar/utils";
 const params = computed(() => useRoute("entry-system-category").params);
-resetInputData();
+useInputStore().resetInput();
+
+definePageMeta({
+	middleware: "valid-entry-params",
+});
 useSeoMeta({
 	title: `MCA | ${params.value.system} ${params.value.category} `,
 	description: "Create and manage entries for the medical challenge arena.",
 });
+
 if (activeContentName.value !== "ContentEntry")
 	setActiveContent("ContentEntry", {
 		defaultActiveSystem: params.value.system,
@@ -24,6 +30,8 @@ if (activeContentName.value !== "ContentEntry")
 const { isMobile, setOpen } = useSidebar();
 
 setOpen(IS_SIDEBAR_OPEN.value);
+
+const activeCaseType = ref(DEFAULT_CASE_TYPE.value);
 </script>
 
 <template>
@@ -39,6 +47,23 @@ setOpen(IS_SIDEBAR_OPEN.value);
 					<BreadcrumbItem>{{ params.system }} </BreadcrumbItem>
 					<BreadcrumbSeparator />
 					<BreadcrumbItem>{{ params.category }}</BreadcrumbItem>
+					<BreadcrumbItem>
+						<Select v-model="activeCaseType">
+							<SelectTrigger
+								class="cursor-pointer mx-1 !h-6 !bg-featured text-primary">
+								<SelectValue />
+							</SelectTrigger>
+							<SelectContent>
+								<SelectItem
+									v-for="examType in CASE_TYPES"
+									class="cursor-pointer"
+									:key="examType"
+									:value="examType">
+									{{ examType }}
+								</SelectItem>
+							</SelectContent>
+						</Select>
+					</BreadcrumbItem>
 				</BreadcrumbList>
 			</Breadcrumb>
 		</div>
@@ -51,6 +76,9 @@ setOpen(IS_SIDEBAR_OPEN.value);
 		<ResizableHandle with-handle />
 		<ResizablePanel>
 			<EntryPreviewRoot
+				:case-type="activeCaseType"
+				:system="params.system"
+				:category="params.category"
 				class="bg-primary/20 max-h-[calc(100dvh-2.5rem)] flex flex-1 flex-col gap-4 py-6 px-8 h-full overflow-y-auto overflow-x-hidden thin-scrollbar" />
 		</ResizablePanel>
 	</ResizablePanelGroup>

@@ -1,42 +1,50 @@
 <script setup lang="ts">
-import { inputData } from ".";
+import { type CaseTypes } from ".";
 import {
 	CheckCircle2Icon,
 	NotebookPenIcon,
 	SquarePenIcon,
 } from "lucide-vue-next";
+const props = defineProps<{
+	caseType: CaseTypes;
+	system: string;
+	category: string;
+}>();
+const inputStore = useInputStore();
 
-const params = useRoute("entry-system-category").params;
-const { $trpc } = useNuxtApp();
-
-const {
-	data: previewData,
-	error,
-	pending,
-} = await $trpc.block.get.useQuery({
-	system: params.system as string,
-	category: params.category as string,
+const previewStore = usePreviewStore();
+await previewStore.fetchPreviewData({
+	system: props.system,
+	category: props.category,
+	caseType: props.caseType,
 });
-if (error.value) {
-	console.error("Failed to fetch block data:", error.value.data?.code);
-	window.location.href = "/404";
-}
 
+watch(
+	() => props.caseType,
+	async () => {
+		await previewStore.fetchPreviewData({
+			system: props.system,
+			category: props.category,
+			caseType: props.caseType,
+		});
+	}
+);
 function handleEditCase(caseIndex: number) {
-	if (!previewData.value || previewData.value.length === 0) return;
-	console.log("Editing case with ID:", caseIndex);
-	const editedCase = structuredClone(toRaw(previewData.value[caseIndex]));
-	inputData.value = editedCase;
+	if (previewStore.isEmpty) return;
+
+	inputStore.setInput(
+		structuredClone(toRaw(previewStore.preview[caseIndex]))
+	);
 }
 </script>
 <template>
 	<section aria-role="preview-section" class="@container/preview-section">
 		<ul
+			v-if="!previewStore.error && !previewStore.pending"
 			aria-role="list-container"
-			class="@max-[200px]/preview-section:hidden grid grid-cols-1 items-center gap-4"
-			v-if="!pending">
+			class="@max-[200px]/preview-section:hidden grid grid-cols-1 items-center gap-4">
 			<li
-				v-for="(cases, index) in previewData"
+				v-for="(cases, index) in previewStore.preview"
 				:key="cases.id"
 				class="bg-muted min-h-100 rounded-sm px-4 pt-2 pb-10 overflow-hidden">
 				<Button
@@ -112,9 +120,7 @@ function handleEditCase(caseIndex: number) {
 					</div>
 				</div>
 			</li>
-			<li v-if="previewData?.length === 0" class="preview-item">
-				No cases found.
-			</li>
 		</ul>
+		<div v-else>No data found.</div>
 	</section>
 </template>
