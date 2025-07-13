@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { ChevronsUpDown, Plus } from "lucide-vue-next";
-import {
-	useSidebar,
-	sidebarWidth,
-	sidebarWidthMobile,
-} from "~/components/ui/sidebar";
+import { useSidebar } from "~/components/ui/sidebar";
 
 const props = defineProps<{
 	roles: {
@@ -16,11 +12,6 @@ const props = defineProps<{
 
 const { isMobile } = useSidebar();
 const activeRole = ref(props.roles[0]);
-
-function setWidth() {
-	sidebarWidth.value = "20rem";
-	sidebarWidthMobile.value = "20rem";
-}
 </script>
 
 <template>
@@ -32,8 +23,8 @@ function setWidth() {
 						size="lg"
 						class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
 						<div
-							class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-							<component :is="activeRole.logo" class="size-4" />
+							class="flex size-8 p-1 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+							<component :is="activeRole.logo" />
 						</div>
 						<div
 							class="grid flex-1 text-left text-sm leading-tight">
@@ -62,9 +53,7 @@ function setWidth() {
 						@click="activeRole = role">
 						<div
 							class="flex size-6 items-center justify-center rounded-sm border">
-							<component
-								:is="role.logo"
-								class="size-3.5 shrink-0" />
+							<component :is="role.logo" />
 						</div>
 						{{ role.name }}
 						<DropdownMenuShortcut
@@ -72,7 +61,7 @@ function setWidth() {
 						>
 					</DropdownMenuItem>
 					<DropdownMenuSeparator />
-					<DropdownMenuItem class="gap-2 p-2" @click="setWidth">
+					<DropdownMenuItem class="gap-2 p-2">
 						<div
 							class="flex size-6 items-center justify-center rounded-md border bg-transparent">
 							<Plus class="size-4" />

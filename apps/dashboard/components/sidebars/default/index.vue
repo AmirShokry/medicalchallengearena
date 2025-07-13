@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { SidebarProps } from "@/components/ui/sidebar";
-
-import { AudioWaveform, GalleryVerticalEnd } from "lucide-vue-next";
-import {activeContentComponent} from "./utils";
+import { Logo } from "@/components/ui/logo";
+import { AudioWaveform } from "lucide-vue-next";
+import { activeContentComponent } from "./utils";
 
 import NavUser from "~/components/sidebars/default/NavUser.vue";
 import RoleSwitcher from "~/components/sidebars/default/RoleSwitcher.vue";
@@ -21,13 +21,13 @@ const props = withDefaults(defineProps<SidebarProps>(), {
 const data = {
 	user: {
 		name: "amir",
-		email: "amir@example.com",
-		avatar: "/avatars/shadcn.jpg",
+		email: "amir@medicalchallengearena.com",
+		avatar: "https://i.imghippo.com/files/zEiZ2959nw.webp",
 	},
 	roles: [
 		{
 			name: "MCA",
-			logo: GalleryVerticalEnd,
+			logo: markRaw(Logo),
 			plan: "Super Admin",
 		},
 		{
@@ -37,8 +37,6 @@ const data = {
 		},
 	],
 };
-
-
 </script>
 
 <template>
