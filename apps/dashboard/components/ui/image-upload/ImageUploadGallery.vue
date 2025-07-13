@@ -222,9 +222,15 @@ onBeforeUnmount(() => window.removeEventListener("keydown", handleKeyDown));
 									<div
 										class="text-center sm:text-left w-full sm:w-auto text-primary">
 										<p class="truncate max-w-xs">
-											<strong>{{ activeImage }}</strong>
+											<strong>
+												Image
+												{{
+													activeImageIndex !== null
+														? activeImageIndex + 1
+														: undefined
+												}}
+											</strong>
 										</p>
-										<!-- <p>{{ formatSize(activeImage.size) }}</p> -->
 									</div>
 
 									<div
