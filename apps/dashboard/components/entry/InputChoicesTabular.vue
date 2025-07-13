@@ -1,12 +1,12 @@
 <script setup lang="ts">
+import { DEFAULT_CHOICES_COLUMNS } from ".";
 import {
 	Trash2Icon,
 	CircleCheckIcon,
-	PlusCircleIcon,
 	CircleQuestionMarkIcon,
 } from "lucide-vue-next";
 
-defineProps<{
+const props = defineProps<{
 	tabindex?: number;
 }>();
 
@@ -40,35 +40,63 @@ function handleAddChoice() {
 }
 
 function handleAddExplanation(index: number) {
-	if (choices.value[index].explanation == " ")
-		return (choices.value[index].explanation = "");
-	choices.value[index].explanation = " ";
+	// if (choices.value[index].explanation == " ")
+	// 	return (choices.value[index].explanation = "");
+	// choices.value[index].explanation = " ";
 }
+const rowsCount = computed(() => choices.value.length);
+const columnsCount = ref(DEFAULT_CHOICES_COLUMNS.value);
+
+const segMentedChoices = ref(
+	Array.from({ length: rowsCount.value }, () => {
+		return Array.from(
+			{
+				length: columnsCount.value ?? 0,
+			},
+			() => ""
+		);
+	})
+);
+
+const segmentedHeader = ref(
+	Array.from({ length: columnsCount.value }, () => "")
+);
 </script>
 <template>
+	<div aria-role="tabular-question header" class="my-2">
+		<div class="flex flex-col gap-2 mt-4 w-[calc(100%-68px)]">
+			<Label>Header</Label>
+			<div
+				class="grid gap-2"
+				:style="{
+					gridTemplateColumns: `repeat(${DEFAULT_CHOICES_COLUMNS}, minmax(0, 1fr))`,
+				}">
+				<Input
+					v-for="(_, col_index) in segmentedHeader"
+					v-model="segmentedHeader[col_index]"
+					:tabindex="tabindex || 0 + col_index + 1"
+					class="text-muted-foreground" />
+			</div>
+		</div>
+	</div>
 	<div aria-role="choice-input">
 		<div class="grid gap-2">
-			<div class="flex gap-1">
-				<Label for="choice">Choices</Label>
-				<Button
-					@click="handleAddChoice"
-					title="Add choice"
-					variant="link"
-					tabindex="-1"
-					class="!p-0 hover:text-muted-foreground cursor-pointer">
-					<PlusCircleIcon />
-				</Button>
-			</div>
 			<ul class="grid gap-2">
 				<li v-for="(choice, index) in choices" class="flex">
-					<div class="flex flex-col gap-1 w-full">
-						<Input v-model="choice.body" :tabindex="tabindex" />
-						<Input
-							v-if="choice.explanation"
-							v-model="choice.explanation"
-							:tabindex="tabindex" />
+					<div class="w-full">
+						<div
+							class="grid gap-2 w-full"
+							:style="{
+								gridTemplateColumns: `repeat(${columnsCount}, minmax(0, 1fr))`,
+							}">
+							<Input
+								v-for="(col, col_index) in segMentedChoices[
+									index
+								]"
+								v-model="segMentedChoices[index][col_index]"
+								:tabindex="tabindex || 0 + index + col_index" />
+						</div>
 					</div>
-
 					<div class="flex gap-1 ml-3">
 						<Button
 							title="Add explanation"

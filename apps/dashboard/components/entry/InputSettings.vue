@@ -3,8 +3,8 @@ import {
 	DEFALT_QUESTIONS_NUMBER,
 	DEFAULT_CHOICES_ROWS,
 	DEFAULT_CHOICES_COLUMNS,
-	EXAM_TYPES,
-	DEFAULT_EXAM_TYPE,
+	CASE_TYPES,
+	DEFAULT_CASE_TYPE,
 	DEFAULT_ENTRY_PANEL_SIZE,
 	IS_SIDEBAR_OPEN,
 } from ".";
@@ -51,13 +51,13 @@ async function handleChoicesChange(
 			</DialogHeader>
 			<div class="grid grid-cols gap-2">
 				<Label> Exam type </Label>
-				<Select v-model="DEFAULT_EXAM_TYPE">
+				<Select v-model="DEFAULT_CASE_TYPE">
 					<SelectTrigger class="w-full">
 						<SelectValue />
 					</SelectTrigger>
 					<SelectContent>
 						<SelectItem
-							v-for="type in EXAM_TYPES"
+							v-for="type in CASE_TYPES"
 							:key="type"
 							:value="type">
 							{{ type }}
