@@ -77,7 +77,8 @@ function handleEditCase(caseIndex: number) {
 								title="Study Mode"
 								class="text-sidebar-primary inline mr-1"
 								:size="15" />
-							<span class="underline underline-offset-2">
+							<span
+								class="underline underline-offset-2 unselectable">
 								Q#{{ index + 1 }}
 							</span>
 							{{ question.body }}
