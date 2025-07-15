@@ -1,23 +1,20 @@
 <script setup lang="ts">
-import { DEFAULT_CHOICES_COLUMNS } from ".";
+import { injectContext } from "./Root.vue";
 import {
 	Trash2Icon,
 	CircleCheckIcon,
+	PlusCircleIcon,
 	CircleQuestionMarkIcon,
 } from "lucide-vue-next";
 
-const props = defineProps<{
-	tabindex?: number;
+const { questionIndex } = defineProps<{
+	questionIndex: number;
 }>();
 
-const choices = defineModel<
-	{
-		id: number;
-		body: string;
-		isCorrect: boolean | null;
-		explanation: string | null;
-	}[]
->("choices", { required: true });
+const data = injectContext();
+
+const choices = computed(() => data.data.questions[questionIndex].choices);
+
 function handleDeleteChoice(index: number) {
 	if (choices.value.length <= 2) return;
 	choices.value.splice(index, 1);
@@ -31,8 +28,9 @@ function handleCheckChoice(index: number) {
 }
 
 function handleAddChoice() {
+	const randId = new Date().getTime();
 	choices.value.push({
-		id: new Date().getTime(),
+		id: randId,
 		body: "",
 		explanation: "",
 		isCorrect: false,
@@ -40,67 +38,39 @@ function handleAddChoice() {
 }
 
 function handleAddExplanation(index: number) {
-	// if (choices.value[index].explanation == " ")
-	// 	return (choices.value[index].explanation = "");
-	// choices.value[index].explanation = " ";
+	if (choices.value[index].explanation === " ")
+		return (choices.value[index].explanation = "");
+	choices.value[index].explanation = " ";
 }
-const rowsCount = computed(() => choices.value.length);
-const columnsCount = ref(DEFAULT_CHOICES_COLUMNS.value);
-
-const segMentedChoices = ref(
-	Array.from({ length: rowsCount.value }, () => {
-		return Array.from(
-			{
-				length: columnsCount.value ?? 0,
-			},
-			() => ""
-		);
-	})
-);
-
-const segmentedHeader = ref(
-	Array.from({ length: columnsCount.value }, () => "")
-);
 </script>
 <template>
-	<div aria-role="tabular-question header" class="my-2">
-		<div class="flex flex-col gap-2 mt-4 w-[calc(100%-68px)]">
-			<Label>Header</Label>
-			<div
-				class="grid gap-2"
-				:style="{
-					gridTemplateColumns: `repeat(${DEFAULT_CHOICES_COLUMNS}, minmax(0, 1fr))`,
-				}">
-				<Input
-					v-for="(_, col_index) in segmentedHeader"
-					v-model="segmentedHeader[col_index]"
-					:tabindex="tabindex || 0 + col_index + 1"
-					class="text-muted-foreground" />
-			</div>
-		</div>
-	</div>
 	<div aria-role="choice-input">
 		<div class="grid gap-2">
+			<div class="flex gap-1">
+				<Label for="choice">Choices</Label>
+				<Button
+					@click="handleAddChoice"
+					title="Add choice"
+					variant="link"
+					class="!p-0 hover:text-muted-foreground cursor-pointer">
+					<PlusCircleIcon />
+				</Button>
+			</div>
 			<ul class="grid gap-2">
 				<li v-for="(choice, index) in choices" class="flex">
-					<div class="w-full">
-						<div
-							class="grid gap-2 w-full"
-							:style="{
-								gridTemplateColumns: `repeat(${columnsCount}, minmax(0, 1fr))`,
-							}">
-							<Input
-								v-for="(col, col_index) in segMentedChoices[
-									index
-								]"
-								v-model="segMentedChoices[index][col_index]"
-								:tabindex="tabindex || 0 + index + col_index" />
-						</div>
+					<div class="flex flex-col gap-1 w-full">
+						<Input tabindex="1" v-model="choice.body" />
+						<Input
+							tabindex="1"
+							v-if="choice.explanation"
+							v-model="choice.explanation" />
 					</div>
+
 					<div class="flex gap-1 ml-3">
 						<Button
 							title="Add explanation"
 							variant="link"
+							tabindex="-1"
 							@click.prevent="handleAddExplanation(index)"
 							class="hover:text-muted !p-0 cursor-pointer"
 							:class="
@@ -113,6 +83,7 @@ const segmentedHeader = ref(
 						<Button
 							title="Mark correct"
 							variant="link"
+							tabindex="-1"
 							@click="handleCheckChoice(index)"
 							class="hover:text-success !p-0 cursor-pointer"
 							:class="
@@ -126,6 +97,7 @@ const segmentedHeader = ref(
 						<Button
 							title="Remove Choice"
 							variant="link"
+							tabindex="-1"
 							@click="handleDeleteChoice(index)"
 							:disabled="choices.length <= 2"
 							class="hover:text-destructive !p-0 cursor-pointer">
