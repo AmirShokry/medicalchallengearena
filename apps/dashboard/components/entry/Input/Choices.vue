@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { injectContext } from "./Root.vue";
 import {
 	Trash2Icon,
 	CircleCheckIcon,
@@ -11,9 +10,13 @@ const { questionIndex } = defineProps<{
 	questionIndex: number;
 }>();
 
-const data = injectContext();
+const { data } = useInputStore();
 
-const choices = computed(() => data.data.questions[questionIndex].choices);
+const choices = computed(() => data.questions[questionIndex].choices);
+
+const explanationVisibility = ref(
+	Object.fromEntries(choices.value.map((_, index) => [index, false]))
+);
 
 function handleDeleteChoice(index: number) {
 	if (choices.value.length <= 2) return;
@@ -38,9 +41,7 @@ function handleAddChoice() {
 }
 
 function handleAddExplanation(index: number) {
-	if (choices.value[index].explanation === " ")
-		return (choices.value[index].explanation = "");
-	choices.value[index].explanation = " ";
+	explanationVisibility.value[index] = !explanationVisibility.value[index];
 }
 </script>
 <template>
@@ -59,14 +60,40 @@ function handleAddExplanation(index: number) {
 			<ul class="grid gap-2">
 				<li v-for="(choice, index) in choices" class="flex">
 					<div class="flex flex-col gap-1 w-full">
-						<Input tabindex="1" v-model="choice.body" />
+						<Input
+							required
+							form="submit-input"
+							:name="`choice-${index}`"
+							tabindex="1"
+							v-model="choice.body" />
 						<Input
 							tabindex="1"
-							v-if="choice.explanation"
-							v-model="choice.explanation" />
+							v-if="explanationVisibility[index]"
+							v-model="choice.explanation!" />
 					</div>
 
 					<div class="flex gap-1 ml-3">
+						<Button
+							variant="link"
+							title="Mark correct"
+							@click="handleCheckChoice(index)"
+							tabindex="-1"
+							:class="
+								choice.isCorrect === true
+									? 'text-success-foreground'
+									: undefined
+							"
+							class="hover:text-success !p-0 cursor-pointer relative">
+							<Input
+								type="radio"
+								required
+								class="absolute opacity-0 pointer-events-none"
+								:checked="choice.isCorrect"
+								:name="`check-${questionIndex}`"
+								form="submit-input">
+							</Input>
+							<CircleCheckIcon :size="18" />
+						</Button>
 						<Button
 							title="Add explanation"
 							variant="link"
@@ -74,24 +101,11 @@ function handleAddExplanation(index: number) {
 							@click.prevent="handleAddExplanation(index)"
 							class="hover:text-muted !p-0 cursor-pointer"
 							:class="
-								choice.explanation
+								explanationVisibility[index]
 									? 'text-muted-foreground'
 									: undefined
 							">
 							<CircleQuestionMarkIcon :size="18" />
-						</Button>
-						<Button
-							title="Mark correct"
-							variant="link"
-							tabindex="-1"
-							@click="handleCheckChoice(index)"
-							class="hover:text-success !p-0 cursor-pointer"
-							:class="
-								choice.isCorrect === true
-									? 'text-success-foreground'
-									: undefined
-							">
-							<CircleCheckIcon :size="18" />
 						</Button>
 
 						<Button

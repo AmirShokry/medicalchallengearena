@@ -1,13 +1,9 @@
 <script setup lang="ts">
-import { injectContext } from "./Root.vue";
-const context = injectContext();
 const { questionIndex } = defineProps<{
 	questionIndex: number;
 }>();
-
-const question = computed(() => {
-	return context.data.questions[questionIndex];
-});
+const { data } = useInputStore();
+const question = computed(() => data.questions[questionIndex]);
 </script>
 <template>
 	<div aria-role="question-input" class="min-h-30">
@@ -23,10 +19,12 @@ const question = computed(() => {
 		<ImageUploadProvider :images="question.imgUrls">
 			<div class="min-h-20 flex items-center gap-1">
 				<Textarea
+					required
+					form="submit-input"
+					:name="`question-${questionIndex}`"
 					tabindex="1"
 					class="min-h-20 break-all"
-					v-model="question.body"
-					name="question" />
+					v-model="question.body" />
 				<ImageUploadTrigger />
 			</div>
 			<ImageUploadGallery />

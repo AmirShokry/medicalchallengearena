@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ENTRY_PREFERENCES, CASE_TYPES } from "./Root.vue";
+import { ENTRY_PREFERENCES, CASE_TYPES } from "./Index.vue";
 
 import { SettingsIcon } from "lucide-vue-next";
 import { z } from "zod";
@@ -30,7 +30,7 @@ async function handleChoicesChange(
 }
 </script>
 <template>
-	<div class="flex justify-end h-9 bg-green-800">
+	<div class="flex justify-end h-9">
 		<Dialog>
 			<DialogTrigger tabindex="-1">
 				<Button tabindex="-1" variant="secondary">
@@ -125,5 +125,7 @@ async function handleChoicesChange(
 				</div>
 			</DialogContent>
 		</Dialog>
+
+		<slot name="submit" />
 	</div>
 </template>

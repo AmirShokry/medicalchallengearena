@@ -1,24 +1,18 @@
 <script setup lang="ts">
 import { Trash2Icon, PlusCircleIcon, NotebookPenIcon } from "lucide-vue-next";
-import {
-	ENTRY_PREFERENCES,
-	injectContext,
-	type QuestionType,
-} from "./Root.vue";
-const context = injectContext();
+import { ENTRY_PREFERENCES, type QuestionType } from "./Index.vue";
 const { questionIndex } = defineProps<{
 	questionIndex: number;
 }>();
+const { data } = useInputStore();
 
-const activeQuestion = computed(() => {
-	return context.data.questions[questionIndex];
-});
+const activeQuestion = computed(() => data.questions[questionIndex]);
 function onDeleteBlock(index: number) {
-	if (context.data.questions.length <= 1) return;
-	context.data.questions.splice(index, 1);
+	if (data.questions.length <= 1) return;
+	data.questions.splice(index, 1);
 }
 function onAddBlock() {
-	context.data.questions.push({
+	data.questions.push({
 		id: new Date().getTime(),
 		body: "",
 		imgUrls: [] as string[],
@@ -27,27 +21,33 @@ function onAddBlock() {
 		header: "",
 		explanationImgUrls: [] as string[],
 		isStudyMode: false,
-		choices: Array.from(
-			{ length: ENTRY_PREFERENCES.value.CHOICES_ROWS },
-			() => {
-				return {
-					id: new Date().getTime(),
-					body: "",
-					isCorrect: false,
-					explanation: "",
-				};
-			}
-		),
+		choices: getEmptyChoices(),
 	});
 }
 function onToggleStudyMode(index: number) {
-	context.data.questions[index].isStudyMode =
-		!context.data.questions[index].isStudyMode;
+	data.questions[index].isStudyMode = !data.questions[index].isStudyMode;
+}
+
+function getEmptyChoices() {
+	return Array.from({ length: ENTRY_PREFERENCES.value.CHOICES_ROWS }, () => {
+		return {
+			id: new Date().getTime(),
+			body: "",
+			isCorrect: false,
+			explanation: "",
+		};
+	});
+}
+function clearChoices() {
+	data.questions[questionIndex].choices = getEmptyChoices();
+	data.questions[questionIndex].header = "";
 }
 </script>
 <template>
 	<div aria-role="questions-toolbar" class="flex items-center gap-2">
-		<Select v-model="activeQuestion['type']">
+		<Select
+			@update:model-value="clearChoices()"
+			v-model="activeQuestion['type']">
 			<SelectTrigger class="cursor-pointer !h-6">
 				<SelectValue />
 			</SelectTrigger>
@@ -66,7 +66,7 @@ function onToggleStudyMode(index: number) {
 					: undefined
 			"
 			class="cursor-pointer hover:text-success !p-0"
-			:disabled="context.data.questions.length <= 1">
+			:disabled="data.questions.length <= 1">
 			<NotebookPenIcon :size="16" />
 		</Button>
 		<Button
@@ -81,7 +81,7 @@ function onToggleStudyMode(index: number) {
 			@click="onDeleteBlock(questionIndex)"
 			variant="link"
 			class="cursor-pointer hover:text-destructive !p-0"
-			:disabled="context.data.questions.length <= 1">
+			:disabled="data.questions.length <= 1">
 			<Trash2Icon :size="16" />
 		</Button>
 	</div>

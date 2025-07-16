@@ -1,44 +1,61 @@
 <script setup lang="ts">
-import { type CaseTypes } from ".";
+import { type CaseTypes } from "./Input/Index.vue";
 import {
 	CheckCircle2Icon,
 	NotebookPenIcon,
 	SquarePenIcon,
 } from "lucide-vue-next";
-const props = defineProps<{
-	caseType: CaseTypes;
+const { system, category, caseType } = defineProps<{
 	system: string;
 	category: string;
+	caseType: CaseTypes;
 }>();
 const inputStore = useInputStore();
-
 const previewStore = usePreviewStore();
-await previewStore.fetchPreviewData({
-	system: props.system,
-	category: props.category,
-	caseType: props.caseType,
+previewStore.fetchPreviewData({
+	system,
+	category,
+	caseType,
 });
 
 watch(
-	() => props.caseType,
+	() => previewStore.preview.length,
+	(newPreviewLength, oldPreviewLength) => {
+		if (newPreviewLength > oldPreviewLength) scrollToEnd();
+	}
+);
+
+watch(
+	() => caseType,
 	async () => {
 		await previewStore.fetchPreviewData({
-			system: props.system,
-			category: props.category,
-			caseType: props.caseType,
+			system,
+			category,
+			caseType,
 		});
 	}
 );
 function handleEditCase(caseIndex: number) {
 	if (previewStore.isEmpty) return;
-
 	inputStore.setInput(
 		structuredClone(toRaw(previewStore.preview[caseIndex]))
 	);
 }
+
+const sectionRef = useTemplateRef("sectionRef");
+function scrollToEnd() {
+	if (!sectionRef.value) return;
+	sectionRef.value.scrollTo({
+		top: sectionRef.value.scrollHeight,
+		behavior: "smooth",
+	});
+}
 </script>
 <template>
-	<section aria-role="preview-section" class="@container/preview-section">
+	<section
+		aria-role="preview-section"
+		ref="sectionRef"
+		class="@container/preview-section bg-primary/20 h-full overflow-y-scroll thin-scrollbar p-4">
 		<ul
 			v-if="!previewStore.error && !previewStore.pending"
 			aria-role="list-container"
@@ -122,6 +139,29 @@ function handleEditCase(caseIndex: number) {
 				</div>
 			</li>
 		</ul>
-		<div v-else>No data found.</div>
+		<div v-if="previewStore.isEmpty">No data found.</div>
+
+		<div
+			v-if="previewStore.pending"
+			class="flex items-center justify-center w-full">
+			<SvgoLoader class="text-6xl delayed-fade" />
+		</div>
 	</section>
 </template>
+
+<style scoped>
+.delayed-fade {
+	animation: delayedFadeIn 1s ease-out;
+}
+@keyframes delayedFadeIn {
+	0% {
+		opacity: 0;
+	}
+	75% {
+		opacity: 0.2;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+</style>

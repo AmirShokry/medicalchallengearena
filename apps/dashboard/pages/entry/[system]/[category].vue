@@ -1,21 +1,15 @@
 <script setup lang="ts">
-// import {
-// 	DEFAULT_ENTRY_PANEL_SIZE,
-// 	DEFAULT_CASE_TYPE,
-// 	CASE_TYPES,
-// 	IS_SIDEBAR_OPEN,
-// } from "~/components/entry";
 import {
+	type CaseTypes,
 	ENTRY_PREFERENCES,
 	CASE_TYPES,
-} from "~/components/entry/Input/Root.vue";
+} from "@/components/entry/Input/Index.vue";
 import {
 	activeContentName,
 	setActiveContent,
 } from "~/components/sidebars/default/utils";
 import { useSidebar } from "~/components/ui/sidebar/utils";
 const params = computed(() => useRoute("entry-system-category").params);
-// useInputStore().resetInput();
 
 definePageMeta({
 	middleware: "valid-entry-params",
@@ -34,8 +28,9 @@ if (activeContentName.value !== "ContentEntry")
 const { isMobile, setOpen } = useSidebar();
 
 setOpen(ENTRY_PREFERENCES.value.IS_SIDEBAR_OPEN);
+const activeCaseType = ref<CaseTypes>(ENTRY_PREFERENCES.value.CASE_TYPE);
 
-const activeCaseType = ref(ENTRY_PREFERENCES.value.CASE_TYPE);
+// useInputStore().resetInput();
 </script>
 
 <template>
@@ -76,10 +71,15 @@ const activeCaseType = ref(ENTRY_PREFERENCES.value.CASE_TYPE);
 		<ResizablePanelGroup :direction="isMobile ? 'vertical' : 'horizontal'">
 			<ResizablePanel
 				:default-size="ENTRY_PREFERENCES.INPUT_PANEL_SIZE[0]">
-				<EntryInput />
+				<EntryInput :case-type="activeCaseType" />
 			</ResizablePanel>
 			<ResizableHandle with-handle />
-			<ResizablePanel> </ResizablePanel>
+			<ResizablePanel>
+				<EntryPreviewRoot
+					:system="params.system"
+					:category="params.category"
+					:case-type="activeCaseType" />
+			</ResizablePanel>
 		</ResizablePanelGroup>
 	</div>
 </template>
