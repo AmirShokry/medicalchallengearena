@@ -7,7 +7,12 @@ export default defineNuxtConfig({
 		typedPages: true,
 	},
 	ssr: false,
-	modules: ["shadcn-nuxt", "nuxt-svgo", "@pinia/nuxt"],
+	modules: [
+		"shadcn-nuxt",
+		"nuxt-svgo",
+		"@pinia/nuxt",
+		"@formkit/auto-animate/nuxt",
+	],
 	telemetry: false,
 	shadcn: {
 		prefix: "",
