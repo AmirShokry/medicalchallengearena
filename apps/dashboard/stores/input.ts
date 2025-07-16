@@ -1,55 +1,56 @@
 import { defineStore } from "pinia";
 import {
-	DEFALT_QUESTIONS_NUMBER,
-	DEFAULT_CHOICES_ROWS,
-} from "@/components/entry/index";
-
+	ENTRY_PREFERENCES,
+	type QuestionType,
+	type Block,
+} from "@/components/entry/Input/Index.vue";
 export const useInputStore = defineStore("input", () => {
-	const input = ref(initInputData());
-	function initInputData() {
+	const data = ref<Block[number]>(init());
+	function init(): Block[number] {
+		const randId = new Date().getTime();
 		return {
-			id: new Date().getTime(),
+			id: randId,
+			category_id: randId,
+			type: ENTRY_PREFERENCES.value.CASE_TYPE,
 			body: "",
 			imgUrls: [] as string[],
 			questions: Array.from(
-				{ length: DEFALT_QUESTIONS_NUMBER.value },
-				() => {
-					return {
-						id: new Date().getTime(),
-						body: "",
-						imgUrls: [] as string[],
-						type: "Default" as "Default" | "Tabular",
-						explanation: "",
-						explanationImgUrls: [] as string[],
-						isStudyMode: false as boolean | null,
-						header: "" as string | null,
-						choices: Array.from(
-							{ length: DEFAULT_CHOICES_ROWS.value },
-							() => {
-								return {
-									id: new Date().getTime(),
-									body: "",
-									isCorrect: false as boolean | null,
-									explanation: "" as string | null,
-								};
-							}
-						),
-					};
-				}
+				{ length: ENTRY_PREFERENCES.value.QUESTIONS_NUMBER },
+				() => ({
+					id: randId,
+					body: "",
+					imgUrls: [] as string[],
+					type: "Default" as QuestionType,
+					explanation: "",
+					explanationImgUrls: [] as string[],
+					isStudyMode: false as boolean | null,
+					header: "" as string | null,
+					choices: Array.from(
+						{ length: ENTRY_PREFERENCES.value.CHOICES_ROWS },
+						() => ({
+							id: randId,
+							body: "",
+							isCorrect: false as boolean | null,
+							explanation: "" as string | null,
+						})
+					),
+				})
 			),
 		};
 	}
 
 	function resetInput() {
-		input.value = initInputData();
-		console.log("Input data has been reset to default values.");
+		// Reflect.ownKeys(data.value).forEach(
+		// 	(key) => delete data.value[key as keyof typeof data.value]
+		// );
+		Object.assign(data.value, init());
 	}
-	function setInput(newData: any) {
-		Object.assign(input.value, newData);
+	function setInput(newData: Block[number]) {
+		Object.assign(data.value, newData);
 	}
 
 	return {
-		input,
+		data,
 		resetInput,
 		setInput,
 	};

@@ -1,13 +1,17 @@
-import type { APIOutput } from "~/types/api";
 import { TRPCClientError } from "@trpc/client";
-type BlockData = APIOutput["block"]["get"];
-
+import type { Block, CaseTypes } from "@/components/entry/Input/Index.vue";
 export const usePreviewStore = defineStore("preview", () => {
-	const preview = ref([] as BlockData);
-	const error = ref<string>();
+	const preview = ref<Block>([]);
+	const error = ref<string | null>(null);
 	const pending = ref(false);
+
+	const isEmpty = computed(
+		() =>
+			error.value ||
+			(!pending.value && (!preview || preview.value.length === 0))
+	);
+
 	const { $trpc } = useNuxtApp();
-	const isEmpty = computed(() => !preview || preview.value.length === 0);
 
 	async function fetchPreviewData({
 		system,
@@ -16,11 +20,11 @@ export const usePreviewStore = defineStore("preview", () => {
 	}: {
 		system: string;
 		category: string;
-		caseType: "STEP 1" | "STEP 2" | "STEP 3";
+		caseType: CaseTypes;
 	}) {
+		pending.value = true;
+		error.value = null;
 		try {
-			pending.value = true;
-			error.value = undefined;
 			preview.value = await $trpc.block.get.query({
 				system,
 				category,
