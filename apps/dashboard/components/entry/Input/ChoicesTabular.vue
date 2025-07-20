@@ -121,8 +121,11 @@ function handleAddExplanation(index: number) {
 			<Separator class="my-4" />
 		</div>
 		<div class="grid gap-2">
-			<ul class="grid gap-2">
-				<li v-for="(choice, rowIndex) in choices" class="flex">
+			<ul class="grid gap-2" v-auto-animate>
+				<li
+					v-for="(choice, rowIndex) in choices"
+					class="flex"
+					:key="choice.id">
 					<div class="w-full">
 						<div class="grid gap-2 w-full" :style="columnStyle">
 							<Input

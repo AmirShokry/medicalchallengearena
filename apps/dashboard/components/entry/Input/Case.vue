@@ -23,7 +23,7 @@ const { data } = useInputStore();
 					name="case"
 					tabindex="1"
 					v-model="data.body"
-					class="min-h-22 break-all" />
+					class="min-h-22" />
 				<ImageUploadTrigger />
 			</div>
 			<ImageUploadGallery class="py-2" />

@@ -57,8 +57,11 @@ function handleAddExplanation(index: number) {
 					<PlusCircleIcon />
 				</Button>
 			</div>
-			<ul class="grid gap-2">
-				<li v-for="(choice, index) in choices" class="flex">
+			<ul class="grid gap-2" v-auto-animate>
+				<li
+					v-for="(choice, index) in choices"
+					class="flex"
+					:key="choice.id">
 					<div class="flex flex-col gap-1 w-full">
 						<Input
 							required
