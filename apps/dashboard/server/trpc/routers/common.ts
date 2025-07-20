@@ -1,3 +1,4 @@
+import { TRPCError } from "@trpc/server";
 import { baseProcedure, createTRPCRouter } from "../init";
 import { and, db, eq } from "database";
 
@@ -27,5 +28,25 @@ export const common = createTRPCRouter({
 				.limit(1);
 			if (result.length <= 0) return false;
 			return true;
+		}),
+
+	getCategoryIdByName: baseProcedure
+		.input(
+			z.object({
+				category: z.string(),
+			})
+		)
+		.query(async ({ input }) => {
+			const result = await db
+				.selectDistinct({ id: db.table.categories.id })
+				.from(db.table.categories)
+				.where(eq(db.table.categories.name, input.category))
+				.limit(1);
+			if (result.length <= 0)
+				throw new TRPCError({
+					message: "System or category not found",
+					code: "NOT_FOUND",
+				});
+			return result[0].id;
 		}),
 });

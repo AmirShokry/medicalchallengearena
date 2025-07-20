@@ -1,5 +1,8 @@
-import { db, eq, getTableColumns } from "database";
-import { getTableColumnsExcept, jsonAggBuildObject } from "database/helpers";
+import { db, eq, getTableColumns } from "@package/database";
+import {
+	getTableColumnsExcept,
+	jsonAggBuildObject,
+} from "@package/database/helpers";
 import { createTRPCRouter, baseProcedure } from "../init";
 
 export const systems = createTRPCRouter({
