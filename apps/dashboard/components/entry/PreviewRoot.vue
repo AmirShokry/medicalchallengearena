@@ -20,8 +20,8 @@ previewStore.fetchPreviewData({
 
 watch(
 	() => previewStore.preview.length,
-	(newPreviewLength, oldPreviewLength) => {
-		if (newPreviewLength > oldPreviewLength) scrollToEnd();
+	async (newPreviewLength, oldPreviewLength) => {
+		if (newPreviewLength > oldPreviewLength) await scrollToEnd();
 	}
 );
 
@@ -37,14 +37,22 @@ watch(
 );
 function handleEditCase(caseIndex: number) {
 	if (previewStore.isEmpty) return;
+	if (previewStore.isEditing) {
+		previewStore.editedCaseIndex = null;
+		inputStore.resetInput();
+		return;
+	}
+
+	previewStore.editedCaseIndex = caseIndex;
 	inputStore.setInput(
 		structuredClone(toRaw(previewStore.preview[caseIndex]))
 	);
 }
 
 const sectionRef = useTemplateRef("sectionRef");
-function scrollToEnd() {
+async function scrollToEnd() {
 	if (!sectionRef.value) return;
+	await nextTick();
 	sectionRef.value.scrollTo({
 		top: sectionRef.value.scrollHeight,
 		behavior: "smooth",
@@ -68,6 +76,11 @@ function scrollToEnd() {
 					@click="handleEditCase(index)"
 					variant="link"
 					title="Edit case"
+					:class="
+						previewStore.editedCaseIndex === index
+							? 'text-pink-600'
+							: undefined
+					"
 					class="cursor-pointer hover:text-pink-500 !p-y float-right">
 					<SquarePenIcon />
 				</Button>
@@ -85,25 +98,34 @@ function scrollToEnd() {
 					v-for="(question, index) in cases.questions"
 					class="flex flex-col gap-1 px-6 py-4 mx-6 mb-2 rounded-sm bg-sidebar overflow-hidden"
 					:key="question.id">
-					<div
-						aria-role="question"
-						class="flex items-center gap-1 w-full">
-						<p class="text-sm p-2">
-							<NotebookPenIcon
-								v-if="question.isStudyMode"
-								title="Study Mode"
-								class="text-sidebar-primary inline mr-1"
-								:size="15" />
-							<span
-								class="underline underline-offset-2 unselectable">
-								Q#{{ index + 1 }}
-							</span>
-							{{ question.body }}
-						</p>
+					<div aria-role="question" class="w-full">
+						<div class="flex items-center gap-1">
+							<p class="text-sm p-2">
+								<NotebookPenIcon
+									v-if="question.isStudyMode"
+									title="Study Mode"
+									class="text-sidebar-primary inline mr-1"
+									:size="15" />
+								<span
+									class="underline underline-offset-2 unselectable">
+									Q#{{ index + 1 }}
+								</span>
+								{{ question.body }}
+							</p>
 
-						<ImagesGallery
-							v-if="question.imgUrls.length"
-							:img-urls="question.imgUrls" />
+							<ImagesGallery
+								v-if="question.imgUrls.length"
+								:img-urls="question.imgUrls" />
+						</div>
+						<div
+							class="flex flex-col mt-2 px-6"
+							v-if="question.type === 'Tabular'">
+							<pre
+								class="text-sm whitespace-normal break-words font-[inherit]">
+								{{ question.header }}
+							</pre
+							>
+						</div>
 					</div>
 
 					<ol
