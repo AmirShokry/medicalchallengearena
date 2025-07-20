@@ -12,7 +12,7 @@ export const ENTRY_PREFERENCES = useStorage("entry-preferences", {
 	QUESTIONS_NUMBER: 1,
 	CASE_TYPE: "STEP 1" as CaseTypes,
 	INPUT_PANEL_SIZE: [70],
-	IS_SIDEBAR_OPEN: true,
+	IS_SIDEBAR_OPEN: false,
 });
 </script>
 <script setup lang="ts">
@@ -21,13 +21,31 @@ defineProps<{
 }>();
 
 const inputStore = useInputStore();
+const previewStore = usePreviewStore();
+const formRef = useTemplateRef("formRef");
 
 const inputSchema = z.object({
 	body: z.string().trim().min(1, "Case cannot be empty"),
+	type: z.enum(["STEP 1", "STEP 2", "STEP 3"], {
+		message: "Case type is required",
+	}),
+	imgUrls: z.array(z.string()).optional().default([]),
+	category_id: z.number().int().nullable(),
 	questions: z.array(
 		z.object({
-			type: z.enum(["Default", "Tabular"]),
+			type: z.enum(["Default", "Tabular"], {
+				message: "Question type is required",
+			}),
 			body: z.string().trim().min(1, "Question cannot be empty"),
+			header: z.string().optional().nullable(),
+			imgUrls: z.array(z.string()).optional().default([]),
+			isStudyMode: z.boolean().optional().nullable().default(false),
+			explanation: z
+				.string()
+				.trim()
+				.min(1, "Explanation cannot be empty"),
+			explanationImgUrls: z.array(z.string()).optional().default([]),
+
 			choices: z
 				.array(
 					z.object({
@@ -35,7 +53,8 @@ const inputSchema = z.object({
 							.string()
 							.trim()
 							.min(1, "Choice cannot be empty"),
-						isCorrect: z.boolean().optional(),
+						isCorrect: z.boolean().optional().nullable(),
+						explanation: z.string().optional().nullable(),
 					})
 				)
 				.min(2, "At least 2 choices are required")
@@ -43,37 +62,31 @@ const inputSchema = z.object({
 					(choices) => choices.some((choice) => choice.isCorrect),
 					"At least one choice must be marked as correct"
 				),
-			explanation: z
-				.string()
-				.trim()
-				.min(1, "Explanation cannot be empty"),
 		})
 	),
 });
 
-const previewStore = usePreviewStore();
-
 function inputValidation() {
 	const { success, error, data } = inputSchema.safeParse(inputStore.data);
-	if (success) {
+	if (success)
 		previewStore.preview.push(structuredClone(toRaw(inputStore.data)));
-		inputStore.resetInput();
-	}
-
-	// for (const issue of error?.issues || []) {
-	// 	const error_row = issue.path
-	// 		.join(" ")
-	// 		.replace(/\d+/g, (match) => String(Number(match) + 1))
-	// 		.replace("questions", "Q #");
-	// 	const error_message = issue.message;
-
-	// 	// console.log(issue.path.join("."), issue.message);
-	// }
+	else throw new Error(error.message);
 }
-const formRef = useTemplateRef("formRef");
-function submitInput() {
+const { $trpc } = useNuxtApp();
+async function submitInput() {
 	if (!formRef.value?.reportValidity()) return;
 	inputValidation();
+	try {
+		const data = await $trpc.block.add.mutate({
+			...inputStore.data,
+			category_id: inputStore.activeCategoryId,
+		});
+		console.log(data);
+		inputStore.resetInput();
+	} catch (error) {
+		console.error("Error submitting input:", error);
+		console.log(error);
+	}
 }
 
 const inputSectionRef = useTemplateRef("inputSectionRef");
@@ -82,6 +95,7 @@ watch(
 	async (newLen, oldLen) => {
 		if (newLen < oldLen) return;
 		if (!inputSectionRef.value) return;
+		if (previewStore.isEditing) return;
 		await nextTick();
 		inputSectionRef.value.scrollTo({
 			top: inputSectionRef.value.scrollHeight + 500,

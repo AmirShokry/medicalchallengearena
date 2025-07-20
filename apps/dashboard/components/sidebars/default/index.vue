@@ -41,7 +41,7 @@ const data = {
 
 <template>
 	<Sidebar v-bind="props">
-		<SidebarHeader>
+		<SidebarHeader class="focus:hidden">
 			<RoleSwitcher :roles="data.roles" />
 		</SidebarHeader>
 		<SidebarContent class="thin-scrollbar">

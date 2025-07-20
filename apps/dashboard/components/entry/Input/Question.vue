@@ -6,13 +6,16 @@ const { data } = useInputStore();
 const question = computed(() => data.questions[questionIndex]);
 </script>
 <template>
-	<div aria-role="question-input" class="min-h-30">
+	<div
+		aria-role="question-input"
+		class="min-h-30 @container/question-input overflow-hidden">
 		<div class="flex items-center justify-between h-10 mb-2">
 			<Label for="question">
-				Question
-				<span class="underline underline-offset-1 unselectable"
-					>#{{ questionIndex + 1 }}</span
-				>
+				<span
+					class="before:content-['Question'] @max-[300px]/question-input:before:content-['Q']" />
+				<span class="underline underline-offset-1 unselectable">
+					#{{ questionIndex + 1 }}
+				</span>
 			</Label>
 			<slot name="toolbar" />
 		</div>
