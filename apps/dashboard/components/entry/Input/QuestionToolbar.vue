@@ -8,8 +8,9 @@ const { data } = useInputStore();
 
 const activeQuestion = computed(() => data.questions[questionIndex]);
 function onDeleteBlock(index: number) {
-	if (data.questions.length <= 1) return;
+	if (data.questions.length - 1 == 0) return;
 	data.questions.splice(index, 1);
+	if (data.questions.length === 1) data.questions[0].isStudyMode = false;
 }
 function onAddBlock() {
 	data.questions.push({
