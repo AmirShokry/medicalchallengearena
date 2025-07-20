@@ -105,7 +105,14 @@ const systemTarget = computed(() =>
 				as-child
 				class="group/collapsible">
 				<SidebarMenuItem>
-					<CollapsibleTrigger as-child class="cursor-pointer">
+					<CollapsibleTrigger
+						:class="
+							activeSystem === system.name
+								? 'bg-accent'
+								: undefined
+						"
+						as-child
+						class="cursor-pointer">
 						<SidebarMenuButton :tooltip="system.name">
 							<component :is="system?.icon || LucideSyringe" />
 							<span>{{ system.name }}</span>

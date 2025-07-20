@@ -29,8 +29,15 @@ const { isMobile, setOpen } = useSidebar();
 
 setOpen(ENTRY_PREFERENCES.value.IS_SIDEBAR_OPEN);
 const activeCaseType = ref<CaseTypes>(ENTRY_PREFERENCES.value.CASE_TYPE);
+const { $trpc } = useNuxtApp();
 
-// useInputStore().resetInput();
+const inputStore = useInputStore();
+inputStore.resetInput();
+const { data: category_id } = await $trpc.common.getCategoryIdByName.useQuery({
+	category: params.value.category,
+});
+
+inputStore.activeCategoryId = category_id.value;
 </script>
 
 <template>
@@ -43,9 +50,11 @@ const activeCaseType = ref<CaseTypes>(ENTRY_PREFERENCES.value.CASE_TYPE);
 					orientation="vertical"
 					class="mr-2 data-[orientation=vertical]:h-4" />
 				<Breadcrumb>
-					<BreadcrumbList>
-						<BreadcrumbItem>{{ params.system }} </BreadcrumbItem>
-						<BreadcrumbSeparator />
+					<BreadcrumbList class="!flex-nowrap">
+						<BreadcrumbItem class="max-sm:hidden"
+							>{{ params.system }}
+						</BreadcrumbItem>
+						<BreadcrumbSeparator class="max-sm:hidden" />
 						<BreadcrumbItem>{{ params.category }}</BreadcrumbItem>
 						<BreadcrumbItem>
 							<Select v-model="activeCaseType">
