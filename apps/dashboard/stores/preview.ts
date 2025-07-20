@@ -4,6 +4,8 @@ export const usePreviewStore = defineStore("preview", () => {
 	const preview = ref<Block>([]);
 	const error = ref<string | null>(null);
 	const pending = ref(false);
+	const editedCaseIndex = ref<number | null>(null);
+	const isEditing = computed(() => editedCaseIndex.value !== null);
 
 	const isEmpty = computed(
 		() =>
@@ -40,7 +42,9 @@ export const usePreviewStore = defineStore("preview", () => {
 	return {
 		preview,
 		fetchPreviewData,
+		editedCaseIndex,
 		isEmpty,
+		isEditing: readonly(isEditing),
 		pending: readonly(pending),
 		error: readonly(error),
 	};

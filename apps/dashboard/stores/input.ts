@@ -5,12 +5,13 @@ import {
 	type Block,
 } from "@/components/entry/Input/Index.vue";
 export const useInputStore = defineStore("input", () => {
+	const activeCategoryId = ref<number | null>(null);
 	const data = ref<Block[number]>(init());
 	function init(): Block[number] {
 		const randId = new Date().getTime();
 		return {
 			id: randId,
-			category_id: randId,
+			category_id: activeCategoryId.value,
 			type: ENTRY_PREFERENCES.value.CASE_TYPE,
 			body: "",
 			imgUrls: [] as string[],
@@ -53,5 +54,6 @@ export const useInputStore = defineStore("input", () => {
 		data,
 		resetInput,
 		setInput,
+		activeCategoryId,
 	};
 });
