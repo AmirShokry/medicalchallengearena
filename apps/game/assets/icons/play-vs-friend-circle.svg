@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 176 177"
+   fill="none"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="play-vs-friend-circle.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1" />
+  <title
+     id="title1">Play vs a friend</title>
+  <circle
+     cx="88"
+     cy="88.5"
+     r="84"
+     stroke="#A3A3A3"
+     stroke-width="8"
+     id="circle1" />
+  <path
+     d="M82.9997 115.166C82.9997 116.492 83.5265 117.764 84.4641 118.702C85.4018 119.64 86.6736 120.166 87.9997 120.166C89.3258 120.166 90.5975 119.64 91.5352 118.702C92.4729 117.764 92.9997 116.492 92.9997 115.166V93.4997H114.666C115.992 93.4997 117.264 92.9729 118.202 92.0352C119.14 91.0975 119.666 89.8258 119.666 88.4997C119.666 87.1736 119.14 85.9018 118.202 84.9641C117.264 84.0265 115.992 83.4997 114.666 83.4997H92.9997V61.833C92.9997 60.5069 92.4729 59.2352 91.5352 58.2975C90.5975 57.3598 89.3258 56.833 87.9997 56.833C86.6736 56.833 85.4018 57.3598 84.4641 58.2975C83.5265 59.2352 82.9997 60.5069 82.9997 61.833V83.4997H61.333C60.0069 83.4997 58.7352 84.0265 57.7975 84.9641C56.8598 85.9018 56.333 87.1736 56.333 88.4997C56.333 89.8258 56.8598 91.0975 57.7975 92.0352C58.7352 92.9729 60.0069 93.4997 61.333 93.4997H82.9997V115.166Z"
+     fill="#A3A3A3"
+     id="path1" />
+</svg>
