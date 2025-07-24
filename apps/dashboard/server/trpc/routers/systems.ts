@@ -3,10 +3,10 @@ import {
 	getTableColumnsExcept,
 	jsonAggBuildObject,
 } from "@package/database/helpers";
-import { createTRPCRouter, baseProcedure } from "../init";
+import { createTRPCRouter, authProcedure } from "../init";
 
 export const systems = createTRPCRouter({
-	categories: baseProcedure.query(
+	categories: authProcedure.query(
 		async () =>
 			await db
 				.select({

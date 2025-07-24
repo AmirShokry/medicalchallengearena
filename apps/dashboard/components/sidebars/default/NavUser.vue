@@ -23,6 +23,18 @@ function toggleColorMode() {
 	if (colorMode.state.value === "dark") colorMode.value = "light";
 	else colorMode.value = "dark";
 }
+const { signOut } = useAuth();
+function handleLogout() {
+	signOut();
+}
+const { $trpc } = useNuxtApp();
+const {
+	data: userdata,
+	pending,
+	error,
+} = $trpc.auth.getUser.useQuery(undefined, {
+	server: false,
+});
 </script>
 
 <template>
@@ -34,18 +46,22 @@ function toggleColorMode() {
 						size="lg"
 						class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
 						<Avatar class="h-8 w-8 rounded-lg">
-							<AvatarImage :src="user.avatar" :alt="user.name" />
+							<AvatarImage
+								v-if="userdata?.avatarUrl"
+								:src="userdata?.avatarUrl!"
+								:alt="userdata.username" />
 							<AvatarFallback class="rounded-lg">
 								MCA
 							</AvatarFallback>
 						</Avatar>
 						<div
+							v-if="userdata"
 							class="grid flex-1 text-left text-sm leading-tight">
 							<span class="truncate font-medium">{{
-								user.name
+								userdata.username
 							}}</span>
 							<span class="truncate text-xs">{{
-								user.email
+								userdata.email
 							}}</span>
 						</div>
 						<ChevronsUpDown class="ml-auto size-4" />
@@ -61,19 +77,21 @@ function toggleColorMode() {
 							class="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
 							<Avatar class="h-8 w-8 rounded-lg">
 								<AvatarImage
-									:src="user.avatar"
-									:alt="user.name" />
+									v-if="userdata?.avatarUrl"
+									:src="userdata?.avatarUrl!"
+									:alt="userdata.username" />
 								<AvatarFallback class="rounded-lg">
 									MCA
 								</AvatarFallback>
 							</Avatar>
 							<div
+								v-if="userdata?.username"
 								class="grid flex-1 text-left text-sm leading-tight">
 								<span class="truncate font-semibold">{{
-									user.name
+									userdata.username
 								}}</span>
 								<span class="truncate text-xs">{{
-									user.email
+									userdata.email
 								}}</span>
 							</div>
 						</div>
@@ -103,6 +121,7 @@ function toggleColorMode() {
 					</DropdownMenuGroup>
 					<DropdownMenuSeparator />
 					<DropdownMenuItem
+						@click="handleLogout"
 						class="hover:bg-destructive cursor-pointer">
 						<LogOut class="text-primary" />
 						Log out

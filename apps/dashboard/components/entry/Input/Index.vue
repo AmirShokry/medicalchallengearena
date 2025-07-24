@@ -68,14 +68,14 @@ const inputSchema = z.object({
 
 function inputValidation() {
 	const { success, error, data } = inputSchema.safeParse(inputStore.data);
-	if (success)
-		previewStore.preview.push(structuredClone(toRaw(inputStore.data)));
+	if (success) return;
 	else throw new Error(error.message);
 }
 const { $trpc } = useNuxtApp();
 async function submitInput() {
 	if (!formRef.value?.reportValidity()) return;
 	inputValidation();
+	previewStore.preview.push(structuredClone(toRaw(inputStore.data)));
 	try {
 		const data = await $trpc.block.add.mutate({
 			...inputStore.data,
@@ -103,6 +103,22 @@ watch(
 		});
 	}
 );
+async function applyEdit() {
+	if (!formRef.value?.reportValidity()) return;
+	inputValidation();
+	await $trpc.block.update.mutate({
+		...inputStore.data,
+	});
+	const editedCaseIndex = previewStore.editedCaseIndex;
+	if (editedCaseIndex === null) return;
+	previewStore.preview[editedCaseIndex] = structuredClone(
+		toRaw(inputStore.data)
+	);
+	previewStore.editedCaseIndex = null;
+
+	inputStore.resetInput();
+	window.scrollTo({ top: 0, behavior: "smooth" });
+}
 </script>
 <template>
 	<section
@@ -113,10 +129,17 @@ watch(
 		<EntryInputToolbar class="gap-2">
 			<template #submit>
 				<Button
+					v-if="!previewStore.isEditing"
 					class="!h-9 !px-4 !rounded-md"
 					type="submit"
 					form="submit-input">
 					Submit
+				</Button>
+				<Button
+					v-if="previewStore.isEditing"
+					class="!h-9 !px-4 !rounded-md"
+					@click="applyEdit">
+					Apply Edit
 				</Button>
 			</template>
 		</EntryInputToolbar>

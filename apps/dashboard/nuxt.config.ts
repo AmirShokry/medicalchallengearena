@@ -6,12 +6,19 @@ export default defineNuxtConfig({
 	experimental: {
 		typedPages: true,
 	},
+	runtimeConfig: {
+		authSecret: process.env.NUXT_AUTH_SECRET,
+	},
+	auth: {
+		originEnvKey: "NUXT_AUTH_ORIGIN",
+	},
 	ssr: false,
 	modules: [
 		"shadcn-nuxt",
 		"nuxt-svgo",
 		"@pinia/nuxt",
 		"@formkit/auto-animate/nuxt",
+		"@sidebase/nuxt-auth",
 	],
 	telemetry: false,
 	shadcn: {
@@ -26,6 +33,9 @@ export default defineNuxtConfig({
 	},
 	css: ["~/assets/css/tailwind.css"],
 	vite: {
+		server: {
+			allowedHosts: true,
+		},
 		plugins: [tailwindcss()],
 
 		cacheDir: "../../node_modules/.vite/dashboard",

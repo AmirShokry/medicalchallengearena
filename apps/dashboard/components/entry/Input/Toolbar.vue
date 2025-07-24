@@ -28,6 +28,10 @@ async function handleChoicesChange(
 		else ENTRY_PREFERENCES.value.CHOICES_COLUMNS = 2;
 	}
 }
+
+function refresh() {
+	window.location.reload();
+}
 </script>
 <template>
 	<div class="flex justify-end h-9">
@@ -123,6 +127,9 @@ async function handleChoicesChange(
 						</p>
 					</div>
 				</div>
+				<DialogFooter>
+					<Button @click="refresh">Apply</Button>
+				</DialogFooter>
 			</DialogContent>
 		</Dialog>
 

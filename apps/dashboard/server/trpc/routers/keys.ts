@@ -1,7 +1,7 @@
-import { createTRPCRouter, baseProcedure } from "../init";
+import { createTRPCRouter, authProcedure } from "../init";
 
 export const keys = createTRPCRouter({
-	imageApi: baseProcedure.query(async () => {
+	imageApi: authProcedure.query(async () => {
 		return process.env.IMAGE_API_KEY || "No API Key Found";
 	}),
 });

@@ -4,6 +4,8 @@ import {
 	CheckCircle2Icon,
 	NotebookPenIcon,
 	SquarePenIcon,
+	TrashIcon,
+	ArrowDownIcon,
 } from "lucide-vue-next";
 const { system, category, caseType } = defineProps<{
 	system: string;
@@ -58,12 +60,33 @@ async function scrollToEnd() {
 		behavior: "smooth",
 	});
 }
+const { $trpc } = useNuxtApp();
+async function handleDeleteCase(caseId: number, caseIndex: number) {
+	if (previewStore.isEmpty) return;
+	previewStore.preview.splice(caseIndex, 1);
+	await $trpc.block.delete.mutate({ caseId });
+}
+
+function scrollToBottom() {
+	if (!sectionRef.value) return;
+	sectionRef.value.scrollTo({
+		top: sectionRef.value.scrollHeight,
+		behavior: "instant",
+	});
+}
 </script>
 <template>
 	<section
 		aria-role="preview-section"
 		ref="sectionRef"
-		class="@container/preview-section bg-primary/20 h-full overflow-y-scroll thin-scrollbar p-4">
+		class="@container/preview-section bg-primary/20 h-full overflow-y-scroll relative thin-scrollbar p-6">
+		<Button
+			@click="scrollToBottom"
+			variant="link"
+			title="Scroll to bottom"
+			class="cursor-pointer absolute -top-1 right-1/2"
+			><ArrowDownIcon
+		/></Button>
 		<ul
 			v-if="!previewStore.error && !previewStore.pending"
 			aria-role="list-container"
@@ -83,6 +106,13 @@ async function scrollToEnd() {
 					"
 					class="cursor-pointer hover:text-pink-500 !p-y float-right">
 					<SquarePenIcon />
+				</Button>
+				<Button
+					@click="handleDeleteCase(cases.id, index)"
+					variant="link"
+					title="Delete case"
+					class="cursor-pointer hover:text-destructive !p-y float-left">
+					<TrashIcon />
 				</Button>
 				<div
 					aria-role="case-item"

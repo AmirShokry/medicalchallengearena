@@ -1,10 +1,10 @@
 import { TRPCError } from "@trpc/server";
-import { baseProcedure, createTRPCRouter } from "../init";
-import { and, db, eq } from "database";
+import { authProcedure, createTRPCRouter } from "../init";
+import { and, db, eq } from "@package/database";
 
 import z from "zod";
 export const common = createTRPCRouter({
-	isValidSystemCategory: baseProcedure
+	isValidSystemCategory: authProcedure
 		.input(
 			z.object({
 				system: z.string(),
@@ -30,7 +30,7 @@ export const common = createTRPCRouter({
 			return true;
 		}),
 
-	getCategoryIdByName: baseProcedure
+	getCategoryIdByName: authProcedure
 		.input(
 			z.object({
 				category: z.string(),
