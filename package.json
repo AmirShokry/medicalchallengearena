@@ -4,6 +4,9 @@
 	"scripts": {
 		"build": "turbo run build",
 		"dev": "turbo run dev --filter=./apps/*",
+		"game": "turbo run dev --filter=game",
+		"dashboard": "turbo run dev --filter=dashboard",
+		"build:dashboard": "turbo run build --filter=dashboard",
 		"db:push": "turbo run db:push",
 		"lint": "turbo run lint",
 		"format": "prettier --write \"**/*.{ts,tsx,md}\""
