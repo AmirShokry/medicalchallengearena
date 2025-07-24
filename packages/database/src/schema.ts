@@ -22,32 +22,8 @@ import {
 	QueryBuilder,
 } from "drizzle-orm/pg-core";
 import { jsonAggBuildObject, getTableColumnsExcept } from "./helpers";
+import type { ReducedRecordObject } from "@package/types";
 
-type RecordObject = {
-	stats: {
-		correctAnswersCount: number;
-		wrongAnswersCount: number;
-		correctEliminationsCount: number;
-		wrongEliminationsCount: number;
-		totalMedpoints: number;
-		totalTimeSpentMs: number;
-	};
-	data: {
-		caseId: number;
-		questionId: number;
-		nthCase: number;
-		nthQuestion: number;
-		nthSelectedChoice: number;
-		nthEliminatedChoices: number[];
-		isCorrect: boolean;
-		timeSpentMs?: number;
-		medPoints: number;
-	}[];
-};
-type ReducedRecordObject = Omit<
-	RecordObject["data"][0],
-	"nthCase" | "nthQuestion" | "medPoints"
->[];
 // import { type RecordObject } from "@server/types";
 
 // export type ReducedRecordObject = Omit<RecordObject["data"][0], "nthCase" | "nthQuestion" | "medPoints">[];

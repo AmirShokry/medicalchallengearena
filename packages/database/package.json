@@ -1,22 +1,26 @@
 {
-	"name": "database",
+	"name": "@package/database",
 	"version": "0.0.0",
 	"private": true,
 	"type": "module",
 	"exports": {
 		".": "./src/index.ts",
 		"./helpers": "./src/helpers.ts",
+		"./queries": "./src/queries.ts",
 		"./ctes": "./src/ctes.ts"
 	},
 	"scripts": {
-		"dev2": "tsx ./src/test.ts",
+		"make-admin": "tsx ./src/make-admin.ts",
 		"db:push": "drizzle-kit push"
 	},
 	"dependencies": {
+		"bcrypt": "^6.0.0",
 		"drizzle-orm": "^0.44.2",
 		"postgres": "^3.4.7"
 	},
 	"devDependencies": {
+		"@package/types": "^0.0.0",
+		"@types/bcrypt": "^6.0.0",
 		"drizzle-kit": "^0.18.1",
 		"tsconfig": "*",
 		"tsx": "^4.20.3"
