@@ -11,6 +11,7 @@
 	},
 	"scripts": {
 		"make-admin": "tsx ./src/make-admin.ts",
+		"migrate": "tsx ./src/migrate.ts",
 		"db:push": "drizzle-kit push"
 	},
 	"dependencies": {
@@ -21,7 +22,8 @@
 	"devDependencies": {
 		"@package/types": "^0.0.0",
 		"@types/bcrypt": "^6.0.0",
-		"drizzle-kit": "^0.18.1",
+		"drizzle-kit": "^0.31.4",
+		"install": "^0.13.0",
 		"tsconfig": "*",
 		"tsx": "^4.20.3"
 	}
