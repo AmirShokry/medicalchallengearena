@@ -28,6 +28,8 @@ if (activeContentName.value !== "ContentEntry")
 const { isMobile, setOpen } = useSidebar();
 
 setOpen(ENTRY_PREFERENCES.value.IS_SIDEBAR_OPEN);
+// setOpenMobile(ENTRY_PREFERENCES.value.IS_SIDEBAR_OPEN);
+
 const activeCaseType = ref<CaseTypes>(ENTRY_PREFERENCES.value.CASE_TYPE);
 const { $trpc } = useNuxtApp();
 

@@ -1,5 +1,10 @@
 <script setup lang="ts">
-import { ChevronRight, Settings2, SquareTerminal } from "lucide-vue-next";
+import {
+	ChevronRight,
+	Settings2,
+	SquareTerminal,
+	Users2Icon,
+} from "lucide-vue-next";
 import {
 	Collapsible,
 	CollapsibleContent,
@@ -21,7 +26,7 @@ const items = ref([
 		title: "Entry",
 		url: "#",
 		icon: SquareTerminal,
-		action: () => (setActiveContent("ContentEntry")),
+		action: () => setActiveContent("ContentEntry"),
 	},
 	{
 		title: "Settings",
@@ -43,25 +48,37 @@ const items = ref([
 		],
 	},
 ]);
+import { useSidebar } from "@/components/ui/sidebar/utils";
+const { toggleSidebar } = useSidebar();
 </script>
 
 <template>
 	<SidebarGroup>
 		<SidebarGroupLabel>Data</SidebarGroupLabel>
 		<SidebarMenu>
-			<Collapsible v-for="item in items" :key="item.title" as-child class="group/collapsible">
+			<Collapsible
+				v-for="item in items"
+				:key="item.title"
+				as-child
+				class="group/collapsible">
 				<SidebarMenuItem>
-					<CollapsibleTrigger as-child class="cursor-pointer" @click="item.action?.()">
+					<CollapsibleTrigger
+						as-child
+						class="cursor-pointer"
+						@click="item.action?.()">
 						<SidebarMenuButton :tooltip="item.title">
 							<component :is="item.icon" v-if="item.icon" />
 							<span>{{ item.title }}</span>
-							<ChevronRight v-if="item.items?.length"
+							<ChevronRight
+								v-if="item.items?.length"
 								class="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
 						</SidebarMenuButton>
 					</CollapsibleTrigger>
 					<CollapsibleContent v-if="item.items?.length">
 						<SidebarMenuSub>
-							<SidebarMenuSubItem v-for="subItem in item.items" :key="subItem.title">
+							<SidebarMenuSubItem
+								v-for="subItem in item.items"
+								:key="subItem.title">
 								<SidebarMenuSubButton as-child>
 									<a :href="subItem.url">
 										<span>{{ subItem.title }}</span>
@@ -72,6 +89,14 @@ const items = ref([
 					</CollapsibleContent>
 				</SidebarMenuItem>
 			</Collapsible>
+			<SidebarMenuItem>
+				<SidebarMenuButton @click="toggleSidebar" as-child>
+					<NuxtLink to="/users">
+						<Users2Icon class="size-4" />
+						<span>Users</span>
+					</NuxtLink>
+				</SidebarMenuButton>
+			</SidebarMenuItem>
 		</SidebarMenu>
 	</SidebarGroup>
 </template>

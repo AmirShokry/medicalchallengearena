@@ -1,6 +1,6 @@
 import { TRPCError } from "@trpc/server";
 import { authProcedure, createTRPCRouter } from "../init";
-import { and, db, eq } from "@package/database";
+import { and, db, eq, sql } from "@package/database";
 
 import z from "zod";
 export const common = createTRPCRouter({
@@ -48,5 +48,34 @@ export const common = createTRPCRouter({
 					code: "NOT_FOUND",
 				});
 			return result[0].id;
+		}),
+
+	getUsers: authProcedure
+		.input(
+			z.object({
+				offset: z.number().optional().default(0),
+				limit: z.number().optional().default(10),
+			})
+		)
+		.query(async ({ input }) => {
+			const users = await db
+				.select()
+				.from(db.table.users)
+				.orderBy(db.table.users.id)
+				.limit(input.limit)
+				.offset(input.offset);
+
+			// Get total count for pagination
+			const [{ count }] = await db
+				.select({ count: sql<number>`count(*)` })
+				.from(db.table.users);
+
+			return {
+				users,
+				totalCount: count,
+				hasMore: input.offset + input.limit < count,
+				currentPage: Math.floor(input.offset / input.limit) + 1,
+				totalPages: Math.ceil(count / input.limit),
+			};
 		}),
 });

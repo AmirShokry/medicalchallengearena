@@ -4,11 +4,13 @@ import SidebarsDefault from "~/components/sidebars/default/index.vue";
 </script>
 
 <template>
-	<SidebarProvider :style="{
+	<SidebarProvider
+		:default-open="false"
+		:style="{
 			'--sidebar-width': sidebarWidth,
 			'--sidebar-width-mobile': sidebarWidthMobile,
 		}">
-		<SidebarsDefault collapsible="offcanvas" />
+		<SidebarsDefault collapsible="offcanvas" variant="overlay" />
 		<SidebarInset>
 			<slot />
 		</SidebarInset>

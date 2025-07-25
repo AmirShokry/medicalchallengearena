@@ -12,7 +12,7 @@ const props = defineProps<{
 
 const { toggleSidebar } = useSidebar();
 function handleClick() {
-	toggleSidebar(props.side ?? "left");
+	toggleSidebar();
 }
 </script>
 

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { sidebarWidth, sidebarWidthMobile } from "~/components/ui/sidebar";
 import { ChevronRightIcon, LucideSyringe, SearchIcon } from "lucide-vue-next";
+import { ArrowLeftIcon } from "lucide-vue-next";
 import {
 	SvgoCardiology,
 	SvgoGeneralPathology,
@@ -9,6 +10,7 @@ import {
 } from "#components";
 
 import Fuse from "fuse.js";
+import { setActiveContent } from "./utils";
 
 const props = defineProps<{
 	defaultActiveSystem?: string;
@@ -70,12 +72,22 @@ const systemTarget = computed(() =>
 			fuse.value.search(searchQuery.value).map((result) => result.item)
 		: systems.value!
 );
+function goBack() {
+	setActiveContent("ContentDefault");
+	activeSystem.value = "";
+	activeCategory.value = "";
+}
 </script>
 <template>
 	<SidebarGroup>
+		<div class="flex justify-between items-center">
+			<Button @click="goBack" class="!p-0 cursor-pointer" variant="link">
+				<ArrowLeftIcon />
+			</Button>
+			<SvgoEllipsis class="mr-1 cursor-pointer" />
+		</div>
 		<div class="flex justify-between">
 			<SidebarGroupLabel>Systems</SidebarGroupLabel>
-			<SvgoEllipsis class="mr-1 cursor-pointer" />
 		</div>
 		<div class="relative w-full max-w-sm items-center mb-3">
 			<Input

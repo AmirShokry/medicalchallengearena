@@ -10,8 +10,16 @@ const props = defineProps<{
 	}[];
 }>();
 
-const { isMobile } = useSidebar();
+const { isMobile, setOpen } = useSidebar();
 const activeRole = ref(props.roles[0]);
+const router = useRouter();
+function goHome(event: MouseEvent) {
+	event.stopPropagation();
+	router.push({
+		name: "index",
+	});
+	setOpen(false);
+}
 </script>
 
 <template>
@@ -23,7 +31,8 @@ const activeRole = ref(props.roles[0]);
 						size="lg"
 						class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
 						<div
-							class="flex size-8 p-1 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+							@click="goHome"
+							class="flex cursor-pointer hover:scale-110 size-8 p-1 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
 							<component :is="activeRole.logo" />
 						</div>
 						<div

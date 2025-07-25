@@ -84,7 +84,7 @@ function scrollToBottom() {
 			@click="scrollToBottom"
 			variant="link"
 			title="Scroll to bottom"
-			class="cursor-pointer absolute -top-1 right-1/2"
+			class="cursor-pointer absolute -top-1.5 right-1/2"
 			><ArrowDownIcon
 		/></Button>
 		<ul

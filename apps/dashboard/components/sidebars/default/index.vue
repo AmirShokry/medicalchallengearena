@@ -3,7 +3,6 @@ import type { SidebarProps } from "@/components/ui/sidebar";
 import { Logo } from "@/components/ui/logo";
 import { AudioWaveform } from "lucide-vue-next";
 import { activeContentComponent } from "./utils";
-
 import NavUser from "~/components/sidebars/default/NavUser.vue";
 import RoleSwitcher from "~/components/sidebars/default/RoleSwitcher.vue";
 
