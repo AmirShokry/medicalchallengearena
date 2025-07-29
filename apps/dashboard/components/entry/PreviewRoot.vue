@@ -1,219 +1,226 @@
 <script setup lang="ts">
+//@ts-expect-error
+import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
 import { type CaseTypes } from "./Input/Index.vue";
 import {
-	CheckCircle2Icon,
-	NotebookPenIcon,
-	SquarePenIcon,
-	TrashIcon,
-	ArrowDownIcon,
+  CheckCircle2Icon,
+  NotebookPenIcon,
+  SquarePenIcon,
+  ArrowDownCircleIcon,
+  ArrowUpCircleIcon,
 } from "lucide-vue-next";
+
 const { system, category, caseType } = defineProps<{
-	system: string;
-	category: string;
-	caseType: CaseTypes;
+  system: string;
+  category: string;
+  caseType: CaseTypes;
 }>();
+
+const scrollerRef = useTemplateRef("scrollerRef");
 const inputStore = useInputStore();
 const previewStore = usePreviewStore();
+
 previewStore.fetchPreviewData({
-	system,
-	category,
-	caseType,
+  system,
+  category,
+  caseType,
 });
 
 watch(
-	() => previewStore.preview.length,
-	async (newPreviewLength, oldPreviewLength) => {
-		if (newPreviewLength > oldPreviewLength) await scrollToEnd();
-	}
-);
-
-watch(
-	() => caseType,
-	async () => {
-		await previewStore.fetchPreviewData({
-			system,
-			category,
-			caseType,
-		});
-	}
+  () => caseType,
+  async () => {
+    await previewStore.fetchPreviewData({
+      system,
+      category,
+      caseType,
+    });
+  }
 );
 function handleEditCase(caseIndex: number) {
-	if (previewStore.isEmpty) return;
-	if (previewStore.isEditing) {
-		previewStore.editedCaseIndex = null;
-		inputStore.resetInput();
-		return;
-	}
+  if (previewStore.isEmpty) return;
+  if (previewStore.isEditing) {
+    previewStore.editedCaseIndex = null;
+    inputStore.resetInput();
+    return;
+  }
 
-	previewStore.editedCaseIndex = caseIndex;
-	inputStore.setInput(
-		structuredClone(toRaw(previewStore.preview[caseIndex]))
-	);
-}
-
-const sectionRef = useTemplateRef("sectionRef");
-async function scrollToEnd() {
-	if (!sectionRef.value) return;
-	await nextTick();
-	sectionRef.value.scrollTo({
-		top: sectionRef.value.scrollHeight,
-		behavior: "smooth",
-	});
-}
-const { $trpc } = useNuxtApp();
-async function handleDeleteCase(caseId: number, caseIndex: number) {
-	if (previewStore.isEmpty) return;
-	previewStore.preview.splice(caseIndex, 1);
-	await $trpc.block.delete.mutate({ caseId });
-}
-
-function scrollToBottom() {
-	if (!sectionRef.value) return;
-	sectionRef.value.scrollTo({
-		top: sectionRef.value.scrollHeight,
-		behavior: "instant",
-	});
+  previewStore.editedCaseIndex = caseIndex;
+  inputStore.setInput(structuredClone(toRaw(previewStore.preview[caseIndex])));
 }
 </script>
 <template>
-	<section
-		aria-role="preview-section"
-		ref="sectionRef"
-		class="@container/preview-section bg-primary/20 h-full overflow-y-scroll relative thin-scrollbar p-6">
-		<Button
-			@click="scrollToBottom"
-			variant="link"
-			title="Scroll to bottom"
-			class="cursor-pointer absolute -top-1.5 right-1/2"
-			><ArrowDownIcon
-		/></Button>
-		<ul
-			v-if="!previewStore.error && !previewStore.pending"
-			aria-role="list-container"
-			class="@max-[200px]/preview-section:hidden grid grid-cols-1 items-center gap-4">
-			<li
-				v-for="(cases, index) in previewStore.preview"
-				:key="cases.id"
-				class="bg-muted min-h-100 rounded-sm px-4 pt-2 pb-10 overflow-hidden">
-				<Button
-					@click="handleEditCase(index)"
-					variant="link"
-					title="Edit case"
-					:class="
-						previewStore.editedCaseIndex === index
-							? 'text-pink-600'
-							: undefined
-					"
-					class="cursor-pointer hover:text-pink-500 !p-y float-right">
-					<SquarePenIcon />
-				</Button>
-				<Button
-					@click="handleDeleteCase(cases.id, index)"
-					variant="link"
-					title="Delete case"
-					class="cursor-pointer hover:text-destructive !p-y float-left">
-					<TrashIcon />
-				</Button>
-				<div
-					aria-role="case-item"
-					class="p-4 w-full flex gap-1 justify-between items-center">
-					<p>{{ cases.body }}</p>
-					<ImagesGallery
-						v-if="cases.imgUrls.length"
-						:img-urls="cases.imgUrls" />
-				</div>
+  <section
+    aria-role="preview-section"
+    class="bg-primary/20 @container/preview-section relative thin-scrollbar h-full"
+  >
+    <Button
+      @click="scrollerRef.scrollToBottom()"
+      variant="link"
+      title="Scroll to bottom"
+      class="cursor-pointer absolute -top-1.5 -left-2 z-50"
+      ><ArrowDownCircleIcon
+    /></Button>
+    <Button
+      @click="scrollerRef.scrollToItem(0)"
+      variant="link"
+      title="Scroll to top"
+      class="cursor-pointer absolute -bottom-1.5 -left-2 z-50"
+      ><ArrowUpCircleIcon
+    /></Button>
+    <DynamicScroller
+      v-if="!previewStore.error && !previewStore.pending"
+      ref="scrollerRef"
+      :items="previewStore.preview"
+      :min-item-size="400"
+      class="scroller @max-[220px]/preview-section:hidden"
+      style="height: 97svh"
+      key-field="id"
+    >
+      <template v-slot="{ item, index, active }">
+        <DynamicScrollerItem
+          :item="item"
+          :active="active"
+          :size-dependencies="[
+            item.body,
+            item.questions.map((q: any) => q.body).join(''),
+            item.questions
+              .map((q: any) => q.choices.map((c: any) => c.body).join(''))
+              .join(''),
+            item.questions.map((q: any) => q.explanation).join(''),
+          ]"
+          :data-index="index"
+          class="item-wrapper p-6"
+        >
+          <div
+            :id="`unit-${item.id}`"
+            class="unit-container bg-muted min-h-100 rounded-sm p-4 pb-10 overflow-hidden relative"
+          >
+            <Button
+              @click="handleEditCase(index)"
+              variant="link"
+              title="Edit case"
+              :class="
+                previewStore.editedCaseIndex === index
+                  ? 'text-pink-600'
+                  : undefined
+              "
+              class="cursor-pointer hover:text-pink-500 !py-0 absolute top-0 right-1.5"
+            >
+              <SquarePenIcon />
+            </Button>
+            <div
+              aria-role="case-item"
+              class="p-4 w-full flex gap-1 justify-between items-center"
+            >
+              <p>{{ item.body }}</p>
+              <ImagesGallery
+                v-if="item.imgUrls.length"
+                :img-urls="item.imgUrls"
+              />
+            </div>
+            <div
+              aria-role="block-container"
+              v-for="(question, index) in item.questions"
+              class="flex flex-col gap-1 px-6 py-4 mx-4 rounded-sm bg-sidebar overflow-hidden"
+              :key="question.id"
+            >
+              <div aria-role="question" class="w-full">
+                <div class="flex items-center gap-1">
+                  <p class="text-sm p-2">
+                    <NotebookPenIcon
+                      v-if="question.isStudyMode"
+                      title="Study Mode"
+                      class="text-sidebar-primary inline mr-1"
+                      :size="15"
+                    />
+                    <span class="underline underline-offset-2 unselectable">
+                      Q#{{ index + 1 }}
+                    </span>
+                    {{ question.body }}
+                  </p>
 
-				<div
-					aria-role="block-container"
-					v-for="(question, index) in cases.questions"
-					class="flex flex-col gap-1 px-6 py-4 mx-6 mb-2 rounded-sm bg-sidebar overflow-hidden"
-					:key="question.id">
-					<div aria-role="question" class="w-full">
-						<div class="flex items-center gap-1">
-							<p class="text-sm p-2">
-								<NotebookPenIcon
-									v-if="question.isStudyMode"
-									title="Study Mode"
-									class="text-sidebar-primary inline mr-1"
-									:size="15" />
-								<span
-									class="underline underline-offset-2 unselectable">
-									Q#{{ index + 1 }}
-								</span>
-								{{ question.body }}
-							</p>
+                  <ImagesGallery
+                    v-if="question.imgUrls.length"
+                    :img-urls="question.imgUrls"
+                  />
+                </div>
+                <div
+                  class="flex flex-col mt-2 px-6"
+                  v-if="question.type === 'Tabular'"
+                >
+                  <pre
+                    class="text-sm whitespace-normal break-words font-[inherit]"
+                  >
+                    {{ question.header }}
+                  </pre>
+                </div>
+              </div>
 
-							<ImagesGallery
-								v-if="question.imgUrls.length"
-								:img-urls="question.imgUrls" />
-						</div>
-						<div
-							class="flex flex-col mt-2 px-6"
-							v-if="question.type === 'Tabular'">
-							<pre
-								class="text-sm whitespace-normal break-words font-[inherit]">
-								{{ question.header }}
-							</pre
-							>
-						</div>
-					</div>
+              <ol
+                aria-role="choices-list"
+                class="text-sm pb-2 ml-8 list-[upper-alpha]"
+              >
+                <li
+                  v-for="choice in question.choices"
+                  :key="choice.id"
+                  class="my-1"
+                >
+                  <p class="inline-flex gap-1 items-center">
+                    {{ choice.body }}
+                    <CheckCircle2Icon
+                      v-if="choice.isCorrect"
+                      class="h-4 w-4 text-success shrink-0"
+                    />
+                  </p>
+                </li>
+              </ol>
 
-					<ol
-						aria-role="choices-list"
-						class="text-sm pb-2 ml-8 list-[upper-alpha]">
-						<li
-							v-for="choice in question.choices"
-							:key="choice.id"
-							class="my-1">
-							<p class="inline-flex gap-1 items-center">
-								{{ choice.body }}
-								<CheckCircle2Icon
-									v-if="choice.isCorrect"
-									class="h-4 w-4 text-success shrink-0" />
-							</p>
-						</li>
-					</ol>
+              <div
+                aria-role="explanation"
+                class="flex gap-1 items-center justify-between px-2 text-sm"
+              >
+                <p>
+                  Explanation
+                  <span class="block my-1">
+                    {{ question.explanation }}
+                  </span>
+                </p>
 
-					<div
-						aria-role="explanation"
-						class="flex gap-1 items-center justify-between px-2 text-sm">
-						<p>
-							Explanation
-							<span class="block my-1">
-								{{ question.explanation }}
-							</span>
-						</p>
-
-						<ImagesGallery
-							:imgUrls="question.explanationImgUrls"
-							v-if="question.explanationImgUrls.length" />
-					</div>
-				</div>
-			</li>
-		</ul>
-		<div v-if="previewStore.isEmpty">No data found.</div>
-
-		<div
-			v-if="previewStore.pending"
-			class="flex items-center justify-center w-full">
-			<SvgoLoader class="text-6xl delayed-fade" />
-		</div>
-	</section>
+                <ImagesGallery
+                  :imgUrls="question.explanationImgUrls"
+                  v-if="question.explanationImgUrls.length"
+                />
+              </div>
+            </div>
+          </div>
+        </DynamicScrollerItem>
+      </template>
+    </DynamicScroller>
+    <div class="p-6 text-center py-20" v-if="previewStore.isEmpty">
+      No data found.
+    </div>
+    <div
+      v-if="previewStore.pending"
+      class="p-7 text-center py-16 w-full inline-flex justify-center"
+    >
+      <SvgoLoader class="text-6xl text-center delayed-fade" />
+    </div>
+  </section>
 </template>
 
 <style scoped>
 .delayed-fade {
-	animation: delayedFadeIn 1s ease-out;
+  animation: delayedFadeIn 1s ease-out;
 }
 @keyframes delayedFadeIn {
-	0% {
-		opacity: 0;
-	}
-	75% {
-		opacity: 0.2;
-	}
-	100% {
-		opacity: 1;
-	}
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 </style>
