@@ -1,0 +1,15 @@
+{
+  "name": "@package/redis",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./index.ts"
+  },
+  "devDependencies": {
+    "tsconfig": "^0.0.0"
+  },
+  "dependencies": {
+    "@package/utils": "^0.0.0",
+    "redis": "^5.6.1"
+  }
+}
