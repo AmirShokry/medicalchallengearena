@@ -1,16 +1,11 @@
 {
-	"extends": "tsconfig/base.json",
-	"compilerOptions": {
-		"module": "esnext",
-		"target": "esnext",
-		"moduleResolution": "bundler"
-	},
-	"include": [
-		"./src/**/*.ts",
-		"current-path.mjs",
-		"drizzle.config.ts",
-		"env.ts",
-		"load-env.ts"
-	],
-	"exclude": ["dist", "build", "node_modules"]
+  "extends": "tsconfig/base.json",
+  "include": [
+    "./src/**/*.ts",
+    "current-path.mjs",
+    "drizzle.config.ts",
+    "env.ts",
+    "load-env.ts"
+  ],
+  "exclude": ["dist", "build", "node_modules"]
 }
