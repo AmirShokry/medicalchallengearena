@@ -21,6 +21,7 @@ const { isMobile, setOpen } = useSidebar();
 const { $trpc } = useNuxtApp();
 const activeCaseType = ref<CaseTypes>(ENTRY_PREFERENCES.value.CASE_TYPE);
 const inputStore = useInputStore();
+usePreviewStore().editedCaseIndex = null;
 inputStore.resetInput();
 
 if (activeContentName.value !== "ContentEntry")
