@@ -15,7 +15,7 @@ interface OpponentConnection {
 // Global state
 let peerInstance: InstanceType<typeof Peer> | null = null;
 let connections = new Map<string, OpponentConnection>();
-let isPeerReady = false;
+let isPeerReady = ref(false);
 let pendingConnections: string[] = [];
 let myStatus: "online" | "offline" | "busy" = "offline"; // Track local user's status
 
@@ -64,7 +64,7 @@ function cleanup() {
 
   // Clear state
   connections.clear();
-  isPeerReady = false;
+  isPeerReady.value = false;
   pendingConnections = [];
   messageCallback = null;
   friendStatusCallback = null;
@@ -75,112 +75,117 @@ function initPeer(usernameRef: Ref<string | undefined>) {
   // Clean up any existing state
   cleanup();
 
-  watch(usernameRef, (username) => {
-    if (!username) return;
-
-    try {
-      peerInstance = new Peer(`medicalchallengearena-${username}`, {
-        config: {
-          iceServers: [
-            { urls: "stun:stun.l.google.com:19302" },
-            { urls: "stun:stun1.l.google.com:19302" },
-            { urls: "stun:stun2.l.google.com:19302" },
-            { urls: "stun:stun3.l.google.com:19302" },
-          ],
-        },
-      });
-    } catch (e) {
-      console.error("Failed to create Peer instance:", e);
-      return;
-    }
-
-    peerInstance.on("open", (id: string) => {
-      console.log(`Connected to peerJS with ID: ${id}`);
-      isPeerReady = true;
-      myStatus = "online"; // Default to online on connection
-      // Process any pending connections
-      pendingConnections.forEach((friendUsername) => {
-        connectToUser(friendUsername);
-      });
-      pendingConnections = [];
-    });
-
-    peerInstance.on("connection", (incomingConn) => {
-      const opponentUsername = incomingConn.peer.replace(
-        "medicalchallengearena-",
-        ""
-      );
-      connections.set(opponentUsername, {
-        lastSeen: Date.now(),
-        username: opponentUsername,
-        connection: incomingConn,
-        peerId: incomingConn.peer,
-        status: "connecting",
-        retryCount: 0,
-      });
-
-      // Set connection timeout
-      const timeoutId = setTimeout(() => {
-        const conn = connections.get(opponentUsername);
-        if (conn && conn.status === "connecting") {
-          handleDisconnection(opponentUsername);
-        }
-      }, CONNECTION_TIMEOUT);
-      activeTimeouts.push(timeoutId);
-      const conn = connections.get(opponentUsername);
-      if (conn) {
-        conn.timeoutId = timeoutId;
+  watch(
+    usernameRef,
+    (username) => {
+      if (!username) return;
+      try {
+        peerInstance = new Peer(`medicalchallengearena-${username}`, {
+          config: {
+            iceServers: [
+              { urls: "stun:stun.l.google.com:19302" },
+              { urls: "stun:stun1.l.google.com:19302" },
+              { urls: "stun:stun2.l.google.com:19302" },
+              { urls: "stun:stun3.l.google.com:19302" },
+            ],
+          },
+        });
+      } catch (e) {
+        console.error("Failed to create Peer instance:", e);
+        return;
       }
 
-      console.log(`#S1 Incoming connection from ${opponentUsername}`);
+      peerInstance.on("open", (id: string) => {
+        console.log(`Connected to peerJS with ID: ${id}`);
+        isPeerReady.value = true;
+        myStatus = "online"; // Default to online on connection
+        // Process any pending connections
+        pendingConnections.forEach((friendUsername) => {
+          connectToUser(friendUsername);
+        });
+        pendingConnections = [];
+      });
 
-      incomingConn.on("open", () => {
+      peerInstance.on("connection", (incomingConn) => {
+        const opponentUsername = incomingConn.peer.replace(
+          "medicalchallengearena-",
+          ""
+        );
+        connections.set(opponentUsername, {
+          lastSeen: Date.now(),
+          username: opponentUsername,
+          connection: incomingConn,
+          peerId: incomingConn.peer,
+          status: "connecting",
+          retryCount: 0,
+        });
+
+        // Set connection timeout
+        const timeoutId = setTimeout(() => {
+          const conn = connections.get(opponentUsername);
+          if (conn && conn.status === "connecting") {
+            handleDisconnection(opponentUsername);
+          }
+        }, CONNECTION_TIMEOUT);
+        activeTimeouts.push(timeoutId);
         const conn = connections.get(opponentUsername);
         if (conn) {
-          const oldStatus = conn.status;
-          // Only set to online if not already in a custom state
-          if (conn.status !== "busy") {
-            conn.status = "online";
-          }
-          conn.lastSeen = Date.now();
-          conn.retryCount = 0;
-          if (conn.timeoutId) {
-            clearTimeout(conn.timeoutId);
-            activeTimeouts = activeTimeouts.filter((t) => t !== conn.timeoutId);
-            delete conn.timeoutId;
-          }
-          // Send current status to the newly connected peer
-          try {
-            incomingConn.send({ type: "status-update", status: myStatus });
-            console.log(`Sent my status ${myStatus} to ${opponentUsername}`);
-          } catch (e) {
-            console.error(`Failed to send status to ${opponentUsername}:`, e);
-          }
-          startHeartbeat(opponentUsername);
-          console.log(`#S1 Connected to ${opponentUsername}`);
-          if (oldStatus !== conn.status && friendStatusCallback) {
-            friendStatusCallback(opponentUsername, conn.status);
-          }
+          conn.timeoutId = timeoutId;
         }
-      });
 
-      incomingConn.on("data", (data: any) => {
-        handleIncomingData(opponentUsername, data);
-      });
+        console.log(`#S1 Incoming connection from ${opponentUsername}`);
 
-      incomingConn.on("close", () => {
-        handleDisconnection(opponentUsername);
-      });
+        incomingConn.on("open", () => {
+          const conn = connections.get(opponentUsername);
+          if (conn) {
+            const oldStatus = conn.status;
+            // Only set to online if not already in a custom state
+            if (conn.status !== "busy") {
+              conn.status = "online";
+            }
+            conn.lastSeen = Date.now();
+            conn.retryCount = 0;
+            if (conn.timeoutId) {
+              clearTimeout(conn.timeoutId);
+              activeTimeouts = activeTimeouts.filter(
+                (t) => t !== conn.timeoutId
+              );
+              delete conn.timeoutId;
+            }
+            // Send current status to the newly connected peer
+            try {
+              incomingConn.send({ type: "status-update", status: myStatus });
+              console.log(`Sent my status ${myStatus} to ${opponentUsername}`);
+            } catch (e) {
+              console.error(`Failed to send status to ${opponentUsername}:`, e);
+            }
+            startHeartbeat(opponentUsername);
+            console.log(`#S1 Connected to ${opponentUsername}`);
+            if (oldStatus !== conn.status && friendStatusCallback) {
+              friendStatusCallback(opponentUsername, conn.status);
+            }
+          }
+        });
 
-      incomingConn.on("error", (err) => {
-        console.error(
-          `#E1 Error in incoming connection with ${opponentUsername}:`,
-          err
-        );
-        handleDisconnection(opponentUsername);
+        incomingConn.on("data", (data: any) => {
+          handleIncomingData(opponentUsername, data);
+        });
+
+        incomingConn.on("close", () => {
+          handleDisconnection(opponentUsername);
+        });
+
+        incomingConn.on("error", (err) => {
+          console.error(
+            `#E1 Error in incoming connection with ${opponentUsername}:`,
+            err
+          );
+          handleDisconnection(opponentUsername);
+        });
       });
-    });
-  });
+    },
+    { immediate: true }
+  );
 }
 
 function connectToFriends(friendsUsernamesRef: Ref<string[] | undefined>) {
@@ -197,7 +202,7 @@ function connectToFriends(friendsUsernamesRef: Ref<string[] | undefined>) {
 }
 
 function connectToUser(friendUsername: string) {
-  if (!isPeerReady || !peerInstance) {
+  if (!isPeerReady.value || !peerInstance) {
     console.log(`Peer not ready yet, queuing connection to ${friendUsername}`);
     if (!pendingConnections.includes(friendUsername)) {
       pendingConnections.push(friendUsername);
@@ -479,7 +484,7 @@ function sendMessage(friendUsername: string, message: any) {
 }
 
 function setStatus(newStatus: "online" | "offline" | "busy") {
-  if (!peerInstance || !isPeerReady) {
+  if (!peerInstance || !isPeerReady.value) {
     console.warn("Cannot set status: Peer is not ready");
     return;
   }
@@ -505,7 +510,7 @@ function setStatus(newStatus: "online" | "offline" | "busy") {
 function getStatus(friendUsername: string): "online" | "offline" | "busy" {
   const opponentPeer = connections.get(friendUsername);
   if (opponentPeer) return opponentPeer.status as "online" | "offline" | "busy";
-  if (!peerInstance || !isPeerReady) return "offline";
+  if (!peerInstance || !isPeerReady.value) return "offline";
   return "offline";
 }
 

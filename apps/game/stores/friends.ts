@@ -18,6 +18,7 @@ export const useFriendsStore = defineStore("friends", () => {
     "friendMessages",
     {} as Record<string, any[]>
   );
+  const { status } = useAuth();
   const {
     data: friendList,
     error,
@@ -37,6 +38,7 @@ export const useFriendsStore = defineStore("friends", () => {
       );
     },
     default: () => [] as any,
+    watch: [status],
   });
   function addMessage(friendUsername: string, message: any) {
     const friend = friendList.value?.find(

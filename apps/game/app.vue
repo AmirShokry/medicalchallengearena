@@ -14,7 +14,7 @@ const { status } = useAuth();
     <ClientOnly>
       <Toaster />
       <Connection v-if="status !== 'loading'" />
-      <Peer />
+      <Peer v-if="status === 'authenticated'" />
     </ClientOnly>
     <NuxtPage />
   </NuxtLayout>
