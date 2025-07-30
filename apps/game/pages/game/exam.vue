@@ -164,6 +164,7 @@ function handleLeaveGame(fromAction?: boolean) {
   if (fromAction) hasIntentionallyLeft = true;
   if (hasIntentionallyLeft) return;
   $$game["~resetEverything"]();
+  user.timer.destroy();
   $$game.mode = undefined;
   gameSocket.emit("userLeft");
   $router.replace({ name: "game-lobby" });
@@ -176,7 +177,7 @@ onBeforeUnmount(() => {
   if (!flags.ingame.isGameFinished) handleLeaveGame();
 });
 
-console.log(user.info);
+onUnmounted(() => user.timer.destroy());
 </script>
 <template>
   <div class="px-20 h-full flex flex-col py-4">
@@ -191,14 +192,14 @@ console.log(user.info);
         :status="currentPlayerStatus"
       />
       <!-- <SinglePagination
-				class="p-2 light-border-and-shadow rounded-md w-full"
-				v-model:current-indexes="current"
-				v-model:can-show-explanation="canViewAnswer"
-				v-model:is-reviewing="flags.ingame.isReviewingQuestion"
-				:pending-index="lastReachedQuestionNumber"
-				:total-questions-count="totalQuestionsNumber"
-				:revert-state="revertState"
-				:records="user.records.data" /> -->
+        class="p-2 light-border-and-shadow rounded-md w-full"
+        v-model:current-indexes="current"
+        v-model:can-show-explanation="canViewAnswer"
+        v-model:is-reviewing="flags.ingame.isReviewingQuestion"
+        :pending-index="lastReachedQuestionNumber"
+        :total-questions-count="totalQuestionsNumber"
+        :revert-state="revertState"
+        :records="user.records.data" /> -->
     </div>
     <div class="py-2 h-full">
       <ExamBlock
