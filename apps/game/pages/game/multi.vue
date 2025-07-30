@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import MatchFoundSplash from "~/components/splash/MatchFoundSplash.vue";
 import { UsersIcon, SearchIcon } from "lucide-vue-next";
-import { sounds } from "@/composables/audio.client";
 import { gameSocket } from "@/components/socket";
 import type { MatchingSystemCategories } from "@/shared/types/common";
 import type { ToClientIO } from "@/shared/types/socket";
 import Fuse from "fuse.js";
 const { $trpc } = useNuxtApp();
+const audio = useAudioStore();
 definePageMeta({
   layout: "game",
 });
@@ -191,7 +191,7 @@ function handleContinueToGame() {
 
   $$game.flags.ingame.isGameStarted = true;
   gameSocket.emit("userStartedGame", selections);
-  sounds.user_vs_opponent.play();
+  audio.user_vs_opponent.play();
 }
 
 function updateCasesCounters(amount: number) {
@@ -282,14 +282,14 @@ function handleCasesCountUpdated(questionsCount: number, isRemote?: boolean) {
 }
 
 function handleAccept() {
-  sounds.navigation.play();
+  audio.navigation.play();
   $$game.players.user.flags.hasAccepted = true;
   gameSocket.emit("userAccepted");
   matchmaking.state = "waiting-approval";
 }
 
 function handleLeaveOrDecline(fromAction?: boolean) {
-  if (fromAction) sounds.navigation.play();
+  if (fromAction) audio.navigation.play();
 
   matchmaking.state = "idle";
   $$game["~resetEverything"]();

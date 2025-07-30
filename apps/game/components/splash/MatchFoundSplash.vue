@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import logo_grey_static from "@/assets/images/logo-grey-static.webp";
-import { sounds } from "~/composables/audio.client";
-
-sounds.match_found.loop = true;
-const soundPromise = sounds.match_found.play();
+const audio = useAudioStore();
+// sounds.match_found.loop = true;
+// const soundPromise = sounds.match_found.play();
+audio.match_found.play();
 const emit = defineEmits(["accept", "decline"]);
 const visibleInnerCirclePathIndex = ref(1);
 const $$game = useGameStore();
@@ -18,27 +18,18 @@ const animationInterval = setInterval(function repeat() {
 }, 400);
 
 function handleAccept() {
-  soundPromise.then(() => {
-    sounds.match_found.pause();
-    sounds.match_found.currentTime = 0;
-  });
+  audio.match_found.stop();
   emit("accept");
 }
 
 function handleDecline() {
-  soundPromise.then(() => {
-    sounds.match_found.pause();
-    sounds.match_found.currentTime = 0;
-  });
+  audio.match_found.stop();
   emit("decline");
 }
 
 onUnmounted(() => {
   clearInterval(animationInterval);
-  soundPromise.then(() => {
-    sounds.match_found.pause();
-    sounds.match_found.currentTime = 0;
-  });
+  audio.match_found.stop();
 });
 </script>
 <template>

@@ -4,6 +4,7 @@ export const description = "A left and right sidebar.";
 </script>
 
 <script setup lang="ts">
+import { useSound } from "@vueuse/sound";
 import {
   Table,
   TableBody,
@@ -16,13 +17,15 @@ import { Button } from "@/components/ui/button";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { UsersIcon } from "lucide-vue-next";
 import { Separator } from "@/components/ui/separator";
-import { sounds, initAudios } from "~/composables/audio.client";
+// import { sounds } from "~/composables/audio.client";
+// import soundurl from "@/assets/sound/navgation.mp3";
+const audio = useAudioStore();
 
 definePageMeta({
   layout: "game",
 });
 
-initAudios();
+// initAudios();
 const { user, isLoading } = storeToRefs(useUserStore());
 const { $trpc } = useNuxtApp();
 const { data: ranks, pending: areRanksPending } = useLazyAsyncData(
@@ -58,7 +61,8 @@ function listenForEscape(event: KeyboardEvent) {
 }
 function handlePlayClick() {
   window.addEventListener("keydown", listenForEscape);
-  sounds.navigation.play();
+
+  audio.navigation.play();
   isPlayClicked.value = true;
 }
 
@@ -66,6 +70,7 @@ onUnmounted(() => window.removeEventListener("keydown", listenForEscape));
 </script>
 
 <template>
+  <!-- <button @click="stopSound">Stop</button> -->
   <header
     class="sticky top-0 flex h-10 shrink-0 items-center gap-2 bg-background"
   >

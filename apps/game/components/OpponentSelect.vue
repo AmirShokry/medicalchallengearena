@@ -1,20 +1,20 @@
 <script setup lang="ts">
 import { gameSocket } from "@/components/socket";
 
-import { sounds } from "~/composables/audio.client";
 const $$game = useGameStore();
+const audio = useAudioStore();
 
 function handleFindMatch() {
   if ($$game.flags.matchmaking.isMatchFound) return;
 
-  sounds.find_match.play();
+  audio.find_match.play();
   $$game["~resetEverything"]();
   $$game.flags.matchmaking.isFindingMatch = true;
   gameSocket.emit("challenge", { mode: "UNRANKED" });
 }
 
 function handleInviteFriend() {
-  sounds.navigation.play();
+  audio.navigation.play();
   $$game.flags.matchmaking.isInviting = true;
 }
 

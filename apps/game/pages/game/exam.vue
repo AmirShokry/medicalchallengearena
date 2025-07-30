@@ -1,15 +1,12 @@
 <script setup lang="ts">
 import ExamBlock from "@/components/ExamBlock/index.vue";
 import BeforeGameAnimation from "@/components/splash/BeforeGameAnimation.vue";
-// import CButton from "@client/components/ui/CButton.vue";
-import { sounds } from "~/composables/audio.client";
-import { gameSocket } from "@/components/socket";
-
-// import SinglePagination from "@/components/Exam/SinglePagination.vue";
 import UserInfo from "@/components/Exam/Player.vue";
 import Result from "@/components/Exam/Result/index.vue";
 import getGameData from "@/components/Exam/index";
 import { LogOutIcon as ExitIcon } from "lucide-vue-next";
+import { gameSocket } from "@/components/socket";
+// import SinglePagination from "@/components/Exam/SinglePagination.vue";
 definePageMeta({
   layout: "blank",
 });
@@ -30,6 +27,7 @@ const {
 } = getGameData();
 
 const { user: $$user } = storeToRefs(useUserStore());
+const audio = useAudioStore();
 const $$game = useGameStore();
 const { $trpc } = useNuxtApp();
 const $router = useRouter();
@@ -51,7 +49,7 @@ function handleGameStarted() {
 
 function handleTimeOut() {
   if (flags.ingame.isReviewingQuestion) revertState();
-  sounds.incorrect_answer.play();
+  audio.incorrect_answer.play();
   user.flags.hasSolved = true;
   user.records.stats.wrongAnswersCount++;
 
@@ -82,7 +80,7 @@ function handleSubmit() {
       medPointsGained = -10;
       foundIncorrectElimination = true;
     } else {
-      sounds.incorrect_answer.play();
+      audio.incorrect_answer.play();
       user.records.stats.correctEliminationsCount +=
         current.eliminatedChoicesIdx.size - 1;
       medPointsGained += current.eliminatedChoicesIdx.size - 1;
@@ -94,9 +92,9 @@ function handleSubmit() {
       user.records.stats.correctAnswersCount++;
       medPointsGained = 10;
 
-      sounds.correct_answer.play();
+      audio.correct_answer.play();
     } else {
-      sounds.incorrect_answer.play();
+      audio.incorrect_answer.play();
       user.records.stats.wrongAnswersCount++;
     }
   }
