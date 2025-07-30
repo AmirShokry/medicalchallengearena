@@ -70,7 +70,6 @@ const richTextRef = ref<InstanceType<typeof RichText> | null>(null);
                 :base-font-size="0.9"
                 highlight
                 variable-font-size
-                class="leading-8 hyphens-auto flex-grow whitespace-pre-wrap font-poppins"
               >
                 {{ currentCase?.body }}
               </RichText>
