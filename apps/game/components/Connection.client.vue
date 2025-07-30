@@ -1,0 +1,163 @@
+<script setup lang="ts">
+import { gameSocket, socialSocket } from "./socket";
+
+const isConnected = ref(false);
+
+const transport = ref("N/A");
+const $$game = useGameStore();
+const matchmaking = useMatchMakingStore();
+const $router = useRouter();
+const { status } = useAuth();
+
+if (gameSocket.connected) onConnect();
+
+if (status.value === "authenticated") connectSockets();
+
+function onConnect() {
+  isConnected.value = true;
+  transport.value = gameSocket.io.engine.transport.name;
+  gameSocket.io.engine.on(
+    "upgrade",
+    (rawTransport) => (transport.value = rawTransport.name)
+  );
+}
+
+function onDisconnect() {
+  isConnected.value = false;
+  transport.value = "N/A";
+}
+
+gameSocket.on("connect", onConnect);
+gameSocket.on("disconnect", onDisconnect);
+
+watch(status, (newStatus, oldStatus) => {
+  if (oldStatus === "authenticated" && newStatus !== "authenticated") {
+    console.log("User signed out, disconnecting sockets...");
+    gameSocket.disconnect();
+    socialSocket.disconnect();
+  } else if (oldStatus !== "authenticated" && newStatus === "authenticated") {
+    console.log("User signed in, reconnecting sockets...");
+    connectSockets();
+  }
+});
+
+function connectSockets() {
+  socialSocket.off();
+  gameSocket.off();
+  gameSocket.connect();
+  socialSocket.connect();
+
+  setupSocketListeners();
+}
+
+function setupSocketListeners() {
+  gameSocket.on("matchFound", (data) => {
+    $$game.players.opponent.info["~set"](data.opponent);
+    $$game.flags.matchmaking.isMatchFound = true;
+    matchmaking.state = "reviewing-invitation";
+    $$game.flags.matchmaking.isFindingMatch = false;
+  });
+
+  gameSocket.on("opponentAccepted", (data) => {
+    const { isMaster, ...selectableData } = data;
+    $$game.players.user.flags.isMaster = isMaster;
+    $$game.selectableData["~set"](selectableData);
+    matchmaking.state = "selecting-block";
+    $$game.flags.matchmaking.isSelectingUnits = true;
+    // $router.push({ name: "exam-" });
+  });
+
+  gameSocket.on("opponentDeclined", () => {
+    $$game["~resetEverything"]();
+    $$game.players.opponent.flags.hasDeclined = true;
+    matchmaking.state = "idle";
+  });
+
+  gameSocket.on("opponentLeft", () => {
+    if (!$$game.flags.ingame.isGameStarted) {
+      if ($router.currentRoute.value.name === "game-multi") {
+        matchmaking.state = "idle";
+        $router.replace({ name: "game-multi" });
+      }
+      return $$game["~resetEverything"]();
+    }
+
+    $$game.players.opponent.flags["~reset"]();
+    $$game.players.opponent.flags.hasLeft = true;
+  });
+
+  gameSocket.on("opponentSentInvitation", (data) => {
+    // const opponent = $$user.friendList.find((friend) => friend.id === data.friendId);
+    // if (!opponent) return;
+    // sounds.find_match.play();
+    // $$game.players.opponent.info["~set"]({
+    // 	id: opponent.id,
+    // 	username: opponent.username,
+    // 	medPoints: opponent.medPoints ?? 0,
+    // 	avatarUrl: opponent.avatarUrl,
+    // 	university: opponent.university,
+    // });
+    // $$game.players.user.flags.isInvited = true;
+  });
+
+  gameSocket.on("gameStarted", (data) => {
+    $$game.data.cases = data.cases;
+    $$game.flags.ingame.isGameStarted = true;
+    $$game.gameId = data.gameId;
+    $router.push({ name: "game-exam" });
+  });
+
+  // Handle authentication errors by disconnecting
+  gameSocket.on("connect_error", (error) => {
+    console.log("Game socket connection error:", error);
+    $$game.fatalErrorMessage = error.message;
+    if (
+      error.message === "Authentication required" ||
+      error.message === "Authentication failed"
+    ) {
+      gameSocket.disconnect();
+    }
+  });
+
+  socialSocket.on("connect_error", (error) => {
+    console.log("Social socket connection error:", error);
+    if (
+      error.message === "Authentication required" ||
+      error.message === "Authentication failed"
+    ) {
+      socialSocket.disconnect();
+    }
+  });
+
+  gameSocket.on("error", (error) => {
+    console.log("Game socket error:", error);
+    $$game.fatalErrorMessage = error.message;
+    if (
+      error.message === "Authentication required" ||
+      error.message === "Authentication failed"
+    ) {
+      gameSocket.disconnect();
+    }
+  });
+
+  socialSocket.on("error", (error) => {
+    console.log("Social socket error:", error);
+    if (
+      error.message === "Authentication required" ||
+      error.message === "Authentication failed"
+    ) {
+      socialSocket.disconnect();
+    }
+  });
+}
+
+onBeforeUnmount(() => {
+  gameSocket.off("connect", onConnect);
+  gameSocket.off("disconnect", onDisconnect);
+  gameSocket.disconnect();
+  socialSocket.disconnect();
+});
+</script>
+<template>
+  <slot />
+</template>
