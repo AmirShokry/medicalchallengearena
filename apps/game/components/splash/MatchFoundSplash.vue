@@ -18,7 +18,7 @@ const animationInterval = setInterval(function repeat() {
 </script>
 <template>
   <div
-    class="absolute w-full h-full left-0 top-0 z-50 py-20 bg-black bg-opacity-85"
+    class="fixed w-full h-full left-0 top-0 z-[999999] py-20 bg-black bg-opacity-85"
   >
     <svg
       width="100%"
@@ -233,7 +233,7 @@ const animationInterval = setInterval(function repeat() {
         <tspan filter="url(#unranked-filter)">
           {{
             !$$game.players.user.flags.hasAccepted
-              ? $$game.mode?.toUpperCase()
+              ? "Ranked"
               : "Waiting for opponent"
           }}
         </tspan>
