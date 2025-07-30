@@ -3,18 +3,43 @@ import logo_grey_static from "@/assets/images/logo-grey-static.webp";
 import { sounds } from "~/composables/audio.client";
 
 sounds.match_found.loop = true;
-sounds.match_found.play();
+const soundPromise = sounds.match_found.play();
 const emit = defineEmits(["accept", "decline"]);
 const visibleInnerCirclePathIndex = ref(1);
 const $$game = useGameStore();
 const animationInterval = setInterval(function repeat() {
   if ($$game.players.user.flags.hasAccepted) {
     visibleInnerCirclePathIndex.value = 4;
+
     return clearInterval(animationInterval);
   }
   visibleInnerCirclePathIndex.value =
     (visibleInnerCirclePathIndex.value + 1) % 5;
 }, 400);
+
+function handleAccept() {
+  soundPromise.then(() => {
+    sounds.match_found.pause();
+    sounds.match_found.currentTime = 0;
+  });
+  emit("accept");
+}
+
+function handleDecline() {
+  soundPromise.then(() => {
+    sounds.match_found.pause();
+    sounds.match_found.currentTime = 0;
+  });
+  emit("decline");
+}
+
+onUnmounted(() => {
+  clearInterval(animationInterval);
+  soundPromise.then(() => {
+    sounds.match_found.pause();
+    sounds.match_found.currentTime = 0;
+  });
+});
 </script>
 <template>
   <div
@@ -158,7 +183,6 @@ const animationInterval = setInterval(function repeat() {
         </defs>
       </g>
 
-      <!-- Logo -->
       <rect
         fill="url(#logo-pattern)"
         name="logo"
@@ -168,13 +192,13 @@ const animationInterval = setInterval(function repeat() {
         height="315.368"
         fill-opacity="0.05"
       />
-      <!-- Contents (Matchfound - Mode - Accept - Decline) -->
+
       <g class="button-containers">
-        <!-- Decline Button -->
         <g
+          aria-role="decline-button"
           class="cursor-pointer origin-bottom hover:scale-105"
           name="decline"
-          @click="emit('decline')"
+          @click="handleDecline"
         >
           <path
             id="decline-fill"
@@ -188,15 +212,15 @@ const animationInterval = setInterval(function repeat() {
             <textPath href="#decline-fill">DECLINE</textPath>
           </text>
         </g>
-        <!-- Accept Button -->
         <g
+          aria-role="accept-button"
           filter="url(#accept-filter)"
           :class="
             !$$game.players.user.flags.hasAccepted
               ? 'cursor-pointer origin-bottom hover:scale-95'
               : undefined
           "
-          @click="emit('accept')"
+          @click="handleAccept"
         >
           <path
             fill="url(#accept-paint)"

@@ -9,32 +9,25 @@ const props = defineProps<{
 const counter = ref<number | string>(3);
 const emit = defineEmits(["end"]);
 const isCountDownVisible = ref(false);
+let countDownInterval = undefined as ReturnType<typeof setInterval> | undefined;
 
 setTimeout(() => showCountDown(), props.startImmediately ? 0 : 1000);
 function showCountDown() {
   sounds.count_down.play();
   isCountDownVisible.value = true;
-  const interval = setInterval(() => {
+  countDownInterval = setInterval(() => {
     counter.value = (counter.value as number) - 1;
     if (counter.value - 1 < 0) {
-      clearInterval(interval);
+      clearInterval(countDownInterval);
       counter.value = "Go!";
-      unHideScrollBars();
       setTimeout(() => {
         emit("end");
       }, 1000);
     }
   }, 1000);
 }
-function unHideScrollBars() {
-  document.querySelector("html")?.style.setProperty("overflow", "auto");
-}
-function hideScrollbars() {
-  document.querySelector("html")?.style.setProperty("overflow", "hidden");
-}
 
-onMounted(hideScrollbars);
-onBeforeUnmount(unHideScrollBars);
+onBeforeUnmount(() => clearInterval(countDownInterval));
 </script>
 <template>
   <slot name="user-vs-opponent">

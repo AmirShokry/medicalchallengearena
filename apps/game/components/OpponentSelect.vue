@@ -1,6 +1,4 @@
 <script setup lang="ts">
-// import CButton from "@client/components/ui/CButton.vue";
-// import InvitationDialog from "./components/InvitationDialog.vue";
 import { gameSocket } from "@/components/socket";
 
 import { sounds } from "~/composables/audio.client";
