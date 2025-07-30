@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { sounds } from "~/composables/audio.client";
 import { SearchIcon } from "lucide-vue-next";
 import { UsersIcon } from "lucide-vue-next";
 import Fuse from "fuse.js";
 definePageMeta({
   layout: "game",
 });
+const audio = useAudioStore();
 const { user } = storeToRefs(useUserStore());
 const { $trpc } = useNuxtApp();
 const $$game = useGameStore();
@@ -127,7 +127,7 @@ async function handleContinueToGame() {
   const { cases, gameId } = await $trpc.exam.startGame.mutate(selections);
   $$game.gameId = gameId;
   $$game.data.cases = cases;
-  sounds.user_vs_opponent.play();
+  audio.user_vs_opponent.play();
   $router.push({ name: "game-exam" });
 }
 

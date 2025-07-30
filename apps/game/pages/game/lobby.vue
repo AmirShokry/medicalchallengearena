@@ -17,15 +17,13 @@ import { Button } from "@/components/ui/button";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { UsersIcon } from "lucide-vue-next";
 import { Separator } from "@/components/ui/separator";
-// import { sounds } from "~/composables/audio.client";
-// import soundurl from "@/assets/sound/navgation.mp3";
-const audio = useAudioStore();
-
 definePageMeta({
   layout: "game",
 });
 
-// initAudios();
+const audio = useAudioStore();
+const router = useRouter();
+
 const { user, isLoading } = storeToRefs(useUserStore());
 const { $trpc } = useNuxtApp();
 const { data: ranks, pending: areRanksPending } = useLazyAsyncData(
@@ -66,11 +64,19 @@ function handlePlayClick() {
   isPlayClicked.value = true;
 }
 
+function handleSoloClick() {
+  audio.navigation.play();
+  router.push({ name: "game-solo" });
+}
+function handleMultiClick() {
+  audio.navigation.play();
+  router.push({ name: "game-multi" });
+}
+
 onUnmounted(() => window.removeEventListener("keydown", listenForEscape));
 </script>
 
 <template>
-  <!-- <button @click="stopSound">Stop</button> -->
   <header
     class="sticky top-0 flex h-10 shrink-0 items-center gap-2 bg-background"
   >
@@ -103,14 +109,14 @@ onUnmounted(() => window.removeEventListener("keydown", listenForEscape));
           </Button>
           <Button
             v-if="isPlayClicked"
-            @click="$router.push({ name: 'game-solo' })"
+            @click="handleSoloClick"
             class="hover:![background:#FFFF] not-dark:hover:![background:black] text-primary-foreground mt-20 cursor-pointer border-border border w-1/4 h-10 [background:linear-gradient(80deg,_#B1AFB3_1%,_#B1AFB3_30%)]"
           >
             Solo
           </Button>
           <Button
             v-if="isPlayClicked"
-            @click="$router.push({ name: 'game-multi' })"
+            @click="handleMultiClick"
             class="hover:![background:#FFFF] not-dark:hover:![background:black] text-primary-foreground mt-20 cursor-pointer border-border border w-1/4 h-10 [background:linear-gradient(80deg,_#B1AFB3_1%,_#B1AFB3_30%)]"
           >
             Multi

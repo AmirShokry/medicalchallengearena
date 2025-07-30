@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { sounds } from "~/composables/audio.client";
-
+const audio = useAudioStore();
 // import check_circle_icon from "@client/assets/svg/check-circle.svg";
 const nthSelectedChoice = defineModel("selection", {
   type: Number,
@@ -26,7 +25,7 @@ const isEliminated = computed(() =>
 const isExplanationVisible = ref(false);
 
 function handleSelection() {
-  sounds.choice_selected.play();
+  audio.choice_selected.play();
   if (props.canShowExplanation)
     return (isExplanationVisible.value = !isExplanationVisible.value);
 
@@ -37,7 +36,7 @@ function handleSelection() {
 
 function handleElimination() {
   if (props.canShowExplanation) return;
-  sounds.choice_eliminated.play();
+  audio.choice_eliminated.play();
   if (isSelected.value) nthSelectedChoice.value = -1;
   if (nthEliminatedChoices.value.has(props.index))
     nthEliminatedChoices.value.delete(props.index);

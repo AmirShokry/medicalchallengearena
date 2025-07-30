@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import AvsB from "./PlayerVersusOpponentSplash.vue";
-import { sounds } from "~/composables/audio.client";
+const audio = useAudioStore();
 
 const props = defineProps<{
   startImmediately?: boolean;
@@ -13,7 +13,7 @@ let countDownInterval = undefined as ReturnType<typeof setInterval> | undefined;
 
 setTimeout(() => showCountDown(), props.startImmediately ? 0 : 1000);
 function showCountDown() {
-  sounds.count_down.play();
+  audio.count_down.play();
   isCountDownVisible.value = true;
   countDownInterval = setInterval(() => {
     counter.value = (counter.value as number) - 1;
