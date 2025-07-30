@@ -68,6 +68,7 @@ function handleGoClick() {
                 <li>Progress tracking</li>
               </ul>
               <a
+                class="w-fit"
                 href="https://payhip.com/order?link=2G3no&pricing_plan=ZjBLrKZMWm&builder_mode=1&environment_id_encrypted=w9B31l2jWR"
                 target="_blank"
               >
@@ -101,6 +102,7 @@ function handleGoClick() {
                 <li>Early access to new game features</li>
               </ul>
               <a
+                class="w-fit"
                 target="_blank"
                 href="https://payhip.com/order?link=2G3no&pricing_plan=a6zYK90bGq&builder_mode=1&environment_id_encrypted=w9B31l2jWR"
               >
