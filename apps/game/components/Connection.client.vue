@@ -5,9 +5,13 @@ const isConnected = ref(false);
 
 const transport = ref("N/A");
 const $$game = useGameStore();
+const friendStore = useFriendsStore();
 const matchmaking = useMatchMakingStore();
+const audio = useAudioStore();
 const $router = useRouter();
 const { status } = useAuth();
+
+const friendList = computed(() => friendStore.friendList);
 
 if (gameSocket.connected) onConnect();
 
@@ -61,10 +65,8 @@ function setupSocketListeners() {
   gameSocket.on("opponentAccepted", (data) => {
     const { isMaster } = data;
     $$game.players.user.flags.isMaster = isMaster;
-    // $$game.selectableData["~set"](selectableData);
     matchmaking.state = "selecting-block";
     $$game.flags.matchmaking.isSelectingUnits = true;
-    // $router.push({ name: "exam-" });
   });
 
   gameSocket.on("opponentDeclined", () => {
@@ -74,11 +76,13 @@ function setupSocketListeners() {
   });
 
   gameSocket.on("opponentLeft", () => {
+    // console.log("opponentLef");
     if (!$$game.flags.ingame.isGameStarted) {
       if ($router.currentRoute.value.name === "game-multi") {
         matchmaking.state = "idle";
         $router.replace({ name: "game-multi" });
       }
+      gameSocket.emit("userDeclined");
       return $$game["~resetEverything"]();
     }
 
@@ -87,17 +91,19 @@ function setupSocketListeners() {
   });
 
   gameSocket.on("opponentSentInvitation", (data) => {
-    // const opponent = $$user.friendList.find((friend) => friend.id === data.friendId);
-    // if (!opponent) return;
-    // sounds.find_match.play();
-    // $$game.players.opponent.info["~set"]({
-    // 	id: opponent.id,
-    // 	username: opponent.username,
-    // 	medPoints: opponent.medPoints ?? 0,
-    // 	avatarUrl: opponent.avatarUrl,
-    // 	university: opponent.university,
-    // });
-    // $$game.players.user.flags.isInvited = true;
+    const opponent = friendList.value?.find(
+      (friend) => friend.id === data.friendId
+    );
+    if (!opponent) return;
+    audio.find_match.play();
+    $$game.players.opponent.info["~set"]({
+      id: opponent.id,
+      username: opponent.username,
+      medPoints: opponent.medPoints ?? 0,
+      avatarUrl: opponent.avatarUrl,
+      university: opponent.university,
+    });
+    $$game.players.user.flags.isInvited = true;
   });
 
   gameSocket.on("gameStarted", (data) => {

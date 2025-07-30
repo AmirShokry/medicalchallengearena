@@ -87,23 +87,6 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
     if (!isInvitation && !opponentSocket.data.hasAccepted)
       return (socket.data.hasAccepted = true);
 
-    // Create tRPC caller with the socket's authenticated session context
-    const appRouterCaller = await getTRPCCaller(
-      createMockH3EventFromSocket(socket)
-    );
-
-    const systemsCategories =
-      await appRouterCaller.systems.matchingSystemCategories({
-        user1Id: socket.data.session.id,
-        user2Id: opponentSocket.data.session.id,
-      });
-
-    const [{ allCount, matchingCount, unusedCount1, unusedCount2 }] =
-      await appRouterCaller.cases.mactchingCount({
-        user1Id: socket.data.session.id,
-        user2Id: opponentSocket.data.session.id,
-      });
-
     const roomName = `game:${socket.data.session.username}-${opponentSocket.data.session.username}`;
 
     socket.join(roomName);
@@ -224,7 +207,6 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
   socket.on("userJoinedWaitingRoom", () => socket.join("waiting"));
   socket.on("userSelected", (data) => {
     const opponentId = socket.data.opponentSocket!.id;
-    // console.log(`User selected: ${opponentId}`, data);
     socket.to(opponentId).emit("opponentSelected", data);
   });
   socket.on("userSentSelectionChat", (data) => {
