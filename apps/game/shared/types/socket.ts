@@ -56,13 +56,7 @@ export namespace ToClientIO {
         data: RecordObject["data"][0],
         stats: RecordObject["stats"]
       ) => void;
-      opponentAccepted: (data: {
-        isMaster: boolean;
-        allCount: number;
-        unusedCount: number;
-        matchingCount: number;
-        systemsCategories: MatchingSystemCategories;
-      }) => void;
+      opponentAccepted: (data: { isMaster: boolean }) => void;
       opponentSentInvitation: (data: { friendId: number }) => void;
     }
     export interface Data extends Default.Data {
@@ -144,12 +138,7 @@ export namespace ToServerIO {
         stats: RecordObject["stats"]
       ) => void;
       userSelected: (data: {
-        target:
-          | "pool"
-          | "system"
-          | "category"
-          | "questionsCount"
-          | "allSystems";
+        target: "pool" | "category" | "questionsCount" | "allSystems";
         pool?: "all" | "unused";
         sysIndex?: number;
         catIndex?: number;

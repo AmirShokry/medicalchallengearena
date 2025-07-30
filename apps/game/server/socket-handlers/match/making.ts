@@ -112,23 +112,14 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
     socket.data.roomName = opponentSocket.data.roomName = roomName;
     socket.data.isInGame = opponentSocket.data.isInGame = true;
     socket.data.finalStats = opponentSocket.data.finalStats = {} as any;
-    // socket.data.totalMedpoints = opponentSocket.data.totalMedpoints = -1;
     socket.data.hasSolved = opponentSocket.data.hasSolved = false;
     socket.data.isMaster = true;
     opponentSocket.data.isMaster = false;
     io.to(opponentSocket.id).emit("opponentAccepted", {
       isMaster: true,
-      // systemsCategories,
-      // allCount,
-      // matchingCount,
-      // unusedCount: unusedCount2,
     });
     io.to(socket.id).emit("opponentAccepted", {
       isMaster: false,
-      // systemsCategories,
-      // allCount,
-      // matchingCount,
-      // unusedCount: unusedCount1,
     });
   });
 

@@ -21,55 +21,12 @@ matchmaking.state = "idle";
 
 const data = ref([] as MatchingSystemCategories);
 const counters = ref(
-  [] as { allCount: number; unusedCount1: number; matchingCount: number }[]
-);
-
-const systemsCategoriesRaw = ref(
-  [] as Array<{
-    id: number;
-    name: string;
-    isChecked: boolean;
-    categories: Array<{
-      id: number;
-      name: string;
-      allCount: number;
-      unusedCount1: number;
-      isChecked: boolean;
-    }>;
-  }>
-);
-const systemsCategories = computed(() => {
-  if (!searchQuery.value.trim()) return systemsCategoriesRaw.value;
-  if (!fuse.value) return systemsCategoriesRaw.value;
-  return fuse.value.search(searchQuery.value).map((result) => result.item);
-});
-const fuse = computed(() => {
-  if (!systemsCategoriesRaw.value.length) return null;
-  return new Fuse(systemsCategoriesRaw.value, {
-    keys: ["name", "categories.name"],
-    threshold: 0.3,
-  });
-});
-
-watch(
-  data,
-  (newData) => {
-    if (!newData) {
-      systemsCategoriesRaw.value = [];
-      return;
-    }
-    systemsCategoriesRaw.value = newData.map((system) => {
-      return {
-        ...system,
-        isChecked: false,
-        categories: system.categories.map((category) => ({
-          ...category,
-          isChecked: false,
-        })),
-      };
-    });
-  },
-  { immediate: true }
+  [] as {
+    allCount: number;
+    unusedCount1: number;
+    unusedCount2: number;
+    matchingCount: number;
+  }[]
 );
 
 watch(user2Id, async () => {
@@ -85,6 +42,30 @@ watch(user2Id, async () => {
   });
 });
 
+const systemsCategoriesRaw = computed(() => {
+  return data.value.map((system) => ({
+    ...system,
+    isChecked: false,
+    categories: system.categories.map((category) => ({
+      ...category,
+      isChecked: false,
+    })),
+  }));
+});
+
+const systemsCategories = computed(() => {
+  if (!searchQuery.value.trim()) return systemsCategoriesRaw.value;
+  if (!fuse.value) return systemsCategoriesRaw.value;
+  return fuse.value.search(searchQuery.value).map((result) => result.item);
+});
+const fuse = computed(() => {
+  if (!systemsCategoriesRaw.value.length) return null;
+  return new Fuse(systemsCategoriesRaw.value, {
+    keys: ["name", "categories.name"],
+    threshold: 0.3,
+  });
+});
+
 const selectedPool = ref<"all" | "unused">("all");
 const selectedCasesCount = ref(0);
 const possibleCasesCount = ref([] as number[]);
@@ -92,7 +73,18 @@ const possibleCasesCount = ref([] as number[]);
 const isRoomMaster = computed(() => $$game.players.user.flags.isMaster);
 
 const allCount = computed(() => counters.value?.[0]?.allCount);
-const unusedCount = computed(() => counters.value?.[0]?.unusedCount1 || 0);
+const unusedCount = computed(() =>
+  isRoomMaster
+    ? counters.value?.[0]?.unusedCount2
+    : counters.value?.[0]?.unusedCount1 || 0
+);
+
+function getCategoryCounter(
+  category: (typeof systemsCategoriesRaw.value)[0]["categories"][0]
+) {
+  return isRoomMaster.value ? category.unusedCount2 : category.unusedCount1;
+}
+
 const matchingCount = computed(() => counters.value?.[0]?.matchingCount || 0);
 
 watch(
@@ -109,9 +101,10 @@ function handlePoolSelected(value: "all" | "unused", isRemote?: boolean) {
       .emit("userSelected", { target: "pool", pool: value });
   selectedPool.value = value;
   resetCasesCounters();
-  systemsCategories.value.forEach((system) =>
-    system.categories.forEach((category) => (category.isChecked = false))
-  );
+  systemsCategories.value.forEach((system) => {
+    system.categories.forEach((category) => (category.isChecked = false));
+    system.isChecked = false;
+  });
 }
 function handleToggleEntireSystemCategories(
   sysIndex: number,
@@ -122,25 +115,37 @@ function handleToggleEntireSystemCategories(
   const system = systemsCategories.value[sysIndex];
   if (!system) return;
   system.isChecked = !system.isChecked;
-  system.categories.forEach((_, catIndex) => {
-    if (isRemote || canSelectCategory(sysIndex, catIndex)) {
-      const category = system.categories[catIndex];
-      if (!category) return;
-      category.isChecked = system.isChecked;
-      if (category.isChecked)
-        updateCasesCounters(
-          selectedPool.value === "all"
-            ? category.allCount
-            : category.unusedCount1
-        );
-      else
-        updateCasesCounters(
-          selectedPool.value === "all"
-            ? -category.allCount
-            : -category.unusedCount1
-        );
+  system.categories.forEach((category, catIndex) => {
+    if (canSelectCategory(sysIndex, catIndex)) toggleCategories(catIndex);
+    if (isRemote) {
+      if (
+        selectedPool.value === "all" ||
+        (selectedPool.value === "unused" && getCategoryCounter(category) > 0)
+      )
+        toggleCategories(catIndex);
     }
   });
+
+  function toggleCategories(catIndex: number) {
+    if (!system) return;
+    const category = system.categories[catIndex];
+    if (!category) return;
+
+    category.isChecked = system.isChecked;
+
+    if (category.isChecked)
+      updateCasesCounters(
+        selectedPool.value === "all"
+          ? category.allCount
+          : getCategoryCounter(category)
+      );
+    else
+      updateCasesCounters(
+        selectedPool.value === "all"
+          ? -category.allCount
+          : -getCategoryCounter(category)
+      );
+  }
 }
 
 function handleToggleCategory(
@@ -158,13 +163,21 @@ function handleToggleCategory(
   category.isChecked = !category.isChecked;
   if (category.isChecked)
     updateCasesCounters(
-      selectedPool.value === "all" ? category.allCount : category.unusedCount1
+      selectedPool.value === "all"
+        ? category.allCount
+        : getCategoryCounter(category)
     );
   else
     updateCasesCounters(
-      selectedPool.value === "all" ? -category.allCount : -category.unusedCount1
+      selectedPool.value === "all"
+        ? -category.allCount
+        : -getCategoryCounter(category)
     );
+  const areAllCategoriesInSystemSelected = () =>
+    system.categories.every((category) => category.isChecked);
+  system.isChecked = areAllCategoriesInSystemSelected(); //Also updates the system checkbox if one category is off, then it should be off as well
 }
+
 function handleContinueToGame() {
   const selections = {
     pool: selectedPool.value,
@@ -196,7 +209,6 @@ function canSelectAddEntireSystem(sysIndex: number) {
   if (!isRoomMaster.value) return false;
   const system = systemsCategories.value[sysIndex];
   if (!system) return false;
-  //Check if there is at least one category that can be selected
   return system.categories.some((_, catIndex) =>
     canSelectCategory(sysIndex, catIndex)
   );
@@ -209,7 +221,8 @@ function canSelectCategory(sysIndex: number, catIndex: number) {
   const category = system.categories[catIndex];
   if (!category) return false;
   if (selectedPool.value === "all" && category.allCount > 0) return true;
-  if (selectedPool.value === "unused" && category.unusedCount1 > 0) return true;
+  if (selectedPool.value === "unused" && getCategoryCounter(category) > 0)
+    return true;
   return false;
 }
 function isAnyCategorySelected() {
@@ -217,15 +230,7 @@ function isAnyCategorySelected() {
     system.categories.some((category) => category.isChecked)
   );
 }
-function isEverySystemCategorySelected(sysIndex: number) {
-  const system = systemsCategories.value[sysIndex];
-  if (!system) return false;
-  const areAllChecked = system.categories.every(
-    (category) => category.isChecked
-  );
-  system.isChecked = areAllChecked;
-  return areAllChecked;
-}
+
 const canSelectCasesCount = () => isRoomMaster.value && isAnyCategorySelected();
 const canSelectContinueToGame = () =>
   isRoomMaster.value && isAnyCategorySelected();
@@ -239,7 +244,6 @@ gameSocket.onAny((event, ...args) => {
       case "pool":
         if (!data.pool) return;
         handlePoolSelected(data.pool, true);
-        console.log("Pool selected:", data.pool);
         break;
       case "questionsCount":
         if (!Number.isInteger(data.questionsCount)) return;
@@ -278,27 +282,23 @@ function handleCasesCountUpdated(questionsCount: number, isRemote?: boolean) {
 }
 
 function handleAccept() {
-  // sounds.navigation.play();
-  // sounds.match_found.pause();
-  // sounds.match_found.currentTime = 0;
+  sounds.navigation.play();
   $$game.players.user.flags.hasAccepted = true;
   gameSocket.emit("userAccepted");
   matchmaking.state = "waiting-approval";
 }
 
 function handleLeaveOrDecline(fromAction?: boolean) {
-  // if (fromAction) sounds.navigation.play();
-  // sounds.match_found.pause();
-  // sounds.match_found.currentTime = 0;
+  if (fromAction) sounds.navigation.play();
+
   matchmaking.state = "idle";
   $$game["~resetEverything"]();
   gameSocket.emit("userDeclined");
   console.log("Leaving or declining game");
 }
-// matchmaking.state = "idle";
 
 onUnmounted(() => {
-  handleLeaveOrDecline();
+  handleLeaveOrDecline(true);
 });
 </script>
 
@@ -427,7 +427,6 @@ onUnmounted(() => {
                     aria-role="select-entire-system"
                     :key="system.name"
                     :id="system.name"
-                    :checked="isEverySystemCategorySelected(sysIndex)"
                     class="cursor-pointer"
                     :disabled="!canSelectAddEntireSystem(sysIndex)"
                     @update:modelValue="
@@ -456,7 +455,7 @@ onUnmounted(() => {
                       {{ category.name }} ({{
                         selectedPool === "all"
                           ? category.allCount
-                          : category.unusedCount1
+                          : getCategoryCounter(category)
                       }})
                     </UiToggle>
                   </div>
