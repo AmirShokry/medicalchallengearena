@@ -56,12 +56,16 @@ const canInviteFriend = computed(
             class="h-fit !p-0 cursor-pointer hover:scale-125"
             variant="link"
           >
-            <SvgoPlayVsFriendCircle
-              v-disabled-click="!canInviteFriend"
-              @click="handleInviteFriend"
-              :filled="true"
-              class="text-8xl mb-6"
-            />
+            <UiDialog>
+              <UiDialogTrigger>
+                <SvgoPlayVsFriendCircle
+                  v-disabled-click="!canInviteFriend"
+                  @click="handleInviteFriend"
+                  :filled="true"
+                  class="text-8xl mb-6"
+                />
+              </UiDialogTrigger>
+            </UiDialog>
           </UiButton>
         </div>
         <UiButton
