@@ -44,8 +44,8 @@ export namespace ToClientIO {
           | "questionsCount"
           | "allSystems";
         pool?: "all" | "unused";
-        sysId?: number;
-        catId?: number;
+        sysIndex?: number;
+        catIndex?: number;
         questionsCount?: number;
       }) => void;
       opponentSentSelectionChat: (data: string) => void;
@@ -151,8 +151,8 @@ export namespace ToServerIO {
           | "questionsCount"
           | "allSystems";
         pool?: "all" | "unused";
-        sysId?: number;
-        catId?: number;
+        sysIndex?: number;
+        catIndex?: number;
         questionsCount?: number;
       }) => void;
       userSentSelectionChat: (data: string) => void;

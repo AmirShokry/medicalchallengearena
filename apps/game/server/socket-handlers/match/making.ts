@@ -118,17 +118,17 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
     opponentSocket.data.isMaster = false;
     io.to(opponentSocket.id).emit("opponentAccepted", {
       isMaster: true,
-      systemsCategories,
-      allCount,
-      matchingCount,
-      unusedCount: unusedCount2,
+      // systemsCategories,
+      // allCount,
+      // matchingCount,
+      // unusedCount: unusedCount2,
     });
     io.to(socket.id).emit("opponentAccepted", {
       isMaster: false,
-      systemsCategories,
-      allCount,
-      matchingCount,
-      unusedCount: unusedCount1,
+      // systemsCategories,
+      // allCount,
+      // matchingCount,
+      // unusedCount: unusedCount1,
     });
   });
 
@@ -233,6 +233,7 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
   socket.on("userJoinedWaitingRoom", () => socket.join("waiting"));
   socket.on("userSelected", (data) => {
     const opponentId = socket.data.opponentSocket!.id;
+    // console.log(`User selected: ${opponentId}`, data);
     socket.to(opponentId).emit("opponentSelected", data);
   });
   socket.on("userSentSelectionChat", (data) => {

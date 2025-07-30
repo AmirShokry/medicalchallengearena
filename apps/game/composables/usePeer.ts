@@ -80,7 +80,14 @@ function initPeer(usernameRef: Ref<string | undefined>) {
 
     try {
       peerInstance = new Peer(`medicalchallengearena-${username}`, {
-        secure: true,
+        config: {
+          iceServers: [
+            { urls: "stun:stun.l.google.com:19302" },
+            { urls: "stun:stun1.l.google.com:19302" },
+            { urls: "stun:stun2.l.google.com:19302" },
+            { urls: "stun:stun3.l.google.com:19302" },
+          ],
+        },
       });
     } catch (e) {
       console.error("Failed to create Peer instance:", e);

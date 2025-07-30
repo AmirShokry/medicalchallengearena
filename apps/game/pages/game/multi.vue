@@ -1,25 +1,100 @@
 <script setup lang="ts">
 import MatchFoundSplash from "~/components/splash/MatchFoundSplash.vue";
-import { UsersIcon } from "lucide-vue-next";
+import { UsersIcon, SearchIcon } from "lucide-vue-next";
 import { sounds } from "@/composables/audio.client";
 import { gameSocket } from "@/components/socket";
+import type { MatchingSystemCategories } from "@/shared/types/common";
+import type { ToClientIO } from "@/shared/types/socket";
+import Fuse from "fuse.js";
+const { $trpc } = useNuxtApp();
 definePageMeta({
   layout: "game",
 });
 const $$game = useGameStore();
-const { selectableData } = storeToRefs($$game);
-
-// Use computed to maintain reactivity
-const systemsCategories = computed(
-  () => selectableData.value.systemsCategories
-);
-const allCount = computed(() => selectableData.value.allCount);
-const unusedCount = computed(() => selectableData.value.unusedCount);
-const matchingCount = computed(() => selectableData.value.matchingCount);
-
 const { user } = storeToRefs(useUserStore());
+const user1Id = computed(() => $$game.players.user.info.id);
+const user2Id = computed(() => $$game.players.opponent.info.id);
+const searchQuery = ref("");
 
-// Watch for user changes and set it in game store when available
+const matchmaking = useMatchMakingStore();
+matchmaking.state = "idle";
+
+const data = ref([] as MatchingSystemCategories);
+const counters = ref(
+  [] as { allCount: number; unusedCount1: number; matchingCount: number }[]
+);
+
+const systemsCategoriesRaw = ref(
+  [] as Array<{
+    id: number;
+    name: string;
+    isChecked: boolean;
+    categories: Array<{
+      id: number;
+      name: string;
+      allCount: number;
+      unusedCount1: number;
+      isChecked: boolean;
+    }>;
+  }>
+);
+const systemsCategories = computed(() => {
+  if (!searchQuery.value.trim()) return systemsCategoriesRaw.value;
+  if (!fuse.value) return systemsCategoriesRaw.value;
+  return fuse.value.search(searchQuery.value).map((result) => result.item);
+});
+const fuse = computed(() => {
+  if (!systemsCategoriesRaw.value.length) return null;
+  return new Fuse(systemsCategoriesRaw.value, {
+    keys: ["name", "categories.name"],
+    threshold: 0.3,
+  });
+});
+
+watch(
+  data,
+  (newData) => {
+    if (!newData) {
+      systemsCategoriesRaw.value = [];
+      return;
+    }
+    systemsCategoriesRaw.value = newData.map((system) => {
+      return {
+        ...system,
+        isChecked: false,
+        categories: system.categories.map((category) => ({
+          ...category,
+          isChecked: false,
+        })),
+      };
+    });
+  },
+  { immediate: true }
+);
+
+watch(user2Id, async () => {
+  if (user2Id.value <= 0) return;
+  data.value = await $trpc.systems.matchingSystemCategories.query({
+    user1Id: user1Id.value,
+    user2Id: user2Id.value,
+  });
+
+  counters.value = await $trpc.cases.mactchingCount.query({
+    user1Id: user1Id.value,
+    user2Id: user2Id.value,
+  });
+});
+
+const selectedPool = ref<"all" | "unused">("all");
+const selectedCasesCount = ref(0);
+const possibleCasesCount = ref([] as number[]);
+
+const isRoomMaster = computed(() => $$game.players.user.flags.isMaster);
+
+const allCount = computed(() => counters.value?.[0]?.allCount);
+const unusedCount = computed(() => counters.value?.[0]?.unusedCount1 || 0);
+const matchingCount = computed(() => counters.value?.[0]?.matchingCount || 0);
+
 watch(
   user,
   () =>
@@ -27,90 +102,171 @@ watch(
   { immediate: true }
 );
 
-const matchmaking = useMatchMakingStore();
-
-matchmaking.state = "idle";
-
-const selectedPool = ref<"all" | "unused">("all");
-const selectedUnit = reactive(new Map([]) as Map<number, Set<number>>);
-const selectedCasesCount = ref(0);
-const possibleCasesCount = ref([] as number[]);
-
-const isRoomMaster = computed(() => $$game.players.user.flags.isMaster);
-
-const isSystemSelected = (sysId: number) => selectedUnit.has(sysId);
-const isCategoryChecked = (sysId: number, catId: number) =>
-  !!selectedUnit.get(sysId)?.has(catId);
-const isEverySystemCategorySelected = (sysId: number) =>
-  selectedUnit.get(sysId)?.size ===
-  systemsCategories.value.find((sys) => sys.id === sysId)?.categories.length;
-
-const isAnyCategorySelected = computed(() =>
-  [...selectedUnit.values()].some((v) => v.size)
-);
-const isSelectionMade = computed(
-  () => selectedUnit.size && isAnyCategorySelected.value
-);
-
-const canSelectQuestionPool = () => isRoomMaster.value;
-const canSelectSystems = (sysMatchCount: number) =>
-  isRoomMaster.value &&
-  (selectedPool.value === "unused" ? sysMatchCount > 0 : true);
-const canSelectAddEntireSystem = (sysId: number) =>
-  selectedUnit.has(sysId) && $$game.players.user.flags.isMaster;
-
-const canSelectCategory = (sysId: number, catMatchCount: number) =>
-  isRoomMaster.value &&
-  selectedUnit.has(sysId) &&
-  (selectedPool.value === "unused" ? catMatchCount > 0 : true);
-
-const canSelectCasesCount = () => isRoomMaster.value && isSelectionMade.value;
-const canSelectContinueToGame = () =>
-  isRoomMaster.value && isSelectionMade.value;
-
-function handleSystemSelected(sysId: number, isRemote?: boolean) {
-  if (!isRemote) gameSocket.emit("userSelected", { target: "system", sysId });
-  if (selectedUnit.has(sysId)) selectedUnit.delete(sysId);
-  else selectedUnit.set(sysId, new Set());
+function handlePoolSelected(value: "all" | "unused", isRemote?: boolean) {
+  if (!isRemote)
+    gameSocket
+      .timeout(10000)
+      .emit("userSelected", { target: "pool", pool: value });
+  selectedPool.value = value;
+  resetCasesCounters();
+  systemsCategories.value.forEach((system) =>
+    system.categories.forEach((category) => (category.isChecked = false))
+  );
 }
-function handleCategorySelected(
-  sysId: number,
-  catId: number,
+function handleToggleEntireSystemCategories(
+  sysIndex: number,
   isRemote?: boolean
 ) {
   if (!isRemote)
-    gameSocket.emit("userSelected", { target: "category", sysId, catId });
-
-  const selectedSystem = selectedUnit.get(sysId);
-  if (!selectedSystem) return selectedUnit.set(sysId, new Set([catId]));
-
-  if (selectedSystem.has(catId)) selectedSystem.delete(catId);
-  else selectedSystem.add(catId);
+    gameSocket.emit("userSelected", { target: "allSystems", sysIndex });
+  const system = systemsCategories.value[sysIndex];
+  if (!system) return;
+  system.isChecked = !system.isChecked;
+  system.categories.forEach((_, catIndex) => {
+    if (isRemote || canSelectCategory(sysIndex, catIndex)) {
+      const category = system.categories[catIndex];
+      if (!category) return;
+      category.isChecked = system.isChecked;
+      if (category.isChecked)
+        updateCasesCounters(
+          selectedPool.value === "all"
+            ? category.allCount
+            : category.unusedCount1
+        );
+      else
+        updateCasesCounters(
+          selectedPool.value === "all"
+            ? -category.allCount
+            : -category.unusedCount1
+        );
+    }
+  });
 }
 
-function handlePoolSelected(pool: "all" | "unused", isRemote?: boolean) {
+function handleToggleCategory(
+  sysIndex: number,
+  catIndex: number,
+  isRemote?: boolean
+) {
   if (!isRemote)
-    gameSocket.timeout(10000).emit("userSelected", { target: "pool", pool });
-  selectedPool.value = pool;
-  resetCasesCounters();
-  for (let key of selectedUnit.keys()) selectedUnit.delete(key);
-}
-function handleSystemGroupSelected(sysId: number, isRemote?: boolean) {
-  if (!isRemote)
-    gameSocket.emit("userSelected", { target: "allSystems", sysId });
-  if (isEverySystemCategorySelected(sysId))
-    return selectedUnit.get(sysId)?.clear();
+    gameSocket.emit("userSelected", { target: "category", sysIndex, catIndex });
 
-  selectedUnit.set(
-    sysId,
-    new Set(
-      systemsCategories.value
-        .find((sys) => sys.id === sysId)
-        ?.categories.map((cat) => cat.id)
-    )
+  const system = systemsCategories.value[sysIndex];
+  if (!system) return;
+  const category = system.categories[catIndex];
+  if (!category) return;
+  category.isChecked = !category.isChecked;
+  if (category.isChecked)
+    updateCasesCounters(
+      selectedPool.value === "all" ? category.allCount : category.unusedCount1
+    );
+  else
+    updateCasesCounters(
+      selectedPool.value === "all" ? -category.allCount : -category.unusedCount1
+    );
+}
+function handleContinueToGame() {
+  const selections = {
+    pool: selectedPool.value,
+    casesCount: selectedCasesCount.value,
+    selectedCatIds: systemsCategories.value.flatMap((system) => {
+      return system.categories
+        .filter((category) => category.isChecked)
+        .map((category) => category.id);
+    }),
+  };
+
+  $$game.flags.ingame.isGameStarted = true;
+  gameSocket.emit("userStartedGame", selections);
+  sounds.user_vs_opponent.play();
+}
+
+function updateCasesCounters(amount: number) {
+  selectedCasesCount.value += amount;
+  possibleCasesCount.value = [];
+  for (let i = selectedCasesCount.value; i > 0; i = Math.floor(i / 2))
+    possibleCasesCount.value.push(i);
+}
+function resetCasesCounters() {
+  selectedCasesCount.value = 0;
+  possibleCasesCount.value = [];
+}
+
+function canSelectAddEntireSystem(sysIndex: number) {
+  if (!isRoomMaster.value) return false;
+  const system = systemsCategories.value[sysIndex];
+  if (!system) return false;
+  //Check if there is at least one category that can be selected
+  return system.categories.some((_, catIndex) =>
+    canSelectCategory(sysIndex, catIndex)
   );
 }
+const canSelectQuestionPool = () => isRoomMaster.value;
+function canSelectCategory(sysIndex: number, catIndex: number) {
+  if (!isRoomMaster.value) return false;
+  const system = systemsCategories.value[sysIndex];
+  if (!system) return false;
+  const category = system.categories[catIndex];
+  if (!category) return false;
+  if (selectedPool.value === "all" && category.allCount > 0) return true;
+  if (selectedPool.value === "unused" && category.unusedCount1 > 0) return true;
+  return false;
+}
+function isAnyCategorySelected() {
+  return systemsCategories.value.some((system) =>
+    system.categories.some((category) => category.isChecked)
+  );
+}
+function isEverySystemCategorySelected(sysIndex: number) {
+  const system = systemsCategories.value[sysIndex];
+  if (!system) return false;
+  const areAllChecked = system.categories.every(
+    (category) => category.isChecked
+  );
+  system.isChecked = areAllChecked;
+  return areAllChecked;
+}
+const canSelectCasesCount = () => isRoomMaster.value && isAnyCategorySelected();
+const canSelectContinueToGame = () =>
+  isRoomMaster.value && isAnyCategorySelected();
 
+gameSocket.onAny((event, ...args) => {
+  if (event === "opponentSelected") {
+    const data = args[0] as Parameters<
+      ToClientIO.Game.Events["opponentSelected"]
+    >[0];
+    switch (data.target) {
+      case "pool":
+        if (!data.pool) return;
+        handlePoolSelected(data.pool, true);
+        console.log("Pool selected:", data.pool);
+        break;
+      case "questionsCount":
+        if (!Number.isInteger(data.questionsCount)) return;
+        handleCasesCountUpdated(data.questionsCount!, true);
+        break;
+      case "category":
+        if (
+          !(Number.isInteger(data.sysIndex) && Number.isInteger(data.catIndex))
+        )
+          return;
+        handleToggleCategory(data.sysIndex!, data.catIndex!, true);
+        break;
+      case "allSystems":
+        if (!Number.isInteger(data.sysIndex)) return;
+        handleToggleEntireSystemCategories(data.sysIndex!, true);
+        break;
+    }
+  }
+});
+
+const canShowSplash = computed(
+  () =>
+    (matchmaking.state === "reviewing-invitation" ||
+      matchmaking.state === "waiting-approval") &&
+    !$$game.players.opponent.flags.hasDeclined &&
+    !$$game.players.opponent.flags.hasLeft
+);
 function handleCasesCountUpdated(questionsCount: number, isRemote?: boolean) {
   if (!isRemote)
     gameSocket.emit("userSelected", {
@@ -120,75 +276,6 @@ function handleCasesCountUpdated(questionsCount: number, isRemote?: boolean) {
 
   selectedCasesCount.value = questionsCount;
 }
-
-function handleContinueToGame() {
-  const selections = {
-    pool: selectedPool.value,
-    casesCount: selectedCasesCount.value,
-    selectedCatIds: [...selectedUnit.values()].flatMap((catIds) => [...catIds]),
-  };
-
-  $$game.flags.ingame.isGameStarted = true;
-  gameSocket.emit("userStartedGame", selections);
-  sounds.user_vs_opponent.play();
-}
-
-// Defining event listners in here causes the event to be missed if the user clicked too fast before the other user is present.
-gameSocket.on("opponentSelected", (data) => {
-  switch (data.target) {
-    case "pool":
-      if (!data.pool) return;
-      handlePoolSelected(data.pool, true);
-      break;
-    case "questionsCount":
-      if (!Number.isInteger(data.questionsCount)) return;
-      handleCasesCountUpdated(data.questionsCount!, true);
-      break;
-    case "system":
-      if (!Number.isInteger(data.sysId)) return;
-      handleSystemSelected(data.sysId!, true);
-      break;
-    case "category":
-      if (!(Number.isInteger(data.sysId) && Number.isInteger(data.catId)))
-        return;
-      handleCategorySelected(data.sysId!, data.catId!, true);
-      break;
-    case "allSystems":
-      if (!(Number.isInteger(data.sysId) && data.sysId)) return;
-      handleSystemGroupSelected(data.sysId, true);
-      break;
-  }
-});
-
-watch(selectedUnit, function updateCasesCounters() {
-  resetCasesCounters();
-
-  for (const selectedCatIds of selectedUnit.values()) {
-    systemsCategories.value.forEach((system) => {
-      system.categories.forEach((cat) => {
-        if (selectedCatIds.has(cat.id))
-          selectedCasesCount.value +=
-            selectedPool.value === "all" ? cat.allCount : cat.matchCount;
-      });
-    });
-  }
-
-  for (let i = selectedCasesCount.value; i > 0; i = Math.floor(i / 2))
-    possibleCasesCount.value.push(i);
-});
-
-function resetCasesCounters() {
-  selectedCasesCount.value = 0;
-  possibleCasesCount.value = [];
-}
-
-const canShowSplash = computed(
-  () =>
-    (matchmaking.state === "reviewing-invitation" ||
-      matchmaking.state === "waiting-approval") &&
-    !$$game.players.opponent.flags.hasDeclined &&
-    !$$game.players.opponent.flags.hasLeft
-);
 
 function handleAccept() {
   // sounds.navigation.play();
@@ -208,9 +295,8 @@ function handleLeaveOrDecline(fromAction?: boolean) {
   gameSocket.emit("userDeclined");
   console.log("Leaving or declining game");
 }
-matchmaking.state = "idle";
+// matchmaking.state = "idle";
 
-// Handle component unmounting
 onUnmounted(() => {
   handleLeaveOrDecline();
 });
@@ -240,8 +326,8 @@ onUnmounted(() => {
     v-if="matchmaking.state === 'selecting-block'"
     class="flex flex-col justify-center items-center w-full py-30"
   >
-    <div class="wrapper w-3/4 flex flex-col h-full">
-      <header class="flex flex-col items-center">
+    <div class="w-8/10 flex flex-col h-full">
+      <section class="player-vs-opponent-wrapper flex flex-col items-center">
         <p v-if="!isRoomMaster" class="animate-pulse text-xs py-4">
           Opponent is selecting..
         </p>
@@ -257,18 +343,8 @@ onUnmounted(() => {
               {{ $$game.players.user.info.username }}
             </p>
           </div>
-          <SvgoVersus></SvgoVersus>
-          <!-- <i-svg
-						v-if="$$game.mode !== 'single'"
-						src="./versus.svg"
-						width="56"
-						height="62"
-						class="flex-shrink ml-1" /> -->
-
-          <div
-            v-if="$$game.mode !== 'single'"
-            class="flex flex-col gap-2 items-center justify-center"
-          >
+          <SvgoVersus />
+          <div class="flex flex-col gap-2 items-center justify-center">
             <img
               alt="opponent-logo"
               :src="$$game.players.opponent.info.avatarUrl!"
@@ -280,126 +356,125 @@ onUnmounted(() => {
             </p>
           </div>
         </div>
-      </header>
+      </section>
+      <UiSeparator orientation="horizontal" class="my-7" />
 
-      <main class="settings flex flex-col py-4 h-full">
-        <section class="pool flex gap-4 items-center justify-center py-6">
-          <span class="text-xs truncate">Cases Pool</span>
-          <div class="flex gap-4" v-disabled-click="!canSelectQuestionPool()">
-            <UiRadioGroup
-              default-value="all"
-              v-model="selectedPool"
-              @update:model-value="
-                (value: string) => handlePoolSelected(value as 'all' | 'unused')
-              "
-            >
-              <div class="flex items-center space-x-2">
-                <UiRadioGroupItem id="all" value="all" />
-                <UiLabel for="all">All ({{ allCount }})</UiLabel>
-              </div>
-              <div class="flex items-center space-x-2">
-                <UiRadioGroupItem id="unused" value="unused" />
-                <UiLabel for="unused">Unused ({{ unusedCount }})</UiLabel>
-              </div>
-            </UiRadioGroup>
-          </div>
-
-          <div
-            v-if="selectedPool === 'unused'"
-            class="flex items-center gap-2 justify-center text-sm"
-          >
-            <span>Matching Cases: </span>
-            <span class="bg-neutral-400 text-black rounded-md px-2 truncate">
-              {{ matchingCount }}
-            </span>
-          </div>
-        </section>
-        <section
-          class="flex gap-4 overflow-x-auto overflow-y-hidden thin-scrollbar"
-        >
-          <UiToggle
-            class="flex-shrink-0 not-checked:bg-muted/50 not-checked:text-ring"
-            v-for="system in systemsCategories"
-            :title="system.name"
-            @click="handleSystemSelected(system.id)"
-            :pressed="isSystemSelected(system.id)"
-            v-disabled-click="!canSelectSystems(system.matchCount)"
-            :key="`${system.id}-${selectedPool}`"
-          >
-            {{ system.name }}
-          </UiToggle>
-        </section>
-        <section class="categories">
-          <header class="text-base font-semibold pt-4 pb-4">
-            Categories Selected
-          </header>
-          <div
-            class="categories-wrapper h-[30dvh] overflow-y-auto thin-scrollbar snap-y snap-mandatory"
-          >
-            <div
-              v-for="system in systemsCategories"
-              class="border-b border-b-[rgba(255,255,255,0.1)] snap-end"
-            >
-              <div class="flex items-center gap-2 mb-2">
-                <UiLabel :for="system.name">
-                  {{ system.name }}
-                </UiLabel>
-
-                <UiCheckbox
-                  :id="system.name"
-                  v-disabled-click="!canSelectAddEntireSystem(system.id)"
-                  @update:modelValue="handleSystemGroupSelected(system.id)"
-                  :modelValue="isEverySystemCategorySelected(system.id)"
+      <div class="grid gap-6 h-[50vh] min-h-0">
+        <div class="flex flex-col min-h-0 mb-10">
+          <section class="categories flex flex-col flex-1 min-h-0">
+            <div class="my-4 flex items-center gap-4 flex-wrap">
+              <strong>Categories</strong>
+              <div class="relative w-1/3 max-md:flex-1">
+                <UiInput
+                  id="search"
+                  type="text"
+                  class="pr-10 h-8 !text-xs"
+                  v-model="searchQuery"
+                  placeholder="Search for systems or categories..."
                 />
-              </div>
-              <div class="flex flex-wrap gap-1 overflow-auto">
-                <div
-                  class="flex items-center gap-2"
-                  v-disabled-click="
-                    !canSelectCategory(system.id, category.matchCount)
-                  "
-                  v-for="category in system.categories"
+                <span
+                  class="absolute end-0 inset-y-0 flex items-center justify-center px-2"
                 >
-                  <UiCheckbox
-                    :id="system.name"
-                    v-disabled-click="!canSelectAddEntireSystem(system.id)"
-                    @update:modelValue="
-                      handleCategorySelected(system.id, category.id)
-                    "
-                    :key="category.id"
-                    :modelValue="isCategoryChecked(system.id, category.id)"
-                  />
-                  <span class="text-xs"
-                    >{{ category.name }} ({{
-                      selectedPool === "all"
-                        ? category.allCount
-                        : category.matchCount
-                    }})</span
-                  >
-                </div>
+                  <SearchIcon class="size-4 text-muted-foreground" />
+                </span>
+              </div>
+              <div class="max-md:ml-0 ml-auto">
+                <UiRadioGroup
+                  aria-role="select-question-pool"
+                  v-disabled-click="!canSelectQuestionPool()"
+                  default-value="all"
+                  v-model="selectedPool"
+                  @update:model-value="
+                    (value: string) =>
+                      handlePoolSelected(value as 'all' | 'unused')
+                  "
+                >
+                  <div class="flex gap-2">
+                    <span class="text-sm truncate">Pool</span>
+                    <div class="flex items-center space-x-2">
+                      <UiRadioGroupItem
+                        class="cursor-pointer"
+                        id="all"
+                        value="all"
+                      />
+                      <UiLabel for="all">All ({{ allCount }})</UiLabel>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                      <UiRadioGroupItem
+                        class="cursor-pointer"
+                        id="unused"
+                        value="unused"
+                      />
+                      <UiLabel for="unused">Unused ({{ unusedCount }})</UiLabel>
+                    </div>
+                  </div>
+                </UiRadioGroup>
               </div>
             </div>
-          </div>
-        </section>
-      </main>
-      <footer class="flex justify-between items-center gap-5">
+            <div
+              class="categories-wrapper flex-1 overflow-y-auto thin-scrollbar snap-y snap-mandatory"
+            >
+              <div
+                v-for="(system, sysIndex) in systemsCategories"
+                class="snap-end mb-4"
+              >
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="text-sm" :for="system.name">
+                    {{ system.name }}
+                  </span>
+
+                  <UiCheckbox
+                    aria-role="select-entire-system"
+                    :key="system.name"
+                    :id="system.name"
+                    :checked="isEverySystemCategorySelected(sysIndex)"
+                    class="cursor-pointer"
+                    :disabled="!canSelectAddEntireSystem(sysIndex)"
+                    @update:modelValue="
+                      handleToggleEntireSystemCategories(sysIndex)
+                    "
+                    v-model="system.isChecked"
+                  />
+                </div>
+                <div class="flex flex-wrap gap-1 overflow-auto">
+                  <div
+                    class="flex items-center gap-2"
+                    v-for="(category, catIndex) in system.categories"
+                  >
+                    <UiToggle
+                      aria-role="select-category"
+                      variant="outline"
+                      :id="system.name"
+                      class="cursor-pointer text-xs dark:data-[state=on]:bg-teal-700 data-[state=on]:bg-teal-400"
+                      :disabled="!canSelectCategory(sysIndex, catIndex)"
+                      @update:modelValue="
+                        handleToggleCategory(sysIndex, catIndex)
+                      "
+                      :key="category.id"
+                      v-model="category.isChecked"
+                    >
+                      {{ category.name }} ({{
+                        selectedPool === "all"
+                          ? category.allCount
+                          : category.unusedCount1
+                      }})
+                    </UiToggle>
+                  </div>
+                </div>
+                <UiSeparator orientation="horizontal" class="my-3" />
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <div class="flex items-center px-4 justify-end gap-4">
         <div
           v-disabled-click="!canSelectCasesCount()"
           class="flex items-center gap-2"
         >
-          <span class="text-sm">Cases</span>
-          <UiSelect
-            v-model="selectedCasesCount"
-            @update:model-value="
-              (value: any) => {
-                if (typeof value === 'number') {
-                  handleCasesCountUpdated(value);
-                }
-              }
-            "
-          >
-            <UiSelectTrigger class="w-[180px]">
-              <UiSelectValue placeholder="Select Cases Count" />
+          <UiSelect v-model="selectedCasesCount">
+            <UiSelectTrigger>
+              <UiSelectValue placeholder="Cases #" />
             </UiSelectTrigger>
             <UiSelectContent>
               <UiSelectGroup>
@@ -418,11 +493,11 @@ onUnmounted(() => {
         <UiButton
           :disabled="!canSelectContinueToGame()"
           @click="handleContinueToGame"
-          class="w-44 text-sm min-w-20"
+          class="text-sm"
         >
           Start
         </UiButton>
-      </footer>
+      </div>
     </div>
   </div>
 </template>

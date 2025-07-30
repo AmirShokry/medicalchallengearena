@@ -59,9 +59,9 @@ function setupSocketListeners() {
   });
 
   gameSocket.on("opponentAccepted", (data) => {
-    const { isMaster, ...selectableData } = data;
+    const { isMaster } = data;
     $$game.players.user.flags.isMaster = isMaster;
-    $$game.selectableData["~set"](selectableData);
+    // $$game.selectableData["~set"](selectableData);
     matchmaking.state = "selecting-block";
     $$game.flags.matchmaking.isSelectingUnits = true;
     // $router.push({ name: "exam-" });
@@ -150,6 +150,10 @@ function setupSocketListeners() {
     }
   });
 }
+
+gameSocket.on("opponentSelected", (data) => {
+  console.log("Opponent selected:", data);
+});
 
 onBeforeUnmount(() => {
   gameSocket.off("connect", onConnect);
