@@ -12,7 +12,7 @@ import {
 	TableRow,
 } from "@/components/ui/table";
 const { $trpc } = useNuxtApp();
-const { data: ranks, pending } = $trpc.common.ranks.useQuery();
+const { data: ranks, pending } = $trpc.common.ranks.useQuery({ limit: 10 });
 </script>
 <template>
 	<div class="min-h-svh px-[min(15svw,6rem)] flex flex-col items-center">

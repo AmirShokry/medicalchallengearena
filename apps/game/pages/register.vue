@@ -5,13 +5,10 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 
 import { cn } from "@/lib/utils";
-
-const shouldShow = defineModel("show", { type: Boolean, required: true });
-const visibleComponent = defineModel("component", {
-	type: String,
-	required: true,
+definePageMeta({
+	layout: "blank",
+	middleware: "protected",
 });
-
 const form = ref(getInitialFormData());
 
 function getInitialFormData() {
@@ -24,80 +21,121 @@ function getInitialFormData() {
 	};
 }
 const router = useRouter();
-const { $trpc } = useNuxtApp();
+const { signIn } = useAuth();
+
+const isLoading = ref(false);
+const errorMessage = ref("");
+
 const handleRegister = async () => {
 	try {
 		if (!canRegister.value) return;
-		// const user = await $trpc.auth.register.mutate({
-		// 	accessCode: form.value.accessCode,
-		// 	email: form.value.email,
-		// 	password: form.value.password,
-		// 	username: form.value.username,
-		// 	university: form.value.university,
-		// });
 
-		// $$user.saveCredentials(user);
-		// $$user.friendList = await $trpc.friends.list.query();
+		isLoading.value = true;
+		errorMessage.value = "";
+
+		// Call the registration mutation
+		const { $trpc } = useNuxtApp();
+		const newUser = await $trpc.auth.register.mutate({
+			accessCode: form.value.accessCode,
+			email: form.value.email,
+			password: form.value.password,
+			username: form.value.username,
+			university: form.value.university,
+		});
+
+		// Auto-sign in the user after successful registration
+		const result = await signIn("credentials", {
+			usernameOrEmail: form.value.email,
+			password: form.value.password,
+			redirect: false,
+		});
+
+		if (result?.error) {
+			throw new Error(
+				"Registration successful, but auto-login failed. Please login manually."
+			);
+		}
+
 		resetForm();
-		shouldShow.value = false;
-		router.push({ name: "lobby" });
+		await router.push({ name: "game-lobby" });
 	} catch (error: any) {
-		alert(error.data.message || "Registration failed. Please try again.");
+		console.error("Registration error:", error);
+		errorMessage.value =
+			error.data?.message ||
+			error.message ||
+			"Registration failed. Please try again.";
+	} finally {
+		isLoading.value = false;
 	}
 };
 
-const resetForm = () => (form.value = getInitialFormData());
+const resetForm = () => {
+	form.value = getInitialFormData();
+	errorMessage.value = "";
+};
+
 const canRegister = computed(
 	() =>
 		form.value.username &&
 		form.value.email &&
 		form.value.password &&
 		form.value.accessCode &&
-		form.value.university
+		form.value.university &&
+		!isLoading.value
 );
+
+// Email validation
+const isValidEmail = computed(() => {
+	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	return !form.value.email || emailRegex.test(form.value.email);
+});
+
+// Password strength
+const isStrongPassword = computed(() => {
+	return !form.value.password || form.value.password.length >= 6;
+});
 </script>
 <template>
 	<div
-		class="tw:bg-muted tw:flex tw:min-h-svh tw:flex-col tw:items-center tw:justify-center tw:p-6 tw:md:p-10">
-		<div
-			class="tw:w-full tw:max-w-sm tw:md:max-w-3xl tw:p-10 tw:rounded-sm tw:bg-background">
-			<div :class="cn('tw:flex tw:flex-col tw:gap-6')">
-				<Card class="tw:overflow-hidden tw:p-0">
-					<CardContent class="tw:grid tw:p-0 tw:md:grid-cols-2">
+		class="bg-muted flex min-h-svh flex-col items-center justify-center p-6 md:p-10">
+		<div class="w-full max-w-sm md:max-w-3xl p-10 rounded-sm bg-background">
+			<div :class="cn('flex flex-col gap-6')">
+				<Card class="overflow-hidden p-0">
+					<CardContent class="grid p-0 md:grid-cols-2">
 						<form
 							id="register"
-							class="tw:p-6 tw:md:p-8"
+							class="p-6 md:p-8"
 							@submit.prevent="handleRegister">
-							<div class="tw:flex tw:flex-col tw:gap-6">
+							<div class="flex flex-col gap-6">
 								<div
-									class="tw:flex tw:flex-col tw:items-center tw:text-center">
-									<h1 class="tw:text-2xl tw:font-bold">
-										Welcome!
-									</h1>
+									class="flex flex-col items-center text-center">
+									<h1 class="text-2xl font-bold">Welcome!</h1>
 									<p
-										class="tw:text-muted-foreground tw:text-balance">
+										class="text-muted-foreground text-balance">
 										Create a new MCA Account
 									</p>
 								</div>
-								<div class="tw:grid tw:gap-3">
+								<div class="grid gap-3">
 									<Label for="usernameOrEmail">Email</Label>
 									<Input
 										v-model="form.email"
 										form="register"
 										id="email"
+										autocomplete="email"
 										placeholder="m@example.com"
 										required />
 								</div>
-								<div class="tw:grid tw:gap-3">
+								<div class="grid gap-3">
 									<Label for="username">Username </Label>
 									<Input
 										v-model="form.username"
 										form="register"
+										autocomplete="username"
 										id="username"
 										type="input"
 										required />
 								</div>
-								<div class="tw:grid tw:gap-3">
+								<div class="grid gap-3">
 									<Label for="university">University </Label>
 									<Input
 										v-model="form.university"
@@ -106,16 +144,17 @@ const canRegister = computed(
 										type="input"
 										required />
 								</div>
-								<div class="tw:grid tw:gap-3">
-									<Label for="username">Password </Label>
+								<div class="grid gap-3">
+									<Label for="password">Password </Label>
 									<Input
 										v-model="form.password"
+										autocomplete="new-password"
 										id="password"
 										form="register"
 										type="password"
 										required />
 								</div>
-								<div class="tw:grid tw:gap-3">
+								<div class="grid gap-3">
 									<Label for="username">Access Code </Label>
 									<Input
 										v-model="form.accessCode"
@@ -124,40 +163,47 @@ const canRegister = computed(
 										type="input"
 										required />
 								</div>
+
+								<!-- Error message -->
+								<div
+									v-if="errorMessage"
+									class="text-red-500 text-sm text-center">
+									{{ errorMessage }}
+								</div>
+
 								<Button
 									form="register"
 									type="submit"
-									class="tw:w-full"
+									class="w-full"
+									:disabled="!canRegister || isLoading"
 									:class="
-										!canRegister
-											? 'tw:opacity-50'
+										!canRegister || isLoading
+											? 'opacity-50'
 											: undefined
 									">
-									Register
+									<span v-if="isLoading">Registering...</span>
+									<span v-else>Register</span>
 								</Button>
-								<div
-									class="tw:grid tw:grid-cols-3 tw:gap-4"></div>
-								<div class="tw:text-center tw:text-sm">
+								<div class="grid grid-cols-3 gap-4"></div>
+								<div class="text-center text-sm">
 									Already have an account?
 									<a
 										href="/login"
-										class="tw:underline tw:underline-offset-4">
+										class="underline underline-offset-4">
 										Login
 									</a>
 								</div>
 							</div>
 						</form>
-						<div
-							class="tw:bg-muted tw:relative tw:hidden tw:md:block">
+						<div class="bg-muted relative hidden md:block">
 							<img
-								src="@client/assets/img/gray.webp"
 								alt="Image"
-								class="tw:absolute tw:inset-0 tw:h-full tw:w-full tw:object-cover tw:object-[center_-0.2rem] tw:dark:grayscale" />
+								class="absolute inset-0 h-full w-full object-cover object-[center_-0.2rem] dark:grayscale" />
 						</div>
 					</CardContent>
 				</Card>
 				<div
-					class="tw:text-muted-foreground tw:*:[a]:hover:text-primary tw:text-center tw:text-xs tw:text-balance tw:*:[a]:underline tw:*:[a]:underline-offset-4">
+					class="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
 					By clicking continue, you agree to our
 					<a href="https://medicalchallengearena.com/terms"
 						>Terms of Service</a
