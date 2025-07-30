@@ -1,4 +1,7 @@
 <script setup lang="ts">
+definePageMeta({
+  layout: "home",
+});
 useSeoMeta({
 	title: "MCA | Privacy Policy",
 	description: "Learn how we handle your personal data and privacy.",

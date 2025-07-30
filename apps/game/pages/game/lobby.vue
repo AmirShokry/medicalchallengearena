@@ -18,7 +18,7 @@ import { SidebarTrigger } from "@/components/ui/sidebar";
 import { UsersIcon } from "lucide-vue-next";
 import { Separator } from "@/components/ui/separator";
 definePageMeta({
-  layout: "game",
+  layout: "lobby",
 });
 
 const audio = useAudioStore();

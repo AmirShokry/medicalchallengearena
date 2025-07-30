@@ -1,4 +1,7 @@
 <script setup lang="ts">
+definePageMeta({
+  layout: "home",
+});
 useSeoMeta({
 	title: "MCA | Terms of Service",
 	description: "Read the terms and conditions for using the MCA platform.",

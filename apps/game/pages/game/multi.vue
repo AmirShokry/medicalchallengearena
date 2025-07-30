@@ -8,7 +8,7 @@ import Fuse from "fuse.js";
 const { $trpc } = useNuxtApp();
 const audio = useAudioStore();
 definePageMeta({
-  layout: "game",
+  layout: "lobby",
 });
 const $$game = useGameStore();
 const { user } = storeToRefs(useUserStore());

@@ -1,4 +1,7 @@
 <script setup lang="ts">
+definePageMeta({
+  layout: "home",
+});
 useSeoMeta({
 	title: "MCA | Ranks",
 	description: "View the top users and their medpoints in our ranks.",

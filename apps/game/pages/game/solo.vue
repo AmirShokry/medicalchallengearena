@@ -3,7 +3,7 @@ import { SearchIcon } from "lucide-vue-next";
 import { UsersIcon } from "lucide-vue-next";
 import Fuse from "fuse.js";
 definePageMeta({
-  layout: "game",
+  layout: "lobby",
 });
 const audio = useAudioStore();
 const { user } = storeToRefs(useUserStore());
