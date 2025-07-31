@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import logo_grey_static from "@/assets/images/logo-grey-static.webp";
 const audio = useAudioStore();
-// sounds.match_found.loop = true;
-// const soundPromise = sounds.match_found.play();
 audio.match_found.play();
 const emit = defineEmits(["accept", "decline"]);
 const visibleInnerCirclePathIndex = ref(1);
