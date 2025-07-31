@@ -298,7 +298,7 @@ function handleLeaveOrDecline(fromAction?: boolean) {
 }
 
 onUnmounted(() => {
-  handleLeaveOrDecline(true);
+  if (!$$game.flags.ingame.isGameStarted) handleLeaveOrDecline(true);
 });
 </script>
 

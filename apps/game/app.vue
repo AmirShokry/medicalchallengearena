@@ -10,12 +10,12 @@ useColorMode({
 const { status } = useAuth();
 </script>
 <template>
+  <ClientOnly>
+    <Toaster />
+    <Connection v-if="status !== 'unauthenticated'" />
+    <Peer v-if="status !== 'unauthenticated'" />
+  </ClientOnly>
   <NuxtLayout>
-    <ClientOnly>
-      <Toaster />
-      <Connection v-if="status !== 'loading'" />
-      <Peer v-if="status === 'authenticated'" />
-    </ClientOnly>
     <NuxtPage />
   </NuxtLayout>
 </template>

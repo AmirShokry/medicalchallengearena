@@ -209,18 +209,18 @@ function handleIsSearching() {
               <div
                 class="w-2 h-2 rounded-full"
                 :class="{
-                  'bg-green-500': friend.status === 'online',
-                  'bg-gray-400': friend.status === 'offline',
-                  'bg-red-500': friend.status === 'busy',
+                  'bg-success': friend.status === 'online',
+                  'bg-ring': friend.status === 'offline',
+                  'bg-destructive': friend.status === 'busy',
                 }"
               ></div>
             </div>
             <p
               class="text-xs"
               :class="{
-                online: friend.status === 'online',
-                offline: friend.status === 'offline',
-                busy: friend.status === 'busy',
+                'text-success': friend.status === 'online',
+                'text-ring': friend.status === 'offline',
+                'text-destructive': friend.status === 'busy',
               }"
             >
               {{ friend.status }}
@@ -251,16 +251,3 @@ function handleIsSearching() {
     </SidebarFooter>
   </Sidebar>
 </template>
-
-<style scoped>
-.online {
-  color: #22c55e; /* green-500 */
-}
-
-.offline {
-  color: #6b7280; /* gray-500 */
-}
-.busy {
-  color: #ef4444; /* red-500 */
-}
-</style>

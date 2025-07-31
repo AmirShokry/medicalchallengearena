@@ -110,7 +110,7 @@ function setupSocketListeners() {
     $$game.data.cases = data.cases;
     $$game.flags.ingame.isGameStarted = true;
     $$game.gameId = data.gameId;
-    $router.push({ name: "game-exam" });
+    $router.push({ name: "game-exam-multi" });
   });
 
   // Handle authentication errors by disconnecting
