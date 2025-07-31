@@ -26,5 +26,10 @@ declare module "next-auth/jwt" {
 }
 export type MatchingSystemCategories =
   inferRouterOutputs<AppRouter>["systems"]["matchingSystemCategories"];
+
 export type Cases =
   inferRouterOutputs<AppRouter>["block"]["allBlockByCategoriesIds"];
+
+export type FriendRequests = NonNullable<
+  inferRouterOutputs<AppRouter>["friends"]["requests"]["all"]
+>;

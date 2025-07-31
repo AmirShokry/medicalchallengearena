@@ -10,6 +10,7 @@ interface OpponentConnection {
   retryCount: number;
   heartbeatInterval?: ReturnType<typeof setInterval>;
   timeoutId?: ReturnType<typeof setTimeout>;
+  intentionallyClosed?: boolean;
 }
 
 // Global state
@@ -441,6 +442,14 @@ function handleDisconnection(username: string) {
     friendStatusCallback(username, "offline");
   }
 
+  // Don't schedule retries if the connection was intentionally closed
+  if (opponentPeer.intentionallyClosed) {
+    console.log(`Connection with ${username} was intentionally closed, not retrying`);
+    // Remove from connections map since it was intentionally closed
+    connections.delete(username);
+    return;
+  }
+
   if (opponentPeer.retryCount < MAX_RETRY_ATTEMPTS) {
     opponentPeer.retryCount++;
     console.log(
@@ -533,57 +542,33 @@ function getStatus(
   return "offline";
 }
 
+function closeConnection(username: string) {
+  const conn = connections.get(username);
+  if (!conn) return;
+
+  // Mark as intentionally closed to prevent retries
+  conn.intentionallyClosed = true;
+
+  // Close the connection if it exists - this will trigger handleDisconnection
+  if (conn.connection) {
+    try {
+      conn.connection.close();
+    } catch (e) {
+      console.warn("Error closing connection with rival:", username, e);
+    }
+  } else {
+    // If no connection exists, manually call handleDisconnection to clean up
+    handleDisconnection(username);
+  }
+
+  console.log("Closed connection with", username);
+}
 function onMessage(callback: (from: string, message: any) => void) {
   messageCallback = callback;
 }
 
 function onRivalMessage(callback: (from: string, message: any) => void) {
   rivalMessageCallback = callback;
-}
-
-function clearStatus() {
-  if (!peerInstance) {
-    console.warn("Cannot clear status: Peer instance does not exist.");
-    // If there's no peer instance, the natural state is definitely offline
-    if (myStatus !== "offline") {
-      myStatus = "offline";
-      console.log(`Cleared status to offline (no peer instance)`);
-      // Note: No peers to notify in this case
-    }
-    return;
-  }
-
-  // Determine the natural status based on peer readiness
-  const naturalStatus: "online" | "offline" = isPeerReady.value
-    ? "online"
-    : "offline";
-
-  // Only proceed if the current status is different from the natural one
-  if (myStatus !== naturalStatus) {
-    myStatus = naturalStatus;
-    console.log(`Cleared status to ${naturalStatus}`);
-
-    // Notify all connected peers of the status change
-    connections.forEach((conn) => {
-      if (conn.connection?.open) {
-        try {
-          conn.connection.send({ type: "status-update", status: myStatus });
-          console.log(
-            `Notified ${conn.username} of cleared status ${myStatus}`
-          );
-        } catch (err) {
-          console.error(
-            `Failed to send cleared status update to ${conn.username}:`,
-            err
-          );
-          // Optional: Handle disconnection on send failure, similar to setStatus
-          // handleDisconnection(conn.username);
-        }
-      }
-    });
-  } else {
-    console.log(`Status is already ${naturalStatus}, no change needed.`);
-  }
 }
 
 function onFriendStatus(
@@ -615,6 +600,7 @@ export default function usePeer() {
     sendMessage,
     cleanup,
     connections,
+    closeConnection,
     getConnections: () => connections,
     getStatus,
     setStatus,

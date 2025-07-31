@@ -92,7 +92,6 @@ export function useRival() {
   watch(
     () => info.value?.username,
     (newUsername, oldUsername) => {
-      console.log("I am here");
       console.log("Rival username changed:", newUsername);
       if (oldUsername && oldUsername !== newUsername) {
         currentUsername = oldUsername;

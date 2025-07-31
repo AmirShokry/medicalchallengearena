@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowLeftIcon } from "lucide-vue-next";
+import { ArrowLeftIcon, XIcon } from "lucide-vue-next";
 import ManagementContent from "./ManagementContent.vue";
 import {
   Sidebar,
@@ -13,6 +13,7 @@ import {
 import { Toggle } from "@/components/ui/toggle";
 import { Input } from "@/components/ui/input";
 import { SearchIcon, SendHorizonalIcon, Settings2Icon } from "lucide-vue-next";
+import type { FriendRequests } from "@/shared/types/common";
 import ChatContent from "./ChatContent.vue";
 import Fuse from "fuse.js";
 
@@ -26,7 +27,7 @@ const isManagingFriends = ref(false);
 const isChatting = ref(false);
 const activeFriendId = ref(-1);
 const peerApi = usePeer();
-
+const { $trpc } = useNuxtApp();
 const friendsStore = useFriendsStore();
 const userStore = useUserStore();
 const fuse = computed(() => {
@@ -37,27 +38,9 @@ const fuse = computed(() => {
   });
 });
 
-const requests = ref({
-  outgoing: [
-    {
-      avatarUrl: "https://robohash.org/dave",
-      username: "dave",
-    },
-    {
-      avatarUrl: "https://robohash.org/eve",
-      username: "eve",
-    },
-  ],
-  incoming: [
-    {
-      avatarUrl: "https://robohash.org/frank",
-      username: "frank",
-    },
-    {
-      avatarUrl: "https://robohash.org/grace",
-      username: "grace",
-    },
-  ],
+const requests = ref<FriendRequests>({
+  outgoing: [],
+  incoming: [],
 });
 
 function handleSearchStart() {
@@ -137,6 +120,19 @@ function handleIsSearching() {
   isChatting.value = false;
   isManagingFriends.value = false;
 }
+
+async function handleDeleteFriend(friendId: number) {
+  try {
+    const friend = friendsStore.friendList?.find((f) => f.id === friendId);
+    if (!friend) return;
+    await $trpc.friends.remove.mutate(friendId);
+    friendsStore.refresh();
+    peerApi.closeConnection(friend.username);
+  } catch (error) {
+    console.error("Error deleting request:", error);
+    return;
+  }
+}
 </script>
 
 <template>
@@ -195,10 +191,10 @@ function handleIsSearching() {
     <SidebarContent>
       <ul class="mt-10 px-2 h-full" v-if="!isChatting && !isManagingFriends">
         <li
-          @click="handleChatClicked(friend.id)"
+          @click.self="handleChatClicked(friend.id)"
           v-for="friend in friendsTarget"
           :key="friend.username"
-          class="flex items-center p-2 gap-2 hover:bg-muted cursor-pointer"
+          class="flex items-center p-2 gap-2 hover:bg-muted cursor-pointer group"
         >
           <UiAvatar class="border border-border h-8 w-8">
             <UiAvatarImage :src="friend.avatarUrl" alt="Avatar" />
@@ -226,6 +222,14 @@ function handleIsSearching() {
               {{ friend.status }}
             </p>
           </div>
+          <UiButton
+            @click.="handleDeleteFriend(friend.id)"
+            title="Delete Friend"
+            class="cursor-pointer ml-auto hidden group-hover:block hover:scale-125"
+            variant="link"
+          >
+            <XIcon />
+          </UiButton>
         </li>
       </ul>
       <ChatContent
