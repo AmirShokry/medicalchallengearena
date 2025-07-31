@@ -164,12 +164,12 @@ onUnmounted(() => window.removeEventListener("keydown", listenForEscape));
                   }}
                 </TableCell>
                 <TableCell class="flex items-center">
-                  <UiAvatar>
+                  <UiAvatar class="max-lg:hidden">
                     <UiAvatarImage
                       :src="`https://robohash.org/${user.username}`"
                     />
                   </UiAvatar>
-                  <p class="mt-2">
+                  <p class="mt-2 max-w-30 truncate">
                     {{ user.username }}
                   </p>
                 </TableCell>

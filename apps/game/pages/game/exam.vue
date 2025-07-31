@@ -6,7 +6,7 @@ import Result from "@/components/Exam/Result/index.vue";
 import getGameData from "@/components/Exam/index";
 import { LogOutIcon as ExitIcon } from "lucide-vue-next";
 import { gameSocket } from "@/components/socket";
-// import SinglePagination from "@/components/Exam/SinglePagination.vue";
+
 definePageMeta({
   layout: "blank",
 });

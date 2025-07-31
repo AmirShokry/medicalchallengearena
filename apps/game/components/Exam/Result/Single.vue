@@ -66,8 +66,8 @@ onBeforeUnmount(() => $$game["~resetEverything"]());
         class="w-full px-2 flex justify-center gap-4 pb-4 h-full items-center"
       >
         <UiButton
-		 class="cursor-pointer"
-		 variant="secondary"
+          class="cursor-pointer"
+          variant="secondary"
           @click="$router.push({ name: 'game-lobby' })"
           title="Back to lobby"
         >
@@ -75,15 +75,15 @@ onBeforeUnmount(() => $$game["~resetEverything"]());
         </UiButton>
         <UiButton
           disabled
-		  variant="secondary"
-           class="cursor-pointer""
+          variant="secondary"
+          class="cursor-pointer"
           title="Restart the game - coming soon"
         >
           <RotateCwIcon />
         </UiButton>
-        <UiButton 
-		class="cursor-pointer"
-		variant="secondary"
+        <UiButton
+          class="cursor-pointer"
+          variant="secondary"
           @click="$router.push({ name: 'ranks' })"
           title="Go to leaderboard"
         >
