@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // import CButton from "@client/components/ui/CButton.vue";
-// import StatusBar from "./components/StatusBar.vue";
+import MultiPagination from "@/components/Exam/MultiPagination.vue";
 // import { audio } from "@client/composables/audio";
 import BeforeGameAnimation from "@/components/splash/BeforeGameAnimation.vue";
 import ExamBlock from "@/components/ExamBlock/index.vue";
@@ -161,6 +161,8 @@ function onTimeOut() {
     timeSpentMs: user.timer.getStartingTimeMs(),
   });
   user.records.data.push(recordData);
+
+  audio.incorrect_answer.play();
   gameSocket.emit("userSolved", recordData, user.records.stats);
 }
 
@@ -252,8 +254,7 @@ onBeforeUnmount(() => {
       class="grow mb-4 overflow-hidden"
     >
       <template #left-aside>
-        <!-- <StatusBar
-          class="light-border-and-shadow"
+        <MultiPagination
           v-model:current-indexes="current"
           v-model:is-reviewing="flags.ingame.isReviewingQuestion"
           v-model:can-show-explanation="canViewAnswer"
@@ -261,11 +262,10 @@ onBeforeUnmount(() => {
           :max-question="lastReachedQuestionNumber"
           :length="totalQuestionsNumber"
           :records="user.records.data"
-        /> -->
+        />
       </template>
       <template v-if="!opponent.flags.hasLeft" #right-aside>
-        <!-- <StatusBar
-          class="light-border-and-shadow"
+        <MultiPagination
           v-model:current-indexes="current"
           v-model:is-reviewing="flags.ingame.isReviewingQuestion"
           v-model:can-show-explanation="canViewAnswer"
@@ -273,7 +273,7 @@ onBeforeUnmount(() => {
           :max-question="lastReachedQuestionNumber"
           :length="totalQuestionsNumber"
           :records="opponent.records.data"
-        /> -->
+        />
       </template>
       <template #first-section-footer>
         <UiButton

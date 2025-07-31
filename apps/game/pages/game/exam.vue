@@ -6,6 +6,7 @@ import Result from "@/components/Exam/Result/index.vue";
 import getGameData from "@/components/Exam/index";
 import { LogOutIcon as ExitIcon } from "lucide-vue-next";
 import { gameSocket } from "@/components/socket";
+import SinglePagination from "@/components/Exam/SinglePagination.vue";
 
 definePageMeta({
   layout: "blank",
@@ -191,7 +192,7 @@ onUnmounted(() => user.timer.destroy());
         :rank="1"
         :status="currentPlayerStatus"
       />
-      <!-- <SinglePagination
+      <SinglePagination
         class="p-2 light-border-and-shadow rounded-md w-full"
         v-model:current-indexes="current"
         v-model:can-show-explanation="canViewAnswer"
@@ -199,7 +200,8 @@ onUnmounted(() => user.timer.destroy());
         :pending-index="lastReachedQuestionNumber"
         :total-questions-count="totalQuestionsNumber"
         :revert-state="revertState"
-        :records="user.records.data" /> -->
+        :records="user.records.data"
+      />
     </div>
     <div class="py-2 h-full">
       <ExamBlock
