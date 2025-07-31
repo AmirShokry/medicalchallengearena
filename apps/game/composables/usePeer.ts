@@ -24,6 +24,7 @@ const HEARTBEAT_INTERVAL = 5000;
 const CONNECTION_TIMEOUT = 10000;
 
 let messageCallback: ((from: string, message: any) => void) | null = null;
+let rivalMessageCallback: ((from: string, message: any) => void) | null = null;
 let friendStatusCallback:
   | ((username: string, status: "online" | "offline" | "busy") => void)
   | null = null;
@@ -352,6 +353,7 @@ function handleIncomingData(username: string, data: any) {
 
   console.log(`Received data from ${username}:`, data);
   if (messageCallback) messageCallback(username, data);
+  if (rivalMessageCallback) rivalMessageCallback(username, data);
 }
 
 function startHeartbeat(username: string) {
@@ -518,6 +520,10 @@ function onMessage(callback: (from: string, message: any) => void) {
   messageCallback = callback;
 }
 
+function onRivalMessage(callback: (from: string, message: any) => void) {
+  rivalMessageCallback = callback;
+}
+
 function onFriendStatus(
   callback: (username: string, status: "online" | "offline" | "busy") => void
 ) {
@@ -534,13 +540,16 @@ if (import.meta.hot) {
 
 export default function usePeer() {
   return {
+    peerInstance,
     initPeer,
     connectToFriends,
     connectToUser,
     onFriendStatus,
     onMessage,
+    onRivalMessage,
     sendMessage,
     cleanup,
+    connections,
     getConnections: () => connections,
     getStatus,
     setStatus,
