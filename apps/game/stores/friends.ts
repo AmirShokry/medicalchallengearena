@@ -31,7 +31,12 @@ export const useFriendsStore = defineStore("friends", () => {
         data.map((friend) => ({
           ...friend,
           isActive: false,
-          status: "offline" as "online" | "offline" | "connecting" | "busy",
+          status: "offline" as
+            | "online"
+            | "offline"
+            | "connecting"
+            | "busy"
+            | "matchmaking",
           isTemp: false,
           messages: friendMessages.value[friend.username] || [],
         })) || []

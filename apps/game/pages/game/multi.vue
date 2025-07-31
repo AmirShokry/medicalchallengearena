@@ -19,6 +19,10 @@ const searchQuery = ref("");
 const matchmaking = useMatchMakingStore();
 matchmaking.state = "idle";
 
+const peerApi = usePeer();
+
+nextTick(() => peerApi.setStatus("matchmaking"));
+
 const data = ref([] as MatchingSystemCategories);
 const counters = ref(
   [] as {

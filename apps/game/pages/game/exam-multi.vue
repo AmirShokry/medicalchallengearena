@@ -43,6 +43,9 @@ onMounted(() => {
   flags.ingame.isGameStarted = true;
 });
 
+const peerApi = usePeer();
+peerApi.setStatus("busy");
+
 console.log($$game.players.opponent.info);
 
 const hasAnimationEnded = ref(false),

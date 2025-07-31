@@ -16,6 +16,11 @@ const possibleCasesCount = ref([] as number[]);
 const systemsCategoriesRaw = ref(
   [] as NonNullable<typeof data.value>["systemsCategories"]
 );
+
+const peerApi = usePeer();
+
+peerApi.setStatus("busy");
+
 const searchQuery = ref("");
 
 const { data, pending, error } = $trpc.systems.categories.useQuery(undefined, {

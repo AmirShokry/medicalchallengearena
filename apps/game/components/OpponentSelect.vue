@@ -38,7 +38,7 @@ function handleInvitaionSent() {
     (friend) => friend.id === selectedFriendId.value
   );
   if (!friend) return;
-  if (friend.status !== "online") return;
+  if (friend.status !== "matchmaking") return;
   $$game.data.invitedId = selectedFriendId.value;
   gameSocket.emit("userSentInvitation", { id: $$game.data.invitedId });
   $$game.flags.matchmaking.isInvitationSent = true;
@@ -139,7 +139,7 @@ function handleLeaveOrDecline() {
                 <li
                   @click="handleFriendSelected(friend.id)"
                   :class="{
-                    'disabled-invitation': friend.status !== 'online',
+                    'disabled-invitation': friend.status !== 'matchmaking',
                     'selected-invitation': friend.id === selectedFriendId,
                   }"
                   class="p-3 cursor-pointer flex items-center gap-2 hover:bg-accent rounded-sm"

@@ -6,7 +6,7 @@ interface OpponentConnection {
   peerId: string;
   connection?: DataConnection;
   lastSeen: number;
-  status: "online" | "offline" | "connecting" | "busy";
+  status: "online" | "offline" | "connecting" | "busy" | "matchmaking";
   retryCount: number;
   heartbeatInterval?: ReturnType<typeof setInterval>;
   timeoutId?: ReturnType<typeof setTimeout>;
@@ -17,7 +17,7 @@ let peerInstance: InstanceType<typeof Peer> | null = null;
 let connections = new Map<string, OpponentConnection>();
 let isPeerReady = ref(false);
 let pendingConnections: string[] = [];
-let myStatus: "online" | "offline" | "busy" = "offline"; // Track local user's status
+let myStatus: "online" | "offline" | "busy" | "matchmaking" = "offline"; // Track local user's status
 
 const MAX_RETRY_ATTEMPTS = 3;
 const HEARTBEAT_INTERVAL = 5000;
@@ -26,7 +26,10 @@ const CONNECTION_TIMEOUT = 10000;
 let messageCallback: ((from: string, message: any) => void) | null = null;
 let rivalMessageCallback: ((from: string, message: any) => void) | null = null;
 let friendStatusCallback:
-  | ((username: string, status: "online" | "offline" | "busy") => void)
+  | ((
+      username: string,
+      status: "online" | "offline" | "busy" | "matchmaking"
+    ) => void)
   | null = null;
 
 // Track intervals and timeouts for cleanup
@@ -341,11 +344,20 @@ function handleIncomingData(username: string, data: any) {
 
   if (data && typeof data === "object" && data.type === "status-update") {
     const oldStatus = opponentPeer.status;
-    if (["online", "offline", "busy"].includes(data.status)) {
-      opponentPeer.status = data.status as "online" | "offline" | "busy";
-      console.log(`${username} updated status to ${data.status}`);
-      if (oldStatus !== data.status && friendStatusCallback) {
-        friendStatusCallback(username, data.status);
+    if (["online", "offline", "busy", "matchmaking"].includes(data.status)) {
+      // If status is matchmaking, show matchmaking instead of online
+      if (data.status === "matchmaking") {
+        opponentPeer.status = "matchmaking";
+      } else {
+        opponentPeer.status = data.status as
+          | "online"
+          | "offline"
+          | "busy"
+          | "matchmaking";
+      }
+      console.log(`${username} updated status to ${opponentPeer.status}`);
+      if (oldStatus !== opponentPeer.status && friendStatusCallback) {
+        friendStatusCallback(username, opponentPeer.status);
       }
     }
     return;
@@ -485,7 +497,7 @@ function sendMessage(friendUsername: string, message: any) {
   }
 }
 
-function setStatus(newStatus: "online" | "offline" | "busy") {
+function setStatus(newStatus: "online" | "offline" | "busy" | "matchmaking") {
   if (!peerInstance || !isPeerReady.value) {
     console.warn("Cannot set status: Peer is not ready");
     return;
@@ -509,9 +521,14 @@ function setStatus(newStatus: "online" | "offline" | "busy") {
   });
 }
 
-function getStatus(friendUsername: string): "online" | "offline" | "busy" {
+function getStatus(
+  friendUsername: string
+): "online" | "offline" | "busy" | "matchmaking" {
   const opponentPeer = connections.get(friendUsername);
-  if (opponentPeer) return opponentPeer.status as "online" | "offline" | "busy";
+  if (opponentPeer) {
+    if (opponentPeer.status === "connecting") return "offline";
+    return opponentPeer.status;
+  }
   if (!peerInstance || !isPeerReady.value) return "offline";
   return "offline";
 }
@@ -524,8 +541,56 @@ function onRivalMessage(callback: (from: string, message: any) => void) {
   rivalMessageCallback = callback;
 }
 
+function clearStatus() {
+  if (!peerInstance) {
+    console.warn("Cannot clear status: Peer instance does not exist.");
+    // If there's no peer instance, the natural state is definitely offline
+    if (myStatus !== "offline") {
+      myStatus = "offline";
+      console.log(`Cleared status to offline (no peer instance)`);
+      // Note: No peers to notify in this case
+    }
+    return;
+  }
+
+  // Determine the natural status based on peer readiness
+  const naturalStatus: "online" | "offline" = isPeerReady.value
+    ? "online"
+    : "offline";
+
+  // Only proceed if the current status is different from the natural one
+  if (myStatus !== naturalStatus) {
+    myStatus = naturalStatus;
+    console.log(`Cleared status to ${naturalStatus}`);
+
+    // Notify all connected peers of the status change
+    connections.forEach((conn) => {
+      if (conn.connection?.open) {
+        try {
+          conn.connection.send({ type: "status-update", status: myStatus });
+          console.log(
+            `Notified ${conn.username} of cleared status ${myStatus}`
+          );
+        } catch (err) {
+          console.error(
+            `Failed to send cleared status update to ${conn.username}:`,
+            err
+          );
+          // Optional: Handle disconnection on send failure, similar to setStatus
+          // handleDisconnection(conn.username);
+        }
+      }
+    });
+  } else {
+    console.log(`Status is already ${naturalStatus}, no change needed.`);
+  }
+}
+
 function onFriendStatus(
-  callback: (username: string, status: "online" | "offline" | "busy") => void
+  callback: (
+    username: string,
+    status: "online" | "offline" | "busy" | "matchmaking"
+  ) => void
 ) {
   friendStatusCallback = callback;
 }
