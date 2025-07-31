@@ -193,6 +193,8 @@ function endGame() {
 
 function onLeaveGame() {
   $$game["~resetEverything"]();
+  user.timer.destroy();
+  opponent.timer.destroy();
   gameSocket.emit("userLeft");
   $router.replace({ name: "game-lobby" });
 }
@@ -202,7 +204,8 @@ onBeforeUnmount(() => {
     gameSocket.emit("userFinishedGame", $$game.gameId!, user.records);
     hasRecordBeenSent.value = true;
   }
-
+  user.timer.destroy();
+  opponent.timer.destroy();
   $$game["~resetEverything"]();
   gameSocket.emit("userLeft");
 });
