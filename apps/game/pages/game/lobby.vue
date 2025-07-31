@@ -4,7 +4,6 @@ export const description = "A left and right sidebar.";
 </script>
 
 <script setup lang="ts">
-import { useSound } from "@vueuse/sound";
 import {
   Table,
   TableBody,
@@ -23,6 +22,9 @@ definePageMeta({
 
 const audio = useAudioStore();
 const router = useRouter();
+
+const peerApi = usePeer();
+peerApi.setStatus("online");
 
 const { user, isLoading } = storeToRefs(useUserStore());
 const { $trpc } = useNuxtApp();
@@ -90,7 +92,7 @@ onUnmounted(() => window.removeEventListener("keydown", listenForEscape));
 
   <div class="flex flex-1 flex-col gap-4 px-4 pt-1 m-10">
     <div
-      class="min-h-full w-full rounded-xl gap-10 grid [grid-template-areas:'play_ranks''stats_progress'] grid-cols-[1fr_0.6fr] grid-rows-[1fr_0.3fr] max-lg:grid-cols-1 max-lg:grid-rows-[repeat(auto,minmax(0,1fr))] max-lg:[grid-template-areas:'play''ranks''stats''progress']"
+      class="min-h-full w-full rounded-xl gap-10 grid [grid-template-areas:'play_ranks''stats_progress'] grid-cols-[1fr_0.6fr] grid-rows-[1fr_0.3fr] max-xl:grid-cols-1 max-xl:grid-rows-[repeat(auto,minmax(0,1fr))] max-xl:[grid-template-areas:'play''ranks''stats''progress']"
     >
       <div
         class="[grid-area:play] rounded-2xl bg-primary/90 relative flex items-center min-h-[300px]"
@@ -123,8 +125,8 @@ onUnmounted(() => window.removeEventListener("keydown", listenForEscape));
           </Button>
         </div>
       </div>
-      <div class="[grid-area:ranks] rounded-2xl border pt-1 px-6">
-        <div class="h-full w-full p-6 rounded-2xl shadow-xl">
+      <div class="[grid-area:ranks] rounded-2xl border shadow-xl pt-1 px-6">
+        <div class="w-full h-full p-6 rounded-2xl">
           <h1
             class="text-3xl font-bold text-center text-orange-500 mb-6 truncate"
           >
