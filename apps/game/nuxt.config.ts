@@ -10,13 +10,7 @@ export default defineNuxtConfig({
   auth: {
     originEnvKey: "NUXT_AUTH_ORIGIN",
   },
-  modules: [
-    "@nuxt/eslint",
-    "nuxt-svgo",
-    "shadcn-nuxt",
-    "@sidebase/nuxt-auth",
-    "@pinia/nuxt",
-  ],
+  modules: ["nuxt-svgo", "shadcn-nuxt", "@sidebase/nuxt-auth", "@pinia/nuxt"],
   build: {
     transpile: ["trpc-nuxt"],
   },
