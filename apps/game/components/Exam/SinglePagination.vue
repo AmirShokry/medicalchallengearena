@@ -117,8 +117,8 @@ onUnmounted(() => window.removeEventListener("resize", handleResize));
     :default-page="1"
   >
     <PaginationContent v-slot="{ items }" class="flex items-center gap-1">
-      <PaginationFirst class="!text-white !bg-transparent" />
-      <PaginationPrevious class="!text-white !bg-transparent" />
+      <PaginationFirst class="!bg-transparent" />
+      <PaginationPrevious class="!bg-transparent" />
 
       <template v-for="(item, index) in items">
         <PaginationItem
@@ -130,7 +130,7 @@ onUnmounted(() => window.removeEventListener("resize", handleResize));
           <Button
             @click="handleReviewClicked(item.value)"
             v-disabled-click="!canViewPage(item.value)"
-            class="!w-4 !h-4 !px-3 py-3 hover:scale-[1.02]"
+            class="!w-4 !h-4 !px-3 py-3 hover:scale-[1.02] dark:text-primary hover:text-primary-forground"
             :class="getItemClass(item.value)"
           >
             {{ item.value }}
@@ -140,11 +140,11 @@ onUnmounted(() => window.removeEventListener("resize", handleResize));
       </template>
 
       <PaginationNext
-        class="!text-white !bg-transparent"
+        class="!bg-transparent"
         :disabled="!canSelectNext(page)"
       />
       <PaginationLast
-        class="!text-white !bg-transparent"
+        class="!bg-transparent"
         :disabled="!canSelectLast(page)"
         @click="handleLastPageClicked"
       />

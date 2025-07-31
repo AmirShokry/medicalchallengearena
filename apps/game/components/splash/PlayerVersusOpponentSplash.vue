@@ -12,7 +12,7 @@ const $$game = useGameStore();
         class="aspect-square rounded-full object-cover w-[10vmax]"
       />
       <p
-        class="text-[max(16px,1.3vmax)] font-semibold not-dark:text-primary-foreground text-primary text-center capitalize"
+        class="text-[max(16px,1.3vmax)] font-semibold not-dark:text-white text-primary text-center capitalize"
       >
         {{ $$game.players.user.info?.username }}
       </p>
@@ -25,7 +25,7 @@ const $$game = useGameStore();
         class="aspect-square object-cover rounded-full w-[10vmax]"
       />
       <p
-        class="text-[max(16px,1.3vmax)] font-semibold text-primary text-center capitalize"
+        class="text-[max(16px,1.3vmax)] font-semibold not-dark:text-white text-primary text-center capitalize"
       >
         {{ $$game.players.opponent.info.username }}
       </p>
