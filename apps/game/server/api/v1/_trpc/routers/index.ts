@@ -7,14 +7,16 @@ import { systems } from "./systems";
 import { cases } from "./cases";
 import { exam } from "./exam";
 import { friends } from "./friends";
+import { reviews } from "./reviews";
 export const appRouter = createTRPCRouter({
-	block,
-	auth,
-	common,
-	systems,
-	cases,
-	exam,
-	friends,
+  block,
+  auth,
+  common,
+  systems,
+  cases,
+  exam,
+  friends,
+  reviews,
 });
 
 // export type definition of API

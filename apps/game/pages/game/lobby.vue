@@ -19,6 +19,10 @@ import { Separator } from "@/components/ui/separator";
 definePageMeta({
   layout: "lobby",
 });
+useSeoMeta({
+  title: "MCA | Lobby",
+  description: "Welcome to the MCA lobby, where you can start your game.",
+});
 
 const audio = useAudioStore();
 const router = useRouter();
