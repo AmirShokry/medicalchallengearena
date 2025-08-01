@@ -8,7 +8,10 @@ import Result from "@/components/exam/result/index.vue";
 import { gameSocket } from "@/components/socket";
 import getGameData from "@/components/exam/index";
 import { LogOutIcon as ExitIcon } from "lucide-vue-next";
-
+definePageMeta({
+  layout: "blank",
+  middleware: "exam",
+});
 const $$game = useGameStore();
 const $$user = useUserStore();
 const audio = useAudioStore();

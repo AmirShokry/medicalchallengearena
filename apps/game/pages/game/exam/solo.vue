@@ -10,6 +10,7 @@ import SinglePagination from "@/components/exam/pagination/SinglePagination.vue"
 
 definePageMeta({
   layout: "blank",
+  middleware: "exam",
 });
 
 const {
@@ -170,7 +171,6 @@ function handleLeaveGame(fromAction?: boolean) {
   gameSocket.emit("userLeft");
   $router.replace({ name: "game-lobby" });
 }
-
 onBeforeUnmount(() => {
   // Don't trigger leave game during HMR in development
   if (import.meta.dev && import.meta.hot) return;
