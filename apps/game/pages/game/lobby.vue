@@ -68,11 +68,11 @@ function handlePlayClick() {
 
 function handleSoloClick() {
   audio.navigation.play();
-  router.push({ name: "game-solo" });
+  router.push({ name: "game-setup-solo" });
 }
 function handleMultiClick() {
   audio.navigation.play();
-  router.push({ name: "game-multi" });
+  router.push({ name: "game-setup-multi" });
 }
 
 onUnmounted(() => window.removeEventListener("keydown", listenForEscape));

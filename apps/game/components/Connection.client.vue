@@ -78,9 +78,9 @@ function setupSocketListeners() {
   gameSocket.on("opponentLeft", () => {
     // console.log("opponentLef");
     if (!$$game.flags.ingame.isGameStarted) {
-      if ($router.currentRoute.value.name === "game-multi") {
+      if ($router.currentRoute.value.name === "game-exam-multi") {
         matchmaking.state = "idle";
-        $router.replace({ name: "game-multi" });
+        $router.replace({ name: "game-setup-multi" });
       }
       gameSocket.emit("userDeclined");
       return $$game["~resetEverything"]();

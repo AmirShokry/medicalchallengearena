@@ -75,30 +75,30 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
   socialIO.use(authenticateSocket);
 
   socialIO.on("connection", async (socket) => {
-    console.log(
-      `User ${socket.data.session.username} - SID: (${socket.id}) joined the social server`
-    );
+    // console.log(
+    //   `User ${socket.data.session.username} - SID: (${socket.id}) joined the social server`
+    // );
 
     socket.on("disconnect", (reason) => {
-      console.log(
-        `User ${socket.data.session?.username} - SID: (${socket.id}) disconnected from social server. Reason: ${reason}`
-      );
+      // console.log(
+      //   `User ${socket.data.session?.username} - SID: (${socket.id}) disconnected from social server. Reason: ${reason}`
+      // );
     });
 
     registerMessage(socket, socialIO);
     registerSocial(socket, socialIO);
   });
   socialIO.adapter.on("join-room", async (room: string, id: string) => {
-    console.log(
-      `User ${socialIO.sockets.get(id)?.data?.session?.username} - ${id}  joined room ${room}`
-    );
+    // console.log(
+    //   `User ${socialIO.sockets.get(id)?.data?.session?.username} - ${id}  joined room ${room}`
+    // );
   });
 
   socialIO.adapter.on("leave-room", (room: string, id: string) => {
-    const socket = socialIO.sockets.get(id);
-    console.log(
-      `User ${socket?.data.session.username} -  ${id}  left room ${room}`
-    );
+    // const socket = socialIO.sockets.get(id);
+    // console.log(
+    //   `User ${socket?.data.session.username} -  ${id}  left room ${room}`
+    // );
   });
   gameIO.on("connection", (socket) => {
     console.log(

@@ -1,12 +1,12 @@
 <script setup lang="ts">
+import { LogOutIcon as ExitIcon } from "lucide-vue-next";
 import ExamBlock from "@/components/ExamBlock/index.vue";
 import BeforeGameAnimation from "@/components/splash/BeforeGameAnimation.vue";
-import UserInfo from "@/components/Exam/Player.vue";
-import Result from "@/components/Exam/Result/index.vue";
-import getGameData from "@/components/Exam/index";
-import { LogOutIcon as ExitIcon } from "lucide-vue-next";
+import UserInfo from "@/components/exam/Player.vue";
+import Result from "@/components/exam/result/index.vue";
+import getGameData from "@/components/exam/index";
 import { gameSocket } from "@/components/socket";
-import SinglePagination from "@/components/Exam/SinglePagination.vue";
+import SinglePagination from "@/components/exam/pagination/SinglePagination.vue";
 
 definePageMeta({
   layout: "blank",

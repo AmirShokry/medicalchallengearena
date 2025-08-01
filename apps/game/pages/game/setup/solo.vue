@@ -133,7 +133,7 @@ async function handleContinueToGame() {
   $$game.gameId = gameId;
   $$game.data.cases = cases;
   audio.user_vs_opponent.play();
-  $router.push({ name: "game-exam" });
+  $router.push({ name: "game-exam-solo" });
 }
 
 function updateCasesCounters(amount: number) {

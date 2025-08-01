@@ -112,7 +112,7 @@ const richTextRef = ref<InstanceType<typeof RichText> | null>(null);
     </main>
   </div>
 
-  <div v-else class="font-poppins relative">
+  <div v-else class="relative">
     <slot name="header">
       <Header
         class="pb-2"

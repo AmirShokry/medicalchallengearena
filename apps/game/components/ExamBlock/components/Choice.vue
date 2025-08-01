@@ -80,12 +80,6 @@ function getEliminationClass() {
       >
         {{ body }}
       </p>
-
-      <!-- <i-svg
-				v-if="canShowExplanation && isCorrect"
-				:src="check_circle_icon"
-				width="25"
-				height="25" /> -->
     </button>
     <p
       v-if="canShowExplanation && isExplanationVisible && explanation"
