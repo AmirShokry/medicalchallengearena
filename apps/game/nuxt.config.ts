@@ -3,9 +3,12 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
   compatibilityDate: "2025-05-15",
-  devtools: { enabled: false },
+  devtools: { enabled: true },
   runtimeConfig: {
     authSecret: process.env.NUXT_AUTH_SECRET,
+    STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY,
+    STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
+    STRIPE_WEBHOOK_SECRET_KEY: process.env.STRIPE_WEBHOOK_SECRET_KEY,
   },
   auth: {
     originEnvKey: "NUXT_AUTH_ORIGIN",
