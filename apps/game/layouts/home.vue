@@ -32,8 +32,8 @@ const links = {
   privacy: "/privacy",
   courses: "/courses",
   ranks: "/ranks",
-  login: "https://game.medicalchallengearena.com/login",
-  register: "https://game.medicalchallengearena.com/register",
+  login: "/login",
+  register: "/register",
 };
 
 const { status, signOut } = useAuth();
