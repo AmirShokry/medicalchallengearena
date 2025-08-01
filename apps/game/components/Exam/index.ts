@@ -76,6 +76,7 @@ export default function getGameData() {
       nthSelectedChoice: current.selectedChoiceIdx!,
       nthEliminatedChoices: Array.from(current.eliminatedChoicesIdx),
       isCorrect: correctOverride ?? isCorrect.value!,
+      categoryId: cases[current.caseIdx]?.category_id!,
       medPoints,
       timeSpentMs,
     };

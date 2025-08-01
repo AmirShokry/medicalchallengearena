@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { LogOutIcon as ExitIcon } from "lucide-vue-next";
+import getGameData from "@/components/exam/index";
 import ExamBlock from "@/components/ExamBlock/index.vue";
 import BeforeGameAnimation from "@/components/splash/BeforeGameAnimation.vue";
 import UserInfo from "@/components/exam/Player.vue";
 import Result from "@/components/exam/result/index.vue";
-import getGameData from "@/components/exam/index";
 import { gameSocket } from "@/components/socket";
 import SinglePagination from "@/components/exam/pagination/SinglePagination.vue";
 

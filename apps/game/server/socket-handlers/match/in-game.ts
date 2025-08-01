@@ -26,7 +26,7 @@ export function registerMatchEvents(socket: GameSocket, io: GameIO) {
       .where(
         and(
           eq(users_games.gameId, gameId),
-          eq(users_games.userId, Number(socket.id))
+          eq(users_games.userId, Number(socket.data.session.id))
         )
       );
 
@@ -40,7 +40,33 @@ export function registerMatchEvents(socket: GameSocket, io: GameIO) {
         eliminationsTotal: sql`${users.eliminationsTotal} + ${records.stats.wrongEliminationsCount} + ${records.stats.correctEliminationsCount}`,
         gamesTotal: sql`${users.gamesTotal} + 1`,
       })
-      .where(eq(users.id, Number(socket.id)));
+      .where(eq(users.id, Number(socket.data.session.id)));
+    console.log(`User ${socket.data.session.id} finished game ${gameId}`);
+    async function insertMistakes() {
+      const userId = Number(socket.data.session.id);
+      const mistakeCounts: Record<number, number> = {};
+      serverData.forEach((d) => {
+        if (!d.isCorrect && d.categoryId != null) {
+          mistakeCounts[d.categoryId] = (mistakeCounts[d.categoryId] || 0) + 1;
+        }
+      });
+
+      const values = Object.entries(mistakeCounts)
+        .map(
+          ([categoryId, count]) =>
+            `(${userId}, ${Number(categoryId)}, ${count})`
+        )
+        .join(",");
+      console.log(values);
+      if (values.length > 0) {
+        await db.execute(
+          sql.raw(
+            `INSERT INTO users_mistakes ("userId", "category_id", "count") VALUES ${values} ON CONFLICT ("userId", "category_id") DO UPDATE SET "count" = users_mistakes."count" + EXCLUDED."count"`
+          )
+        );
+      }
+    }
+    await insertMistakes();
 
     socket.data.finalStats = {
       totalMedpoints: records.stats.totalMedpoints,
@@ -65,8 +91,8 @@ export function registerMatchEvents(socket: GameSocket, io: GameIO) {
           and(
             eq(users_games.gameId, gameId),
             inArray(users_games.userId, [
-              Number(socket.id),
-              Number(opponentSocket.id),
+              Number(socket.data.session.id),
+              Number(opponentSocket.data.session.id),
             ])
           )
         );
@@ -81,13 +107,13 @@ export function registerMatchEvents(socket: GameSocket, io: GameIO) {
         .where(
           and(
             eq(users_games.gameId, gameId),
-            eq(users_games.userId, Number(socket.id))
+            eq(users_games.userId, Number(socket.data.session.id))
           )
         );
       await db
         .update(users)
         .set({ gamesWon: sql`${users.gamesWon} + 1` })
-        .where(eq(users.id, Number(socket.id)));
+        .where(eq(users.id, Number(socket.data.session.id)));
     } else if (
       socket.data.finalStats.totalMedpoints <
       opponentSocket.data.finalStats.totalMedpoints
@@ -98,13 +124,13 @@ export function registerMatchEvents(socket: GameSocket, io: GameIO) {
         .where(
           and(
             eq(users_games.gameId, gameId),
-            eq(users_games.userId, Number(opponentSocket.id))
+            eq(users_games.userId, Number(opponentSocket.data.session.id))
           )
         );
       await db
         .update(users)
         .set({ gamesWon: sql`${users.gamesWon} + 1` })
-        .where(eq(users.id, Number(opponentSocket.id)));
+        .where(eq(users.id, Number(opponentSocket.data.session.id)));
     }
   });
 }
