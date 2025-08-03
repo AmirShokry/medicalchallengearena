@@ -4,6 +4,7 @@ import { db, getTableColumns, or, eq } from "@package/database";
 import { UsersRanksCTE } from "@package/database/ctes";
 import { z } from "zod";
 import bcrypt from "bcrypt";
+import { stripe } from "@/server/utils/stripe";
 export const auth = createTRPCRouter({
   getSession: authProcedure.query(async ({ ctx }) => {
     return ctx.session;
@@ -23,15 +24,15 @@ export const auth = createTRPCRouter({
       const { users, users_auth, accessCodes } = db.table;
 
       // Validate access code (you can customize this logic)
-      const accessCode = await db
-        .select()
-        .from(accessCodes)
-        .where(eq(accessCodes.code, input.accessCode));
-      if (!accessCode || accessCode.length === 0)
-        throw new TRPCError({
-          code: "FORBIDDEN",
-          message: "R#1:Invalid access code",
-        });
+      // const accessCode = await db
+      //   .select()
+      //   .from(accessCodes)
+      //   .where(eq(accessCodes.code, input.accessCode));
+      // if (!accessCode || accessCode.length === 0)
+      //   throw new TRPCError({
+      //     code: "FORBIDDEN",
+      //     message: "R#1:Invalid access code",
+      //   });
 
       // Check if username or email already exists
       const [existingUser] = await db
@@ -64,15 +65,20 @@ export const auth = createTRPCRouter({
           })
           .returning();
 
+        const stripeCustomer = await stripe.customers.create({
+          email: newUser.email,
+        });
+
         // Insert auth credentials
         await tx.insert(users_auth).values({
           user_id: newUser.id,
           password: hashedPassword,
+          stripe_customer_id: stripeCustomer.id,
         });
-        await tx
-          .update(accessCodes)
-          .set({ used: true })
-          .where(eq(accessCodes.code, input.accessCode));
+        // await tx
+        //   .update(accessCodes)
+        //   .set({ used: true })
+        //   .where(eq(accessCodes.code, input.accessCode));
 
         return newUser;
       });
@@ -96,6 +102,8 @@ export const auth = createTRPCRouter({
         .with(UsersRanksCTE)
         .select({
           ...getTableColumns(users),
+          plan: users_auth.plan,
+          isSubscribed: users_auth.is_subscribed,
           password: users_auth.password,
         })
         .from(users)
@@ -156,4 +164,86 @@ export const auth = createTRPCRouter({
     const { password, ...userdata } = { ...user, password: undefined };
     return userdata;
   }),
+
+  // forceUpdateSession: authProcedure
+  //   .input(
+  //     z.object({
+  //       userData: z.record(z.any()),
+  //       updateDatabase: z.boolean().optional().default(false),
+  //       forceTokenRefresh: z.boolean().optional().default(true),
+  //       refreshType: z.enum(["soft", "hard"]).optional().default("soft"),
+  //     })
+  //   )
+  //   .mutation(async ({ input, ctx }) => {
+  //     if (!ctx.session?.user?.id) {
+  //       throw new TRPCError({
+  //         code: "UNAUTHORIZED",
+  //         message: "No valid session found",
+  //       });
+  //     }
+
+  //     try {
+  //       // Make request to our force-update-session endpoint
+  //       const response = await $fetch("/api/auth/force-update-session", {
+  //         method: "POST",
+  //         body: {
+  //           userData: input.userData,
+  //           updateDatabase: input.updateDatabase,
+  //           forceTokenRefresh: input.forceTokenRefresh,
+  //           refreshType: input.refreshType,
+  //         },
+  //         headers: {
+  //           // Forward the auth cookies
+  //           cookie: getHeader(ctx.event, "cookie") || "",
+  //         },
+  //       });
+
+  //       return response;
+  //     } catch (error) {
+  //       console.error("Error in forceUpdateSession:", error);
+  //       throw new TRPCError({
+  //         code: "INTERNAL_SERVER_ERROR",
+  //         message: "Failed to update session",
+  //       });
+  //     }
+  //   }),
+
+  // refreshSessionFromDB: authProcedure
+  //   .input(
+  //     z.object({
+  //       forceTokenRefresh: z.boolean().optional().default(true),
+  //       refreshType: z.enum(["soft", "hard"]).optional().default("soft"),
+  //     })
+  //   )
+  //   .mutation(async ({ input, ctx }) => {
+  //     if (!ctx.session?.user?.id) {
+  //       throw new TRPCError({
+  //         code: "UNAUTHORIZED",
+  //         message: "No valid session found",
+  //       });
+  //     }
+
+  //     try {
+  //       // Make request to our refresh-session-from-db endpoint
+  //       const response = await $fetch("/api/auth/refresh-session-from-db", {
+  //         method: "POST",
+  //         body: {
+  //           forceTokenRefresh: input.forceTokenRefresh,
+  //           refreshType: input.refreshType,
+  //         },
+  //         headers: {
+  //           // Forward the auth cookies
+  //           cookie: getHeader(ctx.event, "cookie") || "",
+  //         },
+  //       });
+
+  //       return response;
+  //     } catch (error) {
+  //       console.error("Error in refreshSessionFromDB:", error);
+  //       throw new TRPCError({
+  //         code: "INTERNAL_SERVER_ERROR",
+  //         message: "Failed to refresh session from database",
+  //       });
+  //     }
+  //   }),
 });

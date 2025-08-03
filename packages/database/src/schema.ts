@@ -133,6 +133,9 @@ export const users_auth = pgTable(
     user_id: integer("id"),
     password: varchar("password").notNull(),
     role: varchar("role", { length: 50 }),
+    stripe_customer_id: varchar("stripe_customer_id").unique(),
+    plan: varchar("plan", { length: 50 }),
+    is_subscribed: boolean("is_subscribed").default(false),
   },
   (table) => [
     foreignKey({
@@ -196,6 +199,20 @@ export const users_games = pgTable(
   (table) => [uniqueIndex("usersGamesIndex").on(table.gameId, table.userId)]
 );
 
+export const users_mistakes = pgTable(
+  "users_mistakes",
+  {
+    userId: integer("userId").references(() => users.id, {
+      onDelete: "cascade",
+    }),
+    categoryId: integer("category_id").references(() => categories.id, {
+      onDelete: "cascade",
+    }),
+    count: integer("count").default(0).notNull(),
+  },
+  (table) => [uniqueIndex("categoryId_Idx").on(table.userId, table.categoryId)]
+);
+
 export const cases_questions = pgTable(
   "cases_questions",
   {
@@ -230,19 +247,7 @@ export const questions_choices = pgTable(
   },
   (table) => [primaryKey({ columns: [table.question_id, table.choice_id] })]
 );
-export const users_mistakes = pgTable(
-  "users_mistakes",
-  {
-    userId: integer("userId").references(() => users.id, {
-      onDelete: "cascade",
-    }),
-    categoryId: integer("category_id").references(() => categories.id, {
-      onDelete: "cascade",
-    }),
-    count: integer("count").default(0).notNull(),
-  },
-  (table) => [uniqueIndex("categoryId_Idx").on(table.userId, table.categoryId)]
-);
+
 ///
 const query = new QueryBuilder();
 export const SystemsCategoriesView = pgView("systems_categories_view").as(

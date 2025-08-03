@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { UsersIcon } from "lucide-vue-next";
 import { Separator } from "@/components/ui/separator";
+const {} = useAuth();
 definePageMeta({
   layout: "lobby",
 });
@@ -78,7 +79,6 @@ function handleMultiClick() {
   audio.navigation.play();
   router.push({ name: "game-setup-multi" });
 }
-
 onUnmounted(() => window.removeEventListener("keydown", listenForEscape));
 </script>
 

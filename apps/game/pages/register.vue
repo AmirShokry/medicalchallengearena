@@ -58,7 +58,10 @@ const handleRegister = async () => {
     }
 
     resetForm();
-    await router.push({ name: "game-lobby" });
+
+    router.push({ name: "game-lobby" });
+
+    // await
   } catch (error: any) {
     console.error("Registration error:", error);
     errorMessage.value =

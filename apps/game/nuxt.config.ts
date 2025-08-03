@@ -9,9 +9,16 @@ export default defineNuxtConfig({
     STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY,
     STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
     STRIPE_WEBHOOK_SECRET_KEY: process.env.STRIPE_WEBHOOK_SECRET_KEY,
+    public: {
+      NUXT_BASE_URL: process.env.NUXT_BASE_URL || "http://localhost:3000",
+    },
   },
   auth: {
     originEnvKey: "NUXT_AUTH_ORIGIN",
+    sessionRefresh: {
+      enabledPeriodically: true,
+      enabledOnWindowFocus: true,
+    },
   },
   modules: ["nuxt-svgo", "shadcn-nuxt", "@sidebase/nuxt-auth", "@pinia/nuxt"],
   build: {

@@ -13,6 +13,8 @@ export interface AnyUser {
   email: string;
   medPoints: number;
   university: string;
+  isSubscribed: boolean;
+  plan: string | null;
 }
 declare module "next-auth" {
   interface Session {
