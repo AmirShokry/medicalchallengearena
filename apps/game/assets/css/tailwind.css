@@ -29,14 +29,6 @@
 @theme {
   --font-geist: "Geist", "Geist Fallback", sans-serif;
 }
-.primary {
-  color: red;
-}
-@layer base {
-  .primary {
-    @apply font-geist;
-  }
-}
 
 /* [background:linear-gradient(80deg,_rgba(187,77,0,1)_0%,_rgba(217,166,72,1)_100%)] old color */
 /* [background:linear-gradient(185deg,_rgba(255,140,59,1)_0%,_rgba(0,0,0,0)_100%)] */
