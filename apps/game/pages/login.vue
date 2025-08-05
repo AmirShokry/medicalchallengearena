@@ -115,6 +115,7 @@ function getInitialFormData() {
             <div class="bg-muted relative hidden md:block">
               <img
                 alt="Image"
+                src="@/assets/images/grey-anatomy.webp"
                 class="absolute inset-0 h-full w-full object-cover object-[center_-0.2rem] dark:grayscale"
               />
             </div>

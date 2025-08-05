@@ -41,7 +41,6 @@ export default eventHandler(async (event) => {
   const portalSession = await stripe.billingPortal.sessions.create({
     customer: account.stripe_customer_id,
     return_url: `${useRuntimeConfig().public.NUXT_BASE_URL}/payment/refresh`,
-    // return_url: `${useRuntimeConfig().public.NUXT_BASE_URL}/payment/signout`,
   });
 
   return {

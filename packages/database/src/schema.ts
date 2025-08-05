@@ -66,13 +66,6 @@ export const users = pgTable(
   (table) => [index("med_points_idx").on(table.medPoints)]
 );
 
-export const accessCodes = pgTable("access_codes", {
-  code: varchar("code")
-    .notNull()
-    .primaryKey()
-    .default(sql`md5(random()::text || clock_timestamp()::text)`),
-  used: boolean("used").notNull().default(false),
-});
 /**
  **
  *

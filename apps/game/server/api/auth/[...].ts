@@ -58,23 +58,10 @@ export const authConfig: AuthOptions = {
   callbacks: {
     async jwt({ token, user }) {
       if (user) Object.assign(token, user);
-      console.log(`session.user ${Math.random()}`, user);
-
-      // else if (!user && token.id) {
-      //   const [freshData] = await db
-      //     .select({
-      //       ...getTableColumnsExcept(db.table.users_auth, [
-      //         "password",
-      //         "user_id",
-      //       ]),
-      //     })
-      //     .from(db.table.users_auth)
-      //     .where(eq(db.table.users_auth.user_id, token.id));
-      //   if (freshData) Object.assign(token, freshData);
-      // }
       return token;
     },
     async session({ session, token }) {
+      //@ts-expect-error
       session.user = { ...token };
 
       // if (session.user) Object.assign(session.user, token);

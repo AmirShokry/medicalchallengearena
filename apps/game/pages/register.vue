@@ -16,7 +16,6 @@ function getInitialFormData() {
   return {
     username: "",
     email: "",
-    accessCode: "",
     password: "",
     university: "",
   };
@@ -37,7 +36,6 @@ const handleRegister = async () => {
     // Call the registration mutation
     const { $trpc } = useNuxtApp();
     const newUser = await $trpc.auth.register.mutate({
-      accessCode: form.value.accessCode,
       email: form.value.email,
       password: form.value.password,
       username: form.value.username,
@@ -83,21 +81,9 @@ const canRegister = computed(
     form.value.username &&
     form.value.email &&
     form.value.password &&
-    form.value.accessCode &&
     form.value.university &&
     !isLoading.value
 );
-
-// Email validation
-const isValidEmail = computed(() => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return !form.value.email || emailRegex.test(form.value.email);
-});
-
-// Password strength
-const isStrongPassword = computed(() => {
-  return !form.value.password || form.value.password.length >= 6;
-});
 </script>
 <template>
   <div
@@ -162,16 +148,6 @@ const isStrongPassword = computed(() => {
                     required
                   />
                 </div>
-                <div class="grid gap-3">
-                  <Label for="username">Access Code </Label>
-                  <Input
-                    v-model="form.accessCode"
-                    id="access-code"
-                    form="register"
-                    type="input"
-                    required
-                  />
-                </div>
 
                 <!-- Error message -->
                 <div
@@ -203,6 +179,7 @@ const isStrongPassword = computed(() => {
             <div class="bg-muted relative hidden md:block">
               <img
                 alt="Image"
+                src="@/assets/images/grey-anatomy.webp"
                 class="absolute inset-0 h-full w-full object-cover object-[center_-0.2rem] dark:grayscale"
               />
             </div>
