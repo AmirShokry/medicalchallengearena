@@ -26,6 +26,7 @@ export const usePreviewStore = defineStore("preview", () => {
     category: string;
     caseType: CaseTypes;
   }) {
+    console.log("Fetching preview data for:", { system, category, caseType });
     pending.value = true;
     error.value = null;
     try {
@@ -44,6 +45,8 @@ export const usePreviewStore = defineStore("preview", () => {
   }
 
   async function addData(data: Block[number]) {
+    error.value = null;
+    pending.value = false;
     preview.value.unshift(data);
   }
   async function deleteCase(index: number | null) {

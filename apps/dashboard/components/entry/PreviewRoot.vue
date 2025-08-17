@@ -20,12 +20,6 @@ const scrollerRef = useTemplateRef("scrollerRef");
 const inputStore = useInputStore();
 const previewStore = usePreviewStore();
 
-previewStore.fetchPreviewData({
-  system,
-  category,
-  caseType,
-});
-
 watch(
   () => caseType,
   async () => {
@@ -34,7 +28,8 @@ watch(
       category,
       caseType,
     });
-  }
+  },
+  { immediate: true }
 );
 function handleEditCase(caseIndex: number) {
   if (previewStore.isEmpty) return;
@@ -67,6 +62,7 @@ function handleEditCase(caseIndex: number) {
       class="cursor-pointer absolute -bottom-1.5 -left-2 z-50"
       ><ArrowUpCircleIcon
     /></Button>
+
     <DynamicScroller
       v-if="!previewStore.error && !previewStore.pending"
       ref="scrollerRef"

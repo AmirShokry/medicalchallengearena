@@ -224,114 +224,214 @@ export const block = createTRPCRouter({
         })
         .where(eq(db.table.cases.id, input.id));
 
-      const allChoices = input.questions.flatMap((q) => q.choices);
-      const questionIds = input.questions.map((q) => q.id);
-      const choiceIds = allChoices.map((c) => c.id);
+      // 2️⃣ Get existing question and choice IDs from database
+      const existingQuestions = await tx
+        .select({ id: db.table.questions.id })
+        .from(db.table.questions);
+      const existingChoices = await tx
+        .select({ id: db.table.choices.id })
+        .from(db.table.choices);
 
-      // 2️⃣ Update questions
-      if (!questionIds.length)
-        throw new TRPCError({
-          message: "No questions provided for update",
-          code: "BAD_REQUEST",
+      const existingQuestionIds = new Set(existingQuestions.map((q) => q.id));
+      const existingChoiceIds = new Set(existingChoices.map((c) => c.id));
+
+      // 3️⃣ Separate new vs existing questions
+      const newQuestions = input.questions.filter(
+        (q) => !existingQuestionIds.has(q.id)
+      );
+      const existingQuestionsToUpdate = input.questions.filter((q) =>
+        existingQuestionIds.has(q.id)
+      );
+
+      // 4️⃣ Insert new questions and get their IDs
+      const questionIdMapping = new Map<number, number>(); // old ID -> new ID
+
+      if (newQuestions.length > 0) {
+        const questionsValues = newQuestions.map((question) => ({
+          body: question.body,
+          type: question.type,
+          header: question.header,
+        }));
+
+        const questionsResults = await tx
+          .insert(db.table.questions)
+          .values(questionsValues)
+          .returning();
+
+        // Map old IDs to new IDs
+        newQuestions.forEach((question, index) => {
+          questionIdMapping.set(question.id, questionsResults[index].id);
         });
-      if (!allChoices.length)
-        throw new TRPCError({
-          message: "No choices provided for update",
-          code: "BAD_REQUEST",
+      }
+
+      // 5️⃣ Update existing questions
+      if (existingQuestionsToUpdate.length > 0) {
+        const existingQuestionIds = existingQuestionsToUpdate.map((q) => q.id);
+
+        await tx
+          .update(db.table.questions)
+          .set({
+            type: buildCaseSql(
+              existingQuestionsToUpdate,
+              db.table.questions.id,
+              "type",
+              db.table.questions.type
+            ),
+            body: buildCaseSql(
+              existingQuestionsToUpdate,
+              db.table.questions.id,
+              "body",
+              db.table.questions.body
+            ),
+            header: buildCaseSql(
+              existingQuestionsToUpdate,
+              db.table.questions.id,
+              "header",
+              db.table.questions.header
+            ),
+          })
+          .where(inArray(db.table.questions.id, existingQuestionIds));
+      }
+
+      // 6️⃣ Handle choices (separate new vs existing)
+      // First, let's add unique identifiers to choices to avoid ID conflicts
+      const allChoicesWithUniqueKeys = input.questions.flatMap(
+        (q, questionIndex) =>
+          q.choices.map((choice, choiceIndex) => ({
+            ...choice,
+            questionId: questionIdMapping.get(q.id) || q.id,
+            uniqueKey: `${q.id}-${choiceIndex}`, // Create unique key based on question and position
+            originalQuestionId: q.id,
+            originalChoiceId: choice.id,
+          }))
+      );
+
+      const newChoices = allChoicesWithUniqueKeys.filter(
+        (c) => !existingChoiceIds.has(c.originalChoiceId)
+      );
+      const existingChoicesToUpdate = allChoicesWithUniqueKeys.filter((c) =>
+        existingChoiceIds.has(c.originalChoiceId)
+      );
+
+      // 7️⃣ Insert new choices and get their IDs
+      const choiceIdMapping = new Map<string, number>(); // uniqueKey -> new ID
+
+      if (newChoices.length > 0) {
+        const choicesValues = newChoices.map((choice) => ({
+          body: choice.body,
+        }));
+
+        const choicesResults = await tx
+          .insert(db.table.choices)
+          .values(choicesValues)
+          .returning();
+
+        // Map unique keys to new IDs
+        newChoices.forEach((choice, index) => {
+          choiceIdMapping.set(choice.uniqueKey, choicesResults[index].id);
         });
+      }
 
-      await tx
-        .update(db.table.questions)
-        .set({
-          type: buildCaseSql(
-            input.questions,
-            db.table.questions.id,
-            "type",
-            db.table.questions.type
-          ),
-          body: buildCaseSql(
-            input.questions,
-            db.table.questions.id,
-            "body",
-            db.table.questions.body
-          ),
-          header: buildCaseSql(
-            input.questions,
-            db.table.questions.id,
-            "header",
-            db.table.questions.header
-          ),
-        })
-        .where(inArray(db.table.questions.id, questionIds));
-
-      // 3️⃣ Update cases_questions (scalar + array fields in one batch)
-
-      await tx
-        .update(db.table.cases_questions)
-        .set({
-          isStudyMode: buildCaseSql(
-            input.questions,
-            db.table.cases_questions.question_id,
-            "isStudyMode",
-            db.table.cases_questions.isStudyMode
-          ),
-          explanation: buildCaseSql(
-            input.questions,
-            db.table.cases_questions.question_id,
-            "explanation",
-            db.table.cases_questions.explanation
-          ),
-          imgUrls: buildCaseSql(
-            input.questions,
-            db.table.cases_questions.question_id,
-            "imgUrls",
-            db.table.cases_questions.imgUrls
-          ),
-          explanationImgUrls: buildCaseSql(
-            input.questions,
-            db.table.cases_questions.question_id,
-            "explanationImgUrls",
-            db.table.cases_questions.explanationImgUrls
-          ),
-        })
-        .where(
-          and(
-            eq(db.table.cases_questions.case_id, input.id),
-            inArray(db.table.cases_questions.question_id, questionIds)
-          )
+      // 8️⃣ Update existing choices
+      if (existingChoicesToUpdate.length > 0) {
+        const existingChoiceIds = existingChoicesToUpdate.map(
+          (c) => c.originalChoiceId
         );
 
-      // 4️⃣ Update choices and questions_choices
+        await tx
+          .update(db.table.choices)
+          .set({
+            body: buildCaseSql(
+              existingChoicesToUpdate.map((c) => ({
+                ...c,
+                id: c.originalChoiceId,
+              })),
+              db.table.choices.id,
+              "body",
+              db.table.choices.body
+            ),
+          })
+          .where(inArray(db.table.choices.id, existingChoiceIds));
+      }
 
-      await tx
-        .update(db.table.choices)
-        .set({
-          body: buildCaseSql(
-            allChoices,
-            db.table.choices.id,
-            "body",
-            db.table.choices.body
-          ),
-        })
-        .where(inArray(db.table.choices.id, choiceIds));
+      // 9️⃣ Handle cases_questions relationships
+      const allQuestionsWithMappedIds = input.questions.map((q) => ({
+        ...q,
+        id: questionIdMapping.get(q.id) || q.id, // Use mapped ID if it's a new question
+      }));
 
+      // Delete existing cases_questions for this case and insert fresh ones
       await tx
-        .update(db.table.questions_choices)
-        .set({
-          isCorrect: buildCaseSql(
-            allChoices,
-            db.table.questions_choices.choice_id,
-            "isCorrect",
-            db.table.questions_choices.isCorrect
-          ),
-          explanation: buildCaseSql(
-            allChoices,
-            db.table.questions_choices.choice_id,
-            "explanation",
-            db.table.questions_choices.explanation
-          ),
+        .delete(db.table.cases_questions)
+        .where(eq(db.table.cases_questions.case_id, input.id));
+
+      const casesQuestionsValues = allQuestionsWithMappedIds.map(
+        (question) => ({
+          case_id: input.id,
+          question_id: question.id,
+          imgUrls: question.imgUrls,
+          isStudyMode: question.isStudyMode,
+          explanation: question.explanation,
+          explanationImgUrls: question.explanationImgUrls,
         })
-        .where(inArray(db.table.questions_choices.choice_id, choiceIds));
+      );
+
+      await tx.insert(db.table.cases_questions).values(casesQuestionsValues);
+
+      // 🔟 Handle questions_choices relationships
+      // Delete existing questions_choices for all questions and insert fresh ones
+      const allQuestionIds = allQuestionsWithMappedIds.map((q) => q.id);
+      await tx
+        .delete(db.table.questions_choices)
+        .where(inArray(db.table.questions_choices.question_id, allQuestionIds));
+
+      // Create the questions_choices values properly mapped
+      const questionsChoicesValues: Array<{
+        question_id: number;
+        choice_id: number;
+        isCorrect: boolean;
+        explanation: string | null;
+      }> = [];
+
+      for (
+        let questionIndex = 0;
+        questionIndex < input.questions.length;
+        questionIndex++
+      ) {
+        const question = input.questions[questionIndex];
+        const mappedQuestionId =
+          questionIdMapping.get(question.id) || question.id;
+
+        for (
+          let choiceIndex = 0;
+          choiceIndex < question.choices.length;
+          choiceIndex++
+        ) {
+          const choice = question.choices[choiceIndex];
+          const uniqueKey = `${question.id}-${choiceIndex}`;
+
+          // Get mapped choice ID - either from new insertions or use original ID for existing choices
+          let mappedChoiceId: number;
+          if (choiceIdMapping.has(uniqueKey)) {
+            mappedChoiceId = choiceIdMapping.get(uniqueKey)!;
+          } else {
+            mappedChoiceId = choice.id; // Use original ID for existing choices
+          }
+
+          questionsChoicesValues.push({
+            question_id: mappedQuestionId,
+            choice_id: mappedChoiceId,
+            isCorrect: choice.isCorrect || false,
+            explanation: choice.explanation || null,
+          });
+        }
+      }
+
+      if (questionsChoicesValues.length > 0) {
+        await tx
+          .insert(db.table.questions_choices)
+          .values(questionsChoicesValues);
+      }
     });
   }),
 
