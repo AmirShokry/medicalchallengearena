@@ -45,7 +45,7 @@ export const usePreviewStore = defineStore("preview", () => {
   }
 
   async function addData(data: Block[number]) {
-    error.value = null;
+    error.value = null; //Because DynamicScroller doesn't render on error & if list empty error is thrown.
     pending.value = false;
     preview.value.unshift(data);
   }
