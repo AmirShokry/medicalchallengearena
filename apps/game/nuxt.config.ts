@@ -6,10 +6,10 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   runtimeConfig: {
     authSecret: process.env.NUXT_AUTH_SECRET,
-    STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY,
     STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
     STRIPE_WEBHOOK_SECRET_KEY: process.env.STRIPE_WEBHOOK_SECRET_KEY,
     public: {
+      STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY,
       NUXT_BASE_URL: process.env.NUXT_BASE_URL || "http://localhost:3000",
     },
   },
