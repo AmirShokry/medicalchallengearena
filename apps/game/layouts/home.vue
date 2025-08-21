@@ -151,7 +151,7 @@ const { status, signOut } = useAuth();
       <slot />
     </main>
     <footer class="pt-6 pb-12 px-[min(6rem,6svw)] min-h-80">
-      <div class="w-full min-h-80 flex max-lg:flex-col">
+      <div class="w-full min-h-80 flex max-lg:flex-col gap-4">
         <div class="flex-1 max-lg:order-3 order-1 font-geist flex flex-col">
           <p class="text-xl truncate w-90">yassin@medicalchallengearena.com</p>
           <div class="flex gap-2 items-center">
@@ -172,12 +172,14 @@ const { status, signOut } = useAuth();
             © 2025 MEDICALCHALLENGEARENA
           </p>
         </div>
-        <div class="flex-2 max-lg:order-1 order-2 grid grid-cols-4 font-geist">
+        <div
+          class="flex-2 max-lg:order-1 order-2 grid grid-cols-4 max-sm:grid-cols-2 font-geist"
+        >
           <div>
             <p class="font-semibold mb-1">Product</p>
             <NuxtLink :to="{ path: '/', hash: '#pricing' }"> Pricing </NuxtLink>
             <p>Features</p>
-            <a href="https://stats.uptimerobot.com/iBklV0JKKN" target="_blank">
+            <a href="https://status.medicalchallengearena.com/" target="_blank">
               Status
             </a>
             <p>Discounts</p>

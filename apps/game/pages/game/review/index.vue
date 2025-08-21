@@ -17,13 +17,13 @@ const { $trpc } = useNuxtApp();
 const currentPageNo = ref(0);
 const activeMode = ref<"unranked" | "single">("unranked");
 const records = ref<any[]>([]);
-const canClickLoadMore = ref(true);
+const canClickLoadMore = ref(false);
 const scrollerRef = useTemplateRef("scrollerRef");
 const isMobile = useMediaQuery("(max-width: 640px)");
 const userStore = useUserStore();
 const router = useRouter();
 
-const { data } = $trpc.reviews.meta.useQuery(() => ({
+const { data, pending } = $trpc.reviews.meta.useQuery(() => ({
   mode: activeMode.value,
 }));
 
@@ -32,17 +32,22 @@ watch(
   ([newData, newMode], [oldData, oldMode]) => {
     if (newMode !== oldMode) {
       currentPageNo.value = 0;
-      records.value = newData && newData.length ? newData : [];
-      canClickLoadMore.value = !!(newData && newData.length);
+      records.value =
+        newData?.records && newData.records.length ? newData.records : [];
+      canClickLoadMore.value = !!newData?.hasMore;
       nextTick(() => {
         if (scrollerRef.value) scrollerRef.value.scrollToItem(0);
       });
       return;
     }
-    if (records.value.length === 0 && newData && newData.length) {
-      records.value = newData;
-      canClickLoadMore.value = true;
-    } else if (!newData || !newData.length) {
+    if (
+      records.value.length === 0 &&
+      newData?.records &&
+      newData.records.length
+    ) {
+      records.value = newData.records;
+      canClickLoadMore.value = !!newData.hasMore;
+    } else if (!newData?.records || !newData.records.length) {
       canClickLoadMore.value = false;
     }
   },
@@ -56,17 +61,19 @@ async function handleLoadMore() {
     page: currentPageNo.value,
     mode: activeMode.value,
   });
-  if (!moreData || !moreData.length) {
+  if (!moreData?.records || !moreData.records.length) {
     canClickLoadMore.value = false;
     return;
   }
-  records.value = [...records.value, ...moreData];
+  records.value = [...records.value, ...moreData.records];
+  canClickLoadMore.value = moreData.hasMore;
   nextTick(() => {
     scrollerRef.value.scrollToItem(records.value.length - 1);
   });
 }
 function toggleMode() {
   activeMode.value = activeMode.value === "unranked" ? "single" : "unranked";
+  data.value = [] as any;
 }
 
 function handleRecordClicked(gameId: number) {
@@ -75,8 +82,6 @@ function handleRecordClicked(gameId: number) {
     name: "game-review-userId.gameId",
     params: { gameId, userId: userStore.user.id },
   });
-  // const record = JSON.stringify(records.value.find((record) => record.gameId === gameId));
-  // $router.push({ name: 'review', state: { record } });
 }
 </script>
 <template>
@@ -212,8 +217,8 @@ function handleRecordClicked(gameId: number) {
         Load More
       </div>
       <div
-        v-if="!records.length"
-        class="light-border-0.3 p-4 rounded-md text-center mt-4"
+        v-if="!records.length && !pending"
+        class="light-border-0.3 p-4 rounded-md text-center absolute"
       >
         No records found
       </div>

@@ -35,7 +35,7 @@ const data = {
   navMain: [
     {
       title: "Home",
-      url: "/",
+      url: "/game/lobby",
       icon: Home,
       isActive: true,
     },
