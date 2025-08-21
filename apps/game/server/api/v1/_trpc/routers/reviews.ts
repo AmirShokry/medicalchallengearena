@@ -17,7 +17,23 @@ export const reviews = createTRPCRouter({
       })
     )
     .query(async ({ ctx, input }) => {
-      return await db
+      const pageSize = 7;
+      const offset = input.page ? input.page * pageSize : 0;
+
+      // Get total count
+      const [totalCountResult] = await db
+        .select({ count: sql<number>`count(*)` })
+        .from(users_games)
+        .where(eq(users_games.userId, ctx.session?.user.id!))
+        .innerJoin(
+          games,
+          and(eq(users_games.gameId, games.id), eq(games.mode, input.mode))
+        )
+        .innerJoin(users, eq(users_games.opponentId, users.id));
+
+      const totalCount = totalCountResult.count;
+
+      const records = await db
         .select({
           gameId: users_games.gameId,
           userId: users_games.userId,
@@ -36,10 +52,15 @@ export const reviews = createTRPCRouter({
           and(eq(users_games.gameId, games.id), eq(games.mode, input.mode))
         )
         .innerJoin(users, eq(users_games.opponentId, users.id))
-
         .orderBy(desc(games.id))
-        .limit(7)
-        .offset(input.page ? input.page * 7 : 0);
+        .limit(pageSize)
+        .offset(offset);
+
+      return {
+        records,
+        hasMore: offset + records.length < totalCount,
+        totalCount,
+      };
     }),
   self: authProcedure
     .input(z.object({ gameId: z.number().int() }))
