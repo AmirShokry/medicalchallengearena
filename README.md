@@ -1,28 +1,103 @@
-# Turborepo VueJS/NuxtJS starter
+# Medical Challenge Arena
 
-This is a community-maintained example. If you experience a problem, please submit a pull request with a fix. GitHub Issues will be closed.
+A comprehensive medical education platform built with Vue.js/Nuxt.js and powered by a Turborepo monorepo structure.
 
-## Using this example
+## Prerequisites
 
-Run the following command:
+- Node.js 18+ and npm
+- Docker and Docker Compose (for external dependencies)
 
-```sh
-npx create-turbo@latest -e with-vue-nuxt
-```
+## Quick Start
+
+1. **Start external dependencies:**
+
+   ```sh
+   # Using PowerShell (Windows)
+   .\docker\manage.ps1 start dev
+
+   # Or using bash (Linux/macOS)
+   ./docker/manage.sh start dev
+
+   # Or using Docker Compose directly
+   docker-compose up -d
+   ```
+
+2. **Setup environment files:**
+
+   ```sh
+   .\docker\manage.ps1 setup
+   ```
+
+3. **Install dependencies:**
+
+   ```sh
+   npm install
+   ```
+
+4. **Run database migrations:**
+
+   ```sh
+   npm run db:push
+   ```
+
+5. **Start the development servers:**
+   ```sh
+   npm run dev
+   ```
 
 ## What's inside?
 
-This Turborepo includes the following packages/apps:
+This Medical Challenge Arena includes the following packages/apps:
 
 ### Apps and Packages
 
-- `docs`: a [Nuxt](https://nuxt.com/) app
-- `web`: another [Vue3](https://vuejs.org/) app
-- `ui`: a stub Vue component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `@nuxtjs/eslint-config-typescript` and `@vue/eslint-config-typescript`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+- `dashboard`: a [Nuxt](https://nuxt.com/) admin dashboard application
+- `game`: a [Nuxt](https://nuxt.com/) game client application
+- `database`: PostgreSQL database package with Drizzle ORM
+- `redis`: Redis cache and session storage package
+- `types`: shared TypeScript type definitions
+- `utils`: shared utility functions
+- `tsconfig`: shared TypeScript configurations
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+
+## External Dependencies
+
+The application requires the following external services:
+
+- **PostgreSQL 16** - Main database
+- **Redis 7** - Cache and session storage
+
+These are provided via Docker Compose. See the [Docker Setup Guide](./docker/README.md) for detailed information.
+
+### Development Tools (Optional)
+
+- **pgAdmin** - PostgreSQL management interface
+- **Redis Commander** - Redis management interface
+- **Mailhog** - Email testing server
+
+## Docker Services
+
+Quick commands for managing Docker services:
+
+```sh
+# Start all services
+docker-compose up -d
+
+# Start only core services (PostgreSQL + Redis)
+.\docker\manage.ps1 start core
+
+# View service status
+.\docker\manage.ps1 status
+
+# View logs
+.\docker\manage.ps1 logs
+
+# Stop all services
+docker-compose down
+```
+
+For detailed Docker management, see `docker/README.md`.
 
 ### Utilities
 

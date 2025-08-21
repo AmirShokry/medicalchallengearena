@@ -30,6 +30,11 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
+# docker
+docker-compose.override.yml
+docker-compose.prod.yml
+.docker/
+
 # turbo
 .turbo
 

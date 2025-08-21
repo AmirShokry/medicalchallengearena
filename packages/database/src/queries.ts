@@ -2,18 +2,18 @@
  * @fileoverview Most common queries will be placed here;
  */
 import {
-	// caseWhen,
-	db,
-	sql,
-	eq,
-	and,
-	or,
-	getTableColumns,
-	inArray,
-	notInArray,
-	// jsonAggBuildObject,
-	isNull,
-	notExists,
+  // caseWhen,
+  db,
+  sql,
+  eq,
+  and,
+  or,
+  getTableColumns,
+  inArray,
+  notInArray,
+  // jsonAggBuildObject,
+  isNull,
+  notExists,
 } from ".";
 
 import { caseWhen, jsonAggBuildObject } from "./helpers";
@@ -21,123 +21,119 @@ import { caseWhen, jsonAggBuildObject } from "./helpers";
 // import type { PlayerData } from "@server/types";
 
 export type Counters = Omit<
-	Awaited<ReturnType<typeof getMatchingCasesCountForTwoUsers>>[0] & {
-		unusedCount: number;
-	},
-	"unusedCount1" | "unusedCount2"
+  Awaited<ReturnType<typeof getMatchingCasesCountForTwoUsers>>[0] & {
+    unusedCount: number;
+  },
+  "unusedCount1" | "unusedCount2"
 >;
 
 export type Cases = Awaited<
-	ReturnType<typeof getAllCasesQuestionsChoicesByCategoriesIdsWithOptions>
+  ReturnType<typeof getAllCasesQuestionsChoicesByCategoriesIdsWithOptions>
 >;
 export type SystemsCategories = Awaited<
-	ReturnType<typeof getSystemsCategoriesForTwoUsers>
+  ReturnType<typeof getSystemsCategoriesForTwoUsers>
 >;
 type SolvedCasesIdsCTE = ReturnType<typeof SolvedCasesIdsCTEGenerator>;
 
 const {
-	systems,
-	users_friends,
-	users,
-	cases,
-	cases_questions,
-	categories,
-	choices,
-	questions_choices,
-	questions,
-	accessCodes,
-	users_cases,
+  systems,
+  users_friends,
+  users,
+  cases,
+  cases_questions,
+  categories,
+  choices,
+  questions_choices,
+  questions,
+  users_cases,
 } = db.table;
 const {
-	choice_id,
-	question_id: q2,
-	...question_choices_columns
+  choice_id,
+  question_id: q2,
+  ...question_choices_columns
 } = getTableColumns(questions_choices);
 const { question_id, case_id, ...cases_questions_columns } =
-	getTableColumns(cases_questions);
+  getTableColumns(cases_questions);
 
 /** @description Commonly used CTES	 */
 export const QuestionsChoicesCTE = db.$with("QuestionsChoicesCTE").as(
-	db
-		.select({
-			...getTableColumns(questions),
-			choices: jsonAggBuildObject({
-				...getTableColumns(choices),
-				...question_choices_columns,
-			}).as("choices"),
-		})
-		.from(questions_choices)
-		.innerJoin(questions, eq(questions_choices.question_id, questions.id))
-		.innerJoin(choices, eq(questions_choices.choice_id, choices.id))
-		.groupBy(questions.id)
+  db
+    .select({
+      ...getTableColumns(questions),
+      choices: jsonAggBuildObject({
+        ...getTableColumns(choices),
+        ...question_choices_columns,
+      }).as("choices"),
+    })
+    .from(questions_choices)
+    .innerJoin(questions, eq(questions_choices.question_id, questions.id))
+    .innerJoin(choices, eq(questions_choices.choice_id, choices.id))
+    .groupBy(questions.id)
 );
 
 const CaseQuestionChoicesCTE = db.$with("CaseQuestionChoicesCTE").as(
-	db
-		.with(QuestionsChoicesCTE)
-		.select({
-			...getTableColumns(cases),
-			questions: jsonAggBuildObject({
-				...QuestionsChoicesCTE._.selectedFields,
-				...cases_questions_columns,
-				imgUrls: sql<
-					string[]
-				>` COALESCE(${cases_questions_columns.imgUrls}, ARRAY[]::text[])`,
-				explanationImgUrls: sql<
-					string[]
-				>` COALESCE(${cases_questions_columns.explanationImgUrls}, ARRAY[]::text[])`,
-			}).as("questions"),
-		})
-		.from(cases_questions)
-		.innerJoin(cases, eq(cases_questions.case_id, cases.id))
-		.where(eq(cases_questions.isStudyMode, false))
-		.innerJoin(
-			QuestionsChoicesCTE,
-			eq(cases_questions.question_id, QuestionsChoicesCTE.id)
-		)
-		.groupBy(cases.id)
+  db
+    .with(QuestionsChoicesCTE)
+    .select({
+      ...getTableColumns(cases),
+      questions: jsonAggBuildObject({
+        ...QuestionsChoicesCTE._.selectedFields,
+        ...cases_questions_columns,
+        imgUrls: sql<
+          string[]
+        >` COALESCE(${cases_questions_columns.imgUrls}, ARRAY[]::text[])`,
+        explanationImgUrls: sql<
+          string[]
+        >` COALESCE(${cases_questions_columns.explanationImgUrls}, ARRAY[]::text[])`,
+      }).as("questions"),
+    })
+    .from(cases_questions)
+    .innerJoin(cases, eq(cases_questions.case_id, cases.id))
+    .where(eq(cases_questions.isStudyMode, false))
+    .innerJoin(
+      QuestionsChoicesCTE,
+      eq(cases_questions.question_id, QuestionsChoicesCTE.id)
+    )
+    .groupBy(cases.id)
 );
 
 const CaseQuestionChoicesStudyModeOnlyCTE = db
-	.$with("CaseQuestionChoicesStudyModeCTE")
-	.as(
-		db
-			.with(QuestionsChoicesCTE)
-			.select({
-				...getTableColumns(cases),
-				questions: jsonAggBuildObject({
-					...QuestionsChoicesCTE._.selectedFields,
-					...cases_questions_columns,
-					imgUrls: sql<
-						string[]
-					>` COALESCE(${cases_questions_columns.imgUrls}, ARRAY[]::text[])`,
-					explanationImgUrls: sql<
-						string[]
-					>` COALESCE(${cases_questions_columns.explanationImgUrls}, ARRAY[]::text[])`,
-				}).as("questions"),
-			})
-			.from(cases_questions)
-			.innerJoin(cases, eq(cases_questions.case_id, cases.id))
-			.where(eq(cases_questions.isStudyMode, true))
-			.innerJoin(
-				QuestionsChoicesCTE,
-				eq(cases_questions.question_id, QuestionsChoicesCTE.id)
-			)
-			.groupBy(cases.id)
-	);
+  .$with("CaseQuestionChoicesStudyModeCTE")
+  .as(
+    db
+      .with(QuestionsChoicesCTE)
+      .select({
+        ...getTableColumns(cases),
+        questions: jsonAggBuildObject({
+          ...QuestionsChoicesCTE._.selectedFields,
+          ...cases_questions_columns,
+          imgUrls: sql<
+            string[]
+          >` COALESCE(${cases_questions_columns.imgUrls}, ARRAY[]::text[])`,
+          explanationImgUrls: sql<
+            string[]
+          >` COALESCE(${cases_questions_columns.explanationImgUrls}, ARRAY[]::text[])`,
+        }).as("questions"),
+      })
+      .from(cases_questions)
+      .innerJoin(cases, eq(cases_questions.case_id, cases.id))
+      .where(eq(cases_questions.isStudyMode, true))
+      .innerJoin(
+        QuestionsChoicesCTE,
+        eq(cases_questions.question_id, QuestionsChoicesCTE.id)
+      )
+      .groupBy(cases.id)
+  );
 
 const SolvedCasesIdsCTEGenerator = (user1Id: number, user2Id: number) =>
-	db.$with("SolvedCasesCTE").as(
-		db
-			.selectDistinct({ solved_case_id: users_cases.case_id })
-			.from(users_cases)
-			.where(
-				or(
-					eq(users_cases.user_id, user1Id),
-					eq(users_cases.user_id, user2Id)
-				)
-			)
-	);
+  db.$with("SolvedCasesCTE").as(
+    db
+      .selectDistinct({ solved_case_id: users_cases.case_id })
+      .from(users_cases)
+      .where(
+        or(eq(users_cases.user_id, user1Id), eq(users_cases.user_id, user2Id))
+      )
+  );
 
 /**
  * @param SolvedCasesCTE: CTE - The CTE that contains the solved cases ids
@@ -145,172 +141,136 @@ const SolvedCasesIdsCTEGenerator = (user1Id: number, user2Id: number) =>
  * @returns
  */
 const UnusedCasesGeneratorCTE = (
-	SolvedCasesIdsCTE: SolvedCasesIdsCTE,
-	limit = 10000
+  SolvedCasesIdsCTE: SolvedCasesIdsCTE,
+  limit = 10000
 ) =>
-	db.$with("UnusedCasesCTE").as(
-		db
-			.with(SolvedCasesIdsCTE)
-			.selectDistinct({ unused_case_id: cases.id })
-			.from(cases)
-			.leftJoin(
-				SolvedCasesIdsCTE,
-				eq(cases.id, SolvedCasesIdsCTE.solved_case_id)
-			)
-			.where(isNull(SolvedCasesIdsCTE.solved_case_id))
-		// .limit(limit),
-	);
+  db.$with("UnusedCasesCTE").as(
+    db
+      .with(SolvedCasesIdsCTE)
+      .selectDistinct({ unused_case_id: cases.id })
+      .from(cases)
+      .leftJoin(
+        SolvedCasesIdsCTE,
+        eq(cases.id, SolvedCasesIdsCTE.solved_case_id)
+      )
+      .where(isNull(SolvedCasesIdsCTE.solved_case_id))
+    // .limit(limit),
+  );
 
 export const UsersRanksCTE = db.$with("UsersRanksCTE").as(
-	db
-		.select({
-			id: users.id,
-			rank: sql<number>`RANK() OVER (ORDER BY ${users.medPoints} DESC, ${users.gamesTotal} ASC)::int`.as(
-				"rank"
-			),
-		})
-		.from(users)
+  db
+    .select({
+      id: users.id,
+      rank: sql<number>`RANK() OVER (ORDER BY ${users.medPoints} DESC, ${users.gamesTotal} ASC)::int`.as(
+        "rank"
+      ),
+    })
+    .from(users)
 );
 
 export async function getSystems() {
-	return await db.select().from(systems);
+  return await db.select().from(systems);
 }
-
-/**
- *
- * @description Get friends of a specific user by his id
- * @param userId Target user id to get friends of
- * @param include Optional friend information to include in the query
- */
-// export async function getFriendsByUserId(userId: number, include?: Partial<Record<keyof PlayerData, boolean>>) {
-// 	const FriendIdsCTE = db.$with("FriendIds").as(
-// 		/**/ db
-// 			.select({
-// 				friendId: sql<string>`
-//             CASE
-//                 WHEN ${users_friends.user1_id} = ${userId}
-//                 THEN ${users_friends.user2_id}
-//                 ELSE ${users_friends.user1_id}
-//             END`.as("friendId"),
-// 			})
-// 			.from(users_friends)
-// 			.where(and(or(eq(users_friends.user1_id, userId), eq(users_friends.user2_id, userId)), eq(users_friends.isFriend, true))),
-// 	);
-// 	const defaultSelection = {
-// 		id: users.id,
-// 		username: users.username,
-// 		avatarUrl: users.avatarUrl,
-// 		medSchool: users.medSchool,
-// 		university: users.university,
-// 		medPoints: users.medPoints,
-// 	};
-
-// 	const finalSelection = include
-// 		? Object.fromEntries(Object.entries(defaultSelection).filter(([key]) => Object.hasOwn(include!, key)))
-// 		: defaultSelection;
-
-// 	return await db.with(FriendIdsCTE).select(finalSelection).from(FriendIdsCTE).innerJoin(users, eq(users.id, FriendIdsCTE.friendId));
-// }
 
 export async function getAllCategoriesCount() {
-	return await db
-		.select({
-			categoryId: cases.category_id,
-			count: sql<number>`COUNT(*)`,
-		})
-		.from(cases)
-		.groupBy(cases.category_id);
+  return await db
+    .select({
+      categoryId: cases.category_id,
+      count: sql<number>`COUNT(*)`,
+    })
+    .from(cases)
+    .groupBy(cases.category_id);
 }
 export async function getCasesByCategoriesIds(categoriesIds: number[]) {
-	const { category_id, ...rest } = getTableColumns(cases);
-	return await db
-		.select({
-			...rest,
-		})
-		.from(cases)
-		.innerJoin(categories, eq(cases.category_id, categories.id))
-		.where(inArray(categories.id, categoriesIds));
+  const { category_id, ...rest } = getTableColumns(cases);
+  return await db
+    .select({
+      ...rest,
+    })
+    .from(cases)
+    .innerJoin(categories, eq(cases.category_id, categories.id))
+    .where(inArray(categories.id, categoriesIds));
 }
 export async function getCasesNotInCategoriesIds(categoriesIds: number[]) {
-	const { category_id, ...rest } = getTableColumns(cases);
-	return await db
-		.select({
-			...rest,
-		})
-		.from(cases)
-		.innerJoin(categories, eq(cases.category_id, categories.id))
-		.where(notInArray(categories.id, categoriesIds));
+  const { category_id, ...rest } = getTableColumns(cases);
+  return await db
+    .select({
+      ...rest,
+    })
+    .from(cases)
+    .innerJoin(categories, eq(cases.category_id, categories.id))
+    .where(notInArray(categories.id, categoriesIds));
 }
 //TODO: MERGE TO 1 FUNCTION
 export async function getCasesQuestionsChoicesByCategoriesIds(
-	categoriesIds: number[]
+  categoriesIds: number[]
 ) {
-	return await db
-		.with(QuestionsChoicesCTE)
-		.select({
-			...getTableColumns(cases),
-			questions: jsonAggBuildObject({
-				...QuestionsChoicesCTE._.selectedFields,
-				...cases_questions_columns,
-				imgUrls: sql<
-					string[]
-				>` COALESCE(${cases_questions_columns.imgUrls}, ARRAY[]::text[])`,
-				explanationImgUrls: sql<
-					string[]
-				>` COALESCE(${cases_questions_columns.explanationImgUrls}, ARRAY[]::text[])`,
-			}).as("questions"),
-		})
-		.from(cases_questions)
-		.innerJoin(cases, eq(cases_questions.case_id, cases.id))
-		.innerJoin(categories, eq(cases.category_id, categories.id))
-		.where(inArray(categories.id, categoriesIds))
-		.innerJoin(
-			QuestionsChoicesCTE,
-			eq(cases_questions.question_id, QuestionsChoicesCTE.id)
-		)
-		.groupBy(cases.id)
-		.orderBy(sql`RANDOM()`)
-		.limit(10);
+  return await db
+    .with(QuestionsChoicesCTE)
+    .select({
+      ...getTableColumns(cases),
+      questions: jsonAggBuildObject({
+        ...QuestionsChoicesCTE._.selectedFields,
+        ...cases_questions_columns,
+        imgUrls: sql<
+          string[]
+        >` COALESCE(${cases_questions_columns.imgUrls}, ARRAY[]::text[])`,
+        explanationImgUrls: sql<
+          string[]
+        >` COALESCE(${cases_questions_columns.explanationImgUrls}, ARRAY[]::text[])`,
+      }).as("questions"),
+    })
+    .from(cases_questions)
+    .innerJoin(cases, eq(cases_questions.case_id, cases.id))
+    .innerJoin(categories, eq(cases.category_id, categories.id))
+    .where(inArray(categories.id, categoriesIds))
+    .innerJoin(
+      QuestionsChoicesCTE,
+      eq(cases_questions.question_id, QuestionsChoicesCTE.id)
+    )
+    .groupBy(cases.id)
+    .orderBy(sql`RANDOM()`)
+    .limit(10);
 }
 //TODO: MERGE TO 1 FUNCTION
 export async function getCasesQuestionsChoicesNotInCategoriesIds(
-	categoriesIds: number[]
+  categoriesIds: number[]
 ) {
-	const { case_id, question_id, ...cases_questions_columns } =
-		getTableColumns(cases_questions);
-	return await db
-		.with(QuestionsChoicesCTE)
-		.select({
-			...getTableColumns(cases),
-			questions: jsonAggBuildObject({
-				...QuestionsChoicesCTE._.selectedFields,
-				...cases_questions_columns,
-				imgUrls: sql<
-					string[]
-				>` COALESCE(${cases_questions_columns.imgUrls}, ARRAY[]::text[])`,
-				explanationImgUrls: sql<
-					string[]
-				>` COALESCE(${cases_questions_columns.explanationImgUrls}, ARRAY[]::text[])`,
-			}).as("questions"),
-		})
-		.from(cases_questions)
-		.innerJoin(cases, eq(cases_questions.case_id, cases.id))
-		.innerJoin(categories, eq(cases.category_id, categories.id))
-		.where(notInArray(categories.id, categoriesIds))
-		.innerJoin(
-			QuestionsChoicesCTE,
-			eq(cases_questions.question_id, QuestionsChoicesCTE.id)
-		)
-		.groupBy(cases.id)
-		.orderBy(sql`RANDOM()`)
-		.limit(10);
+  const { case_id, question_id, ...cases_questions_columns } =
+    getTableColumns(cases_questions);
+  return await db
+    .with(QuestionsChoicesCTE)
+    .select({
+      ...getTableColumns(cases),
+      questions: jsonAggBuildObject({
+        ...QuestionsChoicesCTE._.selectedFields,
+        ...cases_questions_columns,
+        imgUrls: sql<
+          string[]
+        >` COALESCE(${cases_questions_columns.imgUrls}, ARRAY[]::text[])`,
+        explanationImgUrls: sql<
+          string[]
+        >` COALESCE(${cases_questions_columns.explanationImgUrls}, ARRAY[]::text[])`,
+      }).as("questions"),
+    })
+    .from(cases_questions)
+    .innerJoin(cases, eq(cases_questions.case_id, cases.id))
+    .innerJoin(categories, eq(cases.category_id, categories.id))
+    .where(notInArray(categories.id, categoriesIds))
+    .innerJoin(
+      QuestionsChoicesCTE,
+      eq(cases_questions.question_id, QuestionsChoicesCTE.id)
+    )
+    .groupBy(cases.id)
+    .orderBy(sql`RANDOM()`)
+    .limit(10);
 }
 export async function getUsedCategoriesIdsByUserId(userId: number) {
-	const [result] = await db.select({
-		usedCategoriesIds: sql<number[]>`array_agg(category_id)`.as(
-			"usedCategoriesIds"
-		),
-	}).from(sql`(
+  const [result] = await db.select({
+    usedCategoriesIds: sql<number[]>`array_agg(category_id)`.as(
+      "usedCategoriesIds"
+    ),
+  }).from(sql`(
 		SELECT ${categories.id} AS category_id
 		FROM ${users_cases}
 		INNER JOIN ${cases} ON ${users_cases.case_id} = ${cases.id}
@@ -318,110 +278,103 @@ export async function getUsedCategoriesIdsByUserId(userId: number) {
 		WHERE ${users_cases.user_id} = ${userId}
 		GROUP BY ${categories.id}
 		HAVING COUNT(DISTINCT ${cases.id}) = (SELECT COUNT(*) FROM ${cases} WHERE ${cases.category_id} = ${categories.id}))`);
-	return result;
+  return result;
 }
 
 export async function getSystemsCategoriesByUserId(userId: number) {
-	// Single CTE to get all the necessary counts in one pass
-	const CategoryStats = db.$with("CategoryStats").as(
-		db
-			.select({
-				categoryId: categories.id,
-				systemId: categories.system_id,
-				categoryName: categories.name,
-				totalCases: sql<number>`COUNT(DISTINCT ${cases.id})::int`.as(
-					"totalCases"
-				),
-				usedCases:
-					sql<number>`COUNT(DISTINCT ${users_cases.case_id})::int`.as(
-						"usedCases"
-					),
-			})
-			.from(categories)
-			.leftJoin(cases, eq(cases.category_id, categories.id))
-			.leftJoin(
-				users_cases,
-				and(
-					eq(cases.id, users_cases.case_id),
-					eq(users_cases.user_id, userId)
-				)
-			)
-			.groupBy(categories.id)
-	);
-	return await db
-		.with(CategoryStats)
-		.select({
-			id: systems.id,
-			name: systems.name,
-			allCount:
-				sql<number>`COUNT(DISTINCT ${CategoryStats.categoryId})::int`.as(
-					"allCount"
-				),
-			unusedCount: sql<number>`SUM(CASE WHEN (${CategoryStats.totalCases} - ${CategoryStats.usedCases}) > 0 THEN 1 ELSE 0 END)::int`,
-			categories: jsonAggBuildObject({
-				id: CategoryStats.categoryId,
-				name: CategoryStats.categoryName,
-				allCount: CategoryStats.totalCases,
-				unusedCount: sql<number>`(${CategoryStats.totalCases} - ${CategoryStats.usedCases})::int`,
-			}),
-		})
-		.from(systems)
-		.innerJoin(CategoryStats, eq(systems.id, CategoryStats.systemId))
-		.groupBy(systems.id);
+  // Single CTE to get all the necessary counts in one pass
+  const CategoryStats = db.$with("CategoryStats").as(
+    db
+      .select({
+        categoryId: categories.id,
+        systemId: categories.system_id,
+        categoryName: categories.name,
+        totalCases: sql<number>`COUNT(DISTINCT ${cases.id})::int`.as(
+          "totalCases"
+        ),
+        usedCases: sql<number>`COUNT(DISTINCT ${users_cases.case_id})::int`.as(
+          "usedCases"
+        ),
+      })
+      .from(categories)
+      .leftJoin(cases, eq(cases.category_id, categories.id))
+      .leftJoin(
+        users_cases,
+        and(eq(cases.id, users_cases.case_id), eq(users_cases.user_id, userId))
+      )
+      .groupBy(categories.id)
+  );
+  return await db
+    .with(CategoryStats)
+    .select({
+      id: systems.id,
+      name: systems.name,
+      allCount:
+        sql<number>`COUNT(DISTINCT ${CategoryStats.categoryId})::int`.as(
+          "allCount"
+        ),
+      unusedCount: sql<number>`SUM(CASE WHEN (${CategoryStats.totalCases} - ${CategoryStats.usedCases}) > 0 THEN 1 ELSE 0 END)::int`,
+      categories: jsonAggBuildObject({
+        id: CategoryStats.categoryId,
+        name: CategoryStats.categoryName,
+        allCount: CategoryStats.totalCases,
+        unusedCount: sql<number>`(${CategoryStats.totalCases} - ${CategoryStats.usedCases})::int`,
+      }),
+    })
+    .from(systems)
+    .innerJoin(CategoryStats, eq(systems.id, CategoryStats.systemId))
+    .groupBy(systems.id);
 }
 
 export async function getSystemsCategoriesForTwoUsers(
-	user1Id: number,
-	user2Id: number
+  user1Id: number,
+  user2Id: number
 ) {
-	// CTE to get counts for both users
-	const CategoryStats = db.$with("CategoryStats").as(
-		db
-			.select({
-				categoryId: categories.id,
-				systemId: categories.system_id,
-				categoryName: categories.name,
-				totalCases: sql<number>`COUNT(DISTINCT ${cases.id})::int`.as(
-					"totalCases"
-				),
-				user1UsedCases:
-					sql<number>`COUNT(DISTINCT CASE WHEN users_cases.user_id = ${user1Id} THEN ${users_cases.case_id} END)::int`.as(
-						"user1UsedCases"
-					),
-				user2UsedCases:
-					sql<number>`COUNT(DISTINCT CASE WHEN users_cases.user_id = ${user2Id} THEN ${users_cases.case_id} END)::int`.as(
-						"user2UsedCases"
-					),
-			})
-			.from(categories)
-			.leftJoin(cases, eq(cases.category_id, categories.id))
-			.leftJoin(
-				users_cases,
-				and(
-					eq(cases.id, users_cases.case_id),
-					or(
-						eq(users_cases.user_id, user1Id),
-						eq(users_cases.user_id, user2Id)
-					)
-				)
-			)
-			.groupBy(categories.id)
-	);
+  // CTE to get counts for both users
+  const CategoryStats = db.$with("CategoryStats").as(
+    db
+      .select({
+        categoryId: categories.id,
+        systemId: categories.system_id,
+        categoryName: categories.name,
+        totalCases: sql<number>`COUNT(DISTINCT ${cases.id})::int`.as(
+          "totalCases"
+        ),
+        user1UsedCases:
+          sql<number>`COUNT(DISTINCT CASE WHEN users_cases.user_id = ${user1Id} THEN ${users_cases.case_id} END)::int`.as(
+            "user1UsedCases"
+          ),
+        user2UsedCases:
+          sql<number>`COUNT(DISTINCT CASE WHEN users_cases.user_id = ${user2Id} THEN ${users_cases.case_id} END)::int`.as(
+            "user2UsedCases"
+          ),
+      })
+      .from(categories)
+      .leftJoin(cases, eq(cases.category_id, categories.id))
+      .leftJoin(
+        users_cases,
+        and(
+          eq(cases.id, users_cases.case_id),
+          or(eq(users_cases.user_id, user1Id), eq(users_cases.user_id, user2Id))
+        )
+      )
+      .groupBy(categories.id)
+  );
 
-	return await db
-		.with(CategoryStats)
-		.select({
-			id: systems.id,
-			name: systems.name,
-			allCount:
-				sql<number>`COUNT(DISTINCT ${CategoryStats.categoryId})::int`.as(
-					"allCount"
-				),
+  return await db
+    .with(CategoryStats)
+    .select({
+      id: systems.id,
+      name: systems.name,
+      allCount:
+        sql<number>`COUNT(DISTINCT ${CategoryStats.categoryId})::int`.as(
+          "allCount"
+        ),
 
-			unusedCount1: sql<number>`SUM(CASE WHEN (${CategoryStats.totalCases} - ${CategoryStats.user1UsedCases}) > 0 THEN 1 ELSE 0 END)::int`,
-			unusedCount2: sql<number>`SUM(CASE WHEN (${CategoryStats.totalCases} - ${CategoryStats.user2UsedCases}) > 0 THEN 1 ELSE 0 END)::int`,
+      unusedCount1: sql<number>`SUM(CASE WHEN (${CategoryStats.totalCases} - ${CategoryStats.user1UsedCases}) > 0 THEN 1 ELSE 0 END)::int`,
+      unusedCount2: sql<number>`SUM(CASE WHEN (${CategoryStats.totalCases} - ${CategoryStats.user2UsedCases}) > 0 THEN 1 ELSE 0 END)::int`,
 
-			matchCount: sql<number>`
+      matchCount: sql<number>`
                 SUM(
                     CASE WHEN 
                         (${CategoryStats.totalCases} - ${CategoryStats.user1UsedCases}) > 0 
@@ -430,14 +383,14 @@ export async function getSystemsCategoriesForTwoUsers(
                     THEN 1 ELSE 0 END
                 )::int
             `,
-			categories: jsonAggBuildObject({
-				id: CategoryStats.categoryId,
-				name: CategoryStats.categoryName,
-				allCount: CategoryStats.totalCases,
-				unusedCount1: sql<number>`(${CategoryStats.totalCases} - ${CategoryStats.user1UsedCases})::int`,
-				unusedCount2: sql<number>`(${CategoryStats.totalCases} - ${CategoryStats.user2UsedCases})::int`,
-				// A case is unused if neither user has used it
-				matchCount: sql<number>`
+      categories: jsonAggBuildObject({
+        id: CategoryStats.categoryId,
+        name: CategoryStats.categoryName,
+        allCount: CategoryStats.totalCases,
+        unusedCount1: sql<number>`(${CategoryStats.totalCases} - ${CategoryStats.user1UsedCases})::int`,
+        unusedCount2: sql<number>`(${CategoryStats.totalCases} - ${CategoryStats.user2UsedCases})::int`,
+        // A case is unused if neither user has used it
+        matchCount: sql<number>`
                     (${CategoryStats.totalCases} - 
                         (
                             SELECT COUNT(DISTINCT uc.case_id)
@@ -451,29 +404,29 @@ export async function getSystemsCategoriesForTwoUsers(
                         )
                     )::int
                 `,
-			}),
-		})
-		.from(systems)
-		.innerJoin(CategoryStats, eq(systems.id, CategoryStats.systemId))
-		.groupBy(systems.id);
+      }),
+    })
+    .from(systems)
+    .innerJoin(CategoryStats, eq(systems.id, CategoryStats.systemId))
+    .groupBy(systems.id);
 }
 
 export async function getMatchingCasesCountForTwoUsers(
-	user1Id: number,
-	user2Id: number
+  user1Id: number,
+  user2Id: number
 ) {
-	const UserStatsCTE = db.$with("UserStats").as(
-		db
-			.select({
-				user1_count:
-					sql<number>`COUNT(DISTINCT CASE WHEN user_id = ${user1Id} THEN case_id END)::int`.as(
-						"user1_count"
-					),
-				user2_count:
-					sql<number>`COUNT(DISTINCT CASE WHEN user_id = ${user2Id} THEN case_id END)::int`.as(
-						"user2_count"
-					),
-				matching_count: sql<number>`
+  const UserStatsCTE = db.$with("UserStats").as(
+    db
+      .select({
+        user1_count:
+          sql<number>`COUNT(DISTINCT CASE WHEN user_id = ${user1Id} THEN case_id END)::int`.as(
+            "user1_count"
+          ),
+        user2_count:
+          sql<number>`COUNT(DISTINCT CASE WHEN user_id = ${user2Id} THEN case_id END)::int`.as(
+            "user2_count"
+          ),
+        matching_count: sql<number>`
 				(SELECT COUNT(DISTINCT ${cases.id})
 				FROM ${cases} WHERE ${cases.id} NOT IN (
 					SELECT ${users_cases.case_id}
@@ -482,223 +435,210 @@ export async function getMatchingCasesCountForTwoUsers(
 					)
 				)::int
 				`.as("matching_count"),
-				total_count:
-					sql<number>`(SELECT COUNT(DISTINCT id)::int FROM ${cases})`.as(
-						"total_count"
-					),
-			})
-			.from(users_cases)
-	);
+        total_count:
+          sql<number>`(SELECT COUNT(DISTINCT id)::int FROM ${cases})`.as(
+            "total_count"
+          ),
+      })
+      .from(users_cases)
+  );
 
-	return await db
-		.with(UserStatsCTE)
-		.select({
-			matchingCount: sql<number>`${UserStatsCTE.matching_count}`,
-			allCount: sql<number>`${UserStatsCTE.total_count}`,
-			unusedCount1: sql<number>`${UserStatsCTE.total_count} - ${UserStatsCTE.user1_count}`,
-			unusedCount2: sql<number>`${UserStatsCTE.total_count} - ${UserStatsCTE.user2_count}`,
-		})
-		.from(UserStatsCTE);
+  return await db
+    .with(UserStatsCTE)
+    .select({
+      matchingCount: sql<number>`${UserStatsCTE.matching_count}`,
+      allCount: sql<number>`${UserStatsCTE.total_count}`,
+      unusedCount1: sql<number>`${UserStatsCTE.total_count} - ${UserStatsCTE.user1_count}`,
+      unusedCount2: sql<number>`${UserStatsCTE.total_count} - ${UserStatsCTE.user2_count}`,
+    })
+    .from(UserStatsCTE);
 }
 
 export async function getCasesQuestionsChoicesByCasesIds(caseIds: number[]) {
-	return await db
-		.with(CaseQuestionChoicesCTE)
-		.select()
-		.from(CaseQuestionChoicesCTE)
-		.where(inArray(CaseQuestionChoicesCTE.id, caseIds));
+  return await db
+    .with(CaseQuestionChoicesCTE)
+    .select()
+    .from(CaseQuestionChoicesCTE)
+    .where(inArray(CaseQuestionChoicesCTE.id, caseIds));
 }
 
 export async function getCasesQuestionsChoicesStudyMode(caseId: number) {
-	return await db
-		.with(CaseQuestionChoicesStudyModeOnlyCTE)
-		.select()
-		.from(CaseQuestionChoicesStudyModeOnlyCTE)
-		.where(eq(CaseQuestionChoicesStudyModeOnlyCTE.id, caseId));
+  return await db
+    .with(CaseQuestionChoicesStudyModeOnlyCTE)
+    .select()
+    .from(CaseQuestionChoicesStudyModeOnlyCTE)
+    .where(eq(CaseQuestionChoicesStudyModeOnlyCTE.id, caseId));
 }
 
 export async function getUserProfile(username: string) {
-	const [user] = await db
-		.with(UsersRanksCTE)
-		.select({ ...getTableColumns(users), rank: UsersRanksCTE.rank })
-		.from(users)
-		.leftJoin(UsersRanksCTE, eq(users.id, UsersRanksCTE.id))
-		.where(eq(users.username, username))
-		.limit(1);
-	return user;
-}
-
-export async function generateAccessCode() {
-	await db.insert(accessCodes).values({});
+  const [user] = await db
+    .with(UsersRanksCTE)
+    .select({ ...getTableColumns(users), rank: UsersRanksCTE.rank })
+    .from(users)
+    .leftJoin(UsersRanksCTE, eq(users.id, UsersRanksCTE.id))
+    .where(eq(users.username, username))
+    .limit(1);
+  return user;
 }
 
 export async function getAllCasesQuestionsChoicesByCategoriesIdsWithOptions(
-	categoriesIds: number[],
-	options = { count: 10, studyMode: false }
+  categoriesIds: number[],
+  options = { count: 10, studyMode: false }
 ) {
-	const { case_id, question_id, ...cases_questions_columns } =
-		getTableColumns(cases_questions);
+  const { case_id, question_id, ...cases_questions_columns } =
+    getTableColumns(cases_questions);
 
-	return await db
-		.with(QuestionsChoicesCTE)
-		.select({
-			...getTableColumns(cases),
-			questions: jsonAggBuildObject({
-				...QuestionsChoicesCTE._.selectedFields,
-				...cases_questions_columns,
-				imgUrls: sql<
-					string[]
-				>` COALESCE(${cases_questions_columns.imgUrls}, ARRAY[]::text[])`,
-				explanationImgUrls: sql<
-					string[]
-				>` COALESCE(${cases_questions_columns.explanationImgUrls}, ARRAY[]::text[])`,
-			}).as("questions"),
-		})
-		.from(cases_questions)
-		.innerJoin(cases, eq(cases_questions.case_id, cases.id))
-		.innerJoin(categories, eq(cases.category_id, categories.id))
-		.where(inArray(categories.id, categoriesIds))
-		.innerJoin(
-			QuestionsChoicesCTE,
-			and(
-				eq(cases_questions.question_id, QuestionsChoicesCTE.id),
-				eq(cases_questions.isStudyMode, options.studyMode)
-			)
-		)
-		.groupBy(cases.id)
-		.orderBy(sql`RANDOM()`)
-		.limit(options.count);
+  return await db
+    .with(QuestionsChoicesCTE)
+    .select({
+      ...getTableColumns(cases),
+      questions: jsonAggBuildObject({
+        ...QuestionsChoicesCTE._.selectedFields,
+        ...cases_questions_columns,
+        imgUrls: sql<
+          string[]
+        >` COALESCE(${cases_questions_columns.imgUrls}, ARRAY[]::text[])`,
+        explanationImgUrls: sql<
+          string[]
+        >` COALESCE(${cases_questions_columns.explanationImgUrls}, ARRAY[]::text[])`,
+      }).as("questions"),
+    })
+    .from(cases_questions)
+    .innerJoin(cases, eq(cases_questions.case_id, cases.id))
+    .innerJoin(categories, eq(cases.category_id, categories.id))
+    .where(inArray(categories.id, categoriesIds))
+    .innerJoin(
+      QuestionsChoicesCTE,
+      and(
+        eq(cases_questions.question_id, QuestionsChoicesCTE.id),
+        eq(cases_questions.isStudyMode, options.studyMode)
+      )
+    )
+    .groupBy(cases.id)
+    .orderBy(sql`RANDOM()`)
+    .limit(options.count);
 }
 
 export async function getUnusedCasesQuestionsChoicesByCategoriesIdsWithOptions(
-	categoriesIds: number[],
-	{ userId, opponentId }: { userId: number; opponentId: number },
-	options = { count: 10, studyMode: false }
+  categoriesIds: number[],
+  { userId, opponentId }: { userId: number; opponentId: number },
+  options = { count: 10, studyMode: false }
 ) {
-	if (!(userId && opponentId) || userId === opponentId)
-		throw new Error("Invalid user ids");
+  if (!(userId && opponentId) || userId === opponentId)
+    throw new Error("Invalid user ids");
 
-	const SolvedCasesIdsCTE = SolvedCasesIdsCTEGenerator(userId, opponentId);
-	const UnusedCasesIdsCTE = UnusedCasesGeneratorCTE(
-		SolvedCasesIdsCTE,
-		options.count
-	);
-	console.log(categoriesIds);
-	const { case_id, question_id, ...cases_questions_columns } =
-		getTableColumns(cases_questions);
-	return await db
-		.with(QuestionsChoicesCTE, UnusedCasesIdsCTE)
-		.select({
-			...getTableColumns(cases),
-			questions: jsonAggBuildObject({
-				...QuestionsChoicesCTE._.selectedFields,
-				...cases_questions_columns,
-				imgUrls: sql<
-					string[]
-				>` COALESCE(${cases_questions_columns.imgUrls}, ARRAY[]::text[])`,
-				explanationImgUrls: sql<
-					string[]
-				>` COALESCE(${cases_questions_columns.explanationImgUrls}, ARRAY[]::text[])`,
-			}).as("questions"),
-		})
-		.from(cases_questions)
-		.innerJoin(cases, eq(cases_questions.case_id, cases.id))
-		.innerJoin(
-			UnusedCasesIdsCTE,
-			eq(cases.id, UnusedCasesIdsCTE.unused_case_id)
-		)
-		.innerJoin(categories, eq(cases.category_id, categories.id))
-		.where(inArray(categories.id, categoriesIds))
-		.innerJoin(
-			QuestionsChoicesCTE,
-			and(eq(cases_questions.question_id, QuestionsChoicesCTE.id))
-		)
-		.groupBy(cases.id)
-		.orderBy(sql`RANDOM()`)
-		.limit(options.count);
+  const SolvedCasesIdsCTE = SolvedCasesIdsCTEGenerator(userId, opponentId);
+  const UnusedCasesIdsCTE = UnusedCasesGeneratorCTE(
+    SolvedCasesIdsCTE,
+    options.count
+  );
+  console.log(categoriesIds);
+  const { case_id, question_id, ...cases_questions_columns } =
+    getTableColumns(cases_questions);
+  return await db
+    .with(QuestionsChoicesCTE, UnusedCasesIdsCTE)
+    .select({
+      ...getTableColumns(cases),
+      questions: jsonAggBuildObject({
+        ...QuestionsChoicesCTE._.selectedFields,
+        ...cases_questions_columns,
+        imgUrls: sql<
+          string[]
+        >` COALESCE(${cases_questions_columns.imgUrls}, ARRAY[]::text[])`,
+        explanationImgUrls: sql<
+          string[]
+        >` COALESCE(${cases_questions_columns.explanationImgUrls}, ARRAY[]::text[])`,
+      }).as("questions"),
+    })
+    .from(cases_questions)
+    .innerJoin(cases, eq(cases_questions.case_id, cases.id))
+    .innerJoin(
+      UnusedCasesIdsCTE,
+      eq(cases.id, UnusedCasesIdsCTE.unused_case_id)
+    )
+    .innerJoin(categories, eq(cases.category_id, categories.id))
+    .where(inArray(categories.id, categoriesIds))
+    .innerJoin(
+      QuestionsChoicesCTE,
+      and(eq(cases_questions.question_id, QuestionsChoicesCTE.id))
+    )
+    .groupBy(cases.id)
+    .orderBy(sql`RANDOM()`)
+    .limit(options.count);
 }
 
-export async function useAccessCodeIfExists(code: string) {
-	return await db
-		.update(accessCodes)
-		.set({ used: true })
-		.where(eq(accessCodes.code, `${code}`))
-		.returning();
-}
 async function checkIfUserExists(username: string, email: string) {
-	const isExists = await db
-		.select({
-			isExists: sql<boolean>`EXISTS (SELECT 1 WHERE ${users.username} = ${username} OR ${users.email} = ${email})`,
-		})
-		.from(users);
-	return isExists;
+  const isExists = await db
+    .select({
+      isExists: sql<boolean>`EXISTS (SELECT 1 WHERE ${users.username} = ${username} OR ${users.email} = ${email})`,
+    })
+    .from(users);
+  return isExists;
 }
 
 async function populate() {
-	//@ts-expect-error
-	const final_data = (await import("./Gastro.json")).default;
-	console.log("Adding data");
-	for (const system of final_data) {
-		const [{ id: sys_id }] = await db
-			.insert(systems)
-			.values({ name: system.system })
-			.returning();
-		for (const category of system.categories) {
-			const [{ id: cat_id }] = await db
-				.insert(categories)
-				.values({ name: category.name, system_id: sys_id })
-				.returning();
-			for (const Case of category.cases) {
-				const [{ id: case_id }] = await db
-					.insert(cases)
-					.values({
-						body: Case.body,
-						imgUrls: Case.imgUrls,
-						category_id: cat_id,
-					})
-					.returning();
-				for (const Question of Case.questions) {
-					const [{ id: question_id }] = await db
-						.insert(questions)
-						.values({ body: Question.body })
-						.returning();
-					await db.insert(cases_questions).values({
-						case_id: case_id,
-						question_id: question_id,
-						isStudyMode: Question.isStudyMode,
-						explanation: Question.explanation,
-					});
-					const Choices = Question.choices;
-					const correct_index = Question.correct_index;
-					const choiceExplanation = Question.choice_explanation;
-					type explanationX = keyof typeof choiceExplanation;
-					for (
-						let choice_index = 0;
-						choice_index < Choices.length;
-						choice_index++
-					) {
-						const choiceBody = Choices[choice_index];
-						const [{ id: choice_id }] = await db
-							.insert(choices)
-							.values({ body: choiceBody })
-							.returning();
-						await db.insert(questions_choices).values({
-							question_id,
-							choice_id,
-							isCorrect: choice_index === correct_index,
-							explanation:
-								`${choice_index}` in choiceExplanation
-									? choiceExplanation[
-											`${choice_index}` as explanationX
-										]
-									: "",
-						});
-					}
-				}
-			}
-		}
-	}
-	console.log("Finished Adding Data");
+  //@ts-expect-error
+  const final_data = (await import("./Gastro.json")).default;
+  console.log("Adding data");
+  for (const system of final_data) {
+    const [{ id: sys_id }] = await db
+      .insert(systems)
+      .values({ name: system.system })
+      .returning();
+    for (const category of system.categories) {
+      const [{ id: cat_id }] = await db
+        .insert(categories)
+        .values({ name: category.name, system_id: sys_id })
+        .returning();
+      for (const Case of category.cases) {
+        const [{ id: case_id }] = await db
+          .insert(cases)
+          .values({
+            body: Case.body,
+            imgUrls: Case.imgUrls,
+            category_id: cat_id,
+          })
+          .returning();
+        for (const Question of Case.questions) {
+          const [{ id: question_id }] = await db
+            .insert(questions)
+            .values({ body: Question.body })
+            .returning();
+          await db.insert(cases_questions).values({
+            case_id: case_id,
+            question_id: question_id,
+            isStudyMode: Question.isStudyMode,
+            explanation: Question.explanation,
+          });
+          const Choices = Question.choices;
+          const correct_index = Question.correct_index;
+          const choiceExplanation = Question.choice_explanation;
+          type explanationX = keyof typeof choiceExplanation;
+          for (
+            let choice_index = 0;
+            choice_index < Choices.length;
+            choice_index++
+          ) {
+            const choiceBody = Choices[choice_index];
+            const [{ id: choice_id }] = await db
+              .insert(choices)
+              .values({ body: choiceBody })
+              .returning();
+            await db.insert(questions_choices).values({
+              question_id,
+              choice_id,
+              isCorrect: choice_index === correct_index,
+              explanation:
+                `${choice_index}` in choiceExplanation
+                  ? choiceExplanation[`${choice_index}` as explanationX]
+                  : "",
+            });
+          }
+        }
+      }
+    }
+  }
+  console.log("Finished Adding Data");
 }
 
 // async function getFriendsOldVersion() {
@@ -781,70 +721,59 @@ async function populate() {
 // 	);
 // }
 async function insertRequestsIfNotExists() {
-	const addingUser = 7;
-	const friendId = 10;
-	const addAll = db.$with("AddUsersIfNotAlreadyAdded").as(
-		db
-			.insert(users_friends)
-			.select(
-				db
-					.select({
-						user1_id: sql<number>`${addingUser}`.as("user1_id"),
-						user2_id: sql<number>`${friendId}`.as("user2_id"),
-						isFriend: sql<boolean>`FALSE`.as("isFriend"),
-					})
-					.from(users_friends)
-					.where(
-						notExists(
-							db
-								.select()
-								.from(users_friends)
-								.where(
-									or(
-										and(
-											eq(
-												users_friends.user1_id,
-												friendId
-											),
-											eq(
-												users_friends.user2_id,
-												addingUser
-											)
-										),
-										and(
-											eq(
-												users_friends.user1_id,
-												addingUser
-											),
-											eq(users_friends.user2_id, friendId)
-										)
-									)
-								)
-						)
-					)
-					.limit(1)
-			)
-			.returning({
-				addedUser1Id: caseWhen<number>(
-					eq(users_friends.user1_id, addingUser)
-				)
-					.then(users_friends.user2_id)
-					.else(users_friends.user1_id)
-					.as("addedUser1Id"),
-			})
-	);
+  const addingUser = 7;
+  const friendId = 10;
+  const addAll = db.$with("AddUsersIfNotAlreadyAdded").as(
+    db
+      .insert(users_friends)
+      .select(
+        db
+          .select({
+            user1_id: sql<number>`${addingUser}`.as("user1_id"),
+            user2_id: sql<number>`${friendId}`.as("user2_id"),
+            isFriend: sql<boolean>`FALSE`.as("isFriend"),
+          })
+          .from(users_friends)
+          .where(
+            notExists(
+              db
+                .select()
+                .from(users_friends)
+                .where(
+                  or(
+                    and(
+                      eq(users_friends.user1_id, friendId),
+                      eq(users_friends.user2_id, addingUser)
+                    ),
+                    and(
+                      eq(users_friends.user1_id, addingUser),
+                      eq(users_friends.user2_id, friendId)
+                    )
+                  )
+                )
+            )
+          )
+          .limit(1)
+      )
+      .returning({
+        addedUser1Id: caseWhen<number>(eq(users_friends.user1_id, addingUser))
+          .then(users_friends.user2_id)
+          .else(users_friends.user1_id)
+          .as("addedUser1Id"),
+      })
+  );
 
-	const result = await db
-		.with(addAll)
-		.select({
-			id: users.id,
-			username: users.username,
-			avatarUrl: users.avatarUrl,
-			university: users.university,
-		})
-		.from(users)
-		.innerJoin(addAll, eq(users.id, addAll.addedUser1Id));
-	console.log(result);
+  const result = await db
+    .with(addAll)
+    .select({
+      id: users.id,
+      username: users.username,
+      avatarUrl: users.avatarUrl,
+      university: users.university,
+    })
+    .from(users)
+    .innerJoin(addAll, eq(users.id, addAll.addedUser1Id));
+  console.log(result);
 }
 
 // async function getCasesAndReviewData() {
