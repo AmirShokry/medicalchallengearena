@@ -33,14 +33,16 @@ watch(
 );
 function handleEditCase(caseIndex: number) {
   if (previewStore.isEmpty) return;
-  if (previewStore.isEditing) {
-    previewStore.editedCaseIndex = null;
-    inputStore.resetInput();
-    return;
-  }
 
-  previewStore.editedCaseIndex = caseIndex;
-  inputStore.setInput(structuredClone(toRaw(previewStore.preview[caseIndex])));
+  const isEditing = caseIndex === previewStore.editedCaseIndex;
+  previewStore.editedCaseIndex = isEditing ? null : caseIndex;
+  inputStore.resetInput();
+
+  if (!isEditing) {
+    inputStore.setInput(
+      structuredClone(toRaw(previewStore.preview[caseIndex]))
+    );
+  }
 }
 </script>
 <template>
@@ -117,6 +119,7 @@ function handleEditCase(caseIndex: number) {
             <div
               aria-role="block-container"
               v-for="(question, index) in item.questions"
+              :id="question.id"
               class="flex flex-col gap-1 px-6 py-4 mx-4 rounded-sm bg-sidebar overflow-hidden"
               :key="question.id"
             >
@@ -159,6 +162,7 @@ function handleEditCase(caseIndex: number) {
                 <li
                   v-for="choice in question.choices"
                   :key="choice.id"
+                  :id="choice.id"
                   class="my-1"
                 >
                   <p class="inline-flex gap-1 items-center">

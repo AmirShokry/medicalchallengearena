@@ -199,14 +199,25 @@ export const block = createTRPCRouter({
 
         return {
           ...caseResult,
-          questions: questionsResults.map((question, index) => ({
-            ...question,
-            ...casesQuestionsResults[index],
-            choices: choicesResults.map((choice, choiceIndex) => ({
-              ...choice,
-              ...questionsChoicesResults[choiceIndex],
-            })),
-          })),
+          questions: questionsResults.map((question, qIndex) => {
+            // Calculate start and end index for choices of this question
+            const choicesCount = input.questions[qIndex].choices.length;
+            const start = input.questions
+              .slice(0, qIndex)
+              .reduce((acc, q) => acc + q.choices.length, 0);
+            const end = start + choicesCount;
+
+            return {
+              ...question,
+              ...casesQuestionsResults[qIndex],
+              choices: choicesResults
+                .slice(start, end)
+                .map((choice, cIndex) => ({
+                  ...choice,
+                  ...questionsChoicesResults[start + cIndex],
+                })),
+            };
+          }),
         };
       });
     }),
