@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import MultiPagination from "../../../components/exam/pagination/multi-pagination.vue";
+import UserInfo from "../../../components/exam/Player.vue";
+import OpponentInfo from "../../../components/exam/Player.vue";
 import BeforeGameAnimation from "@/components/splash/BeforeGameAnimation.vue";
 import ExamBlock from "@/components/ExamBlock/index.vue";
-import UserInfo from "@/components/exam/Player.vue";
-import OpponentInfo from "@/components/exam/Player.vue";
 import Result from "@/components/exam/result/index.vue";
 import { gameSocket } from "@/components/socket";
 import getGameData from "@/components/exam/index";
