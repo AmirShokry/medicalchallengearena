@@ -1,10 +1,55 @@
 import { TRPCError } from "@trpc/server";
 import { authProcedure, createTRPCRouter } from "../init";
-import { and, db, eq, sql } from "@package/database";
+import { and, db, eq, sql, getTableColumns } from "@package/database";
 import { getCache, setCache } from "@package/redis";
 
 import z from "zod";
 export const common = createTRPCRouter({
+  toggleSubscription: authProcedure
+    .input(z.object({ userId: z.number(), isSubscribed: z.boolean() }))
+    .mutation(async ({ input }) => {
+      await db
+        .update(db.table.users_auth)
+        .set({ is_subscribed: input.isSubscribed })
+        .where(eq(db.table.users_auth.user_id, input.userId));
+      return { success: true };
+    }),
+
+  getAccessCodes: authProcedure
+    .input(
+      z.object({
+        offset: z.number().optional().default(0),
+        limit: z.number().optional().default(10),
+      })
+    )
+    .query(async ({ input }) => {
+      const codes = await db
+        .select()
+        .from(db.table.accessCodes)
+        .limit(input.limit)
+        .offset(input.offset);
+
+      const [{ count }] = await db
+        .select({ count: sql<number>`count(*)` })
+        .from(db.table.accessCodes);
+
+      return {
+        codes,
+        totalCount: count,
+        hasMore: input.offset + input.limit < count,
+        currentPage: Math.floor(input.offset / input.limit) + 1,
+        totalPages: Math.ceil(count / input.limit),
+      };
+    }),
+
+  generateAccessCode: authProcedure.mutation(async () => {
+    const [newCode] = await db
+      .insert(db.table.accessCodes)
+      .values({})
+      .returning();
+    return newCode;
+  }),
+
   isValidSystemCategory: authProcedure
     .input(
       z.object({
@@ -72,8 +117,15 @@ export const common = createTRPCRouter({
     )
     .query(async ({ input }) => {
       const users = await db
-        .select()
+        .select({
+          ...getTableColumns(db.table.users),
+          isSubscribed: db.table.users_auth.is_subscribed,
+        })
         .from(db.table.users)
+        .leftJoin(
+          db.table.users_auth,
+          eq(db.table.users.id, db.table.users_auth.user_id)
+        )
         .orderBy(db.table.users.id)
         .limit(input.limit)
         .offset(input.offset);
