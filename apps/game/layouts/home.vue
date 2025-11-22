@@ -169,7 +169,7 @@ const { status, signOut } = useAuth();
             </a>
           </div>
           <p class="text-muted-foreground mt-auto">
-            © 2025 MEDICALCHALLENGEARENA
+            © 2025 MEDICALCHALLENGEARENA - v2
           </p>
         </div>
         <div

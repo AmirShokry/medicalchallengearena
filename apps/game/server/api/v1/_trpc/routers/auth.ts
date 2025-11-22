@@ -17,10 +17,21 @@ export const auth = createTRPCRouter({
         email: z.string().email(),
         password: z.string().min(6),
         university: z.string().min(2),
+        accessCode: z.string().min(1),
       })
     )
     .mutation(async ({ input }) => {
-      const { users, users_auth } = db.table;
+      const { users, users_auth, accessCodes } = db.table;
+
+      const accessCode = await db
+        .select()
+        .from(accessCodes)
+        .where(eq(accessCodes.code, input.accessCode));
+      if (!accessCode || accessCode.length === 0)
+        throw new TRPCError({
+          code: "FORBIDDEN",
+          message: "R#1:Invalid access code",
+        });
 
       const [existingUser] = await db
         .select()
@@ -52,15 +63,21 @@ export const auth = createTRPCRouter({
           })
           .returning();
 
-        const stripeCustomer = await stripe.customers.create({
-          email: newUser.email,
-        });
+        // const stripeCustomer = await stripe.customers.create({
+        //   email: newUser.email,
+        // });
 
         await tx.insert(users_auth).values({
           user_id: newUser.id,
           password: hashedPassword,
-          stripe_customer_id: stripeCustomer.id,
+          is_subscribed: true,
+          // stripe_customer_id: stripeCustomer.id,
         });
+
+        await tx
+          .update(accessCodes)
+          .set({ used: true })
+          .where(eq(accessCodes.code, input.accessCode));
 
         return newUser;
       });

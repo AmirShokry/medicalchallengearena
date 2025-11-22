@@ -120,6 +120,14 @@ export const games = pgTable("games", {
  * @JUNCTION_TABLES
  **
  */
+
+export const accessCodes = pgTable("access_codes", {
+  code: varchar("code")
+    .notNull()
+    .primaryKey()
+    .default(sql`md5(random()::text || clock_timestamp()::text)`),
+  used: boolean("used").notNull().default(false),
+});
 export const users_auth = pgTable(
   "users_auth",
   {

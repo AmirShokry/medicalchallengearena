@@ -82,13 +82,15 @@ const subscribtionButtonText = computed(() => {
                 <li>Limited access to course material</li>
                 <li>Progress tracking</li>
               </ul>
-
-              <UiButton
-                @click="handleSubscribeClick('basic_monthly')"
-                class="mt-auto cursor-pointer"
+              <a
+                class="w-full mt-auto"
+                href="https://payhip.com/order?link=2G3no&pricing_plan=ZjBLrKZMWm&builder_mode=1&environment_id_encrypted=w9B31l2jWR"
+                target="_blank"
               >
-                {{ subscribtionButtonText }}
-              </UiButton>
+                <UiButton class="mt-auto cursor-pointer w-full">
+                  Subscribe
+                </UiButton>
+              </a>
             </div>
             <div
               @touchstart="isTouchingPrice = true"
@@ -117,12 +119,15 @@ const subscribtionButtonText = computed(() => {
                 <li>Early access to new game features</li>
               </ul>
 
-              <UiButton
-                @click="handleSubscribeClick('pro_quarterly')"
-                class="mt-auto cursor-pointer"
+              <a
+                class="w-full mt-auto"
+                target="_blank"
+                href="https://payhip.com/order?link=2G3no&pricing_plan=a6zYK90bGq&builder_mode=1&environment_id_encrypted=w9B31l2jWR"
               >
-                {{ subscribtionButtonText }}
-              </UiButton>
+                <UiButton class="mt-auto cursor-pointer w-full">
+                  Subscribe
+                </UiButton>
+              </a>
             </div>
           </div>
         </div>

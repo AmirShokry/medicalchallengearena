@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 
 import { cn } from "@/lib/utils";
+import { accessCodes } from "../../../packages/database/src/schema";
 
 definePageMeta({
   layout: "blank",
@@ -18,6 +19,7 @@ function getInitialFormData() {
     email: "",
     password: "",
     university: "",
+    accessCode: "",
   };
 }
 const router = useRouter();
@@ -40,6 +42,7 @@ const handleRegister = async () => {
       password: form.value.password,
       username: form.value.username,
       university: form.value.university,
+      accessCode: form.value.accessCode,
     });
 
     // Auto-sign in the user after successful registration
@@ -82,6 +85,7 @@ const canRegister = computed(
     form.value.email &&
     form.value.password &&
     form.value.university &&
+    form.value.accessCode &&
     !isLoading.value
 );
 </script>
@@ -145,6 +149,17 @@ const canRegister = computed(
                     id="password"
                     form="register"
                     type="password"
+                    required
+                  />
+                </div>
+
+                <div class="grid gap-3">
+                  <Label for="username">Access Code </Label>
+                  <Input
+                    v-model="form.accessCode"
+                    id="access-code"
+                    form="register"
+                    type="input"
                     required
                   />
                 </div>
