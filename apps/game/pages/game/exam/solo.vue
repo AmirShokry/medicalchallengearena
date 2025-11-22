@@ -6,7 +6,7 @@ import BeforeGameAnimation from "@/components/splash/BeforeGameAnimation.vue";
 import UserInfo from "@/components/exam/Player.vue";
 import Result from "@/components/exam/result/index.vue";
 import { gameSocket } from "@/components/socket";
-import SinglePagination from "@/components/exam/pagination/SinglePagination.vue";
+import SinglePagination from "@/components/exam/pagination/single-pagination.vue";
 
 definePageMeta({
   layout: "blank",

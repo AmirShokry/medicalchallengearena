@@ -36,5 +36,4 @@ export type FriendRequests = NonNullable<
   inferRouterOutputs<AppRouter>["friends"]["requests"]["all"]
 >;
 
-export type RecordMetaData =
-  inferRouterOutputs<AppRouter>["reviews"]["meta"][0];
+export type RecordMetaData = inferRouterOutputs<AppRouter>["reviews"]["meta"];
