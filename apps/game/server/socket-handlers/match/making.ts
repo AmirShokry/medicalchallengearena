@@ -1,6 +1,7 @@
 import { db } from "@package/database";
 import { getTRPCCaller } from "@/server/utils/trpc-caller";
 import { createMockH3EventFromSocket } from "@/server/utils/mock-h3-event";
+import type { ReducedRecordObject } from "@package/types";
 
 import type { GameIO, GameSocket } from "@/shared/types/socket";
 
@@ -11,7 +12,7 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
     if (socket.data.isInGame)
       throw new Error("Cannot start a challenge while being in a game");
 
-    const currentSocketRooms = io.adapter.socketRooms(socket.id);
+    const currentSocketRooms = socket.rooms;
 
     console.log(`${socket.data.session.username} is trying to find a match`);
 
@@ -130,17 +131,16 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
           });
 
     if (!cases.length) throw new Error("No cases found");
-    function registerCasesRecord() {
-      return cases.flatMap((c, nthCase) =>
+    function registerCasesRecord(): ReducedRecordObject {
+      return cases.flatMap((c) =>
         c.questions.map((q) => ({
           caseId: c.id,
           questionId: q.id,
+          categoryId: 0, // TODO: Get actual categoryId from question/case
           nthSelectedChoice: -1,
           nthEliminatedChoices: [] as number[],
           isCorrect: false,
-          nthCase,
           timeSpentMs: 0,
-          medPoints: 0,
         }))
       );
     }

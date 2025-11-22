@@ -2,7 +2,7 @@
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
-  compatibilityDate: "2025-05-15",
+  // compatibilityDate: "2025-05-15",
   devtools: { enabled: true },
   runtimeConfig: {
     authSecret: process.env.NUXT_AUTH_SECRET,
