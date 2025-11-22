@@ -60,6 +60,21 @@ export function useTimer(
     timeWorker.postMessage({ action: "stop" });
     isRunning.value = false;
   }
+  function pause() {
+    stop();
+  }
+  function resume() {
+    if (!timeWorker) return;
+    const totalSeconds = Math.ceil(timeMs.value / 1000);
+    const mins = Math.floor(totalSeconds / 60);
+    const secs = totalSeconds % 60;
+    timeWorker.postMessage({
+      action: "start",
+      mins,
+      secs,
+    });
+    isRunning.value = true;
+  }
   function restart() {
     if (!timeWorker) return;
     timeWorker.postMessage({ action: "stop" });
@@ -86,6 +101,8 @@ export function useTimer(
     timeMs,
     start,
     stop,
+    pause,
+    resume,
     isRunning,
     destroy,
     restart,

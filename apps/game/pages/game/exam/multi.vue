@@ -7,7 +7,7 @@ import OpponentInfo from "@/components/exam/Player.vue";
 import Result from "@/components/exam/result/index.vue";
 import { gameSocket } from "@/components/socket";
 import getGameData from "@/components/exam/index";
-import { LogOutIcon as ExitIcon } from "lucide-vue-next";
+import { LogOutIcon as ExitIcon, PauseIcon, PlayIcon } from "lucide-vue-next";
 definePageMeta({
   layout: "blank",
   middleware: "exam",
@@ -42,6 +42,17 @@ onMounted(() => {
   user.flags.hasAccepted = false;
   opponent.flags.hasAccepted = false;
   flags.ingame.isGameStarted = true;
+
+  gameSocket.on("gamePaused", () => {
+    user.timer.pause();
+    opponent.timer.pause();
+    isPaused.value = true;
+  });
+  gameSocket.on("gameResumed", () => {
+    user.timer.resume();
+    opponent.timer.resume();
+    isPaused.value = false;
+  });
 });
 
 const peerApi = usePeer();
@@ -51,6 +62,22 @@ console.log($$game.players.opponent.info);
 
 const hasAnimationEnded = ref(false),
   hasRecordBeenSent = ref(false);
+
+const isPaused = ref(false);
+
+function togglePause() {
+  if (isPaused.value) {
+    gameSocket.emit("resumeGame");
+    user.timer.resume();
+    opponent.timer.resume();
+    isPaused.value = false;
+  } else {
+    gameSocket.emit("pauseGame");
+    user.timer.pause();
+    opponent.timer.pause();
+    isPaused.value = true;
+  }
+}
 
 function startGame() {
   hasAnimationEnded.value = true;
@@ -205,6 +232,8 @@ onBeforeUnmount(() => {
     gameSocket.emit("userFinishedGame", $$game.gameId!, user.records);
     hasRecordBeenSent.value = true;
   }
+  gameSocket.off("gamePaused");
+  gameSocket.off("gameResumed");
   user.timer.destroy();
   opponent.timer.destroy();
   $$game["~resetEverything"]();
@@ -234,6 +263,12 @@ onBeforeUnmount(() => {
         :status="userStatus"
       />
 
+      <UiButton @click="togglePause" variant="ghost" class="w-24">
+        <PlayIcon v-if="isPaused" class="mr-2 h-4 w-4" />
+        <PauseIcon v-else class="mr-2 h-4 w-4" />
+        {{ isPaused ? "Resume" : "Pause" }}
+      </UiButton>
+
       <OpponentInfo
         v-if="!opponent.flags.hasLeft"
         :username="opponent.info.username"
@@ -245,50 +280,53 @@ onBeforeUnmount(() => {
       />
     </div>
 
-    <ExamBlock
-      :layout="'NBME'"
-      :cases="cases"
-      v-model:selection="current.selectedChoiceIdx"
-      v-model:elimination="current.eliminatedChoicesIdx"
-      v-model:can-show-explanation="canViewAnswer"
-      :nth-case="current.caseIdx"
-      :nth-question="current.questionIdx"
-      :nth-question-flat="current.questionNumber"
-      :totalQuestionsNo="totalQuestionsNumber"
-      class="grow mb-4 overflow-hidden"
-    >
-      <template #left-aside>
-        <MultiPagination
-          v-model:current-indexes="current"
-          v-model:is-reviewing="flags.ingame.isReviewingQuestion"
-          v-model:can-show-explanation="canViewAnswer"
-          :revert-state="revertState"
-          :max-question="lastReachedQuestionNumber"
-          :length="totalQuestionsNumber"
-          :records="user.records.data"
-        />
-      </template>
-      <template v-if="!opponent.flags.hasLeft" #right-aside>
-        <MultiPagination
-          v-model:current-indexes="current"
-          v-model:is-reviewing="flags.ingame.isReviewingQuestion"
-          v-model:can-show-explanation="canViewAnswer"
-          :revert-state="revertState"
-          :max-question="lastReachedQuestionNumber"
-          :length="totalQuestionsNumber"
-          :records="opponent.records.data"
-        />
-      </template>
-      <template #first-section-footer>
-        <UiButton
-          :disabled="!canSubmit"
-          @click="handleSubmit"
-          class="py-[6px] text-sm w-[8vmax]"
-        >
-          SUBMIT
-        </UiButton>
-      </template>
-    </ExamBlock>
+    <div class="relative grow mb-4 overflow-hidden">
+      <ExamBlock
+        :layout="'NBME'"
+        :cases="cases"
+        v-model:selection="current.selectedChoiceIdx"
+        v-model:elimination="current.eliminatedChoicesIdx"
+        v-model:can-show-explanation="canViewAnswer"
+        :nth-case="current.caseIdx"
+        :nth-question="current.questionIdx"
+        :nth-question-flat="current.questionNumber"
+        :totalQuestionsNo="totalQuestionsNumber"
+        class="w-full h-full transition-opacity duration-300"
+        :class="{ 'opacity-50 pointer-events-none': isPaused }"
+      >
+        <template #left-aside>
+          <MultiPagination
+            v-model:current-indexes="current"
+            v-model:is-reviewing="flags.ingame.isReviewingQuestion"
+            v-model:can-show-explanation="canViewAnswer"
+            :revert-state="revertState"
+            :max-question="lastReachedQuestionNumber"
+            :length="totalQuestionsNumber"
+            :records="user.records.data"
+          />
+        </template>
+        <template v-if="!opponent.flags.hasLeft" #right-aside>
+          <MultiPagination
+            v-model:current-indexes="current"
+            v-model:is-reviewing="flags.ingame.isReviewingQuestion"
+            v-model:can-show-explanation="canViewAnswer"
+            :revert-state="revertState"
+            :max-question="lastReachedQuestionNumber"
+            :length="totalQuestionsNumber"
+            :records="opponent.records.data"
+          />
+        </template>
+        <template #first-section-footer>
+          <UiButton
+            :disabled="!canSubmit"
+            @click="handleSubmit"
+            class="py-[6px] text-sm w-[8vmax]"
+          >
+            SUBMIT
+          </UiButton>
+        </template>
+      </ExamBlock>
+    </div>
   </div>
 
   <Result

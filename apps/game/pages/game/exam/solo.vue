@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LogOutIcon as ExitIcon } from "lucide-vue-next";
+import { LogOutIcon as ExitIcon, PauseIcon, PlayIcon } from "lucide-vue-next";
 import getGameData from "@/components/exam/index";
 import ExamBlock from "@/components/ExamBlock/index.vue";
 import BeforeGameAnimation from "@/components/splash/BeforeGameAnimation.vue";
@@ -36,6 +36,18 @@ const $router = useRouter();
 const hasAnimationEnded = ref(false),
   isSubmitButtonVisible = ref(true),
   isNextButtonVisible = ref(false);
+
+const isPaused = ref(false);
+
+function togglePause() {
+  if (isPaused.value) {
+    user.timer.resume();
+    isPaused.value = false;
+  } else {
+    user.timer.pause();
+    isPaused.value = true;
+  }
+}
 
 let hasIntentionallyLeft = false;
 
@@ -144,6 +156,7 @@ function handleNext() {
   user.timer.restart();
   isNextButtonVisible.value = false;
   isSubmitButtonVisible.value = true;
+  isPaused.value = false;
 
   current.questionNumber++;
   lastReachedQuestionNumber.value++;
@@ -202,8 +215,13 @@ onUnmounted(() => user.timer.destroy());
         :revert-state="revertState"
         :records="user.records.data"
       />
+      <UiButton @click="togglePause" variant="ghost" class="ml-4 w-24">
+        <PlayIcon v-if="isPaused" class="mr-2 h-4 w-4" />
+        <PauseIcon v-else class="mr-2 h-4 w-4" />
+        {{ isPaused ? "Resume" : "Pause" }}
+      </UiButton>
     </div>
-    <div class="py-2 h-full">
+    <div class="py-2 h-full relative">
       <ExamBlock
         v-if="
           current.selectedChoiceIdx !== undefined &&
@@ -211,7 +229,8 @@ onUnmounted(() => user.timer.destroy());
           canViewAnswer !== undefined &&
           totalQuestionsNumber !== undefined
         "
-        class="w-full"
+        class="w-full transition-opacity duration-300"
+        :class="{ 'opacity-50 pointer-events-none': isPaused }"
         :cases="cases"
         v-model:selection="current.selectedChoiceIdx"
         v-model:elimination="current.eliminatedChoicesIdx"

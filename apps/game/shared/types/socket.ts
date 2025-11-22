@@ -58,6 +58,8 @@ export namespace ToClientIO {
       ) => void;
       opponentAccepted: (data: { isMaster: boolean }) => void;
       opponentSentInvitation: (data: { friendId: number }) => void;
+      gamePaused: () => void;
+      gameResumed: () => void;
     }
     export interface Data extends Default.Data {
       hasAccepted: boolean;
@@ -156,6 +158,8 @@ export namespace ToServerIO {
       userLeft: () => void;
       userSentInvitation: (data: { id: number }) => void;
       userJoinedWaitingRoom: () => void;
+      pauseGame: () => void;
+      resumeGame: () => void;
     }
   }
 

@@ -8,6 +8,16 @@ export function registerMatchEvents(socket: GameSocket, io: GameIO) {
     const opponentId = socket.data.opponentSocket!.id;
     io.to(opponentId).emit("opponentSolved", data, stats);
   });
+  socket.on("pauseGame", () => {
+    if (!socket?.data?.opponentSocket) return;
+    const opponentId = socket.data.opponentSocket.id;
+    io.to(opponentId).emit("gamePaused");
+  });
+  socket.on("resumeGame", () => {
+    if (!socket?.data?.opponentSocket) return;
+    const opponentId = socket.data.opponentSocket.id;
+    io.to(opponentId).emit("gameResumed");
+  });
   socket.on("userFinishedGame", async (gameId, records) => {
     if (!socket?.data) return "No socket data";
     const serverData = records.data.map((d) => {
