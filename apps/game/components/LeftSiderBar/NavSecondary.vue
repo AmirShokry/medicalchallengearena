@@ -59,7 +59,7 @@ const { navigateToStripeDashboard } = useStripe();
           <SidebarMenuButton
             title="Billing"
             class="cursor-pointer hover:text-indigo-500"
-            @click="() => navigateToStripeDashboard()"
+            @click="() => null"
           >
             <NewspaperIcon />
             <span>Billing</span>
