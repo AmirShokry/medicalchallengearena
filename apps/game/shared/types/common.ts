@@ -1,5 +1,5 @@
 export type { PlayerData, RecordObject } from "@package/types";
-import type { AppRouter } from "~/server/api/v1/_trpc/routers";
+import type { AppRouter } from "@/server/api/v1/_trpc/routers";
 import type { inferRouterOutputs } from "@trpc/server";
 import { type DefaultSession } from "next-auth";
 export type { DefaultSession } from "next-auth";

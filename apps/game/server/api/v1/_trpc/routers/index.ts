@@ -1,4 +1,4 @@
-import { createTRPCRouter } from "~/server/api/v1/_trpc/init";
+import { createTRPCRouter } from "@/server/api/v1/_trpc/init";
 // import { z } from "zod";
 import { block } from "./block";
 import { auth } from "./auth";

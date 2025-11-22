@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import MatchFoundSplash from "~/components/splash/MatchFoundSplash.vue";
+import MatchFoundSplash from "@/components/splash/MatchFoundSplash.vue";
 import { UsersIcon, SearchIcon } from "lucide-vue-next";
 import { gameSocket } from "@/components/socket";
 import type { MatchingSystemCategories } from "@/shared/types/common";

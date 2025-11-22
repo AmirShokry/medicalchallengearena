@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import MultiPagination from "~/components/exam/pagination/MultiPagination.vue";
+import MultiPagination from "@/components/exam/pagination/MultiPagination.vue";
 import BeforeGameAnimation from "@/components/splash/BeforeGameAnimation.vue";
 import ExamBlock from "@/components/ExamBlock/index.vue";
 import UserInfo from "@/components/exam/Player.vue";

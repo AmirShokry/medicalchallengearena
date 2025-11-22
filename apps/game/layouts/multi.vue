@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SidebarLeft from "~/components/LeftSiderBar/SidebarLeft.vue";
+import SidebarLeft from "@/components/LeftSiderBar/SidebarLeft.vue";
 import SidebarRight from "@/components/MultiRightSidebar/SidebarRight.vue";
 
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";

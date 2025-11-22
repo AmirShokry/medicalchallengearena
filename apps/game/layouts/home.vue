@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Switch } from "~/components/ui/switch";
+import { Switch } from "@/components/ui/switch";
 import { LucideMoon, LucideSun, MenuIcon, MonitorIcon } from "lucide-vue-next";
 import { useColorMode } from "@vueuse/core";
 const header = useTemplateRef("header");

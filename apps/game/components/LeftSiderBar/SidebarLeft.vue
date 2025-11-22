@@ -15,11 +15,11 @@ import {
   Trash2,
 } from "lucide-vue-next";
 
-import NavFavorites from "~/components/LeftSiderBar/NavFavorites.vue";
-import NavMain from "~/components/LeftSiderBar/NavMain.vue";
-import NavSecondary from "~/components/LeftSiderBar/NavSecondary.vue";
-import NavSettings from "~/components/LeftSiderBar/NavSettings.vue";
-import SidebarLogo from "~/components/LeftSiderBar/SidebarLogo.vue";
+import NavFavorites from "@/components/LeftSiderBar/NavFavorites.vue";
+import NavMain from "@/components/LeftSiderBar/NavMain.vue";
+import NavSecondary from "@/components/LeftSiderBar/NavSecondary.vue";
+import NavSettings from "@/components/LeftSiderBar/NavSettings.vue";
+import SidebarLogo from "@/components/LeftSiderBar/SidebarLogo.vue";
 import {
   Sidebar,
   SidebarContent,
