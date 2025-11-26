@@ -52,6 +52,9 @@ export const useGameStore = defineStore("game-store", () => {
   );
 
   function resetEverything() {
+    players.user.timer.destroy();
+    players.opponent.timer.destroy();
+
     flags.ingame["~reset"]();
     flags.matchmaking["~reset"]();
     data["~reset"]();

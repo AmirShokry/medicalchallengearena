@@ -37,7 +37,7 @@ function toggleColorMode() {
 }
 const { signOut } = useAuth();
 
-const { navigateToStripeDashboard } = useStripe();
+// const { navigateToStripeDashboard } = useStripe();
 </script>
 
 <template>

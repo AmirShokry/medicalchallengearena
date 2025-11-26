@@ -234,6 +234,7 @@ onBeforeUnmount(() => {
   }
   gameSocket.off("gamePaused");
   gameSocket.off("gameResumed");
+  gameSocket.off("opponentSolved");
   user.timer.destroy();
   opponent.timer.destroy();
   $$game["~resetEverything"]();
