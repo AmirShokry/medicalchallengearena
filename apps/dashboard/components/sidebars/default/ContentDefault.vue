@@ -5,6 +5,7 @@ import {
   SquareTerminal,
   Users2Icon,
   KeyRound,
+  Layers,
 } from "lucide-vue-next";
 import {
   Collapsible,
@@ -94,6 +95,14 @@ const { toggleSidebar } = useSidebar();
           </CollapsibleContent>
         </SidebarMenuItem>
       </Collapsible>
+      <SidebarMenuItem>
+        <SidebarMenuButton @click="toggleSidebar" as-child>
+          <NuxtLink to="/systems">
+            <Layers class="size-4" />
+            <span>Systems</span>
+          </NuxtLink>
+        </SidebarMenuButton>
+      </SidebarMenuItem>
       <SidebarMenuItem>
         <SidebarMenuButton @click="toggleSidebar" as-child>
           <NuxtLink to="/users">
