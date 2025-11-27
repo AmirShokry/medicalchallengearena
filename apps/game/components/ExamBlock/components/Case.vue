@@ -1,16 +1,23 @@
 <script setup lang="ts">
-// import Gallery from "@client/components/ui/Gallery.vue";
+import ImagesGallery from "./ImagesGallery.vue";
+
 defineProps<{
-	imgUrls?: string[];
-	tooltipClass?: string;
+  imgUrls?: string[];
+  tooltipClass?: string;
 }>();
 </script>
 
 <template>
-	<div class="w-full relative rounded-md py-2 px-4">
-		<div class="overflow-hidden flex">
-			<slot />
-			<!-- <Gallery class="one-column ml-2" :list="imgUrls!" /> -->
-		</div>
-	</div>
+  <div class="w-full relative rounded-md py-2 px-4">
+    <div class="overflow-hidden flex items-start gap-2">
+      <div class="flex-grow">
+        <slot />
+      </div>
+      <ImagesGallery
+        v-if="imgUrls && imgUrls.length"
+        :img-urls="imgUrls"
+        class="shrink-0"
+      />
+    </div>
+  </div>
 </template>

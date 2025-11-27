@@ -4,6 +4,7 @@ import Header from "./components/Header.vue";
 import Case from "./components/Case.vue";
 import Question from "./components/Question.vue";
 import Choice from "./components/Choice.vue";
+import TabularChoices from "./components/TabularChoices.vue";
 import Explanation from "./components/Explanation.vue";
 import RichText from "./components/RichText.vue";
 import Tooltip from "./components/Tooltip.vue";
@@ -35,6 +36,11 @@ const currentQuestion = computed(() =>
   props.cases?.at(props.nthCase)?.questions?.at(props.nthQuestion)
 );
 const currentChoices = computed(() => currentQuestion.value?.choices || []);
+
+const isTabularQuestion = computed(
+  () =>
+    currentQuestion.value?.type === "Tabular" && currentQuestion.value?.header
+);
 
 const richTextRef = ref<InstanceType<typeof RichText> | null>(null);
 </script>
@@ -77,9 +83,22 @@ const richTextRef = ref<InstanceType<typeof RichText> | null>(null);
             <Question
               :img-urls="currentQuestion?.imgUrls!"
               :body="currentQuestion?.body!"
+              :type="currentQuestion?.type"
+              :header="currentQuestion?.header"
               class="rounded-none small-border border-x-0 !p-6 !pb-8"
             />
-            <ul class="flex flex-col">
+            <!-- Tabular choices with aligned columns -->
+            <TabularChoices
+              v-if="isTabularQuestion"
+              v-model:selection="nthSelectedChoice"
+              v-model:elimination="nthEliminatedChoices"
+              :header="currentQuestion?.header!"
+              :choices="currentChoices"
+              :can-show-explanation="canShowExplanation!"
+              class="px-2"
+            />
+            <!-- Regular choices -->
+            <ul v-else class="flex flex-col">
               <Choice
                 v-for="(choice, index) in currentChoices"
                 v-model:selection="nthSelectedChoice"
@@ -159,8 +178,21 @@ const richTextRef = ref<InstanceType<typeof RichText> | null>(null);
           class="light-border-and-shadow"
           :img-urls="currentQuestion?.imgUrls!"
           :body="currentQuestion?.body!"
+          :type="currentQuestion?.type"
+          :header="currentQuestion?.header"
         />
-        <ul class="flex flex-col gap-2">
+        <!-- Tabular choices with aligned columns -->
+        <TabularChoices
+          v-if="isTabularQuestion"
+          v-model:selection="nthSelectedChoice"
+          v-model:elimination="nthEliminatedChoices"
+          :header="currentQuestion?.header!"
+          :choices="currentChoices"
+          :can-show-explanation="canShowExplanation!"
+          class="light-border-and-shadow p-2"
+        />
+        <!-- Regular choices -->
+        <ul v-else class="flex flex-col gap-2">
           <Choice
             v-for="(choice, index) in currentChoices"
             v-model:selection="nthSelectedChoice"

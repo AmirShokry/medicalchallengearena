@@ -16,7 +16,26 @@ const props = defineProps<{
   canShowExplanation: boolean;
   explanation?: string | null;
   choicesCount: number;
+  questionType?: "Default" | "Tabular";
+  headerColumns?: number;
 }>();
+
+// Parse choice body into columns for tabular display
+function parseChoiceColumns(body: string): string[] {
+  if (!body) return [];
+  // Try splitting by tab first, then by multiple spaces
+  const cols = body.includes("\t") ? body.split("\t") : body.split(/\s{2,}/);
+  return cols.map((col) => col.trim()).filter((col) => col);
+}
+
+const choiceColumns = computed(() => {
+  if (props.questionType !== "Tabular") return [];
+  return parseChoiceColumns(props.body);
+});
+
+const isTabular = computed(
+  () => props.questionType === "Tabular" && choiceColumns.value.length > 1
+);
 
 const isSelected = computed(() => nthSelectedChoice.value === props.index);
 const isEliminated = computed(() =>
@@ -74,7 +93,26 @@ function getEliminationClass() {
       :class="getChoiceClass()"
       class="py-3 px-5 flex justify-between items-center gap-3 w-full"
     >
+      <!-- Tabular display -->
+      <div v-if="isTabular" class="w-full">
+        <table class="w-full border-collapse text-sm">
+          <tbody>
+            <tr>
+              <td
+                v-for="(cell, cellIndex) in choiceColumns"
+                :key="cellIndex"
+                :class="getEliminationClass()"
+                class="border border-border px-3 py-2 text-left"
+              >
+                {{ cell }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- Default display -->
       <p
+        v-else
         :class="getEliminationClass()"
         class="leading-7 hyphens-auto text-left"
       >

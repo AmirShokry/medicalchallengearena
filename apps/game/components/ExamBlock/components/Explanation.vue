@@ -1,5 +1,6 @@
 <script setup lang="ts">
-// import Gallery from "@client/components/ui/Gallery.vue";
+import ImagesGallery from "./ImagesGallery.vue";
+
 const show = defineModel({ type: Boolean, required: false });
 const props = defineProps<{
   imgUrls?: string[] | null;
@@ -36,10 +37,10 @@ const alteredImgs = computed(() =>
       <li class="">
         <div
           class="float-right ml-[3px]"
-          v-if="imgUrls?.length"
+          v-if="alteredImgs?.length"
           v-disabled-click="isBlured!"
         >
-          <!-- <Gallery class="floating-image" :list="alteredImgs!" /> -->
+          <ImagesGallery :img-urls="alteredImgs!" />
         </div>
         <pre class="leading-7 hyphens-auto text-wrap font-geist">{{
           alteredBody
