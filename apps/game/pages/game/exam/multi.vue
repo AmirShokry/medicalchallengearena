@@ -82,8 +82,8 @@ function togglePause() {
 function startGame() {
   hasAnimationEnded.value = true;
   user.timer.start({
-    mins: 1,
-    secs: 30,
+    mins: 10,
+    secs: 0,
     direction: "down",
     timeoutCallback: onTimeOut,
   });
