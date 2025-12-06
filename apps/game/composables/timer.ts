@@ -1,6 +1,5 @@
 import { onUnmounted, ref } from "vue";
 import { msToMinutesAndSeconds } from "./timeFormatter";
-import { any } from "zod";
 
 type actions = "start" | "stop";
 type ClientEventMessages = { action: actions; mins: number; secs: number };
@@ -15,6 +14,7 @@ type Options = {
 /**
  * @overview A composable function that creates a timer using a Web Worker because browsers throttle setInterval and setTimeout in inactive tabs.
  * Falls back to setInterval if Web Worker fails (e.g., in production builds where minification can break inline workers).
+ * Uses Date.now() delta calculations to correct time drift when tab becomes visible again (handles browser throttling).
  * @param options Configuration options for the timer
  * @returns
  */
@@ -32,6 +32,111 @@ export function useTimer(
   const isRunning = ref(false);
   const timeMs = ref<number>(0);
   const time = computed(() => msToMinutesAndSeconds(timeMs.value));
+
+  // Track timestamps to handle browser throttling when tab is minimized
+  let startTimestamp: number = 0;
+  let targetDurationMs: number = 0;
+  let visibilityHandler: (() => void) | null = null;
+
+  /**
+   * Handles visibility change to recalculate timer based on actual elapsed time.
+   * This is crucial because when the tab is minimized, browsers throttle intervals/timers.
+   */
+  function handleVisibilityChange() {
+    if (
+      document.visibilityState === "visible" &&
+      isRunning.value &&
+      startTimestamp > 0
+    ) {
+      const elapsedMs = Date.now() - startTimestamp;
+
+      if (options.direction === "down") {
+        const remainingMs = Math.max(0, targetDurationMs - elapsedMs);
+        timeMs.value = remainingMs;
+
+        // Check if timer should have expired while tab was hidden
+        if (remainingMs <= 0) {
+          stopInternal();
+          isRunning.value = false;
+          options.timeoutCallback?.();
+          return;
+        }
+
+        // Restart the timer/worker with corrected time
+        restartWithCorrectTime();
+      } else {
+        // For "up" direction
+        const currentMs = Math.min(elapsedMs, targetDurationMs);
+        timeMs.value = currentMs;
+
+        // Check if timer should have completed while tab was hidden
+        if (currentMs >= targetDurationMs) {
+          stopInternal();
+          isRunning.value = false;
+          options.timeoutCallback?.();
+          return;
+        }
+
+        // Restart the timer/worker with corrected time
+        restartWithCorrectTime();
+      }
+    }
+  }
+
+  function restartWithCorrectTime() {
+    if (usingFallback) {
+      stopFallback();
+      const totalSeconds = Math.ceil(timeMs.value / 1000);
+      if (options.direction === "down") {
+        options.mins = Math.floor(totalSeconds / 60);
+        options.secs = totalSeconds % 60;
+      }
+      startFallbackTimer();
+    } else if (timeWorker) {
+      // Restart worker with corrected time
+      timeWorker.postMessage({ action: "stop" });
+      const totalSeconds = Math.ceil(timeMs.value / 1000);
+      const mins = Math.floor(totalSeconds / 60);
+      const secs = totalSeconds % 60;
+
+      if (options.direction === "down") {
+        timeWorker.postMessage({ action: "start", mins, secs });
+      } else {
+        // For up timer, we need to calculate remaining target
+        const remainingMs = targetDurationMs - timeMs.value;
+        const remainingSecs = Math.ceil(remainingMs / 1000);
+        const targetMins = Math.floor(remainingSecs / 60);
+        const targetSecs = remainingSecs % 60;
+        timeWorker.postMessage({
+          action: "start",
+          mins: targetMins,
+          secs: targetSecs,
+        });
+      }
+    }
+  }
+
+  function setupVisibilityListener() {
+    if (typeof document !== "undefined" && !visibilityHandler) {
+      visibilityHandler = handleVisibilityChange;
+      document.addEventListener("visibilitychange", visibilityHandler);
+    }
+  }
+
+  function removeVisibilityListener() {
+    if (typeof document !== "undefined" && visibilityHandler) {
+      document.removeEventListener("visibilitychange", visibilityHandler);
+      visibilityHandler = null;
+    }
+  }
+
+  function stopInternal() {
+    if (usingFallback) {
+      stopFallback();
+    } else if (timeWorker) {
+      timeWorker.postMessage({ action: "stop" });
+    }
+  }
 
   function startFallbackTimer() {
     usingFallback = true;
@@ -80,11 +185,18 @@ export function useTimer(
   function start(_options?: Options) {
     if (_options) Object.assign(options, _options);
 
+    // Track the start time and target duration for visibility change handling
+    targetDurationMs = (options.mins * 60 + options.secs) * 1000;
+    startTimestamp = Date.now();
+
     timeMs.value =
       options.direction === "down"
         ? (options.mins * 60 + options.secs) * 1000
         : 0; //Starting value
     isRunning.value = true;
+
+    // Set up visibility change listener to handle tab minimization
+    setupVisibilityListener();
 
     try {
       timeWorker = createWorker(options.direction);
@@ -107,6 +219,7 @@ export function useTimer(
         timeMs.value = e.data.message;
         if (e?.data?.event === "timeout") {
           isRunning.value = false;
+          removeVisibilityListener();
           options.timeoutCallback?.();
         }
       };
@@ -138,11 +251,22 @@ export function useTimer(
       timeWorker.postMessage({ action: "stop" });
     }
     isRunning.value = false;
+    removeVisibilityListener();
   }
   function pause() {
     stop();
   }
   function resume() {
+    // Update start timestamp for visibility tracking
+    const currentTimeMs = timeMs.value;
+    if (options.direction === "down") {
+      targetDurationMs = currentTimeMs;
+    } else {
+      targetDurationMs = targetDurationMs - currentTimeMs;
+    }
+    startTimestamp = Date.now();
+    setupVisibilityListener();
+
     if (usingFallback) {
       // For fallback, we need to restart with current time
       const totalSeconds = Math.ceil(timeMs.value / 1000);
@@ -164,6 +288,11 @@ export function useTimer(
     isRunning.value = true;
   }
   function restart() {
+    // Reset timestamps for visibility tracking
+    targetDurationMs = (options.mins * 60 + options.secs + 1) * 1000;
+    startTimestamp = Date.now();
+    setupVisibilityListener();
+
     if (usingFallback) {
       stopFallback();
       options.mins = options.mins;
@@ -183,6 +312,7 @@ export function useTimer(
   function destroy() {
     timeMs.value = options.mins = options.secs = 0;
     isRunning.value = false;
+    removeVisibilityListener();
 
     if (usingFallback) {
       stopFallback();

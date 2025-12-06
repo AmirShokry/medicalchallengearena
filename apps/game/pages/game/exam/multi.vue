@@ -87,7 +87,7 @@ function startGame() {
     direction: "down",
     timeoutCallback: onTimeOut,
   });
-  opponent.timer.start({ mins: 1, secs: 30, direction: "down" });
+  opponent.timer.start({ mins: 10, secs: 0, direction: "down" });
 }
 
 function handleSubmit() {

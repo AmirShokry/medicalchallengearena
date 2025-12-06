@@ -31,6 +31,32 @@ function onDisconnect() {
   transport.value = "N/A";
 }
 
+/**
+ * Handle visibility change to ensure sockets stay connected when tab becomes visible.
+ * Browsers may throttle or disconnect WebSocket connections when the tab is minimized.
+ */
+function handleVisibilityChange() {
+  if (
+    document.visibilityState === "visible" &&
+    status.value === "authenticated"
+  ) {
+    // Check if sockets need reconnecting when tab becomes visible
+    if (!gameSocket.connected) {
+      console.log("Tab visible - reconnecting game socket...");
+      gameSocket.connect();
+    }
+    if (!socialSocket.connected) {
+      console.log("Tab visible - reconnecting social socket...");
+      socialSocket.connect();
+    }
+  }
+}
+
+// Set up visibility change listener
+if (typeof document !== "undefined") {
+  document.addEventListener("visibilitychange", handleVisibilityChange);
+}
+
 gameSocket.on("connect", onConnect);
 gameSocket.on("disconnect", onDisconnect);
 
@@ -166,6 +192,11 @@ onBeforeUnmount(() => {
   gameSocket.off("disconnect", onDisconnect);
   gameSocket.disconnect();
   socialSocket.disconnect();
+
+  // Clean up visibility listener
+  if (typeof document !== "undefined") {
+    document.removeEventListener("visibilitychange", handleVisibilityChange);
+  }
 });
 </script>
 <template>
