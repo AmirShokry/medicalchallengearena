@@ -99,34 +99,57 @@ onUnmounted(() => window.removeEventListener("keydown", listenForEscape));
       class="min-h-full w-full rounded-xl gap-10 grid [grid-template-areas:'play_ranks''stats_progress'] grid-cols-[1fr_0.6fr] grid-rows-[1fr_0.3fr] max-xl:grid-cols-1 max-xl:grid-rows-[repeat(auto,minmax(0,1fr))] max-xl:[grid-template-areas:'play''ranks''stats''progress']"
     >
       <div
-        class="[grid-area:play] rounded-2xl bg-primary/90 relative flex items-center min-h-[300px]"
+        class="[grid-area:play] rounded-2xl relative flex items-center min-h-[300px]"
       >
-        <div
+        <!-- <div
           class="absolute rounded-2xl inset-0 bg-[url(/assets/images/house-scrub.png)] bg-no-repeat bg-[center_-14rem] grayscale h-full w-full z-0"
+        /> -->
+        <div
+          class="absolute rounded-2xl inset-0 bg-[url(/assets/images/campaign.webp)] bg-no-repeat bg-cover h-full w-full z-0"
         />
 
-        <div class="flex w-full items-center justify-center z-1 gap-2">
+        <div
+          class="flex w-full h-full items-end min-[950px]:items-center justify-end max-[950px]:justify-center max-[950px]:mr-0 mr-10 z-1 gap-2"
+        >
+          <!-- <div class="flex w-full items-center justify-center z-1 gap-2"> -->
           <Button
             v-if="!isPlayClicked"
             @click="handlePlayClick"
-            class="text-primary-foreground mt-20 cursor-pointer border-border border w-1/4 h-10 [background:linear-gradient(80deg,_rgba(187,77,0,0.25)_1%,_rgba(217,166,72,1)_30%)]"
+            class="text-primary-foreground mt-20 cursor-pointer border-border border w-1/4 h-10 [background:linear-gradient(80deg,_rgba(187,77,0,0.25)_1%,_rgba(255,255,255,1)_30%)]"
           >
+            <!-- <Button
+            v-if="!isPlayClicked"
+            @click="handlePlayClick"
+            class="text-primary-foreground mt-20 cursor-pointer border-border border w-1/4 h-10 [background:linear-gradient(80deg,_rgba(187,77,0,0.25)_1%,_rgba(217,166,72,1)_30%)]"
+          > -->
             Play
           </Button>
           <Button
             v-if="isPlayClicked"
             @click="handleSoloClick"
-            class="hover:![background:#FFFF] not-dark:hover:![background:black] text-primary-foreground mt-20 cursor-pointer border-border border w-1/4 h-10 [background:linear-gradient(80deg,_#B1AFB3_1%,_#B1AFB3_30%)]"
+            class="hover:![background:#FFFF] not-dark:hover:![background:black] text-primary-foreground mt-20 cursor-pointer border-border border w-1/6 h-10 [background:linear-gradient(80deg,_#B1AFB3_1%,_#B1AFB3_30%)]"
           >
+            <!-- <Button
+            v-if="isPlayClicked"
+            @click="handleSoloClick"
+            class="hover:![background:#FFFF] not-dark:hover:![background:black] text-primary-foreground mt-20 cursor-pointer border-border border w-1/4 h-10 [background:linear-gradient(80deg,_#B1AFB3_1%,_#B1AFB3_30%)]"
+          > -->
             Solo
           </Button>
           <Button
             v-if="isPlayClicked"
             @click="handleMultiClick"
-            class="hover:![background:#FFFF] not-dark:hover:![background:black] text-primary-foreground mt-20 cursor-pointer border-border border w-1/4 h-10 [background:linear-gradient(80deg,_#B1AFB3_1%,_#B1AFB3_30%)]"
+            class="hover:![background:#FFFF] not-dark:hover:![background:black] text-primary-foreground mt-20 cursor-pointer border-border border w-1/6 h-10 [background:linear-gradient(80deg,_#B1AFB3_1%,_#B1AFB3_30%)]"
           >
             Multi
           </Button>
+          <!-- <Button
+            v-if="isPlayClicked"
+            @click="handleMultiClick"
+            class="hover:![background:#FFFF] not-dark:hover:![background:black] text-primary-foreground mt-20 cursor-pointer border-border border w-1/4 h-10 [background:linear-gradient(80deg,_#B1AFB3_1%,_#B1AFB3_30%)]"
+          >
+            Multi
+          </Button> -->
         </div>
       </div>
       <div class="[grid-area:ranks] rounded-2xl border shadow-xl pt-1 px-6">
