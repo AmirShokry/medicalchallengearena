@@ -1,7 +1,21 @@
 <script setup lang="ts">
+import { Search } from "lucide-vue-next";
+
 const { $trpc } = useNuxtApp();
 const offset = ref(0);
 const limit = ref(10);
+const searchQuery = ref("");
+const debouncedSearch = ref("");
+
+// Debounce search input
+let searchTimeout: ReturnType<typeof setTimeout>;
+watch(searchQuery, (newVal) => {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => {
+    debouncedSearch.value = newVal;
+    offset.value = 0; // Reset to first page on search
+  }, 300);
+});
 
 const {
   data: usersData,
@@ -11,6 +25,7 @@ const {
   computed(() => ({
     offset: offset.value,
     limit: limit.value,
+    search: debouncedSearch.value || undefined,
   }))
 );
 
@@ -20,7 +35,14 @@ const hasMore = computed(() => usersData.value?.hasMore || false);
 const currentPage = computed(() => usersData.value?.currentPage || 1);
 const totalPages = computed(() => usersData.value?.totalPages || 1);
 
-const toggleSubscription = async (user: any) => {
+const router = useRouter();
+
+const navigateToUser = (userId: number) => {
+  router.push({ name: "users-id", params: { id: userId } });
+};
+
+const toggleSubscription = async (user: any, event: Event) => {
+  event.stopPropagation();
   const newStatus = !user.isSubscribed;
   try {
     await $trpc.common.toggleSubscription.mutate({
@@ -67,17 +89,36 @@ const canGoNext = computed(() => hasMore.value);
       </Breadcrumb>
     </div>
   </header>
-  <main class="flex flex-1 flex-col gap-4 p-4 px-40 pt-40">
-    <div class="bg-muted/50 min-h-[50vh] px-10 py-10 rounded-xl md:min-h-min">
-      <div v-if="pending" class="flex items-center justify-center py-8">
-        <div class="text-muted-foreground">Loading users...</div>
+  <main class="flex flex-1 flex-col gap-4 p-4 px-40 pt-10">
+    <div v-if="pending" class="flex items-center justify-center py-8 h-full">
+      <div class="text-muted-foreground animate-spin">...</div>
+    </div>
+    <div
+      v-else
+      class="bg-muted/50 min-h-[50vh] px-10 py-10 rounded-xl md:min-h-min"
+    >
+      <!-- Search Bar -->
+      <div class="mb-6">
+        <div class="relative max-w-md">
+          <Search
+            class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground"
+          />
+          <Input
+            v-model="searchQuery"
+            type="text"
+            placeholder="Search by username, email, or university..."
+            class="pl-10"
+          />
+        </div>
       </div>
+
       <div
-        v-else-if="!usersData || users.length === 0"
+        v-if="!usersData || users.length === 0"
         class="flex items-center justify-center py-8"
       >
         <div class="text-muted-foreground">No users found.</div>
       </div>
+
       <Table v-else>
         <TableHeader>
           <TableRow>
@@ -90,11 +131,18 @@ const canGoNext = computed(() => hasMore.value);
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRow v-for="(user, index) in users" :key="user.id">
+          <TableRow
+            v-for="(user, index) in users"
+            :key="user.id"
+            class="cursor-pointer hover:bg-accent"
+            @click="navigateToUser(user.id)"
+          >
             <TableCell class="font-medium">
               {{ offset + index + 1 }}
             </TableCell>
-            <TableCell>{{ user.username }}</TableCell>
+            <TableCell class="text-primary hover:underline font-semibold">
+              {{ user.username }}
+            </TableCell>
             <TableCell>
               {{ user.email }}
             </TableCell>
@@ -107,7 +155,7 @@ const canGoNext = computed(() => hasMore.value);
                 :class="
                   user.isSubscribed ? 'bg-green-600 hover:bg-green-700' : ''
                 "
-                @click="toggleSubscription(user)"
+                @click="(e: Event) => toggleSubscription(user, e)"
               >
                 {{ user.isSubscribed ? "Yes" : "No" }}
               </Button>

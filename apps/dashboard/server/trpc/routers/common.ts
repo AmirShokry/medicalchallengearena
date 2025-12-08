@@ -1,6 +1,14 @@
 import { TRPCError } from "@trpc/server";
 import { authProcedure, createTRPCRouter } from "../init";
-import { and, db, eq, sql, getTableColumns } from "@package/database";
+import {
+  and,
+  db,
+  eq,
+  sql,
+  getTableColumns,
+  or,
+  ilike,
+} from "@package/database";
 import { getCache, setCache } from "@package/redis";
 
 import z from "zod";
@@ -113,9 +121,19 @@ export const common = createTRPCRouter({
       z.object({
         offset: z.number().optional().default(0),
         limit: z.number().optional().default(10),
+        search: z.string().optional(),
       })
     )
     .query(async ({ input }) => {
+      // Build search condition
+      const searchCondition = input.search
+        ? or(
+            ilike(db.table.users.username, `%${input.search}%`),
+            ilike(db.table.users.email, `%${input.search}%`),
+            ilike(db.table.users.university, `%${input.search}%`)
+          )
+        : undefined;
+
       const users = await db
         .select({
           ...getTableColumns(db.table.users),
@@ -126,14 +144,16 @@ export const common = createTRPCRouter({
           db.table.users_auth,
           eq(db.table.users.id, db.table.users_auth.user_id)
         )
+        .where(searchCondition)
         .orderBy(db.table.users.id)
         .limit(input.limit)
         .offset(input.offset);
 
-      // Get total count for pagination
+      // Get total count for pagination (with search filter)
       const [{ count }] = await db
         .select({ count: sql<number>`count(*)` })
-        .from(db.table.users);
+        .from(db.table.users)
+        .where(searchCondition);
 
       return {
         users,

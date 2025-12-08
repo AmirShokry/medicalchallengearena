@@ -92,7 +92,7 @@ const canGoNext = computed(() => hasMore.value);
       </Breadcrumb>
     </div>
   </header>
-  <main class="flex flex-1 flex-col gap-4 p-4 px-40 pt-40">
+  <main class="flex flex-1 flex-col gap-4 p-4 px-40 pt-10">
     <div class="bg-muted/50 min-h-[50vh] px-10 py-10 rounded-xl md:min-h-min">
       <div class="flex justify-between items-center mb-6">
         <h2 class="text-2xl font-bold tracking-tight">Access Codes</h2>
