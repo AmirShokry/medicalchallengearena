@@ -108,11 +108,14 @@ function setupSocketListeners() {
   });
 
   gameSocket.on("opponentLeft", () => {
-    // console.log("opponentLef");
     if (!$$game.flags.ingame.isGameStarted) {
       if ($router.currentRoute.value.name === "game-exam-multi") {
         matchmaking.state = "idle";
         $router.replace({ name: "game-setup-multi" });
+      }
+      if (matchmaking.state === "selecting-block") {
+        matchmaking.state = "idle";
+        window.location.reload();
       }
       gameSocket.emit("userDeclined");
       return $$game["~resetEverything"]();
@@ -120,6 +123,38 @@ function setupSocketListeners() {
 
     $$game.players.opponent.flags["~reset"]();
     $$game.players.opponent.flags.hasLeft = true;
+  });
+
+  // Handle opponent temporary disconnect (may reconnect)
+  gameSocket.on("opponentDisconnected", (data) => {
+    console.log(
+      `[Game] Opponent disconnected: ${data.reason}. Waiting for reconnection...`
+    );
+    // Don't set hasLeft yet, give opponent a chance to reconnect
+    // We could show a "Opponent reconnecting..." UI indicator here
+  });
+
+  // Handle opponent reconnection after temporary disconnect
+  gameSocket.on("opponentReconnected", () => {
+    console.log("[Game] Opponent reconnected!");
+    // Opponent is back, game can continue normally
+    // Reset any "reconnecting" UI indicator if we had one
+  });
+
+  // Handle game session restored after our own reconnection
+  gameSocket.on("gameSessionRestored", (data) => {
+    console.log(
+      `[Game] Game session restored: ${data.roomName}, game ${data.gameId}, opponent connected: ${data.opponentConnected}`
+    );
+    // The server has restored our game state
+    // If we're not already on the game page, navigate there
+    if (
+      $router.currentRoute.value.name !== "game-exam-multi" &&
+      $$game.flags.ingame.isGameStarted
+    ) {
+      // Note: We may need to restore game state from server/store
+      // For now, just log that we've reconnected
+    }
   });
 
   gameSocket.on("opponentSentInvitation", (data) => {
@@ -135,9 +170,18 @@ function setupSocketListeners() {
       avatarUrl: opponent.avatarUrl,
       university: opponent.university,
     });
+    // Stop any random matchmaking queue on receipt of an invitation
+    $$game.flags.matchmaking.isFindingMatch = false;
+    $$game.flags.matchmaking.isInvitationSent = false;
+    $$game.flags.matchmaking.isInviting = false;
     $$game.players.user.flags.isInvited = true;
     // Set status to busy when receiving an invitation
     social.setStatus("busy");
+  });
+
+  // When our invitation is declined, ensure invite dialog closes (state reset already happens)
+  gameSocket.on("opponentDeclined", () => {
+    $$game.flags.matchmaking.isInviting = false;
   });
 
   gameSocket.on("gameStarted", (data) => {

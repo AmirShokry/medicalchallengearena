@@ -201,3 +201,67 @@ export async function notifyGameEnded(
     );
   }
 }
+
+/**
+ * Map of active game sessions for reconnection support
+ * Key: roomName, Value: session info
+ */
+const activeGameSessions = new Map<
+  string,
+  {
+    player1Id: number;
+    player2Id: number;
+    gameId: number;
+    roomName: string;
+    createdAt: number;
+  }
+>();
+
+/**
+ * Registers a new game session for reconnection support
+ */
+export function registerGameSession(
+  roomName: string,
+  player1Id: number,
+  player2Id: number,
+  gameId: number
+): void {
+  activeGameSessions.set(roomName, {
+    player1Id,
+    player2Id,
+    gameId,
+    roomName,
+    createdAt: Date.now(),
+  });
+  console.log(
+    `[Game] Registered game session: ${roomName} (game ${gameId}) between ${player1Id} and ${player2Id}`
+  );
+}
+
+/**
+ * Removes a game session when the game ends
+ */
+export function unregisterGameSession(roomName: string): void {
+  if (activeGameSessions.delete(roomName)) {
+    console.log(`[Game] Unregistered game session: ${roomName}`);
+  }
+}
+
+/**
+ * Gets a game session by room name
+ */
+export function getGameSession(roomName: string) {
+  return activeGameSessions.get(roomName);
+}
+
+/**
+ * Finds a game session by user ID
+ */
+export function findGameSessionByUserId(userId: number) {
+  for (const [roomName, session] of activeGameSessions.entries()) {
+    if (session.player1Id === userId || session.player2Id === userId) {
+      return { roomName, session };
+    }
+  }
+  return undefined;
+}

@@ -72,18 +72,19 @@ const fuse = computed(() => {
   });
 });
 
-const selectedPool = ref<"all" | "unused">("all");
+const isRoomMaster = computed(() => $$game.players.user.flags.isMaster);
+const unusedCount = computed(() =>
+  isRoomMaster
+    ? counters.value?.[0]?.unusedCount2 || 0
+    : counters.value?.[0]?.unusedCount1 || 0
+);
+const selectedPool = ref<"all" | "unused">(
+  unusedCount.value > 0 ? "unused" : "all"
+);
 const selectedCasesCount = ref(0);
 const possibleCasesCount = ref([] as number[]);
 
-const isRoomMaster = computed(() => $$game.players.user.flags.isMaster);
-
 const allCount = computed(() => counters.value?.[0]?.allCount);
-const unusedCount = computed(() =>
-  isRoomMaster
-    ? counters.value?.[0]?.unusedCount2
-    : counters.value?.[0]?.unusedCount1 || 0
-);
 
 function getCategoryCounter(
   category: (typeof systemsCategoriesRaw.value)[0]["categories"][0]
@@ -300,11 +301,17 @@ function handleLeaveOrDecline(fromAction?: boolean) {
   matchmaking.state = "idle";
   $$game["~resetEverything"]();
   gameSocket.emit("userDeclined");
+  gameSocket.emit("userLeft");
   // Reset status to matchmaking when declining (still on multi page)
   social.setStatus("matchmaking");
   console.log("Leaving or declining game");
 }
 
+watchEffect(() => {
+  if (counters.value.length && user2Id.value > 0) {
+    selectedPool.value = unusedCount.value > 0 ? "unused" : "all";
+  }
+});
 onUnmounted(() => {
   if (!$$game.flags.ingame.isGameStarted) {
     handleLeaveOrDecline(true);

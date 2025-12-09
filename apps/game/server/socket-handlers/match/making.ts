@@ -9,12 +9,48 @@ import {
   notifyUserBusy,
   notifyGameStarted,
   notifyGameEnded,
+  registerGameSession,
+  unregisterGameSession,
+  findGameSessionByUserId,
+  updateUserGameStatus,
+  getUserSocialSocketId,
 } from "./invitation";
 
 const { users_cases, games, users_games } = db.table;
 
 export function registerMatchMaking(socket: GameSocket, io: GameIO) {
+  /**
+   * If this user still has an old game session (e.g., refreshed/leaving mid-game),
+   * tear it down and notify the opponent so we start matchmaking from a clean state.
+   */
+  function cleanupStaleSessionIfAny() {
+    const staleSession = findGameSessionByUserId(socket.data.session?.id);
+    if (!staleSession) return;
+
+    const { roomName, session } = staleSession;
+    const opponentUserId =
+      session.player1Id === socket.data.session?.id
+        ? session.player2Id
+        : session.player1Id;
+
+    // Find current opponent socket (if connected) and notify them
+    for (const [, connectedSocket] of io.sockets) {
+      if (connectedSocket.data?.session?.id === opponentUserId) {
+        io.to(connectedSocket.id).emit("opponentLeft");
+        connectedSocket.helpers.reset();
+        break;
+      }
+    }
+
+    // Unregister session and reset local state
+    unregisterGameSession(roomName);
+    socket.leave(roomName);
+    socket.helpers.reset();
+  }
+
   socket.on("challenge", async () => {
+    cleanupStaleSessionIfAny();
+
     if (socket.data.isInGame)
       throw new Error("Cannot start a challenge while being in a game");
 
@@ -70,6 +106,8 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
   });
 
   socket.on("userSentInvitation", async (data) => {
+    cleanupStaleSessionIfAny();
+
     // Validate that the target user can be invited (online and not busy)
     const inviteCheck = canInviteUser(data?.id);
     if (!inviteCheck.canInvite) {
@@ -246,6 +284,15 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
 
       return id;
     });
+
+    // Register the game session for reconnection support
+    registerGameSession(
+      roomName,
+      socket.data.session?.id,
+      opponentSocket.data.session?.id,
+      gameId
+    );
+
     io.to(roomName).emit("gameStarted", { cases, gameId });
   });
 
@@ -259,20 +306,42 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
       io.to(opponentSocket?.id).emit("opponentDeclined");
       opponentSocket?.helpers.reset();
 
-      // Reset opponent's presence to online
-      await notifyGameEnded(
-        opponentSocket.data.session?.id,
-        opponentSocket.data.session.username
+      // Reset opponent's presence to matchmaking (still on multi page)
+      const oppSocialId = getUserSocialSocketId(
+        opponentSocket.data.session?.id
       );
+      if (oppSocialId) {
+        await updateUserGameStatus(
+          opponentSocket.data.session?.id,
+          opponentSocket.data.session.username,
+          oppSocialId,
+          "matchmaking"
+        );
+      } else {
+        await notifyGameEnded(
+          opponentSocket.data.session?.id,
+          opponentSocket.data.session.username
+        );
+      }
     }
 
     socket.helpers.reset();
 
-    // Reset user's presence to online
-    await notifyGameEnded(
-      socket.data.session?.id,
-      socket.data.session.username
-    );
+    // Reset user's presence to matchmaking (still on multi page)
+    const userSocialId = getUserSocialSocketId(socket.data.session?.id);
+    if (userSocialId) {
+      await updateUserGameStatus(
+        socket.data.session?.id,
+        socket.data.session.username,
+        userSocialId,
+        "matchmaking"
+      );
+    } else {
+      await notifyGameEnded(
+        socket.data.session?.id,
+        socket.data.session.username
+      );
+    }
   });
 
   socket.on("userJoinedWaitingRoom", () => socket.join("waiting"));

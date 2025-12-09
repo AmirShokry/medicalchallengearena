@@ -12,7 +12,7 @@ const { user } = storeToRefs(useUserStore());
 const { $trpc } = useNuxtApp();
 const $$game = useGameStore();
 const $router = useRouter();
-const selectedPool = ref<"all" | "unused">("all");
+
 const selectedCasesCount = ref(0);
 const possibleCasesCount = ref([] as number[]);
 const systemsCategoriesRaw = ref(
@@ -53,7 +53,11 @@ const { data, pending, error } = $trpc.systems.categories.useQuery(undefined, {
 });
 
 watchEffect(() => {
-  if (data.value) systemsCategoriesRaw.value = data.value.systemsCategories;
+  if (data.value) {
+    systemsCategoriesRaw.value = data.value.systemsCategories;
+
+    selectedPool.value = data.value.unusedCount > 0 ? "unused" : "all";
+  }
 });
 
 const systemsCategories = computed(() => {
@@ -69,9 +73,12 @@ const fuse = computed(() => {
     threshold: 0.3,
   });
 });
-
-const allCount = computed(() => data.value?.allCount || 0);
 const unusedCount = computed(() => data.value?.unusedCount || 0);
+
+const selectedPool = ref<"all" | "unused">(
+  unusedCount.value > 0 ? "unused" : "all"
+);
+const allCount = computed(() => data.value?.allCount || 0);
 
 watchEffect(() => {
   user.value ? $$game.players.user.info["~set"](user.value!) : undefined;

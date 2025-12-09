@@ -12,6 +12,10 @@ const social = useSocial();
 const friendList = computed(() => friendsStore.friendList);
 const selectedFriendId = ref<number>();
 const isCheckingInvite = ref(false);
+const resetInviteDialogState = () => {
+  selectedFriendId.value = undefined;
+  isCheckingInvite.value = false;
+};
 
 function handleFindMatch() {
   if ($$game.flags.matchmaking.isMatchFound) return;
@@ -22,8 +26,23 @@ function handleFindMatch() {
   gameSocket.emit("challenge", { mode: "UNRANKED" });
 }
 
+function cancelFindMatchQueue() {
+  if (!$$game.flags.matchmaking.isFindingMatch) return;
+
+  // Leave waiting room on the server and clear local queue state
+  gameSocket.emit("userLeft");
+  $$game.flags.matchmaking.isFindingMatch = false;
+  $$game.flags.matchmaking.isMatchFound = false;
+  $$game.flags.matchmaking.isInvitationSent = false;
+  $$game.data.invitedId = -1;
+  // Reset status back to online since user left the random queue
+  social.setStatus("online");
+}
+
 function handleOpenInviteFriendDialog() {
   audio.navigation.play();
+  // If we were queueing for random match, cancel it before manual invite
+  cancelFindMatchQueue();
   $$game.flags.matchmaking.isInviting = true;
   // Don't emit userLeft/userJoinedWaitingRoom - opening dialog shouldn't affect status
 }
@@ -36,6 +55,9 @@ function handleFriendSelected(friendId: number) {
 
 async function handleInvitaionSent() {
   if (!selectedFriendId.value || isCheckingInvite.value) return;
+
+  // Ensure any random queue is cancelled before sending manual invitation
+  cancelFindMatchQueue();
 
   const friend = friendList.value?.find(
     (friend) => friend.id === selectedFriendId.value
@@ -63,10 +85,12 @@ async function handleInvitaionSent() {
     $$game.players.opponent.info["~set"]({
       id: friend.id,
       username: friend.username,
-      medPoints: friend.medPoints,
+      medPoints: friend.medPoints ?? 0,
       avatarUrl: friend.avatarUrl,
       university: friend.university,
     });
+    // Ensure random matchmaking UI is cleared after sending a manual invite
+    $$game.flags.matchmaking.isFindingMatch = false;
   } catch (error) {
     console.error("Error checking invite status:", error);
     toast.error("Failed to send invitation");
@@ -119,15 +143,23 @@ function handleCloseInviteDialog(isOpen: boolean) {
     // This will notify the opponent and reset both users' status to matchmaking
     gameSocket.emit("userDeclined");
     $$game.flags.matchmaking.isInvitationSent = false;
-    $$game.data.invitedId = undefined;
+    $$game.data.invitedId = -1;
     // Reset status to matchmaking
     social.setStatus("matchmaking");
   }
 
   // Reset dialog state
   $$game.flags.matchmaking.isInviting = false;
-  selectedFriendId.value = undefined;
+  resetInviteDialogState();
 }
+
+// Close dialog programmatically when invite state toggles off (e.g., opponent declined)
+watch(
+  () => $$game.flags.matchmaking.isInviting,
+  (isOpen) => {
+    if (!isOpen) resetInviteDialogState();
+  }
+);
 </script>
 <template>
   <div class="w-full flex justify-center items-center gap-4 flex-wrap flex-col">
@@ -147,7 +179,11 @@ function handleCloseInviteDialog(isOpen: boolean) {
             </p>
           </div>
 
-          <UiDialog modal @update:open="handleCloseInviteDialog">
+          <UiDialog
+            modal
+            v-model:open="$$game.flags.matchmaking.isInviting"
+            @update:open="handleCloseInviteDialog"
+          >
             <UiDialogTrigger
               @click="handleOpenInviteFriendDialog"
               v-disabled-click="!canInviteFriend"
@@ -249,14 +285,22 @@ function handleCloseInviteDialog(isOpen: boolean) {
         >
           Find Match
         </UiButton>
-        <UiButton
-          class="w-[max(210px,18vmax)] h-[max(35px, 3vmax)]"
-          v-else
-          disabled
-          icon
-        >
-          In-queue
-        </UiButton>
+        <div v-else class="flex gap-3 items-center">
+          <UiButton
+            class="w-[max(150px,15vmax)] h-[max(35px, 3vmax)]"
+            disabled
+            icon
+          >
+            In-queue
+          </UiButton>
+          <UiButton
+            variant="outline"
+            class="w-[max(130px,12vmax)] h-[max(35px, 3vmax)]"
+            @click="cancelFindMatchQueue"
+          >
+            Cancel
+          </UiButton>
+        </div>
       </div>
     </div>
     <section

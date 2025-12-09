@@ -6,14 +6,15 @@ import type { ToClientIO, ToServerIO } from "@/shared/types/socket";
 const socketOptions = {
   withCredentials: true,
   autoConnect: false,
-  // Increase ping timeout to handle browser throttling when tab is minimized
-  // Default is 20000ms, but throttled tabs may need more time
-  pingTimeout: 700e3,
+  // Match server ping configuration to handle browser throttling
+  // Server sends ping every 60s, client must respond within 120s
+  pingInterval: 60e3, // 60 seconds between pings (matches server)
+  pingTimeout: 120e3, // 120 seconds to wait for pong (matches server)
   // Enable reconnection with backoff
   reconnection: true,
-  reconnectionAttempts: 10,
+  reconnectionAttempts: 15,
   reconnectionDelay: 1000,
-  reconnectionDelayMax: 5000,
+  reconnectionDelayMax: 10000,
 };
 
 export const gameSocket = io("/game", socketOptions) as Socket<

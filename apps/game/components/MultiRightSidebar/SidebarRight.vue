@@ -112,15 +112,20 @@ function getContent(isSelf: boolean) {
         <SidebarMenuItem>
           <Input
             v-model="newMessage"
+            :disabled="!rival.info.value?.username"
             placeholder="Type a message..."
             class="w-full"
             @keyup.enter="sendMessage"
           />
           <button
             class="absolute right-2 top-1/2 -translate-y-1/2"
+            :disabled="!rival.info.value?.username"
             @click="sendMessage"
           >
-            <SendHorizonalIcon class="h-5 w-5" />
+            <SendHorizonalIcon
+              class="h-5 w-5"
+              :class="!rival.info.value?.username ? 'opacity-40' : undefined"
+            />
           </button>
         </SidebarMenuItem>
       </SidebarMenu>

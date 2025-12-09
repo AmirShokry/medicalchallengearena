@@ -37,6 +37,9 @@ const {
   userStatus,
 } = getGameData();
 
+// Track if opponent is temporarily disconnected (waiting for reconnection)
+const isOpponentReconnecting = ref(false);
+
 onMounted(() => {
   flags.matchmaking["~reset"]();
   user.records["~reset"]();
@@ -55,6 +58,30 @@ onMounted(() => {
     opponent.timer.resume();
     isPaused.value = false;
   });
+
+  // Handle opponent temporary disconnect - pause the game
+  gameSocket.on("opponentDisconnected", (data) => {
+    console.log(`[Multi] Opponent disconnected: ${data.reason}`);
+    isOpponentReconnecting.value = true;
+    // Auto-pause the game while waiting for opponent to reconnect
+    if (!isPaused.value) {
+      user.timer.pause();
+      opponent.timer.pause();
+      isPaused.value = true;
+    }
+  });
+
+  // Handle opponent reconnection - resume the game
+  gameSocket.on("opponentReconnected", () => {
+    console.log("[Multi] Opponent reconnected!");
+    isOpponentReconnecting.value = false;
+    // Auto-resume the game if it was paused due to disconnect
+    if (isPaused.value) {
+      user.timer.resume();
+      opponent.timer.resume();
+      isPaused.value = false;
+    }
+  });
 });
 
 // Set user status to ingame when in game (server should have already set this)
@@ -69,6 +96,9 @@ const hasAnimationEnded = ref(false),
 const isPaused = ref(false);
 
 function togglePause() {
+  // Don't allow pause toggle while opponent is reconnecting
+  if (isOpponentReconnecting.value) return;
+
   if (isPaused.value) {
     gameSocket.emit("resumeGame");
     user.timer.resume();
@@ -240,6 +270,8 @@ onBeforeUnmount(() => {
   gameSocket.off("gamePaused");
   gameSocket.off("gameResumed");
   gameSocket.off("opponentSolved");
+  gameSocket.off("opponentDisconnected");
+  gameSocket.off("opponentReconnected");
   user.timer.destroy();
   opponent.timer.destroy();
   $$game["~resetEverything"]();

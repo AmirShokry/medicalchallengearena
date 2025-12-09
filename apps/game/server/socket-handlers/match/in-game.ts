@@ -2,22 +2,67 @@ import { db, and, eq, sql, inArray } from "@package/database";
 import type { GameIO, GameSocket } from "@/shared/types/socket";
 const { users_games, users } = db.table;
 
+/**
+ * Helper function to get the current socket for the opponent
+ * This uses the user ID to look up the socket, handling reconnection scenarios
+ * where the socket reference might be stale
+ */
+function getOpponentSocket(
+  socket: GameSocket,
+  io: GameIO
+): GameSocket | undefined {
+  if (!socket?.data?.opponentSocket?.data?.session?.id) return undefined;
+
+  const opponentUserId = socket.data.opponentSocket.data.session.id;
+
+  // Look up opponent by iterating through connected sockets
+  // This ensures we get the current socket even after reconnection
+  for (const [, connectedSocket] of io.sockets) {
+    if (connectedSocket.data?.session?.id === opponentUserId) {
+      // Update the cached reference to the current socket
+      socket.data.opponentSocket = connectedSocket as GameSocket;
+      return connectedSocket as GameSocket;
+    }
+  }
+
+  return undefined;
+}
+
 export function registerMatchEvents(socket: GameSocket, io: GameIO) {
   socket.on("userSolved", (data, stats) => {
     if (!socket?.data) return "No socket data";
-    const opponentId = socket.data.opponentSocket!?.id;
-    io.to(opponentId).emit("opponentSolved", data, stats);
+    const opponentSocket = getOpponentSocket(socket, io);
+    if (!opponentSocket) {
+      console.warn(
+        `[Game] Cannot emit userSolved - opponent socket not found for user ${socket.data.session?.username}`
+      );
+      return;
+    }
+    io.to(opponentSocket.id).emit("opponentSolved", data, stats);
   });
+
   socket.on("pauseGame", () => {
-    if (!socket?.data?.opponentSocket) return;
-    const opponentId = socket.data.opponentSocket?.id;
-    io.to(opponentId).emit("gamePaused");
+    const opponentSocket = getOpponentSocket(socket, io);
+    if (!opponentSocket) {
+      console.warn(
+        `[Game] Cannot emit pauseGame - opponent socket not found for user ${socket.data.session?.username}`
+      );
+      return;
+    }
+    io.to(opponentSocket.id).emit("gamePaused");
   });
+
   socket.on("resumeGame", () => {
-    if (!socket?.data?.opponentSocket) return;
-    const opponentId = socket.data.opponentSocket?.id;
-    io.to(opponentId).emit("gameResumed");
+    const opponentSocket = getOpponentSocket(socket, io);
+    if (!opponentSocket) {
+      console.warn(
+        `[Game] Cannot emit resumeGame - opponent socket not found for user ${socket.data.session?.username}`
+      );
+      return;
+    }
+    io.to(opponentSocket.id).emit("gameResumed");
   });
+
   socket.on("userFinishedGame", async (gameId, records) => {
     if (!socket?.data) return "No socket data";
     const serverData = records.data.map((d) => {
@@ -83,10 +128,18 @@ export function registerMatchEvents(socket: GameSocket, io: GameIO) {
       totalTimeSpentMs: records.stats.totalTimeSpentMs,
     };
 
-    const opponentSocket = socket.data.opponentSocket!;
+    // Get the current opponent socket using helper function to handle reconnection
+    const opponentSocket = getOpponentSocket(socket, io);
+    if (!opponentSocket) {
+      console.warn(
+        `[Game] User ${socket.data.session?.username} finished game but opponent socket not found`
+      );
+      return;
+    }
+
     if (
-      opponentSocket.data.finalStats.totalMedpoints === undefined ||
-      opponentSocket.data.finalStats.totalTimeSpentMs === undefined
+      opponentSocket.data.finalStats?.totalMedpoints === undefined ||
+      opponentSocket.data.finalStats?.totalTimeSpentMs === undefined
     )
       return;
 

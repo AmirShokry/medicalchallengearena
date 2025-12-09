@@ -51,6 +51,16 @@ export namespace ToClientIO {
       opponentSentSelectionChat: (data: string) => void;
       opponentDeclined: () => void;
       opponentLeft: () => void;
+      /** Opponent temporarily disconnected (ping timeout, transport close) - may reconnect */
+      opponentDisconnected: (data: { reason: string }) => void;
+      /** Opponent reconnected after temporary disconnect */
+      opponentReconnected: () => void;
+      /** Game session restored after reconnection */
+      gameSessionRestored: (data: {
+        roomName: string;
+        gameId: number;
+        opponentConnected: boolean;
+      }) => void;
       gameStarted: (data: { cases: Cases; gameId: number }) => void;
       opponentSolved: (
         data: RecordObject["data"][0],
