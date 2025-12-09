@@ -17,7 +17,7 @@ interface RoomTimerState {
 // Map of room names to their timer state
 const roomTimers = new Map<string, RoomTimerState>();
 
-const QUESTION_DURATION_MS = 10 * 60e3; // 10 minutes per question
+const QUESTION_DURATION_MS = 60e3; // 10 minutes per question
 
 /**
  * Get timer state for a room
@@ -163,9 +163,11 @@ export function registerMatchEvents(socket: GameSocket, io: GameIO) {
     if (!roomName) return;
 
     const startTimestamp = startQuestionTimer(roomName);
+    const serverTime = Date.now();
 
-    // Emit to both players with the start timestamp
+    // Emit to both players with the start timestamp and current server time for clock sync
     io.to(roomName).emit("questionStarted", {
+      serverTime,
       startTimestamp,
       durationMs: QUESTION_DURATION_MS,
     });
@@ -210,9 +212,11 @@ export function registerMatchEvents(socket: GameSocket, io: GameIO) {
     if (!roomName) return;
 
     const startTimestamp = startQuestionTimer(roomName);
+    const serverTime = Date.now();
 
-    // Emit new question start to both players
+    // Emit new question start to both players with server time for clock sync
     io.to(roomName).emit("questionStarted", {
+      serverTime,
       startTimestamp,
       durationMs: QUESTION_DURATION_MS,
     });
@@ -249,12 +253,14 @@ export function registerMatchEvents(socket: GameSocket, io: GameIO) {
       return;
     }
 
-    // Emit resume with updated effective start timestamp for sync
+    // Emit resume with updated effective start timestamp and server time for sync
     const effectiveStart = roomName
       ? getEffectiveStartTimestamp(roomName)
       : null;
     const timer = roomName ? getRoomTimer(roomName) : undefined;
+    const serverTime = Date.now();
     io.to(roomName).emit("gameResumed", {
+      serverTime,
       startTimestamp: effectiveStart,
       durationMs: timer?.questionDurationMs ?? null,
     });

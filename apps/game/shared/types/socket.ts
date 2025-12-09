@@ -70,11 +70,13 @@ export namespace ToClientIO {
       opponentSentInvitation: (data: { friendId: number }) => void;
       gamePaused: () => void;
       gameResumed: (data: {
+        serverTime: number; // Current server time for clock sync
         startTimestamp: number | null;
         durationMs: number | null;
       }) => void;
       /** Server-authoritative timer: question started with timestamp */
       questionStarted: (data: {
+        serverTime: number; // Current server time for clock sync
         startTimestamp: number;
         durationMs: number;
       }) => void;

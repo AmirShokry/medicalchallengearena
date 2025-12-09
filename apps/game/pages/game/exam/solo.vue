@@ -57,7 +57,9 @@ let hasIntentionallyLeft = false;
 function handleGameStarted() {
   hasAnimationEnded.value = true;
   // Start timer with current local time (no server sync needed for solo)
-  user.timer.start(Date.now(), QUESTION_DURATION_MS, handleTimeOut);
+  // Pass undefined for serverTime since solo mode doesn't need clock sync
+  const now = Date.now();
+  user.timer.start(now, now, QUESTION_DURATION_MS, handleTimeOut);
 }
 
 function handleTimeOut() {
