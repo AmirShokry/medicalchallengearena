@@ -105,7 +105,7 @@ onUnmounted(() => window.removeEventListener("keydown", listenForEscape));
           class="absolute rounded-2xl inset-0 bg-[url(/assets/images/house-scrub.png)] bg-no-repeat bg-[center_-14rem] grayscale h-full w-full z-0"
         /> -->
         <div
-          class="absolute rounded-2xl inset-0 bg-[url(/assets/images/campaign.webp)] bg-no-repeat bg-cover h-full w-full z-0"
+          class="absolute rounded-2xl inset-0 bg-[url(/assets/images/campaign.webp)] bg-no-repeat h-full w-full z-0"
         />
 
         <div
@@ -115,7 +115,7 @@ onUnmounted(() => window.removeEventListener("keydown", listenForEscape));
           <Button
             v-if="!isPlayClicked"
             @click="handlePlayClick"
-            class="text-primary-foreground mt-20 cursor-pointer border-border border w-1/4 h-10 [background:linear-gradient(80deg,_rgba(187,77,0,0.25)_1%,_rgba(255,255,255,1)_30%)]"
+            class="not-dark:text-primary mt-20 cursor-pointer border-border border w-1/4 h-10 [background:linear-gradient(80deg,_rgba(187,77,0,0.25)_1%,_rgba(255,255,255,1)_30%)]"
           >
             <!-- <Button
             v-if="!isPlayClicked"

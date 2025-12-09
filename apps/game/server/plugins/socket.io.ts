@@ -44,7 +44,9 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
     ToClientIO.Default.Events,
     any,
     ToClientIO.Default.Data
-  >();
+  >({
+    pingTimeout: 700e3,
+  });
 
   io.bind(engine);
 

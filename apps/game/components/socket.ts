@@ -8,9 +8,7 @@ const socketOptions = {
   autoConnect: false,
   // Increase ping timeout to handle browser throttling when tab is minimized
   // Default is 20000ms, but throttled tabs may need more time
-  pingTimeout: 60000,
-  // Increase ping interval to reduce frequency of pings
-  pingInterval: 25000,
+  pingTimeout: 700e3,
   // Enable reconnection with backoff
   reconnection: true,
   reconnectionAttempts: 10,

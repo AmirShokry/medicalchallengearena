@@ -39,7 +39,7 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
     const opponentSocketId = getRandomOpponentId();
     if (!opponentSocketId) return socket.join("waiting");
     const opponentSocket = io.sockets.get(opponentSocketId)!;
-    if (opponentSocket.data.session.id === socket.data.session.id)
+    if (opponentSocket.data.session?.id === socket.data.session?.id)
       return socket.join("waiting");
 
     console.log(
@@ -49,7 +49,7 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
     socket.leave("waiting");
     opponentSocket.leave("waiting");
 
-    io.to(socket.id).emit("matchFound", {
+    io.to(socket?.id).emit("matchFound", {
       opponent: {
         ...opponentSocket.data,
         ...opponentSocket.data.session,
@@ -66,7 +66,7 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
   socket.on("userSentInvitation", async (data) => {
     // TODO: Note that using this way. The invitation will be sent only when the user clicks on play button.
     for (const friendSocket of io.sockets.values()) {
-      if (friendSocket.data.session.id === data.id) {
+      if (friendSocket.data.session?.id === data?.id) {
         if (friendSocket.data.isInGame) throw new Error("Opponent is busy");
         socket.data.isInGame = friendSocket.data.isInGame = true;
         socket.data.opponentSocket = friendSocket;
@@ -75,8 +75,8 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
         console.log(
           `${socket.data.session.username} sent an invitation to ${friendSocket.data.session.username}`
         );
-        io.to(friendSocket.id).emit("opponentSentInvitation", {
-          friendId: socket.data.session.id,
+        io.to(friendSocket?.id).emit("opponentSentInvitation", {
+          friendId: socket.data.session?.id,
         });
 
         break;
@@ -99,10 +99,10 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
     socket.data.hasSolved = opponentSocket.data.hasSolved = false;
     socket.data.isMaster = true;
     opponentSocket.data.isMaster = false;
-    io.to(opponentSocket.id).emit("opponentAccepted", {
+    io.to(opponentSocket?.id).emit("opponentAccepted", {
       isMaster: true,
     });
-    io.to(socket.id).emit("opponentAccepted", {
+    io.to(socket?.id).emit("opponentAccepted", {
       isMaster: false,
     });
   });
@@ -125,8 +125,8 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
           })
         : await appRouterCaller.block.unusedBlockByCategoriesIds({
             categoriesIds: data.selectedCatIds,
-            userId: socket.data.session.id,
-            opponentId: opponentSocket.data.session.id,
+            userId: socket.data.session?.id,
+            opponentId: opponentSocket.data.session?.id,
             options: { count: data.casesCount, studyMode: false },
           });
 
@@ -152,11 +152,11 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
         .values(
           cases.flatMap((c) => [
             {
-              user_id: socket.data.session.id,
+              user_id: socket.data.session?.id,
               case_id: c.id,
             },
             {
-              user_id: opponentSocket.data.session.id,
+              user_id: opponentSocket.data.session?.id,
               case_id: c.id,
             },
           ])
@@ -170,16 +170,16 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
       await tx.insert(users_games).values([
         {
           gameId: id,
-          userId: socket.data.session.id,
-          opponentId: opponentSocket.data.session.id,
+          userId: socket.data.session?.id,
+          opponentId: opponentSocket.data.session?.id,
           hasWon: null,
           durationMs: 0,
           data: emptyCasesRecord,
         },
         {
           gameId: id,
-          userId: opponentSocket.data.session.id,
-          opponentId: socket.data.session.id,
+          userId: opponentSocket.data.session?.id,
+          opponentId: socket.data.session?.id,
           hasWon: null,
           durationMs: 0,
           data: emptyCasesRecord,
@@ -197,7 +197,7 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
 
     if (opponentSocket) {
       opponentSocket.leave("waiting");
-      io.to(opponentSocket.id).emit("opponentDeclined");
+      io.to(opponentSocket?.id).emit("opponentDeclined");
       opponentSocket?.helpers.reset();
     }
 
@@ -206,11 +206,11 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
 
   socket.on("userJoinedWaitingRoom", () => socket.join("waiting"));
   socket.on("userSelected", (data) => {
-    const opponentId = socket.data.opponentSocket!.id;
+    const opponentId = socket.data.opponentSocket!?.id;
     socket.to(opponentId).emit("opponentSelected", data);
   });
   socket.on("userSentSelectionChat", (data) => {
-    const opponentId = socket?.data?.opponentSocket!.id;
+    const opponentId = socket?.data?.opponentSocket!?.id;
     socket.to(opponentId).emit("opponentSentSelectionChat", data);
   });
 }
