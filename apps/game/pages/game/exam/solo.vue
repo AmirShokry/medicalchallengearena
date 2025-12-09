@@ -7,6 +7,7 @@ import UserInfo from "../../../components/Exam/Player.vue";
 import Result from "../../../components/Exam/Result/index.vue";
 import { gameSocket } from "../../../components/socket";
 import SinglePagination from "../../../components/Exam/pagination/SinglePagination.vue";
+import useSocial from "@/composables/useSocial";
 
 definePageMeta({
   layout: "blank",
@@ -175,6 +176,8 @@ const currentPlayerStatus = computed(() => {
   return lastRecord.isCorrect ? "correct" : "incorrect";
 });
 
+const social = useSocial();
+
 function handleLeaveGame(fromAction?: boolean) {
   if (fromAction) hasIntentionallyLeft = true;
   if (hasIntentionallyLeft) return;
@@ -182,6 +185,8 @@ function handleLeaveGame(fromAction?: boolean) {
   user.timer.destroy();
   $$game.mode = undefined;
   gameSocket.emit("userLeft");
+  // Set status back to online when leaving the game
+  social.setStatus("online");
   $router.replace({ name: "game-lobby" });
 }
 onBeforeUnmount(() => {
@@ -189,6 +194,8 @@ onBeforeUnmount(() => {
   if (import.meta.dev && import.meta.hot) return;
 
   if (!flags.ingame.isGameFinished) handleLeaveGame();
+  // Set status to online when game finishes
+  social.setStatus("online");
 });
 
 onUnmounted(() => user.timer.destroy());

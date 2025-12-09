@@ -13,7 +13,8 @@ const { status } = useAuth();
   <ClientOnly>
     <Toaster />
     <Connection v-if="status !== 'unauthenticated'" />
-    <Peer v-if="status !== 'unauthenticated'" />
+    <!-- Social component handles friend status and messaging via Socket.IO -->
+    <Social v-if="status !== 'unauthenticated'" />
   </ClientOnly>
   <NuxtLayout>
     <NuxtPage />

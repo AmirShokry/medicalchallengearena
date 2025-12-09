@@ -5,6 +5,8 @@ import { gameSocket } from "@/components/socket";
 import type { MatchingSystemCategories } from "@/shared/types/common";
 import type { ToClientIO } from "@/shared/types/socket";
 import Fuse from "fuse.js";
+import useSocial from "@/composables/useSocial";
+
 const { $trpc } = useNuxtApp();
 const audio = useAudioStore();
 definePageMeta({
@@ -19,9 +21,9 @@ const searchQuery = ref("");
 const matchmaking = useMatchMakingStore();
 matchmaking.state = "idle";
 
-const peerApi = usePeer();
-
-nextTick(() => peerApi.setStatus("matchmaking"));
+// Set user status to matchmaking
+const social = useSocial();
+nextTick(() => social.setStatus("matchmaking"));
 
 const data = ref([] as MatchingSystemCategories);
 const counters = ref(
@@ -298,11 +300,17 @@ function handleLeaveOrDecline(fromAction?: boolean) {
   matchmaking.state = "idle";
   $$game["~resetEverything"]();
   gameSocket.emit("userDeclined");
+  // Reset status to matchmaking when declining (still on multi page)
+  social.setStatus("matchmaking");
   console.log("Leaving or declining game");
 }
 
 onUnmounted(() => {
-  if (!$$game.flags.ingame.isGameStarted) handleLeaveOrDecline(true);
+  if (!$$game.flags.ingame.isGameStarted) {
+    handleLeaveOrDecline(true);
+    // Reset status to online when leaving multi setup page
+    social.setStatus("online");
+  }
 });
 </script>
 

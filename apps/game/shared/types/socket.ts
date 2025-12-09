@@ -60,6 +60,11 @@ export namespace ToClientIO {
       opponentSentInvitation: (data: { friendId: number }) => void;
       gamePaused: () => void;
       gameResumed: () => void;
+      /** Invitation validation response */
+      invitationValidated: (data: {
+        canInvite: boolean;
+        reason?: string;
+      }) => void;
     }
     export interface Data extends Default.Data {
       hasAccepted: boolean;
@@ -81,15 +86,40 @@ export namespace ToClientIO {
     }
   }
   export namespace Social {
+    /** Friend message structure */
+    export interface FriendMessage {
+      id: number;
+      senderId: number;
+      senderUsername: string;
+      receiverId?: number;
+      content: string;
+      createdAt: Date;
+      isRead: boolean;
+    }
+
+    /** User status type */
+    export type UserStatus =
+      | "online"
+      | "offline"
+      | "busy"
+      | "matchmaking"
+      | "ingame";
+
     export interface Events extends Default.Events {
+      /** Legacy chat event (deprecated) */
       receiveChat: (data: { id: number; content: string }) => void;
+      /** Friend status update notification */
       friendStatusUpdate: (data: {
         id: number;
         username: string;
-        status: "online" | "offline" | "ingame";
+        status: UserStatus;
       }) => void;
       receivedFriendRequest: (data: PlayerData) => void;
       rejectedFriendRequest: (data: { id: number }) => void;
+      /** Receive a friend message */
+      receiveFriendMessage: (message: FriendMessage) => void;
+      /** Notification that messages were read by recipient */
+      messagesRead: (data: { readBy: number }) => void;
     }
 
     export interface Data extends Default.Data {}
@@ -112,7 +142,7 @@ type SocialIOHelpers = {
      */
     getUsersStatusById: (
       usersIds: number[]
-    ) => Map<number, "online" | "offline" | "ingame">;
+    ) => Map<number, ToClientIO.Social.UserStatus>;
   };
 };
 declare module "socket.io" {
@@ -160,18 +190,71 @@ export namespace ToServerIO {
       userJoinedWaitingRoom: () => void;
       pauseGame: () => void;
       resumeGame: () => void;
+      /** Check if a user can be invited to a game */
+      checkCanInvite: (
+        userId: number,
+        callback: (result: {
+          canInvite: boolean;
+          reason?: string;
+          status: string;
+        }) => void
+      ) => void;
     }
   }
 
   export namespace Social {
+    /** User status type for presence */
+    export type UserStatus =
+      | "online"
+      | "offline"
+      | "busy"
+      | "matchmaking"
+      | "ingame";
+
     export interface Events extends Default.Events {
+      /** Legacy chat event (deprecated - use sendFriendMessage) */
       sendChat: (data: { id: number; content: string }) => void;
-      openChat: (data: { id: number }) => void;
+      /** Open chat with a friend - marks messages as read and retrieves history */
+      openChat: (
+        data: { id: number },
+        callback?: (messages: ToClientIO.Social.FriendMessage[]) => void
+      ) => void;
+      /** Get status of multiple friends */
       getFriendsStatus: (
         data: number[],
-        cb: (statuses: Record<number, "online" | "offline" | "ingame">) => void
+        cb: (statuses: Record<number, ToClientIO.Social.UserStatus>) => void
       ) => void;
       friendRequestSent: (data: { id: number }) => void;
+      /** Update current user's status */
+      updateStatus: (status: UserStatus) => void;
+      /** Check if a specific user is online */
+      checkUserOnline: (
+        userId: number,
+        callback: (
+          isOnline: boolean,
+          status: ToClientIO.Social.UserStatus
+        ) => void
+      ) => void;
+      /** Send a message to a friend (stored in database) */
+      sendFriendMessage: (
+        data: { friendId: number; content: string },
+        callback?: (result: {
+          success: boolean;
+          messageId?: number;
+          error?: string;
+        }) => void
+      ) => void;
+      /** Get conversation history with a friend */
+      getConversationHistory: (
+        data: { friendId: number; limit?: number; offset?: number },
+        callback: (messages: ToClientIO.Social.FriendMessage[]) => void
+      ) => void;
+      /** Mark messages from a friend as read */
+      markMessagesRead: (friendId: number) => void;
+      /** Get unread message counts from all friends */
+      getUnreadCounts: (
+        callback: (counts: Record<number, number>) => void
+      ) => void;
     }
   }
 

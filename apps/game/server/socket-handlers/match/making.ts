@@ -4,6 +4,12 @@ import { createMockH3EventFromSocket } from "@/server/utils/mock-h3-event";
 import type { ReducedRecordObject } from "@package/types";
 
 import type { GameIO, GameSocket } from "@/shared/types/socket";
+import {
+  canInviteUser,
+  notifyUserBusy,
+  notifyGameStarted,
+  notifyGameEnded,
+} from "./invitation";
 
 const { users_cases, games, users_games } = db.table;
 
@@ -64,17 +70,49 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
   });
 
   socket.on("userSentInvitation", async (data) => {
-    // TODO: Note that using this way. The invitation will be sent only when the user clicks on play button.
+    // Validate that the target user can be invited (online and not busy)
+    const inviteCheck = canInviteUser(data?.id);
+    if (!inviteCheck.canInvite) {
+      // Emit validation failure to the sender
+      io.to(socket?.id).emit("invitationValidated", {
+        canInvite: false,
+        reason: inviteCheck.reason,
+      });
+      console.log(
+        `[Invitation] ${socket.data.session.username} cannot invite user ${data?.id}: ${inviteCheck.reason}`
+      );
+      return;
+    }
+
+    // Find the target user's socket
     for (const friendSocket of io.sockets.values()) {
       if (friendSocket.data.session?.id === data?.id) {
-        if (friendSocket.data.isInGame) throw new Error("Opponent is busy");
+        if (friendSocket.data.isInGame) {
+          io.to(socket?.id).emit("invitationValidated", {
+            canInvite: false,
+            reason: "Opponent is busy",
+          });
+          return;
+        }
+
         socket.data.isInGame = friendSocket.data.isInGame = true;
         socket.data.opponentSocket = friendSocket;
         friendSocket.data.opponentSocket = socket;
 
-        console.log(
-          `${socket.data.session.username} sent an invitation to ${friendSocket.data.session.username}`
+        // Update both users' presence to busy (invitation pending)
+        await notifyUserBusy(
+          socket.data.session?.id,
+          socket.data.session.username
         );
+        await notifyUserBusy(
+          friendSocket.data.session?.id,
+          friendSocket.data.session.username
+        );
+
+        console.log(
+          `[Invitation] ${socket.data.session.username} sent an invitation to ${friendSocket.data.session.username}`
+        );
+
         io.to(friendSocket?.id).emit("opponentSentInvitation", {
           friendId: socket.data.session?.id,
         });
@@ -83,6 +121,7 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
       }
     }
   });
+
   socket.on("userAccepted", async (isInvitation) => {
     const opponentSocket = socket.data.opponentSocket!;
     if (!isInvitation && !opponentSocket.data.hasAccepted)
@@ -99,6 +138,15 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
     socket.data.hasSolved = opponentSocket.data.hasSolved = false;
     socket.data.isMaster = true;
     opponentSocket.data.isMaster = false;
+
+    // Keep both users' presence as busy (accepted but game not started yet)
+    // Status changes to ingame when userStartedGame is emitted
+    await notifyUserBusy(socket.data.session?.id, socket.data.session.username);
+    await notifyUserBusy(
+      opponentSocket.data.session?.id,
+      opponentSocket.data.session.username
+    );
+
     io.to(opponentSocket?.id).emit("opponentAccepted", {
       isMaster: true,
     });
@@ -110,6 +158,16 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
   socket.on("userStartedGame", async (data) => {
     const roomName = socket.data.roomName;
     const opponentSocket = socket.data.opponentSocket!;
+
+    // Update both users' presence to ingame (game actually starting now)
+    await notifyGameStarted(
+      socket.data.session?.id,
+      socket.data.session.username
+    );
+    await notifyGameStarted(
+      opponentSocket.data.session?.id,
+      opponentSocket.data.session.username
+    );
 
     // Create tRPC caller with the socket's authenticated session context
     const appRouterCaller = await getTRPCCaller(
@@ -190,7 +248,8 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
     });
     io.to(roomName).emit("gameStarted", { cases, gameId });
   });
-  socket.on("userDeclined", () => {
+
+  socket.on("userDeclined", async () => {
     io.socketsLeave(socket.data.roomName);
     socket.leave("waiting");
     const opponentSocket = socket.data.opponentSocket;
@@ -199,9 +258,21 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
       opponentSocket.leave("waiting");
       io.to(opponentSocket?.id).emit("opponentDeclined");
       opponentSocket?.helpers.reset();
+
+      // Reset opponent's presence to online
+      await notifyGameEnded(
+        opponentSocket.data.session?.id,
+        opponentSocket.data.session.username
+      );
     }
 
     socket.helpers.reset();
+
+    // Reset user's presence to online
+    await notifyGameEnded(
+      socket.data.session?.id,
+      socket.data.session.username
+    );
   });
 
   socket.on("userJoinedWaitingRoom", () => socket.join("waiting"));

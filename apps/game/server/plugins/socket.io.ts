@@ -2,10 +2,20 @@ import type { NitroApp } from "nitropack";
 import { Server as Engine } from "engine.io";
 import { Server, Socket } from "socket.io";
 import { defineEventHandler } from "h3";
-import { registerMessage } from "../socket-handlers/social/message";
-import { registerSocial } from "../socket-handlers/social/social";
+import { registerFriendMessaging } from "../socket-handlers/social/messaging";
+import {
+  registerPresence,
+  handleUserConnect,
+  handleUserDisconnect,
+} from "../socket-handlers/social/presence";
 import { registerMatchEvents } from "../socket-handlers/match/in-game";
 import { registerMatchMaking } from "../socket-handlers/match/making";
+import {
+  registerInvitationHandlers,
+  setSocialIORef,
+  notifyGameStarted,
+  notifyGameEnded,
+} from "../socket-handlers/match/invitation";
 import { authenticateSocket } from "../socket-handlers/auth.middleware";
 import type {
   ToServerIO,
@@ -53,6 +63,10 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
   const socialIO = io.of("/social") as SocialIO,
     gameIO = io.of("/game") as GameIO;
 
+  // Set reference for cross-namespace communication (presence updates from game namespace)
+  setSocialIORef(socialIO);
+
+  // Legacy helper - kept for backwards compatibility, now uses presence system
   socialIO.helpers = {
     getUsersStatusById: function (playersIds: number[]) {
       const usersStatus = new Map<number, "offline" | "online" | "ingame">(
@@ -76,72 +90,114 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
   gameIO.use(authenticateSocket);
   socialIO.use(authenticateSocket);
 
+  /**
+   * Social namespace connection handler
+   * Handles presence and messaging
+   */
   socialIO.on("connection", async (socket) => {
-    // console.log(
-    //   `User ${socket.data.session.username} - SID: (${socket.id}) joined the social server`
-    // );
+    console.log(
+      `[Social] User ${socket.data.session.username} (${socket.data.session.id}) connected - SID: ${socket.id}`
+    );
 
-    socket.on("disconnect", (reason) => {
-      // console.log(
-      //   `User ${socket.data.session?.username} - SID: (${socket.id}) disconnected from social server. Reason: ${reason}`
-      // );
+    // Handle user presence on connect
+    await handleUserConnect(socket, socialIO);
+
+    socket.on("disconnect", async (reason) => {
+      console.log(
+        `[Social] User ${socket.data.session?.username} disconnected. Reason: ${reason}`
+      );
+      // Handle user presence on disconnect
+      await handleUserDisconnect(socket, socialIO);
     });
 
-    registerMessage(socket, socialIO);
-    registerSocial(socket, socialIO);
+    // Register presence handlers (status updates, friend status queries)
+    registerPresence(socket, socialIO);
+
+    // Register messaging handlers (friend messages stored in DB)
+    registerFriendMessaging(socket, socialIO);
   });
+
   socialIO.adapter.on("join-room", async (room: string, id: string) => {
-    // console.log(
-    //   `User ${socialIO.sockets.get(id)?.data?.session?.username} - ${id}  joined room ${room}`
-    // );
+    // Room join logging (commented for production)
+    // console.log(`[Social] User ${socialIO.sockets.get(id)?.data?.session?.username} joined room ${room}`);
   });
 
   socialIO.adapter.on("leave-room", (room: string, id: string) => {
-    // const socket = socialIO.sockets.get(id);
-    // console.log(
-    //   `User ${socket?.data.session.username} -  ${id}  left room ${room}`
-    // );
+    // Room leave logging (commented for production)
+    // console.log(`[Social] User left room ${room}`);
   });
+
+  /**
+   * Game namespace connection handler
+   * Handles matchmaking and in-game events
+   */
   gameIO.on("connection", (socket) => {
     console.log(
-      `User ${socket.data.session.username} - sid: (${socket.id}) joined the game server`
+      `[Game] User ${socket.data.session.username} (${socket.data.session.id}) connected - SID: ${socket.id}`
     );
 
-    socket.on("disconnect", (reason) => {
+    socket.on("disconnect", async (reason) => {
       console.log(
-        `User ${socket.data.session?.username} - SID: (${socket.id}) disconnected from game server. Reason: ${reason}`
+        `[Game] User ${socket.data.session?.username} disconnected. Reason: ${reason}`
       );
 
       // Clean up game state if user was in a game
       if (socket?.data.isInGame && socket.data.opponentSocket?.id) {
         gameIO.to(socket.data.opponentSocket.id).emit("opponentLeft");
         socket.helpers.reset();
+
+        // Update presence to online when leaving game
+        await notifyGameEnded(
+          socket.data.session.id,
+          socket.data.session.username
+        );
       }
     });
 
-    socket.on("userLeft", () => {
-      socket.leave(socket?.data?.roomName); // TODO: Leave all rooms except self
+    socket.on("userLeft", async () => {
+      socket.leave(socket?.data?.roomName);
       socket.leave("waiting");
+
+      // Update presence when user leaves game/matchmaking
+      if (socket.data.isInGame) {
+        await notifyGameEnded(
+          socket.data.session.id,
+          socket.data.session.username
+        );
+      }
     });
 
+    // Register matchmaking handlers
     registerMatchMaking(socket, gameIO);
+
+    // Register in-game event handlers
     registerMatchEvents(socket, gameIO);
+
+    // Register invitation validation handlers
+    registerInvitationHandlers(socket, gameIO);
   });
 
   gameIO.adapter.on("join-room", (room: string, id: string) => {
     console.log(
-      `User ${gameIO.sockets.get(id)?.data?.session?.username} - ${id}  joined room ${room}`
+      `[Game] User ${gameIO.sockets.get(id)?.data?.session?.username} joined room ${room}`
     );
   });
 
-  gameIO.adapter.on("leave-room", (room: string, id: string) => {
+  gameIO.adapter.on("leave-room", async (room: string, id: string) => {
     const socket = gameIO.sockets.get(id);
     console.log(
-      `User ${socket?.data.session?.username} -  ${id}  left room ${room}`
+      `[Game] User ${socket?.data.session?.username} left room ${room}`
     );
+
     if (socket?.data.isInGame) {
       gameIO.to(socket.data.opponentSocket?.id!).emit("opponentLeft");
       socket.helpers.reset();
+
+      // Update presence when leaving game room
+      await notifyGameEnded(
+        socket.data.session.id,
+        socket.data.session.username
+      );
     }
   });
 

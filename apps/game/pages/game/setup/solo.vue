@@ -2,6 +2,8 @@
 import { SearchIcon } from "lucide-vue-next";
 import { UsersIcon } from "lucide-vue-next";
 import Fuse from "fuse.js";
+import useSocial from "@/composables/useSocial";
+
 definePageMeta({
   layout: "lobby",
 });
@@ -17,9 +19,16 @@ const systemsCategoriesRaw = ref(
   [] as NonNullable<typeof data.value>["systemsCategories"]
 );
 
-const peerApi = usePeer();
+// Set user status to busy when in solo setup
+const social = useSocial();
+social.setStatus("busy");
 
-peerApi.setStatus("busy");
+// Reset status to online when leaving solo setup (if game didn't start)
+onUnmounted(() => {
+  if (!$$game.flags.ingame.isGameStarted) {
+    social.setStatus("online");
+  }
+});
 
 const searchQuery = ref("");
 
@@ -128,6 +137,9 @@ async function handleContinueToGame() {
   };
 
   $$game.flags.ingame.isGameStarted = true;
+
+  // Set status to ingame when game actually starts
+  social.setStatus("ingame");
 
   const { cases, gameId } = await $trpc.exam.startGame.mutate(selections);
   $$game.gameId = gameId;

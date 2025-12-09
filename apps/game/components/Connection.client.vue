@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { gameSocket, socialSocket } from "./socket";
+import useSocial from "@/composables/useSocial";
 
 const isConnected = ref(false);
 
@@ -10,6 +11,7 @@ const matchmaking = useMatchMakingStore();
 const audio = useAudioStore();
 const $router = useRouter();
 const { status } = useAuth();
+const social = useSocial();
 
 const friendList = computed(() => friendStore.friendList);
 
@@ -86,6 +88,8 @@ function setupSocketListeners() {
     $$game.flags.matchmaking.isMatchFound = true;
     matchmaking.state = "reviewing-invitation";
     $$game.flags.matchmaking.isFindingMatch = false;
+    // Set status to busy when matched with an opponent
+    social.setStatus("busy");
   });
 
   gameSocket.on("opponentAccepted", (data) => {
@@ -99,6 +103,8 @@ function setupSocketListeners() {
     $$game["~resetEverything"]();
     $$game.players.opponent.flags.hasDeclined = true;
     matchmaking.state = "idle";
+    // Reset status to matchmaking when opponent declines (user is still on multi setup page)
+    social.setStatus("matchmaking");
   });
 
   gameSocket.on("opponentLeft", () => {
@@ -130,6 +136,8 @@ function setupSocketListeners() {
       university: opponent.university,
     });
     $$game.players.user.flags.isInvited = true;
+    // Set status to busy when receiving an invitation
+    social.setStatus("busy");
   });
 
   gameSocket.on("gameStarted", (data) => {
@@ -137,6 +145,15 @@ function setupSocketListeners() {
     $$game.flags.ingame.isGameStarted = true;
     $$game.gameId = data.gameId;
     $router.push({ name: "game-exam-multi" });
+  });
+
+  // Handle invitation validation failures
+  gameSocket.on("invitationValidated", (data) => {
+    if (!data.canInvite) {
+      console.log("Invitation validation failed:", data.reason);
+      $$game.flags.matchmaking.isInvitationSent = false;
+      $$game["~resetEverything"]();
+    }
   });
 
   // Handle authentication errors by disconnecting

@@ -16,6 +16,8 @@ import { Button } from "@/components/ui/button";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { UsersIcon } from "lucide-vue-next";
 import { Separator } from "@/components/ui/separator";
+import useSocial from "@/composables/useSocial";
+
 const {} = useAuth();
 definePageMeta({
   layout: "lobby",
@@ -28,8 +30,9 @@ useSeoMeta({
 const audio = useAudioStore();
 const router = useRouter();
 
-const peerApi = usePeer();
-peerApi.setStatus("online");
+// Set user status to online when entering lobby
+const social = useSocial();
+social.setStatus("online");
 
 const { user, isLoading } = storeToRefs(useUserStore());
 const { $trpc } = useNuxtApp();

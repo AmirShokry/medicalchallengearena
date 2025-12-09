@@ -214,6 +214,35 @@ export const users_mistakes = pgTable(
   (table) => [uniqueIndex("categoryId_Idx").on(table.userId, table.categoryId)]
 );
 
+/**
+ * Friend messages table for storing chat messages between friends.
+ * Messages are retained up to 500 messages per conversation (oldest are deleted).
+ */
+export const friend_messages = pgTable(
+  "friend_messages",
+  {
+    id: serial("id").primaryKey(),
+    senderId: integer("sender_id")
+      .references(() => users.id, { onDelete: "cascade" })
+      .notNull(),
+    receiverId: integer("receiver_id")
+      .references(() => users.id, { onDelete: "cascade" })
+      .notNull(),
+    content: text("content").notNull(),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    isRead: boolean("is_read").notNull().default(false),
+  },
+  (table) => [
+    index("friend_messages_sender_idx").on(table.senderId),
+    index("friend_messages_receiver_idx").on(table.receiverId),
+    index("friend_messages_conversation_idx").on(
+      table.senderId,
+      table.receiverId
+    ),
+    index("friend_messages_created_at_idx").on(table.createdAt),
+  ]
+);
+
 export const cases_questions = pgTable(
   "cases_questions",
   {

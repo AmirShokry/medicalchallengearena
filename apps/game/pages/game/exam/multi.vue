@@ -8,6 +8,8 @@ import Result from "../../../components/Exam/Result/index.vue";
 import { gameSocket } from "../../../components/socket";
 import getGameData from "../../../components/Exam/index";
 import { LogOutIcon as ExitIcon, PauseIcon, PlayIcon } from "lucide-vue-next";
+import useSocial from "@/composables/useSocial";
+
 definePageMeta({
   layout: "blank",
   middleware: "exam",
@@ -55,8 +57,9 @@ onMounted(() => {
   });
 });
 
-const peerApi = usePeer();
-peerApi.setStatus("busy");
+// Set user status to ingame when in game (server should have already set this)
+const social = useSocial();
+social.setStatus("ingame");
 
 console.log($$game.players.opponent.info);
 
@@ -224,6 +227,8 @@ function onLeaveGame() {
   user.timer.destroy();
   opponent.timer.destroy();
   gameSocket.emit("userLeft");
+  // Set status back to online when leaving the game
+  social.setStatus("online");
   $router.replace({ name: "game-lobby" });
 }
 
@@ -239,6 +244,8 @@ onBeforeUnmount(() => {
   opponent.timer.destroy();
   $$game["~resetEverything"]();
   gameSocket.emit("userLeft");
+  // Set status back to online when leaving the game
+  social.setStatus("online");
 });
 </script>
 <template>

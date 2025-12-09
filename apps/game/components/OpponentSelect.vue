@@ -2,12 +2,16 @@
 import { UiDialogTitle } from "#components";
 import { gameSocket } from "@/components/socket";
 import { SearchIcon } from "lucide-vue-next";
+import useSocial from "@/composables/useSocial";
+import { toast } from "vue-sonner";
 
 const $$game = useGameStore();
 const audio = useAudioStore();
 const friendsStore = useFriendsStore();
+const social = useSocial();
 const friendList = computed(() => friendsStore.friendList);
 const selectedFriendId = ref<number>();
+const isCheckingInvite = ref(false);
 
 function handleFindMatch() {
   if ($$game.flags.matchmaking.isMatchFound) return;
@@ -21,8 +25,7 @@ function handleFindMatch() {
 function handleOpenInviteFriendDialog() {
   audio.navigation.play();
   $$game.flags.matchmaking.isInviting = true;
-  gameSocket.emit("userLeft");
-  gameSocket.emit("userJoinedWaitingRoom");
+  // Don't emit userLeft/userJoinedWaitingRoom - opening dialog shouldn't affect status
 }
 
 function handleFriendSelected(friendId: number) {
@@ -31,24 +34,45 @@ function handleFriendSelected(friendId: number) {
   selectedFriendId.value = friendId;
 }
 
-function handleInvitaionSent() {
-  audio.find_match.play();
-  if (!selectedFriendId.value) return;
+async function handleInvitaionSent() {
+  if (!selectedFriendId.value || isCheckingInvite.value) return;
+
   const friend = friendList.value?.find(
     (friend) => friend.id === selectedFriendId.value
   );
   if (!friend) return;
-  if (friend.status !== "matchmaking") return;
-  $$game.data.invitedId = selectedFriendId.value;
-  gameSocket.emit("userSentInvitation", { id: $$game.data.invitedId });
-  $$game.flags.matchmaking.isInvitationSent = true;
-  $$game.players.opponent.info["~set"]({
-    id: friend.id,
-    username: friend.username,
-    medPoints: friend.medPoints,
-    avatarUrl: friend.avatarUrl,
-    university: friend.university,
-  });
+
+  isCheckingInvite.value = true;
+
+  try {
+    // Check if the user can be invited (online and not busy)
+    const { canInvite, reason } = await social.checkCanInvite(
+      selectedFriendId.value
+    );
+
+    if (!canInvite) {
+      toast.error(reason || "Cannot invite this user");
+      isCheckingInvite.value = false;
+      return;
+    }
+
+    audio.find_match.play();
+    $$game.data.invitedId = selectedFriendId.value;
+    gameSocket.emit("userSentInvitation", { id: $$game.data.invitedId });
+    $$game.flags.matchmaking.isInvitationSent = true;
+    $$game.players.opponent.info["~set"]({
+      id: friend.id,
+      username: friend.username,
+      medPoints: friend.medPoints,
+      avatarUrl: friend.avatarUrl,
+      university: friend.university,
+    });
+  } catch (error) {
+    console.error("Error checking invite status:", error);
+    toast.error("Failed to send invitation");
+  } finally {
+    isCheckingInvite.value = false;
+  }
 }
 
 const canFindMatch = computed(
@@ -70,7 +94,8 @@ const canInviteFriend = computed(
 const canSendInvitation = computed(
   () =>
     selectedFriendId.value !== undefined &&
-    !$$game.flags.matchmaking.isInvitationSent
+    !$$game.flags.matchmaking.isInvitationSent &&
+    !isCheckingInvite.value
 );
 
 function handleAccept() {
@@ -83,6 +108,25 @@ function handleAccept() {
 function handleLeaveOrDecline() {
   gameSocket.emit("userDeclined");
   $$game["~resetEverything"]();
+}
+
+function handleCloseInviteDialog(isOpen: boolean) {
+  // Only handle when dialog is closing
+  if (isOpen) return;
+
+  // If an invitation was sent, cancel it and reset to matchmaking
+  if ($$game.flags.matchmaking.isInvitationSent) {
+    // This will notify the opponent and reset both users' status to matchmaking
+    gameSocket.emit("userDeclined");
+    $$game.flags.matchmaking.isInvitationSent = false;
+    $$game.data.invitedId = undefined;
+    // Reset status to matchmaking
+    social.setStatus("matchmaking");
+  }
+
+  // Reset dialog state
+  $$game.flags.matchmaking.isInviting = false;
+  selectedFriendId.value = undefined;
 }
 </script>
 <template>
@@ -103,7 +147,7 @@ function handleLeaveOrDecline() {
             </p>
           </div>
 
-          <UiDialog modal v-on:update:open="handleLeaveOrDecline">
+          <UiDialog modal @update:open="handleCloseInviteDialog">
             <UiDialogTrigger
               @click="handleOpenInviteFriendDialog"
               v-disabled-click="!canInviteFriend"
@@ -144,12 +188,44 @@ function handleLeaveOrDecline() {
                   }"
                   class="p-3 cursor-pointer flex items-center gap-2 hover:bg-accent rounded-sm"
                 >
-                  <UiAvatar>
-                    <UiAvatarImage :src="friend.avatarUrl" />
-                  </UiAvatar>
-                  <p>
-                    {{ friend.username }}
-                  </p>
+                  <div class="relative">
+                    <UiAvatar>
+                      <UiAvatarImage :src="friend.avatarUrl" />
+                    </UiAvatar>
+                    <div
+                      class="absolute bottom-0 right-0 w-3 h-3 rounded-full border-2 border-background"
+                      :class="{
+                        'bg-success': friend.status === 'online',
+                        'bg-ring': friend.status === 'offline',
+                        'bg-destructive':
+                          friend.status === 'busy' ||
+                          friend.status === 'ingame',
+                        'bg-warning': friend.status === 'matchmaking',
+                      }"
+                    ></div>
+                  </div>
+                  <div>
+                    <p>{{ friend.username }}</p>
+                    <p
+                      class="text-xs"
+                      :class="{
+                        'text-success': friend.status === 'online',
+                        'text-ring': friend.status === 'offline',
+                        'text-destructive':
+                          friend.status === 'busy' ||
+                          friend.status === 'ingame',
+                        'text-warning': friend.status === 'matchmaking',
+                      }"
+                    >
+                      {{
+                        friend.status === "ingame"
+                          ? "in game"
+                          : friend.status === "matchmaking"
+                            ? "in matchmaking"
+                            : friend.status
+                      }}
+                    </p>
+                  </div>
                 </li>
               </ul>
               <UiSeparator />
