@@ -1,5 +1,6 @@
 import type { RecordObject, PlayerData } from "@package/types";
 import { ResettableObject } from "./ResettableObject";
+import { useServerTimer } from "@/composables/useServerTimer";
 
 export class Player {
   public info = ResettableObject<PlayerData>({
@@ -31,5 +32,5 @@ export class Player {
     data: [] as RecordObject["data"],
   });
 
-  public timer = useTimer();
+  public timer = useServerTimer();
 }

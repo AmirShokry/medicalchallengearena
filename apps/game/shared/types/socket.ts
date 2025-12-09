@@ -69,7 +69,15 @@ export namespace ToClientIO {
       opponentAccepted: (data: { isMaster: boolean }) => void;
       opponentSentInvitation: (data: { friendId: number }) => void;
       gamePaused: () => void;
-      gameResumed: () => void;
+      gameResumed: (data: {
+        startTimestamp: number | null;
+        durationMs: number | null;
+      }) => void;
+      /** Server-authoritative timer: question started with timestamp */
+      questionStarted: (data: {
+        startTimestamp: number;
+        durationMs: number;
+      }) => void;
       /** Invitation validation response */
       invitationValidated: (data: {
         canInvite: boolean;
@@ -200,6 +208,19 @@ export namespace ToServerIO {
       userJoinedWaitingRoom: () => void;
       pauseGame: () => void;
       resumeGame: () => void;
+      /** Server-authoritative timer: request to start question timer */
+      startQuestionTimer: () => void;
+      /** Server-authoritative timer: request to advance to next question */
+      advanceQuestion: () => void;
+      /** Request current server time for sync */
+      requestTimeSync: (
+        callback: (data: {
+          serverTime: number;
+          questionStartTimestamp: number | null;
+          questionDurationMs: number | null;
+          isPaused: boolean;
+        }) => void
+      ) => void;
       /** Check if a user can be invited to a game */
       checkCanInvite: (
         userId: number,

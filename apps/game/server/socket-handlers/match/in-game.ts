@@ -3,6 +3,131 @@ import type { GameIO, GameSocket } from "@/shared/types/socket";
 const { users_games, users } = db.table;
 
 /**
+ * Server-side timer state for each game room
+ * NO setTimeout/setInterval - just timestamps for calculation
+ */
+interface RoomTimerState {
+  questionStartTimestamp: number;
+  questionDurationMs: number;
+  // For pause: we track total paused time to adjust calculations
+  totalPausedMs: number;
+  pauseStartTimestamp: number | null; // null = not paused
+}
+
+// Map of room names to their timer state
+const roomTimers = new Map<string, RoomTimerState>();
+
+const QUESTION_DURATION_MS = 10 * 60e3; // 10 minutes per question
+
+/**
+ * Get timer state for a room
+ */
+function getRoomTimer(roomName: string): RoomTimerState | undefined {
+  return roomTimers.get(roomName);
+}
+
+/**
+ * Start/reset question timer for a room (just stores timestamp, no actual timer)
+ */
+function startQuestionTimer(roomName: string): number {
+  const startTimestamp = Date.now();
+
+  roomTimers.set(roomName, {
+    questionStartTimestamp: startTimestamp,
+    questionDurationMs: QUESTION_DURATION_MS,
+    totalPausedMs: 0,
+    pauseStartTimestamp: null,
+  });
+
+  console.log(
+    `[Timer] Started question for room ${roomName}. Start: ${new Date(startTimestamp).toISOString()}`
+  );
+
+  return startTimestamp;
+}
+
+/**
+ * Calculate remaining time for a room
+ */
+function getRemainingTime(roomName: string): number {
+  const timer = roomTimers.get(roomName);
+  if (!timer) return 0;
+
+  const now = Date.now();
+  let elapsedMs = now - timer.questionStartTimestamp - timer.totalPausedMs;
+
+  // If currently paused, don't count time since pause started
+  if (timer.pauseStartTimestamp !== null) {
+    elapsedMs -= now - timer.pauseStartTimestamp;
+  }
+
+  return Math.max(0, timer.questionDurationMs - elapsedMs);
+}
+
+/**
+ * Pause the timer for a room (just records pause start time)
+ */
+function pauseRoomTimer(roomName: string): void {
+  const timer = roomTimers.get(roomName);
+  if (!timer || timer.pauseStartTimestamp !== null) return; // Already paused
+
+  timer.pauseStartTimestamp = Date.now();
+  console.log(`[Timer] Paused timer for room ${roomName}`);
+}
+
+/**
+ * Resume the timer for a room (accumulates paused time)
+ */
+function resumeRoomTimer(roomName: string): void {
+  const timer = roomTimers.get(roomName);
+  if (!timer || timer.pauseStartTimestamp === null) return; // Not paused
+
+  // Add the paused duration to total
+  timer.totalPausedMs += Date.now() - timer.pauseStartTimestamp;
+  timer.pauseStartTimestamp = null;
+
+  console.log(
+    `[Timer] Resumed timer for room ${roomName}. Total paused: ${timer.totalPausedMs}ms`
+  );
+}
+
+/**
+ * Get the effective start timestamp (adjusted for pauses)
+ * This is what client uses to calculate remaining time
+ */
+function getEffectiveStartTimestamp(roomName: string): number | null {
+  const timer = roomTimers.get(roomName);
+  if (!timer) return null;
+
+  // Effective start = actual start + total paused time
+  // This makes it as if the timer started later
+  return timer.questionStartTimestamp + timer.totalPausedMs;
+}
+
+/**
+ * Check if room is paused
+ */
+function isRoomPaused(roomName: string): boolean {
+  const timer = roomTimers.get(roomName);
+  return timer?.pauseStartTimestamp !== null;
+}
+
+/**
+ * Clean up a room's timer state
+ */
+function cleanupRoomTimerState(roomName: string): void {
+  roomTimers.delete(roomName);
+  console.log(`[Timer] Cleaned up timer state for room ${roomName}`);
+}
+
+/**
+ * Export for cleanup when game ends
+ */
+export function cleanupRoomTimer(roomName: string): void {
+  cleanupRoomTimerState(roomName);
+}
+
+/**
  * Helper function to get the current socket for the opponent
  * This uses the user ID to look up the socket, handling reconnection scenarios
  * where the socket reference might be stale
@@ -29,6 +154,41 @@ function getOpponentSocket(
 }
 
 export function registerMatchEvents(socket: GameSocket, io: GameIO) {
+  /**
+   * Handle request to start question timer (called by game master when question starts)
+   * No actual timer - just stores the start timestamp
+   */
+  socket.on("startQuestionTimer", () => {
+    const roomName = socket.data?.roomName;
+    if (!roomName) return;
+
+    const startTimestamp = startQuestionTimer(roomName);
+
+    // Emit to both players with the start timestamp
+    io.to(roomName).emit("questionStarted", {
+      startTimestamp,
+      durationMs: QUESTION_DURATION_MS,
+    });
+  });
+
+  /**
+   * Handle request for current server time (for sync purposes)
+   * Client can use this to sync their local clock with server
+   */
+  socket.on("requestTimeSync", (callback) => {
+    const roomName = socket.data?.roomName;
+    const timer = roomName ? getRoomTimer(roomName) : undefined;
+
+    callback({
+      serverTime: Date.now(),
+      questionStartTimestamp: timer
+        ? getEffectiveStartTimestamp(roomName)
+        : null,
+      questionDurationMs: timer?.questionDurationMs ?? null,
+      isPaused: isRoomPaused(roomName),
+    });
+  });
+
   socket.on("userSolved", (data, stats) => {
     if (!socket?.data) return "No socket data";
     const opponentSocket = getOpponentSocket(socket, io);
@@ -41,7 +201,29 @@ export function registerMatchEvents(socket: GameSocket, io: GameIO) {
     io.to(opponentSocket.id).emit("opponentSolved", data, stats);
   });
 
+  /**
+   * Handle when both players are ready to advance (called after both solve or timeout)
+   * Starts a new question timer (just stores timestamp)
+   */
+  socket.on("advanceQuestion", () => {
+    const roomName = socket.data?.roomName;
+    if (!roomName) return;
+
+    const startTimestamp = startQuestionTimer(roomName);
+
+    // Emit new question start to both players
+    io.to(roomName).emit("questionStarted", {
+      startTimestamp,
+      durationMs: QUESTION_DURATION_MS,
+    });
+  });
+
   socket.on("pauseGame", () => {
+    const roomName = socket.data?.roomName;
+    if (roomName) {
+      pauseRoomTimer(roomName);
+    }
+
     const opponentSocket = getOpponentSocket(socket, io);
     if (!opponentSocket) {
       console.warn(
@@ -53,6 +235,12 @@ export function registerMatchEvents(socket: GameSocket, io: GameIO) {
   });
 
   socket.on("resumeGame", () => {
+    const roomName = socket.data?.roomName;
+
+    if (roomName) {
+      resumeRoomTimer(roomName);
+    }
+
     const opponentSocket = getOpponentSocket(socket, io);
     if (!opponentSocket) {
       console.warn(
@@ -60,11 +248,26 @@ export function registerMatchEvents(socket: GameSocket, io: GameIO) {
       );
       return;
     }
-    io.to(opponentSocket.id).emit("gameResumed");
+
+    // Emit resume with updated effective start timestamp for sync
+    const effectiveStart = roomName
+      ? getEffectiveStartTimestamp(roomName)
+      : null;
+    const timer = roomName ? getRoomTimer(roomName) : undefined;
+    io.to(roomName).emit("gameResumed", {
+      startTimestamp: effectiveStart,
+      durationMs: timer?.questionDurationMs ?? null,
+    });
   });
 
   socket.on("userFinishedGame", async (gameId, records) => {
     if (!socket?.data) return "No socket data";
+
+    // Clean up room timer state
+    if (socket.data.roomName) {
+      cleanupRoomTimerState(socket.data.roomName);
+    }
+
     const serverData = records.data.map((d) => {
       const { nthCase, nthQuestion, ...rest } = d;
       return rest;

@@ -48,14 +48,27 @@ onMounted(() => {
   opponent.flags.hasAccepted = false;
   flags.ingame.isGameStarted = true;
 
+  // Handle server-authoritative timer events
+  gameSocket.on("questionStarted", (data) => {
+    console.log(
+      "[Multi] Question started, server timestamp:",
+      data.startTimestamp
+    );
+    // Both timers start with the same server timestamp
+    user.timer.start(data.startTimestamp, data.durationMs, onTimeOut);
+    opponent.timer.start(data.startTimestamp, data.durationMs);
+  });
+
   gameSocket.on("gamePaused", () => {
     user.timer.pause();
     opponent.timer.pause();
     isPaused.value = true;
   });
-  gameSocket.on("gameResumed", () => {
-    user.timer.resume();
-    opponent.timer.resume();
+
+  gameSocket.on("gameResumed", (data) => {
+    // Resume with server-provided adjusted timestamp
+    user.timer.resume(data.startTimestamp ?? undefined);
+    opponent.timer.resume(data.startTimestamp ?? undefined);
     isPaused.value = false;
   });
 
@@ -65,6 +78,7 @@ onMounted(() => {
     isOpponentReconnecting.value = true;
     // Auto-pause the game while waiting for opponent to reconnect
     if (!isPaused.value) {
+      gameSocket.emit("pauseGame");
       user.timer.pause();
       opponent.timer.pause();
       isPaused.value = true;
@@ -77,9 +91,7 @@ onMounted(() => {
     isOpponentReconnecting.value = false;
     // Auto-resume the game if it was paused due to disconnect
     if (isPaused.value) {
-      user.timer.resume();
-      opponent.timer.resume();
-      isPaused.value = false;
+      gameSocket.emit("resumeGame");
     }
   });
 });
@@ -101,9 +113,7 @@ function togglePause() {
 
   if (isPaused.value) {
     gameSocket.emit("resumeGame");
-    user.timer.resume();
-    opponent.timer.resume();
-    isPaused.value = false;
+    // Timer resume happens in gameResumed event handler
   } else {
     gameSocket.emit("pauseGame");
     user.timer.pause();
@@ -114,13 +124,9 @@ function togglePause() {
 
 function startGame() {
   hasAnimationEnded.value = true;
-  user.timer.start({
-    mins: 10,
-    secs: 0,
-    direction: "down",
-    timeoutCallback: onTimeOut,
-  });
-  opponent.timer.start({ mins: 10, secs: 0, direction: "down" });
+  // Request server to start the question timer
+  // The questionStarted event will trigger timer.start() with server timestamp
+  gameSocket.emit("startQuestionTimer");
 }
 
 function handleSubmit() {
@@ -181,8 +187,9 @@ watchEffect(() => {
 
     if (hasGameEnded.value) return endGame();
 
-    user.timer.restart();
-    if (!opponent.flags.hasLeft) opponent.timer.restart();
+    // Request server to start next question timer
+    // The questionStarted event will trigger timer.restart() with server timestamp
+    gameSocket.emit("advanceQuestion");
 
     function advanceQuestion() {
       flags.ingame.isReviewingQuestion = false;
@@ -272,6 +279,7 @@ onBeforeUnmount(() => {
   gameSocket.off("opponentSolved");
   gameSocket.off("opponentDisconnected");
   gameSocket.off("opponentReconnected");
+  gameSocket.off("questionStarted");
   user.timer.destroy();
   opponent.timer.destroy();
   $$game["~resetEverything"]();

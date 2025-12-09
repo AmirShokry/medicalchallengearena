@@ -40,6 +40,8 @@ const hasAnimationEnded = ref(false),
 
 const isPaused = ref(false);
 
+const QUESTION_DURATION_MS = 10 * 60 * 1000; // 10 minutes
+
 function togglePause() {
   if (isPaused.value) {
     user.timer.resume();
@@ -54,12 +56,8 @@ let hasIntentionallyLeft = false;
 
 function handleGameStarted() {
   hasAnimationEnded.value = true;
-  user.timer.start({
-    mins: 10,
-    secs: 0,
-    direction: "down",
-    timeoutCallback: handleTimeOut,
-  });
+  // Start timer with current local time (no server sync needed for solo)
+  user.timer.start(Date.now(), QUESTION_DURATION_MS, handleTimeOut);
 }
 
 function handleTimeOut() {
@@ -154,7 +152,8 @@ async function handleGameFinished() {
 function handleNext() {
   revertState();
   window.scrollTo(0, 0);
-  user.timer.restart();
+  // Restart timer with new local timestamp
+  user.timer.restart(Date.now(), QUESTION_DURATION_MS);
   isNextButtonVisible.value = false;
   isSubmitButtonVisible.value = true;
   isPaused.value = false;
