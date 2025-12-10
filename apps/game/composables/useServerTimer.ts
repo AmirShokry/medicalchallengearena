@@ -5,20 +5,15 @@ import { msToMinutesAndSeconds } from "./timeFormatter";
  * Server-authoritative timer that uses server timestamps to calculate remaining time.
  *
  * How it works:
- * 1. Server sends serverTime, startTimestamp, and durationMs when question starts
- * 2. Client calculates clock offset: serverTimeOffset = serverTime - Date.now()
- * 3. Client calculates: remaining = durationMs - (getServerTime() - startTimestamp)
- *    where getServerTime() = Date.now() + serverTimeOffset
- * 4. Uses requestAnimationFrame for display updates (smooth, but not critical for correctness)
- * 5. On visibility change (tab becomes visible), immediately recalculates correct time
- * 6. Timeout detection: when remaining <= 0, calls timeoutCallback
+ * 1. Server sends startTimestamp and durationMs when question starts
+ * 2. Client calculates: remaining = durationMs - (Date.now() - startTimestamp)
+ * 3. Uses requestAnimationFrame for display updates (smooth, but not critical for correctness)
+ * 4. On visibility change (tab becomes visible), immediately recalculates correct time
+ * 5. Timeout detection: when remaining <= 0, calls timeoutCallback
  *
  * This is immune to browser throttling because even if RAF is throttled,
  * the next time it runs (or on visibility change), it calculates based on
  * actual elapsed time, not how many times the callback ran.
- *
- * Clock synchronization ensures both players see the same time regardless of timezone
- * or clock drift between client machines.
  *
  * NO setInterval or setTimeout used - only requestAnimationFrame for display
  * and visibility change events for catching up after throttling.
@@ -31,10 +26,6 @@ export function useServerTimer() {
   let isPausedInternal: boolean = false;
   let timeoutCallback: (() => void) | undefined = undefined;
 
-  // Clock synchronization offset (serverTime - clientTime)
-  // Positive = server is ahead, Negative = server is behind
-  let serverTimeOffset: number = 0;
-
   // Reactive state
   const isRunning = ref(false);
   const timeMs = ref<number>(0);
@@ -45,21 +36,13 @@ export function useServerTimer() {
   let visibilityHandler: (() => void) | null = null;
 
   /**
-   * Get the current server time (adjusted for clock offset)
-   */
-  function getServerTime(): number {
-    return Date.now() + serverTimeOffset;
-  }
-
-  /**
    * Calculate remaining time based on server start timestamp
-   * Uses clock-synchronized time to ensure both players see the same countdown
    */
   function calculateRemainingTime(): number {
     if (isPausedInternal) {
       return pausedTimeMs;
     }
-    const elapsed = getServerTime() - serverStartTimestamp;
+    const elapsed = Date.now() - serverStartTimestamp;
     return Math.max(0, durationMs - elapsed);
   }
 
@@ -119,35 +102,14 @@ export function useServerTimer() {
   }
 
   /**
-   * Update the clock synchronization offset
-   * @param serverTime - Current server time from the server
-   */
-  function syncClock(serverTime: number): void {
-    const clientTime = Date.now();
-    serverTimeOffset = serverTime - clientTime;
-    console.log(`[Timer] Clock synced. Server offset: ${serverTimeOffset}ms`);
-  }
-
-  /**
    * Start the timer
-   * @param serverTime - Current server time for clock synchronization
    * @param startTs - Server's start timestamp (from questionStarted event)
    * @param duration - Duration in milliseconds
    * @param onTimeout - Callback when timer reaches 0
    */
-  function start(
-    serverTime?: number,
-    startTs?: number,
-    duration?: number,
-    onTimeout?: () => void
-  ) {
-    // Sync clock with server time if provided
-    if (serverTime !== undefined) {
-      syncClock(serverTime);
-    }
-
+  function start(startTs?: number, duration?: number, onTimeout?: () => void) {
     // Use provided values or defaults
-    serverStartTimestamp = startTs ?? getServerTime();
+    serverStartTimestamp = startTs ?? Date.now();
     durationMs = duration ?? 600000;
     timeoutCallback = onTimeout;
     isPausedInternal = false;
@@ -166,12 +128,8 @@ export function useServerTimer() {
 
   /**
    * Sync with server time (for reconnection or when receiving updated timestamps)
-   * @param serverTime - Current server time for clock synchronization
-   * @param startTs - Server's start timestamp
-   * @param duration - Duration in milliseconds
    */
-  function sync(serverTime: number, startTs: number, duration?: number) {
-    syncClock(serverTime);
+  function sync(startTs: number, duration?: number) {
     serverStartTimestamp = startTs;
     if (duration !== undefined) {
       durationMs = duration;
@@ -215,23 +173,17 @@ export function useServerTimer() {
 
   /**
    * Resume the timer
-   * @param serverTime - Current server time for clock synchronization
    * @param newStartTs - New effective start timestamp from server (accounts for pause duration)
    */
-  function resume(serverTime?: number, newStartTs?: number) {
+  function resume(newStartTs?: number) {
     if (!isRunning.value || !isPausedInternal) return;
-
-    // Sync clock with server if provided
-    if (serverTime !== undefined) {
-      syncClock(serverTime);
-    }
 
     if (newStartTs !== undefined) {
       // Use server-provided adjusted timestamp
       serverStartTimestamp = newStartTs;
     } else {
       // If no new timestamp, adjust locally (less accurate but works)
-      serverStartTimestamp = getServerTime() - (durationMs - pausedTimeMs);
+      serverStartTimestamp = Date.now() - (durationMs - pausedTimeMs);
     }
 
     isPausedInternal = false;
@@ -244,13 +196,10 @@ export function useServerTimer() {
 
   /**
    * Restart timer with new server timestamp
-   * @param serverTime - Current server time for clock synchronization
-   * @param startTs - Server's start timestamp
-   * @param duration - Duration in milliseconds
    */
-  function restart(serverTime?: number, startTs?: number, duration?: number) {
+  function restart(startTs?: number, duration?: number) {
     stop();
-    start(serverTime, startTs, duration, timeoutCallback);
+    start(startTs, duration, timeoutCallback);
   }
 
   /**
