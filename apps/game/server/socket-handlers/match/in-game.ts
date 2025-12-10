@@ -163,9 +163,11 @@ export function registerMatchEvents(socket: GameSocket, io: GameIO) {
     if (!roomName) return;
 
     const startTimestamp = startQuestionTimer(roomName);
+    const serverTime = Date.now();
 
-    // Emit to both players with the start timestamp
+    // Emit to both players with the start timestamp and current server time
     io.to(roomName).emit("questionStarted", {
+      serverTime,
       startTimestamp,
       durationMs: QUESTION_DURATION_MS,
     });
@@ -210,9 +212,11 @@ export function registerMatchEvents(socket: GameSocket, io: GameIO) {
     if (!roomName) return;
 
     const startTimestamp = startQuestionTimer(roomName);
+    const serverTime = Date.now();
 
-    // Emit new question start to both players
+    // Emit new question start to both players with server time
     io.to(roomName).emit("questionStarted", {
+      serverTime,
       startTimestamp,
       durationMs: QUESTION_DURATION_MS,
     });
@@ -249,14 +253,17 @@ export function registerMatchEvents(socket: GameSocket, io: GameIO) {
       return;
     }
 
-    // Emit resume with updated effective start timestamp for sync
+    // Calculate remaining time and emit with server time for sync
+    const remainingMs = roomName ? getRemainingTime(roomName) : null;
     const effectiveStart = roomName
       ? getEffectiveStartTimestamp(roomName)
       : null;
-    const timer = roomName ? getRoomTimer(roomName) : undefined;
+    const serverTime = Date.now();
+
     io.to(roomName).emit("gameResumed", {
+      serverTime,
       startTimestamp: effectiveStart,
-      durationMs: timer?.questionDurationMs ?? null,
+      remainingMs,
     });
   });
 

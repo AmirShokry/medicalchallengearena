@@ -5,26 +5,28 @@ import { msToMinutesAndSeconds } from "./timeFormatter";
  * Server-authoritative timer that uses server timestamps to calculate remaining time.
  *
  * How it works:
- * 1. Server sends startTimestamp and durationMs when question starts
- * 2. Client calculates: remaining = durationMs - (Date.now() - startTimestamp)
- * 3. Uses requestAnimationFrame for display updates (smooth, but not critical for correctness)
- * 4. On visibility change (tab becomes visible), immediately recalculates correct time
- * 5. Timeout detection: when remaining <= 0, calls timeoutCallback
+ * 1. Server sends serverTime (current server time) and startTimestamp when question starts
+ * 2. Client calculates initial remaining: durationMs - (serverTime - startTimestamp)
+ * 3. Client uses performance.now() to track local elapsed time from when timer started
+ * 4. Remaining = initialRemaining - localElapsed
  *
- * This is immune to browser throttling because even if RAF is throttled,
- * the next time it runs (or on visibility change), it calculates based on
- * actual elapsed time, not how many times the callback ran.
+ * This approach avoids timezone/clock drift issues because:
+ * - We calculate the "remaining time as seen by server" at message receipt
+ * - We only measure LOCAL elapsed time using performance.now() (not Date.now())
+ * - No absolute timestamp comparisons between client and server
  *
  * NO setInterval or setTimeout used - only requestAnimationFrame for display
  * and visibility change events for catching up after throttling.
  */
 export function useServerTimer() {
   // Core state - all times in milliseconds
-  let serverStartTimestamp: number = 0;
   let durationMs: number = 600000; // 10 minutes default
-  let pausedTimeMs: number = 0; // Time remaining when paused
+  let initialRemainingMs: number = 0; // Remaining time when timer started (from server's perspective)
+  let localStartTime: number = 0; // performance.now() when timer started locally
+  let pausedRemainingMs: number = 0; // Remaining time when paused
   let isPausedInternal: boolean = false;
   let timeoutCallback: (() => void) | undefined = undefined;
+  let hasTimedOut: boolean = false; // Prevent multiple timeout callbacks
 
   // Reactive state
   const isRunning = ref(false);
@@ -34,35 +36,54 @@ export function useServerTimer() {
   // Animation frame for display updates
   let rafId: number | null = null;
   let visibilityHandler: (() => void) | null = null;
+  // Backup timeout for background tabs (setTimeout still fires, just throttled)
+  let backupTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
   /**
-   * Calculate remaining time based on server start timestamp
+   * Calculate remaining time
+   * Uses local elapsed time (performance.now) from when we received the server message
    */
   function calculateRemainingTime(): number {
     if (isPausedInternal) {
-      return pausedTimeMs;
+      return pausedRemainingMs;
     }
-    const elapsed = Date.now() - serverStartTimestamp;
-    return Math.max(0, durationMs - elapsed);
+    const localElapsed = performance.now() - localStartTime;
+    return Math.max(0, initialRemainingMs - localElapsed);
+  }
+
+  /**
+   * Handle timeout - called when timer reaches 0
+   */
+  function handleTimeout() {
+    if (hasTimedOut) return; // Prevent multiple calls
+    hasTimedOut = true;
+
+    isRunning.value = false;
+    timeMs.value = 0;
+
+    if (rafId) {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+    if (backupTimeoutId) {
+      clearTimeout(backupTimeoutId);
+      backupTimeoutId = null;
+    }
+
+    timeoutCallback?.();
   }
 
   /**
    * Update displayed time and check for timeout
    */
   function tick() {
-    if (!isRunning.value) return;
+    if (!isRunning.value || hasTimedOut) return;
 
     const remaining = calculateRemainingTime();
     timeMs.value = remaining;
 
     if (remaining <= 0 && !isPausedInternal) {
-      // Timeout!
-      isRunning.value = false;
-      if (rafId) {
-        cancelAnimationFrame(rafId);
-        rafId = null;
-      }
-      timeoutCallback?.();
+      handleTimeout();
       return;
     }
 
@@ -70,6 +91,35 @@ export function useServerTimer() {
     if (!isPausedInternal && typeof window !== "undefined") {
       rafId = requestAnimationFrame(tick);
     }
+  }
+
+  /**
+   * Set up backup timeout for background tabs
+   * setTimeout is throttled but still fires in background tabs
+   */
+  function setupBackupTimeout() {
+    if (backupTimeoutId) {
+      clearTimeout(backupTimeoutId);
+    }
+
+    const remaining = calculateRemainingTime();
+    if (remaining <= 0) {
+      handleTimeout();
+      return;
+    }
+
+    // Add 100ms buffer to ensure we're past the deadline
+    backupTimeoutId = setTimeout(() => {
+      if (!isRunning.value || isPausedInternal || hasTimedOut) return;
+
+      const currentRemaining = calculateRemainingTime();
+      if (currentRemaining <= 0) {
+        handleTimeout();
+      } else {
+        // Not yet expired, reschedule
+        setupBackupTimeout();
+      }
+    }, remaining + 100);
   }
 
   /**
@@ -103,41 +153,78 @@ export function useServerTimer() {
 
   /**
    * Start the timer
-   * @param startTs - Server's start timestamp (from questionStarted event)
+   * @param serverTime - Current server time when the message was sent
+   * @param startTimestamp - Server's question start timestamp
    * @param duration - Duration in milliseconds
    * @param onTimeout - Callback when timer reaches 0
    */
-  function start(startTs?: number, duration?: number, onTimeout?: () => void) {
-    // Use provided values or defaults
-    serverStartTimestamp = startTs ?? Date.now();
-    durationMs = duration ?? 600000;
-    timeoutCallback = onTimeout;
+  function start(
+    serverTime: number,
+    startTimestamp: number,
+    duration: number,
+    onTimeout?: () => void
+  ) {
+    // Reset state
+    hasTimedOut = false;
     isPausedInternal = false;
-    pausedTimeMs = 0;
+    pausedRemainingMs = 0;
+
+    durationMs = duration;
+    timeoutCallback = onTimeout;
+
+    // Calculate remaining time from server's perspective at the moment of message
+    // This avoids timezone issues - we just trust the server's calculation
+    const serverElapsed = serverTime - startTimestamp;
+    initialRemainingMs = Math.max(0, duration - serverElapsed);
+
+    // Record when we started locally (using performance.now for accuracy)
+    localStartTime = performance.now();
 
     // Set initial display value
-    timeMs.value = durationMs;
+    timeMs.value = initialRemainingMs;
     isRunning.value = true;
+
+    // Check if already timed out (shouldn't happen normally, but prevents infinite loop)
+    if (initialRemainingMs <= 0) {
+      // Use setTimeout to defer the timeout callback, avoiding synchronous loops
+      setTimeout(() => handleTimeout(), 0);
+      return;
+    }
 
     setupVisibilityListener();
 
     // Start the display update loop
     if (rafId) cancelAnimationFrame(rafId);
     rafId = requestAnimationFrame(tick);
+
+    // Set up backup timeout for background tabs
+    setupBackupTimeout();
+
+    console.log(
+      `[Timer] Started. Server elapsed: ${serverElapsed}ms, Initial remaining: ${initialRemainingMs}ms`
+    );
   }
 
   /**
    * Sync with server time (for reconnection or when receiving updated timestamps)
+   * @param serverTime - Current server time
+   * @param startTimestamp - Server's question start timestamp
+   * @param duration - Duration in milliseconds (optional)
    */
-  function sync(startTs: number, duration?: number) {
-    serverStartTimestamp = startTs;
+  function sync(serverTime: number, startTimestamp: number, duration?: number) {
     if (duration !== undefined) {
       durationMs = duration;
     }
 
+    // Recalculate initial remaining based on new server info
+    const serverElapsed = serverTime - startTimestamp;
+    initialRemainingMs = Math.max(0, durationMs - serverElapsed);
+    localStartTime = performance.now();
+
     // If running, immediately update display
     if (isRunning.value && !isPausedInternal) {
       tick();
+      setupBackupTimeout();
     }
   }
 
@@ -147,10 +234,15 @@ export function useServerTimer() {
   function stop() {
     isRunning.value = false;
     isPausedInternal = false;
+    hasTimedOut = false;
 
     if (rafId) {
       cancelAnimationFrame(rafId);
       rafId = null;
+    }
+    if (backupTimeoutId) {
+      clearTimeout(backupTimeoutId);
+      backupTimeoutId = null;
     }
 
     removeVisibilityListener();
@@ -163,43 +255,61 @@ export function useServerTimer() {
     if (!isRunning.value || isPausedInternal) return;
 
     isPausedInternal = true;
-    pausedTimeMs = calculateRemainingTime();
+    pausedRemainingMs = calculateRemainingTime();
 
     if (rafId) {
       cancelAnimationFrame(rafId);
       rafId = null;
     }
+    if (backupTimeoutId) {
+      clearTimeout(backupTimeoutId);
+      backupTimeoutId = null;
+    }
   }
 
   /**
    * Resume the timer
-   * @param newStartTs - New effective start timestamp from server (accounts for pause duration)
+   * @param serverTime - Current server time (optional, for clock sync)
+   * @param newRemainingMs - New remaining time from server (optional)
    */
-  function resume(newStartTs?: number) {
+  function resume(serverTime?: number, newRemainingMs?: number) {
     if (!isRunning.value || !isPausedInternal) return;
 
-    if (newStartTs !== undefined) {
-      // Use server-provided adjusted timestamp
-      serverStartTimestamp = newStartTs;
+    if (newRemainingMs !== undefined) {
+      // Use server-provided remaining time
+      initialRemainingMs = newRemainingMs;
     } else {
-      // If no new timestamp, adjust locally (less accurate but works)
-      serverStartTimestamp = Date.now() - (durationMs - pausedTimeMs);
+      // Use the paused remaining time
+      initialRemainingMs = pausedRemainingMs;
     }
 
+    // Reset local start time
+    localStartTime = performance.now();
+
     isPausedInternal = false;
-    pausedTimeMs = 0;
+    pausedRemainingMs = 0;
 
     // Restart display updates
     if (rafId) cancelAnimationFrame(rafId);
     rafId = requestAnimationFrame(tick);
+
+    // Restart backup timeout
+    setupBackupTimeout();
   }
 
   /**
-   * Restart timer with new server timestamp
+   * Restart timer with new server time info
+   * @param serverTime - Current server time
+   * @param startTimestamp - Server's question start timestamp
+   * @param duration - Duration in milliseconds
    */
-  function restart(startTs?: number, duration?: number) {
+  function restart(
+    serverTime: number,
+    startTimestamp: number,
+    duration: number
+  ) {
     stop();
-    start(startTs, duration, timeoutCallback);
+    start(serverTime, startTimestamp, duration, timeoutCallback);
   }
 
   /**

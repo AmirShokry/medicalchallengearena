@@ -51,12 +51,19 @@ onMounted(() => {
   // Handle server-authoritative timer events
   gameSocket.on("questionStarted", (data) => {
     console.log(
-      "[Multi] Question started, server timestamp:",
+      "[Multi] Question started, serverTime:",
+      data.serverTime,
+      "startTimestamp:",
       data.startTimestamp
     );
-    // Both timers start with the same server timestamp
-    user.timer.start(data.startTimestamp, data.durationMs, onTimeOut);
-    opponent.timer.start(data.startTimestamp, data.durationMs);
+    // Both timers start with the same server timestamp and serverTime for clock sync
+    user.timer.start(
+      data.serverTime,
+      data.startTimestamp,
+      data.durationMs,
+      onTimeOut
+    );
+    opponent.timer.start(data.serverTime, data.startTimestamp, data.durationMs);
   });
 
   gameSocket.on("gamePaused", () => {
@@ -66,9 +73,9 @@ onMounted(() => {
   });
 
   gameSocket.on("gameResumed", (data) => {
-    // Resume with server-provided adjusted timestamp
-    user.timer.resume(data.startTimestamp ?? undefined);
-    opponent.timer.resume(data.startTimestamp ?? undefined);
+    // Resume with server-provided remaining time
+    user.timer.resume(data.serverTime, data.remainingMs ?? undefined);
+    opponent.timer.resume(data.serverTime, data.remainingMs ?? undefined);
     isPaused.value = false;
   });
 

@@ -57,7 +57,9 @@ let hasIntentionallyLeft = false;
 function handleGameStarted() {
   hasAnimationEnded.value = true;
   // Start timer with current local time (no server sync needed for solo)
-  user.timer.start(Date.now(), QUESTION_DURATION_MS, handleTimeOut);
+  // For solo mode, serverTime and startTimestamp are the same (current time)
+  const now = Date.now();
+  user.timer.start(now, now, QUESTION_DURATION_MS, handleTimeOut);
 }
 
 function handleTimeOut() {
@@ -153,7 +155,8 @@ function handleNext() {
   revertState();
   window.scrollTo(0, 0);
   // Restart timer with new local timestamp
-  user.timer.restart(Date.now(), QUESTION_DURATION_MS);
+  const now = Date.now();
+  user.timer.restart(now, now, QUESTION_DURATION_MS);
   isNextButtonVisible.value = false;
   isSubmitButtonVisible.value = true;
   isPaused.value = false;
