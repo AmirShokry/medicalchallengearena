@@ -296,6 +296,8 @@ export namespace ToServerIO {
   export namespace Default {
     export interface Events {
       leaveAll: () => void;
+      /** Keep-alive ping to prevent Cloudflare from dropping idle connections */
+      ping: () => void;
     }
     export interface Data {
       session: AnyUser & DefaultSession["user"];

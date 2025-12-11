@@ -63,7 +63,7 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
     // Increase ping interval to reduce traffic and handle browser throttling better
     // Browsers throttle timers/network in background tabs, so we need larger intervals
     pingInterval: 60e3, // 60 seconds between pings
-    pingTimeout: 120e3, // 120 seconds to wait for pong response
+    pingTimeout: 18000e3, // 5 hours before considering the connection closed
   });
 
   io.bind(engine);
@@ -106,6 +106,13 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
     console.log(
       `[Social] User ${socket.data.session.username} (${socket.data.session.id}) connected - SID: ${socket.id}`
     );
+
+    // Keep-alive ping handler (prevents Cloudflare from dropping idle connections)
+    socket.on("ping", () => {
+      console.log(
+        `[Social] Received keep-alive ping from ${socket?.data?.session?.username}`
+      );
+    });
 
     // Handle user presence on connect
     await handleUserConnect(socket, socialIO);
@@ -153,6 +160,13 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
     console.log(
       `[Game] User ${socket.data.session.username} (${socket.data.session.id}) connected - SID: ${socket.id}`
     );
+
+    // Keep-alive ping handler (prevents Cloudflare from dropping idle connections)
+    socket.on("ping", () => {
+      console.log(
+        `[Game] Received keep-alive ping from ${socket.data.session.username}`
+      );
+    });
 
     const userId = socket.data.session.id;
     const previousSocketId = userIdToGameSocketId.get(userId);
