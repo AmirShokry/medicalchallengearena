@@ -109,9 +109,9 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
 
     // Keep-alive ping handler (prevents Cloudflare from dropping idle connections)
     socket.on("ping", () => {
-      console.log(
-        `[Social] Received keep-alive ping from ${socket?.data?.session?.username}`
-      );
+      // console.log(
+      //   `[Social] Received keep-alive ping from ${socket?.data?.session?.username}`
+      // );
     });
 
     // Handle user presence on connect
@@ -163,9 +163,9 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
 
     // Keep-alive ping handler (prevents Cloudflare from dropping idle connections)
     socket.on("ping", () => {
-      console.log(
-        `[Game] Received keep-alive ping from ${socket.data.session.username}`
-      );
+      // console.log(
+      //   `[Game] Received keep-alive ping from ${socket.data.session.username}`
+      // );
     });
 
     const userId = socket.data.session.id;
