@@ -3,128 +3,15 @@ import type { GameIO, GameSocket } from "@/shared/types/socket";
 const { users_games, users } = db.table;
 
 /**
- * Server-side timer state for each game room
- * NO setTimeout/setInterval - just timestamps for calculation
+ * Timer functionality is disabled - no timeout logic.
+ * All time-related calculations return 0.
  */
-interface RoomTimerState {
-  questionStartTimestamp: number;
-  questionDurationMs: number;
-  // For pause: we track total paused time to adjust calculations
-  totalPausedMs: number;
-  pauseStartTimestamp: number | null; // null = not paused
-}
-
-// Map of room names to their timer state
-const roomTimers = new Map<string, RoomTimerState>();
-
-const QUESTION_DURATION_MS = 10 * 60e3; // 10 minutes per question
 
 /**
- * Get timer state for a room
+ * Clean up a room's state (no-op since timer is disabled)
  */
-function getRoomTimer(roomName: string): RoomTimerState | undefined {
-  return roomTimers.get(roomName);
-}
-
-/**
- * Start/reset question timer for a room (just stores timestamp, no actual timer)
- */
-function startQuestionTimer(roomName: string): number {
-  const startTimestamp = Date.now();
-
-  roomTimers.set(roomName, {
-    questionStartTimestamp: startTimestamp,
-    questionDurationMs: QUESTION_DURATION_MS,
-    totalPausedMs: 0,
-    pauseStartTimestamp: null,
-  });
-
-  console.log(
-    `[Timer] Started question for room ${roomName}. Start: ${new Date(startTimestamp).toISOString()}`
-  );
-
-  return startTimestamp;
-}
-
-/**
- * Calculate remaining time for a room
- */
-function getRemainingTime(roomName: string): number {
-  const timer = roomTimers.get(roomName);
-  if (!timer) return 0;
-
-  const now = Date.now();
-  let elapsedMs = now - timer.questionStartTimestamp - timer.totalPausedMs;
-
-  // If currently paused, don't count time since pause started
-  if (timer.pauseStartTimestamp !== null) {
-    elapsedMs -= now - timer.pauseStartTimestamp;
-  }
-
-  return Math.max(0, timer.questionDurationMs - elapsedMs);
-}
-
-/**
- * Pause the timer for a room (just records pause start time)
- */
-function pauseRoomTimer(roomName: string): void {
-  const timer = roomTimers.get(roomName);
-  if (!timer || timer.pauseStartTimestamp !== null) return; // Already paused
-
-  timer.pauseStartTimestamp = Date.now();
-  console.log(`[Timer] Paused timer for room ${roomName}`);
-}
-
-/**
- * Resume the timer for a room (accumulates paused time)
- */
-function resumeRoomTimer(roomName: string): void {
-  const timer = roomTimers.get(roomName);
-  if (!timer || timer.pauseStartTimestamp === null) return; // Not paused
-
-  // Add the paused duration to total
-  timer.totalPausedMs += Date.now() - timer.pauseStartTimestamp;
-  timer.pauseStartTimestamp = null;
-
-  console.log(
-    `[Timer] Resumed timer for room ${roomName}. Total paused: ${timer.totalPausedMs}ms`
-  );
-}
-
-/**
- * Get the effective start timestamp (adjusted for pauses)
- * This is what client uses to calculate remaining time
- */
-function getEffectiveStartTimestamp(roomName: string): number | null {
-  const timer = roomTimers.get(roomName);
-  if (!timer) return null;
-
-  // Effective start = actual start + total paused time
-  // This makes it as if the timer started later
-  return timer.questionStartTimestamp + timer.totalPausedMs;
-}
-
-/**
- * Check if room is paused
- */
-function isRoomPaused(roomName: string): boolean {
-  const timer = roomTimers.get(roomName);
-  return timer?.pauseStartTimestamp !== null;
-}
-
-/**
- * Clean up a room's timer state
- */
-function cleanupRoomTimerState(roomName: string): void {
-  roomTimers.delete(roomName);
-  console.log(`[Timer] Cleaned up timer state for room ${roomName}`);
-}
-
-/**
- * Export for cleanup when game ends
- */
-export function cleanupRoomTimer(roomName: string): void {
-  cleanupRoomTimerState(roomName);
+export function cleanupRoomTimer(_roomName: string): void {
+  // No-op - timer disabled
 }
 
 /**
@@ -155,39 +42,32 @@ function getOpponentSocket(
 
 export function registerMatchEvents(socket: GameSocket, io: GameIO) {
   /**
-   * Handle request to start question timer (called by game master when question starts)
-   * No actual timer - just stores the start timestamp
+   * Handle request to start question timer (timer is disabled, just emit event)
    */
   socket.on("startQuestionTimer", () => {
     const roomName = socket.data?.roomName;
     if (!roomName) return;
 
-    const startTimestamp = startQuestionTimer(roomName);
     const serverTime = Date.now();
 
-    // Emit to both players with the start timestamp and current server time
+    // Emit to both players - timer is disabled, just for compatibility
     io.to(roomName).emit("questionStarted", {
       serverTime,
-      startTimestamp,
-      durationMs: QUESTION_DURATION_MS,
+      startTimestamp: serverTime,
+      durationMs: 0, // Timer disabled
     });
   });
 
   /**
    * Handle request for current server time (for sync purposes)
-   * Client can use this to sync their local clock with server
+   * Timer is disabled, return minimal info
    */
   socket.on("requestTimeSync", (callback) => {
-    const roomName = socket.data?.roomName;
-    const timer = roomName ? getRoomTimer(roomName) : undefined;
-
     callback({
       serverTime: Date.now(),
-      questionStartTimestamp: timer
-        ? getEffectiveStartTimestamp(roomName)
-        : null,
-      questionDurationMs: timer?.questionDurationMs ?? null,
-      isPaused: isRoomPaused(roomName),
+      questionStartTimestamp: null,
+      questionDurationMs: null,
+      isPaused: false,
     });
   });
 
@@ -204,76 +84,35 @@ export function registerMatchEvents(socket: GameSocket, io: GameIO) {
   });
 
   /**
-   * Handle when both players are ready to advance (called after both solve or timeout)
-   * Starts a new question timer (just stores timestamp)
+   * Handle when both players are ready to advance (timer disabled, just emit event)
    */
   socket.on("advanceQuestion", () => {
     const roomName = socket.data?.roomName;
     if (!roomName) return;
 
-    const startTimestamp = startQuestionTimer(roomName);
     const serverTime = Date.now();
 
-    // Emit new question start to both players with server time
+    // Emit new question start to both players - timer disabled
     io.to(roomName).emit("questionStarted", {
       serverTime,
-      startTimestamp,
-      durationMs: QUESTION_DURATION_MS,
+      startTimestamp: serverTime,
+      durationMs: 0, // Timer disabled
     });
   });
 
+  // Pause functionality is disabled - these are no-ops for compatibility
   socket.on("pauseGame", () => {
-    const roomName = socket.data?.roomName;
-    if (roomName) {
-      pauseRoomTimer(roomName);
-    }
-
-    const opponentSocket = getOpponentSocket(socket, io);
-    if (!opponentSocket) {
-      console.warn(
-        `[Game] Cannot emit pauseGame - opponent socket not found for user ${socket.data.session?.username}`
-      );
-      return;
-    }
-    io.to(opponentSocket.id).emit("gamePaused");
+    // No-op - pause disabled
   });
 
   socket.on("resumeGame", () => {
-    const roomName = socket.data?.roomName;
-
-    if (roomName) {
-      resumeRoomTimer(roomName);
-    }
-
-    const opponentSocket = getOpponentSocket(socket, io);
-    if (!opponentSocket) {
-      console.warn(
-        `[Game] Cannot emit resumeGame - opponent socket not found for user ${socket.data.session?.username}`
-      );
-      return;
-    }
-
-    // Calculate remaining time and emit with server time for sync
-    const remainingMs = roomName ? getRemainingTime(roomName) : null;
-    const effectiveStart = roomName
-      ? getEffectiveStartTimestamp(roomName)
-      : null;
-    const serverTime = Date.now();
-
-    io.to(roomName).emit("gameResumed", {
-      serverTime,
-      startTimestamp: effectiveStart,
-      remainingMs,
-    });
+    // No-op - pause disabled
   });
 
   socket.on("userFinishedGame", async (gameId, records) => {
     if (!socket?.data) return "No socket data";
 
-    // Clean up room timer state
-    if (socket.data.roomName) {
-      cleanupRoomTimerState(socket.data.roomName);
-    }
+    // Timer cleanup is disabled (no timer state to clean up)
 
     const serverData = records.data.map((d) => {
       const { nthCase, nthQuestion, ...rest } = d;

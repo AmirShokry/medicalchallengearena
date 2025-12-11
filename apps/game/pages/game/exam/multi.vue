@@ -7,7 +7,7 @@ import ExamBlock from "../../../components/ExamBlock/index.vue";
 import Result from "../../../components/Exam/Result/index.vue";
 import { gameSocket } from "../../../components/socket";
 import getGameData from "../../../components/Exam/index";
-import { LogOutIcon as ExitIcon, PauseIcon, PlayIcon } from "lucide-vue-next";
+import { LogOutIcon as ExitIcon } from "lucide-vue-next";
 import useSocial from "@/composables/useSocial";
 
 definePageMeta({
@@ -48,58 +48,33 @@ onMounted(() => {
   opponent.flags.hasAccepted = false;
   flags.ingame.isGameStarted = true;
 
-  // Handle server-authoritative timer events
-  gameSocket.on("questionStarted", (data) => {
-    console.log(
-      "[Multi] Question started, serverTime:",
-      data.serverTime,
-      "startTimestamp:",
-      data.startTimestamp
-    );
-    // Both timers start with the same server timestamp and serverTime for clock sync
-    user.timer.start(
-      data.serverTime,
-      data.startTimestamp,
-      data.durationMs,
-      onTimeOut
-    );
-    opponent.timer.start(data.serverTime, data.startTimestamp, data.durationMs);
+  // Timer events are disabled - no timeout functionality
+  gameSocket.on("questionStarted", (_data) => {
+    // Timer is disabled - just set running state
+    user.timer.start();
+    opponent.timer.start();
   });
 
+  // Pause events are disabled
   gameSocket.on("gamePaused", () => {
-    user.timer.pause();
-    opponent.timer.pause();
-    isPaused.value = true;
+    // No-op - pause disabled
   });
 
-  gameSocket.on("gameResumed", (data) => {
-    // Resume with server-provided remaining time
-    user.timer.resume(data.serverTime, data.remainingMs ?? undefined);
-    opponent.timer.resume(data.serverTime, data.remainingMs ?? undefined);
-    isPaused.value = false;
+  gameSocket.on("gameResumed", (_data) => {
+    // No-op - pause disabled
   });
 
-  // Handle opponent temporary disconnect - pause the game
+  // Handle opponent temporary disconnect - don't pause, just log
   gameSocket.on("opponentDisconnected", (data) => {
     console.log(`[Multi] Opponent disconnected: ${data.reason}`);
     isOpponentReconnecting.value = true;
-    // Auto-pause the game while waiting for opponent to reconnect
-    if (!isPaused.value) {
-      gameSocket.emit("pauseGame");
-      user.timer.pause();
-      opponent.timer.pause();
-      isPaused.value = true;
-    }
+    // Don't pause - let game continue
   });
 
-  // Handle opponent reconnection - resume the game
+  // Handle opponent reconnection
   gameSocket.on("opponentReconnected", () => {
     console.log("[Multi] Opponent reconnected!");
     isOpponentReconnecting.value = false;
-    // Auto-resume the game if it was paused due to disconnect
-    if (isPaused.value) {
-      gameSocket.emit("resumeGame");
-    }
   });
 });
 
@@ -112,27 +87,9 @@ console.log($$game.players.opponent.info);
 const hasAnimationEnded = ref(false),
   hasRecordBeenSent = ref(false);
 
-const isPaused = ref(false);
-
-function togglePause() {
-  // Don't allow pause toggle while opponent is reconnecting
-  if (isOpponentReconnecting.value) return;
-
-  if (isPaused.value) {
-    gameSocket.emit("resumeGame");
-    // Timer resume happens in gameResumed event handler
-  } else {
-    gameSocket.emit("pauseGame");
-    user.timer.pause();
-    opponent.timer.pause();
-    isPaused.value = true;
-  }
-}
-
 function startGame() {
   hasAnimationEnded.value = true;
-  // Request server to start the question timer
-  // The questionStarted event will trigger timer.start() with server timestamp
+  // Request server to start the question timer (timer is disabled on frontend)
   gameSocket.emit("startQuestionTimer");
 }
 
@@ -175,7 +132,7 @@ function handleSubmit() {
 
   const recordData = getRecordData({
     medPoints: user.records.stats.totalMedpoints,
-    timeSpentMs: user.timer.getElapseTimeMs(),
+    timeSpentMs: 0, // Timer disabled - always 0
   });
   user.records.data.push(recordData);
   gameSocket.emit("userSolved", recordData, user.records.stats);
@@ -224,22 +181,7 @@ gameSocket.on("opponentSolved", (data, stats) => {
   opponent.flags.hasSolved = true;
 });
 
-function onTimeOut() {
-  if (flags.ingame.isReviewingQuestion) revertState();
-
-  user.flags.hasSolved = true;
-  user.records.stats.wrongAnswersCount++;
-
-  const recordData = getRecordData({
-    medPoints: 0,
-    correctOverride: false,
-    timeSpentMs: user.timer.getStartingTimeMs(),
-  });
-  user.records.data.push(recordData);
-
-  audio.incorrect_answer.play();
-  gameSocket.emit("userSolved", recordData, user.records.stats);
-}
+// onTimeOut is disabled - no timeout functionality
 
 function endGame() {
   flags.ingame.isGameFinished = true;
@@ -326,12 +268,6 @@ onBeforeUnmount(() => {
         :status="userStatus"
       />
 
-      <UiButton @click="togglePause" variant="ghost" class="w-24">
-        <PlayIcon v-if="isPaused" class="mr-2 h-4 w-4" />
-        <PauseIcon v-else class="mr-2 h-4 w-4" />
-        {{ isPaused ? "Resume" : "Pause" }}
-      </UiButton>
-
       <OpponentInfo
         v-if="!opponent.flags.hasLeft"
         :username="opponent.info.username"
@@ -355,7 +291,6 @@ onBeforeUnmount(() => {
         :nth-question-flat="current.questionNumber"
         :totalQuestionsNo="totalQuestionsNumber"
         class="w-full h-full transition-opacity duration-300"
-        :class="{ 'opacity-50 pointer-events-none': isPaused }"
       >
         <template #left-aside>
           <MultiPagination

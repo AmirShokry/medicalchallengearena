@@ -1,20 +1,34 @@
 import { io, Socket } from "socket.io-client";
 import type { ToClientIO, ToServerIO } from "@/shared/types/socket";
 
-// Configure socket with longer ping intervals and timeouts to handle tab throttling
-// Browsers throttle timers in background tabs which can cause ping timeouts
+/**
+ * Socket.IO client configuration
+ *
+ * Note: pingInterval and pingTimeout are SERVER-SIDE only options.
+ * The client configuration focuses on reconnection behavior.
+ *
+ * The server is configured with:
+ * - pingInterval: 60s (sends ping every 60 seconds)
+ * - pingTimeout: 120s (waits 120 seconds for pong response)
+ *
+ * This handles browser throttling in background tabs (especially Safari on Mac).
+ */
 const socketOptions = {
   withCredentials: true,
   autoConnect: false,
-  // Match server ping configuration to handle browser throttling
-  // Server sends ping every 60s, client must respond within 120s
-  pingInterval: 60e3, // 60 seconds between pings (matches server)
-  pingTimeout: 120e3, // 120 seconds to wait for pong (matches server)
-  // Enable reconnection with backoff
+  // Enable reconnection with exponential backoff
   reconnection: true,
-  reconnectionAttempts: 15,
-  reconnectionDelay: 1000,
-  reconnectionDelayMax: 10000,
+  reconnectionAttempts: Infinity, // Keep trying indefinitely
+  reconnectionDelay: 1000, // Start with 1 second
+  reconnectionDelayMax: 30000, // Max 30 seconds between attempts
+  // Use randomization to prevent thundering herd
+  randomizationFactor: 0.5,
+  // Timeout for connection attempt
+  timeout: 60000, // 60 seconds connection timeout
+  // Transport configuration - prefer websocket but allow polling fallback
+  transports: ["websocket", "polling"] as ("websocket" | "polling")[],
+  // Upgrade from polling to websocket when possible
+  upgrade: true,
 };
 
 export const gameSocket = io("/game", socketOptions) as Socket<

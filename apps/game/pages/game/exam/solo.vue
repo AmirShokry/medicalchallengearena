@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LogOutIcon as ExitIcon, PauseIcon, PlayIcon } from "lucide-vue-next";
+import { LogOutIcon as ExitIcon } from "lucide-vue-next";
 import getGameData from "../../../components/Exam/index";
 import ExamBlock from "../../../components/ExamBlock/index.vue";
 import BeforeGameAnimation from "../../../components/splash/BeforeGameAnimation.vue";
@@ -38,43 +38,12 @@ const hasAnimationEnded = ref(false),
   isSubmitButtonVisible = ref(true),
   isNextButtonVisible = ref(false);
 
-const isPaused = ref(false);
-
-const QUESTION_DURATION_MS = 10 * 60 * 1000; // 10 minutes
-
-function togglePause() {
-  if (isPaused.value) {
-    user.timer.resume();
-    isPaused.value = false;
-  } else {
-    user.timer.pause();
-    isPaused.value = true;
-  }
-}
-
 let hasIntentionallyLeft = false;
 
 function handleGameStarted() {
   hasAnimationEnded.value = true;
-  // Start timer with current local time (no server sync needed for solo)
-  // For solo mode, serverTime and startTimestamp are the same (current time)
-  const now = Date.now();
-  user.timer.start(now, now, QUESTION_DURATION_MS, handleTimeOut);
-}
-
-function handleTimeOut() {
-  if (flags.ingame.isReviewingQuestion) revertState();
-  audio.incorrect_answer.play();
-  user.flags.hasSolved = true;
-  user.records.stats.wrongAnswersCount++;
-
-  const recordData = getRecordData({
-    medPoints: 0,
-    correctOverride: false,
-    timeSpentMs: user.timer.getStartingTimeMs(),
-  });
-  user.records.data.push(recordData);
-  handleNext();
+  // Timer is disabled - no timeout functionality
+  user.timer.start();
 }
 
 function handleSubmit() {
@@ -116,7 +85,7 @@ function handleSubmit() {
   user.records.stats.totalMedpoints += medPointsGained;
   const recordData = getRecordData({
     medPoints: user.records.stats.totalMedpoints,
-    timeSpentMs: user.timer.getElapseTimeMs(),
+    timeSpentMs: 0, // Timer disabled - always 0
   });
   user.records.data.push(recordData);
 
@@ -170,12 +139,10 @@ async function handleGameFinished() {
 function handleNext() {
   revertState();
   window.scrollTo(0, 0);
-  // Restart timer with new local timestamp
-  const now = Date.now();
-  user.timer.restart(now, now, QUESTION_DURATION_MS);
+  // Timer is disabled - no restart needed
+  user.timer.restart();
   isNextButtonVisible.value = false;
   isSubmitButtonVisible.value = true;
-  isPaused.value = false;
 
   current.questionNumber++;
   lastReachedQuestionNumber.value++;
@@ -240,11 +207,6 @@ onUnmounted(() => user.timer.destroy());
         :revert-state="revertState"
         :records="user.records.data"
       />
-      <UiButton @click="togglePause" variant="ghost" class="ml-4 w-24">
-        <PlayIcon v-if="isPaused" class="mr-2 h-4 w-4" />
-        <PauseIcon v-else class="mr-2 h-4 w-4" />
-        {{ isPaused ? "Resume" : "Pause" }}
-      </UiButton>
     </div>
     <div class="py-2 h-full relative">
       <ExamBlock
@@ -255,7 +217,6 @@ onUnmounted(() => user.timer.destroy());
           totalQuestionsNumber !== undefined
         "
         class="w-full transition-opacity duration-300"
-        :class="{ 'opacity-50 pointer-events-none': isPaused }"
         :cases="cases"
         v-model:selection="current.selectedChoiceIdx"
         v-model:elimination="current.eliminatedChoicesIdx"
