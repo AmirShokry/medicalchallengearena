@@ -121,8 +121,24 @@ export function registerInvitationHandlers(
 
   /**
    * Handle user entering matchmaking state
+   * CRITICAL: Do NOT change status if user is already in a game
    */
   socket.on("userJoinedWaitingRoom", async () => {
+    // CRITICAL: Block status change if user is in a game or is a secondary tab
+    if (socket.data.isInGame) {
+      console.warn(
+        `[Invitation] BLOCKED: User ${username} tried to enter matchmaking while in game`
+      );
+      return;
+    }
+
+    if (socket.data.isSecondaryTab) {
+      console.warn(
+        `[Invitation] BLOCKED: Secondary tab for ${username} tried to change status to matchmaking`
+      );
+      return;
+    }
+
     // Update presence to matchmaking
     if (socialIORef) {
       // Get the user's social socket ID for presence update

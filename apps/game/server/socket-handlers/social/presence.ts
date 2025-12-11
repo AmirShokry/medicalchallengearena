@@ -240,6 +240,16 @@ export function registerPresence(socket: SocialSocket, io: SocialIO): void {
       return;
     }
 
+    // CRITICAL: Prevent downgrading from ingame to matchmaking
+    // This protects users who are in a game from secondary tabs changing their status
+    const currentStatus = getUserStatus(userId);
+    if (currentStatus === "ingame" && status === "matchmaking") {
+      console.warn(
+        `[Presence] BLOCKED: User ${username} tried to change status from ingame to matchmaking`
+      );
+      return;
+    }
+
     debugLog(`[Presence] User ${username} status changed to ${status}`);
     await setUserStatus(io, userId, username, socket.id, status, true);
   });

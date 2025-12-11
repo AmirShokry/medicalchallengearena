@@ -49,10 +49,25 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
   }
 
   socket.on("challenge", async () => {
-    cleanupStaleSessionIfAny();
+    // CRITICAL: Block matchmaking if user is already in a game
+    // This prevents disruption of ongoing games from secondary tabs
+    if (socket.data.isInGame) {
+      console.warn(
+        `[Game] BLOCKED: User ${socket.data.session.username} tried to challenge while already in game`
+      );
+      return;
+    }
 
-    if (socket.data.isInGame)
-      throw new Error("Cannot start a challenge while being in a game");
+    // Only cleanup stale sessions if this is NOT a secondary tab
+    // Secondary tabs should never affect the primary game
+    if (!socket.data.isSecondaryTab) {
+      cleanupStaleSessionIfAny();
+    } else {
+      console.warn(
+        `[Game] BLOCKED: Secondary tab for ${socket.data.session.username} tried to initiate challenge`
+      );
+      return;
+    }
 
     const currentSocketRooms = socket.rooms;
 
@@ -106,7 +121,31 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
   });
 
   socket.on("userSentInvitation", async (data) => {
-    cleanupStaleSessionIfAny();
+    // CRITICAL: Block invitation if user is already in a game
+    if (socket.data.isInGame) {
+      console.warn(
+        `[Game] BLOCKED: User ${socket.data.session.username} tried to send invitation while already in game`
+      );
+      io.to(socket?.id).emit("invitationValidated", {
+        canInvite: false,
+        reason: "You are already in a game",
+      });
+      return;
+    }
+
+    // Only cleanup stale sessions if this is NOT a secondary tab
+    if (!socket.data.isSecondaryTab) {
+      cleanupStaleSessionIfAny();
+    } else {
+      console.warn(
+        `[Game] BLOCKED: Secondary tab for ${socket.data.session.username} tried to send invitation`
+      );
+      io.to(socket?.id).emit("invitationValidated", {
+        canInvite: false,
+        reason: "Cannot send invitations from secondary tab",
+      });
+      return;
+    }
 
     // Validate that the target user can be invited (online and not busy)
     const inviteCheck = canInviteUser(data?.id);
@@ -136,6 +175,9 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
         socket.data.isInGame = friendSocket.data.isInGame = true;
         socket.data.opponentSocket = friendSocket;
         friendSocket.data.opponentSocket = socket;
+
+        // Remove invited user from the random matchmaking queue if they were in it
+        friendSocket.leave("waiting");
 
         // Update both users' presence to busy (invitation pending)
         await notifyUserBusy(
@@ -344,7 +386,16 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
     }
   });
 
-  socket.on("userJoinedWaitingRoom", () => socket.join("waiting"));
+  socket.on("userJoinedWaitingRoom", () => {
+    // CRITICAL: Don't join waiting room if user is already in game or is secondary tab
+    if (socket.data.isInGame || socket.data.isSecondaryTab) {
+      console.warn(
+        `[Game] BLOCKED: User ${socket.data.session.username} tried to join waiting room while in game or from secondary tab`
+      );
+      return;
+    }
+    socket.join("waiting");
+  });
   socket.on("userSelected", (data) => {
     const opponentId = socket.data.opponentSocket!?.id;
     socket.to(opponentId).emit("opponentSelected", data);

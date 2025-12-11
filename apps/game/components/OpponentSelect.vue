@@ -20,6 +20,13 @@ const resetInviteDialogState = () => {
 function handleFindMatch() {
   if ($$game.flags.matchmaking.isMatchFound) return;
 
+  // CRITICAL: Block find match if user is already in a game
+  if ($$game.flags.ingame.isGameStarted) {
+    console.warn("[OpponentSelect] BLOCKED: Tried to find match while in game");
+    toast.error("You are already in a game");
+    return;
+  }
+
   audio.find_match.play();
   $$game["~resetEverything"]();
   $$game.flags.matchmaking.isFindingMatch = true;
@@ -35,8 +42,7 @@ function cancelFindMatchQueue() {
   $$game.flags.matchmaking.isMatchFound = false;
   $$game.flags.matchmaking.isInvitationSent = false;
   $$game.data.invitedId = -1;
-  // Reset status back to online since user left the random queue
-  social.setStatus("online");
+  // Don't change status - user is still on matchmaking page so stays "matchmaking"
 }
 
 function handleOpenInviteFriendDialog() {
@@ -55,6 +61,15 @@ function handleFriendSelected(friendId: number) {
 
 async function handleInvitaionSent() {
   if (!selectedFriendId.value || isCheckingInvite.value) return;
+
+  // CRITICAL: Block invitation if user is already in a game
+  if ($$game.flags.ingame.isGameStarted) {
+    console.warn(
+      "[OpponentSelect] BLOCKED: Tried to send invitation while in game"
+    );
+    toast.error("You are already in a game");
+    return;
+  }
 
   // Ensure any random queue is cancelled before sending manual invitation
   cancelFindMatchQueue();
@@ -102,7 +117,10 @@ async function handleInvitaionSent() {
 const canFindMatch = computed(
   () =>
     !(
-      $$game.flags.matchmaking.isInviting || $$game.players.user.flags.isInvited
+      $$game.flags.matchmaking.isInviting ||
+      $$game.players.user.flags.isInvited ||
+      // CRITICAL: Disable find match if user is already in a game
+      $$game.flags.ingame.isGameStarted
     )
 );
 const canInviteFriend = computed(
@@ -111,7 +129,9 @@ const canInviteFriend = computed(
       $$game.flags.matchmaking.isFindingMatch ||
       $$game.flags.matchmaking.isMatchFound ||
       $$game.flags.matchmaking.isInvitationSent ||
-      $$game.players.user.flags.isInvited
+      $$game.players.user.flags.isInvited ||
+      // CRITICAL: Disable invite if user is already in a game
+      $$game.flags.ingame.isGameStarted
     )
 );
 

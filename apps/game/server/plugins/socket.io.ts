@@ -283,6 +283,14 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
     });
 
     socket.on("userLeft", async () => {
+      // CRITICAL: Secondary tabs should NEVER affect the primary game session
+      if (socket.data.isSecondaryTab) {
+        console.warn(
+          `[Game] BLOCKED: Secondary tab for ${socket.data.session?.username} tried to leave game`
+        );
+        return;
+      }
+
       socket.leave(socket?.data?.roomName);
       socket.leave("waiting");
 
@@ -309,13 +317,9 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
           socket.data.session.id,
           socket.data.session.username
         );
-      } else {
-        // Not in game: ensure presence resets to online when leaving queue/invite
-        await notifyGameEnded(
-          socket.data.session.id,
-          socket.data.session.username
-        );
       }
+      // If not in game (just leaving queue/invite), don't change status
+      // User is still on matchmaking page, so they stay "matchmaking"
     });
 
     // Register matchmaking handlers

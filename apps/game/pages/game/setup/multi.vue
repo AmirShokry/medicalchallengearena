@@ -21,9 +21,15 @@ const searchQuery = ref("");
 const matchmaking = useMatchMakingStore();
 matchmaking.state = "idle";
 
-// Set user status to matchmaking
+// Set user status to matchmaking (only if not already in game)
 const social = useSocial();
-nextTick(() => social.setStatus("matchmaking"));
+nextTick(() => {
+  // CRITICAL: Don't change status to matchmaking if user is already in game
+  // This prevents secondary tabs from disrupting ongoing games
+  if (!$$game.flags.ingame.isGameStarted) {
+    social.setStatus("matchmaking");
+  }
+});
 
 const data = ref([] as MatchingSystemCategories);
 const counters = ref(
