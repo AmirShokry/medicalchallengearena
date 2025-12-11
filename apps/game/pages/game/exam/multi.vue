@@ -257,12 +257,20 @@ function endGame() {
   }
   savePlayersData();
   user.records.stats.totalTimeSpentMs = user.records.data.reduce(
-    (acc, record) => acc + record.timeSpentMs! || 0,
+    (acc, record) => acc + (record.timeSpentMs ?? 0),
     0
   );
-  if (!hasRecordBeenSent.value) {
+
+  if (!hasRecordBeenSent.value && $$game.gameId) {
+    console.log("[Multi] Saving game stats:", {
+      gameId: $$game.gameId,
+      stats: user.records.stats,
+      dataLength: user.records.data.length,
+    });
     gameSocket.emit("userFinishedGame", $$game.gameId!, user.records);
     hasRecordBeenSent.value = true;
+  } else if (!$$game.gameId) {
+    console.error("[Multi] No game ID found, cannot save stats");
   }
 }
 

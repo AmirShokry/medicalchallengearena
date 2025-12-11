@@ -103,6 +103,8 @@ export namespace ToClientIO {
       isMaster: boolean;
       hasSolved: boolean;
       finalStats: { totalMedpoints: number; totalTimeSpentMs: number };
+      /** True if this socket was opened while user already has another tab in a game */
+      isSecondaryTab?: boolean;
     }
   }
   export namespace Social {

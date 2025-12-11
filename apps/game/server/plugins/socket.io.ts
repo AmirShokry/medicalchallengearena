@@ -154,13 +154,33 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
       `[Game] User ${socket.data.session.username} (${socket.data.session.id}) connected - SID: ${socket.id}`
     );
 
-    // Register this socket in the user ID mapping for reliable lookup
     const userId = socket.data.session.id;
     const previousSocketId = userIdToGameSocketId.get(userId);
-    userIdToGameSocketId.set(userId, socket.id);
+    const previousSocket = previousSocketId
+      ? gameIO.sockets.get(previousSocketId)
+      : undefined;
 
-    // Check if this is a reconnection during an active game
-    if (previousSocketId && previousSocketId !== socket.id) {
+    // Check if user has an existing socket that's in a game
+    const isExistingSocketInGame = previousSocket?.data?.isInGame === true;
+
+    if (isExistingSocketInGame) {
+      // Don't replace the in-game socket - this is likely a new tab
+      // Mark this socket as a secondary connection
+      socket.data.isSecondaryTab = true;
+      console.log(
+        `[Game] User ${socket.data.session.username} opened new tab while in game. Keeping original socket ${previousSocketId}`
+      );
+    } else {
+      // No active game - safe to register this as the primary socket
+      userIdToGameSocketId.set(userId, socket.id);
+    }
+
+    // Check if this is a reconnection during an active game (same user, new socket, no existing in-game socket)
+    if (
+      previousSocketId &&
+      previousSocketId !== socket.id &&
+      !isExistingSocketInGame
+    ) {
       console.log(
         `[Game] User ${socket.data.session.username} reconnected with new socket ID: ${socket.id} (was: ${previousSocketId})`
       );
@@ -208,6 +228,14 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
       console.log(
         `[Game] User ${socket.data.session?.username} - SID: (${socket.id}) disconnected from game server. Reason: ${reason}`
       );
+
+      // If this is a secondary tab (opened while in game), ignore its disconnect
+      if (socket.data.isSecondaryTab) {
+        console.log(
+          `[Game] Secondary tab disconnected for ${socket.data.session?.username}, ignoring`
+        );
+        return;
+      }
 
       // Only remove from mapping if this is still the current socket for the user
       // This prevents removing the mapping when an old socket disconnects after reconnection

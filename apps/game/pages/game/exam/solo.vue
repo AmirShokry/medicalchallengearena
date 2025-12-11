@@ -140,15 +140,31 @@ async function handleGameFinished() {
   }
   savePlayersDataLocally();
   user.records.stats.totalTimeSpentMs = user.records.data.reduce(
-    (acc, record) => acc + record.timeSpentMs! || 0,
+    (acc, record) => acc + (record.timeSpentMs ?? 0),
     0
   );
-  if (!$$game.gameId) throw new Error("No game found");
 
-  await $trpc.exam.endGame.mutate({
-    gameId: $$game.gameId!,
-    record: user.records,
-  });
+  if (!$$game.gameId) {
+    console.error("[Solo] No game ID found, cannot save stats");
+    return;
+  }
+
+  try {
+    console.log("[Solo] Saving game stats:", {
+      gameId: $$game.gameId,
+      stats: user.records.stats,
+      dataLength: user.records.data.length,
+    });
+
+    await $trpc.exam.endGame.mutate({
+      gameId: $$game.gameId!,
+      record: user.records,
+    });
+
+    console.log("[Solo] Game stats saved successfully");
+  } catch (error) {
+    console.error("[Solo] Failed to save game stats:", error);
+  }
 }
 
 function handleNext() {

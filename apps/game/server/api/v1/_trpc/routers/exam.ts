@@ -99,7 +99,7 @@ export const exam = createTRPCRouter({
         .update(users_games)
         .set({
           data: serverData,
-          durationMs: input.record.stats.totalTimeSpentMs,
+          durationMs: Math.round(input.record.stats.totalTimeSpentMs),
         })
         .where(
           and(

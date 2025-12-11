@@ -285,7 +285,7 @@ export function registerMatchEvents(socket: GameSocket, io: GameIO) {
       .update(users_games)
       .set({
         data: serverData,
-        durationMs: records.stats.totalTimeSpentMs,
+        durationMs: Math.round(records.stats.totalTimeSpentMs),
         hasWon: false,
       })
       .where(

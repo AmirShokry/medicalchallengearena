@@ -257,6 +257,8 @@ export function useServerTimer() {
     isPausedInternal = true;
     pausedRemainingMs = calculateRemainingTime();
 
+    console.log(`[Timer] Paused. Remaining time saved: ${pausedRemainingMs}ms`);
+
     if (rafId) {
       cancelAnimationFrame(rafId);
       rafId = null;
@@ -275,13 +277,14 @@ export function useServerTimer() {
   function resume(serverTime?: number, newRemainingMs?: number) {
     if (!isRunning.value || !isPausedInternal) return;
 
-    if (newRemainingMs !== undefined) {
+    if (newRemainingMs !== undefined && newRemainingMs > 0) {
       // Use server-provided remaining time
       initialRemainingMs = newRemainingMs;
-    } else {
+    } else if (pausedRemainingMs > 0) {
       // Use the paused remaining time
       initialRemainingMs = pausedRemainingMs;
     }
+    // If both are 0 or negative, keep the current initialRemainingMs
 
     // Reset local start time
     localStartTime = performance.now();
@@ -295,6 +298,8 @@ export function useServerTimer() {
 
     // Restart backup timeout
     setupBackupTimeout();
+
+    console.log(`[Timer] Resumed. Initial remaining: ${initialRemainingMs}ms`);
   }
 
   /**
