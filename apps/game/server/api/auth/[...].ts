@@ -16,7 +16,8 @@ export const authConfig: AuthOptions = {
         httpOnly: true,
         sameSite: "lax",
         path: "/",
-        secure: process.env.NODE_ENV === "production",
+        // Set secure: false if not using HTTPS (e.g., NUXT_AUTH_ORIGIN starts with http://)
+        secure: process.env.NUXT_AUTH_ORIGIN?.startsWith("https://") ?? false,
       },
     },
   },
