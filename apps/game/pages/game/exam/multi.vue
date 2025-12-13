@@ -9,6 +9,7 @@ import { gameSocket } from "../../../components/socket";
 import getGameData from "../../../components/Exam/index";
 import { LogOutIcon as ExitIcon } from "lucide-vue-next";
 import useSocial from "@/composables/useSocial";
+import { useGameReconnection } from "@/composables/useGameReconnection";
 
 definePageMeta({
   layout: "blank",
@@ -37,8 +38,22 @@ const {
   userStatus,
 } = getGameData();
 
-// Track if opponent is temporarily disconnected (waiting for reconnection)
-const isOpponentReconnecting = ref(false);
+// Setup reconnection handling
+const {
+  isReconnecting,
+  isOpponentAway,
+  isOpponentDisconnected,
+  setupReconnection,
+  cleanupReconnection,
+  restoreGameState,
+} = useGameReconnection();
+
+// Computed property for opponent connection display status
+const opponentConnectionStatus = computed(() => {
+  if (isOpponentDisconnected.value) return "reconnecting";
+  if (isOpponentAway.value) return "away";
+  return "connected";
+});
 
 onMounted(() => {
   flags.matchmaking["~reset"]();
@@ -47,6 +62,9 @@ onMounted(() => {
   user.flags.hasAccepted = false;
   opponent.flags.hasAccepted = false;
   flags.ingame.isGameStarted = true;
+
+  // Setup reconnection listeners
+  setupReconnection();
 
   // Timer events are disabled - no timeout functionality
   gameSocket.on("questionStarted", (_data) => {
@@ -64,17 +82,19 @@ onMounted(() => {
     // No-op - pause disabled
   });
 
-  // Handle opponent temporary disconnect - don't pause, just log
-  gameSocket.on("opponentDisconnected", (data) => {
-    console.log(`[Multi] Opponent disconnected: ${data.reason}`);
-    isOpponentReconnecting.value = true;
-    // Don't pause - let game continue
-  });
-
-  // Handle opponent reconnection
-  gameSocket.on("opponentReconnected", () => {
-    console.log("[Multi] Opponent reconnected!");
-    isOpponentReconnecting.value = false;
+  // Handle game session restoration (in case we reconnect while already on this page)
+  gameSocket.on("gameSessionRestored", (data) => {
+    console.log("[Multi] Game session restored:", data);
+    if (data.gameState) {
+      restoreGameState(data.gameState);
+      // Update current question position
+      current.caseIdx = data.gameState.userProgress.currentCaseIdx;
+      current.questionIdx = data.gameState.userProgress.currentQuestionIdx;
+      current.questionNumber =
+        data.gameState.userProgress.currentQuestionNumber;
+      lastReachedQuestionNumber.value =
+        data.gameState.userProgress.currentQuestionNumber;
+    }
   });
 });
 
@@ -231,12 +251,15 @@ onBeforeUnmount(() => {
     gameSocket.emit("userFinishedGame", $$game.gameId!, user.records);
     hasRecordBeenSent.value = true;
   }
+
+  // Cleanup reconnection handlers
+  cleanupReconnection();
+
   gameSocket.off("gamePaused");
   gameSocket.off("gameResumed");
   gameSocket.off("opponentSolved");
-  gameSocket.off("opponentDisconnected");
-  gameSocket.off("opponentReconnected");
   gameSocket.off("questionStarted");
+  gameSocket.off("gameSessionRestored");
   user.timer.destroy();
   opponent.timer.destroy();
   $$game["~resetEverything"]();
@@ -247,6 +270,40 @@ onBeforeUnmount(() => {
 </script>
 <template>
   <BeforeGameAnimation v-if="!hasAnimationEnded" @end="startGame" />
+
+  <!-- Reconnecting overlay -->
+  <div
+    v-if="isReconnecting"
+    class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center"
+  >
+    <div class="bg-background rounded-lg p-6 text-center shadow-xl">
+      <div
+        class="animate-spin w-8 h-8 border-4 border-primary border-t-transparent rounded-full mx-auto mb-4"
+      ></div>
+      <p class="text-lg font-semibold">Reconnecting...</p>
+      <p class="text-sm text-muted-foreground mt-2">
+        Please wait while we restore your game
+      </p>
+    </div>
+  </div>
+
+  <!-- Opponent connection status banner -->
+  <div
+    v-if="
+      opponentConnectionStatus === 'reconnecting' && !opponent.flags.hasLeft
+    "
+    class="fixed top-0 flex items-center justify-center w-full z-40 text-center py-2 text-sm font-medium"
+  >
+    <span
+      class="flex items-center bg-amber-400 justify-center text-primary-foreground gap w-fit p-2 rounded-sm"
+    >
+      <div
+        class="animate-spin w-4 h-4 border-2 border-primray border-t-transparent rounded-full"
+      ></div>
+      &nbsp; Opponent is reconnecting..
+    </span>
+  </div>
+
   <ExitIcon
     :size="18"
     color="#8b0000"
@@ -257,7 +314,7 @@ onBeforeUnmount(() => {
       message: 'Are you sure you want to leave the game?',
     }"
   />
-  <div class="w-full h-full flex flex-col pb-4">
+  <div class="w-full h-full flex flex-col pb-4 pt-8">
     <div class="flex justify-between mb-3 py-2 px-6">
       <UserInfo
         :username="user.info.username"

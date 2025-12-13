@@ -15,6 +15,7 @@ import {
   updateUserGameStatus,
   getUserSocialSocketId,
 } from "./invitation";
+import { initializeGameState, cleanupGameState } from "./game-state-manager";
 
 const { users_cases, games, users_games } = db.table;
 
@@ -42,8 +43,9 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
       }
     }
 
-    // Unregister session and reset local state
+    // Unregister session, cleanup game state, and reset local state
     unregisterGameSession(roomName);
+    cleanupGameState(roomName);
     socket.leave(roomName);
     socket.helpers.reset();
   }
@@ -333,6 +335,15 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
       socket.data.session?.id,
       opponentSocket.data.session?.id,
       gameId
+    );
+
+    // Initialize game state with cases data for reconnection support
+    initializeGameState(
+      roomName,
+      gameId,
+      socket.data.session?.id,
+      opponentSocket.data.session?.id,
+      cases
     );
 
     io.to(roomName).emit("gameStarted", { cases, gameId });

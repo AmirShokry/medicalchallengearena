@@ -60,7 +60,34 @@ export namespace ToClientIO {
         roomName: string;
         gameId: number;
         opponentConnected: boolean;
+        /** Full game state for restoration */
+        gameState?: {
+          cases: Cases;
+          userProgress: {
+            currentCaseIdx: number;
+            currentQuestionIdx: number;
+            currentQuestionNumber: number;
+            records: RecordObject;
+          };
+          opponentProgress: {
+            records: RecordObject;
+          };
+        };
       }) => void;
+      /** Request game state from opponent (sent by reconnecting user) */
+      requestGameState: () => void;
+      /** Provide game state to reconnecting user */
+      provideGameState: (data: {
+        currentCaseIdx: number;
+        currentQuestionIdx: number;
+        currentQuestionNumber: number;
+        userRecords: RecordObject;
+        opponentRecords: RecordObject;
+      }) => void;
+      /** Opponent is temporarily away (tab hidden/minimized) */
+      opponentAway: () => void;
+      /** Opponent is back (tab visible again) */
+      opponentBack: () => void;
       gameStarted: (data: { cases: Cases; gameId: number }) => void;
       opponentSolved: (
         data: RecordObject["data"][0],
@@ -234,6 +261,19 @@ export namespace ToServerIO {
           status: string;
         }) => void
       ) => void;
+      /** Request game state restoration after reconnection */
+      requestGameStateRestore: () => void;
+      /** Provide game state to server for reconnecting opponent */
+      provideGameStateToServer: (data: {
+        currentCaseIdx: number;
+        currentQuestionIdx: number;
+        currentQuestionNumber: number;
+        records: RecordObject;
+      }) => void;
+      /** Notify server that user is away (tab hidden) */
+      userAway: () => void;
+      /** Notify server that user is back (tab visible) */
+      userBack: () => void;
     }
   }
 
@@ -296,8 +336,6 @@ export namespace ToServerIO {
   export namespace Default {
     export interface Events {
       leaveAll: () => void;
-      /** Keep-alive ping to prevent Cloudflare from dropping idle connections */
-      ping: () => void;
     }
     export interface Data {
       session: AnyUser & DefaultSession["user"];

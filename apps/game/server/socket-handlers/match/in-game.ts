@@ -1,5 +1,9 @@
 import { db, and, eq, sql, inArray } from "@package/database";
 import type { GameIO, GameSocket } from "@/shared/types/socket";
+import {
+  updatePlayerRecords,
+  advanceQuestion as advanceQuestionState,
+} from "./game-state-manager";
 const { users_games, users } = db.table;
 
 /**
@@ -73,6 +77,18 @@ export function registerMatchEvents(socket: GameSocket, io: GameIO) {
 
   socket.on("userSolved", (data, stats) => {
     if (!socket?.data) return "No socket data";
+
+    const roomName = socket.data?.roomName;
+    const userId = socket.data.session?.id;
+
+    // Persist the answer to game state for reconnection support
+    if (roomName && userId) {
+      updatePlayerRecords(roomName, userId, data, stats);
+      console.log(
+        `[Game] Persisted answer for user ${socket.data.session?.username} in room ${roomName}`
+      );
+    }
+
     const opponentSocket = getOpponentSocket(socket, io);
     if (!opponentSocket) {
       console.warn(
@@ -89,6 +105,9 @@ export function registerMatchEvents(socket: GameSocket, io: GameIO) {
   socket.on("advanceQuestion", () => {
     const roomName = socket.data?.roomName;
     if (!roomName) return;
+
+    // Advance question in game state for reconnection support
+    advanceQuestionState(roomName);
 
     const serverTime = Date.now();
 

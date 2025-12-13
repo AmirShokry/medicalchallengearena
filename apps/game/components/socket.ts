@@ -4,27 +4,28 @@ import type { ToClientIO, ToServerIO } from "@/shared/types/socket";
 /**
  * Socket.IO client configuration
  *
- * Note: pingInterval and pingTimeout are SERVER-SIDE only options.
- * The client configuration focuses on reconnection behavior.
- *
- * The server is configured with:
- * - pingInterval: 60s (sends ping every 60 seconds)
- * - pingTimeout: 120s (waits 120 seconds for pong response)
- *
- * This handles browser throttling in background tabs (especially Safari on Mac).
+ * Reconnection Strategy:
+ * - Uses built-in Socket.IO reconnection with exponential backoff
+ * - Reconnection is automatic when connection drops (browser throttling, network issues)
+ * - Game state is preserved on the server and restored on reconnection
+ * - No manual ping/keepalive needed - handled by game state manager
  */
 const socketOptions = {
   withCredentials: true,
   autoConnect: false,
   // Enable reconnection with exponential backoff
   reconnection: true,
-  reconnectionAttempts: Infinity, // Keep trying indefinitely
-  reconnectionDelay: 1000, // Start with 1 second
-  reconnectionDelayMax: 30000, // Max 30 seconds between attempts
+  // Maximum number of reconnection attempts
+  reconnectionAttempts: Infinity,
+  // Initial delay before reconnection attempt (ms)
+  reconnectionDelay: 1000,
+  // Maximum delay between reconnections (ms)
+  reconnectionDelayMax: 5000,
   // Use randomization to prevent thundering herd
   randomizationFactor: 0.5,
   // Timeout for connection attempt
-  timeout: 60000, // 60 seconds connection timeout
+  timeout: 20000,
+
   // Transport configuration - prefer websocket but allow polling fallback
   transports: ["websocket", "polling"] as ("websocket" | "polling")[],
   // Upgrade from polling to websocket when possible

@@ -18,6 +18,13 @@ import {
   findGameSessionByUserId,
   unregisterGameSession,
 } from "../socket-handlers/match/invitation";
+import {
+  findGameStateByUserId,
+  getFullGameStateForReconnection,
+  updatePlayerConnectionState,
+  getOpponentId,
+  cleanupGameState,
+} from "../socket-handlers/match/game-state-manager";
 import { authenticateSocket } from "../socket-handlers/auth.middleware";
 import type {
   ToServerIO,
@@ -107,13 +114,6 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
       `[Social] User ${socket.data.session.username} (${socket.data.session.id}) connected - SID: ${socket.id}`
     );
 
-    // Keep-alive ping handler (prevents Cloudflare from dropping idle connections)
-    socket.on("ping", () => {
-      // console.log(
-      //   `[Social] Received keep-alive ping from ${socket?.data?.session?.username}`
-      // );
-    });
-
     // Handle user presence on connect
     await handleUserConnect(socket, socialIO);
 
@@ -161,13 +161,6 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
       `[Game] User ${socket.data.session.username} (${socket.data.session.id}) connected - SID: ${socket.id}`
     );
 
-    // Keep-alive ping handler (prevents Cloudflare from dropping idle connections)
-    socket.on("ping", () => {
-      // console.log(
-      //   `[Game] Received keep-alive ping from ${socket.data.session.username}`
-      // );
-    });
-
     const userId = socket.data.session.id;
     const previousSocketId = userIdToGameSocketId.get(userId);
     const previousSocket = previousSocketId
@@ -201,11 +194,18 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
 
       // Find and restore any active game session for this user
       const sessionInfo = findGameSessionByUserId(userId);
-      if (sessionInfo) {
+      const gameStateInfo = findGameStateByUserId(userId);
+
+      if (sessionInfo && gameStateInfo) {
         const { roomName, session } = sessionInfo;
+        const { gameState } = gameStateInfo;
+
         console.log(
           `[Game] Restoring game session for ${socket.data.session.username} in room ${roomName}`
         );
+
+        // Update connection state to connected
+        updatePlayerConnectionState(roomName, userId, "connected");
 
         // Restore socket state
         socket.data.roomName = roomName;
@@ -229,14 +229,91 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
           );
         }
 
-        // Emit reconnection event to the reconnected user
+        // Get full game state for restoration
+        const fullGameState = getFullGameStateForReconnection(roomName, userId);
+
+        // Emit reconnection event to the reconnected user with full game state
         socket.emit("gameSessionRestored", {
           roomName,
           gameId: session.gameId,
           opponentConnected: !!opponentSocket,
+          gameState: fullGameState
+            ? {
+                cases: fullGameState.cases,
+                userProgress: {
+                  currentCaseIdx: fullGameState.userProgress.currentCaseIdx,
+                  currentQuestionIdx:
+                    fullGameState.userProgress.currentQuestionIdx,
+                  currentQuestionNumber:
+                    fullGameState.userProgress.currentQuestionNumber,
+                  records: fullGameState.userProgress.records,
+                },
+                opponentProgress: {
+                  records: fullGameState.opponentProgress.records,
+                },
+              }
+            : undefined,
         });
+
+        console.log(
+          `[Game] Sent game state restoration to ${socket.data.session.username}`
+        );
       }
     }
+
+    /**
+     * Handle user away notification (tab hidden/minimized)
+     */
+    socket.on("userAway", () => {
+      if (!socket.data.roomName || !socket.data.isInGame) return;
+
+      updatePlayerConnectionState(
+        socket.data.roomName,
+        socket.data.session?.id,
+        "away"
+      );
+
+      // Notify opponent that user is away
+      const opponentUserId = socket.data.opponentSocket?.data?.session?.id;
+      const opponentSocket = opponentUserId
+        ? getSocketByUserId(opponentUserId)
+        : undefined;
+
+      if (opponentSocket) {
+        opponentSocket.emit("opponentAway");
+      }
+
+      console.log(
+        `[Game] User ${socket.data.session?.username} is away in room ${socket.data.roomName}`
+      );
+    });
+
+    /**
+     * Handle user back notification (tab visible again)
+     */
+    socket.on("userBack", () => {
+      if (!socket.data.roomName || !socket.data.isInGame) return;
+
+      updatePlayerConnectionState(
+        socket.data.roomName,
+        socket.data.session?.id,
+        "connected"
+      );
+
+      // Notify opponent that user is back
+      const opponentUserId = socket.data.opponentSocket?.data?.session?.id;
+      const opponentSocket = opponentUserId
+        ? getSocketByUserId(opponentUserId)
+        : undefined;
+
+      if (opponentSocket) {
+        opponentSocket.emit("opponentBack");
+      }
+
+      console.log(
+        `[Game] User ${socket.data.session?.username} is back in room ${socket.data.roomName}`
+      );
+    });
 
     socket.on("disconnect", async (reason) => {
       console.log(
@@ -267,6 +344,7 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
 
         if (currentOpponentSocket) {
           // Only emit opponentLeft if the disconnect reason indicates a real disconnection
+          // (user intentionally left via navigation or server kicked them)
           // Don't emit for ping timeout if user might reconnect
           if (
             reason === "client namespace disconnect" ||
@@ -275,24 +353,63 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
             currentOpponentSocket.emit("opponentLeft");
             currentOpponentSocket.helpers.reset();
 
-            // Clean up game session
+            // Clean up game session AND game state (user intentionally left)
             if (socket.data.roomName) {
               unregisterGameSession(socket.data.roomName);
+              cleanupGameState(socket.data.roomName);
             }
+
+            socket.helpers.reset();
+
+            // Update presence to online when leaving game
+            await notifyGameEnded(
+              socket.data.session.id,
+              socket.data.session.username
+            );
           } else {
             // For ping timeout or transport close, give the user a chance to reconnect
             // The opponent will be notified via opponentDisconnected instead
+            // DON'T clean up game state - user may reconnect
+            updatePlayerConnectionState(
+              socket.data.roomName,
+              socket.data.session?.id,
+              "disconnected"
+            );
             currentOpponentSocket.emit("opponentDisconnected", { reason });
+
+            console.log(
+              `[Game] User ${socket.data.session?.username} disconnected (${reason}), keeping game state for reconnection`
+            );
+
+            // Don't reset socket helpers or call notifyGameEnded
+            // The user may reconnect and resume the game
+          }
+        } else {
+          // No opponent socket found, but still handle disconnection gracefully
+          if (
+            reason === "client namespace disconnect" ||
+            reason === "server namespace disconnect"
+          ) {
+            if (socket.data.roomName) {
+              unregisterGameSession(socket.data.roomName);
+              cleanupGameState(socket.data.roomName);
+            }
+            socket.helpers.reset();
+            await notifyGameEnded(
+              socket.data.session.id,
+              socket.data.session.username
+            );
+          } else {
+            // Mark as disconnected but keep state
+            if (socket.data.roomName) {
+              updatePlayerConnectionState(
+                socket.data.roomName,
+                socket.data.session?.id,
+                "disconnected"
+              );
+            }
           }
         }
-
-        socket.helpers.reset();
-
-        // Update presence to online when leaving game
-        await notifyGameEnded(
-          socket.data.session.id,
-          socket.data.session.username
-        );
       }
     });
 
@@ -320,8 +437,10 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
           opponentSocket.helpers.reset();
         }
 
+        // Clean up both game session AND game state (user explicitly left)
         if (socket.data.roomName) {
           unregisterGameSession(socket.data.roomName);
+          cleanupGameState(socket.data.roomName);
         }
 
         socket.helpers.reset();
@@ -371,6 +490,7 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
 
       if (socket.data.roomName) {
         unregisterGameSession(socket.data.roomName);
+        cleanupGameState(socket.data.roomName);
       }
 
       socket.helpers.reset();
