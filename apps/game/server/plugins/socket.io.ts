@@ -179,86 +179,102 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
       );
     } else {
       // No active game - safe to register this as the primary socket
+      // Always update the mapping to the new socket
       userIdToGameSocketId.set(userId, socket.id);
     }
 
-    // Check if this is a reconnection during an active game (same user, new socket, no existing in-game socket)
-    if (
-      previousSocketId &&
-      previousSocketId !== socket.id &&
-      !isExistingSocketInGame
-    ) {
+    // Check if this user has an active game session (either reconnection or fresh connection)
+    const sessionInfo = findGameSessionByUserId(userId);
+    const gameStateInfo = findGameStateByUserId(userId);
+
+    // If user has an active game session, restore it
+    if (sessionInfo && gameStateInfo && !isExistingSocketInGame) {
+      const { roomName, session } = sessionInfo;
+      const { gameState } = gameStateInfo;
+
       console.log(
-        `[Game] User ${socket.data.session.username} reconnected with new socket ID: ${socket.id} (was: ${previousSocketId})`
+        `[Game] Restoring game session for ${socket.data.session.username} in room ${roomName}`
       );
 
-      // Find and restore any active game session for this user
-      const sessionInfo = findGameSessionByUserId(userId);
-      const gameStateInfo = findGameStateByUserId(userId);
+      // Update connection state to connected
+      updatePlayerConnectionState(roomName, userId, "connected");
 
-      if (sessionInfo && gameStateInfo) {
-        const { roomName, session } = sessionInfo;
-        const { gameState } = gameStateInfo;
+      // Restore socket state
+      socket.data.roomName = roomName;
+      socket.data.isInGame = true;
+      socket.join(roomName);
 
-        console.log(
-          `[Game] Restoring game session for ${socket.data.session.username} in room ${roomName}`
-        );
+      // Get the opponent's user ID from the session
+      const opponentId =
+        session.player1Id === userId ? session.player2Id : session.player1Id;
 
-        // Update connection state to connected
-        updatePlayerConnectionState(roomName, userId, "connected");
+      // Find opponent socket - they might have also reconnected
+      let opponentSocket: ReturnType<typeof getSocketByUserId> = undefined;
 
-        // Restore socket state
-        socket.data.roomName = roomName;
-        socket.data.isInGame = true;
-        socket.join(roomName);
+      // First try the userIdToGameSocketId mapping
+      opponentSocket = getSocketByUserId(opponentId);
 
-        // Get the opponent's current socket
-        const opponentId =
-          session.player1Id === userId ? session.player2Id : session.player1Id;
-        const opponentSocket = getSocketByUserId(opponentId);
-
-        if (opponentSocket) {
-          // Re-link the sockets bidirectionally
-          socket.data.opponentSocket = opponentSocket;
-          opponentSocket.data.opponentSocket = socket;
-
-          // Notify the opponent that the user has reconnected
-          opponentSocket.emit("opponentReconnected");
-          console.log(
-            `[Game] Re-linked ${socket.data.session.username} with opponent ${opponentSocket.data.session.username}`
-          );
+      // If not found, search through all connected sockets
+      if (!opponentSocket) {
+        for (const [, connectedSocket] of gameIO.sockets) {
+          if (connectedSocket.data?.session?.id === opponentId) {
+            opponentSocket = connectedSocket;
+            // Update the mapping
+            userIdToGameSocketId.set(opponentId, connectedSocket.id);
+            break;
+          }
         }
+      }
 
-        // Get full game state for restoration
-        const fullGameState = getFullGameStateForReconnection(roomName, userId);
+      if (opponentSocket) {
+        // Re-link the sockets bidirectionally
+        socket.data.opponentSocket = opponentSocket;
+        opponentSocket.data.opponentSocket = socket;
 
-        // Emit reconnection event to the reconnected user with full game state
-        socket.emit("gameSessionRestored", {
-          roomName,
-          gameId: session.gameId,
-          opponentConnected: !!opponentSocket,
-          gameState: fullGameState
-            ? {
-                cases: fullGameState.cases,
-                userProgress: {
-                  currentCaseIdx: fullGameState.userProgress.currentCaseIdx,
-                  currentQuestionIdx:
-                    fullGameState.userProgress.currentQuestionIdx,
-                  currentQuestionNumber:
-                    fullGameState.userProgress.currentQuestionNumber,
-                  records: fullGameState.userProgress.records,
-                },
-                opponentProgress: {
-                  records: fullGameState.opponentProgress.records,
-                },
-              }
-            : undefined,
-        });
-
+        // Notify the opponent that the user has reconnected
+        opponentSocket.emit("opponentReconnected");
         console.log(
-          `[Game] Sent game state restoration to ${socket.data.session.username}`
+          `[Game] Re-linked ${socket.data.session.username} with opponent ${opponentSocket.data.session?.username}`
+        );
+      } else {
+        console.log(
+          `[Game] Opponent (ID: ${opponentId}) not currently connected for user ${socket.data.session.username}`
         );
       }
+
+      // Get full game state for restoration
+      const fullGameState = getFullGameStateForReconnection(roomName, userId);
+
+      // Emit reconnection event to the reconnected user with full game state
+      socket.emit("gameSessionRestored", {
+        roomName,
+        gameId: session.gameId,
+        opponentConnected: !!opponentSocket,
+        gameState: fullGameState
+          ? {
+              cases: fullGameState.cases,
+              userProgress: {
+                currentCaseIdx: fullGameState.userProgress.currentCaseIdx,
+                currentQuestionIdx:
+                  fullGameState.userProgress.currentQuestionIdx,
+                currentQuestionNumber:
+                  fullGameState.userProgress.currentQuestionNumber,
+                records: fullGameState.userProgress.records,
+                hasSolved: fullGameState.userProgress.hasSolved,
+              },
+              opponentProgress: {
+                records: fullGameState.opponentProgress.records,
+                hasSolved: fullGameState.opponentProgress.hasSolved,
+                currentQuestionNumber:
+                  fullGameState.opponentProgress.currentQuestionNumber,
+              },
+            }
+          : undefined,
+      });
+
+      console.log(
+        `[Game] Sent game state restoration to ${socket.data.session.username}`
+      );
     }
 
     /**
@@ -328,12 +344,6 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
         return;
       }
 
-      // Only remove from mapping if this is still the current socket for the user
-      // This prevents removing the mapping when an old socket disconnects after reconnection
-      if (userIdToGameSocketId.get(socket.data.session?.id) === socket.id) {
-        userIdToGameSocketId.delete(socket.data.session?.id);
-      }
-
       // Clean up game state if user was in a game
       if (socket?.data.isInGame && socket.data.opponentSocket) {
         // Use user ID to find opponent's current socket (handles reconnection case)
@@ -359,6 +369,13 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
               cleanupGameState(socket.data.roomName);
             }
 
+            // Only remove from mapping if this is a real disconnection
+            if (
+              userIdToGameSocketId.get(socket.data.session?.id) === socket.id
+            ) {
+              userIdToGameSocketId.delete(socket.data.session?.id);
+            }
+
             socket.helpers.reset();
 
             // Update presence to online when leaving game
@@ -369,7 +386,7 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
           } else {
             // For ping timeout or transport close, give the user a chance to reconnect
             // The opponent will be notified via opponentDisconnected instead
-            // DON'T clean up game state - user may reconnect
+            // DON'T clean up game state or socket mapping - user may reconnect
             updatePlayerConnectionState(
               socket.data.roomName,
               socket.data.session?.id,
@@ -381,7 +398,7 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
               `[Game] User ${socket.data.session?.username} disconnected (${reason}), keeping game state for reconnection`
             );
 
-            // Don't reset socket helpers or call notifyGameEnded
+            // Don't reset socket helpers, don't delete userIdToGameSocketId, don't call notifyGameEnded
             // The user may reconnect and resume the game
           }
         } else {
@@ -394,13 +411,21 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
               unregisterGameSession(socket.data.roomName);
               cleanupGameState(socket.data.roomName);
             }
+
+            // Only remove from mapping if this is a real disconnection
+            if (
+              userIdToGameSocketId.get(socket.data.session?.id) === socket.id
+            ) {
+              userIdToGameSocketId.delete(socket.data.session?.id);
+            }
+
             socket.helpers.reset();
             await notifyGameEnded(
               socket.data.session.id,
               socket.data.session.username
             );
           } else {
-            // Mark as disconnected but keep state
+            // Mark as disconnected but keep state and mapping
             if (socket.data.roomName) {
               updatePlayerConnectionState(
                 socket.data.roomName,
@@ -409,6 +434,11 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
               );
             }
           }
+        }
+      } else {
+        // User was not in a game - safe to remove from mapping
+        if (userIdToGameSocketId.get(socket.data.session?.id) === socket.id) {
+          userIdToGameSocketId.delete(socket.data.session?.id);
         }
       }
     });
@@ -477,30 +507,18 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
       `[Game] User ${socket?.data.session?.username} left room ${room}`
     );
 
-    if (socket?.data.isInGame) {
-      const opponentUserId = socket.data.opponentSocket?.data?.session?.id;
-      const opponentSocket = opponentUserId
-        ? getSocketByUserId(opponentUserId)
-        : undefined;
-
-      if (opponentSocket) {
-        opponentSocket.emit("opponentLeft");
-        opponentSocket.helpers.reset();
-      }
-
-      if (socket.data.roomName) {
-        unregisterGameSession(socket.data.roomName);
-        cleanupGameState(socket.data.roomName);
-      }
-
-      socket.helpers.reset();
-
-      // Update presence when leaving game room
-      await notifyGameEnded(
-        socket.data.session.id,
-        socket.data.session.username
-      );
-    }
+    // NOTE: We intentionally do NOT handle game cleanup here.
+    // When a socket disconnects (including ping timeout), it automatically leaves all rooms.
+    // Game cleanup is handled in the 'disconnect' event handler, which properly distinguishes
+    // between intentional disconnects (emit opponentLeft) and temporary disconnects like
+    // ping timeout (emit opponentDisconnected, keep state for reconnection).
+    //
+    // Handling cleanup here would break reconnection because:
+    // 1. Ping timeout disconnect -> socket leaves room -> this handler fires
+    // 2. We'd emit opponentLeft and clean up state
+    // 3. User can't reconnect because state was destroyed
+    //
+    // The 'userLeft' event handler also properly cleans up when user explicitly leaves.
   });
 
   nitroApp.router.use(

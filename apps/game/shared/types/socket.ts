@@ -68,9 +68,12 @@ export namespace ToClientIO {
             currentQuestionIdx: number;
             currentQuestionNumber: number;
             records: RecordObject;
+            hasSolved?: boolean;
           };
           opponentProgress: {
             records: RecordObject;
+            hasSolved?: boolean;
+            currentQuestionNumber?: number;
           };
         };
       }) => void;

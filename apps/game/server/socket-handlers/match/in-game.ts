@@ -3,6 +3,8 @@ import type { GameIO, GameSocket } from "@/shared/types/socket";
 import {
   updatePlayerRecords,
   advanceQuestion as advanceQuestionState,
+  getOpponentId,
+  findGameStateByUserId,
 } from "./game-state-manager";
 const { users_games, users } = db.table;
 
@@ -20,24 +22,62 @@ export function cleanupRoomTimer(_roomName: string): void {
 
 /**
  * Helper function to get the current socket for the opponent
- * This uses the user ID to look up the socket, handling reconnection scenarios
- * where the socket reference might be stale
+ * Uses multiple strategies to find the opponent:
+ * 1. First try the cached opponentSocket reference
+ * 2. Then try looking up by opponent's user ID from game state
+ * 3. Finally iterate through connected sockets
  */
 function getOpponentSocket(
   socket: GameSocket,
   io: GameIO
 ): GameSocket | undefined {
-  if (!socket?.data?.opponentSocket?.data?.session?.id) return undefined;
+  const userId = socket.data.session?.id;
+  const roomName = socket.data?.roomName;
 
-  const opponentUserId = socket.data.opponentSocket.data.session.id;
+  if (!userId || !roomName) return undefined;
 
-  // Look up opponent by iterating through connected sockets
-  // This ensures we get the current socket even after reconnection
-  for (const [, connectedSocket] of io.sockets) {
-    if (connectedSocket.data?.session?.id === opponentUserId) {
-      // Update the cached reference to the current socket
-      socket.data.opponentSocket = connectedSocket as GameSocket;
-      return connectedSocket as GameSocket;
+  // Strategy 1: Try to get opponent ID from game state manager (most reliable)
+  const opponentUserId = getOpponentId(roomName, userId);
+
+  if (opponentUserId) {
+    // Look up opponent by iterating through connected sockets
+    for (const [, connectedSocket] of io.sockets) {
+      if (connectedSocket.data?.session?.id === opponentUserId) {
+        // Update the cached reference to the current socket
+        socket.data.opponentSocket = connectedSocket as GameSocket;
+        return connectedSocket as GameSocket;
+      }
+    }
+  }
+
+  // Strategy 2: Fallback to cached opponentSocket reference
+  if (socket?.data?.opponentSocket?.data?.session?.id) {
+    const cachedOpponentUserId = socket.data.opponentSocket.data.session.id;
+
+    // Look up opponent by iterating through connected sockets
+    for (const [, connectedSocket] of io.sockets) {
+      if (connectedSocket.data?.session?.id === cachedOpponentUserId) {
+        // Update the cached reference to the current socket
+        socket.data.opponentSocket = connectedSocket as GameSocket;
+        return connectedSocket as GameSocket;
+      }
+    }
+  }
+
+  // Strategy 3: Try finding through game state by user ID
+  const gameStateInfo = findGameStateByUserId(userId);
+  if (gameStateInfo) {
+    const { gameState } = gameStateInfo;
+    const opponentId =
+      gameState.player1Id === userId
+        ? gameState.player2Id
+        : gameState.player1Id;
+
+    for (const [, connectedSocket] of io.sockets) {
+      if (connectedSocket.data?.session?.id === opponentId) {
+        socket.data.opponentSocket = connectedSocket as GameSocket;
+        return connectedSocket as GameSocket;
+      }
     }
   }
 
@@ -89,14 +129,24 @@ export function registerMatchEvents(socket: GameSocket, io: GameIO) {
       );
     }
 
-    const opponentSocket = getOpponentSocket(socket, io);
-    if (!opponentSocket) {
-      console.warn(
-        `[Game] Cannot emit userSolved - opponent socket not found for user ${socket.data.session?.username}`
+    // Emit to the room, excluding the sender (so opponent receives it)
+    // This works even if opponent reconnected with a different socket ID
+    if (roomName) {
+      socket.to(roomName).emit("opponentSolved", data, stats);
+      console.log(
+        `[Game] Emitted opponentSolved to room ${roomName} (excluding sender ${socket.data.session?.username})`
       );
-      return;
+    } else {
+      // Fallback: try to find opponent socket directly
+      const opponentSocket = getOpponentSocket(socket, io);
+      if (opponentSocket) {
+        io.to(opponentSocket.id).emit("opponentSolved", data, stats);
+      } else {
+        console.warn(
+          `[Game] Cannot emit userSolved - no room and opponent socket not found for user ${socket.data.session?.username}`
+        );
+      }
     }
-    io.to(opponentSocket.id).emit("opponentSolved", data, stats);
   });
 
   /**

@@ -94,6 +94,19 @@ onMounted(() => {
         data.gameState.userProgress.currentQuestionNumber;
       lastReachedQuestionNumber.value =
         data.gameState.userProgress.currentQuestionNumber;
+
+      // If user had already solved this question, restore that state
+      if (data.gameState.userProgress.hasSolved) {
+        user.flags.hasSolved = true;
+        user.timer.stop();
+        canViewAnswer.value = true;
+      }
+
+      // If opponent had already solved this question, restore that state
+      if (data.gameState.opponentProgress.hasSolved) {
+        opponent.flags.hasSolved = true;
+        opponent.timer.stop();
+      }
     }
   });
 });

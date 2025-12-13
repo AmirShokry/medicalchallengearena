@@ -84,9 +84,12 @@ export function useGameReconnection() {
       currentQuestionIdx: number;
       currentQuestionNumber: number;
       records: RecordObject;
+      hasSolved?: boolean;
     };
     opponentProgress: {
       records: RecordObject;
+      hasSolved?: boolean;
+      currentQuestionNumber?: number;
     };
   }) {
     console.log("[Reconnection] Restoring game state:", gameState);
@@ -100,11 +103,22 @@ export function useGameReconnection() {
     const user = $$game.players.user;
     user.records.stats = { ...gameState.userProgress.records.stats };
     user.records.data = [...gameState.userProgress.records.data];
+    // Restore hasSolved flag from server state (for current question)
+    user.flags.hasSolved = gameState.userProgress.hasSolved ?? false;
 
     // Restore opponent progress
     const opponent = $$game.players.opponent;
     opponent.records.stats = { ...gameState.opponentProgress.records.stats };
     opponent.records.data = [...gameState.opponentProgress.records.data];
+    // Reset hasLeft flag - opponent may still be connected or reconnected
+    opponent.flags.hasLeft = false;
+    // Restore opponent's hasSolved flag from server state
+    opponent.flags.hasSolved = gameState.opponentProgress.hasSolved ?? false;
+
+    // Update game ID if not set
+    if (!$$game.gameId && gameState.cases) {
+      // gameId should be set from the gameSessionRestored event
+    }
 
     console.log("[Reconnection] Game state restored successfully");
   }
