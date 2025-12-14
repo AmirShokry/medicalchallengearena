@@ -255,10 +255,25 @@ export function updatePlayerRecords(
 
 /**
  * Advances to next question for both players
+ * Returns true if advanced, false if already at the next question (prevents double-advance)
  */
-export function advanceQuestion(roomName: string): void {
+export function advanceQuestion(roomName: string): boolean {
   const gameState = activeGameStates.get(roomName);
-  if (!gameState) return;
+  if (!gameState) return false;
+
+  // Check if both players have solved the current question
+  // If not, we shouldn't advance yet (prevents premature advancement)
+  // Note: This also prevents double-advance since hasSolved is reset after advance
+  if (
+    !gameState.player1Progress.hasSolved &&
+    !gameState.player2Progress.hasSolved
+  ) {
+    // Both already reset - this is a duplicate call, ignore it
+    console.log(
+      `[GameStateManager] Ignoring duplicate advanceQuestion for room ${roomName} - already advanced`
+    );
+    return false;
+  }
 
   // Reset hasSolved for both players
   gameState.player1Progress.hasSolved = false;
@@ -292,6 +307,8 @@ export function advanceQuestion(roomName: string): void {
   console.log(
     `[GameStateManager] Advanced to question ${nextQuestionNumber} in room ${roomName}`
   );
+
+  return true;
 }
 
 /**

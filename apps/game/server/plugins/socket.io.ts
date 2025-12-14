@@ -24,6 +24,7 @@ import {
   updatePlayerConnectionState,
   getOpponentId,
   cleanupGameState,
+  cleanupStaleGames,
 } from "../socket-handlers/match/game-state-manager";
 import { authenticateSocket } from "../socket-handlers/auth.middleware";
 import type {
@@ -74,6 +75,15 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
   });
 
   io.bind(engine);
+
+  // Periodically clean up stale games (games older than 4 hours with no activity)
+  // This prevents memory leaks from abandoned games
+  setInterval(
+    () => {
+      cleanupStaleGames(4); // Clean up games older than 4 hours
+    },
+    30 * 60 * 1000
+  ); // Run every 30 minutes
 
   const socialIO = io.of("/social") as SocialIO,
     gameIO = io.of("/game") as GameIO;

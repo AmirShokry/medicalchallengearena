@@ -23,8 +23,8 @@ export function cleanupRoomTimer(_roomName: string): void {
 /**
  * Helper function to get the current socket for the opponent
  * Uses multiple strategies to find the opponent:
- * 1. First try the cached opponentSocket reference
- * 2. Then try looking up by opponent's user ID from game state
+ * 1. First try the game state manager (most reliable, works even after reconnection)
+ * 2. Then try the cached opponentSocket reference
  * 3. Finally iterate through connected sockets
  */
 function getOpponentSocket(
@@ -32,25 +32,68 @@ function getOpponentSocket(
   io: GameIO
 ): GameSocket | undefined {
   const userId = socket.data.session?.id;
-  const roomName = socket.data?.roomName;
+  if (!userId) return undefined;
 
-  if (!userId || !roomName) return undefined;
+  // Try to get roomName from socket or from game state
+  let roomName = socket.data?.roomName;
+
+  // If no roomName on socket, try to find it from game state
+  if (!roomName) {
+    const gameStateInfo = findGameStateByUserId(userId);
+    if (gameStateInfo) {
+      roomName = gameStateInfo.roomName;
+      // Update socket data with the room name for future calls
+      socket.data.roomName = roomName;
+      socket.join(roomName);
+      console.log(
+        `[Game] Restored roomName ${roomName} for user ${socket.data.session?.username}`
+      );
+    }
+  }
 
   // Strategy 1: Try to get opponent ID from game state manager (most reliable)
-  const opponentUserId = getOpponentId(roomName, userId);
+  if (roomName) {
+    const opponentUserId = getOpponentId(roomName, userId);
 
-  if (opponentUserId) {
-    // Look up opponent by iterating through connected sockets
+    if (opponentUserId) {
+      // Look up opponent by iterating through connected sockets
+      for (const [, connectedSocket] of io.sockets) {
+        if (connectedSocket.data?.session?.id === opponentUserId) {
+          // Update the cached reference to the current socket
+          socket.data.opponentSocket = connectedSocket as GameSocket;
+          return connectedSocket as GameSocket;
+        }
+      }
+    }
+  }
+
+  // Strategy 2: Try finding through game state by user ID (works without roomName)
+  const gameStateInfo = findGameStateByUserId(userId);
+  if (gameStateInfo) {
+    const { gameState, roomName: foundRoomName } = gameStateInfo;
+    const opponentId =
+      gameState.player1Id === userId
+        ? gameState.player2Id
+        : gameState.player1Id;
+
+    // Update socket's roomName if not set
+    if (!socket.data.roomName) {
+      socket.data.roomName = foundRoomName;
+      socket.join(foundRoomName);
+      console.log(
+        `[Game] Restored roomName ${foundRoomName} for user ${socket.data.session?.username} via game state`
+      );
+    }
+
     for (const [, connectedSocket] of io.sockets) {
-      if (connectedSocket.data?.session?.id === opponentUserId) {
-        // Update the cached reference to the current socket
+      if (connectedSocket.data?.session?.id === opponentId) {
         socket.data.opponentSocket = connectedSocket as GameSocket;
         return connectedSocket as GameSocket;
       }
     }
   }
 
-  // Strategy 2: Fallback to cached opponentSocket reference
+  // Strategy 3: Fallback to cached opponentSocket reference
   if (socket?.data?.opponentSocket?.data?.session?.id) {
     const cachedOpponentUserId = socket.data.opponentSocket.data.session.id;
 
@@ -58,23 +101,6 @@ function getOpponentSocket(
     for (const [, connectedSocket] of io.sockets) {
       if (connectedSocket.data?.session?.id === cachedOpponentUserId) {
         // Update the cached reference to the current socket
-        socket.data.opponentSocket = connectedSocket as GameSocket;
-        return connectedSocket as GameSocket;
-      }
-    }
-  }
-
-  // Strategy 3: Try finding through game state by user ID
-  const gameStateInfo = findGameStateByUserId(userId);
-  if (gameStateInfo) {
-    const { gameState } = gameStateInfo;
-    const opponentId =
-      gameState.player1Id === userId
-        ? gameState.player2Id
-        : gameState.player1Id;
-
-    for (const [, connectedSocket] of io.sockets) {
-      if (connectedSocket.data?.session?.id === opponentId) {
         socket.data.opponentSocket = connectedSocket as GameSocket;
         return connectedSocket as GameSocket;
       }
@@ -118,8 +144,22 @@ export function registerMatchEvents(socket: GameSocket, io: GameIO) {
   socket.on("userSolved", (data, stats) => {
     if (!socket?.data) return "No socket data";
 
-    const roomName = socket.data?.roomName;
     const userId = socket.data.session?.id;
+
+    // Try to get roomName from socket, or restore it from game state
+    let roomName = socket.data?.roomName;
+    if (!roomName && userId) {
+      const gameStateInfo = findGameStateByUserId(userId);
+      if (gameStateInfo) {
+        roomName = gameStateInfo.roomName;
+        socket.data.roomName = roomName;
+        socket.data.isInGame = true;
+        socket.join(roomName);
+        console.log(
+          `[Game] Restored roomName ${roomName} for user ${socket.data.session?.username} in userSolved`
+        );
+      }
+    }
 
     // Persist the answer to game state for reconnection support
     if (roomName && userId) {
@@ -127,6 +167,15 @@ export function registerMatchEvents(socket: GameSocket, io: GameIO) {
       console.log(
         `[Game] Persisted answer for user ${socket.data.session?.username} in room ${roomName}`
       );
+    } else if (userId) {
+      // Try to persist even without roomName by finding via userId
+      const gameStateInfo = findGameStateByUserId(userId);
+      if (gameStateInfo) {
+        updatePlayerRecords(gameStateInfo.roomName, userId, data, stats);
+        console.log(
+          `[Game] Persisted answer for user ${socket.data.session?.username} via game state lookup`
+        );
+      }
     }
 
     // Emit to the room, excluding the sender (so opponent receives it)
@@ -141,6 +190,9 @@ export function registerMatchEvents(socket: GameSocket, io: GameIO) {
       const opponentSocket = getOpponentSocket(socket, io);
       if (opponentSocket) {
         io.to(opponentSocket.id).emit("opponentSolved", data, stats);
+        console.log(
+          `[Game] Emitted opponentSolved directly to opponent ${opponentSocket.data.session?.username}`
+        );
       } else {
         console.warn(
           `[Game] Cannot emit userSolved - no room and opponent socket not found for user ${socket.data.session?.username}`
@@ -153,11 +205,34 @@ export function registerMatchEvents(socket: GameSocket, io: GameIO) {
    * Handle when both players are ready to advance (timer disabled, just emit event)
    */
   socket.on("advanceQuestion", () => {
-    const roomName = socket.data?.roomName;
+    let roomName = socket.data?.roomName;
+
+    // Try to restore roomName from game state if not set
+    if (!roomName) {
+      const userId = socket.data.session?.id;
+      if (userId) {
+        const gameStateInfo = findGameStateByUserId(userId);
+        if (gameStateInfo) {
+          roomName = gameStateInfo.roomName;
+          socket.data.roomName = roomName;
+          socket.join(roomName);
+          console.log(
+            `[Game] Restored roomName ${roomName} for user ${socket.data.session?.username} in advanceQuestion`
+          );
+        }
+      }
+    }
+
     if (!roomName) return;
 
     // Advance question in game state for reconnection support
-    advanceQuestionState(roomName);
+    // Returns false if already advanced (prevents double-advance from both players)
+    const didAdvance = advanceQuestionState(roomName);
+
+    if (!didAdvance) {
+      // Already advanced by the other player, don't emit again
+      return;
+    }
 
     const serverTime = Date.now();
 
@@ -215,31 +290,6 @@ export function registerMatchEvents(socket: GameSocket, io: GameIO) {
       })
       .where(eq(users?.id, Number(socket.data.session?.id)));
     console.log(`User ${socket.data.session?.id} finished game ${gameId}`);
-    async function insertMistakes() {
-      const userId = Number(socket.data.session?.id);
-      const mistakeCounts: Record<number, number> = {};
-      serverData.forEach((d) => {
-        if (!d.isCorrect && d.categoryId != null) {
-          mistakeCounts[d.categoryId] = (mistakeCounts[d.categoryId] || 0) + 1;
-        }
-      });
-
-      const values = Object.entries(mistakeCounts)
-        .map(
-          ([categoryId, count]) =>
-            `(${userId}, ${Number(categoryId)}, ${count})`
-        )
-        .join(",");
-      console.log(values);
-      if (values.length > 0) {
-        await db.execute(
-          sql.raw(
-            `INSERT INTO users_mistakes ("userId", "category_id", "count") VALUES ${values} ON CONFLICT ("userId", "category_id") DO UPDATE SET "count" = users_mistakes."count" + EXCLUDED."count"`
-          )
-        );
-      }
-    }
-    await insertMistakes();
 
     socket.data.finalStats = {
       totalMedpoints: records.stats.totalMedpoints,

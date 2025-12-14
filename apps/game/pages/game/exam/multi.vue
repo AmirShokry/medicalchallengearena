@@ -184,8 +184,7 @@ watchEffect(() => {
 
     if (hasGameEnded.value) return endGame();
 
-    // Request server to start next question timer
-    // The questionStarted event will trigger timer.restart() with server timestamp
+    // Both players emit advanceQuestion - server will deduplicate and only advance once
     gameSocket.emit("advanceQuestion");
 
     function advanceQuestion() {
