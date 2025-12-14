@@ -21,11 +21,23 @@ import type { RecordObject } from "@/shared/types/common";
 
 /**
  * Reactive state for reconnection status
+ * These are module-level to persist across component remounts within the same game,
+ * but must be reset when starting a new game or cleaning up.
  */
 const isReconnecting = ref(false);
 const isOpponentAway = ref(false);
 const isOpponentDisconnected = ref(false);
 const disconnectReason = ref<string | null>(null);
+
+/**
+ * Reset all reconnection state - call when starting new game or cleaning up
+ */
+function resetReconnectionState() {
+  isReconnecting.value = false;
+  isOpponentAway.value = false;
+  isOpponentDisconnected.value = false;
+  disconnectReason.value = null;
+}
 
 /**
  * Composable for managing game reconnection
@@ -127,6 +139,9 @@ export function useGameReconnection() {
    * Setup reconnection event listeners
    */
   function setupReconnection() {
+    // Reset state when setting up for a new game session
+    resetReconnectionState();
+
     // Listen for visibility change
     document.addEventListener("visibilitychange", handleVisibilityChange);
     window.addEventListener("focus", handleFocus);
@@ -197,18 +212,23 @@ export function useGameReconnection() {
   }
 
   /**
-   * Cleanup event listeners
+   * Cleanup event listeners and reset state
    */
   function cleanupReconnection() {
+    // Reset all reconnection state
+    resetReconnectionState();
+
+    // Remove DOM event listeners
     document.removeEventListener("visibilitychange", handleVisibilityChange);
     window.removeEventListener("focus", handleFocus);
     window.removeEventListener("blur", handleBlur);
 
+    // Remove all socket listeners set up by this composable
     gameSocket.off("gameSessionRestored");
     gameSocket.off("opponentAway");
     gameSocket.off("opponentBack");
-    // Note: We don't remove opponentDisconnected/opponentReconnected here
-    // as they may be managed by the game page component
+    gameSocket.off("opponentDisconnected");
+    gameSocket.off("opponentReconnected");
   }
 
   return {
@@ -219,6 +239,7 @@ export function useGameReconnection() {
     setupReconnection,
     cleanupReconnection,
     restoreGameState,
+    resetReconnectionState,
   };
 }
 

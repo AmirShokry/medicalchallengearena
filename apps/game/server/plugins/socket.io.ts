@@ -318,6 +318,22 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
      * Handle user back notification (tab visible again)
      */
     socket.on("userBack", () => {
+      // Try to restore roomName from game state if not set
+      if (!socket.data.roomName) {
+        const userId = socket.data.session?.id;
+        if (userId) {
+          const gameStateInfo = findGameStateByUserId(userId);
+          if (gameStateInfo) {
+            socket.data.roomName = gameStateInfo.roomName;
+            socket.data.isInGame = true;
+            socket.join(gameStateInfo.roomName);
+            console.log(
+              `[Game] Restored roomName ${gameStateInfo.roomName} for user ${socket.data.session?.username} in userBack`
+            );
+          }
+        }
+      }
+
       if (!socket.data.roomName || !socket.data.isInGame) return;
 
       updatePlayerConnectionState(
@@ -326,14 +342,44 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
         "connected"
       );
 
-      // Notify opponent that user is back
+      // Find opponent socket - try multiple methods
+      let opponentSocket: ReturnType<typeof getSocketByUserId> = undefined;
+
+      // Method 1: Try cached reference
       const opponentUserId = socket.data.opponentSocket?.data?.session?.id;
-      const opponentSocket = opponentUserId
-        ? getSocketByUserId(opponentUserId)
-        : undefined;
+      if (opponentUserId) {
+        opponentSocket = getSocketByUserId(opponentUserId);
+      }
+
+      // Method 2: Try game state
+      if (!opponentSocket) {
+        const opponentId = getOpponentId(
+          socket.data.roomName,
+          socket.data.session?.id
+        );
+        if (opponentId) {
+          opponentSocket = getSocketByUserId(opponentId);
+          // Also search through connected sockets if not in map
+          if (!opponentSocket) {
+            for (const [, connectedSocket] of gameIO.sockets) {
+              if (connectedSocket.data?.session?.id === opponentId) {
+                opponentSocket = connectedSocket;
+                userIdToGameSocketId.set(opponentId, connectedSocket.id);
+                break;
+              }
+            }
+          }
+        }
+      }
 
       if (opponentSocket) {
+        // Re-link sockets
+        socket.data.opponentSocket = opponentSocket;
+        opponentSocket.data.opponentSocket = socket;
+
+        // Emit both events - opponentBack for tab visibility and opponentReconnected for socket state
         opponentSocket.emit("opponentBack");
+        opponentSocket.emit("opponentReconnected");
       }
 
       console.log(
