@@ -9,7 +9,6 @@ definePageMeta({
 });
 
 const $$game = useGameStore();
-const $router = useRouter();
 
 console.log("[Multi Redirect Page] Script setup executing");
 console.log("[Multi Redirect Page] roomName:", $$game.roomName);
@@ -25,20 +24,24 @@ onMounted(async () => {
     const targetPath = `/game/exam/multi/${$$game.roomName}`;
     console.log("[Multi Redirect Page] Attempting navigation to:", targetPath);
     try {
-      await $router.replace(targetPath);
-      console.log("[Multi Redirect Page] Navigation completed successfully");
+      // Use Nuxt's navigateTo instead of $router.replace for proper SSR handling
+      await navigateTo(targetPath, { replace: true, external: false });
+      console.log("[Multi Redirect Page] navigateTo completed");
     } catch (err) {
       console.error("[Multi Redirect Page] Navigation failed:", err);
+      // Fallback: try window.location
+      console.log("[Multi Redirect Page] Trying window.location fallback");
+      window.location.href = targetPath;
     }
   } else if ($$game.flags.ingame.isGameStarted && $$game.gameId) {
     // Game is started but no roomName - something is wrong, go to lobby
     console.warn("[Multi] Game started but no roomName, going to lobby");
     $$game["~resetEverything"]();
-    $router.replace({ name: "game-lobby" });
+    await navigateTo("/game/lobby", { replace: true });
   } else {
     // No game in progress, redirect to lobby
     console.log("[Multi] No game in progress, redirecting to lobby");
-    $router.replace({ name: "game-lobby" });
+    await navigateTo("/game/lobby", { replace: true });
   }
 });
 </script>
