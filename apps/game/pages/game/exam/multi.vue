@@ -11,12 +11,25 @@ definePageMeta({
 const $$game = useGameStore();
 const $router = useRouter();
 
+console.log("[Multi Redirect Page] Script setup executing");
+console.log("[Multi Redirect Page] roomName:", $$game.roomName);
+console.log("[Multi Redirect Page] isGameStarted:", $$game.flags.ingame.isGameStarted);
+console.log("[Multi Redirect Page] gameId:", $$game.gameId);
+
 // On mount, check if we have game data and redirect appropriately
-onMounted(() => {
+onMounted(async () => {
+  console.log("[Multi Redirect Page] onMounted triggered");
+  
   // If we have a roomName, redirect to the room-based URL
   if ($$game.roomName) {
-    console.log("[Multi] Redirecting to room:", $$game.roomName);
-    $router.replace(`/game/exam/multi/${$$game.roomName}`);
+    const targetPath = `/game/exam/multi/${$$game.roomName}`;
+    console.log("[Multi Redirect Page] Attempting navigation to:", targetPath);
+    try {
+      await $router.replace(targetPath);
+      console.log("[Multi Redirect Page] Navigation completed successfully");
+    } catch (err) {
+      console.error("[Multi Redirect Page] Navigation failed:", err);
+    }
   } else if ($$game.flags.ingame.isGameStarted && $$game.gameId) {
     // Game is started but no roomName - something is wrong, go to lobby
     console.warn("[Multi] Game started but no roomName, going to lobby");

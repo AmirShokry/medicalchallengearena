@@ -1,4 +1,5 @@
 <script setup lang="ts">
+console.log("[RoomId Page] ======= SCRIPT SETUP START =======");
 import MultiPagination from "../../../../components/Exam/pagination/MultiPagination.vue";
 import UserInfo from "../../../../components/Exam/Player.vue";
 import OpponentInfo from "../../../../components/Exam/Player.vue";
@@ -11,10 +12,14 @@ import { LogOutIcon as ExitIcon } from "lucide-vue-next";
 import useSocial from "@/composables/useSocial";
 import { useGameReconnection } from "@/composables/useGameReconnection";
 
+console.log("[RoomId Page] Imports completed");
+
 definePageMeta({
   layout: "blank",
   middleware: "exam",
 });
+
+console.log("[RoomId Page] definePageMeta done");
 
 const route = useRoute();
 const $$game = useGameStore();
@@ -22,15 +27,21 @@ const $$user = useUserStore();
 const audio = useAudioStore();
 const $router = useRouter();
 
+console.log("[RoomId Page] Stores initialized");
+console.log("[RoomId Page] Route params:", route.params);
+
 // Get roomId from URL params - decode URI component since it may be encoded
 const roomId = computed(() => {
   const raw = (route.params as { roomId?: string }).roomId ?? "";
+  console.log("[RoomId Page] Computing roomId, raw:", raw);
   try {
     return decodeURIComponent(raw);
   } catch {
     return raw;
   }
 });
+
+console.log("[RoomId Page] roomId computed:", roomId.value);
 
 const {
   user,
@@ -51,6 +62,9 @@ const {
   userStatus,
 } = getGameData();
 
+console.log("[RoomId Page] getGameData completed");
+console.log("[RoomId Page] cases.value:", cases.value?.length ?? 0, "questions");
+
 // Setup reconnection handling
 const {
   isReconnecting,
@@ -60,6 +74,8 @@ const {
   cleanupReconnection,
   restoreGameState,
 } = useGameReconnection();
+
+console.log("[RoomId Page] useGameReconnection completed");
 
 // Computed property for opponent connection display status
 const opponentConnectionStatus = computed(() => {
@@ -75,6 +91,7 @@ const isRestoringState = ref(false);
 // Initialize refs based on whether this is a reconnection scenario
 // MUST be defined before onMounted since it's used there
 const needsReconnectionAtStart = !cases.value?.length && !!roomId.value;
+console.log("[RoomId Page] needsReconnectionAtStart:", needsReconnectionAtStart);
 
 // Track if this is a reconnection - shows "Restoring game..." instead of countdown
 const isReconnection = ref(needsReconnectionAtStart);
@@ -84,7 +101,10 @@ const isReconnection = ref(needsReconnectionAtStart);
 const hasAnimationEnded = ref(false),
   hasRecordBeenSent = ref(false);
 
+console.log("[RoomId Page] About to register onMounted");
+
 onMounted(() => {
+  console.log("[RoomId Page] ======= onMounted START =======");
   flags.matchmaking["~reset"]();
   user.records["~reset"]();
   opponent.records["~reset"]();
