@@ -71,6 +71,19 @@ const opponentConnectionStatus = computed(() => {
 // Flag to prevent the advance watchEffect from triggering during state restoration
 const isRestoringState = ref(false);
 
+// Detect if we need reconnection (no cases loaded but we have a roomId)
+// Initialize refs based on whether this is a reconnection scenario
+// MUST be defined before onMounted since it's used there
+const needsReconnectionAtStart = !cases.value?.length && !!roomId.value;
+
+// Track if this is a reconnection - shows "Restoring game..." instead of countdown
+const isReconnection = ref(needsReconnectionAtStart);
+// Track if animation/loading is complete and game should be shown
+// During reconnection, this starts false (showing loading) and becomes true when data loads
+// During normal game, this starts false (showing countdown) and becomes true when countdown ends
+const hasAnimationEnded = ref(false),
+  hasRecordBeenSent = ref(false);
+
 onMounted(() => {
   flags.matchmaking["~reset"]();
   user.records["~reset"]();
@@ -304,18 +317,6 @@ const social = useSocial();
 social.setStatus("ingame");
 
 console.log($$game.players.opponent.info);
-
-// Detect if we need reconnection (no cases loaded but we have a roomId)
-// Initialize refs based on whether this is a reconnection scenario
-const needsReconnectionAtStart = !cases.value?.length && !!roomId.value;
-
-// Track if this is a reconnection - shows "Restoring game..." instead of countdown
-const isReconnection = ref(needsReconnectionAtStart);
-// Track if animation/loading is complete and game should be shown
-// During reconnection, this starts false (showing loading) and becomes true when data loads
-// During normal game, this starts false (showing countdown) and becomes true when countdown ends
-const hasAnimationEnded = ref(false),
-  hasRecordBeenSent = ref(false);
 
 function startGame() {
   hasAnimationEnded.value = true;
