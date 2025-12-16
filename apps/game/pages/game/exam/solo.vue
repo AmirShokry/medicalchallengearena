@@ -104,7 +104,7 @@ async function handleGameFinished() {
     $$user.value.eliminationsTotal! +=
       user.records.stats.correctEliminationsCount +
       user.records.stats.wrongEliminationsCount;
-    $$user.value.questionsTotal! += totalQuestionsNumber;
+    $$user.value.questionsTotal! += totalQuestionsNumber.value;
     $$user.value.gamesTotal! += 1;
   }
   savePlayersDataLocally();
@@ -147,7 +147,10 @@ function handleNext() {
   current.questionNumber++;
   lastReachedQuestionNumber.value++;
 
-  if (current.questionIdx + 1 < cases?.at(current.caseIdx)?.questions.length!)
+  if (
+    current.questionIdx + 1 <
+    cases.value?.at(current.caseIdx)?.questions.length!
+  )
     return current.questionIdx++;
   current.caseIdx++;
   current.questionIdx = 0;

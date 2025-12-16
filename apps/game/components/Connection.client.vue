@@ -15,6 +15,9 @@ const social = useSocial();
 
 const friendList = computed(() => friendStore.friendList);
 
+// Track if we've already set up our listeners to avoid duplicates
+let connectionListenersSetUp = false;
+
 if (gameSocket.connected) onConnect();
 
 if (status.value === "authenticated") connectSockets();
@@ -68,18 +71,27 @@ watch(status, (newStatus, oldStatus) => {
     gameSocket.disconnect();
     socialSocket.disconnect();
   } else if (oldStatus !== "authenticated" && newStatus === "authenticated") {
-    console.log("User signed in, reconnecting sockets...");
+    console.log("User signed in, connecting sockets...");
     connectSockets();
   }
 });
 
 function connectSockets() {
-  socialSocket.off();
-  gameSocket.off();
-  gameSocket.connect();
-  socialSocket.connect();
+  // Don't call gameSocket.off() here - it removes ALL handlers including
+  // those registered by page components like [roomId].vue!
+  // Only disconnect and reconnect if needed
+  if (!gameSocket.connected) {
+    gameSocket.connect();
+  }
+  if (!socialSocket.connected) {
+    socialSocket.connect();
+  }
 
-  setupSocketListeners();
+  // Only set up our listeners once to avoid duplicates
+  if (!connectionListenersSetUp) {
+    setupSocketListeners();
+    connectionListenersSetUp = true;
+  }
 }
 
 function setupSocketListeners() {
@@ -109,7 +121,9 @@ function setupSocketListeners() {
 
   gameSocket.on("opponentLeft", () => {
     if (!$$game.flags.ingame.isGameStarted) {
-      if ($router.currentRoute.value.name === "game-exam-multi") {
+      // Check if on game page (new room-based route)
+      const currentPath = $router.currentRoute.value.path;
+      if (currentPath.startsWith("/game/exam/multi/")) {
         matchmaking.state = "idle";
         $router.replace({ name: "game-setup-multi" });
       }
@@ -144,16 +158,100 @@ function setupSocketListeners() {
   // Handle game session restored after our own reconnection
   gameSocket.on("gameSessionRestored", (data) => {
     console.log(
-      `[Game] Game session restored: ${data.roomName}, game ${data.gameId}, opponent connected: ${data.opponentConnected}`
+      `[Connection] *** gameSessionRestored handler CALLED *** roomName: ${data.roomName}, gameId: ${data.gameId}, opponentConnected: ${data.opponentConnected}`
     );
-    // The server has restored our game state
-    // If we're not already on the game page, navigate there
-    if (
-      $router.currentRoute.value.name !== "game-exam-multi" &&
-      $$game.flags.ingame.isGameStarted
-    ) {
-      // Note: We may need to restore game state from server/store
-      // For now, just log that we've reconnected
+
+    // Store the room info
+    $$game.gameId = data.gameId;
+    $$game.roomName = data.roomName;
+    $$game.flags.ingame.isGameStarted = true;
+
+    // Restore user info
+    if (data.userInfo) {
+      $$game.players.user.info["~set"]({
+        id: data.userInfo.id,
+        username: data.userInfo.username,
+        avatarUrl: data.userInfo.avatarUrl || "",
+        medPoints: data.userInfo.medPoints,
+        university: data.userInfo.university || "",
+      });
+      $$game.players.user.flags.isMaster = data.isMaster || false;
+    }
+
+    // Restore opponent info
+    if (data.opponentInfo) {
+      $$game.players.opponent.info["~set"]({
+        id: data.opponentInfo.id,
+        username: data.opponentInfo.username,
+        avatarUrl: data.opponentInfo.avatarUrl || "",
+        medPoints: data.opponentInfo.medPoints,
+        university: data.opponentInfo.university || "",
+      });
+      $$game.players.opponent.flags.isMaster = !data.isMaster;
+    }
+
+    // Restore current question position BEFORE cases
+    // (because [roomId].vue watches cases and reads reconnectionProgress)
+    if (data.gameState?.userProgress) {
+      console.log("[Connection] Setting reconnectionProgress:", {
+        userHasSolved: data.gameState.userProgress.hasSolved,
+        opponentHasSolved: data.gameState.opponentProgress?.hasSolved,
+      });
+      $$game.data.reconnectionProgress = {
+        currentCaseIdx: data.gameState.userProgress.currentCaseIdx,
+        currentQuestionIdx: data.gameState.userProgress.currentQuestionIdx,
+        currentQuestionNumber:
+          data.gameState.userProgress.currentQuestionNumber,
+        hasSolved: data.gameState.userProgress.hasSolved ?? false,
+        opponentHasSolved: data.gameState.opponentProgress?.hasSolved ?? false,
+      };
+    }
+
+    // Restore user records if provided
+    if (data.gameState?.userProgress?.records) {
+      $$game.players.user.records.stats =
+        data.gameState.userProgress.records.stats;
+      $$game.players.user.records.data =
+        data.gameState.userProgress.records.data;
+    }
+
+    // Restore opponent records if provided
+    if (data.gameState?.opponentProgress?.records) {
+      $$game.players.opponent.records.stats =
+        data.gameState.opponentProgress.records.stats;
+      $$game.players.opponent.records.data =
+        data.gameState.opponentProgress.records.data;
+    }
+
+    // Restore cases
+    if (data.gameState?.cases) {
+      $$game.data.cases = data.gameState.cases;
+    }
+
+    // Set flag to indicate reconnection data is ready
+    // [roomId].vue watches this flag to know when to apply the data
+    $$game.data.reconnectionDataReady = true;
+    console.log("[Connection] Reconnection data ready, flag set");
+
+    // Navigate to the game page if not already there
+    const currentRoute = $router.currentRoute.value;
+    const encodedRoomName = encodeURIComponent(data.roomName);
+    const expectedPath = `/game/exam/multi/${encodedRoomName}`;
+    const isOnGamePage =
+      currentRoute.path === expectedPath ||
+      currentRoute.path === `/game/exam/multi/${data.roomName}`;
+
+    console.log("[Connection] Navigation check:", {
+      currentPath: currentRoute.path,
+      expectedPath,
+      isOnGamePage,
+    });
+
+    if (!isOnGamePage) {
+      console.log("[Connection] Navigating to game page for reconnection");
+      $router.push(expectedPath);
+    } else {
+      console.log("[Connection] Already on game page, no navigation needed");
     }
   });
 
@@ -188,7 +286,9 @@ function setupSocketListeners() {
     $$game.data.cases = data.cases;
     $$game.flags.ingame.isGameStarted = true;
     $$game.gameId = data.gameId;
-    $router.push({ name: "game-exam-multi" });
+    $$game.roomName = data.roomName;
+    // Navigate to room-specific URL for reconnection support
+    $router.push(`/game/exam/multi/${encodeURIComponent(data.roomName)}`);
   });
 
   // Handle invitation validation failures
@@ -243,10 +343,6 @@ function setupSocketListeners() {
     }
   });
 }
-
-gameSocket.on("opponentSelected", (data) => {
-  console.log("Opponent selected:", data);
-});
 
 onBeforeUnmount(() => {
   gameSocket.off("connect", onConnect);

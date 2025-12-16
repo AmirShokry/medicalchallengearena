@@ -9,6 +9,7 @@ export const useGameStore = defineStore("game-store", () => {
   const fatalErrorMessage = ref<string | null>("");
   const mode = ref<"ranked" | "unranked" | "single" | undefined>();
   const gameId = ref<number | undefined>();
+  const roomName = ref<string | undefined>();
   const selectableData = reactive(
     ResettableObject({
       systemsCategories: [] as MatchingSystemCategories,
@@ -48,6 +49,16 @@ export const useGameStore = defineStore("game-store", () => {
     ResettableObject({
       invitedId: -1,
       cases: [] as Cases,
+      // Reconnection progress data (populated by Connection.client.vue on reconnection)
+      reconnectionProgress: null as {
+        currentCaseIdx: number;
+        currentQuestionIdx: number;
+        currentQuestionNumber: number;
+        hasSolved: boolean;
+        opponentHasSolved: boolean;
+      } | null,
+      // Flag set by Connection.client.vue to indicate fresh reconnection data is ready
+      reconnectionDataReady: false,
     })
   );
 
@@ -66,6 +77,7 @@ export const useGameStore = defineStore("game-store", () => {
     selectableData["~reset"]();
     mode.value = undefined;
     gameId.value = undefined;
+    roomName.value = undefined;
   }
 
   return {
@@ -77,6 +89,7 @@ export const useGameStore = defineStore("game-store", () => {
     data,
     flags,
     gameId,
+    roomName,
     "~resetEverything": resetEverything,
   };
 });

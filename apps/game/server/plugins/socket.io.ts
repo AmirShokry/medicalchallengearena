@@ -21,6 +21,7 @@ import {
 import {
   findGameStateByUserId,
   getFullGameStateForReconnection,
+  getGameState,
   updatePlayerConnectionState,
   getOpponentId,
   cleanupGameState,
@@ -59,8 +60,7 @@ import type {
 
 // Map user IDs to their active game socket IDs for reliable lookup after reconnection
 const userIdToGameSocketId = new Map<number, string>();
-
-export default defineNitroPlugin((nitroApp: NitroApp) => {
+export default defineNitroPlugin(async (nitroApp: NitroApp) => {
   const engine = new Engine();
   const io = new Server<
     ToServerIO.Default.Events,
@@ -384,6 +384,132 @@ export default defineNitroPlugin((nitroApp: NitroApp) => {
 
       console.log(
         `[Game] User ${socket.data.session?.username} is back in room ${socket.data.roomName}`
+      );
+    });
+
+    /**
+     * Handle game reconnection request (user refreshed page or navigated directly to game URL)
+     * This is emitted when user lands on /game/exam/multi/:roomId without game state
+     */
+    socket.on("requestGameReconnection", (roomId: string) => {
+      console.log(
+        `[Game] User ${socket.data.session?.username} requesting game reconnection for room ${roomId}`
+      );
+
+      const userId = socket.data.session?.id;
+      if (!userId) {
+        socket.emit("gameReconnectionFailed", { reason: "not_authenticated" });
+        return;
+      }
+
+      // Find game state by room name
+      const gameState = getGameState(roomId);
+      if (!gameState) {
+        console.log(`[Game] No game state found for room ${roomId}`);
+        socket.emit("gameReconnectionFailed", { reason: "game_not_found" });
+        return;
+      }
+
+      // Verify user is part of this game
+      if (gameState.player1Id !== userId && gameState.player2Id !== userId) {
+        console.log(
+          `[Game] User ${userId} is not part of game in room ${roomId}`
+        );
+        socket.emit("gameReconnectionFailed", { reason: "not_in_game" });
+        return;
+      }
+
+      // Restore socket data
+      socket.data.roomName = roomId;
+      socket.data.isInGame = true;
+      socket.join(roomId);
+
+      // Update player connection state
+      updatePlayerConnectionState(roomId, userId, "connected");
+
+      // Register socket in the user ID map
+      userIdToGameSocketId.set(userId, socket.id);
+
+      // Find opponent
+      const opponentId = getOpponentId(roomId, userId);
+      let opponentSocket: ReturnType<typeof getSocketByUserId> = undefined;
+      let opponentConnected = false;
+
+      if (opponentId) {
+        opponentSocket = getSocketByUserId(opponentId);
+
+        // Also search through connected sockets if not in map
+        if (!opponentSocket) {
+          for (const [, connectedSocket] of gameIO.sockets) {
+            if (connectedSocket.data?.session?.id === opponentId) {
+              opponentSocket = connectedSocket;
+              userIdToGameSocketId.set(opponentId, connectedSocket.id);
+              break;
+            }
+          }
+        }
+
+        if (opponentSocket) {
+          // Re-link sockets
+          socket.data.opponentSocket = opponentSocket;
+          opponentSocket.data.opponentSocket = socket;
+          opponentConnected = true;
+
+          // Notify opponent that we're back
+          opponentSocket.emit("opponentBack");
+          opponentSocket.emit("opponentReconnected");
+        }
+      }
+
+      // Send game session restored event
+      // Get the player's progress and info
+      const isPlayer1 = gameState.player1Id === userId;
+      const playerProgress = isPlayer1
+        ? gameState.player1Progress
+        : gameState.player2Progress;
+      const opponentProgress = isPlayer1
+        ? gameState.player2Progress
+        : gameState.player1Progress;
+      const userInfo = isPlayer1
+        ? gameState.player1Info
+        : gameState.player2Info;
+      const opponentInfo = isPlayer1
+        ? gameState.player2Info
+        : gameState.player1Info;
+      const isMaster = isPlayer1
+        ? gameState.player1IsMaster
+        : !gameState.player1IsMaster;
+
+      console.log(
+        `[Game] Emitting gameSessionRestored to ${socket.data.session?.username}`
+      );
+
+      socket.emit("gameSessionRestored", {
+        roomName: roomId,
+        gameId: gameState.gameId,
+        opponentConnected,
+        userInfo,
+        opponentInfo,
+        isMaster,
+        gameState: {
+          cases: gameState.cases,
+          userProgress: {
+            currentCaseIdx: playerProgress.currentCaseIdx,
+            currentQuestionIdx: playerProgress.currentQuestionIdx,
+            currentQuestionNumber: playerProgress.currentQuestionNumber,
+            records: playerProgress.records,
+            hasSolved: playerProgress.hasSolved,
+          },
+          opponentProgress: {
+            records: opponentProgress.records,
+            hasSolved: opponentProgress.hasSolved,
+            currentQuestionNumber: opponentProgress.currentQuestionNumber,
+          },
+        },
+      });
+
+      console.log(
+        `[Game] Game reconnection successful for ${socket.data.session?.username} in room ${roomId}`
       );
     });
 

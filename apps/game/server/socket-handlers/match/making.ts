@@ -209,7 +209,7 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
     if (!isInvitation && !opponentSocket.data.hasAccepted)
       return (socket.data.hasAccepted = true);
 
-    const roomName = `game:${socket.data.session.username}-${opponentSocket.data.session.username}`;
+    const roomName = `game_${socket.data.session.username}_vs_${opponentSocket.data.session.username}_${Date.now()}`;
 
     socket.join(roomName);
     opponentSocket.join(roomName);
@@ -337,16 +337,34 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
       gameId
     );
 
-    // Initialize game state with cases data for reconnection support
+    // Initialize game state with cases data and player info for reconnection support
+    const player1Info = {
+      id: socket.data.session?.id,
+      username: socket.data.session?.username,
+      avatarUrl: socket.data.session?.avatarUrl || null,
+      medPoints: socket.data.session?.medPoints || 0,
+      university: socket.data.session?.university || null,
+    };
+    const player2Info = {
+      id: opponentSocket.data.session?.id,
+      username: opponentSocket.data.session?.username,
+      avatarUrl: opponentSocket.data.session?.avatarUrl || null,
+      medPoints: opponentSocket.data.session?.medPoints || 0,
+      university: opponentSocket.data.session?.university || null,
+    };
+
     initializeGameState(
       roomName,
       gameId,
       socket.data.session?.id,
       opponentSocket.data.session?.id,
-      cases
+      player1Info,
+      player2Info,
+      cases,
+      true // player1 (socket) is master
     );
 
-    io.to(roomName).emit("gameStarted", { cases, gameId });
+    io.to(roomName).emit("gameStarted", { cases, gameId, roomName });
   });
 
   socket.on("userDeclined", async () => {

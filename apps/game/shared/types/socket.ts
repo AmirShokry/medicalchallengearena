@@ -60,6 +60,24 @@ export namespace ToClientIO {
         roomName: string;
         gameId: number;
         opponentConnected: boolean;
+        /** User's player info */
+        userInfo?: {
+          id: number;
+          username: string;
+          avatarUrl: string | null;
+          medPoints: number;
+          university: string | null;
+        };
+        /** Opponent's player info */
+        opponentInfo?: {
+          id: number;
+          username: string;
+          avatarUrl: string | null;
+          medPoints: number;
+          university: string | null;
+        };
+        /** Whether user is master */
+        isMaster?: boolean;
         /** Full game state for restoration */
         gameState?: {
           cases: Cases;
@@ -91,7 +109,17 @@ export namespace ToClientIO {
       opponentAway: () => void;
       /** Opponent is back (tab visible again) */
       opponentBack: () => void;
-      gameStarted: (data: { cases: Cases; gameId: number }) => void;
+      /** Opponent has reconnected after socket disconnect */
+      opponentReconnected: () => void;
+      gameStarted: (data: {
+        cases: Cases;
+        gameId: number;
+        roomName: string;
+      }) => void;
+      /** Game reconnection failed */
+      gameReconnectionFailed: (data: {
+        reason: "not_authenticated" | "game_not_found" | "not_in_game";
+      }) => void;
       opponentSolved: (
         data: RecordObject["data"][0],
         stats: RecordObject["stats"]
@@ -277,6 +305,8 @@ export namespace ToServerIO {
       userAway: () => void;
       /** Notify server that user is back (tab visible) */
       userBack: () => void;
+      /** Request game reconnection when user refreshes page or navigates to game URL directly */
+      requestGameReconnection: (roomId: string) => void;
     }
   }
 

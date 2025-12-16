@@ -166,17 +166,13 @@ export function useGameReconnection() {
       }
     });
 
-    // Handle game session restoration
+    // Note: gameSessionRestored is handled in [roomId].vue and Connection.client.vue
+    // We just update opponent connection status based on the event
     gameSocket.on("gameSessionRestored", (data) => {
-      console.log("[Reconnection] Game session restored:", data);
-
+      console.log(
+        "[Reconnection] Game session restored (updating connection status)"
+      );
       isReconnecting.value = false;
-      $$game.gameId = data.gameId;
-
-      // Restore game state if provided
-      if (data.gameState) {
-        restoreGameState(data.gameState);
-      }
 
       // Update opponent connection status
       if (!data.opponentConnected) {
@@ -223,8 +219,8 @@ export function useGameReconnection() {
     window.removeEventListener("focus", handleFocus);
     window.removeEventListener("blur", handleBlur);
 
-    // Remove all socket listeners set up by this composable
-    gameSocket.off("gameSessionRestored");
+    // Remove socket listeners set up by this composable
+    // Note: We don't remove gameSessionRestored here as other handlers may need it
     gameSocket.off("opponentAway");
     gameSocket.off("opponentBack");
     gameSocket.off("opponentDisconnected");

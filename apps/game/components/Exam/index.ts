@@ -1,8 +1,9 @@
-import { ref, reactive, computed } from "vue";
+import { ref, reactive, computed, toRef } from "vue";
 
 export default function getGameData() {
   const $$game = useGameStore();
-  const cases = $$game.data.cases;
+  // Use toRef to keep reactivity - cases will update when $$game.data.cases changes
+  const cases = toRef($$game.data, "cases");
   const user = $$game.players.user;
   const opponent = $$game.players.opponent;
   const flags = $$game.flags;
@@ -14,16 +15,16 @@ export default function getGameData() {
     questionNumber: 1,
   });
 
-  const totalQuestionsNumber = cases.reduce(
-      (acc, c) => acc + c.questions.length,
-      0
-    ),
-    lastReachedQuestionNumber = ref(1),
+  // Make totalQuestionsNumber a computed so it updates when cases change
+  const totalQuestionsNumber = computed(() =>
+    cases.value.reduce((acc, c) => acc + c.questions.length, 0)
+  );
+  const lastReachedQuestionNumber = ref(1),
     canViewAnswer = ref(false);
 
   const isCorrect = computed(
       () =>
-        cases[current.caseIdx]?.questions[current.questionIdx]?.choices[
+        cases.value[current.caseIdx]?.questions[current.questionIdx]?.choices[
           current.selectedChoiceIdx
         ]?.isCorrect
     ),
@@ -34,14 +35,15 @@ export default function getGameData() {
         !user.flags.hasSolved
     ),
     correctChoiceIdx = computed(() =>
-      cases[current.caseIdx]?.questions[current.questionIdx]?.choices.findIndex(
-        (choice) => choice.isCorrect
-      )
+      cases.value[current.caseIdx]?.questions[
+        current.questionIdx
+      ]?.choices.findIndex((choice) => choice.isCorrect)
     ),
     hasGameEnded = computed(
       () =>
-        current.questionIdx + 1 === cases[current.caseIdx]?.questions.length &&
-        current.caseIdx + 1 === cases.length
+        current.questionIdx + 1 ===
+          cases.value[current.caseIdx]?.questions.length &&
+        current.caseIdx + 1 === cases.value.length
     );
 
   const userStatus = computed(() => {
@@ -69,14 +71,15 @@ export default function getGameData() {
     timeSpentMs: number;
   }) {
     return {
-      caseId: cases[current.caseIdx]?.id!,
-      questionId: cases[current.caseIdx]?.questions[current.questionIdx]?.id!,
+      caseId: cases.value[current.caseIdx]?.id!,
+      questionId:
+        cases.value[current.caseIdx]?.questions[current.questionIdx]?.id!,
       nthCase: current.caseIdx!,
       nthQuestion: current.questionIdx!,
       nthSelectedChoice: current.selectedChoiceIdx!,
       nthEliminatedChoices: Array.from(current.eliminatedChoicesIdx),
       isCorrect: correctOverride ?? isCorrect.value!,
-      categoryId: cases[current.caseIdx]?.category_id!,
+      categoryId: cases.value[current.caseIdx]?.category_id!,
       medPoints,
       timeSpentMs,
     };
@@ -94,16 +97,16 @@ export default function getGameData() {
     let caseIdx = 0,
       questionIdx = 0,
       questionNumber = 0;
-    for (let i = 0; i < cases.length; i++) {
+    for (let i = 0; i < cases.value.length; i++) {
       if (
-        questionNumber + cases?.at(i)?.questions?.length! >=
+        questionNumber + cases.value?.at(i)?.questions?.length! >=
         lastReachedQuestionNumber.value
       ) {
         caseIdx = i;
         questionIdx = lastReachedQuestionNumber.value - questionNumber - 1;
         break;
       }
-      questionNumber += cases?.at(i)?.questions.length!;
+      questionNumber += cases.value?.at(i)?.questions.length!;
     }
 
     return { caseIdx, questionIdx };

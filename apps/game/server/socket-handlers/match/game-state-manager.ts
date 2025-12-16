@@ -19,6 +19,17 @@
 import type { Cases, RecordObject } from "@/shared/types/common";
 
 /**
+ * Player info for reconnection
+ */
+export interface PlayerInfo {
+  id: number;
+  username: string;
+  avatarUrl: string | null;
+  medPoints: number;
+  university: string | null;
+}
+
+/**
  * Player progress state within a game
  */
 export interface PlayerProgress {
@@ -55,6 +66,10 @@ export interface GameState {
   player1Id: number;
   /** Player 2 user ID */
   player2Id: number;
+  /** Player 1 info */
+  player1Info: PlayerInfo;
+  /** Player 2 info */
+  player2Info: PlayerInfo;
   /** Player 1 progress */
   player1Progress: PlayerProgress;
   /** Player 2 progress */
@@ -63,6 +78,8 @@ export interface GameState {
   player1ConnectionState: PlayerConnectionState;
   /** Player 2 connection state */
   player2ConnectionState: PlayerConnectionState;
+  /** Which player is master (true = player1, false = player2) */
+  player1IsMaster: boolean;
   /** Game creation timestamp */
   createdAt: number;
   /** Last update timestamp */
@@ -113,7 +130,10 @@ export function initializeGameState(
   gameId: number,
   player1Id: number,
   player2Id: number,
-  cases: Cases
+  player1Info: PlayerInfo,
+  player2Info: PlayerInfo,
+  cases: Cases,
+  player1IsMaster: boolean = true
 ): GameState {
   const now = Date.now();
 
@@ -123,10 +143,13 @@ export function initializeGameState(
     cases,
     player1Id,
     player2Id,
+    player1Info,
+    player2Info,
     player1Progress: createEmptyProgress(),
     player2Progress: createEmptyProgress(),
     player1ConnectionState: "connected",
     player2ConnectionState: "connected",
+    player1IsMaster,
     createdAt: now,
     updatedAt: now,
   };
