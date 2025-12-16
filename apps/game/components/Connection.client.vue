@@ -249,7 +249,7 @@ function setupSocketListeners() {
 
     if (!isOnGamePage) {
       console.log("[Connection] Navigating to game page for reconnection");
-      $router.push(expectedPath);
+      navigateTo(expectedPath);
     } else {
       console.log("[Connection] Already on game page, no navigation needed");
     }
@@ -283,12 +283,16 @@ function setupSocketListeners() {
   });
 
   gameSocket.on("gameStarted", (data) => {
+    console.log("[Connection] gameStarted received, roomName:", data.roomName);
     $$game.data.cases = data.cases;
     $$game.flags.ingame.isGameStarted = true;
     $$game.gameId = data.gameId;
     $$game.roomName = data.roomName;
     // Navigate to room-specific URL for reconnection support
-    $router.push(`/game/exam/multi/${encodeURIComponent(data.roomName)}`);
+    // Use navigateTo for proper Nuxt navigation
+    const targetPath = `/game/exam/multi/${encodeURIComponent(data.roomName)}`;
+    console.log("[Connection] Navigating to:", targetPath);
+    navigateTo(targetPath);
   });
 
   // Handle invitation validation failures
