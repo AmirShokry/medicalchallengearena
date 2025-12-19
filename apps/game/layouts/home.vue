@@ -65,14 +65,14 @@ const { status, signOut } = useAuth();
                 About
               </NuxtLink>
             </li>
-            <li class="hover:bg-muted px-1 rounded-sm">
+            <!-- <li class="hover:bg-muted px-1 rounded-sm">
               <NuxtLink
                 class="cursor-pointer text-lg"
                 :to="{ path: '/', hash: '#pricing' }"
               >
                 Pricing
               </NuxtLink>
-            </li>
+            </li> -->
           </ul>
         </nav>
         <a
@@ -119,14 +119,14 @@ const { status, signOut } = useAuth();
                 About
               </a>
             </UiDropdownMenuItem>
-            <UiDropdownMenuItem tabindex="-1">
+            <!-- <UiDropdownMenuItem tabindex="-1">
               <NuxtLink
                 class="cursor-pointer text-lg w-full"
                 :to="{ path: '/', hash: '#pricing' }"
               >
                 Pricing
               </NuxtLink>
-            </UiDropdownMenuItem>
+            </UiDropdownMenuItem> -->
             <UiDropdownMenuItem v-if="status !== 'authenticated'">
               <a class="cursor-pointer text-lg w-full" :href="links.register">
                 Register
