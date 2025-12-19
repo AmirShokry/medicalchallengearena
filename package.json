@@ -1,30 +1,29 @@
 {
-	"name": "medicalchallengearena",
-	"private": true,
-	"scripts": {
-		"build": "turbo run build",
-		"dev": "turbo run dev --filter=./apps/*",
-		"game": "turbo run dev --filter=game",
-		"dashboard": "turbo run dev --filter=dashboard",
-		"build:dashboard": "turbo run build --filter=dashboard",
-		"db:push": "turbo run db:push",
-		"lint": "turbo run lint",
-		"format": "prettier --write \"**/*.{ts,tsx,md}\""
-	},
-	"devDependencies": {
-		"prettier": "^3.2.5",
-		"turbo": "^2.5.4"
-	},
-	"packageManager": "npm@10.9.2",
-	"workspaces": [
-		"apps/*",
-		"packages/*"
-	],
-	"dependencies": {
-		"@t3-oss/env-core": "^0.13.8",
-		"dotenv": "^17.0.1",
-		"gsap": "^3.14.2",
-		"workspace-root": "^3.3.1",
-		"zod": "^3.25.74"
-	}
+  "name": "medicalchallengearena",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --filter=./apps/*",
+    "game": "turbo run dev --filter=game",
+    "dashboard": "turbo run dev --filter=dashboard",
+    "build:dashboard": "turbo run build --filter=dashboard",
+    "db:push": "turbo run db:push",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "turbo": "^2.5.4"
+  },
+  "packageManager": "npm@10.9.2",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "dependencies": {
+    "@t3-oss/env-core": "^0.13.8",
+    "dotenv": "^17.0.1",
+    "workspace-root": "^3.3.1",
+    "zod": "^3.25.74"
+  }
 }
