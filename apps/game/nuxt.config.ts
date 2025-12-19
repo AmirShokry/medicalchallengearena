@@ -22,7 +22,7 @@ export default defineNuxtConfig({
   },
   modules: ["nuxt-svgo", "shadcn-nuxt", "@sidebase/nuxt-auth", "@pinia/nuxt"],
   build: {
-    transpile: ["trpc-nuxt"],
+    transpile: ["trpc-nuxt", "gsap"],
   },
   experimental: {
     typedPages: true,
