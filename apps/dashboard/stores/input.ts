@@ -3,16 +3,19 @@ import {
   ENTRY_PREFERENCES,
   type QuestionType,
   type Block,
+  type CaseTypes,
 } from "@/components/entry/Input/Index.vue";
 export const useInputStore = defineStore("input", () => {
   const activeCategoryId = ref<number | null>(null);
+  const activeCaseType = ref<CaseTypes>(ENTRY_PREFERENCES.value.CASE_TYPE);
   const data = ref<Block[number]>(init());
+
   function init(): Block[number] {
     const randId = new Date().getTime();
     return {
       id: randId,
       category_id: activeCategoryId.value,
-      type: "" as any,
+      type: activeCaseType.value,
       body: "",
       imgUrls: [] as string[],
       questions: Array.from(
@@ -41,19 +44,24 @@ export const useInputStore = defineStore("input", () => {
   }
 
   function resetInput() {
-    // Reflect.ownKeys(data.value).forEach(
-    // 	(key) => delete data.value[key as keyof typeof data.value]
-    // );
     Object.assign(data.value, init());
   }
+
   function setInput(newData: Block[number]) {
     Object.assign(data.value, newData);
+  }
+
+  function setCaseType(caseType: CaseTypes) {
+    activeCaseType.value = caseType;
+    data.value.type = caseType;
   }
 
   return {
     data,
     resetInput,
     setInput,
+    setCaseType,
     activeCategoryId,
+    activeCaseType,
   };
 });

@@ -44,11 +44,12 @@ function inputValidation() {
   else throw new Error(error.message);
 }
 
-inputStore.data.type = caseType;
+// Initialize and sync case type
+inputStore.setCaseType(caseType);
 watch(
   () => caseType,
   (newCaseType) => {
-    inputStore.data.type = newCaseType;
+    inputStore.setCaseType(newCaseType);
   }
 );
 
@@ -65,7 +66,6 @@ async function submitInput() {
     console.log(`Returned `, data);
     await previewStore.addData(data);
     inputStore.resetInput();
-    inputStore.data.type = caseType;
   } catch (error) {
     console.error("Error submitting input:", error);
     console.log(error);
@@ -100,7 +100,6 @@ async function handleDeleteCase(caseIndex: number | null) {
     await $trpc.block.delete.mutate({ caseId });
     previewStore.deleteCase(caseIndex);
     inputStore.resetInput();
-    inputStore.data.type = caseType;
     toast.success("Case deleted successfully.");
   } catch (error) {
     console.error("Error deleting case:", error);

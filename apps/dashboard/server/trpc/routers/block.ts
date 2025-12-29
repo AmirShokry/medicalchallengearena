@@ -176,15 +176,37 @@ export const block = createTRPCRouter({
           });
         }
 
-        const questionsChoicesValues = input.questions.flatMap(
-          (question, questionIndex) =>
-            question.choices.map((choice, choiceIndex) => ({
+        // Calculate questionsChoicesValues with proper accumulated indexing
+        // choicesResults is a flat array of all choices, so we need to track the offset
+        const questionsChoicesValues: Array<{
+          question_id: number;
+          choice_id: number;
+          isCorrect: boolean;
+          explanation: string | null;
+        }> = [];
+
+        let choiceOffset = 0;
+        for (
+          let questionIndex = 0;
+          questionIndex < input.questions.length;
+          questionIndex++
+        ) {
+          const question = input.questions[questionIndex];
+          for (
+            let choiceIndex = 0;
+            choiceIndex < question.choices.length;
+            choiceIndex++
+          ) {
+            const choice = question.choices[choiceIndex];
+            questionsChoicesValues.push({
               question_id: questionsResults[questionIndex].id,
-              choice_id: choicesResults[choiceIndex].id,
+              choice_id: choicesResults[choiceOffset + choiceIndex].id,
               isCorrect: choice.isCorrect || false,
               explanation: choice.explanation || null,
-            }))
-        );
+            });
+          }
+          choiceOffset += question.choices.length;
+        }
 
         const questionsChoicesResults = await tx
           .insert(db.table.questions_choices)

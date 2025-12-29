@@ -13,7 +13,7 @@ const inputStore = useInputStore();
 const activeQuestion = computed(
   () => inputStore.data.questions[props.questionIndex]
 );
-const questionType = computed(() => activeQuestion.value.type);
+const questionType = computed(() => activeQuestion.value?.type);
 const columnsCount = ref(getColumnsCount());
 const rowsCount = ref(getRowsCount());
 const choiceSegments = ref(initChoiceSegments());
@@ -21,12 +21,13 @@ const headerSegments = ref(initHeaderSegments());
 
 function getRowsCount() {
   return (
-    activeQuestion.value.choices.length || ENTRY_PREFERENCES.value.CHOICES_ROWS
+    activeQuestion.value?.choices?.length ||
+    ENTRY_PREFERENCES.value.CHOICES_ROWS
   );
 }
 function getColumnsCount() {
   if (questionType.value === "Default") return 1;
-  if (activeQuestion.value.header)
+  if (activeQuestion.value?.header)
     return (
       activeQuestion.value.header.split("\t").length ||
       ENTRY_PREFERENCES.value.CHOICES_COLUMNS
@@ -35,23 +36,58 @@ function getColumnsCount() {
 }
 
 function initChoiceSegments() {
-  return Array.from({ length: rowsCount.value }, (_, row) => {
-    return Array.from({ length: columnsCount.value }, (_, col) => {
+  const rows = activeQuestion.value?.choices?.length || rowsCount.value;
+  const cols = columnsCount.value;
+  return Array.from({ length: rows }, (_, row) => {
+    return Array.from({ length: cols }, (_, col) => {
       if (questionType.value === "Default")
-        return activeQuestion.value.choices[row]?.body || "";
-      if (questionType.value === "Tabular") return;
-      activeQuestion.value.choices[row]?.body.split("\t")[col] || "";
+        return activeQuestion.value?.choices?.[row]?.body || "";
+      if (questionType.value === "Tabular")
+        return (
+          activeQuestion.value?.choices?.[row]?.body?.split("\t")?.[col] || ""
+        );
+      return "";
     });
   });
 }
 
 function initHeaderSegments() {
-  return Array.from({ length: columnsCount.value }, () => {
+  const cols = columnsCount.value;
+  return Array.from({ length: cols }, (_, col) => {
     if (questionType.value === "Default") return "";
     if (questionType.value === "Tabular")
-      return activeQuestion.value.header?.split("\t")?.[0] || "";
+      return activeQuestion.value?.header?.split("\t")?.[col] || "";
+    return "";
   });
 }
+
+// Define explanationVisibility before the watcher that uses it
+const choices = computed(() => activeQuestion.value?.choices || []);
+const explanationVisibility = ref<Record<number, boolean>>(
+  Object.fromEntries(choices.value.map((_, index) => [index, false]))
+);
+
+// Watch for changes in the underlying question data to reinitialize local state
+// This ensures reactivity when editing a case or when store data changes
+watch(
+  () => [
+    activeQuestion.value?.id,
+    activeQuestion.value?.choices?.length,
+    inputStore.data.id,
+  ],
+  () => {
+    if (!activeQuestion.value) return;
+    columnsCount.value = getColumnsCount();
+    rowsCount.value = getRowsCount();
+    choiceSegments.value = initChoiceSegments();
+    headerSegments.value = initHeaderSegments();
+    explanationVisibility.value = Object.fromEntries(
+      (activeQuestion.value?.choices || []).map((_, index) => [index, false])
+    );
+  },
+  { immediate: false }
+);
+
 function onQuestionTypeChange() {
   function clearChoicesData() {
     activeQuestion.value.choices.forEach((choice) => {
@@ -115,10 +151,7 @@ function handleCheckChoice(row: number) {
     if (i !== row) choice.isCorrect = false;
   });
 }
-const choices = computed(() => activeQuestion.value.choices);
-const explanationVisibility = ref(
-  Object.fromEntries(choices.value.map((_, index) => [index, false]))
-);
+// choices and explanationVisibility are now defined earlier in the script
 
 function hanldeToggleExplanation(index: number) {
   explanationVisibility.value[index] = !explanationVisibility.value[index];

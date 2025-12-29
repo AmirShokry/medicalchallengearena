@@ -1,7 +1,7 @@
 <script setup lang="ts">
 //@ts-expect-error
 import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
-import { type CaseTypes } from "./Input/Index.vue";
+import { type CaseTypes, type Block } from "./Input/Index.vue";
 import {
   CheckCircle2Icon,
   NotebookPenIcon,
@@ -23,6 +23,8 @@ const previewStore = usePreviewStore();
 watch(
   () => caseType,
   async () => {
+    // Reset input when changing case types
+    inputStore.resetInput();
     await previewStore.fetchPreviewData({
       system,
       category,
@@ -31,18 +33,46 @@ watch(
   },
   { immediate: true }
 );
-function handleEditCase(caseIndex: number) {
-  if (previewStore.isEmpty) return;
 
-  const isEditing = caseIndex === previewStore.editedCaseIndex;
-  previewStore.editedCaseIndex = isEditing ? null : caseIndex;
+// Scroll to top when new data is added
+watch(
+  () => previewStore.scrollToTopTrigger,
+  () => {
+    // Use setTimeout to ensure the scroller has fully rendered the new item
+    setTimeout(() => {
+      // Try multiple approaches to ensure scrolling to absolute top
+      if (scrollerRef.value) {
+        // Method 1: Use scrollToItem(0) first
+        scrollerRef.value.scrollToItem(0);
+        // Method 2: Then also try native scroll on the internal element
+        const scrollerEl = scrollerRef.value.$el;
+        if (scrollerEl) {
+          scrollerEl.scrollTop = 0;
+        }
+      }
+    }, 100);
+  }
+);
+
+function handleEditCase(itemId: number) {
+  const originalIndex = previewStore.preview.findIndex((p) => p.id === itemId);
+  if (originalIndex === -1) return;
+
+  const isEditing = originalIndex === previewStore.editedCaseIndex;
+  previewStore.editedCaseIndex = isEditing ? null : originalIndex;
   inputStore.resetInput();
 
   if (!isEditing) {
     inputStore.setInput(
-      structuredClone(toRaw(previewStore.preview[caseIndex]))
+      structuredClone(toRaw(previewStore.preview[originalIndex]))
     );
   }
+}
+
+// Check if an item is currently being edited
+function isItemEditing(itemId: number): boolean {
+  const originalIndex = previewStore.preview.findIndex((p) => p.id === itemId);
+  return previewStore.editedCaseIndex === originalIndex;
 }
 </script>
 <template>
@@ -51,14 +81,14 @@ function handleEditCase(caseIndex: number) {
     class="bg-primary/20 @container/preview-section relative thin-scrollbar h-full"
   >
     <Button
-      @click="scrollerRef.scrollToBottom()"
+      @click="scrollerRef?.scrollToBottom()"
       variant="link"
       title="Scroll to bottom"
       class="cursor-pointer absolute -top-1.5 -left-2 z-50"
       ><ArrowDownCircleIcon
     /></Button>
     <Button
-      @click="scrollerRef.scrollToItem(0)"
+      @click="scrollerRef?.scrollToItem(0)"
       variant="link"
       title="Scroll to top"
       class="cursor-pointer absolute -bottom-1.5 -left-2 z-50"
@@ -66,9 +96,13 @@ function handleEditCase(caseIndex: number) {
     /></Button>
 
     <DynamicScroller
-      v-if="!previewStore.error && !previewStore.pending"
+      v-if="
+        !previewStore.error &&
+        !previewStore.pending &&
+        previewStore.filteredPreview.length > 0
+      "
       ref="scrollerRef"
-      :items="previewStore.preview"
+      :items="previewStore.filteredPreview"
       :min-item-size="400"
       class="scroller @max-[220px]/preview-section:hidden"
       style="height: 97svh"
@@ -85,6 +119,7 @@ function handleEditCase(caseIndex: number) {
               .map((q: any) => q.choices.map((c: any) => c.body).join(''))
               .join(''),
             item.questions.map((q: any) => q.explanation).join(''),
+            item.questions.length,
           ]"
           :data-index="index"
           class="item-wrapper p-6"
@@ -94,14 +129,10 @@ function handleEditCase(caseIndex: number) {
             class="unit-container bg-muted min-h-100 rounded-sm p-4 pb-10 overflow-hidden relative"
           >
             <Button
-              @click="handleEditCase(index)"
+              @click="handleEditCase(item.id)"
               variant="link"
               title="Edit case"
-              :class="
-                previewStore.editedCaseIndex === index
-                  ? 'text-pink-600'
-                  : undefined
-              "
+              :class="isItemEditing(item.id) ? 'text-pink-600' : undefined"
               class="cursor-pointer hover:text-pink-500 !py-0 absolute top-0 right-1.5"
             >
               <SquarePenIcon />
@@ -118,9 +149,10 @@ function handleEditCase(caseIndex: number) {
             </div>
             <div
               aria-role="block-container"
-              v-for="(question, index) in item.questions"
-              :id="question.id"
+              v-for="(question, qIndex) in item.questions"
+              :id="`question-${question.id}`"
               class="flex flex-col gap-1 px-6 py-4 mx-4 rounded-sm bg-sidebar overflow-hidden"
+              :style="{ marginTop: qIndex > 0 ? '12px' : '0' }"
               :key="question.id"
             >
               <div aria-role="question" class="w-full">
@@ -133,7 +165,7 @@ function handleEditCase(caseIndex: number) {
                       :size="15"
                     />
                     <span class="underline underline-offset-2 unselectable">
-                      Q#{{ index + 1 }}
+                      Q#{{ qIndex + 1 }}
                     </span>
                     {{ question.body }}
                   </p>
@@ -162,7 +194,7 @@ function handleEditCase(caseIndex: number) {
                 <li
                   v-for="choice in question.choices"
                   :key="choice.id"
-                  :id="choice.id"
+                  :id="`choice-${choice.id}`"
                   class="my-1"
                 >
                   <p class="inline-flex gap-1 items-center">
@@ -196,8 +228,14 @@ function handleEditCase(caseIndex: number) {
         </DynamicScrollerItem>
       </template>
     </DynamicScroller>
-    <div class="p-6 text-center py-20" v-if="previewStore.isEmpty">
+    <div
+      class="p-6 text-center py-20"
+      v-if="previewStore.isEmpty && !previewStore.noSearchResults"
+    >
       No data found.
+    </div>
+    <div class="p-6 text-center py-20" v-if="previewStore.noSearchResults">
+      No results found for "{{ previewStore.searchQuery }}".
     </div>
     <div
       v-if="previewStore.pending"
