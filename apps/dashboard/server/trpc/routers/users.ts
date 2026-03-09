@@ -256,7 +256,7 @@ export const usersRouter = createTRPCRouter({
 
       // Use the game app's base URL for the reset link
       const baseUrl =
-        process.env.NUXT_BASE_URL || "http://localhost:3000";
+        process.env.NUXT_BASE_URL || "https://medicalchallengearena.com";
       const resetLink = `${baseUrl}/reset-password?token=${encodeURIComponent(token)}`;
 
       const transporter = getMailTransporter();
