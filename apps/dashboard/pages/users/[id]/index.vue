@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowLeft, RotateCcw, CreditCard, Gamepad2 } from "lucide-vue-next";
+import { ArrowLeft, RotateCcw, CreditCard, Gamepad2, Mail, KeyRound } from "lucide-vue-next";
 
 const route = useRoute("users-id");
 const router = useRouter();
@@ -16,8 +16,14 @@ const {
 // Dialog states
 const showResetCasesDialog = ref(false);
 const showSubscriptionDialog = ref(false);
+const showSendResetEmailDialog = ref(false);
+const showSetPasswordDialog = ref(false);
 const isResetting = ref(false);
 const isTogglingSubscription = ref(false);
+const isSendingResetEmail = ref(false);
+const isSettingPassword = ref(false);
+const newPassword = ref("");
+const setPasswordError = ref("");
 
 // Reset user cases
 const handleResetCases = async () => {
@@ -53,6 +59,47 @@ const handleToggleSubscription = async () => {
     alert("Failed to update subscription status. Please try again.");
   } finally {
     isTogglingSubscription.value = false;
+  }
+};
+
+// Send reset password email
+const handleSendResetEmail = async () => {
+  isSendingResetEmail.value = true;
+  try {
+    const result = await $trpc.users.sendResetEmail.mutate({
+      userId: userId.value,
+    });
+    showSendResetEmailDialog.value = false;
+    alert(`Password reset email sent to ${result.email}`);
+  } catch (error) {
+    console.error("Failed to send reset email", error);
+    alert("Failed to send reset email. Please try again.");
+  } finally {
+    isSendingResetEmail.value = false;
+  }
+};
+
+// Manually set password
+const handleSetPassword = async () => {
+  if (newPassword.value.length < 6) {
+    setPasswordError.value = "Password must be at least 6 characters.";
+    return;
+  }
+  isSettingPassword.value = true;
+  setPasswordError.value = "";
+  try {
+    await $trpc.users.setPassword.mutate({
+      userId: userId.value,
+      newPassword: newPassword.value,
+    });
+    showSetPasswordDialog.value = false;
+    newPassword.value = "";
+    alert("Password updated successfully.");
+  } catch (error) {
+    console.error("Failed to set password", error);
+    alert("Failed to set password. Please try again.");
+  } finally {
+    isSettingPassword.value = false;
   }
 };
 
@@ -302,7 +349,7 @@ const winRate = computed(() => {
       </Card>
 
       <!-- Action Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
         <!-- View Games -->
         <Card
           class="cursor-pointer hover:bg-accent transition-colors"
@@ -370,6 +417,42 @@ const winRate = computed(() => {
                   ? "Remove the subscription from this user"
                   : "Add subscription to this user"
               }}
+            </CardDescription>
+          </CardHeader>
+        </Card>
+
+        <!-- Send Reset Password Email -->
+        <Card
+          class="cursor-pointer hover:bg-accent transition-colors border-blue-200 dark:border-blue-800"
+          @click="showSendResetEmailDialog = true"
+        >
+          <CardHeader>
+            <CardTitle
+              class="flex items-center gap-2 text-lg text-blue-600 dark:text-blue-400"
+            >
+              <Mail class="w-5 h-5" />
+              Send Reset Email
+            </CardTitle>
+            <CardDescription>
+              Send a password reset link to {{ user.email }}
+            </CardDescription>
+          </CardHeader>
+        </Card>
+
+        <!-- Set Password Manually -->
+        <Card
+          class="cursor-pointer hover:bg-accent transition-colors border-purple-200 dark:border-purple-800"
+          @click="showSetPasswordDialog = true"
+        >
+          <CardHeader>
+            <CardTitle
+              class="flex items-center gap-2 text-lg text-purple-600 dark:text-purple-400"
+            >
+              <KeyRound class="w-5 h-5" />
+              Set Password
+            </CardTitle>
+            <CardDescription>
+              Manually set a new password for this user
             </CardDescription>
           </CardHeader>
         </Card>
@@ -451,6 +534,81 @@ const winRate = computed(() => {
                   ? "Remove"
                   : "Add"
             }}
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+
+    <!-- Send Reset Email Confirmation Dialog -->
+    <Dialog v-model:open="showSendResetEmailDialog">
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Send Password Reset Email</DialogTitle>
+          <DialogDescription>
+            A password reset link will be sent to
+            <strong>{{ user?.email }}</strong
+            >. The link will expire in 15 minutes.
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter class="gap-2">
+          <Button
+            variant="outline"
+            @click="showSendResetEmailDialog = false"
+            :disabled="isSendingResetEmail"
+          >
+            Cancel
+          </Button>
+          <Button
+            @click="handleSendResetEmail"
+            :disabled="isSendingResetEmail"
+          >
+            {{ isSendingResetEmail ? "Sending..." : "Send Email" }}
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+
+    <!-- Set Password Dialog -->
+    <Dialog v-model:open="showSetPasswordDialog">
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Set Password Manually</DialogTitle>
+          <DialogDescription>
+            Enter a new password for
+            <strong>{{ user?.username }}</strong
+            >. The password must be at least 6 characters.
+          </DialogDescription>
+        </DialogHeader>
+        <div class="grid gap-3 py-4">
+          <Label for="newPassword">New Password</Label>
+          <Input
+            v-model="newPassword"
+            id="newPassword"
+            type="password"
+            placeholder="Enter new password (min 6 characters)"
+            autocomplete="new-password"
+          />
+          <p v-if="setPasswordError" class="text-sm text-red-500">
+            {{ setPasswordError }}
+          </p>
+        </div>
+        <DialogFooter class="gap-2">
+          <Button
+            variant="outline"
+            @click="
+              showSetPasswordDialog = false;
+              newPassword = '';
+              setPasswordError = '';
+            "
+            :disabled="isSettingPassword"
+          >
+            Cancel
+          </Button>
+          <Button
+            @click="handleSetPassword"
+            :disabled="isSettingPassword || newPassword.length < 6"
+          >
+            {{ isSettingPassword ? "Saving..." : "Set Password" }}
           </Button>
         </DialogFooter>
       </DialogContent>

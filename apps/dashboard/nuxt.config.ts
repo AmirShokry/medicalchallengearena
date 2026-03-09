@@ -8,6 +8,8 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     authSecret: process.env.NUXT_AUTH_SECRET,
+    EMAIL_USER: process.env.EMAIL_USER,
+    EMAIL_APP_PASSWORD: process.env.EMAIL_APP_PASSWORD,
     public: {
       imageApiKey: process.env.IMAGE_API_KEY || "No API Key Found",
     },

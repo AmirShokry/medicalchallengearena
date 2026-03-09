@@ -8,6 +8,8 @@ export default defineNuxtConfig({
     authSecret: process.env.NUXT_AUTH_SECRET,
     STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
     STRIPE_WEBHOOK_SECRET_KEY: process.env.STRIPE_WEBHOOK_SECRET_KEY,
+    EMAIL_USER: process.env.EMAIL_USER,
+    EMAIL_APP_PASSWORD: process.env.EMAIL_APP_PASSWORD,
     public: {
       STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY,
       NUXT_BASE_URL: process.env.NUXT_BASE_URL || "http://localhost:3000",

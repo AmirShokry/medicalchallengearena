@@ -8,6 +8,8 @@ const protectedRoutes: RouteLocationNormalized["name"][] = [
   "contact",
   "terms",
   "privacy",
+  "forgot-password",
+  "reset-password",
 ];
 export default defineNuxtRouteMiddleware((to, from) => {
   const { status } = useAuth();

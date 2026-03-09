@@ -12,6 +12,9 @@ import {
 import { jsonAggBuildObject } from "@package/database/helpers";
 import { QuestionsChoicesCTE } from "@package/database/ctes";
 import z from "zod";
+import bcrypt from "bcrypt";
+import { createHmac } from "crypto";
+import { getMailTransporter } from "@/server/utils/mailer";
 
 const {
   users,
@@ -224,6 +227,73 @@ export const usersRouter = createTRPCRouter({
         .update(users_auth)
         .set({ is_subscribed: input.isSubscribed })
         .where(eq(users_auth.user_id, input.userId));
+      return { success: true };
+    }),
+
+  // Send password reset email to user
+  sendResetEmail: authProcedure
+    .input(z.object({ userId: z.number() }))
+    .mutation(async ({ input }) => {
+      const [user] = await db
+        .select({ id: users.id, email: users.email, username: users.username })
+        .from(users)
+        .where(eq(users.id, input.userId))
+        .limit(1);
+
+      if (!user)
+        throw new TRPCError({ code: "NOT_FOUND", message: "User not found" });
+
+      const config = useRuntimeConfig();
+      const payload = JSON.stringify({
+        userId: user.id,
+        exp: Date.now() + 15 * 60 * 1000,
+      });
+      const payloadBase64 = Buffer.from(payload).toString("base64url");
+      const signature = createHmac("sha256", config.authSecret)
+        .update(payloadBase64)
+        .digest("base64url");
+      const token = `${payloadBase64}.${signature}`;
+
+      // Use the game app's base URL for the reset link
+      const baseUrl =
+        process.env.NUXT_BASE_URL || "http://localhost:3000";
+      const resetLink = `${baseUrl}/reset-password?token=${encodeURIComponent(token)}`;
+
+      const transporter = getMailTransporter();
+      await transporter.sendMail({
+        from: `"Medical Challenge Arena" <${config.EMAIL_USER}>`,
+        to: user.email,
+        subject: "Reset Your Password",
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 480px; margin: 0 auto;">
+            <h2>Password Reset</h2>
+            <p>An administrator has requested a password reset for your account <strong>${user.username}</strong>.</p>
+            <p>Click the link below to set a new password:</p>
+            <p><a href="${resetLink}" style="display:inline-block;padding:10px 20px;background:#18181b;color:#fff;text-decoration:none;border-radius:6px;">Reset Password</a></p>
+            <p style="color:#666;font-size:13px;">This link expires in 15 minutes. If you didn't expect this, you can safely ignore this email.</p>
+          </div>
+        `,
+      });
+
+      return { success: true, email: user.email };
+    }),
+
+  // Manually set a user's password (admin action)
+  setPassword: authProcedure
+    .input(
+      z.object({
+        userId: z.number(),
+        newPassword: z.string().min(6),
+      })
+    )
+    .mutation(async ({ input }) => {
+      const hashedPassword = await bcrypt.hash(input.newPassword, 12);
+
+      await db
+        .update(users_auth)
+        .set({ password: hashedPassword })
+        .where(eq(users_auth.user_id, input.userId));
+
       return { success: true };
     }),
 });

@@ -41,7 +41,6 @@ const handleLogin = async () => {
 
 const resetForm = () => (form.value = getInitialFormData());
 
-const handleForgotPassword = () => alert(`Keep trying! You'll get it`);
 const canLogin = computed(
   () => form.value.usernameOrEmail && form.value.password
 );
@@ -78,13 +77,12 @@ function getInitialFormData() {
                 <div class="grid gap-3">
                   <div class="flex items-center">
                     <Label for="password">Password</Label>
-                    <a
-                      @click="handleForgotPassword"
-                      href="#"
+                    <NuxtLink
+                      to="/forgot-password"
                       class="ml-auto text-sm underline-offset-2 hover:underline"
                     >
                       Forgot your password?
-                    </a>
+                    </NuxtLink>
                   </div>
                   <Input
                     v-model="form.password"

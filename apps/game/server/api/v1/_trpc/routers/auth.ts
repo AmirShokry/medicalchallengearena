@@ -5,6 +5,50 @@ import { UsersRanksCTE } from "@package/database/ctes";
 import { z } from "zod";
 import bcrypt from "bcrypt";
 import { stripe } from "@/server/utils/stripe";
+import { createHmac, timingSafeEqual } from "crypto";
+import { getMailTransporter } from "@/server/utils/mailer";
+
+function createResetToken(userId: number, secret: string): string {
+  const payload = JSON.stringify({
+    userId,
+    exp: Date.now() + 15 * 60 * 1000,
+  });
+  const payloadBase64 = Buffer.from(payload).toString("base64url");
+  const signature = createHmac("sha256", secret)
+    .update(payloadBase64)
+    .digest("base64url");
+  return `${payloadBase64}.${signature}`;
+}
+
+function verifyResetToken(
+  token: string,
+  secret: string
+): { userId: number } | null {
+  const parts = token.split(".");
+  if (parts.length !== 2) return null;
+  const [payloadBase64, signature] = parts;
+  if (!payloadBase64 || !signature) return null;
+
+  const expectedSignature = createHmac("sha256", secret)
+    .update(payloadBase64)
+    .digest("base64url");
+
+  const sigBuffer = Buffer.from(signature, "base64url");
+  const expectedBuffer = Buffer.from(expectedSignature, "base64url");
+  if (sigBuffer.length !== expectedBuffer.length) return null;
+  if (!timingSafeEqual(sigBuffer, expectedBuffer)) return null;
+
+  try {
+    const payload = JSON.parse(
+      Buffer.from(payloadBase64, "base64url").toString()
+    );
+    if (!payload.userId || !payload.exp) return null;
+    if (payload.exp < Date.now()) return null;
+    return { userId: payload.userId };
+  } catch {
+    return null;
+  }
+}
 export const auth = createTRPCRouter({
   getSession: authProcedure.query(async ({ ctx }) => {
     return ctx.session;
@@ -162,4 +206,78 @@ export const auth = createTRPCRouter({
     const { password, ...userdata } = { ...user, password: undefined };
     return userdata;
   }),
+
+  forgotPassword: publicProcedure
+    .input(
+      z.object({
+        usernameOrEmail: z.string().min(1),
+      })
+    )
+    .mutation(async ({ input }) => {
+      const { users } = db.table;
+
+      const [user] = await db
+        .select({ id: users.id, email: users.email })
+        .from(users)
+        .where(
+          or(
+            eq(users.username, input.usernameOrEmail),
+            eq(users.email, input.usernameOrEmail)
+          )
+        )
+        .limit(1);
+
+      // Always return success to prevent user enumeration
+      if (!user) return { success: true };
+
+      const config = useRuntimeConfig();
+      const token = createResetToken(user.id, config.authSecret);
+      const baseUrl = config.public.NUXT_BASE_URL;
+      const resetLink = `${baseUrl}/reset-password?token=${encodeURIComponent(token)}`;
+
+      const transporter = getMailTransporter();
+      await transporter.sendMail({
+        from: `"Medical Challenge Arena" <${config.EMAIL_USER}>`,
+        to: user.email,
+        subject: "Reset Your Password",
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 480px; margin: 0 auto;">
+            <h2>Password Reset</h2>
+            <p>You requested a password reset. Click the link below to set a new password:</p>
+            <p><a href="${resetLink}" style="display:inline-block;padding:10px 20px;background:#18181b;color:#fff;text-decoration:none;border-radius:6px;">Reset Password</a></p>
+            <p style="color:#666;font-size:13px;">This link expires in 15 minutes. If you didn't request this, you can safely ignore this email.</p>
+          </div>
+        `,
+      });
+
+      return { success: true };
+    }),
+
+  resetPassword: publicProcedure
+    .input(
+      z.object({
+        token: z.string().min(1),
+        newPassword: z.string().min(6),
+      })
+    )
+    .mutation(async ({ input }) => {
+      const config = useRuntimeConfig();
+      const tokenData = verifyResetToken(input.token, config.authSecret);
+
+      if (!tokenData)
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: "Invalid or expired reset link.",
+        });
+
+      const { users_auth } = db.table;
+      const hashedPassword = await bcrypt.hash(input.newPassword, 12);
+
+      const result = await db
+        .update(users_auth)
+        .set({ password: hashedPassword })
+        .where(eq(users_auth.user_id, tokenData.userId));
+
+      return { success: true };
+    }),
 });
