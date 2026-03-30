@@ -38,7 +38,7 @@ const counters = ref(
     unusedCount1: number;
     unusedCount2: number;
     matchingCount: number;
-  }[]
+  }[],
 );
 
 watch(user2Id, async () => {
@@ -82,10 +82,10 @@ const isRoomMaster = computed(() => $$game.players.user.flags.isMaster);
 const unusedCount = computed(() =>
   isRoomMaster
     ? counters.value?.[0]?.unusedCount2 || 0
-    : counters.value?.[0]?.unusedCount1 || 0
+    : counters.value?.[0]?.unusedCount1 || 0,
 );
 const selectedPool = ref<"all" | "unused">(
-  unusedCount.value > 0 ? "unused" : "all"
+  unusedCount.value > 0 ? "unused" : "all",
 );
 const selectedCasesCount = ref(0);
 const possibleCasesCount = ref([] as number[]);
@@ -93,7 +93,7 @@ const possibleCasesCount = ref([] as number[]);
 const allCount = computed(() => counters.value?.[0]?.allCount);
 
 function getCategoryCounter(
-  category: (typeof systemsCategoriesRaw.value)[0]["categories"][0]
+  category: (typeof systemsCategoriesRaw.value)[0]["categories"][0],
 ) {
   return isRoomMaster.value ? category.unusedCount2 : category.unusedCount1;
 }
@@ -104,7 +104,7 @@ watch(
   user,
   () =>
     user.value ? $$game.players.user.info["~set"](user.value!) : undefined,
-  { immediate: true }
+  { immediate: true },
 );
 
 function handlePoolSelected(value: "all" | "unused", isRemote?: boolean) {
@@ -121,7 +121,7 @@ function handlePoolSelected(value: "all" | "unused", isRemote?: boolean) {
 }
 function handleToggleEntireSystemCategories(
   sysIndex: number,
-  isRemote?: boolean
+  isRemote?: boolean,
 ) {
   if (!isRemote)
     gameSocket.emit("userSelected", { target: "allSystems", sysIndex });
@@ -150,13 +150,13 @@ function handleToggleEntireSystemCategories(
       updateCasesCounters(
         selectedPool.value === "all"
           ? category.allCount
-          : getCategoryCounter(category)
+          : getCategoryCounter(category),
       );
     else
       updateCasesCounters(
         selectedPool.value === "all"
           ? -category.allCount
-          : -getCategoryCounter(category)
+          : -getCategoryCounter(category),
       );
   }
 }
@@ -164,7 +164,7 @@ function handleToggleEntireSystemCategories(
 function handleToggleCategory(
   sysIndex: number,
   catIndex: number,
-  isRemote?: boolean
+  isRemote?: boolean,
 ) {
   if (!isRemote)
     gameSocket.emit("userSelected", { target: "category", sysIndex, catIndex });
@@ -178,13 +178,13 @@ function handleToggleCategory(
     updateCasesCounters(
       selectedPool.value === "all"
         ? category.allCount
-        : getCategoryCounter(category)
+        : getCategoryCounter(category),
     );
   else
     updateCasesCounters(
       selectedPool.value === "all"
         ? -category.allCount
-        : -getCategoryCounter(category)
+        : -getCategoryCounter(category),
     );
   const areAllCategoriesInSystemSelected = () =>
     system.categories.every((category) => category.isChecked);
@@ -223,7 +223,7 @@ function canSelectAddEntireSystem(sysIndex: number) {
   const system = systemsCategories.value[sysIndex];
   if (!system) return false;
   return system.categories.some((_, catIndex) =>
-    canSelectCategory(sysIndex, catIndex)
+    canSelectCategory(sysIndex, catIndex),
   );
 }
 const canSelectQuestionPool = () => isRoomMaster.value;
@@ -240,13 +240,75 @@ function canSelectCategory(sysIndex: number, catIndex: number) {
 }
 function isAnyCategorySelected() {
   return systemsCategories.value.some((system) =>
-    system.categories.some((category) => category.isChecked)
+    system.categories.some((category) => category.isChecked),
   );
 }
 
 const canSelectCasesCount = () => isRoomMaster.value && isAnyCategorySelected();
 const canSelectContinueToGame = () =>
   isRoomMaster.value && isAnyCategorySelected();
+
+function handleSelectAll(isRemote?: boolean) {
+  if (!isRemote) gameSocket.emit("userSelected", { target: "selectAll" });
+
+  const allEligibleSelected = isAllEligibleSelected();
+
+  // Reset everything first
+  resetCasesCounters();
+  systemsCategories.value.forEach((system) => {
+    system.isChecked = false;
+    system.categories.forEach((category) => (category.isChecked = false));
+  });
+
+  if (allEligibleSelected) return;
+
+  // Select all eligible
+  systemsCategories.value.forEach((system, sysIndex) => {
+    system.categories.forEach((category, catIndex) => {
+      const isEligible = isRemote
+        ? (selectedPool.value === "all" && category.allCount > 0) ||
+          (selectedPool.value === "unused" && getCategoryCounter(category) > 0)
+        : canSelectCategory(sysIndex, catIndex);
+
+      if (isEligible) {
+        category.isChecked = true;
+        updateCasesCounters(
+          selectedPool.value === "all"
+            ? category.allCount
+            : getCategoryCounter(category),
+        );
+      }
+    });
+    system.isChecked = system.categories.every((cat) => cat.isChecked);
+  });
+}
+
+function isAllEligibleSelected() {
+  const hasAnyEligible = systemsCategories.value.some((system, sysIndex) =>
+    system.categories.some((_, catIndex) => {
+      const system = systemsCategories.value[sysIndex];
+      const category = system?.categories[catIndex];
+      if (!category) return false;
+      if (selectedPool.value === "all" && category.allCount > 0) return true;
+      if (selectedPool.value === "unused" && getCategoryCounter(category) > 0)
+        return true;
+      return false;
+    }),
+  );
+  if (!hasAnyEligible) return false;
+  return systemsCategories.value.every((system, sysIndex) =>
+    system.categories.every((category, catIndex) => {
+      const sys = systemsCategories.value[sysIndex];
+      const cat = sys?.categories[catIndex];
+      if (!cat) return true;
+      if (selectedPool.value === "all" && cat.allCount > 0)
+        return cat.isChecked;
+      if (selectedPool.value === "unused" && getCategoryCounter(cat) > 0)
+        return cat.isChecked;
+      return true;
+    }),
+  );
+}
 
 gameSocket.onAny((event, ...args) => {
   if (event === "opponentSelected") {
@@ -273,6 +335,9 @@ gameSocket.onAny((event, ...args) => {
         if (!Number.isInteger(data.sysIndex)) return;
         handleToggleEntireSystemCategories(data.sysIndex!, true);
         break;
+      case "selectAll":
+        handleSelectAll(true);
+        break;
     }
   }
 });
@@ -282,7 +347,7 @@ const canShowSplash = computed(
     (matchmaking.state === "reviewing-invitation" ||
       matchmaking.state === "waiting-approval") &&
     !$$game.players.opponent.flags.hasDeclined &&
-    !$$game.players.opponent.flags.hasLeft
+    !$$game.players.opponent.flags.hasLeft,
 );
 function handleCasesCountUpdated(questionsCount: number, isRemote?: boolean) {
   if (!isRemote)
@@ -389,6 +454,15 @@ onUnmounted(() => {
           <section class="categories flex flex-col flex-1 min-h-0">
             <div class="my-4 flex items-center gap-4 flex-wrap">
               <strong>Categories</strong>
+              <UiButton
+                variant="outline"
+                size="sm"
+                class="text-xs"
+                :disabled="!isRoomMaster"
+                @click="handleSelectAll()"
+              >
+                {{ isAllEligibleSelected() ? "Deselect All" : "Select All" }}
+              </UiButton>
               <div class="relative w-1/3 max-md:flex-1">
                 <UiInput
                   id="search"

@@ -42,7 +42,8 @@ export namespace ToClientIO {
           | "system"
           | "category"
           | "questionsCount"
-          | "allSystems";
+          | "allSystems"
+          | "selectAll";
         pool?: "all" | "unused";
         sysIndex?: number;
         catIndex?: number;
@@ -122,7 +123,7 @@ export namespace ToClientIO {
       }) => void;
       opponentSolved: (
         data: RecordObject["data"][0],
-        stats: RecordObject["stats"]
+        stats: RecordObject["stats"],
       ) => void;
       opponentAccepted: (data: { isMaster: boolean }) => void;
       opponentSentInvitation: (data: { friendId: number }) => void;
@@ -221,7 +222,7 @@ type SocialIOHelpers = {
      * @param id Target friends ids
      */
     getUsersStatusById: (
-      usersIds: number[]
+      usersIds: number[],
     ) => Map<number, ToClientIO.Social.UserStatus>;
   };
 };
@@ -247,10 +248,15 @@ export namespace ToServerIO {
       userAccepted: (isInvitation?: boolean) => void;
       userSolved: (
         data: RecordObject["data"][0],
-        stats: RecordObject["stats"]
+        stats: RecordObject["stats"],
       ) => void;
       userSelected: (data: {
-        target: "pool" | "category" | "questionsCount" | "allSystems";
+        target:
+          | "pool"
+          | "category"
+          | "questionsCount"
+          | "allSystems"
+          | "selectAll";
         pool?: "all" | "unused";
         sysIndex?: number;
         catIndex?: number;
@@ -281,7 +287,7 @@ export namespace ToServerIO {
           questionStartTimestamp: number | null;
           questionDurationMs: number | null;
           isPaused: boolean;
-        }) => void
+        }) => void,
       ) => void;
       /** Check if a user can be invited to a game */
       checkCanInvite: (
@@ -290,7 +296,7 @@ export namespace ToServerIO {
           canInvite: boolean;
           reason?: string;
           status: string;
-        }) => void
+        }) => void,
       ) => void;
       /** Request game state restoration after reconnection */
       requestGameStateRestore: () => void;
@@ -325,12 +331,12 @@ export namespace ToServerIO {
       /** Open chat with a friend - marks messages as read and retrieves history */
       openChat: (
         data: { id: number },
-        callback?: (messages: ToClientIO.Social.FriendMessage[]) => void
+        callback?: (messages: ToClientIO.Social.FriendMessage[]) => void,
       ) => void;
       /** Get status of multiple friends */
       getFriendsStatus: (
         data: number[],
-        cb: (statuses: Record<number, ToClientIO.Social.UserStatus>) => void
+        cb: (statuses: Record<number, ToClientIO.Social.UserStatus>) => void,
       ) => void;
       friendRequestSent: (data: { id: number }) => void;
       /** Update current user's status */
@@ -340,8 +346,8 @@ export namespace ToServerIO {
         userId: number,
         callback: (
           isOnline: boolean,
-          status: ToClientIO.Social.UserStatus
-        ) => void
+          status: ToClientIO.Social.UserStatus,
+        ) => void,
       ) => void;
       /** Send a message to a friend (stored in database) */
       sendFriendMessage: (
@@ -350,18 +356,18 @@ export namespace ToServerIO {
           success: boolean;
           messageId?: number;
           error?: string;
-        }) => void
+        }) => void,
       ) => void;
       /** Get conversation history with a friend */
       getConversationHistory: (
         data: { friendId: number; limit?: number; offset?: number },
-        callback: (messages: ToClientIO.Social.FriendMessage[]) => void
+        callback: (messages: ToClientIO.Social.FriendMessage[]) => void,
       ) => void;
       /** Mark messages from a friend as read */
       markMessagesRead: (friendId: number) => void;
       /** Get unread message counts from all friends */
       getUnreadCounts: (
-        callback: (counts: Record<number, number>) => void
+        callback: (counts: Record<number, number>) => void,
       ) => void;
     }
   }

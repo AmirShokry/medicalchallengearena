@@ -16,7 +16,7 @@ const $router = useRouter();
 const selectedCasesCount = ref(0);
 const possibleCasesCount = ref([] as number[]);
 const systemsCategoriesRaw = ref(
-  [] as NonNullable<typeof data.value>["systemsCategories"]
+  [] as NonNullable<typeof data.value>["systemsCategories"],
 );
 
 // Set user status to busy when in solo setup
@@ -76,7 +76,7 @@ const fuse = computed(() => {
 const unusedCount = computed(() => data.value?.unusedCount || 0);
 
 const selectedPool = ref<"all" | "unused">(
-  unusedCount.value > 0 ? "unused" : "all"
+  unusedCount.value > 0 ? "unused" : "all",
 );
 const allCount = computed(() => data.value?.allCount || 0);
 
@@ -88,7 +88,7 @@ function handlePoolSelected(value: "all" | "unused") {
   selectedPool.value = value;
   resetCasesCounters();
   systemsCategories.value.forEach((system) =>
-    system.categories.forEach((category) => (category.isChecked = false))
+    system.categories.forEach((category) => (category.isChecked = false)),
   );
 }
 
@@ -105,13 +105,13 @@ function handleToggleEntireSystemCategories(sysIndex: number) {
         updateCasesCounters(
           selectedPool.value === "all"
             ? category.allCount
-            : category.unusedCount
+            : category.unusedCount,
         );
       else
         updateCasesCounters(
           selectedPool.value === "all"
             ? -category.allCount
-            : -category.unusedCount
+            : -category.unusedCount,
         );
     }
   });
@@ -124,11 +124,11 @@ function handleToggleCategory(sysIndex: number, catIndex: number) {
   category.isChecked = !category.isChecked;
   if (category.isChecked)
     updateCasesCounters(
-      selectedPool.value === "all" ? category.allCount : category.unusedCount
+      selectedPool.value === "all" ? category.allCount : category.unusedCount,
     );
   else
     updateCasesCounters(
-      selectedPool.value === "all" ? -category.allCount : -category.unusedCount
+      selectedPool.value === "all" ? -category.allCount : -category.unusedCount,
     );
 }
 
@@ -171,7 +171,7 @@ function canSelectAddEntireSystem(sysIndex: number) {
   if (!system) return false;
   //Check if there is at least one category that can be selected
   return system.categories.some((_, catIndex) =>
-    canSelectCategory(sysIndex, catIndex)
+    canSelectCategory(sysIndex, catIndex),
   );
 }
 
@@ -190,18 +190,61 @@ function canSelectCategory(sysIndex: number, catIndex: number) {
 }
 function isAnyCategorySelected() {
   return systemsCategories.value.some((system) =>
-    system.categories.some((category) => category.isChecked)
+    system.categories.some((category) => category.isChecked),
   );
 }
 function isEverySystemCategorySelected(sysIndex: number) {
   const system = systemsCategories.value[sysIndex];
   if (!system) return false;
   const areAllChecked = system.categories.every(
-    (category) => category.isChecked
+    (category) => category.isChecked,
   );
   system.isChecked = areAllChecked;
   return areAllChecked;
 }
+function handleSelectAll() {
+  const allEligibleSelected = isAllEligibleSelected();
+
+  // Reset everything first
+  resetCasesCounters();
+  systemsCategories.value.forEach((system) => {
+    system.isChecked = false;
+    system.categories.forEach((category) => (category.isChecked = false));
+  });
+
+  if (allEligibleSelected) return;
+
+  // Select all eligible
+  systemsCategories.value.forEach((system, sysIndex) => {
+    system.categories.forEach((category, catIndex) => {
+      if (canSelectCategory(sysIndex, catIndex)) {
+        category.isChecked = true;
+        updateCasesCounters(
+          selectedPool.value === "all"
+            ? category.allCount
+            : category.unusedCount,
+        );
+      }
+    });
+    system.isChecked = system.categories.every((cat) => cat.isChecked);
+  });
+}
+
+function isAllEligibleSelected() {
+  const hasAnyEligible = systemsCategories.value.some((system, sysIndex) =>
+    system.categories.some((_, catIndex) =>
+      canSelectCategory(sysIndex, catIndex),
+    ),
+  );
+  if (!hasAnyEligible) return false;
+  return systemsCategories.value.every((system, sysIndex) =>
+    system.categories.every((category, catIndex) => {
+      if (!canSelectCategory(sysIndex, catIndex)) return true;
+      return category.isChecked;
+    }),
+  );
+}
+
 function canSelectCasesCount() {
   return isAnyCategorySelected();
 }
@@ -248,6 +291,14 @@ function canSelectContinueToGame() {
           <section class="categories flex flex-col flex-1 min-h-0">
             <div class="my-4 flex items-center gap-4 flex-wrap">
               <strong>Categories</strong>
+              <UiButton
+                variant="outline"
+                size="sm"
+                class="text-xs"
+                @click="handleSelectAll"
+              >
+                {{ isAllEligibleSelected() ? "Deselect All" : "Select All" }}
+              </UiButton>
               <div class="relative w-1/3 max-md:flex-1">
                 <UiInput
                   id="search"
