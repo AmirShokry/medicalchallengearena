@@ -267,12 +267,13 @@ export function registerFriendMessaging(
           return;
         }
 
-        // Validate friendship
-        const isFriend = await areFriends(userId, friendId);
-        if (!isFriend) {
+        // Note: messaging is allowed between any two users (not only friends).
+        // The recipient can read incoming messages from anyone via the same
+        // socket flow. We still prevent users from messaging themselves.
+        if (friendId === userId) {
           callback?.({
             success: false,
-            error: "Cannot send message to non-friend",
+            error: "Cannot send a message to yourself",
           });
           return;
         }
@@ -325,13 +326,6 @@ export function registerFriendMessaging(
     ) => {
       try {
         const { friendId, limit = 50, offset = 0 } = data;
-
-        // Validate friendship
-        const isFriend = await areFriends(userId, friendId);
-        if (!isFriend) {
-          callback([]);
-          return;
-        }
 
         const messages = await getConversationHistory(
           userId,

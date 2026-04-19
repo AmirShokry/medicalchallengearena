@@ -81,11 +81,21 @@ social.onMessage((message) => {
 
   if (!friendStore.friendList) return;
 
-  // Find the friend who sent the message
-  const friend = friendStore.friendList.find((f) => f.id === message.senderId);
-  if (!friend) return;
+  // Find the sender; if not a friend, register them as a temporary entry
+  // so the conversation can be opened/displayed on the recipient's side.
+  let friend = friendStore.friendList.find((f) => f.id === message.senderId);
+  if (!friend) {
+    friend = friendStore.ensureFriend({
+      id: message.senderId,
+      username: message.senderUsername,
+      avatarUrl: null,
+      university: null,
+      medPoints: null,
+      status: "online",
+    });
+  }
 
-  // Add message to the friend's message list
+  // Add message to the sender's message list
   friend.messages.push({
     type: "text",
     id: message.senderId.toString(),

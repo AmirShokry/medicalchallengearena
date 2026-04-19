@@ -521,7 +521,8 @@ function handleManagingContent() {
             <li
               v-for="user in onlineItems"
               :key="user.id"
-              class="flex items-center gap-3 rounded-md px-2 py-2 hover:bg-muted group"
+              @click="openChatWithFriend(user)"
+              class="flex items-center gap-3 rounded-md px-2 py-2 hover:bg-muted group cursor-pointer"
             >
               <UiAvatar class="border border-border h-9 w-9 shrink-0">
                 <UiAvatarImage :src="user.avatarUrl ?? ''" alt="Avatar" />
@@ -556,12 +557,21 @@ function handleManagingContent() {
 
               <div class="flex items-center gap-0.5 shrink-0">
                 <UiButton
+                  variant="ghost"
+                  size="sm"
+                  title="Chat"
+                  class="h-7 w-7 p-0"
+                  @click.stop="openChatWithFriend(user)"
+                >
+                  <MessageCircleIcon class="w-4 h-4" />
+                </UiButton>
+                <UiButton
                   v-if="user.requestStatus === 'none'"
                   variant="ghost"
                   size="sm"
                   title="Add friend"
                   class="h-7 w-7 p-0"
-                  @click="handleAddOnlineUser(user)"
+                  @click.stop="handleAddOnlineUser(user)"
                 >
                   <UserPlusIcon class="w-4 h-4" />
                 </UiButton>
@@ -575,7 +585,7 @@ function handleManagingContent() {
                     size="sm"
                     title="Cancel request"
                     class="h-7 w-7 p-0"
-                    @click="handleCancelOrReject(user.id)"
+                    @click.stop="handleCancelOrReject(user.id)"
                   >
                     <XIcon class="w-4 h-4" />
                   </UiButton>
@@ -587,7 +597,7 @@ function handleManagingContent() {
                     size="sm"
                     title="Accept"
                     class="h-7 w-7 p-0 text-success hover:text-success"
-                    @click="handleAcceptOnlineRequest(user.id)"
+                    @click.stop="handleAcceptOnlineRequest(user.id)"
                   >
                     <CheckIcon class="w-4 h-4" />
                   </UiButton>
@@ -596,22 +606,11 @@ function handleManagingContent() {
                     size="sm"
                     title="Reject"
                     class="h-7 w-7 p-0"
-                    @click="handleCancelOrReject(user.id)"
+                    @click.stop="handleCancelOrReject(user.id)"
                   >
                     <XIcon class="w-4 h-4" />
                   </UiButton>
                 </template>
-
-                <UiButton
-                  v-else-if="user.requestStatus === 'friend'"
-                  variant="ghost"
-                  size="sm"
-                  title="Chat"
-                  class="h-7 w-7 p-0"
-                  @click="openChatWithFriend(user)"
-                >
-                  <MessageCircleIcon class="w-4 h-4" />
-                </UiButton>
               </div>
             </li>
             <li
