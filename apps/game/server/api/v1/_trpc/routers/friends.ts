@@ -1,17 +1,31 @@
 import { type PlayerData } from "@package/types";
 import { z } from "zod";
-import { and, eq, like, not, or, sql, db } from "@package/database";
+import {
+  and,
+  eq,
+  ilike,
+  inArray,
+  like,
+  ne,
+  not,
+  or,
+  sql,
+  db,
+} from "@package/database";
 import { caseWhen } from "@package/database/helpers";
 
 import { authProcedure, createTRPCRouter } from "../init";
+import { userPresenceMap } from "@/server/socket-handlers/social/presence";
 const { users, users_friends } = db.table;
+
+const PAGE_SIZE = 10;
 
 export const friends = createTRPCRouter({
   list: authProcedure
     .input(z.number().int().min(0).max(500).default(0))
     .query(async ({ ctx, input }) => {
       const FriendsCTE = FriendsCTEg({ userId: ctx.session?.user.id! });
-      return await db
+      const items = await db
         .with(FriendsCTE)
         .select({
           id: users.id,
@@ -23,8 +37,16 @@ export const friends = createTRPCRouter({
         })
         .from(FriendsCTE)
         .innerJoin(users, eq(users.id, FriendsCTE.friendId))
-        .limit(10)
-        .offset(input * 10);
+        .limit(PAGE_SIZE)
+        .offset(input * PAGE_SIZE);
+
+      const TotalCTE = FriendsCTEg({ userId: ctx.session?.user.id! });
+      const [{ count = 0 } = { count: 0 }] = await db
+        .with(TotalCTE)
+        .select({ count: sql<number>`count(*)::int` })
+        .from(TotalCTE);
+
+      return { items, total: Number(count) };
     }),
   search: authProcedure
     .input(
@@ -35,7 +57,7 @@ export const friends = createTRPCRouter({
     )
     .query(async ({ ctx, input }) => {
       const FriendsCTE = FriendsCTEg({ userId: ctx.session?.user.id! });
-      return await db
+      const items = await db
         .with(FriendsCTE)
         .select({
           id: users.id,
@@ -48,8 +70,156 @@ export const friends = createTRPCRouter({
         .from(FriendsCTE)
         .innerJoin(users, eq(users.id, FriendsCTE.friendId))
         .where(like(users.username, `%${input.username}%`))
-        .limit(10)
-        .offset(input.page * 10);
+        .limit(PAGE_SIZE)
+        .offset(input.page * PAGE_SIZE);
+
+      const TotalCTE = FriendsCTEg({ userId: ctx.session?.user.id! });
+      const [{ count = 0 } = { count: 0 }] = await db
+        .with(TotalCTE)
+        .select({ count: sql<number>`count(*)::int` })
+        .from(TotalCTE)
+        .innerJoin(users, eq(users.id, TotalCTE.friendId))
+        .where(like(users.username, `%${input.username}%`));
+
+      return { items, total: Number(count) };
+    }),
+  /**
+   * Returns a paginated list of currently online users (excluding self),
+   * with friendship status so the UI can render the correct actions.
+   */
+  online: authProcedure
+    .input(
+      z
+        .object({
+          page: z.number().int().min(0).max(500).default(0),
+          search: z.string().trim().default(""),
+          /** When true, accepted friends are filtered out of the result set */
+          excludeFriends: z.boolean().default(false),
+        })
+        .default({ page: 0, search: "", excludeFriends: false })
+    )
+    .query(async ({ ctx, input }) => {
+      const userId = ctx.session?.user.id!;
+
+      // Snapshot online users from the in-memory presence map
+      let onlineIds: number[] = [];
+      for (const presence of userPresenceMap.values()) {
+        if (presence.userId !== userId) onlineIds.push(presence.userId);
+      }
+
+      if (input.excludeFriends && onlineIds.length > 0) {
+        // Remove accepted friends of the current user from the candidate set
+        const friendRows = await db
+          .select({
+            user1_id: users_friends.user1_id,
+            user2_id: users_friends.user2_id,
+          })
+          .from(users_friends)
+          .where(
+            and(
+              eq(users_friends.isFriend, true),
+              or(
+                and(
+                  eq(users_friends.user1_id, userId),
+                  inArray(users_friends.user2_id, onlineIds)
+                ),
+                and(
+                  eq(users_friends.user2_id, userId),
+                  inArray(users_friends.user1_id, onlineIds)
+                )
+              )
+            )
+          );
+        const friendIds = new Set<number>(
+          friendRows.map((r) => (r.user1_id === userId ? r.user2_id : r.user1_id))
+        );
+        onlineIds = onlineIds.filter((id) => !friendIds.has(id));
+      }
+
+      if (onlineIds.length === 0) {
+        return { items: [] as Array<OnlineUser>, total: 0 };
+      }
+
+      const whereExpr = input.search
+        ? and(
+            inArray(users.id, onlineIds),
+            ilike(users.username, `%${input.search}%`)
+          )
+        : inArray(users.id, onlineIds);
+
+      const [{ count = 0 } = { count: 0 }] = await db
+        .select({ count: sql<number>`count(*)::int` })
+        .from(users)
+        .where(whereExpr);
+
+      const rows = await db
+        .select({
+          id: users.id,
+          username: users.username,
+          avatarUrl: users.avatarUrl,
+          medSchool: users.medSchool,
+          university: users.university,
+          medPoints: users.medPoints,
+        })
+        .from(users)
+        .where(whereExpr)
+        .orderBy(users.username)
+        .limit(PAGE_SIZE)
+        .offset(input.page * PAGE_SIZE);
+
+      // Friendship state for the rows on this page
+      const pageIds = rows.map((r) => r.id);
+      let relations: Array<{
+        otherId: number;
+        isFriend: boolean;
+        direction: "outgoing" | "incoming";
+      }> = [];
+      if (pageIds.length > 0) {
+        const friendRows = await db
+          .select({
+            user1_id: users_friends.user1_id,
+            user2_id: users_friends.user2_id,
+            isFriend: users_friends.isFriend,
+          })
+          .from(users_friends)
+          .where(
+            or(
+              and(
+                eq(users_friends.user1_id, userId),
+                inArray(users_friends.user2_id, pageIds)
+              ),
+              and(
+                eq(users_friends.user2_id, userId),
+                inArray(users_friends.user1_id, pageIds)
+              )
+            )
+          );
+        relations = friendRows.map((r) => ({
+          otherId: r.user1_id === userId ? r.user2_id : r.user1_id,
+          isFriend: r.isFriend,
+          direction: r.user1_id === userId ? "outgoing" : "incoming",
+        }));
+      }
+
+      const relMap = new Map(relations.map((r) => [r.otherId, r]));
+      const items: OnlineUser[] = rows.map((row) => {
+        const rel = relMap.get(row.id);
+        const presence = userPresenceMap.get(row.id);
+        return {
+          ...row,
+          status: presence?.status ?? "online",
+          isFriend: !!rel?.isFriend,
+          requestStatus: !rel
+            ? "none"
+            : rel.isFriend
+              ? "friend"
+              : rel.direction === "outgoing"
+                ? "outgoing"
+                : "incoming",
+        };
+      });
+
+      return { items, total: Number(count) };
     }),
   requests: {
     all: authProcedure.query(async ({ ctx }) => {
@@ -225,6 +395,20 @@ export const friends = createTRPCRouter({
       return true;
     }),
 });
+
+export interface OnlineUser {
+  id: number;
+  username: string;
+  avatarUrl: string | null;
+  medSchool: string | null;
+  university: string | null;
+  medPoints: number | null;
+  status: "online" | "offline" | "busy" | "matchmaking" | "ingame";
+  isFriend: boolean;
+  /** "none" = not added, "outgoing" = current user sent request, "incoming" = received, "friend" = accepted */
+  requestStatus: "none" | "outgoing" | "incoming" | "friend";
+}
+
 function FriendsCTEg({ userId }: { userId: number }) {
   return db.$with("FriendsCTE").as(
     db

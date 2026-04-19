@@ -56,10 +56,12 @@ export const useFriendsStore = defineStore("friends", () => {
         return;
       }
 
+      const items = Array.isArray(data) ? data : data.items;
+
       // Preserve existing status and messages when refreshing
       const existingMap = new Map(friendListData.value.map((f) => [f.id, f]));
 
-      friendListData.value = data.map((friend): FriendData => {
+      friendListData.value = items.map((friend): FriendData => {
         const existing = existingMap.get(friend.id);
         return {
           ...friend,
@@ -122,6 +124,40 @@ export const useFriendsStore = defineStore("friends", () => {
     friend.messages = [];
   }
 
+  /**
+   * Ensure a friend exists in the store. Used when opening a chat with a
+   * friend that may live on a different page than the cached page 0 list.
+   */
+  function ensureFriend(friend: {
+    id: number;
+    username: string;
+    avatarUrl: string | null;
+    medSchool?: string | null;
+    university: string | null;
+    medPoints: number | null;
+    status?: UserStatus;
+  }) {
+    const existing = friendListData.value.find((f) => f.id === friend.id);
+    if (existing) {
+      if (friend.status) existing.status = friend.status;
+      return existing;
+    }
+    const newFriend: FriendData = {
+      id: friend.id,
+      username: friend.username,
+      avatarUrl: friend.avatarUrl ?? "",
+      medSchool: friend.medSchool ?? null,
+      university: friend.university ?? "",
+      medPoints: friend.medPoints,
+      isActive: false,
+      status: friend.status ?? "offline",
+      isTemp: true,
+      messages: [],
+    };
+    friendListData.value.push(newFriend);
+    return newFriend;
+  }
+
   async function refresh() {
     await refreshQuery();
   }
@@ -134,5 +170,6 @@ export const useFriendsStore = defineStore("friends", () => {
     addMessage,
     setMessages,
     clearMessages,
+    ensureFriend,
   };
 });

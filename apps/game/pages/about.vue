@@ -28,8 +28,8 @@ useSeoMeta({
           <div class="flex flex-col items-center justify-center h-full gap-2">
             <div class="rounded-full overflow-clip">
               <img
-                src="~/assets/images/yassin4.jpg"
-                class="w-32 h-32 object-cover"
+                src="~/assets/images/Yassin Badr.webp"
+                class="w-32 h-32 object-[center_-0.1rem] object-cover"
               />
             </div>
             <p class="text-2xl font-semibold">Yassin Badr</p>
@@ -48,11 +48,11 @@ useSeoMeta({
           class="bg-primary-foreground flex-1 rounded-2xl flex flex-col items-center justify-center pt-4 pb-10 text-center"
         >
           <img
-            src="~/assets/images/yassin4.jpg"
-            class="rounded-full w-14 aspect-square object-cover object-[center_-0.2rem]"
+            src="~/assets/images/Youssef Ismail.webp"
+            class="rounded-full w-14 aspect-square object-cover"
           />
-          <p class="text-lg font-bold">Yassin Essam</p>
-          <p>COO</p>
+          <p class="text-lg font-bold">Youssef Ismail</p>
+          <p>Medical Director</p>
         </div>
         <a
           href="https://github.com/AmirShokry"
@@ -61,10 +61,22 @@ useSeoMeta({
         >
           <img
             src="https://i.imghippo.com/files/Ktp6193Btc.jpg"
-            class="rounded-full w-14 aspect-square object-cover object-[center_-0.2rem]"
+            class="rounded-full w-14 aspect-square object-cover"
           />
           <p class="text-lg font-bold">Amir Shokry</p>
           <p>Software Engineer</p>
+        </a>
+                <a
+          href="https://github.com/ZyadShokry"
+          target="_blank"
+          class="bg-primary-foreground flex-1 rounded-2xl flex flex-col items-center justify-center pt-4 pb-10 text-center"
+        >
+          <img
+            src="~/assets/images/Zyad Shokry.webp"
+            class="rounded-full w-14 aspect-square object-cover"
+          />
+          <p class="text-lg font-bold">Zyad Alkayem</p>
+          <p>AI Engineer</p>
         </a>
         <a
           href="https://github.com/reo4"
