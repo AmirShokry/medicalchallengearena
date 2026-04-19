@@ -8,7 +8,7 @@ const $$game = useGameStore();
     <div class="flex flex-col items-center gap-3 mr-auto ml-[30%]">
       <img
         alt="user-logo"
-        :src="$$game.players.user.info?.avatarUrl!"
+        :src="getAvatarSrc($$game.players.user.info)"
         class="aspect-square rounded-full object-cover w-[10vmax]"
       />
       <p
@@ -21,7 +21,7 @@ const $$game = useGameStore();
       <img
         v-if="$$game.players.opponent.info.avatarUrl"
         alt="opponent-logo"
-        :src="$$game.players.opponent.info.avatarUrl!"
+        :src="getAvatarSrc($$game.players.opponent.info)"
         class="aspect-square object-cover rounded-full w-[10vmax]"
       />
       <p

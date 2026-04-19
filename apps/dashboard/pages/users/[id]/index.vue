@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ArrowLeft, RotateCcw, CreditCard, Gamepad2, Mail, KeyRound } from "lucide-vue-next";
+import { resolveAvatarUrl, type Gender } from "@package/types";
 
 const route = useRoute("users-id");
 const router = useRouter();
@@ -126,6 +127,33 @@ const winRate = computed(() => {
   if (!user.value || !user.value.gamesTotal) return 0;
   return Math.round((user.value.gamesWon! / user.value.gamesTotal) * 100);
 });
+
+// Avatar resolution (falls back to gender-specific default)
+const displayedAvatar = computed(() =>
+  resolveAvatarUrl({
+    avatarUrl: user.value?.avatarUrl,
+    gender: (user.value?.gender as Gender) ?? "male",
+  })
+);
+
+// Gender update
+const isUpdatingGender = ref(false);
+const handleGenderChange = async (newGender: Gender) => {
+  if (!user.value || user.value.gender === newGender) return;
+  isUpdatingGender.value = true;
+  try {
+    await $trpc.users.setGender.mutate({
+      userId: userId.value,
+      gender: newGender,
+    });
+    refreshUser();
+  } catch (error) {
+    console.error("Failed to update gender", error);
+    alert("Failed to update gender. Please try again.");
+  } finally {
+    isUpdatingGender.value = false;
+  }
+};
 </script>
 
 <template>
@@ -175,7 +203,7 @@ const winRate = computed(() => {
         <CardHeader>
           <div class="flex items-center gap-4">
             <Avatar class="w-20 h-20">
-              <AvatarImage :src="user.avatarUrl" :alt="user.username" />
+              <AvatarImage :src="displayedAvatar" :alt="user.username" />
               <AvatarFallback>{{
                 user.username?.slice(0, 2).toUpperCase()
               }}</AvatarFallback>
@@ -183,7 +211,7 @@ const winRate = computed(() => {
             <div class="flex-1">
               <CardTitle class="text-2xl">{{ user.username }}</CardTitle>
               <CardDescription>{{ user.email }}</CardDescription>
-              <div class="flex items-center gap-2 mt-2">
+              <div class="flex items-center gap-2 mt-2 flex-wrap">
                 <span
                   :class="[
                     'px-2 py-1 rounded-full text-xs font-medium',
@@ -194,6 +222,20 @@ const winRate = computed(() => {
                 >
                   {{ user.isSubscribed ? "Subscribed" : "Not Subscribed" }}
                 </span>
+                <Select
+                  :model-value="user.gender ?? 'male'"
+                  :disabled="isUpdatingGender"
+                  @update:model-value="(v: any) => handleGenderChange(v as Gender)"
+                >
+                  <SelectTrigger class="h-7 w-36 text-xs">
+                    <SelectValue placeholder="Gender" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="male">Male</SelectItem>
+                    <SelectItem value="female">Female</SelectItem>
+                    <SelectItem value="unspecified">Unspecified</SelectItem>
+                  </SelectContent>
+                </Select>
                 <span
                   v-if="user.plan"
                   class="px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100"

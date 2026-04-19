@@ -275,7 +275,7 @@ function canSelectContinueToGame() {
         >
           <img
             alt="user-logo"
-            :src="user?.avatarUrl!"
+            :src="getAvatarSrc(user)"
             width="80px"
             class="aspect-square object-cover rounded-full"
           />

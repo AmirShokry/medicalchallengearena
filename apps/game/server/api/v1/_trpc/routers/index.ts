@@ -8,6 +8,7 @@ import { cases } from "./cases";
 import { exam } from "./exam";
 import { friends } from "./friends";
 import { reviews } from "./reviews";
+import { profile } from "./profile";
 export const appRouter = createTRPCRouter({
   block,
   auth,
@@ -17,6 +18,7 @@ export const appRouter = createTRPCRouter({
   exam,
   friends,
   reviews,
+  profile,
 });
 
 // export type definition of API

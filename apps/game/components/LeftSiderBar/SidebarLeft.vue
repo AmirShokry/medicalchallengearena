@@ -13,6 +13,7 @@ import {
   Sparkles,
   SunMoonIcon,
   Trash2,
+  UserIcon,
 } from "lucide-vue-next";
 
 import NavFavorites from "@/components/LeftSiderBar/NavFavorites.vue";
@@ -44,6 +45,11 @@ const data = {
       url: "/game/review",
       icon: SquareChartGanttIcon,
       badge: "10",
+    },
+    {
+      title: "Profile",
+      url: "/game/profile",
+      icon: UserIcon,
     },
   ],
 
@@ -87,7 +93,7 @@ const data = {
     },
     {
       name: "Profile",
-      url: "#",
+      url: "/game/profile",
       emoji: "🙎🏻‍♂️",
     },
   ],

@@ -84,8 +84,7 @@ async function handleAcceptRequest(friendId: number) {
         <div class="flex items-center gap-2">
           <UiAvatar class="border border-border h-8 w-8">
             <UiAvatarImage
-              v-if="friend.avatarUrl"
-              :src="friend.avatarUrl"
+              :src="getAvatarSrc(friend)"
               alt="Avatar"
             />
           </UiAvatar>
@@ -120,8 +119,7 @@ async function handleAcceptRequest(friendId: number) {
         <div class="flex items-center gap-2">
           <UiAvatar class="border border-border h-8 w-8">
             <UiAvatarImage
-              v-if="friend.avatarUrl"
-              :src="friend.avatarUrl"
+              :src="getAvatarSrc(friend)"
               alt="Avatar"
             />
           </UiAvatar>

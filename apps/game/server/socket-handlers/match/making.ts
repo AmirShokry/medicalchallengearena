@@ -342,6 +342,7 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
       id: socket.data.session?.id,
       username: socket.data.session?.username,
       avatarUrl: socket.data.session?.avatarUrl || null,
+      gender: socket.data.session?.gender || "male",
       medPoints: socket.data.session?.medPoints || 0,
       university: socket.data.session?.university || null,
     };
@@ -349,6 +350,7 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
       id: opponentSocket.data.session?.id,
       username: opponentSocket.data.session?.username,
       avatarUrl: opponentSocket.data.session?.avatarUrl || null,
+      gender: opponentSocket.data.session?.gender || "male",
       medPoints: opponentSocket.data.session?.medPoints || 0,
       university: opponentSocket.data.session?.university || null,
     };

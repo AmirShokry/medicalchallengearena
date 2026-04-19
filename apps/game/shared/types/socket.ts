@@ -66,6 +66,7 @@ export namespace ToClientIO {
           id: number;
           username: string;
           avatarUrl: string | null;
+          gender: "male" | "female" | "unspecified";
           medPoints: number;
           university: string | null;
         };
@@ -74,6 +75,7 @@ export namespace ToClientIO {
           id: number;
           username: string;
           avatarUrl: string | null;
+          gender: "male" | "female" | "unspecified";
           medPoints: number;
           university: string | null;
         };

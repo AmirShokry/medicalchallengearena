@@ -30,6 +30,8 @@
     "nodemailer": "^6.10.1",
     "nuxt": "^3.17.5",
     "nuxt-svgo": "^4.2.2",
+    "oci-common": "^2.129.0",
+    "oci-objectstorage": "^2.129.0",
     "peerjs": "^1.5.5",
     "pinia": "^3.0.3",
     "reka-ui": "^2.4.1",

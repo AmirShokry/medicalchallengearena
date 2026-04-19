@@ -23,7 +23,7 @@ onBeforeUnmount(() => $$game["~resetEverything"]());
       >
         <div>
           <img
-            :src="user.info.avatarUrl!"
+            :src="getAvatarSrc(user.info)"
             width="100"
             class="aspect-square max-md:hidden rounded-full object-cover"
           />

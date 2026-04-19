@@ -41,6 +41,7 @@ export const reviews = createTRPCRouter({
           opponentId: users_games.opponentId,
           opoonentUsername: users.username,
           opponentAvatarUrl: users.avatarUrl,
+          opponentGender: users.gender,
           mode: games.mode,
           date: games.createdAt,
           durationMs: users_games.durationMs,

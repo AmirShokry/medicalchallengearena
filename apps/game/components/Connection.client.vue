@@ -172,6 +172,7 @@ function setupSocketListeners() {
         id: data.userInfo.id,
         username: data.userInfo.username,
         avatarUrl: data.userInfo.avatarUrl || "",
+        gender: data.userInfo.gender || "male",
         medPoints: data.userInfo.medPoints,
         university: data.userInfo.university || "",
       });
@@ -184,6 +185,7 @@ function setupSocketListeners() {
         id: data.opponentInfo.id,
         username: data.opponentInfo.username,
         avatarUrl: data.opponentInfo.avatarUrl || "",
+        gender: data.opponentInfo.gender || "male",
         medPoints: data.opponentInfo.medPoints,
         university: data.opponentInfo.university || "",
       });
@@ -266,6 +268,7 @@ function setupSocketListeners() {
       username: opponent.username,
       medPoints: opponent.medPoints ?? 0,
       avatarUrl: opponent.avatarUrl,
+      gender: opponent.gender,
       university: opponent.university,
     });
     // Stop any random matchmaking queue on receipt of an invitation

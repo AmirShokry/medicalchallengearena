@@ -195,9 +195,7 @@ onUnmounted(() => window.removeEventListener("keydown", listenForEscape));
                 </TableCell>
                 <TableCell class="flex items-center">
                   <UiAvatar class="max-lg:hidden">
-                    <UiAvatarImage
-                      :src="`https://robohash.org/${user.username}`"
-                    />
+                    <UiAvatarImage :src="getAvatarSrc(user)" />
                   </UiAvatar>
                   <p class="mt-2 max-w-30 truncate">
                     {{ user.username }}
@@ -219,7 +217,7 @@ onUnmounted(() => window.removeEventListener("keydown", listenForEscape));
           <div class="flex items-center gap-4">
             <UiAvatar>
               <UiAvatarImage
-                :src="user.avatarUrl || `https://robohash.org/${user.username}`"
+                :src="getAvatarSrc(user)"
                 class="rounded-full w-full h-full object-cover object-center"
               />
             </UiAvatar>

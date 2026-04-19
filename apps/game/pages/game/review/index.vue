@@ -146,7 +146,7 @@ function handleRecordClicked(gameId: number) {
             >
               <div class="flex items-center justify-center gap-1 px-2">
                 <img
-                  :src="item.opponentAvatarUrl!"
+                  :src="getAvatarSrc({ avatarUrl: item.opponentAvatarUrl, gender: item.opponentGender })"
                   class="max-md:hidden w-5 h-5 rounded-full object-cover"
                 />
                 <p class="truncate">{{ item.opoonentUsername }}</p>

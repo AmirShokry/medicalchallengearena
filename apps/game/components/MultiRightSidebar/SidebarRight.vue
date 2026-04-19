@@ -30,10 +30,12 @@ function getContent(isSelf: boolean) {
   return isSelf
     ? {
         avatarUrl: userStore.user?.avatarUrl,
+        gender: userStore.user?.gender,
         username: userStore.user?.username,
       }
     : {
         avatarUrl: rival.info.value?.avatarUrl,
+        gender: rival.info.value?.gender,
         username: rival.info.value?.username,
       };
 }
@@ -83,8 +85,8 @@ function getContent(isSelf: boolean) {
               <div
                 class="flex items gap-2 text-sm text-muted-foreground w-9/10"
               >
-                <UiAvatar v-if="getContent(message.self).avatarUrl">
-                  <UiAvatarImage :src="getContent(message.self)?.avatarUrl!" />
+                <UiAvatar>
+                  <UiAvatarImage :src="getAvatarSrc(getContent(message.self))" />
                 </UiAvatar>
                 <div class="flex flex-col">
                   <div class="flex items-center gap-1">

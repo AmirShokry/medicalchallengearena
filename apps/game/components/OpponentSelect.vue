@@ -102,6 +102,7 @@ async function handleInvitaionSent() {
       username: friend.username,
       medPoints: friend.medPoints ?? 0,
       avatarUrl: friend.avatarUrl,
+      gender: friend.gender,
       university: friend.university,
     });
     // Ensure random matchmaking UI is cleared after sending a manual invite
@@ -190,7 +191,7 @@ watch(
         <div class="relative w-full h-[122px] flex justify-between">
           <div class="flex flex-col gap-2 items-center justify-center">
             <img
-              :src="$$game.players.user.info.avatarUrl!"
+              :src="getAvatarSrc($$game.players.user.info)"
               alt="user-logo"
               class="aspect-square rounded-full w-[90px] object-cover"
             />
@@ -246,7 +247,7 @@ watch(
                 >
                   <div class="relative">
                     <UiAvatar>
-                      <UiAvatarImage :src="friend.avatarUrl" />
+                      <UiAvatarImage :src="getAvatarSrc(friend)" />
                     </UiAvatar>
                     <div
                       class="absolute bottom-0 right-0 w-3 h-3 rounded-full border-2 border-background"
@@ -333,7 +334,7 @@ watch(
       <div class="flex px-2 justify-center gap-6">
         <div class="flex items-center gap-2">
           <UiAvatar>
-            <UiAvatarImage :src="$$game.players.opponent.info.avatarUrl!" />
+            <UiAvatarImage :src="getAvatarSrc($$game.players.opponent.info)" />
           </UiAvatar>
           <div class="leading-tight text-sm">
             <p class="font-bold">

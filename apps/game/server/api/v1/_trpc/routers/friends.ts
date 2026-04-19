@@ -31,6 +31,7 @@ export const friends = createTRPCRouter({
           id: users.id,
           username: users.username,
           avatarUrl: users.avatarUrl,
+          gender: users.gender,
           medSchool: users.medSchool,
           university: users.university,
           medPoints: users.medPoints,
@@ -63,6 +64,7 @@ export const friends = createTRPCRouter({
           id: users.id,
           username: users.username,
           avatarUrl: users.avatarUrl,
+          gender: users.gender,
           medSchool: users.medSchool,
           university: users.university,
           medPoints: users.medPoints,
@@ -157,6 +159,7 @@ export const friends = createTRPCRouter({
           id: users.id,
           username: users.username,
           avatarUrl: users.avatarUrl,
+          gender: users.gender,
           medSchool: users.medSchool,
           university: users.university,
           medPoints: users.medPoints,
@@ -228,11 +231,11 @@ export const friends = createTRPCRouter({
         incoming: PlayerData[];
       }>(
         sql`
-				SELECT COALESCE(JSONB_AGG(jsonb_build_object('id', subq.id,'username', subq.username, 'avatarUrl', subq.avatar_url, 'university', subq.university, 'medSchool', subq.med_school, 'medPoints', subq.med_points)) 
+				SELECT COALESCE(JSONB_AGG(jsonb_build_object('id', subq.id,'username', subq.username, 'avatarUrl', subq.avatar_url, 'gender', subq.gender, 'university', subq.university, 'medSchool', subq.med_school, 'medPoints', subq.med_points)) 
 				FILTER (WHERE request_type = 'outgoing'),'[]'::jsonb)
 				as outgoing,
 
-				COALESCE(JSONB_AGG(jsonb_build_object('id', subq.id,'username', subq.username, 'avatarUrl', subq.avatar_url, 'university', subq.university, 'medSchool', subq.med_school, 'medPoints', subq.med_points)) 
+				COALESCE(JSONB_AGG(jsonb_build_object('id', subq.id,'username', subq.username, 'avatarUrl', subq.avatar_url, 'gender', subq.gender, 'university', subq.university, 'medSchool', subq.med_school, 'medPoints', subq.med_points)) 
 				FILTER (WHERE request_type = 'incoming'),'[]'::jsonb)
 				as incoming
 
@@ -310,6 +313,7 @@ export const friends = createTRPCRouter({
           id: users.id,
           username: users.username,
           avatarUrl: users.avatarUrl,
+          gender: users.gender,
           medSchool: users.medSchool,
           university: users.university,
           medPoints: users.medPoints,
@@ -400,6 +404,7 @@ export interface OnlineUser {
   id: number;
   username: string;
   avatarUrl: string | null;
+  gender: "male" | "female" | "unspecified";
   medSchool: string | null;
   university: string | null;
   medPoints: number | null;

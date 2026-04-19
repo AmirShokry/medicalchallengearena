@@ -163,6 +163,7 @@ onMounted(() => {
         id: data.userInfo.id,
         username: data.userInfo.username,
         avatarUrl: data.userInfo.avatarUrl || "",
+        gender: data.userInfo.gender || "male",
         medPoints: data.userInfo.medPoints,
         university: data.userInfo.university || "",
       });
@@ -175,6 +176,7 @@ onMounted(() => {
         id: data.opponentInfo.id,
         username: data.opponentInfo.username,
         avatarUrl: data.opponentInfo.avatarUrl || "",
+        gender: data.opponentInfo.gender || "male",
         medPoints: data.opponentInfo.medPoints,
         university: data.opponentInfo.university || "",
       });
@@ -580,7 +582,7 @@ onBeforeUnmount(() => {
     <div class="flex justify-between mb-3 py-2 px-6">
       <UserInfo
         :username="user.info.username"
-        :avatar-url="user.info.avatarUrl!"
+        :avatar-url="getAvatarSrc(user.info)"
         :med-points="user.records.stats.totalMedpoints"
         :time="user.timer.time!"
         :rank="1"
@@ -590,7 +592,7 @@ onBeforeUnmount(() => {
       <OpponentInfo
         v-if="!opponent.flags.hasLeft"
         :username="opponent.info.username"
-        :avatar-url="opponent.info.avatarUrl!"
+        :avatar-url="getAvatarSrc(opponent.info)"
         :med-points="opponent.records.stats.totalMedpoints"
         :time="opponent.timer.time!"
         :rank="2"

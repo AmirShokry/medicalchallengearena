@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { getAvatarSrc } from "@/composables/useAvatar";
 const activeFriendId = defineModel<number>({ required: true });
 const userStore = useUserStore();
 const friendsStore = useFriendsStore();
@@ -21,11 +22,11 @@ const activeFriend = computed(() => {
 			<UiAvatar class="border border-border h-8 w-8">
 				<UiAvatarImage
 					v-if="!message.self"
-					:src="activeFriend.avatarUrl"
+					:src="getAvatarSrc(activeFriend)"
 					alt="Avatar" />
 				<UiAvatarImage
 					v-else-if="userStore.user"
-					:src="userStore.user.avatarUrl"
+					:src="getAvatarSrc(userStore.user)"
 					alt="Avatar" />
 			</UiAvatar>
 			<div>

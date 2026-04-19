@@ -425,7 +425,7 @@ onUnmounted(() => {
           <div class="flex flex-col gap-2 items-center justify-center">
             <img
               alt="user-logo"
-              :src="$$game.players.user.info.avatarUrl!"
+              :src="getAvatarSrc($$game.players.user.info)"
               width="80px"
               class="aspect-square object-cover rounded-full"
             />
@@ -437,7 +437,7 @@ onUnmounted(() => {
           <div class="flex flex-col gap-2 items-center justify-center">
             <img
               alt="opponent-logo"
-              :src="$$game.players.opponent.info.avatarUrl!"
+              :src="getAvatarSrc($$game.players.opponent.info)"
               width="80px"
               class="aspect-square rounded-full object-cover"
             />

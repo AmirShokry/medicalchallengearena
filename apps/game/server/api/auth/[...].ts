@@ -44,6 +44,7 @@ export const authConfig: AuthOptions = {
           username: result.username,
           email: result.email,
           avatarUrl: result.avatarUrl,
+          gender: result.gender,
           medPoints: result.medPoints,
           university: result.university,
           isSubscribed: result.isSubscribed,

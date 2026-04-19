@@ -194,7 +194,7 @@ onUnmounted(() => user.timer.destroy());
       <UserInfo
         class="scale-[0.7] pb-0"
         :username="user.info.username"
-        :avatar-url="user.info.avatarUrl!"
+        :avatar-url="getAvatarSrc(user.info)"
         :med-points="user.records.stats.totalMedpoints"
         :time="user.timer.time!"
         :rank="1"

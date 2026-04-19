@@ -32,6 +32,8 @@ import type { ReducedRecordObject } from "@package/types";
  * @TABLES
  **
  */
+export const genderEnum = pgEnum("gender", ["male", "female", "unspecified"]);
+
 export const users = pgTable(
   "users",
   {
@@ -46,9 +48,9 @@ export const users = pgTable(
     expectedDegree: text("expected_deg"),
     examDate: date("exam_date", { mode: "date" }),
 
-    avatarUrl: text("avatar_url")
-      .default("https://i.ibb.co/j5jqhRm/default-avatar-1.webp")
-      .notNull(),
+    gender: genderEnum("gender").notNull().default("male"),
+
+    avatarUrl: text("avatar_url"),
     avatarDeleteUrl: text("avatar_delete_url"),
 
     medPoints: integer("med_points").notNull().default(0),

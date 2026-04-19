@@ -14,8 +14,18 @@ import {
   TableCell,
   TableRow,
 } from "@/components/ui/table";
+import { resolveAvatarUrl, type Gender } from "@/shared/types/common";
 const { $trpc } = useNuxtApp();
 const { data: ranks, pending } = $trpc.common.ranks.useQuery({ limit: 10 });
+function rankAvatar(idx: number) {
+  const r = ranks.value?.[idx] as
+    | { avatarUrl?: string | null; gender?: Gender | null }
+    | undefined;
+  return resolveAvatarUrl({
+    avatarUrl: r?.avatarUrl ?? null,
+    gender: r?.gender ?? "male",
+  });
+}
 </script>
 <template>
   <div class="min-h-svh px-[min(15svw,6rem)]">
@@ -62,7 +72,7 @@ const { data: ranks, pending } = $trpc.common.ranks.useQuery({ limit: 10 });
             >
             <image
               name="rank1-avatar"
-              href="https://i.ibb.co/j5jqhRm/default-avatar-1.webp"
+              :href="rankAvatar(0)"
               class="[clip-path:circle(50%_at_50%_50%)]"
               preserveAspectRatio="xMidYMid slice"
               x="199"
@@ -105,7 +115,7 @@ const { data: ranks, pending } = $trpc.common.ranks.useQuery({ limit: 10 });
             >
             <image
               name="rank2-avatar"
-              href="https://i.ibb.co/j5jqhRm/default-avatar-1.webp"
+              :href="rankAvatar(1)"
               class="[clip-path:circle(50%_at_50%_50%)]"
               x="67"
               y="135"
@@ -153,7 +163,7 @@ const { data: ranks, pending } = $trpc.common.ranks.useQuery({ limit: 10 });
             >
             <image
               name="rank3-avatar"
-              href="https://i.ibb.co/j5jqhRm/default-avatar-1.webp"
+              :href="rankAvatar(2)"
               class="[clip-path:circle(50%_at_50%_50%)]"
               preserveAspectRatio="xMidYMid slice"
               x="368"

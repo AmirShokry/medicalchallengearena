@@ -296,4 +296,20 @@ export const usersRouter = createTRPCRouter({
 
       return { success: true };
     }),
+
+  // Update a user's gender (admin action)
+  setGender: authProcedure
+    .input(
+      z.object({
+        userId: z.number(),
+        gender: z.enum(["male", "female", "unspecified"]),
+      })
+    )
+    .mutation(async ({ input }) => {
+      await db
+        .update(users)
+        .set({ gender: input.gender })
+        .where(eq(users.id, input.userId));
+      return { success: true, gender: input.gender };
+    }),
 });

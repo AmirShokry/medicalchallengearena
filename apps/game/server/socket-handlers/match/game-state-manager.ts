@@ -25,6 +25,7 @@ export interface PlayerInfo {
   id: number;
   username: string;
   avatarUrl: string | null;
+  gender: "male" | "female" | "unspecified";
   medPoints: number;
   university: string | null;
 }

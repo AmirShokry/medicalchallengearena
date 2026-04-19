@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import type { AppRouter } from "@/server/api/v1/_trpc/routers";
 import type { inferRouterOutputs } from "@trpc/server";
 import type { UserStatus, FriendMessage } from "@/composables/useSocial";
+import type { Gender } from "@/shared/types/common";
 
 type FriendList = inferRouterOutputs<AppRouter>["friends"]["list"];
 
@@ -12,6 +13,7 @@ export interface FriendData {
   id: number;
   username: string;
   avatarUrl: string;
+  gender: Gender;
   medPoints: number | null;
   university: string;
   medSchool?: string | null;
@@ -65,6 +67,7 @@ export const useFriendsStore = defineStore("friends", () => {
         const existing = existingMap.get(friend.id);
         return {
           ...friend,
+          gender: (friend as any).gender ?? "male",
           medSchool: friend.medSchool,
           isActive: existing?.isActive ?? false,
           status: existing?.status ?? "offline",
@@ -132,6 +135,7 @@ export const useFriendsStore = defineStore("friends", () => {
     id: number;
     username: string;
     avatarUrl: string | null;
+    gender?: Gender | null;
     medSchool?: string | null;
     university: string | null;
     medPoints: number | null;
@@ -146,6 +150,7 @@ export const useFriendsStore = defineStore("friends", () => {
       id: friend.id,
       username: friend.username,
       avatarUrl: friend.avatarUrl ?? "",
+      gender: (friend.gender ?? "male") as Gender,
       medSchool: friend.medSchool ?? null,
       university: friend.university ?? "",
       medPoints: friend.medPoints,

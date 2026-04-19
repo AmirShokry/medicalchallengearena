@@ -51,7 +51,7 @@ onBeforeUnmount(() => $$game["~resetEverything"]());
       >
         <div>
           <img
-            :src="user.info.avatarUrl!"
+            :src="getAvatarSrc(user.info)"
             width="100"
             class="aspect-square max-md:hidden rounded-full object-cover"
           />
@@ -80,7 +80,7 @@ onBeforeUnmount(() => $$game["~resetEverything"]());
         <div>
           <div class="relative">
             <img
-              :src="opponent.info.avatarUrl!"
+              :src="getAvatarSrc(opponent.info)"
               width="100"
               class="aspect-square max-md:hidden rounded-full object-cover"
             />

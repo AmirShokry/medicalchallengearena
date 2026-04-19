@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { getAvatarSrc } from "@/composables/useAvatar";
 import {
   ArrowLeftIcon,
   CheckIcon,
@@ -176,6 +177,7 @@ async function openChatWithFriend(friend: {
   id: number;
   username: string;
   avatarUrl: string | null;
+  gender?: "male" | "female" | "unspecified" | null;
   medSchool?: string | null;
   university: string | null;
   medPoints: number | null;
@@ -184,6 +186,7 @@ async function openChatWithFriend(friend: {
     id: friend.id,
     username: friend.username,
     avatarUrl: friend.avatarUrl,
+    gender: friend.gender ?? "male",
     medSchool: friend.medSchool ?? null,
     university: friend.university,
     medPoints: friend.medPoints,
@@ -392,7 +395,7 @@ function handleManagingContent() {
               class="flex items-center gap-3 rounded-md px-2 py-2 hover:bg-muted cursor-pointer group"
             >
               <UiAvatar class="border border-border h-9 w-9 shrink-0">
-                <UiAvatarImage :src="friend.avatarUrl ?? ''" alt="Avatar" />
+                <UiAvatarImage :src="getAvatarSrc(friend)" alt="Avatar" />
               </UiAvatar>
               <div class="min-w-0 flex-1">
                 <div class="flex items-center gap-1.5">
@@ -525,7 +528,7 @@ function handleManagingContent() {
               class="flex items-center gap-3 rounded-md px-2 py-2 hover:bg-muted group cursor-pointer"
             >
               <UiAvatar class="border border-border h-9 w-9 shrink-0">
-                <UiAvatarImage :src="user.avatarUrl ?? ''" alt="Avatar" />
+                <UiAvatarImage :src="getAvatarSrc(user)" alt="Avatar" />
               </UiAvatar>
               <div class="min-w-0 flex-1">
                 <div class="flex items-center gap-1.5">

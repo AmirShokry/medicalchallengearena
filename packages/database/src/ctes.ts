@@ -71,6 +71,8 @@ export const UsersRanksCTE = db.$with("UsersRanksCTE").as(
         "rank"
       ),
       username: db.table.users.username,
+      avatarUrl: db.table.users.avatarUrl,
+      gender: db.table.users.gender,
       medPoints: db.table.users.medPoints,
     })
     .from(db.table.users)

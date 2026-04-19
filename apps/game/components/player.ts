@@ -7,6 +7,7 @@ export class Player {
     id: -1,
     username: "",
     avatarUrl: "",
+    gender: "male",
     medPoints: -1,
     university: "",
   });
