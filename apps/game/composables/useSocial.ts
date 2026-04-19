@@ -66,6 +66,11 @@ type FriendStatusCallback = (
   status: UserStatus
 ) => void;
 type MessageCallback = (message: FriendMessage) => void;
+type PresenceChangeCallback = (
+  userId: number,
+  username: string,
+  status: UserStatus
+) => void;
 
 /** Check if running in production mode */
 const isProduction = process.env.NODE_ENV === "production";
@@ -81,6 +86,7 @@ function debugLog(...args: any[]) {
 let isInitialized = false;
 const friendStatusCallbacks: FriendStatusCallback[] = [];
 const messageCallbacks: MessageCallback[] = [];
+const presenceChangeCallbacks: PresenceChangeCallback[] = [];
 const unreadCounts = ref<Record<number, number>>({});
 
 /**
@@ -129,6 +135,14 @@ function init(): void {
     debugLog(`[Social] Messages read by user ${data.readBy}`);
   });
 
+  // Listen for global presence changes (any user connect/disconnect/status)
+  socialSocket.on("presenceChange", (data) => {
+    const status: UserStatus = data.status as UserStatus;
+    presenceChangeCallbacks.forEach((cb) =>
+      cb(data.id, data.username, status)
+    );
+  });
+
   isInitialized = true;
   debugLog("[Social] Social socket listeners initialized");
 }
@@ -140,8 +154,10 @@ function cleanup(): void {
   socialSocket.off("friendStatusUpdate");
   socialSocket.off("receiveFriendMessage");
   socialSocket.off("messagesRead");
+  socialSocket.off("presenceChange");
   friendStatusCallbacks.length = 0;
   messageCallbacks.length = 0;
+  presenceChangeCallbacks.length = 0;
   isInitialized = false;
 }
 
@@ -171,6 +187,20 @@ function onMessage(callback: MessageCallback): () => void {
     const index = messageCallbacks.indexOf(callback);
     if (index > -1) {
       messageCallbacks.splice(index, 1);
+    }
+  };
+}
+
+/**
+ * Register a callback for global presence changes (any user, not only friends).
+ * Useful for keeping the online-users list in sync without polling.
+ */
+function onPresenceChange(callback: PresenceChangeCallback): () => void {
+  presenceChangeCallbacks.push(callback);
+  return () => {
+    const index = presenceChangeCallbacks.indexOf(callback);
+    if (index > -1) {
+      presenceChangeCallbacks.splice(index, 1);
     }
   };
 }
@@ -368,6 +398,7 @@ export default function useSocial() {
     // Event listeners
     onFriendStatus,
     onMessage,
+    onPresenceChange,
 
     // Game invitations
     checkCanInvite,

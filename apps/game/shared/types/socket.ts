@@ -197,6 +197,16 @@ export namespace ToClientIO {
         username: string;
         status: UserStatus;
       }) => void;
+      /**
+       * Global presence broadcast sent to all connected sockets whenever
+       * any user's presence status changes. Used by the online-users list
+       * to stay in sync without requiring a full refresh.
+       */
+      presenceChange: (data: {
+        id: number;
+        username: string;
+        status: UserStatus;
+      }) => void;
       receivedFriendRequest: (data: PlayerData) => void;
       rejectedFriendRequest: (data: { id: number }) => void;
       /** Receive a friend message */

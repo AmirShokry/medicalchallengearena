@@ -145,11 +145,22 @@ const {
 const onlineItems = computed(() => onlineData.value?.items ?? []);
 const onlineTotal = computed(() => onlineData.value?.total ?? 0);
 
-// Refresh online list when status updates come in
+// Refresh online list when status updates come in (friends only)
 const stopOnlineStatusListener = social.onFriendStatus(() => {
   refreshOnline();
 });
-onUnmounted(() => stopOnlineStatusListener());
+// Refresh online list when ANY user's presence changes (connect/disconnect/status)
+const stopPresenceListener = social.onPresenceChange((userId, _username, status) => {
+  // Also keep visible friends' status dots in sync
+  if (userId in friendStatusMap.value) {
+    friendStatusMap.value[userId] = status;
+  }
+  refreshOnline();
+});
+onUnmounted(() => {
+  stopOnlineStatusListener();
+  stopPresenceListener();
+});
 
 function totalPages(total: number) {
   return Math.max(1, Math.ceil(total / PAGE_SIZE));

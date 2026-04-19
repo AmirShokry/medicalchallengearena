@@ -122,6 +122,9 @@ export async function setUserStatus(
   // Only notify if status actually changed
   if (notifyFriends && previousStatus !== status) {
     await notifyFriendsOfStatusChange(io, userId, username, status);
+    // Broadcast a lightweight presence change to every connected client so
+    // the "online users" list in the sidebar stays in sync for non-friends.
+    io.emit("presenceChange", { id: userId, username, status });
   }
 }
 

@@ -193,13 +193,15 @@ onUnmounted(() => window.removeEventListener("keydown", listenForEscape));
                           : index + 1
                   }}
                 </TableCell>
-                <TableCell class="flex items-center">
-                  <UiAvatar class="max-lg:hidden">
-                    <UiAvatarImage :src="getAvatarSrc(user)" />
-                  </UiAvatar>
-                  <p class="mt-2 max-w-30 truncate">
-                    {{ user.username }}
-                  </p>
+                <TableCell class="flex items-center ">
+                  <div class="flex items-center justify-center gap-2">                    
+                    <UiAvatar class="max-lg:hidden">
+                      <UiAvatarImage :src="getAvatarSrc(user)" />
+                    </UiAvatar>
+                    <p class=" max-w-30 truncate">
+                      {{ user.username }}
+                    </p>
+                  </div>
                 </TableCell>
                 <TableCell class="text-center">
                   {{ user.medPoints }}
