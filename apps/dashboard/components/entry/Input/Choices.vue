@@ -5,7 +5,7 @@ import {
   CircleCheckIcon,
   CircleQuestionMarkIcon,
 } from "lucide-vue-next";
-import { ENTRY_PREFERENCES } from "./Index.vue";
+import { ENTRY_PREFERENCES, useInjectInputSectionRef } from "./Index.vue";
 const props = defineProps<{
   questionIndex: number;
 }>();
@@ -18,6 +18,36 @@ const columnsCount = ref(getColumnsCount());
 const rowsCount = ref(getRowsCount());
 const choiceSegments = ref(initChoiceSegments());
 const headerSegments = ref(initHeaderSegments());
+
+// Per-choice <li> refs keyed by choice.id, used for spotlighting from search.
+const choiceRefs = ref(new Map<number, HTMLElement>());
+const flashingChoiceId = ref<number | null>(null);
+const inputSectionRef = useInjectInputSectionRef();
+
+function setChoiceRef(id: number, el: Element | null) {
+  if (el instanceof HTMLElement) choiceRefs.value.set(id, el);
+  else choiceRefs.value.delete(id);
+}
+
+function scrollAndFlashChoice(choiceId: number) {
+  nextTick(() => {
+    const el = choiceRefs.value.get(choiceId);
+    if (!el || !inputSectionRef?.value) return;
+    const container = inputSectionRef.value;
+    const elTop =
+      el.getBoundingClientRect().top -
+      container.getBoundingClientRect().top +
+      container.scrollTop;
+    container.scrollTo({
+      top: Math.max(0, elTop - 40),
+      behavior: "smooth",
+    });
+    flashingChoiceId.value = choiceId;
+    setTimeout(() => {
+      if (flashingChoiceId.value === choiceId) flashingChoiceId.value = null;
+    }, 2200);
+  });
+}
 
 function getRowsCount() {
   return (
@@ -65,6 +95,22 @@ function initHeaderSegments() {
 const choices = computed(() => activeQuestion.value?.choices || []);
 const explanationVisibility = ref<Record<number, boolean>>(
   Object.fromEntries(choices.value.map((_, index) => [index, false]))
+);
+
+// React to highlight requests from the search page that target a choice
+// belonging to *this* question. Reveals the explanation field if asked.
+watch(
+  () => inputStore.highlightTarget,
+  (target) => {
+    if (!target || target.choiceId == null) return;
+    const idx = (activeQuestion.value?.choices ?? []).findIndex(
+      (c) => c.id === target.choiceId
+    );
+    if (idx === -1) return;
+    if (target.revealExplanation) explanationVisibility.value[idx] = true;
+    scrollAndFlashChoice(target.choiceId);
+  },
+  { immediate: true, deep: true }
 );
 
 // Watch for changes in the underlying question data to reinitialize local state
@@ -263,7 +309,19 @@ function handleDeleteColumn() {
       <li
         v-for="(_, row) in rowsCount"
         :key="`choice-row-${_}`"
-        class="flex flex-col gap-2"
+        :ref="
+          (el) =>
+            setChoiceRef(
+              activeQuestion?.choices?.[row]?.id ?? -1,
+              el as Element | null
+            )
+        "
+        class="flex flex-col gap-2 rounded-md transition-all duration-300 px-1"
+        :class="
+          flashingChoiceId === activeQuestion?.choices?.[row]?.id
+            ? 'ring-2 ring-primary/70 bg-primary/5'
+            : ''
+        "
       >
         <div class="flex gap-2">
           <Input

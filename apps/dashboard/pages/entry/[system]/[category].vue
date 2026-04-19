@@ -15,13 +15,24 @@ definePageMeta({
   middleware: "valid-entry-params",
 });
 const params = computed(() => useRoute("entry-system-category").params);
+const route = useRoute("entry-system-category");
 useSeoMeta({
   title: `MCA | ${params.value.system} ${params.value.category} `,
   description: "Create and manage entries for the medical challenge arena.",
 });
 const { isMobile, setOpen } = useSidebar();
 const { $trpc } = useNuxtApp();
-const activeCaseType = ref<CaseTypes>(ENTRY_PREFERENCES.value.CASE_TYPE);
+
+// Allow `?caseType=STEP 2` to override the persisted preference
+// (used when navigating in from the search page).
+const queryCaseType = (route.query.caseType as string | undefined) ?? null;
+const initialCaseType: CaseTypes = (
+  CASE_TYPES.includes(queryCaseType as CaseTypes)
+    ? queryCaseType
+    : ENTRY_PREFERENCES.value.CASE_TYPE
+) as CaseTypes;
+
+const activeCaseType = ref<CaseTypes>(initialCaseType);
 const inputStore = useInputStore();
 const previewStore = usePreviewStore();
 usePreviewStore().editedCaseIndex = null;
@@ -45,6 +56,75 @@ watch(activeCaseType, () => {
   previewStore.editedCaseIndex = null;
   inputStore.resetInput();
 });
+
+// If the user came from /search with ?editCaseId=…, pre-select that case
+// once the preview store finishes loading.
+const pendingEditCaseId = route.query.editCaseId
+  ? Number(route.query.editCaseId)
+  : null;
+const pendingQuestionId = route.query.questionId
+  ? Number(route.query.questionId)
+  : null;
+const pendingChoiceId = route.query.choiceId
+  ? Number(route.query.choiceId)
+  : null;
+const pendingMatchedField =
+  (route.query.matchedField as "body" | "explanation" | undefined) ?? null;
+
+if (pendingEditCaseId != null && !Number.isNaN(pendingEditCaseId)) {
+  let stop: (() => void) | null = null;
+  stop = watch(
+    () => [previewStore.pending, previewStore.preview.length] as const,
+    ([isPending, len]) => {
+      if (isPending) return;
+      if (len === 0) {
+        stop?.();
+        return;
+      }
+      const idx = previewStore.preview.findIndex(
+        (c) => c.id === pendingEditCaseId
+      );
+      if (idx === -1) {
+        stop?.();
+        return;
+      }
+      previewStore.editedCaseIndex = idx;
+      inputStore.setInput(structuredClone(toRaw(previewStore.preview[idx])));
+
+      // After the case is loaded into the editor, ask the editor to
+      // scroll to / spotlight the specific question or choice (if any).
+      if (pendingQuestionId != null && !Number.isNaN(pendingQuestionId)) {
+        nextTick(() => {
+          inputStore.setHighlightTarget({
+            questionId: pendingQuestionId,
+            choiceId:
+              pendingChoiceId != null && !Number.isNaN(pendingChoiceId)
+                ? pendingChoiceId
+                : null,
+            revealExplanation: pendingMatchedField === "explanation",
+          });
+        });
+      }
+
+      // strip the query so a refresh doesn't re-trigger
+      navigateTo(
+        {
+          path: route.path,
+          query: {
+            ...route.query,
+            editCaseId: undefined,
+            questionId: undefined,
+            choiceId: undefined,
+            matchedField: undefined,
+          },
+        },
+        { replace: true }
+      );
+      stop?.();
+    },
+    { immediate: true }
+  );
+}
 </script>
 
 <template>

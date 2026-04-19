@@ -10,6 +10,40 @@ export const useInputStore = defineStore("input", () => {
   const activeCaseType = ref<CaseTypes>(ENTRY_PREFERENCES.value.CASE_TYPE);
   const data = ref<Block[number]>(init());
 
+  /**
+   * Spotlight target — set by external entry points (e.g. the search page)
+   * to ask the editor to scroll to a specific question / choice and flash a
+   * highlight. Components consume this via the deep-tree (`QuestionsBlock`
+   * for questions, `Choices` for choices). Cleared after consumption.
+   */
+  const highlightTarget = ref<{
+    questionId: number | null;
+    choiceId: number | null;
+    /** When the matched field was an explanation, the editor reveals that
+     *  explanation field (per-choice explanations are collapsed by default). */
+    revealExplanation: boolean;
+    /** Bumped each time a target is set, even if to the same id, so
+     *  watchers can react to "show me again" requests. */
+    nonce: number;
+  } | null>(null);
+
+  function setHighlightTarget(opts: {
+    questionId?: number | null;
+    choiceId?: number | null;
+    revealExplanation?: boolean;
+  }) {
+    highlightTarget.value = {
+      questionId: opts.questionId ?? null,
+      choiceId: opts.choiceId ?? null,
+      revealExplanation: opts.revealExplanation ?? false,
+      nonce: (highlightTarget.value?.nonce ?? 0) + 1,
+    };
+  }
+
+  function clearHighlightTarget() {
+    highlightTarget.value = null;
+  }
+
   function init(): Block[number] {
     const randId = new Date().getTime();
     return {
@@ -63,5 +97,8 @@ export const useInputStore = defineStore("input", () => {
     setCaseType,
     activeCategoryId,
     activeCaseType,
+    highlightTarget,
+    setHighlightTarget,
+    clearHighlightTarget,
   };
 });

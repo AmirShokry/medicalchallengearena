@@ -6,9 +6,56 @@ import {
   useInjectInputSectionRef,
 } from "./Index.vue";
 
-const { data } = useInputStore();
+const inputStore = useInputStore();
+const { data } = inputStore;
 
 const inputSectionRef = useInjectInputSectionRef();
+
+// Per-question wrapper refs keyed by question.id, used by the search-page
+// "spotlight" flow to scroll to and flash a specific question.
+const questionRefs = ref(new Map<number, HTMLElement>());
+const flashingQuestionId = ref<number | null>(null);
+
+function setQuestionRef(id: number, el: Element | null) {
+  if (el instanceof HTMLElement) questionRefs.value.set(id, el);
+  else questionRefs.value.delete(id);
+}
+
+function scrollAndFlashQuestion(questionId: number) {
+  // Wait for DOM commit + the reveal of any explanation panels.
+  nextTick(() => {
+    const el = questionRefs.value.get(questionId);
+    if (!el || !inputSectionRef?.value) return;
+    const container = inputSectionRef.value;
+    const elTop =
+      el.getBoundingClientRect().top -
+      container.getBoundingClientRect().top +
+      container.scrollTop;
+    container.scrollTo({
+      top: Math.max(0, elTop - 16),
+      behavior: "smooth",
+    });
+    flashingQuestionId.value = questionId;
+    setTimeout(() => {
+      if (flashingQuestionId.value === questionId)
+        flashingQuestionId.value = null;
+    }, 2200);
+  });
+}
+
+// React to highlight requests targeting a question (not a choice — choice
+// targets are handled by EntryInputChoices, which scrolls to the <li>).
+watch(
+  () => inputStore.highlightTarget,
+  (target) => {
+    if (!target) return;
+    if (target.questionId == null) return;
+    if (target.choiceId != null) return; // let Choices.vue handle it
+    scrollAndFlashQuestion(target.questionId);
+  },
+  { immediate: true, deep: true }
+);
+
 function onDeleteBlock(index: number) {
   if (data.questions.length - 1 == 0) return;
   data.questions.splice(index, 1);
@@ -56,7 +103,13 @@ function getEmptyChoices() {
       v-auto-animate
       v-for="(question, questionIndex) in data.questions"
       :key="question.id"
-      class="rounded-sm border-1 relative p-4 mb-4"
+      :ref="(el) => setQuestionRef(question.id, el as Element | null)"
+      class="rounded-sm border-1 relative p-4 mb-4 transition-all duration-300"
+      :class="
+        flashingQuestionId === question.id
+          ? 'ring-2 ring-primary/70 shadow-[0_0_0_4px_rgba(59,130,246,0.15)] bg-primary/5'
+          : ''
+      "
     >
       <EntryInputQuestion class="mb-4" :question-index>
         <template #toolbar>

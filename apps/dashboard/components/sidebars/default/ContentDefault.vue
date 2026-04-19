@@ -6,6 +6,7 @@ import {
   Users2Icon,
   KeyRound,
   Layers,
+  SearchIcon,
 } from "lucide-vue-next";
 import {
   Collapsible,
@@ -116,6 +117,14 @@ const { toggleSidebar } = useSidebar();
           <NuxtLink to="/access-codes">
             <KeyRound class="size-4" />
             <span>Access Codes</span>
+          </NuxtLink>
+        </SidebarMenuButton>
+      </SidebarMenuItem>
+      <SidebarMenuItem>
+        <SidebarMenuButton @click="toggleSidebar" as-child>
+          <NuxtLink to="/search">
+            <SearchIcon class="size-4" />
+            <span>Search</span>
           </NuxtLink>
         </SidebarMenuButton>
       </SidebarMenuItem>

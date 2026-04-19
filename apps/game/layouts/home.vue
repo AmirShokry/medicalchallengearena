@@ -155,16 +155,16 @@ const { status, signOut } = useAuth();
         <div class="flex-1 max-lg:order-3 order-1 font-geist flex flex-col">
           <p class="text-xl truncate w-90">yassin@medicalchallengearena.com</p>
           <div class="flex gap-2 items-center">
-            <a href="https://discord.com/invite/nBj3EUJR" target="_blank">
+            <a href="https://discord.gg/sHpWwPR5br" target="_blank">
               <SvgoDiscord class="text-xl shrink-0" />
             </a>
             <a
-              href="https://www.instagram.com/medicalchallengearena/"
+              href="https://www.instagram.com/medchallengearena/"
               target="_blank"
             >
               <SvgoInstagram class="text-2xl shrink-0" />
             </a>
-            <a href="https://www.youtube.com/@yassinbadr6564" target="_blank">
+            <a href="https://www.youtube.com/channel/UCa9Lb89CYUgzFn9jr_d8B2g" target="_blank">
               <SvgoYoutube class="text-2xl shrink-0" />
             </a>
           </div>

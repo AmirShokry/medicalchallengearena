@@ -4,6 +4,7 @@ import { block } from "./block";
 import { common } from "./common";
 import { auth } from "./auth";
 import { usersRouter } from "./users";
+import { search } from "./search";
 
 export const appRouter = createTRPCRouter({
   systems,
@@ -11,6 +12,7 @@ export const appRouter = createTRPCRouter({
   auth,
   common,
   users: usersRouter,
+  search,
 });
 
 export type AppRouter = typeof appRouter;
