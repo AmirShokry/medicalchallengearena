@@ -1,4 +1,5 @@
 <script setup lang="ts">
+ 
 const $$game = useGameStore();
 </script>
 <template>
@@ -17,9 +18,13 @@ const $$game = useGameStore();
         {{ $$game.players.user.info?.username }}
       </p>
     </div>
+    <img
+      alt="versus"
+      src="~/assets/images/versus-icon.webp"
+      class="w-[min(14vmax,9rem)] aspect-auto object-contain"
+    />
     <div class="flex flex-col items-center gap-3 ml-auto mr-[30%]">
       <img
-        v-if="$$game.players.opponent.info.avatarUrl"
         alt="opponent-logo"
         :src="getAvatarSrc($$game.players.opponent.info)"
         class="aspect-square object-cover rounded-full w-[10vmax]"
