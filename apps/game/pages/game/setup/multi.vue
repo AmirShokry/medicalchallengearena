@@ -79,10 +79,13 @@ const fuse = computed(() => {
 });
 
 const isRoomMaster = computed(() => $$game.players.user.flags.isMaster);
-const unusedCount = computed(() =>
-  isRoomMaster
-    ? counters.value?.[0]?.unusedCount2 || 0
-    : counters.value?.[0]?.unusedCount1 || 0,
+// NOTE: For multiplayer "unused" pool, the server selects cases unsolved by
+// BOTH players (intersection). A per-user unused count can be > 0 while the
+// intersection is 0, which previously caused the game to hang with
+// "No cases found". Use matchingCount/matchCount (the intersection) so the UI
+// gate matches what the server will actually be able to start.
+const unusedCount = computed(
+  () => counters.value?.[0]?.matchingCount || 0,
 );
 const selectedPool = ref<"all" | "unused">(
   unusedCount.value > 0 ? "unused" : "all",
@@ -95,7 +98,7 @@ const allCount = computed(() => counters.value?.[0]?.allCount);
 function getCategoryCounter(
   category: (typeof systemsCategoriesRaw.value)[0]["categories"][0],
 ) {
-  return isRoomMaster.value ? category.unusedCount2 : category.unusedCount1;
+  return category.matchCount;
 }
 
 const matchingCount = computed(() => counters.value?.[0]?.matchingCount || 0);
