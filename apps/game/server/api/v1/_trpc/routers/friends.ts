@@ -16,6 +16,10 @@ import { caseWhen } from "@package/database/helpers";
 
 import { authProcedure, createTRPCRouter } from "../init";
 import { userPresenceMap } from "@/server/socket-handlers/social/presence";
+import {
+  emitFriendRequestReceived,
+  emitFriendRequestUpdated,
+} from "@/server/socket-handlers/social/friend-request-events";
 const { users, users_friends } = db.table;
 
 const PAGE_SIZE = 10;
@@ -303,6 +307,40 @@ export const friends = createTRPCRouter({
             )
             .innerJoin(users, eq(users_friends.user1_id, users.id))
       ),
+    /**
+     * Number of incoming pending friend requests that the current user has
+     * not yet seen. Drives the unseen-requests indicator in the sidebar.
+     */
+    unseenCount: authProcedure.query(async ({ ctx }) => {
+      const [{ count = 0 } = { count: 0 }] = await db
+        .select({ count: sql<number>`count(*)::int` })
+        .from(users_friends)
+        .where(
+          and(
+            eq(users_friends.user2_id, ctx.session?.user.id!),
+            eq(users_friends.isFriend, false),
+            eq(users_friends.isSeen, false)
+          )
+        );
+      return Number(count);
+    }),
+    /**
+     * Mark all incoming pending requests as seen by the current user.
+     * Invoked when the user opens the friend manager.
+     */
+    markSeen: authProcedure.mutation(async ({ ctx }) => {
+      await db
+        .update(users_friends)
+        .set({ isSeen: true })
+        .where(
+          and(
+            eq(users_friends.user2_id, ctx.session?.user.id!),
+            eq(users_friends.isFriend, false),
+            eq(users_friends.isSeen, false)
+          )
+        );
+      return true;
+    }),
   },
   add: authProcedure
     .input(z.string().min(1))
@@ -354,8 +392,22 @@ export const friends = createTRPCRouter({
           user1_id: ctx.session?.user.id!,
           user2_id: addedFriend.id,
           isFriend: false,
+          isSeen: false,
         })
         .returning();
+
+      // Build sender PlayerData payload for the recipient
+      const senderPayload = {
+        id: ctx.session!.user.id,
+        username: ctx.session!.user.username,
+        avatarUrl: (ctx.session!.user as any).avatarUrl ?? null,
+        gender: (ctx.session!.user as any).gender ?? "male",
+        medSchool: (ctx.session!.user as any).medSchool ?? null,
+        university: (ctx.session!.user as any).university ?? null,
+        medPoints: (ctx.session!.user as any).medPoints ?? null,
+      } as any;
+      emitFriendRequestReceived(addedFriend.id, senderPayload);
+      emitFriendRequestUpdated(addedFriend.id);
       return { ...addedFriend };
     }),
   remove: authProcedure
@@ -377,6 +429,9 @@ export const friends = createTRPCRouter({
         )
         .returning();
       if (result.length === 0) return false;
+      // Notify both parties so their UIs refresh (cancel/reject/unfriend)
+      emitFriendRequestUpdated(input);
+      emitFriendRequestUpdated(ctx.session?.user.id!);
     }),
   accept: authProcedure
     .input(z.number().int().min(1))
@@ -396,6 +451,10 @@ export const friends = createTRPCRouter({
             )
           )
         );
+      // Notify both parties so the new friend appears immediately and any
+      // unseen-request indicator is recomputed.
+      emitFriendRequestUpdated(input);
+      emitFriendRequestUpdated(ctx.session?.user.id!);
       return true;
     }),
 });

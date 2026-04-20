@@ -117,4 +117,62 @@ export const profile = createTRPCRouter({
         .where(eq(users.id, ctx.session.user.id));
       return { success: true, gender: input.gender };
     }),
+
+  /**
+   * Updates editable personal details (country, birth date, graduation year,
+   * expected degree, exam date). All fields are optional and nullable so the
+   * user can clear any of them by sending an empty value.
+   */
+  setDetails: authProcedure
+    .input(
+      z.object({
+        country: z.string().trim().max(100).optional().nullable(),
+        birthDate: z
+          .string()
+          .regex(/^\d{4}-\d{2}-\d{2}$/, "Invalid date")
+          .optional()
+          .nullable(),
+        graduationYear: z
+          .string()
+          .trim()
+          .regex(/^\d{4}$/, "Invalid year")
+          .optional()
+          .nullable(),
+        expectedDegree: z.string().trim().max(100).optional().nullable(),
+        examDate: z
+          .string()
+          .regex(/^\d{4}-\d{2}-\d{2}$/, "Invalid date")
+          .optional()
+          .nullable(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      if (!ctx.session?.user?.id)
+        throw new TRPCError({ code: "UNAUTHORIZED" });
+      const { users } = db.table;
+
+      const norm = (v: string | null | undefined) =>
+        v === undefined ? undefined : v && v.trim().length > 0 ? v : null;
+
+      const updates: Record<string, any> = {};
+      const c = norm(input.country);
+      if (c !== undefined) updates.country = c;
+      const g = norm(input.graduationYear);
+      if (g !== undefined) updates.graduationYear = g;
+      const d = norm(input.expectedDegree);
+      if (d !== undefined) updates.expectedDegree = d;
+      if (input.birthDate !== undefined)
+        updates.birthDate = input.birthDate ? new Date(input.birthDate) : null;
+      if (input.examDate !== undefined)
+        updates.examDate = input.examDate ? new Date(input.examDate) : null;
+
+      if (Object.keys(updates).length === 0) return { success: true };
+
+      await db
+        .update(users)
+        .set(updates)
+        .where(eq(users.id, ctx.session.user.id));
+
+      return { success: true };
+    }),
 });

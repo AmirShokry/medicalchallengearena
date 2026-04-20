@@ -71,6 +71,8 @@ type PresenceChangeCallback = (
   username: string,
   status: UserStatus
 ) => void;
+type FriendRequestReceivedCallback = (sender: any) => void;
+type FriendRequestUpdatedCallback = () => void;
 
 /** Check if running in production mode */
 const isProduction = process.env.NODE_ENV === "production";
@@ -87,6 +89,8 @@ let isInitialized = false;
 const friendStatusCallbacks: FriendStatusCallback[] = [];
 const messageCallbacks: MessageCallback[] = [];
 const presenceChangeCallbacks: PresenceChangeCallback[] = [];
+const friendRequestReceivedCallbacks: FriendRequestReceivedCallback[] = [];
+const friendRequestUpdatedCallbacks: FriendRequestUpdatedCallback[] = [];
 const unreadCounts = ref<Record<number, number>>({});
 
 /**
@@ -143,6 +147,18 @@ function init(): void {
     );
   });
 
+  // Friend request received (real-time, server -> recipient)
+  socialSocket.on("receivedFriendRequest", (sender) => {
+    debugLog(`[Social] Received friend request from`, sender);
+    friendRequestReceivedCallbacks.forEach((cb) => cb(sender));
+  });
+
+  // Generic friend-request state change (accept/reject/cancel/delete)
+  socialSocket.on("friendRequestUpdated", () => {
+    debugLog(`[Social] Friend request updated`);
+    friendRequestUpdatedCallbacks.forEach((cb) => cb());
+  });
+
   isInitialized = true;
   debugLog("[Social] Social socket listeners initialized");
 }
@@ -155,9 +171,13 @@ function cleanup(): void {
   socialSocket.off("receiveFriendMessage");
   socialSocket.off("messagesRead");
   socialSocket.off("presenceChange");
+  socialSocket.off("receivedFriendRequest");
+  socialSocket.off("friendRequestUpdated");
   friendStatusCallbacks.length = 0;
   messageCallbacks.length = 0;
   presenceChangeCallbacks.length = 0;
+  friendRequestReceivedCallbacks.length = 0;
+  friendRequestUpdatedCallbacks.length = 0;
   isInitialized = false;
 }
 
@@ -202,6 +222,28 @@ function onPresenceChange(callback: PresenceChangeCallback): () => void {
     if (index > -1) {
       presenceChangeCallbacks.splice(index, 1);
     }
+  };
+}
+
+/** Subscribe to incoming friend requests (real-time). */
+function onFriendRequestReceived(
+  callback: FriendRequestReceivedCallback
+): () => void {
+  friendRequestReceivedCallbacks.push(callback);
+  return () => {
+    const i = friendRequestReceivedCallbacks.indexOf(callback);
+    if (i > -1) friendRequestReceivedCallbacks.splice(i, 1);
+  };
+}
+
+/** Subscribe to friend-request state changes (accept/reject/cancel/delete). */
+function onFriendRequestUpdated(
+  callback: FriendRequestUpdatedCallback
+): () => void {
+  friendRequestUpdatedCallbacks.push(callback);
+  return () => {
+    const i = friendRequestUpdatedCallbacks.indexOf(callback);
+    if (i > -1) friendRequestUpdatedCallbacks.splice(i, 1);
   };
 }
 
@@ -399,6 +441,8 @@ export default function useSocial() {
     onFriendStatus,
     onMessage,
     onPresenceChange,
+    onFriendRequestReceived,
+    onFriendRequestUpdated,
 
     // Game invitations
     checkCanInvite,

@@ -8,6 +8,7 @@ import {
   handleUserConnect,
   handleUserDisconnect,
 } from "../socket-handlers/social/presence";
+import { setFriendRequestIO } from "../socket-handlers/social/friend-request-events";
 import { registerMatchEvents } from "../socket-handlers/match/in-game";
 import { registerMatchMaking } from "../socket-handlers/match/making";
 import {
@@ -90,6 +91,7 @@ export default defineNitroPlugin(async (nitroApp: NitroApp) => {
 
   // Set reference for cross-namespace communication (presence updates from game namespace)
   setSocialIORef(socialIO);
+  setFriendRequestIO(socialIO);
 
   // Legacy helper - kept for backwards compatibility, now uses presence system
   socialIO.helpers = {

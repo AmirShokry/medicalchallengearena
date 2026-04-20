@@ -9,8 +9,8 @@ import {
   SidebarMenuItem,
   type SidebarProps,
 } from "@/components/ui/sidebar";
-import { Input } from "@/components/ui/input";
 import { SendHorizonalIcon } from "lucide-vue-next";
+import { getAvatarSrc } from "@/composables/useAvatar";
 
 const props = withDefaults(defineProps<Omit<SidebarProps, "side">>(), {
   collapsible: "offcanvas",
@@ -19,116 +19,142 @@ const props = withDefaults(defineProps<Omit<SidebarProps, "side">>(), {
 const rival = useRival();
 const userStore = useUserStore();
 const newMessage = ref("");
+const hasRival = computed(() => !!rival.info.value?.username);
+
+// --- Auto-resize textarea (matches friend chat sidebar) ---
+const chatTextareaEl = ref<HTMLTextAreaElement | null>(null);
+const CHAT_TA_MIN = 36;
+const CHAT_TA_MAX = 160;
+function autoResizeChatTa() {
+  const el = chatTextareaEl.value;
+  if (!el) return;
+  el.style.height = "auto";
+  const next = Math.min(Math.max(el.scrollHeight, CHAT_TA_MIN), CHAT_TA_MAX);
+  el.style.height = next + "px";
+}
+watch(newMessage, () => nextTick(autoResizeChatTa));
+onMounted(() => nextTick(autoResizeChatTa));
+
+// --- Auto scroll to bottom on new messages ---
+const scrollEl = ref<HTMLElement | null>(null);
+async function scrollToBottom() {
+  await nextTick();
+  if (scrollEl.value) scrollEl.value.scrollTop = scrollEl.value.scrollHeight;
+}
+watch(() => rival.messages.value.length, () => scrollToBottom());
 
 function sendMessage() {
-  if (!newMessage.value.trim()) return;
-  rival.sendMessage(newMessage.value);
+  if (!newMessage.value.trim() || !hasRival.value) return;
+  rival.sendMessage(newMessage.value.trim());
   newMessage.value = "";
 }
 
-function getContent(isSelf: boolean) {
+function handleChatKeydown(e: KeyboardEvent) {
+  if (e.key === "Enter" && !e.shiftKey && !e.isComposing) {
+    e.preventDefault();
+    sendMessage();
+  }
+}
+
+function formatTime(ts: number | Date | string) {
+  const d = new Date(ts);
+  return d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+}
+
+function getSender(isSelf: boolean) {
   return isSelf
     ? {
         avatarUrl: userStore.user?.avatarUrl,
         gender: userStore.user?.gender,
-        username: userStore.user?.username,
+        username: userStore.user?.username ?? "You",
       }
     : {
         avatarUrl: rival.info.value?.avatarUrl,
         gender: rival.info.value?.gender,
-        username: rival.info.value?.username,
+        username: rival.info.value?.username ?? "Rival",
       };
 }
 </script>
 
 <template>
   <Sidebar side="right" class="flex top-0 h-svh z-1" v-bind="props">
-    <SidebarHeader class="h-12 px-5 pt-6 z-1">
-      <p>Rival chat</p>
-      <UiSeparator />
+    <SidebarHeader class="px-4 pt-4 pb-2">
+      <p class="text-sm font-semibold">Rival chat</p>
+      <UiSeparator class="mt-2" />
     </SidebarHeader>
-    <SidebarContent class="overflow-y-auto thin-scrollbar mt-2">
-      <div class="mt-10 px-2 h-full">
-        <div>
-          <p
-            v-if="!rival.info.value?.username"
-            class="text-sm px-4 text-center"
-          >
-            No rival yet
-          </p>
-          <p
-            v-if="
-              rival.info.value?.username && rival.messages.value.length <= 0
-            "
-            class="text-sm px-4 text-center"
-          >
-            You may start chatting with your rival.
-          </p>
-        </div>
 
-        <ul
-          class="h-full"
-          v-if="rival.info.value && rival.messages.value.length"
+    <SidebarContent class="flex-1 min-h-0">
+      <div
+        ref="scrollEl"
+        class="flex-1 min-h-0 overflow-y-auto thin-scrollbar px-3 py-3 space-y-3"
+      >
+        <p
+          v-if="!hasRival"
+          class="text-xs text-muted-foreground text-center mt-6"
         >
-          <li
-            class="mb-2"
-            v-for="message in rival.messages.value"
-            :key="message.timestamp"
-          >
-            <div
-              class="flex items-start gap-2 px-4 py-3 rounded-md"
-              :class="{
-                'justify-end': message.self,
-                'justify-start': !message.self,
-              }"
-            >
-              <div
-                class="flex items gap-2 text-sm text-muted-foreground w-9/10"
-              >
-                <UiAvatar>
-                  <UiAvatarImage :src="getAvatarSrc(getContent(message.self))" />
-                </UiAvatar>
-                <div class="flex flex-col">
-                  <div class="flex items-center gap-1">
-                    <span class="font-semibold">
-                      {{ getContent(message.self)?.username }}
-                    </span>
-                    <span class="text-[10px]">{{
-                      new Date(message.timestamp).toLocaleTimeString([], {
-                        hour: "numeric",
-                        minute: "2-digit",
-                        hour12: true,
-                      })
-                    }}</span>
-                  </div>
-                  <p class="break-all">{{ message.text }}</p>
-                </div>
-              </div>
+          No rival yet.
+        </p>
+        <p
+          v-else-if="rival.messages.value.length <= 0"
+          class="text-xs text-muted-foreground text-center mt-6"
+        >
+          You may start chatting with your rival.
+        </p>
+
+        <div
+          v-for="message in rival.messages.value"
+          :key="message.timestamp"
+          class="flex items-start gap-2"
+        >
+          <UiAvatar class="border border-border h-6 w-6 shrink-0">
+            <UiAvatarImage
+              :src="getAvatarSrc(getSender(message.self))"
+              alt="Avatar"
+            />
+          </UiAvatar>
+          <div class="min-w-0 flex-1">
+            <div class="flex items-baseline gap-2">
+              <p class="text-xs font-semibold truncate">
+                {{ getSender(message.self).username }}
+              </p>
+              <span class="text-[10px] text-muted-foreground shrink-0">
+                {{ formatTime(message.timestamp) }}
+              </span>
             </div>
-          </li>
-        </ul>
+            <p class="text-xs whitespace-pre-wrap break-words leading-snug">
+              {{ message.text }}
+            </p>
+          </div>
+        </div>
       </div>
     </SidebarContent>
+
     <SidebarFooter>
       <SidebarMenu>
         <SidebarMenuItem>
-          <Input
-            v-model="newMessage"
-            :disabled="!rival.info.value?.username"
-            placeholder="Type a message..."
-            class="w-full"
-            @keyup.enter="sendMessage"
-          />
-          <button
-            class="absolute right-2 top-1/2 -translate-y-1/2"
-            :disabled="!rival.info.value?.username"
-            @click="sendMessage"
-          >
-            <SendHorizonalIcon
-              class="h-5 w-5"
-              :class="!rival.info.value?.username ? 'opacity-40' : undefined"
+          <div class="flex items-center gap-1">
+            <textarea
+              ref="chatTextareaEl"
+              v-model="newMessage"
+              :disabled="!hasRival"
+              :placeholder="
+                hasRival
+                  ? 'Write your message.. (Shift+Enter for newline)'
+                  : 'No rival yet'
+              "
+              rows="1"
+              class="flex-1 resize-none overflow-y-auto thin-scrollbar text-xs leading-snug py-2 px-3 rounded-md border border-input bg-transparent shadow-xs outline-none transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50"
+              style="min-height: 36px; max-height: 160px"
+              @keydown="handleChatKeydown"
             />
-          </button>
+            <UiButton
+              :disabled="!hasRival || !newMessage.trim()"
+              class="shrink-0 self-center"
+              @click="sendMessage()"
+            >
+              <SendHorizonalIcon class="cursor-pointer" />
+            </UiButton>
+          </div>
         </SidebarMenuItem>
       </SidebarMenu>
     </SidebarFooter>

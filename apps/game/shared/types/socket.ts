@@ -55,7 +55,6 @@ export namespace ToClientIO {
       /** Opponent temporarily disconnected (ping timeout, transport close) - may reconnect */
       opponentDisconnected: (data: { reason: string }) => void;
       /** Opponent reconnected after temporary disconnect */
-      opponentReconnected: () => void;
       /** Game session restored after reconnection */
       gameSessionRestored: (data: {
         roomName: string;
@@ -209,6 +208,13 @@ export namespace ToClientIO {
       }) => void;
       receivedFriendRequest: (data: PlayerData) => void;
       rejectedFriendRequest: (data: { id: number }) => void;
+      /**
+       * Generic notification that a friend-request state changed for the
+       * recipient (sent on add/remove/accept). Clients should refresh their
+       * pending requests list and friends list. Carries no payload because
+       * the actual data must be queried server-authoritatively.
+       */
+      friendRequestUpdated: () => void;
       /** Receive a friend message */
       receiveFriendMessage: (message: FriendMessage) => void;
       /** Notification that messages were read by recipient */

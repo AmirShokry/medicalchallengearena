@@ -62,6 +62,7 @@ export const auth = createTRPCRouter({
         password: z.string().min(6),
         university: z.string().min(2),
         accessCode: z.string().min(1),
+        gender: z.enum(["male", "female", "unspecified"]).default("male"),
       })
     )
     .mutation(async ({ input }) => {
@@ -104,6 +105,7 @@ export const auth = createTRPCRouter({
             username: input.username,
             email: input.email,
             university: input.university,
+            gender: input.gender,
           })
           .returning();
 

@@ -3,6 +3,13 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 import { cn } from "@/lib/utils";
 import { accessCodes } from "../../../packages/database/src/schema";
@@ -20,6 +27,7 @@ function getInitialFormData() {
     password: "",
     university: "",
     accessCode: "",
+    gender: "male" as "male" | "female" | "unspecified",
   };
 }
 const router = useRouter();
@@ -43,6 +51,7 @@ const handleRegister = async () => {
       username: form.value.username,
       university: form.value.university,
       accessCode: form.value.accessCode,
+      gender: form.value.gender,
     });
 
     // Auto-sign in the user after successful registration
@@ -140,6 +149,19 @@ const canRegister = computed(
                     type="input"
                     required
                   />
+                </div>
+                <div class="grid gap-3">
+                  <Label for="gender">Gender </Label>
+                  <Select v-model="form.gender">
+                    <SelectTrigger id="gender" class="w-full">
+                      <SelectValue placeholder="Select gender" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="male">Male</SelectItem>
+                      <SelectItem value="female">Female</SelectItem>
+                      <SelectItem value="unspecified">Unspecified</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
                 <div class="grid gap-3">
                   <Label for="password">Password </Label>

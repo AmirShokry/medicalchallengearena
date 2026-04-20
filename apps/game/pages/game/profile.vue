@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Upload, Trash2, Loader2 } from "lucide-vue-next";
+import { Upload, Trash2, Loader2, Save } from "lucide-vue-next";
 import { resolveAvatarUrl, type Gender } from "@/shared/types/common";
 import {
   Card,
@@ -10,6 +10,8 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -127,6 +129,71 @@ async function deleteAvatar() {
     isDeleting.value = false;
   }
 }
+
+// --- Personal details ---------------------------------------------------
+const DEGREE_OPTIONS = [
+  "MD",
+  "DO",
+  "MBBS",
+  "MBChB",
+  "PhD",
+  "MD/PhD",
+  "Other",
+] as const;
+
+function toDateInput(value: unknown): string {
+  if (!value) return "";
+  const d = value instanceof Date ? value : new Date(value as any);
+  if (isNaN(d.getTime())) return "";
+  // Use local date components to avoid TZ shift in <input type="date">
+  const yyyy = d.getFullYear();
+  const mm = String(d.getMonth() + 1).padStart(2, "0");
+  const dd = String(d.getDate()).padStart(2, "0");
+  return `${yyyy}-${mm}-${dd}`;
+}
+
+const detailsForm = ref({
+  country: "",
+  birthDate: "",
+  graduationYear: "",
+  expectedDegree: "",
+  examDate: "",
+});
+const isSavingDetails = ref(false);
+
+function syncDetailsFromUser() {
+  const u = user.value as any;
+  if (!u) return;
+  detailsForm.value = {
+    country: u.country ?? "",
+    birthDate: toDateInput(u.birthDate),
+    graduationYear: u.graduationYear ?? "",
+    expectedDegree: u.expectedDegree ?? "",
+    examDate: toDateInput(u.examDate),
+  };
+}
+
+watch(user, syncDetailsFromUser, { immediate: true });
+
+async function saveDetails() {
+  isSavingDetails.value = true;
+  try {
+    await $trpc.profile.setDetails.mutate({
+      country: detailsForm.value.country || null,
+      birthDate: detailsForm.value.birthDate || null,
+      graduationYear: detailsForm.value.graduationYear || null,
+      expectedDegree: detailsForm.value.expectedDegree || null,
+      examDate: detailsForm.value.examDate || null,
+    });
+    await userStore.refreshUserData();
+    toast.success("Profile details updated");
+  } catch (err: any) {
+    console.error(err);
+    toast.error(err?.message || "Failed to update details");
+  } finally {
+    isSavingDetails.value = false;
+  }
+}
 </script>
 
 <template>
@@ -199,6 +266,93 @@ async function deleteAvatar() {
             <SelectItem value="unspecified">Unspecified</SelectItem>
           </SelectContent>
         </Select>
+      </CardContent>
+    </Card>
+
+    <Card>
+      <CardHeader>
+        <CardTitle>Personal details</CardTitle>
+        <CardDescription>
+          Update your country, key dates, and academic information. Leave any
+          field empty to clear it.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form
+          class="grid gap-5 sm:grid-cols-2"
+          @submit.prevent="saveDetails"
+        >
+          <div class="flex flex-col gap-2">
+            <Label for="country">Country</Label>
+            <Input
+              id="country"
+              v-model="detailsForm.country"
+              placeholder="e.g. United States"
+              maxlength="100"
+              autocomplete="country-name"
+            />
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <Label for="birthDate">Birth date</Label>
+            <Input
+              id="birthDate"
+              v-model="detailsForm.birthDate"
+              type="date"
+            />
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <Label for="graduationYear">Graduation year</Label>
+            <Input
+              id="graduationYear"
+              v-model="detailsForm.graduationYear"
+              type="number"
+              inputmode="numeric"
+              min="1950"
+              max="2100"
+              placeholder="e.g. 2027"
+            />
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <Label for="expectedDegree">Expected degree</Label>
+            <Select v-model="detailsForm.expectedDegree">
+              <SelectTrigger id="expectedDegree" class="w-full">
+                <SelectValue placeholder="Select expected degree" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem
+                  v-for="opt in DEGREE_OPTIONS"
+                  :key="opt"
+                  :value="opt"
+                >
+                  {{ opt }}
+                </SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div class="flex flex-col gap-2 sm:col-span-2">
+            <Label for="examDate">Exam date</Label>
+            <Input id="examDate" v-model="detailsForm.examDate" type="date" />
+          </div>
+
+          <div class="sm:col-span-2 flex justify-end">
+            <Button
+              type="submit"
+              :disabled="isSavingDetails"
+              class="gap-2"
+            >
+              <Loader2
+                v-if="isSavingDetails"
+                class="w-4 h-4 animate-spin"
+              />
+              <Save v-else class="w-4 h-4" />
+              {{ isSavingDetails ? "Saving..." : "Save changes" }}
+            </Button>
+          </div>
+        </form>
       </CardContent>
     </Card>
   </main>

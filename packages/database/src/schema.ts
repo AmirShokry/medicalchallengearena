@@ -175,6 +175,12 @@ export const users_friends = pgTable(
       .references(() => users.id, { onDelete: "cascade" })
       .notNull(),
     isFriend: boolean("is_friend").notNull().default(false),
+    /**
+     * Whether the receiving user (user2_id) has seen this incoming friend
+     * request. Set to false on creation; flipped to true when the receiver
+     * opens the friend manager. Used to drive the unseen-requests indicator.
+     */
+    isSeen: boolean("is_seen").notNull().default(false),
   },
 
   (table) => [

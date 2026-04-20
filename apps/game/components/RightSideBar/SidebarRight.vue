@@ -5,7 +5,7 @@ import {
   CheckIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
-  MessageCircleIcon,
+  ClockIcon,
   SearchIcon,
   SendHorizonalIcon,
   Settings2Icon,
@@ -26,6 +26,14 @@ import {
 } from "@/components/ui/sidebar";
 import { Toggle } from "@/components/ui/toggle";
 import { Input } from "@/components/ui/input";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import type { FriendRequests } from "@/shared/types/common";
 import ChatContent from "./ChatContent.vue";
 import useSocial from "@/composables/useSocial";
@@ -151,15 +159,56 @@ const stopOnlineStatusListener = social.onFriendStatus(() => {
 });
 // Refresh online list when ANY user's presence changes (connect/disconnect/status)
 const stopPresenceListener = social.onPresenceChange((userId, _username, status) => {
-  // Also keep visible friends' status dots in sync
-  if (userId in friendStatusMap.value) {
-    friendStatusMap.value[userId] = status;
+  // Always keep status dots in sync (incl. active chat user)
+  friendStatusMap.value[userId] = status;
+  refreshOnline();
+});
+
+// --- Unread message indicators ---
+const unreadCounts = social.unreadCounts;
+function hasUnread(id: number) {
+  return (unreadCounts.value[id] ?? 0) > 0;
+}
+onMounted(() => {
+  social.getUnreadCounts().catch((e) =>
+    console.error("Failed to fetch unread counts", e)
+  );
+  refreshUnseenRequests();
+});
+// Refresh unread counts on incoming messages
+const stopMessageListener = social.onMessage(() => {
+  // unreadCounts is mutated inside useSocial.onMessage; nothing extra needed
+});
+
+// --- Unseen friend-request indicator ---
+const unseenRequestsCount = ref(0);
+async function refreshUnseenRequests() {
+  try {
+    unseenRequestsCount.value = await $trpc.friends.requests.unseenCount.query();
+  } catch (e) {
+    console.error("Failed to fetch unseen friend requests count", e);
   }
+}
+
+// --- Real-time friend request listeners ---
+const stopFriendRequestReceived = social.onFriendRequestReceived((sender) => {
+  toast.info(`${sender?.username ?? "Someone"} sent you a friend request`);
+  refreshUnseenRequests();
+  refreshFriendsList();
+  refreshOnline();
+});
+const stopFriendRequestUpdated = social.onFriendRequestUpdated(() => {
+  refreshUnseenRequests();
+  friendsStore.refresh();
+  refreshFriendsList();
   refreshOnline();
 });
 onUnmounted(() => {
   stopOnlineStatusListener();
   stopPresenceListener();
+  stopMessageListener();
+  stopFriendRequestReceived();
+  stopFriendRequestUpdated();
 });
 
 function totalPages(total: number) {
@@ -212,6 +261,14 @@ async function openChatWithFriend(friend: {
   activeFriendId.value = friend.id;
   isChatting.value = true;
 
+  // Ensure header status is accurate even if friend was not in current page
+  social
+    .getFriendStatus(friend.id)
+    .then((s) => {
+      friendStatusMap.value[friend.id] = s;
+    })
+    .catch(() => {});
+
   try {
     const messages = await social.openChat(friend.id);
     const userId = userStore.user?.id;
@@ -223,6 +280,23 @@ async function openChatWithFriend(friend: {
 
 const newMessage = ref("");
 const isSending = ref(false);
+const chatTextareaEl = ref<HTMLTextAreaElement | null>(null);
+const CHAT_TA_MIN = 36; // px (matches min-h-9)
+const CHAT_TA_MAX = 160; // px (matches max-h-40)
+function autoResizeChatTa() {
+  const el = chatTextareaEl.value;
+  if (!el) return;
+  el.style.height = "auto";
+  const next = Math.min(Math.max(el.scrollHeight, CHAT_TA_MIN), CHAT_TA_MAX);
+  el.style.height = next + "px";
+}
+watch(newMessage, () => nextTick(autoResizeChatTa));
+watch(isChatting, async (v) => {
+  if (v) {
+    await nextTick();
+    autoResizeChatTa();
+  }
+});
 async function sendMessage() {
   if (!newMessage.value.trim() || isSending.value) return;
   const activeFriend = friendsStore.friendList?.find(
@@ -259,25 +333,43 @@ async function sendMessage() {
 
 watch(
   () => isChatting.value,
-  (newChattingValue) => {
-    let listener: ((e: KeyboardEvent) => void) | null = null;
-    if (newChattingValue) {
-      listener = (e: KeyboardEvent) => {
-        if (e.key === "Enter") sendMessage();
-      };
-      window.addEventListener("keydown", listener);
-    } else if (listener) {
-      window.removeEventListener("keydown", listener);
-    }
+  () => {
+    // chat keydown handling is per-textarea now (see handleChatKeydown)
   }
 );
+
+const activeChatFriend = computed(() => {
+  if (!friendsStore.friendList) return null;
+  return (
+    friendsStore.friendList.find((f) => f.id === activeFriendId.value) ?? null
+  );
+});
+
+function handleChatKeydown(e: KeyboardEvent) {
+  // Enter sends, Shift+Enter inserts newline (default textarea behavior)
+  if (e.key === "Enter" && !e.shiftKey && !e.isComposing) {
+    e.preventDefault();
+    sendMessage();
+  }
+}
 
 // --- Friend request actions ---
 const requests = ref<FriendRequests>({ outgoing: [], incoming: [] });
 
-async function handleDeleteFriend(friendId: number) {
+// --- Delete friend confirmation dialog ---
+const deleteDialogOpen = ref(false);
+const pendingDeleteFriend = ref<{ id: number; username: string } | null>(null);
+function askDeleteFriend(friend: { id: number; username: string }) {
+  pendingDeleteFriend.value = { id: friend.id, username: friend.username };
+  deleteDialogOpen.value = true;
+}
+async function confirmDeleteFriend() {
+  const target = pendingDeleteFriend.value;
+  if (!target) return;
+  deleteDialogOpen.value = false;
+  pendingDeleteFriend.value = null;
   try {
-    await $trpc.friends.remove.mutate(friendId);
+    await $trpc.friends.remove.mutate(target.id);
     await Promise.all([
       friendsStore.refresh(),
       refreshFriendsList(),
@@ -286,6 +378,7 @@ async function handleDeleteFriend(friendId: number) {
     ]);
   } catch (error) {
     console.error("Error deleting friend:", error);
+    toast.error("Failed to remove friend");
   }
 }
 
@@ -322,25 +415,83 @@ async function handleAcceptOnlineRequest(friendId: number) {
 function handleManagingContent() {
   isChatting.value = false;
 }
+
+// Mark incoming requests as seen when entering the manager view
+watch(isManagingFriends, async (v) => {
+  if (!v) return;
+  if (unseenRequestsCount.value === 0) return;
+  try {
+    await $trpc.friends.requests.markSeen.mutate();
+    unseenRequestsCount.value = 0;
+  } catch (e) {
+    console.error("Failed to mark friend requests as seen", e);
+  }
+});
 </script>
 
 <template>
   <Sidebar side="right" class="flex top-0 h-svh z-1" v-bind="props">
-    <SidebarHeader class="px-4 pt-4 pb-2 z-1">
+    <SidebarHeader
+      class="px-4 pt-4 pb-2 z-1"
+      :class="isChatting && !isManagingFriends ? 'border-b border-border' : ''"
+    >
       <div
         v-if="!isChatting && !isManagingFriends"
         class="flex items-center justify-between"
       >
         <p class="text-sm font-semibold">Social</p>
-        <Toggle v-model="isManagingFriends" variant="outline" size="sm">
-          <Settings2Icon class="w-4 h-4" />
+        <Toggle
+          v-model="isManagingFriends"
+          variant="outline"
+          size="sm"
+          class="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground data-[state=on]:border-primary data-[state=on]:hover:bg-primary/90 data-[state=on]:hover:text-primary-foreground"
+        >
+          <span class="relative inline-flex">
+            <Settings2Icon class="w-4 h-4" />
+            <span
+              v-if="unseenRequestsCount > 0"
+              class="absolute -top-1 -right-1 min-w-[14px] h-[14px] px-1 rounded-full bg-destructive text-[9px] leading-[14px] text-white font-bold text-center ring-2 ring-background"
+              :title="`${unseenRequestsCount} new friend request${unseenRequestsCount > 1 ? 's' : ''}`"
+            >
+              {{ unseenRequestsCount > 9 ? "9+" : unseenRequestsCount }}
+            </span>
+          </span>
         </Toggle>
       </div>
 
-      <div v-if="isChatting" class="flex items-center justify-between">
-        <UiButton variant="ghost" class="p-1" @click="isChatting = false">
+      <div v-if="isChatting" class="flex items-center gap-2 min-w-0">
+        <UiButton variant="ghost" class="p-1 shrink-0" @click="isChatting = false">
           <ArrowLeftIcon />
         </UiButton>
+        <template v-if="activeChatFriend">
+          <UiAvatar class="h-7 w-7 shrink-0 border border-border">
+            <UiAvatarImage :src="getAvatarSrc(activeChatFriend)" alt="Avatar" />
+          </UiAvatar>
+          <div class="min-w-0">
+            <p class="text-sm font-semibold truncate leading-tight">
+              {{ activeChatFriend.username }}
+            </p>
+            <p
+              class="text-[10px] truncate leading-tight"
+              :class="{
+                'text-success': statusOf(activeChatFriend.id) === 'online',
+                'text-muted-foreground':
+                  statusOf(activeChatFriend.id) === 'offline',
+                'text-destructive':
+                  statusOf(activeChatFriend.id) === 'busy' ||
+                  statusOf(activeChatFriend.id) === 'ingame',
+                'text-warning':
+                  statusOf(activeChatFriend.id) === 'matchmaking',
+              }"
+            >
+              {{
+                statusOf(activeChatFriend.id) === "ingame"
+                  ? "in game"
+                  : statusOf(activeChatFriend.id)
+              }}
+            </p>
+          </div>
+        </template>
       </div>
 
       <div v-if="isManagingFriends" class="flex items-center justify-between">
@@ -350,6 +501,7 @@ function handleManagingContent() {
           @update:model-value="handleManagingContent"
           variant="outline"
           size="sm"
+          class="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground data-[state=on]:border-primary data-[state=on]:hover:bg-primary/90 data-[state=on]:hover:text-primary-foreground"
         >
           <Settings2Icon class="w-4 h-4" />
         </Toggle>
@@ -444,7 +596,7 @@ function handleManagingContent() {
                 </p>
               </div>
               <UiButton
-                @click.stop="handleDeleteFriend(friend.id)"
+                @click.stop="askDeleteFriend(friend)"
                 title="Remove friend"
                 variant="ghost"
                 size="sm"
@@ -452,6 +604,11 @@ function handleManagingContent() {
               >
                 <XIcon class="w-4 h-4" />
               </UiButton>
+              <span
+                v-if="hasUnread(friend.id)"
+                class="w-2.5 h-2.5 rounded-full bg-destructive shrink-0 mr-1"
+                title="Unread messages"
+              />
             </li>
             <li
               v-if="friendsItems.length === 0"
@@ -570,15 +727,11 @@ function handleManagingContent() {
               </div>
 
               <div class="flex items-center gap-0.5 shrink-0">
-                <UiButton
-                  variant="ghost"
-                  size="sm"
-                  title="Chat"
-                  class="h-7 w-7 p-0"
-                  @click.stop="openChatWithFriend(user)"
-                >
-                  <MessageCircleIcon class="w-4 h-4" />
-                </UiButton>
+                <span
+                  v-if="hasUnread(user.id)"
+                  class="w-2.5 h-2.5 rounded-full bg-destructive shrink-0 mr-1"
+                  title="Unread messages"
+                />
                 <UiButton
                   v-if="user.requestStatus === 'none'"
                   variant="ghost"
@@ -591,8 +744,11 @@ function handleManagingContent() {
                 </UiButton>
 
                 <template v-else-if="user.requestStatus === 'outgoing'">
-                  <span class="text-[10px] text-muted-foreground mr-1">
-                    Pending
+                  <span
+                    class="inline-flex items-center justify-center h-7 w-7 text-warning"
+                    title="Request pending"
+                  >
+                    <ClockIcon class="w-4 h-4" />
                   </span>
                   <UiButton
                     variant="ghost"
@@ -678,8 +834,16 @@ function handleManagingContent() {
             class="flex items-center gap-1"
             v-if="isChatting && !isManagingFriends"
           >
-            <Input v-model="newMessage" placeholder="Write your message.." />
-            <UiButton @click="sendMessage()">
+            <textarea
+              ref="chatTextareaEl"
+              v-model="newMessage"
+              placeholder="Write your message.. (Shift+Enter for newline)"
+              rows="1"
+              class="flex-1 resize-none overflow-y-auto thin-scrollbar text-xs leading-snug py-2 px-3 rounded-md border border-input bg-transparent shadow-xs outline-none transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50"
+              style="min-height: 36px; max-height: 160px;"
+              @keydown="handleChatKeydown"
+            />
+            <UiButton @click="sendMessage()" class="shrink-0 self-center">
               <SendHorizonalIcon class="cursor-pointer" />
             </UiButton>
           </div>
@@ -687,4 +851,27 @@ function handleManagingContent() {
       </SidebarMenu>
     </SidebarFooter>
   </Sidebar>
+
+  <Dialog v-model:open="deleteDialogOpen">
+    <DialogContent>
+      <DialogHeader>
+        <DialogTitle>Remove friend</DialogTitle>
+        <DialogDescription>
+          Are you sure you want to delete
+          <span class="font-semibold text-foreground">{{
+            pendingDeleteFriend?.username
+          }}</span>
+          from your friend list?
+        </DialogDescription>
+      </DialogHeader>
+      <DialogFooter>
+        <UiButton variant="ghost" @click="deleteDialogOpen = false">
+          Cancel
+        </UiButton>
+        <UiButton variant="destructive" @click="confirmDeleteFriend">
+          Remove
+        </UiButton>
+      </DialogFooter>
+    </DialogContent>
+  </Dialog>
 </template>
