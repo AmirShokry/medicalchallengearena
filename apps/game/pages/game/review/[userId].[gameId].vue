@@ -13,7 +13,6 @@ const route = useRoute("game-review-userId.gameId");
 import Navigation from "@/components/ExamBlock/components/Navigation.vue";
 import ExamBlock from "@/components/ExamBlock/index.vue";
 import { msToMinutesAndSecondsPrecise } from "@/composables/timeFormatter";
-import type { RecordMetaData } from "@/shared/types/common";
 
 const { $trpc } = useNuxtApp();
 // const sourceRecord = ref<Record>(JSON.parse(window.history.state?.record));
@@ -24,11 +23,26 @@ async function getReviewData() {
       gameId: Number(route.params.gameId),
     });
 
-    const casesData = reviewData.map(
-      (rev) => cases.find((curr) => curr.id === rev.caseId)!
-    );
+    // Filter out review entries whose case (or its questions) no longer exists
+    const filtered = reviewData
+      .map((rev) => ({
+        rev,
+        caseData: cases.find((curr) => curr.id === rev.caseId),
+      }))
+      .filter(
+        (item) => item.caseData && item.caseData.questions?.length
+      ) as { rev: (typeof reviewData)[number]; caseData: (typeof cases)[number] }[];
 
-    return { casesData, reviewData };
+    if (!filtered.length) {
+      errorMessage.value =
+        "The questions for this game are no longer available 😭";
+      return;
+    }
+
+    const casesData = filtered.map((item) => item.caseData);
+    const filteredReviewData = filtered.map((item) => item.rev);
+
+    return { casesData, reviewData: filteredReviewData };
   } catch (error) {
     errorMessage.value = "Record data is not found 😭";
   }
