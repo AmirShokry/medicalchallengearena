@@ -1,7 +1,7 @@
 import { db } from "@package/database";
 import { getTRPCCaller } from "@/server/utils/trpc-caller";
 import { createMockH3EventFromSocket } from "@/server/utils/mock-h3-event";
-import type { ReducedRecordObject } from "@package/types";
+import type { ReducedRecordObject, PlayerData } from "@package/types";
 
 import type { GameIO, GameSocket } from "@/shared/types/socket";
 import {
@@ -18,6 +18,26 @@ import {
 import { initializeGameState, cleanupGameState } from "./game-state-manager";
 
 const { users_cases, games, users_games } = db.table;
+
+/**
+ * Build a serializable PlayerData payload from a socket.
+ *
+ * NEVER spread `socket.data` into an emitted payload: it can contain a
+ * reference to `opponentSocket` (a Socket instance) which itself contains a
+ * back-reference to this socket. socket.io-parser's hasBinary then walks the
+ * cycle and overflows the call stack.
+ */
+function toPlayerDataPayload(s: GameSocket): PlayerData {
+  const session = s.data.session;
+  return {
+    id: session?.id as number,
+    username: session?.username as string,
+    medPoints: (session as any)?.medPoints ?? 0,
+    avatarUrl: (session as any)?.avatarUrl ?? null,
+    gender: (session as any)?.gender ?? null,
+    university: (session as any)?.university ?? "",
+  };
+}
 
 export function registerMatchMaking(socket: GameSocket, io: GameIO) {
   /**
@@ -108,14 +128,17 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
     socket.leave("waiting");
     opponentSocket.leave("waiting");
 
+    // IMPORTANT: emit ONLY plain PlayerData fields. Spreading the full
+    // `socket.data` would include `opponentSocket` (a Socket instance) left
+    // over from prior matches. socket.io-parser's hasBinary then walks the
+    // circular graph and blows the call stack with
+    //   RangeError: Maximum call stack size exceeded
+    //     at hasBinary ... (recursing through socket <-> data.opponentSocket)
     io.to(socket?.id).emit("matchFound", {
-      opponent: {
-        ...opponentSocket.data,
-        ...opponentSocket.data.session,
-      },
+      opponent: toPlayerDataPayload(opponentSocket),
     });
     io.to(opponentSocketId).emit("matchFound", {
-      opponent: { ...socket.data, ...socket.data.session },
+      opponent: toPlayerDataPayload(socket),
     });
 
     socket.data.opponentSocket = opponentSocket;
@@ -257,6 +280,7 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
     );
 
     if (!data.selectedCatIds) return;
+    if (!data.selectedCatIds.length) return;
     const cases =
       data.pool === "all"
         ? await appRouterCaller.block.allBlockByCategoriesIds({
@@ -270,7 +294,24 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
             options: { count: data.casesCount, studyMode: false },
           });
 
-    if (!cases.length) throw new Error("No cases found");
+    if (!cases.length) {
+      // Graceful path: notify both players, keep them in setup, and clear the
+      // ingame flag so they aren't soft-locked. Do NOT throw — async socket
+      // handlers turn throws into unhandledRejection and crash the listener.
+      const reason =
+        data.pool === "unused"
+          ? "No cases left that neither player has played in the selected categories."
+          : "Selected categories have no available cases.";
+      console.warn(
+        `[Match] No cases found for ${socket.data.session?.username} (id=${socket.data.session?.id}) ` +
+          `vs ${opponentSocket.data.session?.username} (id=${opponentSocket.data.session?.id}) ` +
+          `(pool=${data.pool}, cats=[${data.selectedCatIds.join(",")}], count=${data.casesCount})`
+      );
+      socket.data.isInGame = opponentSocket.data.isInGame = false;
+      io.to(socket.id).emit("noCasesFound", { reason });
+      io.to(opponentSocket.id).emit("noCasesFound", { reason });
+      return;
+    }
     function registerCasesRecord(): ReducedRecordObject {
       return cases.flatMap((c) =>
         c.questions.map((q) => ({

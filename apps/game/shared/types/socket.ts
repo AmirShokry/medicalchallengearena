@@ -52,6 +52,12 @@ export namespace ToClientIO {
       opponentSentSelectionChat: (data: string) => void;
       opponentDeclined: () => void;
       opponentLeft: () => void;
+      /**
+       * Server failed to start the game because the bilateral unused pool
+       * for the selected categories is empty. Sent to BOTH players so the
+       * UI can recover (re-enable controls, refresh counters, show notice).
+       */
+      noCasesFound: (data: { reason: string }) => void;
       /** Opponent temporarily disconnected (ping timeout, transport close) - may reconnect */
       opponentDisconnected: (data: { reason: string }) => void;
       /** Opponent reconnected after temporary disconnect */

@@ -6,6 +6,7 @@ import type { MatchingSystemCategories } from "@/shared/types/common";
 import type { ToClientIO } from "@/shared/types/socket";
 import Fuse from "fuse.js";
 import useSocial from "@/composables/useSocial";
+import { toast } from "vue-sonner";
 
 const { $trpc } = useNuxtApp();
 const audio = useAudioStore();
@@ -41,18 +42,27 @@ const counters = ref(
   }[],
 );
 
-watch(user2Id, async () => {
-  if (user2Id.value <= 0) return;
-  data.value = await $trpc.systems.matchingSystemCategories.query({
-    user1Id: user1Id.value,
-    user2Id: user2Id.value,
-  });
+watch(
+  user2Id,
+  async () => {
+    if (user2Id.value <= 0) return;
+    data.value = await $trpc.systems.matchingSystemCategories.query({
+      user1Id: user1Id.value,
+      user2Id: user2Id.value,
+    });
 
-  counters.value = await $trpc.cases.mactchingCount.query({
-    user1Id: user1Id.value,
-    user2Id: user2Id.value,
-  });
-});
+    counters.value = await $trpc.cases.mactchingCount.query({
+      user1Id: user1Id.value,
+      user2Id: user2Id.value,
+    });
+  },
+  // immediate: counters MUST load when the page mounts even if user2Id was
+  // already set before mount (e.g. re-entering setup after a previous match).
+  // Without this, counters stay [], the user sees an empty UI, or worse the
+  // server's bilateral unused pool is out-of-sync with the UI's matchCount and
+  // matchmaking throws "No cases found".
+  { immediate: true },
+);
 
 const systemsCategoriesRaw = computed(() => {
   return data.value.map((system) => ({
@@ -380,6 +390,26 @@ function handleLeaveOrDecline(fromAction?: boolean) {
   social.setStatus("matchmaking");
   console.log("Leaving or declining game");
 }
+
+// Server tells us the bilateral unused pool was empty (e.g. UI counters were
+// stale because either user played a game elsewhere between fetch and start).
+// Re-enable the setup UI, refresh counters from the source of truth, and
+// surface a toast so the master knows why nothing happened.
+gameSocket.on("noCasesFound", async ({ reason }) => {
+  $$game.flags.ingame.isGameStarted = false;
+  toast.error(reason);
+  if (user2Id.value > 0) {
+    counters.value = await $trpc.cases.mactchingCount.query({
+      user1Id: user1Id.value,
+      user2Id: user2Id.value,
+    });
+    data.value = await $trpc.systems.matchingSystemCategories.query({
+      user1Id: user1Id.value,
+      user2Id: user2Id.value,
+    });
+    resetCasesCounters();
+  }
+});
 
 watchEffect(() => {
   if (counters.value.length && user2Id.value > 0) {
