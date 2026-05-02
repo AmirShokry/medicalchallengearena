@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 840" preserveAspectRatio="xMidYMid meet">
+      <style>
+        .ff-eyebrow { fill: #e8a951; font: 500 10px "Inter", sans-serif; letter-spacing: 2.5px; }
+        .ff-title { fill: #e8ecf3; font: italic 400 22px "Fraunces", serif; }
+        .ff-side-label { fill: #b4becf; font: 600 11px "Inter", sans-serif; letter-spacing: 2px; }
+        .ff-side-status { fill: #4fb8a8; font: italic 600 12px "Fraunces", serif; }
+        .ff-side-status-bad { fill: #d14859; font: italic 600 12px "Fraunces", serif; }
+        .ff-panel-caption { fill: #b4becf; font: 500 10px "Inter", sans-serif; letter-spacing: 0.5px; }
+        .ff-step-label { fill: #e8a951; font: 600 9px "Inter", sans-serif; letter-spacing: 1.5px; }
+        .ff-step-label-bad { fill: #d14859; font: 600 9px "Inter", sans-serif; letter-spacing: 1.5px; }
+        .ff-caption { fill: #6b7689; font: italic 400 10px "Inter", sans-serif; }
+        .ff-keypoint { fill: #e8a951; font: 600 10px "Inter", sans-serif; letter-spacing: 1px; }
+        .ff-keypoint-bad { fill: #d14859; font: 600 10px "Inter", sans-serif; letter-spacing: 1px; }
+        .ff-ros-formula { fill: #d14859; font: 700 10px "JetBrains Mono", monospace; }
+        .ff-tag-text { fill: #0a0e1a; font: 700 8px "Inter", sans-serif; letter-spacing: 1px; }
+        .ff-clinical-title { fill: #e8ecf3; font: 700 11px "Inter", sans-serif; letter-spacing: 0.5px; }
+        .ff-clinical-mech { fill: #b4becf; font: italic 400 10px "Inter", sans-serif; }
+        .ff-callout-eyebrow { fill: #d14859; font: 600 9px "Inter", sans-serif; letter-spacing: 2px; }
+        .ff-callout-text { fill: #b4becf; font: 400 10.5px "Inter", sans-serif; }
+      </style>
+      <defs>
+        <marker id="ffArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8a951"/>
+        </marker>
+        <marker id="ffArrowCrimson" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#d14859"/>
+        </marker>
+        <symbol id="rosDrop" overflow="visible">
+          <circle cx="0" cy="0" r="3.5" fill="#d14859" opacity="0.9"/>
+          <g stroke="#d14859" stroke-width="0.8" opacity="0.7">
+            <line x1="0" y1="-5" x2="0" y2="-3"/>
+            <line x1="0" y1="5" x2="0" y2="3"/>
+            <line x1="-5" y1="0" x2="-3" y2="0"/>
+            <line x1="5" y1="0" x2="3" y2="0"/>
+          </g>
+        </symbol>
+        <symbol id="ffNeut" overflow="visible">
+          <circle cx="0" cy="0" r="18" fill="#e8a951" opacity="0.85" stroke="#a8762d" stroke-width="1.2"/>
+          <g fill="#a8762d" opacity="0.7">
+            <circle cx="-5" cy="-2" r="3"/>
+            <circle cx="5" cy="-2" r="3"/>
+            <circle cx="0" cy="5" r="3"/>
+          </g>
+        </symbol>
+        <symbol id="ffNeutDying" overflow="visible">
+          <circle cx="0" cy="0" r="18" fill="#e8a951" opacity="0.4" stroke="#a8762d" stroke-width="1" stroke-dasharray="3 2"/>
+          <g fill="#a8762d" opacity="0.3">
+            <circle cx="-5" cy="-2" r="3"/>
+            <circle cx="5" cy="-2" r="3"/>
+          </g>
+          <g stroke="#d14859" stroke-width="1.2" opacity="0.8" fill="none">
+            <path d="M -14 -8 L -4 0"/>
+            <path d="M 10 -12 L 4 -2"/>
+            <path d="M 6 12 L 14 6"/>
+          </g>
+        </symbol>
+        <symbol id="ffBacterium" overflow="visible">
+          <ellipse cx="0" cy="0" rx="5" ry="3" fill="#4fb8a8" opacity="0.6" stroke="#3a8a7e" stroke-width="1"/>
+        </symbol>
+        <symbol id="ffBacteriumDead" overflow="visible">
+          <ellipse cx="0" cy="0" rx="5" ry="3" fill="#6b7689" opacity="0.35" stroke="#6b7689" stroke-width="0.5"/>
+          <g stroke="#6b7689" stroke-width="0.8" opacity="0.7">
+            <line x1="-3" y1="-2" x2="3" y2="2"/>
+            <line x1="3" y1="-2" x2="-3" y2="2"/>
+          </g>
+        </symbol>
+      </defs>
+
+      <text x="500" y="26" text-anchor="middle" class="ff-eyebrow">FRIENDLY FIRE · ROS DOESN'T KNOW WHOSE TISSUE IT'S HITTING</text>
+      <text x="500" y="58" text-anchor="middle" class="ff-title">Same chemistry. Contained, it heals. Leaked, it wounds.</text>
+      <line x1="40" y1="78" x2="960" y2="78" stroke="#222c3e" stroke-width="1"/>
+
+      <!-- LEFT PANEL · CONTAINED -->
+      <g transform="translate(40 100)">
+        <text x="220" y="20" text-anchor="middle" class="ff-side-label">CONTAINED · INTENDED USE</text>
+        <text x="220" y="40" text-anchor="middle" class="ff-side-status">ROS stays inside the phagolysosome</text>
+
+        <rect x="20" y="60" width="400" height="360" rx="22" ry="22" fill="#0a0e1a" stroke="#4fb8a8" stroke-width="1" stroke-dasharray="4 3" opacity="0.7"/>
+
+        <g transform="translate(220 220)">
+          <circle cx="0" cy="0" r="90" fill="#e8a951" opacity="0.08" stroke="#a8762d" stroke-width="1"/>
+          <text x="0" y="-75" text-anchor="middle" class="ff-panel-caption">one neutrophil</text>
+          <circle cx="0" cy="0" r="48" fill="none" stroke="#4fb8a8" stroke-width="1.8" stroke-dasharray="3 2"/>
+          <text x="0" y="-56" text-anchor="middle" class="ff-step-label">PHAGOLYSOSOME</text>
+          <g transform="translate(0 0)">
+            <use href="#ffBacteriumDead"/>
+            <text x="0" y="18" text-anchor="middle" class="ff-caption">bacterium ✓</text>
+          </g>
+          <g>
+            <use href="#rosDrop" x="-28" y="-20"/><use href="#rosDrop" x="22" y="-26"/>
+            <use href="#rosDrop" x="-32" y="15"/><use href="#rosDrop" x="26" y="18"/>
+            <use href="#rosDrop" x="-12" y="-32"/><use href="#rosDrop" x="15" y="32"/>
+            <use href="#rosDrop" x="-35" y="-5"/><use href="#rosDrop" x="32" y="-8"/>
+          </g>
+          <text x="-75" y="5" text-anchor="end" class="ff-ros-formula">O₂⁻, H₂O₂, HOCl</text>
+          <g stroke="#4fb8a8" stroke-width="1" opacity="0.5" stroke-dasharray="1 2">
+            <path d="M -48 -48 L -38 -38"/>
+            <path d="M 48 -48 L 38 -38"/>
+            <path d="M 48 48 L 38 38"/>
+            <path d="M -48 48 L -38 38"/>
+          </g>
+        </g>
+
+        <line x1="40" y1="378" x2="400" y2="378" stroke="#222c3e" stroke-width="1"/>
+        <text x="220" y="394" text-anchor="middle" class="ff-keypoint">BACTERIUM DIES</text>
+        <text x="220" y="410" text-anchor="middle" class="ff-caption">tissue unharmed · precision weapon</text>
+      </g>
+
+      <!-- RIGHT PANEL · LEAKED (QUESTION) -->
+      <g transform="translate(540 100)">
+        <rect x="335" y="6" width="58" height="14" rx="3" fill="#d14859" opacity="0.92"/>
+        <text x="364" y="16" text-anchor="middle" class="ff-tag-text">QUESTION</text>
+
+        <text x="220" y="20" text-anchor="middle" class="ff-side-label">LEAKED · COLLATERAL DAMAGE</text>
+        <text x="220" y="40" text-anchor="middle" class="ff-side-status-bad">ROS spills into extracellular space</text>
+
+        <rect x="20" y="60" width="400" height="360" rx="22" ry="22" fill="#0a0e1a" stroke="#d14859" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.7"/>
+
+        <text x="220" y="82" text-anchor="middle" class="ff-panel-caption">millions of activated neutrophils in a flooded tissue</text>
+
+        <!-- Alveolar cluster -->
+        <g transform="translate(40 295)">
+          <g transform="translate(50 18)">
+            <circle cx="0" cy="0" r="18" fill="#0a0e1a" stroke="#4fb8a8" stroke-width="1.5" opacity="0.9"/>
+            <circle cx="0" cy="0" r="16" fill="none" stroke="#3a8a7e" stroke-width="0.6" opacity="0.7"/>
+            <path d="M -6 -16 L -3 -10" stroke="#d14859" stroke-width="1.4" opacity="0.9"/>
+            <path d="M 12 -13 L 8 -8" stroke="#d14859" stroke-width="1.4" opacity="0.9"/>
+          </g>
+          <g transform="translate(110 18)">
+            <circle cx="0" cy="0" r="18" fill="#d14859" fill-opacity="0.1" stroke="#4fb8a8" stroke-width="1.5" opacity="0.9" stroke-dasharray="5 2"/>
+            <circle cx="0" cy="0" r="16" fill="none" stroke="#3a8a7e" stroke-width="0.6" opacity="0.7"/>
+            <g fill="#d14859" opacity="0.4">
+              <circle cx="-5" cy="3" r="1.3"/>
+              <circle cx="4" cy="-2" r="1.3"/>
+              <circle cx="2" cy="6" r="1"/>
+            </g>
+            <path d="M -13 -11 L -8 -6" stroke="#d14859" stroke-width="1.4" opacity="0.9"/>
+            <path d="M 10 -14 L 5 -9" stroke="#d14859" stroke-width="1.4" opacity="0.9"/>
+          </g>
+          <g transform="translate(170 18)">
+            <circle cx="0" cy="0" r="18" fill="#d14859" fill-opacity="0.14" stroke="#4fb8a8" stroke-width="1.5" opacity="0.9" stroke-dasharray="5 2"/>
+            <circle cx="0" cy="0" r="16" fill="none" stroke="#3a8a7e" stroke-width="0.6" opacity="0.7"/>
+            <g fill="#d14859" opacity="0.4">
+              <circle cx="-3" cy="1" r="1.5"/>
+              <circle cx="5" cy="-3" r="1.5"/>
+              <circle cx="0" cy="5" r="1.2"/>
+              <circle cx="-6" cy="-4" r="1"/>
+            </g>
+            <path d="M -5 -16 L -1 -11" stroke="#d14859" stroke-width="1.5" opacity="0.9"/>
+            <path d="M 7 -16 L 3 -11" stroke="#d14859" stroke-width="1.5" opacity="0.9"/>
+          </g>
+          <g transform="translate(230 18)">
+            <circle cx="0" cy="0" r="18" fill="#d14859" fill-opacity="0.1" stroke="#4fb8a8" stroke-width="1.5" opacity="0.9" stroke-dasharray="5 2"/>
+            <circle cx="0" cy="0" r="16" fill="none" stroke="#3a8a7e" stroke-width="0.6" opacity="0.7"/>
+            <g fill="#d14859" opacity="0.4">
+              <circle cx="3" cy="2" r="1.3"/>
+              <circle cx="-4" cy="-1" r="1.3"/>
+            </g>
+            <path d="M 8 -14 L 3 -8" stroke="#d14859" stroke-width="1.4" opacity="0.9"/>
+          </g>
+          <g transform="translate(290 18)">
+            <circle cx="0" cy="0" r="18" fill="#0a0e1a" stroke="#4fb8a8" stroke-width="1.5" opacity="0.9"/>
+            <circle cx="0" cy="0" r="16" fill="none" stroke="#3a8a7e" stroke-width="0.6" opacity="0.7"/>
+            <path d="M -10 -14 L -5 -9" stroke="#d14859" stroke-width="1.4" opacity="0.9"/>
+          </g>
+          <!-- Capillary threading below the alveoli -->
+          <path d="M 20 40 Q 80 44 170 42 Q 260 40 320 40" stroke="#d14859" stroke-width="1.3" fill="none" opacity="0.5"/>
+        </g>
+        <text x="220" y="360" text-anchor="middle" class="ff-caption" fill="#4fb8a8">alveoli + capillary · damaged by ROS</text>
+
+        <!-- Neutrophils in the tissue -->
+        <g transform="translate(85 140)"><use href="#ffNeut"/></g>
+        <g transform="translate(145 180)"><use href="#ffNeutDying"/></g>
+        <g transform="translate(220 125)"><use href="#ffNeut"/></g>
+        <g transform="translate(285 170)"><use href="#ffNeutDying"/></g>
+        <g transform="translate(355 140)"><use href="#ffNeut"/></g>
+
+        <!-- Bacteria scattered -->
+        <g transform="translate(115 225)"><use href="#ffBacterium"/></g>
+        <g transform="translate(260 220)"><use href="#ffBacterium"/></g>
+        <g transform="translate(190 250)"><use href="#ffBacteriumDead"/></g>
+        <g transform="translate(330 245)"><use href="#ffBacterium"/></g>
+
+        <!-- ROS scattered in extracellular space -->
+        <g>
+          <use href="#rosDrop" x="70" y="175"/><use href="#rosDrop" x="105" y="185"/>
+          <use href="#rosDrop" x="130" y="155"/><use href="#rosDrop" x="165" y="210"/>
+          <use href="#rosDrop" x="200" y="175"/><use href="#rosDrop" x="235" y="200"/>
+          <use href="#rosDrop" x="250" y="155"/><use href="#rosDrop" x="275" y="215"/>
+          <use href="#rosDrop" x="305" y="175"/><use href="#rosDrop" x="335" y="205"/>
+          <use href="#rosDrop" x="365" y="175"/><use href="#rosDrop" x="95" y="260"/>
+          <use href="#rosDrop" x="140" y="280"/><use href="#rosDrop" x="200" y="290"/>
+          <use href="#rosDrop" x="285" y="285"/><use href="#rosDrop" x="355" y="275"/>
+        </g>
+
+        <text x="220" y="105" text-anchor="middle" class="ff-ros-formula">O₂⁻, H₂O₂, HOCl everywhere</text>
+
+        <!-- Arrows from ROS to the damaged alveoli -->
+        <g>
+          <path d="M 150 275 L 150 295" stroke="#d14859" stroke-width="1.2" stroke-dasharray="2 2" marker-end="url(#ffArrowCrimson)" opacity="0.7"/>
+          <path d="M 210 290 L 210 295" stroke="#d14859" stroke-width="1.2" stroke-dasharray="2 2" marker-end="url(#ffArrowCrimson)" opacity="0.7"/>
+          <path d="M 270 275 L 270 295" stroke="#d14859" stroke-width="1.2" stroke-dasharray="2 2" marker-end="url(#ffArrowCrimson)" opacity="0.7"/>
+        </g>
+
+        <line x1="40" y1="378" x2="400" y2="378" stroke="#222c3e" stroke-width="1"/>
+        <text x="220" y="394" text-anchor="middle" class="ff-keypoint-bad">ALVEOLI DAMAGED · GAS EXCHANGE FAILS</text>
+      </g>
+
+      <!-- CLINICAL MANIFESTATIONS -->
+      <g transform="translate(0 540)">
+        <line x1="40" y1="0" x2="960" y2="0" stroke="#222c3e" stroke-width="1"/>
+        <text x="500" y="22" text-anchor="middle" class="ff-step-label-bad">WHERE YOU SEE THIS IN THE CLINIC</text>
+
+        <g transform="translate(60 40)">
+          <rect x="0" y="0" width="200" height="90" rx="8" fill="#0a0e1a" stroke="#222c3e" stroke-width="1"/>
+          <text x="100" y="22" text-anchor="middle" class="ff-clinical-title">PNEUMONIA</text>
+          <text x="100" y="46" text-anchor="middle" class="ff-clinical-mech">neutrophil ROS damages</text>
+          <text x="100" y="60" text-anchor="middle" class="ff-clinical-mech">alveolar epithelium +</text>
+          <text x="100" y="74" text-anchor="middle" class="ff-clinical-mech">capillary endothelium</text>
+        </g>
+        <g transform="translate(290 40)">
+          <rect x="0" y="0" width="200" height="90" rx="8" fill="#0a0e1a" stroke="#d14859" stroke-width="1.2"/>
+          <text x="100" y="22" text-anchor="middle" class="ff-clinical-title">ARDS</text>
+          <text x="100" y="46" text-anchor="middle" class="ff-clinical-mech">same process, catastrophic</text>
+          <text x="100" y="60" text-anchor="middle" class="ff-clinical-mech">— alveoli flood,</text>
+          <text x="100" y="74" text-anchor="middle" class="ff-clinical-mech">life-threatening</text>
+        </g>
+        <g transform="translate(520 40)">
+          <rect x="0" y="0" width="200" height="90" rx="8" fill="#0a0e1a" stroke="#222c3e" stroke-width="1"/>
+          <text x="100" y="22" text-anchor="middle" class="ff-clinical-title">ATHEROSCLEROSIS</text>
+          <text x="100" y="46" text-anchor="middle" class="ff-clinical-mech">chronic oxidative damage</text>
+          <text x="100" y="60" text-anchor="middle" class="ff-clinical-mech">to vascular endothelium,</text>
+          <text x="100" y="74" text-anchor="middle" class="ff-clinical-mech">oxidized LDL</text>
+        </g>
+        <g transform="translate(750 40)">
+          <rect x="0" y="0" width="200" height="90" rx="8" fill="#0a0e1a" stroke="#222c3e" stroke-width="1"/>
+          <text x="100" y="22" text-anchor="middle" class="ff-clinical-title">REPERFUSION INJURY</text>
+          <text x="100" y="46" text-anchor="middle" class="ff-clinical-mech">sudden ROS burst on</text>
+          <text x="100" y="60" text-anchor="middle" class="ff-clinical-mech">already-stressed tissue</text>
+          <text x="100" y="74" text-anchor="middle" class="ff-clinical-mech">after blood flow returns</text>
+        </g>
+      </g>
+
+      <!-- BOTTOM RESOLVER -->
+      <g transform="translate(0 700)">
+        <line x1="40" y1="0" x2="960" y2="0" stroke="#222c3e" stroke-width="1"/>
+        <g transform="translate(40 18)">
+          <text x="0" y="14" class="ff-callout-eyebrow">WHY ROS, NOT THE OTHER MEDIATORS</text>
+          <text x="0" y="34" class="ff-callout-text">
+            Complement, defensins, IL-1, PGs, TGF-β are all real immune molecules —
+          </text>
+          <text x="0" y="50" class="ff-callout-text">
+            but none of them do
+            <tspan fill="#d14859" font-weight="700">indiscriminate oxidative chemistry</tspan>
+            on host lipids, proteins, and DNA.
+          </text>
+        </g>
+        <g transform="translate(520 18)">
+          <text x="0" y="14" class="ff-callout-eyebrow">THE TEACHING POINT</text>
+          <text x="0" y="34" class="ff-callout-text">
+            The weapon doesn't check ID. Contained inside a phagolysosome it's
+          </text>
+          <text x="0" y="50" class="ff-callout-text">
+            precise; flooding the extracellular space it's
+            <tspan fill="#d14859" font-weight="700">friendly fire</tspan>.
+          </text>
+        </g>
+        <line x1="40" y1="80" x2="960" y2="80" stroke="#222c3e" stroke-width="1"/>
+        <text x="500" y="102" text-anchor="middle" class="ff-caption">
+          The immune system isn't an unalloyed good. Every weapon it uses against microbes
+          <tspan fill="#d14859" font-weight="700">can also harm you</tspan>.
+        </text>
+      </g>
+    </svg>

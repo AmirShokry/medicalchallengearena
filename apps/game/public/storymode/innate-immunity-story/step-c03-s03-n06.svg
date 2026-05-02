@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 320" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="24" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">DEFICIENCY → DISEASE · VISUAL MAP</text>
+
+                  <!-- ===== C1-INH → ANGIOEDEMA (face swelling) ===== -->
+                  <g transform="translate(120 90)">
+                    <!-- Face silhouette with swelling -->
+                    <path d="M -28 -20 Q -32 -5 -28 10 Q -24 26 0 32 Q 24 26 28 10 Q 32 -5 28 -20 Q 24 -30 0 -34 Q -24 -30 -28 -20 Z"
+                          fill="#d14859" opacity="0.45" stroke="#d14859" stroke-width="1"/>
+                    <!-- eyes -->
+                    <circle cx="-10" cy="-8" r="1.5" fill="#0a0e1a"/>
+                    <circle cx="10" cy="-8" r="1.5" fill="#0a0e1a"/>
+                    <!-- lip swelling (puffy lower lip) -->
+                    <ellipse cx="0" cy="14" rx="12" ry="4" fill="#d14859" opacity="0.9"/>
+                    <!-- swell lines (radiating) -->
+                    <g stroke="#d14859" stroke-width="0.7" fill="none" opacity="0.6">
+                      <path d="M -35 0 L -40 0"/>
+                      <path d="M 35 0 L 40 0"/>
+                      <path d="M -32 12 L -38 15"/>
+                      <path d="M 32 12 L 38 15"/>
+                    </g>
+                    <text x="0" y="58" text-anchor="middle" style="fill:#d14859;font:700 9.5px Inter,sans-serif">C1-INH ↓</text>
+                    <text x="0" y="72" text-anchor="middle" style="fill:#b4becf;font:italic 8.5px Inter,sans-serif">angioedema</text>
+                    <text x="0" y="84" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Inter,sans-serif">(face / airway swelling)</text>
+                  </g>
+
+                  <!-- ===== C3 → PYOGENIC / IMMUNE COMPLEX ===== -->
+                  <g transform="translate(260 90)">
+                    <!-- Multiple bacteria (uncontrolled infection) -->
+                    <g fill="#d14859" opacity="0.85" stroke="#a33648" stroke-width="0.5">
+                      <ellipse cx="-18" cy="-12" rx="7" ry="3"/>
+                      <ellipse cx="12" cy="-18" rx="7" ry="3"/>
+                      <ellipse cx="18" cy="-2" rx="7" ry="3"/>
+                      <ellipse cx="-14" cy="8" rx="7" ry="3"/>
+                      <ellipse cx="8" cy="12" rx="7" ry="3"/>
+                      <ellipse cx="-4" cy="20" rx="7" ry="3"/>
+                      <ellipse cx="22" cy="20" rx="7" ry="3"/>
+                    </g>
+                    <!-- dashed circle showing "uncontrolled" -->
+                    <circle cx="0" cy="2" r="34" fill="none" stroke="#d14859" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.45"/>
+                    <text x="0" y="58" text-anchor="middle" style="fill:#d14859;font:700 9.5px Inter,sans-serif">C3 ↓</text>
+                    <text x="0" y="72" text-anchor="middle" style="fill:#b4becf;font:italic 8.5px Inter,sans-serif">recurrent pyogenic</text>
+                    <text x="0" y="84" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Inter,sans-serif">+ immune complex dz</text>
+                  </g>
+
+                  <!-- ===== C5-C9 (MAC) → NEISSERIA ===== -->
+                  <g transform="translate(400 90)">
+                    <!-- Neisseria diplococci (pair of spheres) — the classic visual -->
+                    <g stroke="#a33648" stroke-width="0.6">
+                      <circle cx="-10" cy="-4" r="10" fill="#d14859" opacity="0.85"/>
+                      <circle cx="10" cy="-4" r="10" fill="#d14859" opacity="0.85"/>
+                      <!-- diplococci "paired" indicator -->
+                      <line x1="-6" y1="-4" x2="6" y2="-4" stroke="#0a0e1a" stroke-width="0.4" opacity="0.5"/>
+                    </g>
+                    <!-- second pair -->
+                    <g stroke="#a33648" stroke-width="0.6" opacity="0.7">
+                      <circle cx="-6" cy="20" r="7" fill="#d14859" opacity="0.75"/>
+                      <circle cx="8" cy="20" r="7" fill="#d14859" opacity="0.75"/>
+                    </g>
+                    <!-- gold star — the board-classic marker -->
+                    <polygon points="28,-22 31,-14 39,-14 33,-9 36,-1 28,-6 20,-1 23,-9 17,-14 25,-14"
+                             fill="#e8a951" opacity="0.9"/>
+                    <text x="0" y="58" text-anchor="middle" style="fill:#e8a951;font:700 9.5px Inter,sans-serif">C5–C9 ↓ (MAC)</text>
+                    <text x="0" y="72" text-anchor="middle" style="fill:#d14859;font:italic 700 9px Inter,sans-serif">Neisseria</text>
+                    <text x="0" y="84" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Inter,sans-serif">(meningitidis / gonorrhoeae)</text>
+                  </g>
+
+                  <!-- ===== DAF / CD59 → PNH (RBC lysis) ===== -->
+                  <g transform="translate(250 220)">
+                    <!-- Healthy RBC on left with intact membrane -->
+                    <g transform="translate(-50 0)">
+                      <ellipse cx="0" cy="0" rx="16" ry="10" fill="#d14859" opacity="0.8" stroke="#a33648" stroke-width="0.8"/>
+                      <ellipse cx="0" cy="0" rx="5" ry="3" fill="#a33648" opacity="0.55"/>
+                    </g>
+                    <!-- arrow -->
+                    <line x1="-30" y1="0" x2="-5" y2="0" stroke="#d14859" stroke-width="1.2"/>
+                    <polygon points="-3,0 -10,-3 -10,3" fill="#d14859"/>
+                    <text x="-17" y="-8" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Inter,sans-serif">lyses</text>
+                    <!-- Fragmented RBC on right (dashed + loose fragments) -->
+                    <g transform="translate(30 0)">
+                      <ellipse cx="0" cy="0" rx="16" ry="10" fill="none" stroke="#d14859" stroke-width="1" stroke-dasharray="2 2" opacity="0.55"/>
+                      <g fill="#d14859" opacity="0.65">
+                        <ellipse cx="-8" cy="-4" rx="3" ry="1.5"/>
+                        <ellipse cx="5" cy="-3" rx="3" ry="1.5"/>
+                        <ellipse cx="10" cy="4" rx="3" ry="1.5"/>
+                        <ellipse cx="-4" cy="6" rx="3" ry="1.5"/>
+                      </g>
+                    </g>
+                    <text x="0" y="30" text-anchor="middle" style="fill:#d14859;font:700 9.5px Inter,sans-serif">DAF / CD59 ↓</text>
+                    <text x="0" y="44" text-anchor="middle" style="fill:#b4becf;font:italic 8.5px Inter,sans-serif">PNH — RBC lysis</text>
+                  </g>
+
+                  <line x1="40" y1="280" x2="460" y2="280" stroke="#222c3e" stroke-width="1"/>
+                  <text x="250" y="300" text-anchor="middle" style="fill:#e8a951;font:italic 700 10px Fraunces,serif">★ the board-classic: recurrent Neisseria = MAC deficiency</text>
+                  <text x="250" y="314" text-anchor="middle" style="fill:#6b7689;font:italic 8.5px Inter,sans-serif">lose a regulator, lose a protection — each deficit writes its own disease</text>
+                </svg>

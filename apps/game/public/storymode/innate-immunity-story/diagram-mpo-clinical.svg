@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 360" preserveAspectRatio="xMidYMid meet">
+      <style>
+        .mpc-eyebrow { fill: #e8a951; font: 500 10px "Inter", sans-serif; letter-spacing: 2.5px; }
+        .mpc-title { fill: #e8ecf3; font: italic 400 22px "Fraunces", serif; }
+        .mpc-card-num { fill: #0a0e1a; font: 700 11px "Inter", sans-serif; }
+        .mpc-card-eyebrow { fill: #b4becf; font: 600 10px "Inter", sans-serif; letter-spacing: 2px; }
+        .mpc-card-eyebrow-bad { fill: #d14859; font: 600 10px "Inter", sans-serif; letter-spacing: 2px; }
+        .mpc-card-title { fill: #e8ecf3; font: italic 600 14px "Fraunces", serif; }
+        .mpc-stat { fill: #e8a951; font: 700 26px "Fraunces", serif; }
+        .mpc-detail { fill: #b4becf; font: italic 400 11px "Inter", sans-serif; }
+        .mpc-because { fill: #e8a951; font: 600 9px "Inter", sans-serif; letter-spacing: 1.5px; }
+        .mpc-because-body { fill: #b4becf; font: 400 10.5px "Inter", sans-serif; }
+      </style>
+
+      <text x="500" y="26" text-anchor="middle" class="mpc-eyebrow">MPO DEFICIENCY · CLINICAL PICTURE</text>
+      <text x="500" y="58" text-anchor="middle" class="mpc-title">Mostly silent — except in one specific scenario</text>
+      <line x1="40" y1="78" x2="960" y2="78" stroke="#222c3e" stroke-width="1"/>
+
+      <!-- CARD 1 · MOST PATIENTS -->
+      <g transform="translate(80 100)">
+        <rect x="0" y="0" width="380" height="220" rx="10" ry="10" fill="#0a0e1a" stroke="#4fb8a8" stroke-width="1"/>
+        <circle cx="22" cy="22" r="11" fill="#4fb8a8"/>
+        <text x="22" y="26" text-anchor="middle" class="mpc-card-num">1</text>
+        <text x="40" y="22" class="mpc-card-eyebrow">MOST PATIENTS</text>
+        <text x="40" y="38" class="mpc-card-title">Asymptomatic</text>
+        <g transform="translate(190 110)">
+          <text x="0" y="0" text-anchor="middle" class="mpc-stat">≈ 95%</text>
+          <text x="0" y="22" text-anchor="middle" class="mpc-detail">of MPO-deficient patients</text>
+          <text x="0" y="38" text-anchor="middle" class="mpc-detail">are clinically silent</text>
+        </g>
+        <line x1="20" y1="160" x2="360" y2="160" stroke="#222c3e" stroke-width="1"/>
+        <text x="190" y="178" text-anchor="middle" class="mpc-because">BECAUSE</text>
+        <text x="190" y="195" text-anchor="middle" class="mpc-because-body">H₂O₂ + defensins + lysozyme + lactoferrin</text>
+        <text x="190" y="209" text-anchor="middle" class="mpc-because-body">handle most pathogens fine without HOCl</text>
+      </g>
+
+      <!-- CARD 2 · DIABETIC + CANDIDA -->
+      <g transform="translate(540 100)">
+        <rect x="0" y="0" width="380" height="220" rx="10" ry="10" fill="#0a0e1a" stroke="#d14859" stroke-width="1.5"/>
+        <rect x="318" y="6" width="55" height="14" rx="3" fill="#d14859" opacity="0.92"/>
+        <text x="345" y="16" text-anchor="middle" fill="#0a0e1a" style="font: 700 8px 'Inter', sans-serif; letter-spacing: 1px;">CLASSIC</text>
+        <circle cx="22" cy="22" r="11" fill="#d14859"/>
+        <text x="22" y="26" text-anchor="middle" class="mpc-card-num">2</text>
+        <text x="40" y="22" class="mpc-card-eyebrow-bad">DIABETIC + CANDIDA</text>
+        <text x="40" y="38" class="mpc-card-title">Recurrent fungal infections</text>
+        <g transform="translate(190 110)">
+          <circle cx="-12" cy="0" r="20" fill="#d14859" opacity="0.7" stroke="#a53343" stroke-width="1.2"/>
+          <circle cx="14" cy="-6" r="11" fill="#d14859" opacity="0.7" stroke="#a53343" stroke-width="1.2"/>
+          <circle cx="22" cy="8" r="7" fill="#d14859" opacity="0.7" stroke="#a53343" stroke-width="1"/>
+          <text x="0" y="38" text-anchor="middle" class="mpc-detail" fill="#d14859" font-style="italic">Candida albicans</text>
+        </g>
+        <line x1="20" y1="160" x2="360" y2="160" stroke="#222c3e" stroke-width="1"/>
+        <text x="190" y="178" text-anchor="middle" class="mpc-because">BECAUSE</text>
+        <text x="190" y="195" text-anchor="middle" class="mpc-because-body">Candida resists H₂O₂ alone — needs HOCl to kill.</text>
+        <text x="190" y="209" text-anchor="middle" class="mpc-because-body">Diabetes further impairs neutrophil function.</text>
+      </g>
+
+      <!-- Bottom resolver -->
+      <text x="500" y="350" text-anchor="middle" class="mpc-because-body">
+        <tspan fill="#e8a951" font-weight="700">Most common</tspan> inherited phagocyte defect ·
+        <tspan fill="#d14859" font-weight="700">least common</tspan> to cause disease.
+      </text>
+    </svg>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 720" preserveAspectRatio="xMidYMid meet">
+      <style>
+        .at-eyebrow { fill: #e8a951; font: 500 10px "Inter", sans-serif; letter-spacing: 2.5px; }
+        .at-title { fill: #e8ecf3; font: italic 400 22px "Fraunces", serif; }
+        .at-side-label { fill: #b4becf; font: 600 11px "Inter", sans-serif; letter-spacing: 2px; }
+        .at-side-status { fill: #4fb8a8; font: italic 600 12px "Fraunces", serif; }
+        .at-side-status-bad { fill: #d14859; font: italic 600 12px "Fraunces", serif; }
+        .at-cell-label { fill: #b4becf; font: 500 10px "Inter", sans-serif; }
+        .at-bact-label { fill: #d14859; font: 600 10px "Inter", sans-serif; letter-spacing: 0.5px; }
+        .at-step-label { fill: #e8a951; font: 600 9px "Inter", sans-serif; letter-spacing: 1.5px; }
+        .at-step-label-bad { fill: #d14859; font: 600 9px "Inter", sans-serif; letter-spacing: 1.5px; }
+        .at-caption { fill: #6b7689; font: italic 400 10px "Inter", sans-serif; }
+        .at-keypoint { fill: #e8a951; font: 600 10px "Inter", sans-serif; letter-spacing: 1px; }
+        .at-keypoint-bad { fill: #d14859; font: 600 10px "Inter", sans-serif; letter-spacing: 1px; }
+        .at-tag-text { fill: #0a0e1a; font: 700 8px "Inter", sans-serif; letter-spacing: 1px; }
+        .at-mech { fill: #b4becf; font: 500 10px "Inter", sans-serif; }
+        .at-mech-formula { fill: #e8a951; font: 600 10px "JetBrains Mono", monospace; }
+      </style>
+      <defs>
+        <marker id="atArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8a951"/>
+        </marker>
+        <symbol id="cpRod" overflow="visible">
+          <ellipse cx="0" cy="0" rx="22" ry="10" fill="#d14859" opacity="0.92" stroke="#a53343" stroke-width="1.2"/>
+          <ellipse cx="-7" cy="-2" rx="3" ry="2" fill="#7a1a26" opacity="0.45"/>
+          <ellipse cx="7" cy="2" rx="3" ry="2" fill="#7a1a26" opacity="0.45"/>
+        </symbol>
+        <symbol id="neutHealthy" overflow="visible">
+          <circle cx="0" cy="0" r="44" fill="none" stroke="#4fb8a8" stroke-width="2.5" opacity="0.85"/>
+          <circle cx="0" cy="0" r="40" fill="#0a0e1a" stroke="#4fb8a8" stroke-width="1" opacity="0.6"/>
+          <g fill="#3a8a7e" opacity="0.7">
+            <circle cx="-12" cy="-6" r="9"/>
+            <circle cx="12" cy="-6" r="9"/>
+            <circle cx="0" cy="10" r="9"/>
+          </g>
+        </symbol>
+      </defs>
+
+      <text x="500" y="26" text-anchor="middle" class="at-eyebrow">CLOSTRIDIUM PERFRINGENS · THE COUNTERATTACK</text>
+      <text x="500" y="58" text-anchor="middle" class="at-title">When the bacterium kills the neutrophil first</text>
+      <line x1="40" y1="78" x2="960" y2="78" stroke="#222c3e" stroke-width="1"/>
+
+      <!-- LEFT PANEL · TEXTBOOK RESPONSE -->
+      <g transform="translate(40 100)">
+        <text x="220" y="20" text-anchor="middle" class="at-side-label">TEXTBOOK RESPONSE</text>
+        <text x="220" y="40" text-anchor="middle" class="at-side-status">passive bug → bug is destroyed</text>
+        <rect x="20" y="60" width="400" height="320" rx="22" ry="22" fill="#0a0e1a" stroke="#4fb8a8" stroke-width="1" stroke-dasharray="4 3" opacity="0.7"/>
+        <text x="36" y="80" class="at-cell-label" opacity="0.7">tissue space</text>
+
+        <g transform="translate(120 180)">
+          <use href="#neutHealthy"/>
+          <text x="0" y="62" text-anchor="middle" class="at-cell-label">neutrophil</text>
+        </g>
+
+        <path d="M 200 180 L 270 180" stroke="#e8a951" stroke-width="1.4" stroke-dasharray="3 3" marker-end="url(#atArrow)"/>
+        <text x="235" y="170" text-anchor="middle" class="at-step-label">PHAGOCYTOSE</text>
+
+        <g transform="translate(310 180)">
+          <use href="#cpRod"/>
+          <text x="0" y="-22" text-anchor="middle" class="at-bact-label">C. perfringens</text>
+          <text x="0" y="22" text-anchor="middle" class="at-caption">passive target</text>
+        </g>
+
+        <g transform="translate(220 290)">
+          <line x1="-180" y1="-30" x2="180" y2="-30" stroke="#222c3e" stroke-width="1"/>
+          <text x="0" y="-12" text-anchor="middle" class="at-keypoint">BUG DESTROYED</text>
+          <text x="0" y="4" text-anchor="middle" class="at-caption">engulfed → respiratory burst → killed</text>
+          <text x="0" y="20" text-anchor="middle" class="at-caption">(everything we just learned)</text>
+        </g>
+      </g>
+
+      <!-- RIGHT PANEL · ALPHA TOXIN COUNTERATTACK -->
+      <g transform="translate(540 100)">
+        <rect x="335" y="6" width="58" height="14" rx="3" fill="#d14859" opacity="0.92"/>
+        <text x="364" y="16" text-anchor="middle" class="at-tag-text">QUESTION</text>
+
+        <text x="220" y="20" text-anchor="middle" class="at-side-label">ALPHA TOXIN COUNTERATTACK</text>
+        <text x="220" y="40" text-anchor="middle" class="at-side-status-bad">bug fights first → neutrophil lyses</text>
+        <rect x="20" y="60" width="400" height="320" rx="22" ry="22" fill="#0a0e1a" stroke="#d14859" stroke-width="1" stroke-dasharray="4 3" opacity="0.7"/>
+        <text x="36" y="80" class="at-cell-label" opacity="0.7">tissue space</text>
+
+        <g transform="translate(120 180)">
+          <circle cx="0" cy="0" r="44" fill="none" stroke="#4fb8a8" stroke-width="2.5" stroke-dasharray="8 4" opacity="0.55"/>
+          <circle cx="0" cy="0" r="40" fill="#0a0e1a" stroke="#4fb8a8" stroke-width="1" stroke-dasharray="6 3" opacity="0.4"/>
+          <g fill="#d14859" opacity="0.85">
+            <circle cx="40" cy="-15" r="3"/>
+            <circle cx="38" cy="18" r="3.5"/>
+            <circle cx="-12" cy="-42" r="3"/>
+            <circle cx="22" cy="36" r="3"/>
+            <circle cx="-38" cy="-22" r="2.5"/>
+            <circle cx="-42" cy="14" r="3"/>
+          </g>
+          <g stroke="#d14859" stroke-width="1" opacity="0.75" fill="none">
+            <path d="M 32 -28 L 42 -22"/>
+            <path d="M -32 -28 L -42 -22"/>
+            <path d="M 32 28 L 42 22"/>
+          </g>
+          <g fill="#3a8a7e" opacity="0.45">
+            <circle cx="-12" cy="-6" r="8"/>
+            <circle cx="12" cy="-6" r="8"/>
+            <circle cx="0" cy="10" r="8"/>
+          </g>
+          <text x="0" y="62" text-anchor="middle" class="at-cell-label">neutrophil — lysing</text>
+        </g>
+
+        <g>
+          <g fill="#d14859" opacity="0.85">
+            <circle cx="225" cy="172" r="2.5"/>
+            <circle cx="210" cy="180" r="2"/>
+            <circle cx="200" cy="174" r="2.2"/>
+            <circle cx="190" cy="186" r="1.8"/>
+            <circle cx="180" cy="178" r="2"/>
+            <circle cx="170" cy="184" r="1.6"/>
+          </g>
+          <text x="195" y="148" text-anchor="middle" class="at-step-label-bad">α-TOXIN SECRETED →</text>
+        </g>
+
+        <g transform="translate(310 180)">
+          <use href="#cpRod"/>
+          <text x="0" y="-22" text-anchor="middle" class="at-bact-label">C. perfringens</text>
+          <text x="0" y="22" text-anchor="middle" class="at-caption" fill="#d14859">secretes lecithinase</text>
+        </g>
+
+        <g transform="translate(220 290)">
+          <line x1="-180" y1="-30" x2="180" y2="-30" stroke="#222c3e" stroke-width="1"/>
+          <text x="0" y="-12" text-anchor="middle" class="at-keypoint-bad">NEUTROPHIL DESTROYED</text>
+          <text x="0" y="4" text-anchor="middle" class="at-caption">membrane lysed before phagocytosis</text>
+          <text x="0" y="20" text-anchor="middle" class="at-caption" fill="#d14859">cascade never even starts</text>
+        </g>
+      </g>
+
+      <!-- BOTTOM: MOLECULAR MECHANISM CALLOUT -->
+      <g transform="translate(0 520)">
+        <line x1="40" y1="0" x2="960" y2="0" stroke="#222c3e" stroke-width="1"/>
+        <text x="500" y="22" text-anchor="middle" class="at-step-label">THE MOLECULAR MECHANISM</text>
+        <text x="500" y="42" text-anchor="middle" class="at-mech">
+          Alpha toxin is a <tspan class="at-mech-formula">phospholipase C</tspan> (lecithinase) — it cleaves
+          <tspan class="at-mech-formula">phosphatidylcholine</tspan> in cell membranes.
+        </text>
+
+        <g transform="translate(350 70)">
+          <g fill="#4fb8a8" opacity="0.85">
+            <circle cx="0" cy="0" r="3"/><circle cx="20" cy="0" r="3"/><circle cx="40" cy="0" r="3"/>
+            <circle cx="60" cy="0" r="3"/><circle cx="80" cy="0" r="3"/><circle cx="100" cy="0" r="3"/>
+            <circle cx="180" cy="0" r="3"/><circle cx="200" cy="0" r="3"/><circle cx="220" cy="0" r="3"/>
+            <circle cx="240" cy="0" r="3"/><circle cx="260" cy="0" r="3"/><circle cx="280" cy="0" r="3"/><circle cx="300" cy="0" r="3"/>
+          </g>
+          <g stroke="#3a8a7e" stroke-width="1.3" opacity="0.7">
+            <line x1="0" y1="2" x2="0" y2="14"/><line x1="20" y1="2" x2="20" y2="14"/><line x1="40" y1="2" x2="40" y2="14"/>
+            <line x1="60" y1="2" x2="60" y2="14"/><line x1="80" y1="2" x2="80" y2="14"/><line x1="100" y1="2" x2="100" y2="14"/>
+            <line x1="180" y1="2" x2="180" y2="14"/><line x1="200" y1="2" x2="200" y2="14"/><line x1="220" y1="2" x2="220" y2="14"/>
+            <line x1="240" y1="2" x2="240" y2="14"/><line x1="260" y1="2" x2="260" y2="14"/><line x1="280" y1="2" x2="280" y2="14"/><line x1="300" y1="2" x2="300" y2="14"/>
+          </g>
+          <g stroke="#3a8a7e" stroke-width="1.3" opacity="0.7">
+            <line x1="0" y1="16" x2="0" y2="28"/><line x1="20" y1="16" x2="20" y2="28"/><line x1="40" y1="16" x2="40" y2="28"/>
+            <line x1="60" y1="16" x2="60" y2="28"/><line x1="80" y1="16" x2="80" y2="28"/><line x1="100" y1="16" x2="100" y2="28"/>
+            <line x1="180" y1="16" x2="180" y2="28"/><line x1="200" y1="16" x2="200" y2="28"/><line x1="220" y1="16" x2="220" y2="28"/>
+            <line x1="240" y1="16" x2="240" y2="28"/><line x1="260" y1="16" x2="260" y2="28"/><line x1="280" y1="16" x2="280" y2="28"/><line x1="300" y1="16" x2="300" y2="28"/>
+          </g>
+          <g fill="#4fb8a8" opacity="0.85">
+            <circle cx="0" cy="30" r="3"/><circle cx="20" cy="30" r="3"/><circle cx="40" cy="30" r="3"/>
+            <circle cx="60" cy="30" r="3"/><circle cx="80" cy="30" r="3"/><circle cx="100" cy="30" r="3"/>
+            <circle cx="180" cy="30" r="3"/><circle cx="200" cy="30" r="3"/><circle cx="220" cy="30" r="3"/>
+            <circle cx="240" cy="30" r="3"/><circle cx="260" cy="30" r="3"/><circle cx="280" cy="30" r="3"/><circle cx="300" cy="30" r="3"/>
+          </g>
+          <g stroke="#d14859" stroke-width="1.5" opacity="0.85" fill="none">
+            <path d="M 115 -10 L 125 -2"/>
+            <path d="M 165 -10 L 155 -2"/>
+            <path d="M 115 40 L 125 32"/>
+            <path d="M 165 40 L 155 32"/>
+          </g>
+          <text x="140" y="-18" text-anchor="middle" class="at-step-label-bad">CLEAVED</text>
+          <text x="140" y="48" text-anchor="middle" class="at-caption" fill="#d14859">membrane hole forms</text>
+        </g>
+      </g>
+
+      <line x1="40" y1="665" x2="960" y2="665" stroke="#222c3e" stroke-width="1"/>
+      <text x="500" y="682" text-anchor="middle" class="at-caption">
+        <tspan x="500">The textbook cascade assumes a passive target. When the bug <tspan fill="#d14859" font-weight="700">hits first</tspan>,</tspan>
+        <tspan x="500" dy="1.4em">even a perfect neutrophil never gets the chance — and that's how <tspan fill="#e8a951" font-weight="700">gas gangrene</tspan> spreads.</tspan>
+      </text>
+    </svg>

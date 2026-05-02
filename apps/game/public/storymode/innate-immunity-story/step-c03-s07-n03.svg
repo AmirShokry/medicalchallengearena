@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(250 145)">
+                    <rect x="-170" y="-30" width="340" height="60" rx="8" fill="#111826" stroke="#9370b9" stroke-width="1.5"/>
+                    <g fill="#9370b9" opacity="0.85">
+                      <rect x="-150" y="-12" width="24" height="16" rx="4"/>
+                      <rect x="-110" y="-12" width="24" height="16" rx="4"/>
+                      <rect x="-70" y="-12" width="24" height="16" rx="4"/>
+                      <rect x="-30" y="-12" width="24" height="16" rx="4"/>
+                      <rect x="10" y="-12" width="24" height="16" rx="4"/>
+                      <rect x="50" y="-12" width="24" height="16" rx="4"/>
+                      <rect x="90" y="-12" width="24" height="16" rx="4"/>
+                      <rect x="130" y="-12" width="24" height="16" rx="4"/>
+                    </g>
+                    <g stroke="#111826" stroke-width="1.5">
+                      <line x1="-138" y1="-4" x2="-138" y2="4"/>
+                      <line x1="-98" y1="-4" x2="-98" y2="4"/>
+                      <line x1="-58" y1="-4" x2="-58" y2="4"/>
+                      <line x1="-18" y1="-4" x2="-18" y2="4"/>
+                      <line x1="22" y1="-4" x2="22" y2="4"/>
+                      <line x1="62" y1="-4" x2="62" y2="4"/>
+                      <line x1="102" y1="-4" x2="102" y2="4"/>
+                      <line x1="142" y1="-4" x2="142" y2="4"/>
+                    </g>
+                    <text x="0" y="48" text-anchor="middle" style="fill:#9370b9;font:700 11px Inter,sans-serif;letter-spacing:1.5px">PENICILLIN DAILY</text>
+                    <text x="0" y="-42" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">one capsule, every day</text>
+                  </g>
+                </svg>

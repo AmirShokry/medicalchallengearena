@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(250 140)">
+                    <path d="M -22 -40 Q -35 -20 -30 10 Q -25 30 -15 45 Q 0 55 15 45 Q 25 30 30 10 Q 35 -20 22 -40 Q 0 -50 -22 -40" fill="#e8a8a0" opacity="0.55" stroke="#c88a80" stroke-width="1.5"/>
+                    <ellipse cx="-12" cy="15" rx="8" ry="6" fill="#0a0e1a"/>
+                    <ellipse cx="12" cy="15" rx="8" ry="6" fill="#0a0e1a"/>
+                    <g fill="#d14859" opacity="0.9">
+                      <circle cx="-10" cy="10" r="3"/>
+                      <circle cx="-7" cy="12" r="3"/>
+                      <circle cx="-13" cy="13" r="3"/>
+                      <circle cx="-10" cy="16" r="3"/>
+                      <circle cx="10" cy="10" r="3"/>
+                      <circle cx="13" cy="12" r="3"/>
+                      <circle cx="7" cy="13" r="3"/>
+                      <circle cx="10" cy="17" r="3"/>
+                    </g>
+                  </g>
+                  <g transform="translate(85 90)">
+                    <text x="0" y="0" style="fill:#d14859;font:700 10px Inter,sans-serif">~30%</text>
+                    <text x="0" y="14" style="fill:#d14859;font:italic 9px Inter,sans-serif">carriers</text>
+                  </g>
+                  <g transform="translate(380 90)" opacity="0.9">
+                    <circle cx="-5" cy="-5" r="3" fill="#d14859"/>
+                    <circle cx="0" cy="-5" r="3" fill="#d14859"/>
+                    <circle cx="-5" cy="0" r="3" fill="#d14859"/>
+                    <circle cx="0" cy="0" r="3" fill="#d14859"/>
+                    <text x="15" y="0" style="fill:#d14859;font:italic 700 9px Inter,sans-serif">S. aureus</text>
+                    <text x="15" y="12" style="fill:#b4becf;font:italic 8px Inter,sans-serif">grape clusters</text>
+                  </g>
+                </svg>

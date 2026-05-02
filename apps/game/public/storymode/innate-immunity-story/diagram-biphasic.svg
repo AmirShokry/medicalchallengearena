@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 580" preserveAspectRatio="xMidYMid meet">
+      <style>
+        .bp-eyebrow { fill: #e8a951; font: 500 10px "Inter", sans-serif; letter-spacing: 2.5px; }
+        .bp-title { fill: #e8ecf3; font: italic 400 22px "Fraunces", serif; }
+        .bp-axis-label { fill: #b4becf; font: 500 11px "Inter", sans-serif; letter-spacing: 0.5px; }
+        .bp-axis-tick { fill: #6b7689; font: 500 10px "JetBrains Mono", monospace; }
+        .bp-peak-label { fill: #e8ecf3; font: 700 14px "Fraunces", serif; }
+        .bp-peak-time { fill: #e8a951; font: 600 10px "JetBrains Mono", monospace; letter-spacing: 0.5px; }
+        .bp-mediator { fill: #b4becf; font: italic 500 10px "Inter", sans-serif; letter-spacing: 0.3px; }
+        .bp-mediator-key { fill: #e8a951; font: 600 11px "Inter", sans-serif; letter-spacing: 0.3px; }
+        .bp-caption { fill: #6b7689; font: italic 400 10px "Inter", sans-serif; }
+        .bp-legend-text { fill: #b4becf; font: 500 11px "Inter", sans-serif; }
+        .bp-step-label { fill: #e8a951; font: 600 9px "Inter", sans-serif; letter-spacing: 1.5px; }
+        .bp-step-label-bad { fill: #d14859; font: 600 9px "Inter", sans-serif; letter-spacing: 1.5px; }
+        .bp-tag-text { fill: #0a0e1a; font: 700 8px "Inter", sans-serif; letter-spacing: 1px; }
+        .bp-callout-eyebrow { fill: #d14859; font: 600 10px "Inter", sans-serif; letter-spacing: 2px; }
+        .bp-callout-text { fill: #b4becf; font: 400 11px "Inter", sans-serif; }
+      </style>
+      <defs>
+        <radialGradient id="bpGlowGold" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#e8a951" stop-opacity="0.4"/>
+          <stop offset="100%" stop-color="#e8a951" stop-opacity="0"/>
+        </radialGradient>
+        <marker id="bpArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8a951"/>
+        </marker>
+        <marker id="bpArrowCrimson" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#d14859"/>
+        </marker>
+      </defs>
+
+      <text x="500" y="26" text-anchor="middle" class="bp-eyebrow">BIPHASIC PERMEABILITY · TWO PEAKS, TWO MECHANISMS</text>
+      <text x="500" y="58" text-anchor="middle" class="bp-title">An H₁ blocker takes one peak away and leaves the other untouched.</text>
+      <line x1="40" y1="78" x2="960" y2="78" stroke="#222c3e" stroke-width="1"/>
+
+      <!-- THE GRAPH -->
+      <g>
+        <line x1="120" y1="130" x2="120" y2="380" stroke="#6b7689" stroke-width="1.2"/>
+        <line x1="120" y1="380" x2="880" y2="380" stroke="#6b7689" stroke-width="1.2"/>
+        <text x="50" y="255" text-anchor="middle" class="bp-axis-label" transform="rotate(-90 50 255)">vascular permeability</text>
+        <text x="500" y="430" text-anchor="middle" class="bp-axis-label">time after injury</text>
+
+        <g stroke="#6b7689" stroke-width="1">
+          <line x1="120" y1="380" x2="120" y2="385"/>
+          <line x1="200" y1="380" x2="200" y2="385"/>
+          <line x1="320" y1="380" x2="320" y2="385"/>
+          <line x1="500" y1="380" x2="500" y2="385"/>
+          <line x1="680" y1="380" x2="680" y2="385"/>
+          <line x1="860" y1="380" x2="860" y2="385"/>
+        </g>
+        <text x="120" y="402" text-anchor="middle" class="bp-axis-tick">0</text>
+        <text x="200" y="402" text-anchor="middle" class="bp-axis-tick">5 min</text>
+        <text x="320" y="402" text-anchor="middle" class="bp-axis-tick">30 min</text>
+        <text x="500" y="402" text-anchor="middle" class="bp-axis-tick">2 hr</text>
+        <text x="680" y="402" text-anchor="middle" class="bp-axis-tick">6 hr</text>
+        <text x="860" y="402" text-anchor="middle" class="bp-axis-tick">24 hr</text>
+
+        <text x="108" y="383" text-anchor="end" class="bp-axis-tick">baseline</text>
+        <text x="108" y="158" text-anchor="end" class="bp-axis-tick">peak</text>
+
+        <!-- UNTREATED CURVE (biphasic, gold solid) -->
+        <path d="M 120 380 C 150 380 175 380 200 165 C 220 165 240 360 320 376 C 400 376 460 280 540 230 C 620 200 700 220 760 280 C 810 320 840 360 880 376" stroke="#e8a951" stroke-width="2.5" fill="none" opacity="0.95"/>
+        <ellipse cx="200" cy="170" rx="35" ry="28" fill="url(#bpGlowGold)"/>
+        <circle cx="200" cy="160" r="5" fill="#e8a951" stroke="#0a0e1a" stroke-width="1.5"/>
+        <circle cx="540" cy="230" r="5" fill="#e8a951" stroke="#0a0e1a" stroke-width="1.5"/>
+
+        <!-- H1-BLOCKED CURVE (dashed teal, no Peak A) -->
+        <path d="M 120 380 C 150 380 175 380 200 376 C 240 378 280 378 320 378 C 400 376 460 280 540 230 C 620 200 700 220 760 280 C 810 320 840 360 880 376" stroke="#4fb8a8" stroke-width="2" fill="none" stroke-dasharray="6 3" opacity="0.85"/>
+
+        <!-- PEAK A LABEL -->
+        <g>
+          <line x1="200" y1="160" x2="200" y2="380" stroke="#e8a951" stroke-width="1" stroke-dasharray="2 3" opacity="0.4"/>
+          <text x="200" y="94" text-anchor="middle" class="bp-peak-label">PEAK A</text>
+          <text x="200" y="108" text-anchor="middle" class="bp-peak-time">~5 min · immediate</text>
+          <text x="200" y="124" text-anchor="middle" class="bp-mediator-key">HISTAMINE → H₁</text>
+          <text x="200" y="137" text-anchor="middle" class="bp-mediator">(preformed, instant)</text>
+        </g>
+
+        <!-- PEAK B LABEL -->
+        <g>
+          <line x1="540" y1="230" x2="540" y2="380" stroke="#e8a951" stroke-width="1" stroke-dasharray="2 3" opacity="0.4"/>
+          <text x="540" y="180" text-anchor="middle" class="bp-peak-label">PEAK B</text>
+          <text x="540" y="194" text-anchor="middle" class="bp-peak-time">2–6 hr · delayed</text>
+          <text x="540" y="210" text-anchor="middle" class="bp-mediator-key">LEUKOTRIENES, PG</text>
+          <text x="540" y="223" text-anchor="middle" class="bp-mediator">(must be synthesized)</text>
+        </g>
+
+        <!-- H1 BLOCKER CALLOUT (left of peak, arrow points at missing peak) -->
+        <g>
+          <text x="155" y="340" text-anchor="end" class="bp-step-label-bad">H₁ BLOCKER</text>
+          <text x="155" y="354" text-anchor="end" class="bp-step-label-bad">ABOLISHES PEAK A →</text>
+          <path d="M 160 350 Q 180 360 198 372" stroke="#d14859" stroke-width="1.3" fill="none" marker-end="url(#bpArrowCrimson)" opacity="0.9"/>
+        </g>
+      </g>
+
+      <!-- LEGEND -->
+      <g transform="translate(660 110)">
+        <rect x="0" y="0" width="220" height="56" rx="6" ry="6" fill="#0a0e1a" stroke="#222c3e" stroke-width="1"/>
+        <line x1="14" y1="20" x2="44" y2="20" stroke="#e8a951" stroke-width="2.5"/>
+        <text x="52" y="24" class="bp-legend-text">untreated (both peaks)</text>
+        <line x1="14" y1="40" x2="44" y2="40" stroke="#4fb8a8" stroke-width="2" stroke-dasharray="6 3"/>
+        <text x="52" y="44" class="bp-legend-text">+ H₁ blocker (Peak A gone)</text>
+      </g>
+
+      <!-- BOTTOM RESOLVER -->
+      <g transform="translate(0 460)">
+        <line x1="40" y1="0" x2="960" y2="0" stroke="#222c3e" stroke-width="1"/>
+        <g transform="translate(40 16)">
+          <text x="0" y="14" class="bp-callout-eyebrow">WHY PEAK A IS BLOCKED</text>
+          <text x="0" y="34" class="bp-callout-text">
+            Histamine is the only Peak A driver. Block its H₁ receptor →
+          </text>
+          <text x="0" y="50" class="bp-callout-text">
+            no contraction, no gap, <tspan fill="#e8a951" font-weight="700">no early permeability</tspan>.
+          </text>
+        </g>
+        <g transform="translate(520 16)">
+          <text x="0" y="14" class="bp-callout-eyebrow">WHY PEAK B IS UNCHANGED</text>
+          <text x="0" y="34" class="bp-callout-text">
+            Peak B is driven by leukotrienes, prostaglandins, and arriving
+          </text>
+          <text x="0" y="50" class="bp-callout-text">
+            cells — none of which use H₁. <tspan fill="#e8a951" font-weight="700">Different drugs, different targets</tspan>.
+          </text>
+        </g>
+        <line x1="40" y1="78" x2="960" y2="78" stroke="#222c3e" stroke-width="1"/>
+        <text x="500" y="100" text-anchor="middle" class="bp-caption">
+          That's why first-generation antihistamines stop the
+          <tspan fill="#e8a951" font-weight="700">immediate wheal</tspan>
+          but not the
+          <tspan fill="#d14859" font-weight="700">late-phase reaction</tspan>.
+        </text>
+      </g>
+    </svg>

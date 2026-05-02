@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="24" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">MPO: THE CLOSING ENZYME</text>
+                  <g transform="translate(60 140)" opacity="0.4">
+                    <rect x="-22" y="-16" width="44" height="32" rx="4" fill="#111826" stroke="#6b7689" stroke-width="1.2"/>
+                    <text x="0" y="4" text-anchor="middle" style="fill:#b4becf;font:700 11px Inter,sans-serif">O₂</text>
+                  </g>
+                  <g transform="translate(170 140)" opacity="0.4">
+                    <rect x="-22" y="-16" width="44" height="32" rx="4" fill="#e8a951" opacity="0.6"/>
+                    <text x="0" y="4" text-anchor="middle" style="fill:#0a0e1a;font:700 11px Inter,sans-serif">O₂⁻</text>
+                  </g>
+                  <g transform="translate(285 140)">
+                    <rect x="-24" y="-16" width="48" height="32" rx="4" fill="#e8a951" opacity="0.85"/>
+                    <text x="0" y="4" text-anchor="middle" style="fill:#0a0e1a;font:700 11px Inter,sans-serif">H₂O₂</text>
+                  </g>
+                  <g transform="translate(410 140)">
+                    <rect x="-28" y="-16" width="56" height="32" rx="4" fill="#e8a951"/>
+                    <text x="0" y="4" text-anchor="middle" style="fill:#0a0e1a;font:700 12px Inter,sans-serif">HOCl</text>
+                  </g>
+                  <line x1="88" y1="140" x2="142" y2="140" stroke="#6b7689" stroke-width="1" opacity="0.4"/>
+                  <line x1="198" y1="140" x2="256" y2="140" stroke="#6b7689" stroke-width="1" opacity="0.4"/>
+                  <line x1="315" y1="140" x2="378" y2="140" stroke="#e8a951" stroke-width="2.5"/>
+                  <polygon points="383,140 375,135 375,145" fill="#e8a951"/>
+                  <text x="346" y="125" text-anchor="middle" style="fill:#e8a951;font:700 11px Inter,sans-serif">MPO</text>
+                  <text x="346" y="165" text-anchor="middle" style="fill:#4fb8a8;font:italic 9px Inter,sans-serif">+ Cl⁻</text>
+                  <text x="250" y="225" text-anchor="middle" style="fill:#b4becf;font:italic 11px Inter,sans-serif">the last handoff of the killing cascade</text>
+                </svg>

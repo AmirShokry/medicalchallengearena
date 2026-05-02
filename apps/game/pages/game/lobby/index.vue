@@ -45,7 +45,18 @@ const { data: ranks, pending: areRanksPending } = useLazyAsyncData(
   }
 );
 
-const isPlayClicked = ref(false);
+/**
+ * Lobby Play→Mode flow:
+ *   "idle"  → just the [Play] button is visible
+ *   "play"  → [Solo] [Multi] buttons are visible
+ *   "solo"  → [Exam mode] [Story mode] buttons are visible
+ *
+ * Escape resets back to "idle". Picking Multi from "play" goes straight
+ * to /game/setup/multi (no sub-mode picker — multi is exam-only).
+ */
+type LobbyPlayPhase = "idle" | "play" | "solo";
+const playPhase = ref<LobbyPlayPhase>("idle");
+const isPlayClicked = computed(() => playPhase.value !== "idle");
 
 const userStats = computed(() => {
   if (!user.value) return null;
@@ -65,18 +76,35 @@ const userStats = computed(() => {
 
 function listenForEscape(event: KeyboardEvent) {
   const key = event.key;
-  if (key === "Escape") isPlayClicked.value = false;
+  if (key !== "Escape") return;
+  // Step back one phase per Escape press, mirroring the visual flow.
+  if (playPhase.value === "solo") playPhase.value = "play";
+  else if (playPhase.value === "play") playPhase.value = "idle";
 }
 function handlePlayClick() {
   window.addEventListener("keydown", listenForEscape);
 
   audio.navigation.play();
-  isPlayClicked.value = true;
+  playPhase.value = "play";
 }
 
+/**
+ * "Solo" no longer routes directly to exam setup — it reveals a second
+ * sub-picker (Exam mode / Story mode). The actual navigation happens in
+ * `handleSoloExamClick` / `handleSoloStoryClick` below.
+ */
 function handleSoloClick() {
   audio.navigation.play();
+  playPhase.value = "solo";
+}
+function handleSoloExamClick() {
+  audio.navigation.play();
   router.push({ name: "game-setup-solo" });
+}
+function handleSoloStoryClick() {
+  audio.navigation.play();
+  // Story-mode systems live under /game/story/solo (the system picker).
+  router.push("/game/story/solo");
 }
 function handleMultiClick() {
   audio.navigation.play();
@@ -115,43 +143,47 @@ onUnmounted(() => window.removeEventListener("keydown", listenForEscape));
           class="flex w-full h-full items-end min-[950px]:items-center justify-end max-[950px]:justify-center max-[950px]:mr-0 mr-10 z-1 gap-2"
         > -->
         <div class="flex w-full items-center justify-center z-1 gap-2">
-          <!-- <Button
-            v-if="!isPlayClicked"
-            @click="handlePlayClick"
-            class="not-dark:text-primary mt-20 cursor-pointer border-border border w-1/4 h-10 [background:linear-gradient(80deg,_rgba(187,77,0,0.25)_1%,_rgba(255,255,255,1)_30%)]"
-          > -->
+          <!-- Phase 1: idle — just [Play] -->
           <Button
-            v-if="!isPlayClicked"
+            v-if="playPhase === 'idle'"
             @click="handlePlayClick"
             class="text-primary-foreground mt-20 cursor-pointer border-border border w-1/4 h-10 [background:linear-gradient(80deg,_rgba(187,77,0,0.25)_1%,_rgba(217,166,72,1)_30%)]"
           >
             Play
           </Button>
-          <!-- <Button
-            v-if="isPlayClicked"
-            @click="handleSoloClick"
-            class="hover:![background:#FFFF] not-dark:hover:![background:black] text-primary-foreground mt-20 cursor-pointer border-border border w-1/6 h-10 [background:linear-gradient(80deg,_#B1AFB3_1%,_#B1AFB3_30%)]"
-          > -->
+          <!-- Phase 2: play — [Solo] [Multi] -->
           <Button
-            v-if="isPlayClicked"
+            v-if="playPhase === 'play'"
             @click="handleSoloClick"
             class="hover:![background:#FFFF] not-dark:hover:![background:black] text-primary-foreground mt-20 cursor-pointer border-border border w-1/4 h-10 [background:linear-gradient(80deg,_#B1AFB3_1%,_#B1AFB3_30%)]"
           >
             Solo
           </Button>
-          <!-- <Button
-            v-if="isPlayClicked"
-            @click="handleMultiClick"
-            class="hover:![background:#FFFF] not-dark:hover:![background:black] text-primary-foreground mt-20 cursor-pointer border-border border w-1/6 h-10 [background:linear-gradient(80deg,_#B1AFB3_1%,_#B1AFB3_30%)]"
-          >
-            Multi
-          </Button> -->
           <Button
-            v-if="isPlayClicked"
+            v-if="playPhase === 'play'"
             @click="handleMultiClick"
             class="hover:![background:#FFFF] not-dark:hover:![background:black] text-primary-foreground mt-20 cursor-pointer border-border border w-1/4 h-10 [background:linear-gradient(80deg,_#B1AFB3_1%,_#B1AFB3_30%)]"
           >
             Multi
+          </Button>
+          <!--
+            Phase 3: solo — [Exam mode] [Story mode]. Exam keeps the
+            existing /game/setup/solo flow; Story routes into the new
+            /game/story/solo system picker.
+          -->
+          <Button
+            v-if="playPhase === 'solo'"
+            @click="handleSoloExamClick"
+            class="hover:![background:#FFFF] not-dark:hover:![background:black] text-primary-foreground mt-20 cursor-pointer border-border border w-1/4 h-10 [background:linear-gradient(80deg,_#B1AFB3_1%,_#B1AFB3_30%)]"
+          >
+            Exam mode
+          </Button>
+          <Button
+            v-if="playPhase === 'solo'"
+            @click="handleSoloStoryClick"
+            class="hover:![background:#FFFF] not-dark:hover:![background:black] text-primary-foreground mt-20 cursor-pointer border-border border w-1/4 h-10 [background:linear-gradient(80deg,_rgba(187,77,0,0.25)_1%,_rgba(217,166,72,1)_30%)]"
+          >
+            Story mode
           </Button>
         </div>
       </div>

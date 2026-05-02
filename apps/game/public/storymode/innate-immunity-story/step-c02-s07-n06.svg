@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="24" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">WOUND CELL TIMELINE</text>
+                  <g transform="translate(60 200)">
+                    <line x1="0" y1="0" x2="380" y2="0" stroke="#6b7689" stroke-width="1.5"/>
+                    <text x="0" y="18" text-anchor="middle" style="fill:#6b7689;font:italic 9px Inter,sans-serif">D0</text>
+                    <text x="95" y="18" text-anchor="middle" style="fill:#6b7689;font:italic 9px Inter,sans-serif">D2</text>
+                    <text x="190" y="18" text-anchor="middle" style="fill:#6b7689;font:italic 9px Inter,sans-serif">D4</text>
+                    <text x="285" y="18" text-anchor="middle" style="fill:#6b7689;font:italic 9px Inter,sans-serif">D6</text>
+                    <text x="380" y="18" text-anchor="middle" style="fill:#6b7689;font:italic 9px Inter,sans-serif">D8</text>
+                  </g>
+                  <path d="M 60 180 Q 80 90 110 100 Q 160 150 220 185 Q 280 195 440 195" stroke="#e8a951" stroke-width="2.5" fill="none" opacity="0.9"/>
+                  <text x="85" y="85" style="fill:#e8a951;font:700 9px Inter,sans-serif">PMNs</text>
+                  <path d="M 60 195 Q 120 195 160 175 Q 220 130 280 110 Q 330 105 440 100" stroke="#9370b9" stroke-width="2.5" fill="none" opacity="0.9"/>
+                  <text x="380" y="95" style="fill:#9370b9;font:700 9px Inter,sans-serif">Macrophages</text>
+                  <path d="M 60 200 Q 160 200 220 180 Q 290 155 340 140 Q 390 130 440 125" stroke="#e8a8a0" stroke-width="2" fill="none" opacity="0.8" stroke-dasharray="4 3"/>
+                  <text x="380" y="118" style="fill:#e8a8a0;font:700 9px Inter,sans-serif">Fibroblasts</text>
+                </svg>

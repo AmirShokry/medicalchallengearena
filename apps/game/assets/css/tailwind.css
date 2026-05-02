@@ -2,6 +2,16 @@
 @import "tw-animate-css";
 @import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
 
+/*
+  Story-mode typography (Fraunces / Inter / JetBrains Mono) is loaded via
+  <link> tags injected from nuxt.config.ts. CSS @import would emit a
+  postcss warning ("@import must precede all other statements") because
+  the tailwindcss + tw-animate-css + vue-virtual-scroller imports above
+  expand to rules during build, leaving the font import no longer at
+  the top. The <link> approach also lets the browser preconnect and
+  parallelise font loading.
+*/
+
 @custom-variant dark (&:is(.dark *));
 @font-face {
   font-family: "Geist";
@@ -28,6 +38,14 @@
 
 @theme {
   --font-geist: "Geist", "Geist Fallback", sans-serif;
+  /*
+    Story-mode font tokens — exposed so utility classes
+    (`font-fraunces`, `font-inter`, `font-jetbrains`) generate against
+    them at build time, matching the original reference design.
+  */
+  --font-fraunces: "Fraunces", serif;
+  --font-inter: "Inter", system-ui, sans-serif;
+  --font-jetbrains: "JetBrains Mono", monospace;
 }
 
 /* [background:linear-gradient(80deg,_rgba(187,77,0,1)_0%,_rgba(217,166,72,1)_100%)] old color */

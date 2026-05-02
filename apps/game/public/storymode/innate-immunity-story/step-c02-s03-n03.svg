@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(125 145)">
+                    <rect x="-85" y="-80" width="170" height="160" rx="6" fill="#e8a8a0" opacity="0.18" stroke="#c88a80" stroke-width="1"/>
+                    <g stroke="#c88a80" stroke-width="1" fill="none" opacity="0.35">
+                      <path d="M -85 -45 L 85 -45"/>
+                      <path d="M -85 -15 L 85 -15"/>
+                      <path d="M -85 15 L 85 15"/>
+                      <path d="M -85 45 L 85 45"/>
+                    </g>
+                    <g fill="#e8a8a0" opacity="0.6">
+                      <circle cx="-60" cy="-62" r="4"/>
+                      <circle cx="45" cy="-55" r="4"/>
+                      <circle cx="-50" cy="60" r="4"/>
+                      <circle cx="55" cy="65" r="4"/>
+                      <circle cx="-70" cy="-25" r="3"/>
+                      <circle cx="65" cy="25" r="3"/>
+                      <circle cx="-40" cy="40" r="3"/>
+                    </g>
+                    <circle r="34" fill="#9370b9" opacity="0.85" stroke="#7a4a9e" stroke-width="1.5"/>
+                    <g fill="#d14859" opacity="0.95">
+                      <circle cx="-15" cy="-12" r="5"/>
+                      <circle cx="9" cy="-15" r="5"/>
+                      <circle cx="16" cy="7" r="5"/>
+                      <circle cx="-12" cy="13" r="5"/>
+                      <circle cx="2" cy="-4" r="5"/>
+                      <circle cx="-4" cy="9" r="5"/>
+                      <circle cx="11" cy="2" r="4"/>
+                      <circle cx="-17" cy="0" r="4"/>
+                      <circle cx="5" cy="16" r="4"/>
+                    </g>
+                    <text x="0" y="-90" text-anchor="middle" style="fill:#c88a80;font:italic 700 10px Inter,sans-serif;letter-spacing:1.5px">TISSUE</text>
+                    <text x="0" y="55" text-anchor="middle" style="fill:#9370b9;font:700 10px Inter,sans-serif;letter-spacing:1px">MAST CELL</text>
+                  </g>
+                  <g transform="translate(375 145)">
+                    <ellipse cx="0" cy="0" rx="90" ry="55" fill="#d14859" opacity="0.18"/>
+                    <ellipse cx="0" cy="0" rx="75" ry="40" fill="#111826" stroke="#d14859" stroke-width="2"/>
+                    <g transform="translate(-67 -43)">
+                      <rect x="0" y="0" width="24" height="6" fill="#4fb8a8" opacity="0.85"/>
+                      <rect x="34" y="0" width="24" height="6" fill="#4fb8a8" opacity="0.85"/>
+                      <rect x="68" y="0" width="24" height="6" fill="#4fb8a8" opacity="0.85"/>
+                      <rect x="102" y="0" width="24" height="6" fill="#4fb8a8" opacity="0.85"/>
+                    </g>
+                    <g transform="translate(-67 37)">
+                      <rect x="0" y="0" width="24" height="6" fill="#4fb8a8" opacity="0.85"/>
+                      <rect x="34" y="0" width="24" height="6" fill="#4fb8a8" opacity="0.85"/>
+                      <rect x="68" y="0" width="24" height="6" fill="#4fb8a8" opacity="0.85"/>
+                      <rect x="102" y="0" width="24" height="6" fill="#4fb8a8" opacity="0.85"/>
+                    </g>
+                    <g fill="#d14859" opacity="0.55">
+                      <circle cx="-50" cy="0" r="8"/>
+                      <circle cx="-30" cy="-10" r="8"/>
+                      <circle cx="40" cy="8" r="8"/>
+                      <circle cx="55" cy="-5" r="8"/>
+                      <circle cx="-40" cy="15" r="8"/>
+                      <circle cx="25" cy="-15" r="8"/>
+                    </g>
+                    <circle r="26" fill="#9370b9" opacity="0.85" stroke="#7a4a9e" stroke-width="1.5"/>
+                    <g fill="#d14859" opacity="0.95">
+                      <circle cx="-8" cy="-8" r="4"/>
+                      <circle cx="8" cy="-8" r="4"/>
+                      <circle cx="0" cy="6" r="4"/>
+                      <circle cx="-11" cy="4" r="3"/>
+                      <circle cx="11" cy="5" r="3"/>
+                    </g>
+                    <text x="0" y="-65" text-anchor="middle" style="fill:#d14859;font:italic 700 10px Inter,sans-serif;letter-spacing:1.5px">BLOOD VESSEL</text>
+                    <text x="0" y="45" text-anchor="middle" style="fill:#9370b9;font:700 10px Inter,sans-serif;letter-spacing:1px">BASOPHIL</text>
+                  </g>
+                </svg>

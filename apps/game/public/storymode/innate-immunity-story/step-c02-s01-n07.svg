@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <defs>
+                    <radialGradient id="inflamed_s01_7" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stop-color="#d14859" stop-opacity="0.85"/>
+                      <stop offset="60%" stop-color="#d14859" stop-opacity="0.35"/>
+                      <stop offset="100%" stop-color="#e8a8a0" stop-opacity="0.1"/>
+                    </radialGradient>
+                  </defs>
+                  <g transform="translate(250 150)">
+                    <ellipse cx="0" cy="10" rx="130" ry="55" fill="#e8a8a0" opacity="0.15"/>
+                    <ellipse cx="0" cy="0" rx="95" ry="48" fill="url(#inflamed_s01_7)"/>
+                    <ellipse cx="0" cy="-5" rx="60" ry="35" fill="#d14859" opacity="0.38"/>
+                    <g stroke="#e8a951" stroke-width="2" fill="none" opacity="0.85">
+                      <path d="M -55 -62 Q -50 -72 -42 -68 Q -38 -78 -30 -75"/>
+                      <path d="M -10 -72 Q -5 -82 3 -78 Q 7 -88 15 -85"/>
+                      <path d="M 32 -62 Q 37 -72 45 -68 Q 49 -78 57 -75"/>
+                    </g>
+                    <g stroke="#d14859" stroke-width="2.5" fill="none">
+                      <path d="M -115 -50 L -95 -35 L -115 -20"/>
+                      <path d="M -125 0 L -100 10 L -125 20"/>
+                      <path d="M 115 -50 L 95 -35 L 115 -20"/>
+                      <path d="M 125 0 L 100 10 L 125 20"/>
+                      <path d="M -60 85 L -48 65 L -38 85"/>
+                      <path d="M 0 93 L 12 73 L 24 93"/>
+                      <path d="M 50 85 L 62 65 L 72 85"/>
+                    </g>
+                    <circle r="50" fill="none" stroke="#d14859" stroke-width="1.5" opacity="0.55" stroke-dasharray="4 3"/>
+                    <circle r="65" fill="none" stroke="#d14859" stroke-width="1" opacity="0.35" stroke-dasharray="3 4"/>
+                  </g>
+                  <g transform="translate(440 235)">
+                    <path d="M -10 -3 L -2 -8 L -6 2 L 2 -3" stroke="#d14859" stroke-width="2.5" fill="none"/>
+                    <text x="10" y="4" style="fill:#d14859;font:700 11px Inter,sans-serif;letter-spacing:1.5px">DOLOR</text>
+                  </g>
+                </svg>

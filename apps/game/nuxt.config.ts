@@ -50,6 +50,27 @@ export default defineNuxtConfig({
   },
   css: ["~/assets/css/tailwind.css"],
   ssr: false,
+  app: {
+    head: {
+      link: [
+        // Story-mode fonts. Loaded once for the whole app so SVGs that
+        // reference these families paint with the correct typography.
+        // Using <link> instead of CSS @import sidesteps the
+        // "@import must precede all other statements" postcss warning
+        // and lets the browser preconnect for parallel font fetching.
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        {
+          rel: "preconnect",
+          href: "https://fonts.gstatic.com",
+          crossorigin: "",
+        },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap",
+        },
+      ],
+    },
+  },
   telemetry: {
     enabled: false,
   },

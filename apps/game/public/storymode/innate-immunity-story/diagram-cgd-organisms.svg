@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 460" preserveAspectRatio="xMidYMid meet">
+      <style>
+        .cgo-eyebrow { fill: #e8a951; font: 500 10px "Inter", sans-serif; letter-spacing: 2.5px; }
+        .cgo-title { fill: #e8ecf3; font: italic 400 22px "Fraunces", serif; }
+        .cgo-card-eyebrow { fill: #d14859; font: 600 9px "Inter", sans-serif; letter-spacing: 2px; }
+        .cgo-card-name { fill: #e8a951; font: italic 700 14px "Fraunces", serif; }
+        .cgo-card-common { fill: #b4becf; font: 400 10px "Inter", sans-serif; }
+        .cgo-cat-tag { fill: #0a0e1a; font: 700 8px "Inter", sans-serif; letter-spacing: 0.5px; }
+        .cgo-site { fill: #4fb8a8; font: 600 9px "Inter", sans-serif; letter-spacing: 1.2px; }
+        .cgo-site-detail { fill: #b4becf; font: italic 400 10px "Inter", sans-serif; }
+        .cgo-because-body { fill: #b4becf; font: 400 11px "Inter", sans-serif; }
+      </style>
+      <defs>
+        <symbol id="catTag" overflow="visible">
+          <rect x="-15" y="-7" width="30" height="14" rx="3" fill="#d14859"/>
+          <text x="0" y="3" text-anchor="middle" class="cgo-cat-tag">CAT+</text>
+        </symbol>
+      </defs>
+
+      <text x="500" y="26" text-anchor="middle" class="cgo-eyebrow">CGD CLINICAL ORGANISMS · ALL CATALASE-POSITIVE</text>
+      <text x="500" y="58" text-anchor="middle" class="cgo-title">The recurring cast of CGD infections</text>
+      <line x1="40" y1="78" x2="960" y2="78" stroke="#222c3e" stroke-width="1"/>
+
+      <!-- CARD 1 · STAPH AUREUS -->
+      <g transform="translate(40 100)">
+        <rect x="0" y="0" width="220" height="240" rx="10" ry="10" fill="#0a0e1a" stroke="#222c3e" stroke-width="1"/>
+        <g transform="translate(110 80)">
+          <circle cx="-12" cy="-8" r="9" fill="#d14859" opacity="0.9" stroke="#a53343" stroke-width="0.8"/>
+          <circle cx="0" cy="-12" r="9" fill="#d14859" opacity="0.9" stroke="#a53343" stroke-width="0.8"/>
+          <circle cx="12" cy="-6" r="9" fill="#d14859" opacity="0.9" stroke="#a53343" stroke-width="0.8"/>
+          <circle cx="-8" cy="6" r="9" fill="#d14859" opacity="0.9" stroke="#a53343" stroke-width="0.8"/>
+          <circle cx="6" cy="10" r="9" fill="#d14859" opacity="0.9" stroke="#a53343" stroke-width="0.8"/>
+          <circle cx="16" cy="14" r="9" fill="#d14859" opacity="0.9" stroke="#a53343" stroke-width="0.8"/>
+        </g>
+        <g transform="translate(190 18)"><use href="#catTag"/></g>
+        <text x="110" y="138" text-anchor="middle" class="cgo-card-name">Staphylococcus aureus</text>
+        <text x="110" y="155" text-anchor="middle" class="cgo-card-common">"Staph" · gram-positive cocci</text>
+        <line x1="20" y1="178" x2="200" y2="178" stroke="#222c3e" stroke-width="1"/>
+        <text x="110" y="196" text-anchor="middle" class="cgo-site">CLASSIC SITE</text>
+        <text x="110" y="212" text-anchor="middle" class="cgo-site-detail">skin & soft tissue abscesses</text>
+        <text x="110" y="226" text-anchor="middle" class="cgo-site-detail">lung, liver abscesses</text>
+      </g>
+
+      <!-- CARD 2 · SERRATIA -->
+      <g transform="translate(280 100)">
+        <rect x="0" y="0" width="220" height="240" rx="10" ry="10" fill="#0a0e1a" stroke="#222c3e" stroke-width="1"/>
+        <g transform="translate(110 80)">
+          <ellipse cx="-22" cy="-6" rx="14" ry="6" fill="#d14859" opacity="0.85" stroke="#a53343" stroke-width="0.8"/>
+          <ellipse cx="14" cy="2" rx="14" ry="6" fill="#d14859" opacity="0.85" stroke="#a53343" stroke-width="0.8"/>
+          <ellipse cx="-8" cy="14" rx="14" ry="6" fill="#d14859" opacity="0.85" stroke="#a53343" stroke-width="0.8"/>
+          <ellipse cx="-22" cy="-7" rx="2" ry="1.5" fill="#7a1a26" opacity="0.5"/>
+          <ellipse cx="14" cy="1" rx="2" ry="1.5" fill="#7a1a26" opacity="0.5"/>
+          <ellipse cx="-8" cy="13" rx="2" ry="1.5" fill="#7a1a26" opacity="0.5"/>
+        </g>
+        <g transform="translate(190 18)"><use href="#catTag"/></g>
+        <text x="110" y="138" text-anchor="middle" class="cgo-card-name">Serratia marcescens</text>
+        <text x="110" y="155" text-anchor="middle" class="cgo-card-common">gram-negative rod</text>
+        <line x1="20" y1="178" x2="200" y2="178" stroke="#222c3e" stroke-width="1"/>
+        <text x="110" y="196" text-anchor="middle" class="cgo-site">CLASSIC SITE</text>
+        <text x="110" y="212" text-anchor="middle" class="cgo-site-detail">pneumonia · soft tissue</text>
+        <text x="110" y="226" text-anchor="middle" class="cgo-site-detail">opportunistic in CGD</text>
+      </g>
+
+      <!-- CARD 3 · BURKHOLDERIA -->
+      <g transform="translate(520 100)">
+        <rect x="0" y="0" width="220" height="240" rx="10" ry="10" fill="#0a0e1a" stroke="#222c3e" stroke-width="1"/>
+        <g transform="translate(110 80)">
+          <ellipse cx="0" cy="-12" rx="16" ry="6" fill="#d14859" opacity="0.85" stroke="#a53343" stroke-width="0.8" transform="rotate(-15 0 -12)"/>
+          <ellipse cx="-14" cy="6" rx="16" ry="6" fill="#d14859" opacity="0.85" stroke="#a53343" stroke-width="0.8" transform="rotate(20 -14 6)"/>
+          <ellipse cx="16" cy="14" rx="16" ry="6" fill="#d14859" opacity="0.85" stroke="#a53343" stroke-width="0.8" transform="rotate(-30 16 14)"/>
+        </g>
+        <g transform="translate(190 18)"><use href="#catTag"/></g>
+        <text x="110" y="138" text-anchor="middle" class="cgo-card-name">Burkholderia cepacia</text>
+        <text x="110" y="155" text-anchor="middle" class="cgo-card-common">gram-negative · environmental</text>
+        <line x1="20" y1="178" x2="200" y2="178" stroke="#222c3e" stroke-width="1"/>
+        <text x="110" y="196" text-anchor="middle" class="cgo-site">CLASSIC SITE</text>
+        <text x="110" y="212" text-anchor="middle" class="cgo-site-detail">lung infections</text>
+        <text x="110" y="226" text-anchor="middle" class="cgo-site-detail">CGD-specific pathogen</text>
+      </g>
+
+      <!-- CARD 4 · NOCARDIA -->
+      <g transform="translate(760 100)">
+        <rect x="0" y="0" width="220" height="240" rx="10" ry="10" fill="#0a0e1a" stroke="#222c3e" stroke-width="1"/>
+        <g transform="translate(110 80)" stroke="#d14859" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.85">
+          <path d="M -22 14 L -8 -2 L 8 -14"/>
+          <path d="M -8 -2 L 6 8"/>
+          <path d="M 6 8 L 18 -2"/>
+          <path d="M 8 -14 L 22 -8"/>
+          <path d="M -22 14 L -28 4"/>
+        </g>
+        <g transform="translate(190 18)"><use href="#catTag"/></g>
+        <text x="110" y="138" text-anchor="middle" class="cgo-card-name">Nocardia</text>
+        <text x="110" y="155" text-anchor="middle" class="cgo-card-common">branching filamentous bacteria</text>
+        <line x1="20" y1="178" x2="200" y2="178" stroke="#222c3e" stroke-width="1"/>
+        <text x="110" y="196" text-anchor="middle" class="cgo-site">CLASSIC SITE</text>
+        <text x="110" y="212" text-anchor="middle" class="cgo-site-detail">lung · brain abscess</text>
+        <text x="110" y="226" text-anchor="middle" class="cgo-site-detail">disseminated in CGD</text>
+      </g>
+
+      <!-- ASPERGILLUS — full-width row below -->
+      <g transform="translate(40 360)">
+        <rect x="0" y="0" width="920" height="60" rx="10" ry="10" fill="#0a0e1a" stroke="#222c3e" stroke-width="1"/>
+        <g transform="translate(40 30)">
+          <line x1="0" y1="14" x2="0" y2="-8" stroke="#d14859" stroke-width="2"/>
+          <circle cx="0" cy="-12" r="6" fill="#d14859" opacity="0.8" stroke="#a53343" stroke-width="0.8"/>
+          <g fill="#d14859" opacity="0.85">
+            <circle cx="-9" cy="-19" r="2"/>
+            <circle cx="-4" cy="-22" r="2"/>
+            <circle cx="2" cy="-22" r="2"/>
+            <circle cx="8" cy="-19" r="2"/>
+            <circle cx="-12" cy="-14" r="2"/>
+            <circle cx="11" cy="-14" r="2"/>
+          </g>
+        </g>
+        <text x="80" y="24" class="cgo-card-eyebrow">FUNGUS · ALSO CATALASE-POSITIVE</text>
+        <text x="80" y="42" class="cgo-card-name">Aspergillus</text>
+        <text x="500" y="24" class="cgo-site">CLASSIC SITE</text>
+        <text x="500" y="42" class="cgo-site-detail">invasive pulmonary aspergillosis · CGD-defining infection</text>
+        <g transform="translate(880 30)"><use href="#catTag"/></g>
+      </g>
+
+      <!-- BOTTOM RESOLVER -->
+      <line x1="40" y1="430" x2="960" y2="430" stroke="#222c3e" stroke-width="1"/>
+      <text x="500" y="450" text-anchor="middle" class="cgo-because-body">
+        Every organism here makes <tspan fill="#e8a951" font-weight="700">catalase</tspan>.
+        That's not a coincidence — it's the mechanism by which they survive a CGD neutrophil.
+      </text>
+    </svg>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="32" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">COMPLEMENT · PLASMA PROTEINS</text>
+                  <rect x="40" y="70" width="420" height="140" rx="12" fill="#4fb8a8" fill-opacity="0.06" stroke="#4fb8a8" stroke-width="1.2"/>
+                  <text x="250" y="96" text-anchor="middle" style="fill:#4fb8a8;font:italic 11px Inter,sans-serif">plasma</text>
+                  <g fill="#e8a951" opacity="0.85">
+                    <circle cx="90" cy="130" r="6"/><text x="90" y="150" text-anchor="middle" style="fill:#b4becf;font:600 9px Inter,sans-serif">C1</text>
+                    <circle cx="140" cy="140" r="6"/><text x="140" y="160" text-anchor="middle" style="fill:#b4becf;font:600 9px Inter,sans-serif">C2</text>
+                    <circle cx="190" cy="125" r="6"/><text x="190" y="145" text-anchor="middle" style="fill:#b4becf;font:600 9px Inter,sans-serif">C3</text>
+                    <circle cx="240" cy="145" r="6"/><text x="240" y="165" text-anchor="middle" style="fill:#b4becf;font:600 9px Inter,sans-serif">C4</text>
+                    <circle cx="290" cy="130" r="6"/><text x="290" y="150" text-anchor="middle" style="fill:#b4becf;font:600 9px Inter,sans-serif">C5</text>
+                    <circle cx="340" cy="140" r="6"/><text x="340" y="160" text-anchor="middle" style="fill:#b4becf;font:600 9px Inter,sans-serif">C6-9</text>
+                    <circle cx="400" cy="135" r="6"/><text x="400" y="155" text-anchor="middle" style="fill:#b4becf;font:600 9px Inter,sans-serif">MBL</text>
+                  </g>
+                  <text x="250" y="198" text-anchor="middle" style="fill:#6b7689;font:italic 9.5px Inter,sans-serif">all inactive · all waiting</text>
+                  <text x="250" y="235" text-anchor="middle" style="fill:#b4becf;font:italic 10.5px Inter,sans-serif">when a microbe arrives → <tspan fill="#e8a951" font-weight="600">cascade begins</tspan></text>
+                </svg>

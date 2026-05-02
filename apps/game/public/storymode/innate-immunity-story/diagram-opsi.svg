@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 870" preserveAspectRatio="xMidYMid meet">
+      <style>
+        .op-eyebrow { fill: #d14859; font: 500 10px "Inter", sans-serif; letter-spacing: 2.5px; }
+        .op-title { fill: #e8ecf3; font: italic 400 22px "Fraunces", serif; }
+        .op-section-label { fill: #e8a951; font: 600 9px "Inter", sans-serif; letter-spacing: 1.5px; }
+        .op-section-label-bad { fill: #d14859; font: 600 9px "Inter", sans-serif; letter-spacing: 1.5px; }
+        .op-side-label { fill: #b4becf; font: 600 11px "Inter", sans-serif; letter-spacing: 2px; }
+        .op-side-status { fill: #4fb8a8; font: italic 600 12px "Fraunces", serif; }
+        .op-side-status-bad { fill: #d14859; font: italic 600 12px "Fraunces", serif; }
+        .op-step-num { fill: #e8a951; font: 700 11px "JetBrains Mono", monospace; letter-spacing: 1.5px; }
+        .op-step-num-bad { fill: #d14859; font: 700 11px "JetBrains Mono", monospace; letter-spacing: 1.5px; }
+        .op-step-name { fill: #e8ecf3; font: 600 12px "Inter", sans-serif; letter-spacing: 0.5px; }
+        .op-caption { fill: #6b7689; font: italic 400 10px "Inter", sans-serif; }
+        .op-stage-caption { fill: #b4becf; font: 500 10.5px "Inter", sans-serif; letter-spacing: 0.3px; }
+        .op-hour-label { fill: #e8a951; font: 700 13px "Fraunces", serif; font-style: italic; }
+        .op-hour-label-bad { fill: #d14859; font: 700 13px "Fraunces", serif; font-style: italic; }
+        .op-tag-text { fill: #0a0e1a; font: 700 8px "Inter", sans-serif; letter-spacing: 1px; }
+        .op-vital { fill: #d14859; font: 700 10px "JetBrains Mono", monospace; letter-spacing: 0.5px; }
+        .op-vital-normal { fill: #4fb8a8; font: 600 10px "JetBrains Mono", monospace; letter-spacing: 0.5px; }
+        .op-callout-eyebrow { fill: #d14859; font: 600 9px "Inter", sans-serif; letter-spacing: 2px; }
+        .op-callout-eyebrow-good { fill: #4fb8a8; font: 600 9px "Inter", sans-serif; letter-spacing: 2px; }
+        .op-callout-text { fill: #b4becf; font: 400 10.5px "Inter", sans-serif; }
+        .op-mech-title { fill: #e8ecf3; font: 700 11px "Inter", sans-serif; letter-spacing: 0.5px; }
+        .op-mech-desc { fill: #b4becf; font: italic 400 10px "Inter", sans-serif; }
+        .op-answer-label { fill: #e8a951; font: 700 11px "Inter", sans-serif; letter-spacing: 1px; }
+      </style>
+      <defs>
+        <marker id="opArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8a951"/>
+        </marker>
+        <marker id="opArrowCrimson" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#d14859"/>
+        </marker>
+        <linearGradient id="opCrashGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#4fb8a8" stop-opacity="0.4"/>
+          <stop offset="25%" stop-color="#e8a951" stop-opacity="0.5"/>
+          <stop offset="60%" stop-color="#d14859" stop-opacity="0.7"/>
+          <stop offset="100%" stop-color="#8b2c38" stop-opacity="0.95"/>
+        </linearGradient>
+        <symbol id="opPneumo" overflow="visible">
+          <ellipse cx="0" cy="0" rx="12" ry="9" fill="#e8a951" opacity="0.3" stroke="#e8a951" stroke-width="0.8" stroke-dasharray="2 1"/>
+          <ellipse cx="0" cy="0" rx="7" ry="5" fill="#7a4a9e" opacity="0.92" stroke="#4a2d60" stroke-width="0.8"/>
+        </symbol>
+        <symbol id="opRbc" overflow="visible">
+          <circle cx="0" cy="0" r="8" fill="#d14859" opacity="0.55" stroke="#8b2c38" stroke-width="0.7"/>
+          <circle cx="0" cy="0" r="4" fill="#0a0e1a" opacity="0.4"/>
+        </symbol>
+      </defs>
+
+      <text x="500" y="26" text-anchor="middle" class="op-eyebrow">OPSI · OVERWHELMING POST-SPLENECTOMY INFECTION</text>
+      <text x="500" y="58" text-anchor="middle" class="op-title">"Feeling off" to multi-organ failure — in under 12 hours.</text>
+      <line x1="40" y1="78" x2="960" y2="78" stroke="#222c3e" stroke-width="1"/>
+
+      <!-- TOP: CRASH TIMELINE -->
+      <g transform="translate(0 100)">
+        <text x="500" y="20" text-anchor="middle" class="op-section-label">THE SPEED IS WHAT KILLS · A TIMELINE</text>
+
+        <rect x="60" y="40" width="880" height="40" rx="6" ry="6" fill="url(#opCrashGradient)" opacity="0.85"/>
+        <g stroke="#0a0e1a" stroke-width="1" opacity="0.35">
+          <line x1="280" y1="40" x2="280" y2="80"/>
+          <line x1="500" y1="40" x2="500" y2="80"/>
+          <line x1="720" y1="40" x2="720" y2="80"/>
+        </g>
+
+        <text x="60" y="32" class="op-hour-label" fill="#4fb8a8">0h</text>
+        <text x="280" y="32" class="op-hour-label">2–4h</text>
+        <text x="500" y="32" class="op-hour-label-bad">6–8h</text>
+        <text x="720" y="32" class="op-hour-label-bad">10–12h</text>
+        <text x="940" y="32" text-anchor="end" class="op-hour-label-bad">DEATH</text>
+
+        <text x="60" y="108" class="op-stage-caption" fill="#4fb8a8">FEELS FINE</text>
+        <text x="60" y="122" class="op-caption">URI-like</text>
+        <text x="60" y="134" class="op-caption">"a bit off"</text>
+
+        <text x="280" y="108" class="op-stage-caption">MALAISE + FEVER</text>
+        <text x="280" y="122" class="op-caption">chills,</text>
+        <text x="280" y="134" class="op-caption">rising temp</text>
+
+        <text x="500" y="108" class="op-stage-caption" fill="#d14859">SEPSIS</text>
+        <text x="500" y="122" class="op-caption">BP drops,</text>
+        <text x="500" y="134" class="op-caption">confusion, lactate ↑</text>
+
+        <text x="720" y="108" class="op-stage-caption" fill="#d14859">SEPTIC SHOCK + DIC</text>
+        <text x="720" y="122" class="op-caption">multi-organ failure,</text>
+        <text x="720" y="134" class="op-caption">consumptive coagulopathy</text>
+
+        <text x="500" y="160" text-anchor="middle" class="op-caption">
+          ~5% lifetime risk · but when it happens:
+          <tspan fill="#d14859" font-weight="700">50%+ mortality, even with modern ICU care</tspan>
+        </text>
+      </g>
+
+      <!-- MIDDLE-LEFT: WHY IT'S SO FAST (answer panel) -->
+      <g transform="translate(40 290)">
+        <rect x="0" y="0" width="460" height="270" rx="14" ry="14" fill="#0a0e1a" stroke="#e8a951" stroke-width="1.3" stroke-dasharray="4 3" opacity="0.8"/>
+        <g transform="translate(400 0)">
+          <rect x="-2" y="8" width="58" height="16" rx="3" fill="#e8a951" opacity="0.92"/>
+          <text x="27" y="20" text-anchor="middle" class="op-tag-text">ANSWER</text>
+        </g>
+
+        <text x="230" y="26" text-anchor="middle" class="op-side-label">WHY IT'S SO FAST</text>
+        <text x="230" y="46" text-anchor="middle" class="op-side-status-bad">two defenses are missing at the same time</text>
+
+        <g transform="translate(30 80)">
+          <text x="0" y="0" class="op-step-num">01</text>
+          <text x="24" y="0" class="op-mech-title">NO IgM MEMORY B CELLS</text>
+          <text x="24" y="16" class="op-mech-desc">Splenic IgM⁺ B cells normally make</text>
+          <text x="24" y="28" class="op-mech-desc">early antibody against encapsulated bugs.</text>
+          <text x="24" y="40" class="op-mech-desc" fill="#d14859">Without them: no opsonization, no early control.</text>
+        </g>
+
+        <g transform="translate(30 150)">
+          <text x="0" y="0" class="op-step-num">02</text>
+          <text x="24" y="0" class="op-mech-title">NO SPLENIC CLEARANCE</text>
+          <text x="24" y="16" class="op-mech-desc">Sinusoidal macrophages normally trap and</text>
+          <text x="24" y="28" class="op-mech-desc">phagocytose opsonized bacteria from blood.</text>
+          <text x="24" y="40" class="op-mech-desc" fill="#d14859">Without them: bacteria multiply unchecked.</text>
+        </g>
+
+        <line x1="20" y1="215" x2="440" y2="215" stroke="#222c3e" stroke-width="1"/>
+        <text x="230" y="236" text-anchor="middle" class="op-answer-label">
+          = unchecked bacteremia in hours, not days
+        </text>
+        <text x="230" y="252" text-anchor="middle" class="op-caption">
+          the organism multiplies in blood before the host can respond
+        </text>
+      </g>
+
+      <!-- MIDDLE-RIGHT: CLINICAL CASCADE -->
+      <g transform="translate(520 290)">
+        <rect x="0" y="0" width="440" height="270" rx="14" ry="14" fill="#0a0e1a" stroke="#d14859" stroke-width="1.3" stroke-dasharray="4 3" opacity="0.8"/>
+        <text x="220" y="26" text-anchor="middle" class="op-side-label">WHAT THE PATIENT LOOKS LIKE</text>
+        <text x="220" y="46" text-anchor="middle" class="op-side-status-bad">unchecked bacteremia → sepsis → DIC</text>
+
+        <g transform="translate(220 100)">
+          <rect x="-180" y="-20" width="360" height="40" rx="20" ry="20" fill="#8b2c38" opacity="0.15" stroke="#8b2c38" stroke-width="1"/>
+          <g transform="translate(-155 -5)"><use href="#opRbc"/></g>
+          <g transform="translate(-130 8)"><use href="#opRbc"/></g>
+          <g transform="translate(-100 -8)"><use href="#opRbc"/></g>
+          <g transform="translate(-70 6)"><use href="#opRbc"/></g>
+          <g transform="translate(-40 -5)"><use href="#opRbc"/></g>
+          <g transform="translate(20 8)"><use href="#opRbc"/></g>
+          <g transform="translate(80 -4)"><use href="#opRbc"/></g>
+          <g transform="translate(130 4)"><use href="#opRbc"/></g>
+          <g transform="translate(160 -8)"><use href="#opRbc"/></g>
+          <g transform="translate(-145 4)"><use href="#opPneumo"/></g>
+          <g transform="translate(-115 -6)"><use href="#opPneumo"/></g>
+          <g transform="translate(-80 3)"><use href="#opPneumo"/></g>
+          <g transform="translate(-50 -8)"><use href="#opPneumo"/></g>
+          <g transform="translate(-20 4)"><use href="#opPneumo"/></g>
+          <g transform="translate(5 -3)"><use href="#opPneumo"/></g>
+          <g transform="translate(40 6)"><use href="#opPneumo"/></g>
+          <g transform="translate(70 -6)"><use href="#opPneumo"/></g>
+          <g transform="translate(100 4)"><use href="#opPneumo"/></g>
+          <g transform="translate(135 -3)"><use href="#opPneumo"/></g>
+          <g transform="translate(165 5)"><use href="#opPneumo"/></g>
+        </g>
+        <text x="220" y="140" text-anchor="middle" class="op-caption">bloodstream: bacteria outnumber everything else</text>
+
+        <g transform="translate(220 160)">
+          <path d="M 0 0 L 0 22" stroke="#d14859" stroke-width="1.5" marker-end="url(#opArrowCrimson)"/>
+        </g>
+
+        <g transform="translate(20 195)">
+          <text x="200" y="0" text-anchor="middle" class="op-step-num-bad">LABS AT PRESENTATION</text>
+          <g transform="translate(0 14)">
+            <rect x="0" y="0" width="96" height="50" rx="6" fill="#0a0e1a" stroke="#222c3e" stroke-width="1"/>
+            <text x="48" y="18" text-anchor="middle" class="op-caption">BP</text>
+            <text x="48" y="36" text-anchor="middle" class="op-vital">82 / 50</text>
+          </g>
+          <g transform="translate(104 14)">
+            <rect x="0" y="0" width="96" height="50" rx="6" fill="#0a0e1a" stroke="#222c3e" stroke-width="1"/>
+            <text x="48" y="18" text-anchor="middle" class="op-caption">platelets</text>
+            <text x="48" y="36" text-anchor="middle" class="op-vital">42 K/μL</text>
+          </g>
+          <g transform="translate(208 14)">
+            <rect x="0" y="0" width="96" height="50" rx="6" fill="#0a0e1a" stroke="#222c3e" stroke-width="1"/>
+            <text x="48" y="18" text-anchor="middle" class="op-caption">PT / aPTT</text>
+            <text x="48" y="36" text-anchor="middle" class="op-vital">prolonged</text>
+          </g>
+          <g transform="translate(312 14)">
+            <rect x="0" y="0" width="96" height="50" rx="6" fill="#0a0e1a" stroke="#222c3e" stroke-width="1"/>
+            <text x="48" y="18" text-anchor="middle" class="op-caption">D-dimer</text>
+            <text x="48" y="36" text-anchor="middle" class="op-vital">elevated ↑</text>
+          </g>
+        </g>
+
+        <text x="220" y="260" text-anchor="middle" class="op-step-name" fill="#d14859">= classic DIC from sepsis</text>
+      </g>
+
+      <!-- PREVENTION STRIP -->
+      <g transform="translate(0 600)">
+        <line x1="40" y1="0" x2="960" y2="0" stroke="#222c3e" stroke-width="1"/>
+        <text x="500" y="22" text-anchor="middle" class="op-section-label">WHY EVERY ASPLENIC PATIENT CARRIES AMOX-CLAV</text>
+
+        <g transform="translate(0 40)">
+          <g transform="translate(60 0)">
+            <rect x="0" y="0" width="170" height="90" rx="8" fill="#0a0e1a" stroke="#222c3e" stroke-width="1"/>
+            <text x="14" y="22" class="op-step-num">01</text>
+            <text x="38" y="22" class="op-mech-title">FEVER = ER</text>
+            <text x="14" y="42" class="op-mech-desc">treat any fever as</text>
+            <text x="14" y="54" class="op-mech-desc">medical emergency</text>
+            <text x="14" y="74" class="op-caption" fill="#e8a951">first priority</text>
+          </g>
+          <g transform="translate(244 0)">
+            <rect x="0" y="0" width="170" height="90" rx="8" fill="#0a0e1a" stroke="#222c3e" stroke-width="1"/>
+            <text x="14" y="22" class="op-step-num">02</text>
+            <text x="38" y="22" class="op-mech-title">TAKE AMOX-CLAV</text>
+            <text x="14" y="42" class="op-mech-desc">at the first sign</text>
+            <text x="14" y="54" class="op-mech-desc">of fever (at home)</text>
+            <text x="14" y="74" class="op-caption">before getting to ED</text>
+          </g>
+          <g transform="translate(428 0)">
+            <rect x="0" y="0" width="170" height="90" rx="8" fill="#0a0e1a" stroke="#222c3e" stroke-width="1"/>
+            <text x="14" y="22" class="op-step-num">03</text>
+            <text x="38" y="22" class="op-mech-title">GET TO ED</text>
+            <text x="14" y="42" class="op-mech-desc">without delay</text>
+            <text x="14" y="54" class="op-mech-desc">— hours matter</text>
+            <text x="14" y="74" class="op-caption">IV antibiotics ASAP</text>
+          </g>
+          <g transform="translate(612 0)">
+            <rect x="0" y="0" width="170" height="90" rx="8" fill="#0a0e1a" stroke="#222c3e" stroke-width="1"/>
+            <text x="14" y="22" class="op-step-num">04</text>
+            <text x="38" y="22" class="op-mech-title">VACCINES</text>
+            <text x="14" y="42" class="op-mech-desc">pneumococcal,</text>
+            <text x="14" y="54" class="op-mech-desc">meningococcal, Hib</text>
+            <text x="14" y="74" class="op-caption">(all non-negotiable)</text>
+          </g>
+          <g transform="translate(796 0)">
+            <rect x="0" y="0" width="170" height="90" rx="8" fill="#0a0e1a" stroke="#222c3e" stroke-width="1"/>
+            <text x="14" y="22" class="op-step-num">05</text>
+            <text x="38" y="22" class="op-mech-title">PROPHYLAXIS</text>
+            <text x="14" y="42" class="op-mech-desc">daily penicillin</text>
+            <text x="14" y="54" class="op-mech-desc">(esp. in children)</text>
+            <text x="14" y="74" class="op-caption">long-term</text>
+          </g>
+        </g>
+      </g>
+
+      <!-- BOTTOM RESOLVER -->
+      <g transform="translate(0 760)">
+        <line x1="40" y1="0" x2="960" y2="0" stroke="#222c3e" stroke-width="1"/>
+
+        <g transform="translate(40 18)">
+          <text x="0" y="14" class="op-callout-eyebrow-good">WHY THIS ANSWER</text>
+          <text x="0" y="34" class="op-callout-text">
+            The crash is fast because
+            <tspan fill="#e8a951" font-weight="700">two</tspan>
+            specific defenses are missing —
+          </text>
+          <text x="0" y="50" class="op-callout-text">
+            IgM memory B cells and splenic clearance. Both live in the spleen. Both are gone.
+          </text>
+        </g>
+
+        <g transform="translate(520 18)">
+          <text x="0" y="14" class="op-callout-eyebrow">WHY NOT THE OTHER OPTIONS</text>
+          <text x="0" y="34" class="op-callout-text">
+            <tspan fill="#d14859" font-weight="700">Thrombocytopenia</tspan> doesn't cause sepsis · 
+            <tspan fill="#d14859" font-weight="700">hypogamma.</tspan> needs immunosuppression ·
+          </text>
+          <text x="0" y="50" class="op-callout-text">
+            <tspan fill="#d14859" font-weight="700">T-cell</tspan> defects = intracellular bugs ·
+            <tspan fill="#d14859" font-weight="700">complement</tspan> loss needs autoimmunity.
+          </text>
+        </g>
+      </g>
+    </svg>

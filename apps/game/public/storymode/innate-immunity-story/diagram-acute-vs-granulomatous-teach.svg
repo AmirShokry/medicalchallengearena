@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 790" preserveAspectRatio="xMidYMid meet">
+      <style>
+        .sg-eyebrow { fill: #e8a951; font: 500 10px "Inter", sans-serif; letter-spacing: 2.5px; }
+        .sg-title { fill: #e8ecf3; font: italic 400 22px "Fraunces", serif; }
+        .sg-panel-title { fill: #e8ecf3; font: 700 14px "Inter", sans-serif; letter-spacing: 1.5px; }
+        .sg-panel-title-crimson { fill: #d14859; font: 700 14px "Inter", sans-serif; letter-spacing: 1.5px; }
+        .sg-panel-title-purple { fill: #7a4a9e; font: 700 14px "Inter", sans-serif; letter-spacing: 1.5px; }
+        .sg-panel-sub { fill: #b4becf; font: italic 400 11px "Inter", sans-serif; }
+        .sg-section-label { fill: #e8a951; font: 600 9.5px "Inter", sans-serif; letter-spacing: 1.8px; }
+        .sg-label { fill: #e8ecf3; font: 600 10.5px "Inter", sans-serif; letter-spacing: 0.3px; }
+        .sg-caption { fill: #6b7689; font: italic 400 10px "Inter", sans-serif; }
+        .sg-anatomy { fill: #e8ecf3; font: 600 10.5px "Inter", sans-serif; letter-spacing: 0.3px; }
+        .sg-key-body { fill: #b4becf; font: 400 10.5px "Inter", sans-serif; }
+        .sg-accent { fill: #e8a951; font: 700 11px "Inter", sans-serif; letter-spacing: 0.3px; }
+        .sg-crimson { fill: #d14859; font: 700 11px "Inter", sans-serif; letter-spacing: 0.3px; }
+        .sg-purple-label { fill: #9370b9; font: 700 11px "Inter", sans-serif; letter-spacing: 0.3px; }
+      </style>
+      <defs>
+        <symbol id="sgNeu" overflow="visible">
+          <circle cx="0" cy="0" r="9" fill="#e8a951" opacity="0.85" stroke="#a87b3c" stroke-width="0.7"/>
+          <path d="M -4 -3 Q -6 -1 -4 1 Q -2 3 0 2 Q 2 4 4 2 Q 6 0 4 -2 Q 2 -4 0 -3 Q -2 -4 -4 -3 Z" fill="#4a2d60" opacity="0.75"/>
+        </symbol>
+        <symbol id="sgNeuDying" overflow="visible">
+          <circle cx="0" cy="0" r="9" fill="#e8a951" opacity="0.5" stroke="#a87b3c" stroke-width="0.5" stroke-dasharray="2 1"/>
+          <circle cx="-3" cy="-2" r="1.5" fill="#4a2d60" opacity="0.7"/>
+          <circle cx="3" cy="1" r="1.5" fill="#4a2d60" opacity="0.7"/>
+          <circle cx="-1" cy="3" r="1" fill="#4a2d60" opacity="0.7"/>
+          <circle cx="4" cy="-2" r="1" fill="#4a2d60" opacity="0.7"/>
+        </symbol>
+        <symbol id="sgMac" overflow="visible">
+          <ellipse cx="0" cy="0" rx="11" ry="6" fill="#9370b9" opacity="0.55" stroke="#4a2d60" stroke-width="0.6"/>
+          <ellipse cx="0" cy="0" rx="5" ry="3" fill="#4a2d60" opacity="0.65"/>
+        </symbol>
+        <symbol id="sgGiant" overflow="visible">
+          <circle cx="0" cy="0" r="20" fill="#9370b9" opacity="0.4" stroke="#4a2d60" stroke-width="1"/>
+          <circle cx="-13" cy="-6" r="2.8" fill="#4a2d60" opacity="0.85"/>
+          <circle cx="-8" cy="-13" r="2.8" fill="#4a2d60" opacity="0.85"/>
+          <circle cx="0" cy="-16" r="2.8" fill="#4a2d60" opacity="0.85"/>
+          <circle cx="8" cy="-13" r="2.8" fill="#4a2d60" opacity="0.85"/>
+          <circle cx="13" cy="-6" r="2.8" fill="#4a2d60" opacity="0.85"/>
+          <circle cx="14" cy="2" r="2.8" fill="#4a2d60" opacity="0.85"/>
+        </symbol>
+        <symbol id="sgLymph" overflow="visible">
+          <circle cx="0" cy="0" r="5" fill="#4fb8a8" opacity="0.55" stroke="#3a8a7e" stroke-width="0.5"/>
+          <circle cx="0" cy="0" r="3" fill="#3a8a7e" opacity="0.75"/>
+        </symbol>
+        <symbol id="sgHydrolase" overflow="visible">
+          <polygon points="-2.5,-1.5 0,-3 2.5,-1.5 2.5,1.5 0,3 -2.5,1.5" fill="#d14859" opacity="0.85" stroke="#8b2c38" stroke-width="0.3"/>
+        </symbol>
+        <symbol id="sgBact" overflow="visible">
+          <circle cx="0" cy="0" r="2.5" fill="#d14859" opacity="0.95" stroke="#8b2c38" stroke-width="0.4"/>
+        </symbol>
+        <symbol id="sgBactDead" overflow="visible">
+          <circle cx="0" cy="0" r="2.5" fill="#d14859" opacity="0.35" stroke="#8b2c38" stroke-width="0.3" stroke-dasharray="1 1"/>
+        </symbol>
+        <symbol id="sgIntracellular" overflow="visible">
+          <rect x="-3" y="-1" width="6" height="2" rx="1" fill="#7a4a9e" opacity="0.9" stroke="#4a2d60" stroke-width="0.3"/>
+        </symbol>
+      </defs>
+
+      <!-- TITLE -->
+      <text x="500" y="26" text-anchor="middle" class="sg-eyebrow">ACUTE SUPPURATIVE vs GRANULOMATOUS · WHAT YOU SEE ON BIOPSY</text>
+      <text x="500" y="58" text-anchor="middle" class="sg-title">Two patterns. Two fates. Two kinds of lesion center.</text>
+      <line x1="40" y1="78" x2="960" y2="78" stroke="#222c3e" stroke-width="1"/>
+
+      <!-- LEFT PANEL · ACUTE SUPPURATIVE -->
+      <g transform="translate(30 100)">
+        <rect x="0" y="0" width="460" height="460" rx="10" fill="#111826" stroke="#222c3e" stroke-width="1"/>
+        <text x="230" y="28" text-anchor="middle" class="sg-panel-title-crimson">ACUTE SUPPURATIVE</text>
+        <text x="230" y="46" text-anchor="middle" class="sg-panel-sub">pyogenic · neutrophil-driven · enzyme-mediated</text>
+
+        <g transform="translate(230 240)">
+          <circle cx="0" cy="0" r="140" fill="#050811" stroke="#222c3e" stroke-width="2" stroke-dasharray="5 3"/>
+
+          <g opacity="0.15">
+            <path d="M -100 -80 Q -80 -90 -60 -82 T -20 -78 T 20 -82 T 60 -75 T 100 -80" stroke="#6b7689" stroke-width="0.8" fill="none"/>
+            <path d="M -110 -20 Q -90 -10 -60 -15 T 0 -12 T 60 -18 T 120 -10" stroke="#6b7689" stroke-width="0.8" fill="none"/>
+            <path d="M -110 30 Q -80 40 -50 35 T 10 38 T 60 30 T 120 35" stroke="#6b7689" stroke-width="0.8" fill="none"/>
+            <path d="M -100 75 Q -70 85 -40 78 T 20 80 T 60 72 T 110 80" stroke="#6b7689" stroke-width="0.8" fill="none"/>
+          </g>
+
+          <g opacity="0.2">
+            <ellipse cx="-80" cy="-110" rx="8" ry="5" fill="none" stroke="#6b7689" stroke-width="0.5" stroke-dasharray="1 1"/>
+            <ellipse cx="70" cy="-100" rx="8" ry="5" fill="none" stroke="#6b7689" stroke-width="0.5" stroke-dasharray="1 1"/>
+            <ellipse cx="105" cy="40" rx="8" ry="5" fill="none" stroke="#6b7689" stroke-width="0.5" stroke-dasharray="1 1"/>
+            <ellipse cx="-110" cy="60" rx="8" ry="5" fill="none" stroke="#6b7689" stroke-width="0.5" stroke-dasharray="1 1"/>
+          </g>
+
+          <g transform="translate(-90 -95)"><use href="#sgHydrolase"/></g>
+          <g transform="translate(-60 -105)"><use href="#sgHydrolase"/></g>
+          <g transform="translate(-20 -95)"><use href="#sgHydrolase"/></g>
+          <g transform="translate(40 -100)"><use href="#sgHydrolase"/></g>
+          <g transform="translate(85 -90)"><use href="#sgHydrolase"/></g>
+          <g transform="translate(-115 -40)"><use href="#sgHydrolase"/></g>
+          <g transform="translate(-45 -45)"><use href="#sgHydrolase"/></g>
+          <g transform="translate(25 -50)"><use href="#sgHydrolase"/></g>
+          <g transform="translate(100 -40)"><use href="#sgHydrolase"/></g>
+          <g transform="translate(-100 10)"><use href="#sgHydrolase"/></g>
+          <g transform="translate(-30 5)"><use href="#sgHydrolase"/></g>
+          <g transform="translate(40 10)"><use href="#sgHydrolase"/></g>
+          <g transform="translate(110 5)"><use href="#sgHydrolase"/></g>
+          <g transform="translate(-95 55)"><use href="#sgHydrolase"/></g>
+          <g transform="translate(-25 60)"><use href="#sgHydrolase"/></g>
+          <g transform="translate(55 50)"><use href="#sgHydrolase"/></g>
+          <g transform="translate(-50 100)"><use href="#sgHydrolase"/></g>
+          <g transform="translate(25 95)"><use href="#sgHydrolase"/></g>
+          <g transform="translate(75 105)"><use href="#sgHydrolase"/></g>
+
+          <g transform="translate(-75 -30)"><use href="#sgBact"/></g>
+          <g transform="translate(-70 -25)"><use href="#sgBactDead"/></g>
+          <g transform="translate(15 -70)"><use href="#sgBact"/></g>
+          <g transform="translate(20 -65)"><use href="#sgBactDead"/></g>
+          <g transform="translate(80 35)"><use href="#sgBactDead"/></g>
+          <g transform="translate(-50 70)"><use href="#sgBactDead"/></g>
+          <g transform="translate(65 80)"><use href="#sgBact"/></g>
+
+          <g transform="translate(-65 -115)"><use href="#sgNeu"/></g>
+          <g transform="translate(-20 -118)"><use href="#sgNeu"/></g>
+          <g transform="translate(30 -115)"><use href="#sgNeu"/></g>
+          <g transform="translate(-105 -75)"><use href="#sgNeu"/></g>
+          <g transform="translate(-55 -75)"><use href="#sgNeu"/></g>
+          <g transform="translate(0 -72)"><use href="#sgNeuDying"/></g>
+          <g transform="translate(55 -80)"><use href="#sgNeu"/></g>
+          <g transform="translate(95 -65)"><use href="#sgNeu"/></g>
+          <g transform="translate(-125 -25)"><use href="#sgNeu"/></g>
+          <g transform="translate(-85 -15)"><use href="#sgNeu"/></g>
+          <g transform="translate(-25 -15)"><use href="#sgNeu"/></g>
+          <g transform="translate(20 -25)"><use href="#sgNeu"/></g>
+          <g transform="translate(65 -20)"><use href="#sgNeuDying"/></g>
+          <g transform="translate(120 -20)"><use href="#sgNeu"/></g>
+          <g transform="translate(-115 20)"><use href="#sgNeu"/></g>
+          <g transform="translate(-70 25)"><use href="#sgNeu"/></g>
+          <g transform="translate(-15 30)"><use href="#sgNeu"/></g>
+          <g transform="translate(70 30)"><use href="#sgNeu"/></g>
+          <g transform="translate(125 25)"><use href="#sgNeu"/></g>
+          <g transform="translate(-90 70)"><use href="#sgNeuDying"/></g>
+          <g transform="translate(-40 75)"><use href="#sgNeu"/></g>
+          <g transform="translate(20 75)"><use href="#sgNeu"/></g>
+          <g transform="translate(75 68)"><use href="#sgNeu"/></g>
+          <g transform="translate(115 65)"><use href="#sgNeu"/></g>
+          <g transform="translate(-70 115)"><use href="#sgNeu"/></g>
+          <g transform="translate(-15 118)"><use href="#sgNeuDying"/></g>
+          <g transform="translate(40 115)"><use href="#sgNeu"/></g>
+          <g transform="translate(95 115)"><use href="#sgNeu"/></g>
+
+          <g>
+            <rect x="-48" y="-8" width="96" height="18" rx="3" fill="#0a0e1a" opacity="0.88"/>
+            <text x="0" y="5" text-anchor="middle" class="sg-label" fill="#e8a951">PUS</text>
+          </g>
+        </g>
+
+        <g transform="translate(20 410)">
+          <g transform="translate(15 0)"><use href="#sgNeu"/></g>
+          <text x="32" y="4" class="sg-caption" fill="#b4becf">neutrophils</text>
+          <g transform="translate(120 0)"><use href="#sgHydrolase"/></g>
+          <text x="132" y="4" class="sg-caption" fill="#b4becf">acid hydrolases</text>
+          <g transform="translate(232 0)"><use href="#sgBact"/></g>
+          <text x="242" y="4" class="sg-caption" fill="#b4becf">bacteria</text>
+          <g transform="translate(310 0)"><use href="#sgNeuDying"/></g>
+          <text x="325" y="4" class="sg-caption" fill="#b4becf">dying neutrophil</text>
+        </g>
+
+        <g transform="translate(20 440)">
+          <text x="210" y="0" text-anchor="middle" class="sg-accent">soft · fluid-filled · liquefied</text>
+        </g>
+      </g>
+
+      <!-- RIGHT PANEL · GRANULOMATOUS -->
+      <g transform="translate(510 100)">
+        <rect x="0" y="0" width="460" height="460" rx="10" fill="#111826" stroke="#222c3e" stroke-width="1"/>
+        <text x="230" y="28" text-anchor="middle" class="sg-panel-title-purple">GRANULOMATOUS</text>
+        <text x="230" y="46" text-anchor="middle" class="sg-panel-sub">macrophage-driven · organized · walled-off</text>
+
+        <g transform="translate(230 240)">
+          <circle cx="0" cy="0" r="140" fill="#050811" stroke="#222c3e" stroke-width="2" stroke-dasharray="5 3"/>
+
+          <path d="M -32 -10 Q -35 -25 -20 -28 Q 0 -32 18 -28 Q 32 -22 30 -8 Q 34 8 22 20 Q 8 28 -10 24 Q -28 20 -32 5 Z"
+                fill="#d14859" fill-opacity="0.22" stroke="#d14859" stroke-width="0.8" stroke-dasharray="2 2"/>
+
+          <g transform="translate(-38 35)">
+            <use href="#sgGiant"/>
+          </g>
+
+          <g transform="translate(55 -25) rotate(70)"><use href="#sgMac"/></g>
+          <g transform="translate(40 -50) rotate(45)"><use href="#sgMac"/></g>
+          <g transform="translate(10 -58) rotate(5)"><use href="#sgMac"/></g>
+          <g transform="translate(-20 -58) rotate(-30)"><use href="#sgMac"/></g>
+          <g transform="translate(-48 -40) rotate(-55)"><use href="#sgMac"/></g>
+          <g transform="translate(-62 -5) rotate(-90)"><use href="#sgMac"/></g>
+          <g transform="translate(30 45) rotate(125)"><use href="#sgMac"/></g>
+          <g transform="translate(55 20) rotate(95)"><use href="#sgMac"/></g>
+
+          <g transform="translate(85 -45) rotate(60)"><use href="#sgMac"/></g>
+          <g transform="translate(55 -75) rotate(35)"><use href="#sgMac"/></g>
+          <g transform="translate(10 -90) rotate(0)"><use href="#sgMac"/></g>
+          <g transform="translate(-40 -85) rotate(-25)"><use href="#sgMac"/></g>
+          <g transform="translate(-80 -55) rotate(-55)"><use href="#sgMac"/></g>
+          <g transform="translate(-95 -10) rotate(-85)"><use href="#sgMac"/></g>
+          <g transform="translate(-85 35) rotate(-115)"><use href="#sgMac"/></g>
+          <g transform="translate(70 60) rotate(130)"><use href="#sgMac"/></g>
+          <g transform="translate(90 25) rotate(100)"><use href="#sgMac"/></g>
+          <g transform="translate(30 80) rotate(155)"><use href="#sgMac"/></g>
+
+          <g transform="translate(-38 35)"><use href="#sgIntracellular"/></g>
+          <g transform="translate(10 -58)"><use href="#sgIntracellular"/></g>
+          <g transform="translate(-40 -85)"><use href="#sgIntracellular"/></g>
+          <g transform="translate(85 -45)"><use href="#sgIntracellular"/></g>
+
+          <g transform="translate(115 -55)"><use href="#sgLymph"/></g>
+          <g transform="translate(100 -80)"><use href="#sgLymph"/></g>
+          <g transform="translate(75 -105)"><use href="#sgLymph"/></g>
+          <g transform="translate(40 -120)"><use href="#sgLymph"/></g>
+          <g transform="translate(0 -128)"><use href="#sgLymph"/></g>
+          <g transform="translate(-40 -125)"><use href="#sgLymph"/></g>
+          <g transform="translate(-75 -110)"><use href="#sgLymph"/></g>
+          <g transform="translate(-105 -85)"><use href="#sgLymph"/></g>
+          <g transform="translate(-125 -50)"><use href="#sgLymph"/></g>
+          <g transform="translate(-130 -5)"><use href="#sgLymph"/></g>
+          <g transform="translate(-125 40)"><use href="#sgLymph"/></g>
+          <g transform="translate(-115 80)"><use href="#sgLymph"/></g>
+          <g transform="translate(-85 110)"><use href="#sgLymph"/></g>
+          <g transform="translate(-45 128)"><use href="#sgLymph"/></g>
+          <g transform="translate(5 132)"><use href="#sgLymph"/></g>
+          <g transform="translate(50 125)"><use href="#sgLymph"/></g>
+          <g transform="translate(90 108)"><use href="#sgLymph"/></g>
+          <g transform="translate(118 78)"><use href="#sgLymph"/></g>
+          <g transform="translate(132 35)"><use href="#sgLymph"/></g>
+          <g transform="translate(130 -15)"><use href="#sgLymph"/></g>
+
+          <g>
+            <rect x="-60" y="85" width="120" height="18" rx="3" fill="#0a0e1a" opacity="0.9"/>
+            <text x="0" y="98" text-anchor="middle" class="sg-label" fill="#e8a951">WALL-OFF</text>
+          </g>
+        </g>
+
+        <g transform="translate(20 410)">
+          <g transform="translate(15 0)"><use href="#sgGiant"/></g>
+          <text x="40" y="4" class="sg-caption" fill="#b4becf">giant cell</text>
+          <g transform="translate(110 0)"><use href="#sgMac"/></g>
+          <text x="128" y="4" class="sg-caption" fill="#b4becf">macrophages</text>
+          <g transform="translate(230 0)"><use href="#sgLymph"/></g>
+          <text x="242" y="4" class="sg-caption" fill="#b4becf">lymphocytes</text>
+          <g transform="translate(340 0)"><use href="#sgIntracellular"/></g>
+          <text x="355" y="4" class="sg-caption" fill="#b4becf">intracellular pathogens</text>
+        </g>
+
+        <g transform="translate(20 440)">
+          <text x="210" y="0" text-anchor="middle" class="sg-accent">organized · solid · contained</text>
+        </g>
+      </g>
+
+      <!-- BOTTOM · PATHOGEN → PATTERN KEY -->
+      <g transform="translate(0 590)">
+        <line x1="40" y1="0" x2="960" y2="0" stroke="#222c3e" stroke-width="1"/>
+        <text x="500" y="22" text-anchor="middle" class="sg-section-label">WHICH PATHOGEN GIVES WHICH PATTERN</text>
+
+        <g transform="translate(60 50)">
+          <rect x="-10" y="0" width="440" height="90" rx="8" fill="#d14859" fill-opacity="0.05" stroke="#d14859" stroke-width="1" stroke-dasharray="3 3"/>
+          <text x="12" y="24" class="sg-crimson">PYOGENIC BACTERIA</text>
+          <text x="12" y="42" class="sg-key-body"><tspan fill="#e8ecf3" font-weight="600">S. aureus · S. pneumoniae · E. coli</tspan></text>
+          <text x="12" y="58" class="sg-caption">easy to kill quickly in the phagolysosome</text>
+          <text x="12" y="80" class="sg-accent">→ acute suppurative · neutrophil-rich pus</text>
+        </g>
+
+        <g transform="translate(500 50)">
+          <rect x="-10" y="0" width="440" height="90" rx="8" fill="#7a4a9e" fill-opacity="0.07" stroke="#7a4a9e" stroke-width="1" stroke-dasharray="3 3"/>
+          <text x="12" y="24" class="sg-purple-label">INTRACELLULAR PATHOGENS</text>
+          <text x="12" y="42" class="sg-key-body"><tspan fill="#e8ecf3" font-weight="600">M. tuberculosis · fungi · some parasites</tspan></text>
+          <text x="12" y="58" class="sg-caption">resist killing inside the phagosome</text>
+          <text x="12" y="80" class="sg-accent">→ granulomatous · macrophage walls</text>
+        </g>
+      </g>
+
+      <g transform="translate(0 762)">
+        <text x="500" y="0" text-anchor="middle" class="sg-accent">
+          <tspan fill="#b4becf" font-weight="400">recognizing which pattern is in front of you —</tspan>
+          on biopsy, in a case —
+          <tspan fill="#b4becf" font-weight="400">is a core pathology skill</tspan>
+        </text>
+      </g>
+    </svg>

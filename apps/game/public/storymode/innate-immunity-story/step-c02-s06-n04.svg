@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(110 145)">
+                    <path d="M -22 -14 Q -15 -20 -5 -18 Q 5 -22 15 -18 Q 22 -12 22 0 Q 22 12 12 18 Q 0 20 -10 18 Q -20 14 -22 0 Q -22 -8 -22 -14" fill="#d14859" opacity="0.85" stroke="#a33648" stroke-width="1.5"/>
+                    <path d="M 22 -4 L 18 -2 L 28 0 L 18 2 L 22 4 L 32 0 L 22 -4 Z" fill="#d14859" opacity="0.85"/>
+                    <text x="0" y="38" text-anchor="middle" style="fill:#d14859;font:700 10px Inter,sans-serif">elastase</text>
+                  </g>
+                  <g transform="translate(250 145)">
+                    <path d="M -50 -25 Q -60 0 -50 25 Q -30 40 0 40 Q 30 40 50 25 Q 60 0 50 -25 Q 30 -40 0 -40 Q -30 -40 -50 -25 Z" fill="#4fb8a8" opacity="0.55" stroke="#4fb8a8" stroke-width="2"/>
+                    <path d="M 50 -10 L 30 -5 L 50 0 L 30 5 L 50 10 Z" fill="#4fb8a8" opacity="0.85"/>
+                    <path d="M -20 -15 Q -10 -10 0 -10 Q 10 -5 15 5" stroke="#4fb8a8" stroke-width="2" fill="none" opacity="0.85"/>
+                    <text x="0" y="58" text-anchor="middle" style="fill:#4fb8a8;font:700 12px Inter,sans-serif;letter-spacing:1.5px">A1AT</text>
+                  </g>
+                  <g transform="translate(405 145)">
+                    <g opacity="0.55">
+                      <path d="M -22 -14 Q -15 -20 -5 -18 Q 5 -22 15 -18 Q 22 -12 22 0 Q 22 12 12 18 Q 0 20 -10 18 Q -20 14 -22 0 Q -22 -8 -22 -14" fill="#6b7689" stroke="#6b7689" stroke-width="1.3" stroke-dasharray="3 2"/>
+                    </g>
+                    <path d="M -28 -8 L 28 8 M 28 -8 L -28 8" stroke="#4fb8a8" stroke-width="3"/>
+                    <text x="0" y="38" text-anchor="middle" style="fill:#4fb8a8;font:700 10px Inter,sans-serif">inactivated</text>
+                  </g>
+                  <path d="M 140 145 Q 175 130 200 130" stroke="#4fb8a8" stroke-width="1.5" fill="none" stroke-dasharray="3 2"/>
+                  <polygon points="205,130 197,126 198,134" fill="#4fb8a8"/>
+                  <path d="M 300 145 Q 335 130 370 140" stroke="#4fb8a8" stroke-width="1.5" fill="none" stroke-dasharray="3 2"/>
+                  <polygon points="375,141 366,138 368,146" fill="#4fb8a8"/>
+                </svg>

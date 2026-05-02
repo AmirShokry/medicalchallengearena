@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="24" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">BACTERIUM TRAPPED BUT NOT KILLED</text>
+
+                  <!-- Neutrophil (big gold circle with nucleus lobes) -->
+                  <g transform="translate(245 145)">
+                    <circle r="80" fill="#e8a951" opacity="0.82" stroke="#a87b3c" stroke-width="1.7"/>
+                    <g fill="#4a2d60" opacity="0.85">
+                      <ellipse cx="-48" cy="-30" rx="9" ry="7"/>
+                      <ellipse cx="-58" cy="5" rx="8" ry="6"/>
+                      <ellipse cx="40" cy="38" rx="9" ry="7"/>
+                      <ellipse cx="45" cy="-18" rx="7" ry="5"/>
+                    </g>
+
+                    <!-- Phagosome with bacterium (inside cell, on left) -->
+                    <g transform="translate(-28 -5)">
+                      <circle r="22" fill="#0a0e1a" stroke="#e8a951" stroke-width="1.5" stroke-dasharray="3 2"/>
+                      <ellipse cx="0" cy="0" rx="13" ry="9" fill="#d14859" opacity="0.9" stroke="#a33648" stroke-width="1"/>
+                    </g>
+
+                    <!-- Megagranule (inside cell, on right, bigger) -->
+                    <g transform="translate(32 -5)">
+                      <ellipse cx="0" cy="0" rx="26" ry="19" fill="#9370b9" opacity="0.55" stroke="#7a4a9e" stroke-width="1.5"/>
+                      <circle cx="-10" cy="-5" r="4.5" fill="#9370b9" opacity="0.8" stroke="#7a4a9e" stroke-width="0.7"/>
+                      <circle cx="8" cy="3" r="4.5" fill="#9370b9" opacity="0.8" stroke="#7a4a9e" stroke-width="0.7"/>
+                      <circle cx="0" cy="-9" r="3.5" fill="#9370b9" opacity="0.8" stroke="#7a4a9e" stroke-width="0.7"/>
+                      <circle cx="12" cy="-7" r="3" fill="#9370b9" opacity="0.8" stroke="#7a4a9e" stroke-width="0.7"/>
+                    </g>
+
+                    <!-- NO FUSION barrier directly in the gap -->
+                    <g transform="translate(2 -5)">
+                      <circle r="9" fill="#0a0e1a" stroke="#d14859" stroke-width="2"/>
+                      <line x1="-5" y1="-5" x2="5" y2="5" stroke="#d14859" stroke-width="2"/>
+                      <line x1="5" y1="-5" x2="-5" y2="5" stroke="#d14859" stroke-width="2"/>
+                    </g>
+                  </g>
+
+                  <!-- Leader-line labels pointing to each element -->
+
+                  <!-- NEUTROPHIL (outer cell) -->
+                  <line x1="338" y1="76" x2="310" y2="95" stroke="#a87b3c" stroke-width="0.7" opacity="0.7"/>
+                  <text x="340" y="73" style="fill:#a87b3c;font:700 10px Inter,sans-serif;letter-spacing:1.5px">NEUTROPHIL</text>
+
+                  <!-- PHAGOSOME (dashed circle with bacterium) -->
+                  <line x1="155" y1="97" x2="200" y2="125" stroke="#e8a951" stroke-width="0.7" opacity="0.8"/>
+                  <text x="75" y="95" style="fill:#e8a951;font:700 10px Inter,sans-serif;letter-spacing:1.5px">PHAGOSOME</text>
+                  <text x="75" y="106" style="fill:#b4becf;font:italic 8px Inter,sans-serif">(holds the bacterium)</text>
+
+                  <!-- BACTERIUM (red oval inside phagosome) -->
+                  <line x1="135" y1="178" x2="210" y2="148" stroke="#d14859" stroke-width="0.7" opacity="0.8"/>
+                  <text x="70" y="182" style="fill:#d14859;font:italic 700 10px Inter,sans-serif">bacterium · alive</text>
+
+                  <!-- MEGAGRANULE -->
+                  <line x1="350" y1="128" x2="300" y2="140" stroke="#9370b9" stroke-width="0.7" opacity="0.8"/>
+                  <text x="355" y="125" style="fill:#9370b9;font:700 10px Inter,sans-serif;letter-spacing:1.5px">MEGAGRANULE</text>
+                  <text x="355" y="136" style="fill:#b4becf;font:italic 8px Inter,sans-serif">(clumped enzymes)</text>
+
+                  <!-- NO FUSION label pointing at the barrier X -->
+                  <line x1="270" y1="190" x2="252" y2="148" stroke="#d14859" stroke-width="0.7" opacity="0.8"/>
+                  <text x="275" y="198" style="fill:#d14859;font:italic 800 10px Inter,sans-serif;letter-spacing:1px">NO FUSION</text>
+
+                  <text x="250" y="245" text-anchor="middle" style="fill:#b4becf;font:italic 10px Inter,sans-serif">phagosome + megagranule sit side by side · never merge · bacterium survives</text>
+                </svg>

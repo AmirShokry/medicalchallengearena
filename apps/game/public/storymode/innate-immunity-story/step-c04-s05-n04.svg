@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(60 230)">
+                    <line x1="0" y1="0" x2="380" y2="0" stroke="#6b7689" stroke-width="1.3"/>
+                    <text x="0" y="14" text-anchor="middle" style="fill:#6b7689;font:italic 8px Inter,sans-serif">20</text>
+                    <text x="190" y="14" text-anchor="middle" style="fill:#6b7689;font:italic 8px Inter,sans-serif">50</text>
+                    <text x="380" y="14" text-anchor="middle" style="fill:#6b7689;font:italic 8px Inter,sans-serif">80 yr</text>
+                  </g>
+                  <path d="M 60 90 Q 150 100 250 170 Q 320 210 440 225" stroke="#4fb8a8" stroke-width="3" fill="none"/>
+                  <text x="450" y="225" style="fill:#4fb8a8;font:italic 700 9px Inter,sans-serif">T cells</text>
+                  <path d="M 60 120 Q 200 125 340 135 Q 420 140 440 142" stroke="#e8a951" stroke-width="3" fill="none"/>
+                  <text x="450" y="145" style="fill:#e8a951;font:italic 700 9px Inter,sans-serif">antibodies</text>
+                  <text x="60" y="80" style="fill:#b4becf;font:italic 8px Inter,sans-serif">peak</text>
+                </svg>

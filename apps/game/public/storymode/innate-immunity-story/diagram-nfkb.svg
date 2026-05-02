@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 680 600" preserveAspectRatio="xMidYMid meet">
+      <style>
+        .dg2-eyebrow { fill: #e8a951; font: 500 10px "Inter", sans-serif; letter-spacing: 2.5px; }
+        .dg2-title { fill: #e8ecf3; font: italic 400 22px "Fraunces", serif; }
+        .dg2-label-dim { fill: #b4becf; font: 400 11px "Inter", sans-serif; }
+        .dg2-label-teal { fill: #4fb8a8; font: 600 10px "Inter", sans-serif; letter-spacing: 1.5px; }
+        .dg2-label-gold { fill: #e8a951; font: 600 11px "Inter", sans-serif; }
+        .dg2-caption { fill: #6b7689; font: italic 400 10px "Inter", sans-serif; }
+        .dg2-nfkb { fill: #0a0e1a; font: 700 10px "Inter", sans-serif; }
+        .dg2-nfkb-sm { fill: #0a0e1a; font: 700 8px "Inter", sans-serif; }
+        .dg2-gene { fill: #e8a951; font: 600 10px "Inter", sans-serif; }
+      </style>
+      <defs>
+        <radialGradient id="nfkbGlowGold" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#e8a951" stop-opacity="0.4"/>
+          <stop offset="70%" stop-color="#e8a951" stop-opacity="0.06"/>
+          <stop offset="100%" stop-color="#e8a951" stop-opacity="0"/>
+        </radialGradient>
+        <marker id="nfkbArrowGold" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8a951"/>
+        </marker>
+      </defs>
+
+      <!-- Title -->
+      <text x="340" y="26" text-anchor="middle" class="dg2-eyebrow">THE MOLECULAR VIEW</text>
+      <text x="340" y="58" text-anchor="middle" class="dg2-title">From membrane to cytokine gene</text>
+      <line x1="40" y1="78" x2="640" y2="78" stroke="#222c3e" stroke-width="1"/>
+
+      <!-- Plasma membrane + active TLR4 -->
+      <text x="60" y="108" class="dg2-label-teal">PLASMA MEMBRANE</text>
+      <path d="M 40 140 Q 340 132 640 140" stroke="#4fb8a8" stroke-width="1.8" fill="none"/>
+      <path d="M 40 158 Q 340 150 640 158" stroke="#4fb8a8" stroke-width="1.8" fill="none"/>
+      <path d="M 40 140 Q 340 132 640 140 L 640 158 Q 340 150 40 158 Z" fill="#4fb8a8" opacity="0.08"/>
+
+      <g transform="translate(340 140)">
+        <circle cx="0" cy="-10" r="26" fill="url(#nfkbGlowGold)"/>
+        <path d="M -11 0 Q -13 -22 -6 -36 Q 0 -42 6 -36 Q 13 -22 11 0" stroke="#e8a951" stroke-width="2.5" fill="none"/>
+        <path d="M -8 -4 Q -10 -22 -5 -33" stroke="#e8a951" stroke-width="1" fill="none" opacity="0.85"/>
+        <path d="M 8 -4 Q 10 -22 5 -33" stroke="#e8a951" stroke-width="1" fill="none" opacity="0.85"/>
+        <g transform="translate(0 -22)">
+          <ellipse cx="0" cy="2" rx="4" ry="2.6" fill="#e8a951"/>
+          <line x1="0" y1="0" x2="0" y2="-8" stroke="#e8a951" stroke-width="1.5"/>
+          <circle cx="0" cy="-12" r="2" fill="#e8a951"/>
+        </g>
+        <line x1="0" y1="0" x2="0" y2="18" stroke="#e8a951" stroke-width="2.2"/>
+        <ellipse cx="0" cy="24" rx="7" ry="5" fill="#e8a951" opacity="0.95"/>
+      </g>
+      <text x="340" y="198" text-anchor="middle" class="dg2-label-gold">TLR4 (active)</text>
+
+      <!-- Signal cascade -->
+      <path d="M 340 210 L 340 250" stroke="#e8a951" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#nfkbArrowGold)"/>
+      <text x="360" y="230" class="dg2-caption">signal cascade</text>
+      <text x="360" y="244" class="dg2-caption" opacity="0.7">(from Station 1)</text>
+
+      <!-- Cytoplasm + free NF-κB -->
+      <text x="60" y="280" class="dg2-label-dim">CYTOPLASM</text>
+      <g transform="translate(340 290)">
+        <circle cx="0" cy="0" r="28" fill="url(#nfkbGlowGold)"/>
+        <ellipse cx="-10" cy="0" rx="14" ry="11" fill="#e8a951" opacity="0.95"/>
+        <ellipse cx="10" cy="0" rx="14" ry="11" fill="#e8a951" opacity="0.72"/>
+        <text x="0" y="4" text-anchor="middle" class="dg2-nfkb">NF-κB</text>
+      </g>
+      <text x="340" y="324" text-anchor="middle" class="dg2-caption">freed transcription factor</text>
+
+      <!-- Translocation arrow -->
+      <path d="M 340 338 L 340 378" stroke="#e8a951" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#nfkbArrowGold)"/>
+      <text x="360" y="362" class="dg2-caption">enters nucleus</text>
+
+      <!-- Nucleus -->
+      <rect x="50" y="388" width="580" height="118" rx="22" ry="22" fill="#0a0e1a" stroke="#4fb8a8" stroke-width="1.5" opacity="0.95"/>
+      <text x="70" y="408" class="dg2-label-teal">NUCLEUS</text>
+
+      <!-- DNA -->
+      <path d="M 95 448 Q 135 442 175 448 T 255 448 T 335 448 T 415 448 T 495 448 T 575 448" stroke="#6b7689" stroke-width="1.5" fill="none"/>
+      <path d="M 95 460 Q 135 454 175 460 T 255 460 T 335 460 T 415 460 T 495 460 T 575 460" stroke="#6b7689" stroke-width="1.5" fill="none"/>
+      <rect x="315" y="441" width="240" height="26" fill="#e8a951" opacity="0.12" rx="3"/>
+      <text x="435" y="492" text-anchor="middle" class="dg2-gene">cytokine genes · TNF-α · IL-1 · IL-6</text>
+      <line x1="300" y1="438" x2="300" y2="470" stroke="#e8a951" stroke-width="1" stroke-dasharray="2 2" opacity="0.5"/>
+
+      <!-- NF-κB bound at promoter -->
+      <g transform="translate(295 454)">
+        <ellipse cx="-7" cy="0" rx="10" ry="7" fill="#e8a951" opacity="0.95"/>
+        <ellipse cx="7" cy="0" rx="10" ry="7" fill="#e8a951" opacity="0.75"/>
+        <text x="0" y="3" text-anchor="middle" class="dg2-nfkb-sm">NF-κB</text>
+      </g>
+      <text x="295" y="433" text-anchor="middle" class="dg2-caption">binds promoter</text>
+
+      <!-- Transcription → cytokines -->
+      <path d="M 340 516 L 340 548" stroke="#e8a951" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#nfkbArrowGold)"/>
+      <text x="360" y="536" class="dg2-caption">transcription → translation</text>
+
+      <g transform="translate(220 572)">
+        <circle cx="0" cy="0" r="18" fill="#e8a951" opacity="0.15" stroke="#e8a951" stroke-width="1.5"/>
+        <text x="0" y="3" text-anchor="middle" class="dg2-label-gold">TNF-α</text>
+      </g>
+      <g transform="translate(340 572)">
+        <circle cx="0" cy="0" r="18" fill="#e8a951" opacity="0.15" stroke="#e8a951" stroke-width="1.5"/>
+        <text x="0" y="3" text-anchor="middle" class="dg2-label-gold">IL-1</text>
+      </g>
+      <g transform="translate(460 572)">
+        <circle cx="0" cy="0" r="18" fill="#e8a951" opacity="0.15" stroke="#e8a951" stroke-width="1.5"/>
+        <text x="0" y="3" text-anchor="middle" class="dg2-label-gold">IL-6</text>
+      </g>
+    </svg>

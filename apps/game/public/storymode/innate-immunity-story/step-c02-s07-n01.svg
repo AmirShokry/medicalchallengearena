@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="24" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">THE BATTLEFIELD — POST-FIGHT</text>
+                  <rect x="30" y="70" width="440" height="150" rx="12" fill="#d14859" opacity="0.15" stroke="#d14859" stroke-width="1" stroke-dasharray="4 3"/>
+                  <g fill="#e8a951" opacity="0.35">
+                    <ellipse cx="90" cy="110" rx="14" ry="8"/>
+                    <ellipse cx="170" cy="125" rx="12" ry="6"/>
+                    <ellipse cx="250" cy="115" rx="14" ry="7"/>
+                    <ellipse cx="350" cy="120" rx="13" ry="6"/>
+                    <ellipse cx="410" cy="110" rx="14" ry="8"/>
+                  </g>
+                  <g fill="#d14859" opacity="0.45">
+                    <circle cx="130" cy="155" r="5"/>
+                    <circle cx="200" cy="170" r="4"/>
+                    <circle cx="280" cy="160" r="5"/>
+                    <circle cx="340" cy="175" r="4"/>
+                    <circle cx="400" cy="160" r="5"/>
+                    <circle cx="100" cy="180" r="4"/>
+                    <circle cx="370" cy="195" r="4"/>
+                  </g>
+                  <g stroke="#6b7689" stroke-width="1" fill="none" opacity="0.4">
+                    <path d="M 150 195 Q 180 185 220 195"/>
+                    <path d="M 250 200 Q 290 190 330 200"/>
+                  </g>
+                  <text x="250" y="240" text-anchor="middle" style="fill:#b4becf;font:italic 11px Inter,sans-serif">dead bugs · lysed PMNs · fibrin · debris</text>
+                </svg>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="24" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">MPO BROKEN — FINAL STEP ONLY</text>
+                  <g transform="translate(60 140)">
+                    <rect x="-22" y="-16" width="44" height="32" rx="4" fill="#111826" stroke="#6b7689" stroke-width="1.2"/>
+                    <text x="0" y="4" text-anchor="middle" style="fill:#b4becf;font:700 11px Inter,sans-serif">O₂</text>
+                  </g>
+                  <g transform="translate(170 140)">
+                    <rect x="-22" y="-16" width="44" height="32" rx="4" fill="#e8a951" opacity="0.6"/>
+                    <text x="0" y="4" text-anchor="middle" style="fill:#0a0e1a;font:700 11px Inter,sans-serif">O₂⁻</text>
+                  </g>
+                  <g transform="translate(285 140)">
+                    <rect x="-24" y="-16" width="48" height="32" rx="4" fill="#e8a951" opacity="0.85"/>
+                    <text x="0" y="4" text-anchor="middle" style="fill:#0a0e1a;font:700 11px Inter,sans-serif">H₂O₂</text>
+                  </g>
+                  <g transform="translate(410 140)" opacity="0.3">
+                    <rect x="-28" y="-16" width="56" height="32" rx="4" fill="#e8a951"/>
+                    <text x="0" y="4" text-anchor="middle" style="fill:#0a0e1a;font:700 12px Inter,sans-serif">HOCl</text>
+                  </g>
+                  <line x1="88" y1="140" x2="142" y2="140" stroke="#e8a951" stroke-width="1.3"/>
+                  <polygon points="148,140 140,136 140,144" fill="#e8a951"/>
+                  <line x1="198" y1="140" x2="256" y2="140" stroke="#e8a951" stroke-width="1.3"/>
+                  <polygon points="262,140 254,136 254,144" fill="#e8a951"/>
+                  <g transform="translate(346 140)">
+                    <line x1="-32" y1="0" x2="28" y2="0" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2" opacity="0.4"/>
+                    <circle r="13" fill="#0a0e1a" stroke="#d14859" stroke-width="2"/>
+                    <line x1="-8" y1="-8" x2="8" y2="8" stroke="#d14859" stroke-width="2"/>
+                    <line x1="8" y1="-8" x2="-8" y2="8" stroke="#d14859" stroke-width="2"/>
+                  </g>
+                  <text x="346" y="115" text-anchor="middle" style="fill:#d14859;font:700 10px Inter,sans-serif">MPO defective</text>
+                  <text x="250" y="200" text-anchor="middle" style="fill:#e8a951;font:italic 700 11px Inter,sans-serif">H₂O₂ accumulates</text>
+                  <text x="250" y="220" text-anchor="middle" style="fill:#b4becf;font:italic 10px Inter,sans-serif">— but is still a killer</text>
+                </svg>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="24" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">α-TOXIN CLEAVES PHOSPHOLIPIDS</text>
+                  <g transform="translate(60 105)">
+                    <circle cx="0" cy="0" r="6" fill="#4fb8a8"/>
+                    <line x1="0" y1="6" x2="-4" y2="22" stroke="#4fb8a8" stroke-width="2"/>
+                    <line x1="0" y1="6" x2="4" y2="22" stroke="#4fb8a8" stroke-width="2"/>
+                  </g>
+                  <g transform="translate(90 105)">
+                    <circle cx="0" cy="0" r="6" fill="#4fb8a8"/>
+                    <line x1="0" y1="6" x2="-4" y2="22" stroke="#4fb8a8" stroke-width="2"/>
+                    <line x1="0" y1="6" x2="4" y2="22" stroke="#4fb8a8" stroke-width="2"/>
+                  </g>
+                  <g transform="translate(120 105)">
+                    <circle cx="0" cy="0" r="6" fill="#4fb8a8"/>
+                    <line x1="0" y1="6" x2="-4" y2="22" stroke="#4fb8a8" stroke-width="2"/>
+                    <line x1="0" y1="6" x2="4" y2="22" stroke="#4fb8a8" stroke-width="2"/>
+                  </g>
+                  <g transform="translate(150 105)">
+                    <circle cx="0" cy="0" r="6" fill="#4fb8a8"/>
+                    <line x1="0" y1="6" x2="-4" y2="22" stroke="#4fb8a8" stroke-width="2"/>
+                    <line x1="0" y1="6" x2="4" y2="22" stroke="#4fb8a8" stroke-width="2"/>
+                  </g>
+                  <g transform="translate(60 165)">
+                    <circle cx="0" cy="0" r="6" fill="#4fb8a8"/>
+                    <line x1="0" y1="-6" x2="-4" y2="-22" stroke="#4fb8a8" stroke-width="2"/>
+                    <line x1="0" y1="-6" x2="4" y2="-22" stroke="#4fb8a8" stroke-width="2"/>
+                  </g>
+                  <g transform="translate(90 165)">
+                    <circle cx="0" cy="0" r="6" fill="#4fb8a8"/>
+                    <line x1="0" y1="-6" x2="-4" y2="-22" stroke="#4fb8a8" stroke-width="2"/>
+                    <line x1="0" y1="-6" x2="4" y2="-22" stroke="#4fb8a8" stroke-width="2"/>
+                  </g>
+                  <g transform="translate(120 165)">
+                    <circle cx="0" cy="0" r="6" fill="#4fb8a8"/>
+                    <line x1="0" y1="-6" x2="-4" y2="-22" stroke="#4fb8a8" stroke-width="2"/>
+                    <line x1="0" y1="-6" x2="4" y2="-22" stroke="#4fb8a8" stroke-width="2"/>
+                  </g>
+                  <g transform="translate(150 165)">
+                    <circle cx="0" cy="0" r="6" fill="#4fb8a8"/>
+                    <line x1="0" y1="-6" x2="-4" y2="-22" stroke="#4fb8a8" stroke-width="2"/>
+                    <line x1="0" y1="-6" x2="4" y2="-22" stroke="#4fb8a8" stroke-width="2"/>
+                  </g>
+                  <text x="105" y="75" text-anchor="middle" style="fill:#4fb8a8;font:italic 9px Inter,sans-serif">phospholipid bilayer</text>
+                  <g transform="translate(260 135)">
+                    <rect x="-50" y="-22" width="100" height="44" rx="8" fill="#111826" stroke="#d14859" stroke-width="2"/>
+                    <text x="0" y="-2" text-anchor="middle" style="fill:#d14859;font:700 11px Inter,sans-serif;letter-spacing:1px">α-TOXIN</text>
+                    <text x="0" y="14" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">cleaves C–O bond</text>
+                  </g>
+                  <g transform="translate(390 135)">
+                    <circle cx="-18" cy="-10" r="5" fill="#4fb8a8" opacity="0.4"/>
+                    <circle cx="15" cy="-8" r="5" fill="#4fb8a8" opacity="0.4"/>
+                    <circle cx="-10" cy="12" r="5" fill="#4fb8a8" opacity="0.4"/>
+                    <circle cx="22" cy="15" r="5" fill="#4fb8a8" opacity="0.4"/>
+                    <line x1="-28" y1="-20" x2="-10" y2="-8" stroke="#4fb8a8" stroke-width="1" opacity="0.3"/>
+                    <line x1="10" y1="-18" x2="22" y2="-6" stroke="#4fb8a8" stroke-width="1" opacity="0.3"/>
+                    <text x="0" y="40" text-anchor="middle" style="fill:#d14859;font:italic 700 10px Inter,sans-serif">fragments</text>
+                  </g>
+                  <line x1="215" y1="135" x2="335" y2="135" stroke="#d14859" stroke-width="1.5" stroke-dasharray="3 2"/>
+                  <polygon points="340,135 332,130 332,140" fill="#d14859"/>
+                </svg>

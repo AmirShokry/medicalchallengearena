@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="24" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">LUNG — PANACINAR EMPHYSEMA (LOWER)</text>
+                  <g transform="translate(135 140)">
+                    <rect x="-65" y="-55" width="130" height="110" rx="14" fill="#111826" stroke="#e8a951" stroke-width="1.3"/>
+                    <text x="0" y="-35" text-anchor="middle" style="fill:#e8a951;font:700 10px Inter,sans-serif;letter-spacing:1.5px">SMOKER</text>
+                    <g transform="translate(0 5)">
+                      <g fill="#e8a951" opacity="0.45">
+                        <circle cx="-14" cy="-12" r="10"/>
+                        <circle cx="10" cy="-15" r="10"/>
+                      </g>
+                      <g fill="#4fb8a8" opacity="0.7">
+                        <circle cx="-12" cy="15" r="4"/>
+                        <circle cx="0" cy="20" r="4"/>
+                        <circle cx="12" cy="15" r="4"/>
+                      </g>
+                    </g>
+                    <text x="0" y="42" text-anchor="middle" style="fill:#b4becf;font:italic 8px Inter,sans-serif">upper · centrilobular</text>
+                  </g>
+                  <g transform="translate(365 140)">
+                    <rect x="-65" y="-55" width="130" height="110" rx="14" fill="#111826" stroke="#d14859" stroke-width="1.5"/>
+                    <text x="0" y="-35" text-anchor="middle" style="fill:#d14859;font:700 10px Inter,sans-serif;letter-spacing:1.5px">A1AT DEFICIENCY</text>
+                    <g transform="translate(0 5)">
+                      <g fill="#4fb8a8" opacity="0.7">
+                        <circle cx="-12" cy="-15" r="4"/>
+                        <circle cx="0" cy="-20" r="4"/>
+                        <circle cx="12" cy="-15" r="4"/>
+                      </g>
+                      <g fill="#d14859" opacity="0.45">
+                        <circle cx="-14" cy="15" r="10"/>
+                        <circle cx="10" cy="18" r="10"/>
+                      </g>
+                    </g>
+                    <text x="0" y="42" text-anchor="middle" style="fill:#b4becf;font:italic 8px Inter,sans-serif">lower · panacinar</text>
+                  </g>
+                  <text x="250" y="235" text-anchor="middle" style="fill:#e8a951;font:italic 700 10px Inter,sans-serif">opposite distributions — high-yield exam point</text>
+                </svg>

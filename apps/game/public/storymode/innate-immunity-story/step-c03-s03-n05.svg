@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="32" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">SELF-PROTECTION · THE BRAKES</text>
+                  <line x1="40" y1="150" x2="460" y2="150" stroke="#4fb8a8" stroke-width="2.2" opacity="0.85"/>
+                  <text x="45" y="142" style="fill:#4fb8a8;font:italic 9px Inter,sans-serif">your own cell membrane</text>
+                  <g transform="translate(130 150)">
+                    <rect x="-32" y="-18" width="64" height="18" rx="3" fill="#e8a951" opacity="0.85"/>
+                    <text x="0" y="-5" text-anchor="middle" style="fill:#0a0e1a;font:700 10px Inter,sans-serif">DAF (CD55)</text>
+                    <text x="0" y="20" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">blocks C3 convertase</text>
+                  </g>
+                  <g transform="translate(290 150)">
+                    <rect x="-28" y="-18" width="56" height="18" rx="3" fill="#e8a951" opacity="0.85"/>
+                    <text x="0" y="-5" text-anchor="middle" style="fill:#0a0e1a;font:700 10px Inter,sans-serif">CD59</text>
+                    <text x="0" y="20" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">blocks MAC assembly</text>
+                  </g>
+                  <g transform="translate(410 150)">
+                    <rect x="-28" y="-18" width="56" height="18" rx="3" fill="#e8a951" opacity="0.85"/>
+                    <text x="0" y="-5" text-anchor="middle" style="fill:#0a0e1a;font:700 10px Inter,sans-serif">C1-INH</text>
+                    <text x="0" y="20" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">brakes classical path</text>
+                  </g>
+                  <text x="250" y="222" text-anchor="middle" style="fill:#b4becf;font:italic 10px Inter,sans-serif">on every healthy cell. lose one — <tspan fill="#d14859" font-weight="600">self becomes target</tspan></text>
+                </svg>

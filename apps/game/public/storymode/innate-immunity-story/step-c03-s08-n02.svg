@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 320" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">MARROW SUPPRESSION · NEUTROPHILS CRASH FIRST</text>
+
+                  <!-- ===== Top: marrow in vertebra cross-section ===== -->
+                  <g transform="translate(120 100)">
+                    <!-- marrow cavity -->
+                    <ellipse cx="0" cy="0" rx="58" ry="40" fill="#d14859" opacity="0.3" stroke="#d14859" stroke-width="1.5"/>
+                    <!-- 3 lineage cell types, labeled with tiny letters -->
+                    <g fill="#e8a951" opacity="0.85">
+                      <circle cx="-25" cy="-15" r="5"/><circle cx="-10" cy="-20" r="5"/><circle cx="10" cy="-12" r="5"/>
+                      <circle cx="-20" cy="5" r="5"/><circle cx="5" cy="10" r="5"/><circle cx="25" cy="-5" r="5"/>
+                    </g>
+                    <g fill="#d14859" opacity="0.9">
+                      <circle cx="-15" cy="20" r="4"/><circle cx="15" cy="22" r="4"/>
+                    </g>
+                    <g fill="#9370b9" opacity="0.9">
+                      <circle cx="-30" cy="20" r="3"/><circle cx="30" cy="15" r="3"/><circle cx="0" cy="-5" r="3"/>
+                    </g>
+                    <text x="0" y="60" text-anchor="middle" style="fill:#d14859;font:700 10px Inter,sans-serif;letter-spacing:1px">HEALTHY MARROW</text>
+                    <text x="0" y="73" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">3 lineages making cells</text>
+                  </g>
+
+                  <!-- Arrow with chemo indicator -->
+                  <g transform="translate(250 100)">
+                    <line x1="-55" y1="0" x2="55" y2="0" stroke="#d14859" stroke-width="2"/>
+                    <polygon points="55,0 47,-4 47,4" fill="#d14859"/>
+                    <text x="0" y="-8" text-anchor="middle" style="fill:#d14859;font:italic 700 10px Inter,sans-serif">chemo hits</text>
+                    <text x="0" y="16" text-anchor="middle" style="fill:#6b7689;font:italic 8px Inter,sans-serif">kills dividing cells</text>
+                  </g>
+
+                  <!-- Depleted marrow -->
+                  <g transform="translate(380 100)">
+                    <ellipse cx="0" cy="0" rx="58" ry="40" fill="#6b7689" opacity="0.2" stroke="#6b7689" stroke-width="1.5" stroke-dasharray="3 2"/>
+                    <g fill="#e8a951" opacity="0.35">
+                      <circle cx="-15" cy="-5" r="3"/><circle cx="10" cy="10" r="3"/>
+                    </g>
+                    <text x="0" y="60" text-anchor="middle" style="fill:#6b7689;font:700 10px Inter,sans-serif;letter-spacing:1px">DEPLETED MARROW</text>
+                    <text x="0" y="73" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">few/no cells produced</text>
+                  </g>
+
+                  <!-- Divider -->
+                  <line x1="40" y1="195" x2="460" y2="195" stroke="#222c3e" stroke-width="1"/>
+
+                  <!-- ===== Bottom: the three lineages & why PMNs crash first ===== -->
+                  <text x="250" y="215" text-anchor="middle" style="fill:#e8a951;font:600 9.5px Inter,sans-serif;letter-spacing:1.5px">ALL 3 LINEAGES HIT · BUT NOT AT THE SAME SPEED</text>
+
+                  <!-- Neutrophil row -->
+                  <g transform="translate(60 240)">
+                    <circle cx="0" cy="0" r="10" fill="#e8a951" opacity="0.9" stroke="#c08537" stroke-width="0.7"/>
+                    <circle cx="-3" cy="-1" r="1.8" fill="#8a5a2b"/>
+                    <circle cx="3" cy="2" r="1.8" fill="#8a5a2b"/>
+                    <text x="25" y="-3" style="fill:#e8a951;font:700 10px Inter,sans-serif">Neutrophils</text>
+                    <text x="25" y="10" style="fill:#b4becf;font:italic 9px Inter,sans-serif">t½ ≈ 6–8 h</text>
+                    <text x="25" y="22" style="fill:#d14859;font:italic 700 9px Inter,sans-serif">→ CRASH by day 7</text>
+                  </g>
+
+                  <!-- Platelet row -->
+                  <g transform="translate(200 240)">
+                    <circle cx="0" cy="0" r="6" fill="#9370b9" opacity="0.85" stroke="#4a2d60" stroke-width="0.6"/>
+                    <text x="18" y="-3" style="fill:#9370b9;font:700 10px Inter,sans-serif">Platelets</text>
+                    <text x="18" y="10" style="fill:#b4becf;font:italic 9px Inter,sans-serif">t½ ≈ 10 d</text>
+                    <text x="18" y="22" style="fill:#6b7689;font:italic 9px Inter,sans-serif">drop days 10–14</text>
+                  </g>
+
+                  <!-- RBC row -->
+                  <g transform="translate(340 240)">
+                    <ellipse cx="0" cy="0" rx="9" ry="6" fill="#d14859" opacity="0.85" stroke="#a33648" stroke-width="0.6"/>
+                    <ellipse cx="0" cy="0" rx="3" ry="2" fill="#a33648" opacity="0.55"/>
+                    <text x="22" y="-3" style="fill:#d14859;font:700 10px Inter,sans-serif">RBCs</text>
+                    <text x="22" y="10" style="fill:#b4becf;font:italic 9px Inter,sans-serif">t½ ≈ 120 d</text>
+                    <text x="22" y="22" style="fill:#6b7689;font:italic 9px Inter,sans-serif">fall slowly</text>
+                  </g>
+
+                  <!-- Bottom insight -->
+                  <text x="250" y="300" text-anchor="middle" style="fill:#e8a951;font:italic 700 10px Fraunces,serif">neutrophil half-life is shortest → they vanish first → you get the fever</text>
+                </svg>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(60 145)">
+                    <circle r="12" fill="#4fb8a8" opacity="0.7"/>
+                    <text x="0" y="-18" text-anchor="middle" style="fill:#4fb8a8;font:italic 9px Inter,sans-serif">morning</text>
+                    <text x="0" y="32" text-anchor="middle" style="fill:#b4becf;font:italic 8px Inter,sans-serif">feels off</text>
+                  </g>
+                  <g transform="translate(180 145)">
+                    <circle r="18" fill="#e8a951" opacity="0.7"/>
+                    <text x="0" y="-24" text-anchor="middle" style="fill:#e8a951;font:italic 9px Inter,sans-serif">noon</text>
+                    <text x="0" y="40" text-anchor="middle" style="fill:#b4becf;font:italic 8px Inter,sans-serif">fever</text>
+                  </g>
+                  <g transform="translate(300 145)">
+                    <circle r="26" fill="#d14859" opacity="0.7"/>
+                    <text x="0" y="-34" text-anchor="middle" style="fill:#d14859;font:italic 9px Inter,sans-serif">evening</text>
+                    <text x="0" y="50" text-anchor="middle" style="fill:#b4becf;font:italic 8px Inter,sans-serif">sepsis</text>
+                  </g>
+                  <g transform="translate(430 145)">
+                    <circle r="38" fill="#d14859" opacity="0.9"/>
+                    <text x="0" y="-46" text-anchor="middle" style="fill:#d14859;font:italic 700 10px Inter,sans-serif">midnight</text>
+                    <text x="0" y="62" text-anchor="middle" style="fill:#d14859;font:italic 700 9px Inter,sans-serif">shock</text>
+                  </g>
+                  <line x1="35" y1="220" x2="480" y2="220" stroke="#6b7689" stroke-width="1.5"/>
+                  <polygon points="485,220 475,215 475,225" fill="#6b7689"/>
+                </svg>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <!-- Title -->
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">LYMPHANGITIS — RED STREAKS UP THE LIMB</text>
+                  <!-- Limb cross-section (labeled inline) -->
+                  <path d="M 60 140 Q 55 125 62 115 L 420 115 Q 445 118 448 135 Q 445 155 420 160 L 62 160 Q 55 155 60 140 Z" fill="#e8a8a0" opacity="0.45" stroke="#c88a80" stroke-width="1.5"/>
+                  <text x="445" y="108" text-anchor="end" style="fill:#c88a80;font:italic 8px Inter,sans-serif">limb (cross-section)</text>
+                  <!-- Wound (distal) -->
+                  <g transform="translate(80 137)">
+                    <ellipse cx="0" cy="0" rx="24" ry="18" fill="#d14859" opacity="0.85" stroke="#a33648" stroke-width="1.5"/>
+                    <g stroke="#a33648" stroke-width="1" fill="none" opacity="0.7">
+                      <path d="M -12 -6 L 12 6"/>
+                      <path d="M -10 8 L 14 -4"/>
+                    </g>
+                    <text x="0" y="-28" text-anchor="middle" style="fill:#d14859;font:800 11px Inter,sans-serif;letter-spacing:2px">WOUND</text>
+                    <text x="0" y="38" text-anchor="middle" style="fill:#b4becf;font:italic 8px Inter,sans-serif">distal</text>
+                  </g>
+                  <!-- Red streaks (flow wound → node) -->
+                  <g stroke="#d14859" stroke-width="3" fill="none" opacity="0.9" stroke-linecap="round">
+                    <path d="M 108 128 Q 200 125 278 125"/>
+                    <path d="M 108 140 Q 200 138 278 138"/>
+                    <path d="M 108 152 Q 200 152 278 152"/>
+                  </g>
+                  <!-- Arrowheads on each streak (show directional flow) -->
+                  <g fill="#d14859" opacity="0.95">
+                    <polygon points="284,125 274,121 274,129"/>
+                    <polygon points="284,138 274,134 274,142"/>
+                    <polygon points="284,152 274,148 274,156"/>
+                  </g>
+                  <text x="195" y="100" text-anchor="middle" style="fill:#d14859;font:800 11px Inter,sans-serif;letter-spacing:1.5px">RED STREAKS</text>
+                  <text x="195" y="180" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">inflamed lymphatic vessels tracking proximally</text>
+                  <!-- Draining node (proximal) -->
+                  <g transform="translate(325 137)">
+                    <ellipse cx="0" cy="0" rx="32" ry="24" fill="#4fb8a8" opacity="0.6" stroke="#4fb8a8" stroke-width="2"/>
+                    <g fill="#9370b9" opacity="0.85">
+                      <circle cx="-10" cy="-6" r="4"/>
+                      <circle cx="8" cy="-8" r="4"/>
+                      <circle cx="-6" cy="8" r="4"/>
+                      <circle cx="10" cy="6" r="4"/>
+                      <circle cx="0" cy="0" r="4"/>
+                    </g>
+                    <text x="0" y="-34" text-anchor="middle" style="fill:#4fb8a8;font:800 11px Inter,sans-serif;letter-spacing:1.5px">DRAINING NODE</text>
+                    <text x="0" y="42" text-anchor="middle" style="fill:#4fb8a8;font:italic 700 9px Inter,sans-serif">enlarged &amp; tender</text>
+                    <text x="0" y="54" text-anchor="middle" style="fill:#b4becf;font:italic 8px Inter,sans-serif">proximal</text>
+                  </g>
+                  <!-- Bottom anatomical axis -->
+                  <g transform="translate(250 230)">
+                    <text x="-195" y="0" text-anchor="start" style="fill:#6b7689;font:italic 700 9px Inter,sans-serif">← distal</text>
+                    <text x="0" y="0" text-anchor="middle" style="fill:#6b7689;font:italic 8px Inter,sans-serif">lymph flow direction</text>
+                    <text x="195" y="0" text-anchor="end" style="fill:#6b7689;font:italic 700 9px Inter,sans-serif">proximal →</text>
+                  </g>
+                </svg>

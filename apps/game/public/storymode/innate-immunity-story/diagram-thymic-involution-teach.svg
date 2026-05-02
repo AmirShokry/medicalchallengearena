@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 910" preserveAspectRatio="xMidYMid meet">
+      <style>
+        .ti-eyebrow { fill: #e8a951; font: 500 10px "Inter", sans-serif; letter-spacing: 2.5px; }
+        .ti-title { fill: #e8ecf3; font: italic 400 22px "Fraunces", serif; }
+        .ti-section-label { fill: #e8a951; font: 600 9.5px "Inter", sans-serif; letter-spacing: 1.8px; }
+        .ti-panel-title { fill: #e8ecf3; font: 700 14px "Inter", sans-serif; letter-spacing: 1.5px; }
+        .ti-panel-title-crimson { fill: #d14859; font: 700 14px "Inter", sans-serif; letter-spacing: 1.5px; }
+        .ti-panel-title-teal { fill: #4fb8a8; font: 700 14px "Inter", sans-serif; letter-spacing: 1.5px; }
+        .ti-panel-sub { fill: #b4becf; font: italic 400 11px "Inter", sans-serif; }
+        .ti-label { fill: #e8ecf3; font: 600 11px "Inter", sans-serif; letter-spacing: 0.2px; }
+        .ti-caption { fill: #6b7689; font: italic 400 10px "Inter", sans-serif; }
+        .ti-caption-sm { fill: #6b7689; font: italic 400 9px "Inter", sans-serif; }
+        .ti-caption-ink { fill: #b4becf; font: italic 400 10px "Inter", sans-serif; }
+        .ti-accent { fill: #e8a951; font: 700 11px "Inter", sans-serif; letter-spacing: 0.3px; }
+        .ti-teal-label { fill: #4fb8a8; font: 700 10px "Inter", sans-serif; letter-spacing: 0.3px; }
+        .ti-crimson-label { fill: #d14859; font: 700 10px "Inter", sans-serif; letter-spacing: 0.3px; }
+        .ti-bad { fill: #d14859; font: 700 14px "Inter", sans-serif; }
+        .ti-good { fill: #4fb8a8; font: 700 14px "Inter", sans-serif; }
+        .ti-age-label { fill: #b4becf; font: 700 11px "JetBrains Mono", monospace; letter-spacing: 0.5px; }
+      </style>
+      <defs>
+        <marker id="tiArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8a951"/>
+        </marker>
+        <marker id="tiArrowCrimson" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#d14859"/>
+        </marker>
+        <symbol id="tiAb" overflow="visible">
+          <path d="M 0 5 L 0 -3 M 0 -3 L -4 -9 M 0 -3 L 4 -9" stroke="#e8a951" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+          <circle cx="-4" cy="-9" r="1.5" fill="#e8a951"/>
+          <circle cx="4" cy="-9" r="1.5" fill="#e8a951"/>
+        </symbol>
+        <symbol id="tiBact" overflow="visible">
+          <rect x="-4" y="-1.5" width="8" height="3" rx="1.5" fill="#d14859" opacity="0.9" stroke="#8b2c38" stroke-width="0.4"/>
+        </symbol>
+        <symbol id="tiComp" overflow="visible">
+          <circle cx="0" cy="0" r="2.5" fill="none" stroke="#e8a951" stroke-width="1" opacity="0.85"/>
+          <text x="0" y="1.5" text-anchor="middle" style="fill:#e8a951; font: 700 4px 'Inter', sans-serif;">C</text>
+        </symbol>
+        <symbol id="tiNeu" overflow="visible">
+          <circle cx="0" cy="0" r="9" fill="#e8a951" opacity="0.85" stroke="#a87b3c" stroke-width="0.7"/>
+          <path d="M -4 -3 Q -6 -1 -4 1 Q -2 3 0 2 Q 2 4 4 2 Q 6 0 4 -2 Q 2 -4 0 -3 Q -2 -4 -4 -3 Z" fill="#4a2d60" opacity="0.75"/>
+        </symbol>
+        <symbol id="tiHostCell" overflow="visible">
+          <circle cx="0" cy="0" r="24" fill="#4fb8a8" opacity="0.12" stroke="#4fb8a8" stroke-width="1"/>
+          <ellipse cx="-5" cy="-3" rx="7" ry="5" fill="#3a8a7e" opacity="0.45" stroke="#3a8a7e" stroke-width="0.7"/>
+        </symbol>
+        <symbol id="tiIntra" overflow="visible">
+          <rect x="-3" y="-1" width="6" height="2" rx="1" fill="#7a4a9e" opacity="0.95" stroke="#4a2d60" stroke-width="0.4"/>
+        </symbol>
+        <symbol id="tiTh1" overflow="visible">
+          <circle cx="0" cy="0" r="14" fill="#4fb8a8" opacity="0.4" stroke="#e8a951" stroke-width="1.5"/>
+          <circle cx="0" cy="0" r="8" fill="#3a8a7e" opacity="0.65"/>
+          <circle cx="0" cy="0" r="18" fill="none" stroke="#e8a951" stroke-width="0.4" stroke-dasharray="2 2" opacity="0.5"/>
+        </symbol>
+        <symbol id="tiTc" overflow="visible">
+          <circle cx="0" cy="0" r="14" fill="#4fb8a8" opacity="0.4" stroke="#d14859" stroke-width="1.5"/>
+          <circle cx="0" cy="0" r="8" fill="#3a8a7e" opacity="0.65"/>
+        </symbol>
+        <symbol id="tiMac" overflow="visible">
+          <path d="M -22 -5 Q -26 -15 -15 -20 Q 0 -24 15 -20 Q 26 -15 22 -5 Q 26 8 15 14 Q 0 18 -15 14 Q -26 8 -22 -5 Z"
+                fill="#4fb8a8" fill-opacity="0.18" stroke="#4fb8a8" stroke-width="1"/>
+          <ellipse cx="-10" cy="-5" rx="5" ry="3.5" fill="#3a8a7e" opacity="0.55"/>
+        </symbol>
+        <symbol id="tiIFNg" overflow="visible">
+          <polygon points="-3,3 3,3 0,-3" fill="#e8a951" opacity="0.95" stroke="#a87b3c" stroke-width="0.4"/>
+        </symbol>
+        <symbol id="tiMouse" overflow="visible">
+          <ellipse cx="0" cy="0" rx="18" ry="10" fill="#6b7689" opacity="0.6"/>
+          <circle cx="-15" cy="-2" r="7" fill="#6b7689" opacity="0.7"/>
+          <circle cx="-18" cy="-8" r="3" fill="#6b7689" opacity="0.6"/>
+          <circle cx="-12" cy="-9" r="3" fill="#6b7689" opacity="0.6"/>
+          <circle cx="-17" cy="-3" r="0.8" fill="#0a0e1a"/>
+          <circle cx="-22" cy="-1" r="0.8" fill="#d14859"/>
+          <path d="M 18 0 Q 28 -5 30 -12" stroke="#6b7689" stroke-width="1.5" fill="none" opacity="0.6"/>
+          <ellipse cx="-5" cy="10" rx="2" ry="1" fill="#6b7689" opacity="0.6"/>
+          <ellipse cx="10" cy="10" rx="2" ry="1" fill="#6b7689" opacity="0.6"/>
+        </symbol>
+      </defs>
+
+      <!-- TITLE -->
+      <text x="500" y="26" text-anchor="middle" class="ti-eyebrow">AGING AND IMMUNITY · THYMIC INVOLUTION · WHY THE ELDERLY REACTIVATE INTRACELLULAR PATHOGENS</text>
+      <text x="500" y="58" text-anchor="middle" class="ti-title">The thymus shrinks. T cells decline. The hidden enemies win.</text>
+      <line x1="40" y1="78" x2="960" y2="78" stroke="#222c3e" stroke-width="1"/>
+
+      <!-- ZONE 1 · WHO HANDLES WHAT -->
+      <g transform="translate(0 100)">
+        <text x="500" y="16" text-anchor="middle" class="ti-section-label">THE CLEAN TEACHING SPLIT · ANTIBODIES vs T CELLS</text>
+
+        <!-- LEFT PANEL · EXTRACELLULAR -->
+        <g transform="translate(30 40)">
+          <rect x="0" y="0" width="450" height="260" rx="10" fill="#111826" stroke="#d14859" stroke-width="1" opacity="0.95"/>
+          <text x="225" y="28" text-anchor="middle" class="ti-panel-title-crimson">EXTRACELLULAR PATHOGENS</text>
+          <text x="225" y="46" text-anchor="middle" class="ti-panel-sub">the visible enemies · free in tissue/blood</text>
+
+          <g transform="translate(225 150)">
+            <g transform="translate(-80 -30) rotate(30)"><use href="#tiBact"/></g>
+            <g transform="translate(-40 -50) rotate(-20)"><use href="#tiBact"/></g>
+            <g transform="translate(30 -40) rotate(60)"><use href="#tiBact"/></g>
+            <g transform="translate(60 0) rotate(-40)"><use href="#tiBact"/></g>
+            <g transform="translate(-60 30) rotate(15)"><use href="#tiBact"/></g>
+            <g transform="translate(10 35) rotate(70)"><use href="#tiBact"/></g>
+            <g transform="translate(-100 -5) rotate(-50)"><use href="#tiBact"/></g>
+
+            <g transform="translate(-82 -38) rotate(180)"><use href="#tiAb"/></g>
+            <g transform="translate(-42 -58) rotate(180)"><use href="#tiAb"/></g>
+            <g transform="translate(32 -48) rotate(180)"><use href="#tiAb"/></g>
+            <g transform="translate(62 -8) rotate(180)"><use href="#tiAb"/></g>
+            <g transform="translate(-58 22) rotate(0)"><use href="#tiAb"/></g>
+            <g transform="translate(12 27) rotate(0)"><use href="#tiAb"/></g>
+            <g transform="translate(-102 -13) rotate(180)"><use href="#tiAb"/></g>
+
+            <g transform="translate(-70 -15)"><use href="#tiComp"/></g>
+            <g transform="translate(45 -15)"><use href="#tiComp"/></g>
+            <g transform="translate(-25 10)"><use href="#tiComp"/></g>
+            <g transform="translate(40 20)"><use href="#tiComp"/></g>
+
+            <g transform="translate(90 40)"><use href="#tiNeu"/></g>
+            <g transform="translate(-110 50)"><use href="#tiNeu"/></g>
+          </g>
+
+          <line x1="30" y1="210" x2="420" y2="210" stroke="#222c3e" stroke-width="1"/>
+          <text x="225" y="230" text-anchor="middle" class="ti-crimson-label">ANTIBODIES · COMPLEMENT · NEUTROPHILS</text>
+          <text x="225" y="246" text-anchor="middle" class="ti-caption">reach pathogens in extracellular space</text>
+        </g>
+
+        <line x1="500" y1="60" x2="500" y2="280" stroke="#222c3e" stroke-width="1" stroke-dasharray="3 3"/>
+
+        <!-- RIGHT PANEL · INTRACELLULAR -->
+        <g transform="translate(520 40)">
+          <rect x="0" y="0" width="450" height="260" rx="10" fill="#111826" stroke="#4fb8a8" stroke-width="1" opacity="0.95"/>
+          <text x="225" y="28" text-anchor="middle" class="ti-panel-title-teal">INTRACELLULAR PATHOGENS</text>
+          <text x="225" y="46" text-anchor="middle" class="ti-panel-sub">the hidden enemies · inside host cells</text>
+
+          <!-- Scene shifted up 25px to clear divider -->
+          <g transform="translate(225 125)">
+            <g transform="translate(-100 -30)">
+              <use href="#tiHostCell"/>
+              <g transform="translate(6 4) rotate(30)"><use href="#tiIntra"/></g>
+              <g transform="translate(10 10) rotate(-20)"><use href="#tiIntra"/></g>
+            </g>
+
+            <g transform="translate(60 20)">
+              <use href="#tiHostCell"/>
+              <g transform="translate(5 5) rotate(45)"><use href="#tiIntra"/></g>
+              <g transform="translate(-3 8) rotate(-10)"><use href="#tiIntra"/></g>
+            </g>
+
+            <g transform="translate(-60 -65)">
+              <g transform="rotate(180)"><use href="#tiAb"/></g>
+              <text x="12" y="-2" style="fill:#d14859; font: 700 12px 'Inter', sans-serif;">✗</text>
+              <text x="28" y="-4" class="ti-caption-sm" fill="#d14859">can't reach</text>
+            </g>
+
+            <g transform="translate(-50 -50)">
+              <use href="#tiTc"/>
+            </g>
+            <path d="M -65 -40 L -90 -35" stroke="#d14859" stroke-width="1.3" fill="none" marker-end="url(#tiArrowCrimson)"/>
+            <text x="-40" y="-32" text-anchor="middle" class="ti-crimson-label" style="font-size:8.5px;">CD8+</text>
+            <text x="-40" y="-22" text-anchor="middle" class="ti-caption-sm" fill="#d14859">kill signal</text>
+
+            <g transform="translate(-10 45)">
+              <use href="#tiTh1"/>
+            </g>
+            <text x="-28" y="62" class="ti-accent" style="font-size:8.5px;">CD4+</text>
+            <text x="-28" y="72" class="ti-caption-sm">Th1</text>
+
+            <g transform="translate(60 55)">
+              <use href="#tiMac"/>
+              <g transform="translate(0 0) rotate(30)"><use href="#tiIntra"/></g>
+              <g transform="translate(5 5) rotate(-10)"><use href="#tiIntra"/></g>
+            </g>
+
+            <g transform="translate(15 50)"><use href="#tiIFNg"/></g>
+            <g transform="translate(25 55)"><use href="#tiIFNg"/></g>
+            <path d="M 8 48 L 35 55" stroke="#e8a951" stroke-width="1" fill="none" marker-end="url(#tiArrow)" opacity="0.8"/>
+            <text x="22" y="42" text-anchor="middle" class="ti-accent" style="font-size:8.5px;">IFN-γ</text>
+          </g>
+
+          <line x1="30" y1="210" x2="420" y2="210" stroke="#222c3e" stroke-width="1"/>
+          <text x="225" y="230" text-anchor="middle" class="ti-teal-label">T CELLS · CELL-MEDIATED IMMUNITY</text>
+          <text x="225" y="246" text-anchor="middle" class="ti-caption">only T cells recognize infected host cells</text>
+        </g>
+
+        <g transform="translate(500 170)">
+          <circle cx="0" cy="0" r="18" fill="#0a0e1a" stroke="#e8a951" stroke-width="1.5"/>
+          <text x="0" y="4" text-anchor="middle" style="fill:#e8a951; font: 700 11px 'Inter', sans-serif; letter-spacing: 0.5px;">vs</text>
+        </g>
+
+        <g transform="translate(0 320)">
+          <rect x="100" y="0" width="800" height="32" rx="6" fill="#e8a951" fill-opacity="0.1" stroke="#e8a951" stroke-width="1" stroke-dasharray="3 2"/>
+          <text x="500" y="20" text-anchor="middle" class="ti-accent">antibodies can't reach hidden enemies · only T cells can</text>
+        </g>
+      </g>
+
+      <!-- ZONE 2 · THYMIC INVOLUTION OVER TIME -->
+      <g transform="translate(0 480)">
+        <text x="500" y="16" text-anchor="middle" class="ti-section-label">THYMIC INVOLUTION · THE THYMUS FILLS WITH FAT, NAIVE T CELLS STOP BEING MADE</text>
+
+        <!-- Age 20 -->
+        <g transform="translate(130 130)">
+          <text x="0" y="-74" text-anchor="middle" class="ti-age-label">AGE 20</text>
+          <g>
+            <path d="M -22 -40 Q -35 -30 -32 -5 Q -28 25 -10 30 Q 0 32 0 25 L 0 -25 Q -8 -42 -22 -40 Z"
+                  fill="#9370b9" opacity="0.6" stroke="#4a2d60" stroke-width="1"/>
+            <path d="M 22 -40 Q 35 -30 32 -5 Q 28 25 10 30 Q 0 32 0 25 L 0 -25 Q 8 -42 22 -40 Z"
+                  fill="#9370b9" opacity="0.6" stroke="#4a2d60" stroke-width="1"/>
+            <ellipse cx="-14" cy="-10" rx="6" ry="10" fill="#4a2d60" opacity="0.3"/>
+            <ellipse cx="14" cy="-10" rx="6" ry="10" fill="#4a2d60" opacity="0.3"/>
+          </g>
+          <g transform="translate(0 42)">
+            <circle cx="-20" cy="0" r="3" fill="#e8a951" opacity="0.9"/>
+            <circle cx="-10" cy="4" r="3" fill="#e8a951" opacity="0.9"/>
+            <circle cx="0" cy="0" r="3" fill="#e8a951" opacity="0.9"/>
+            <circle cx="10" cy="4" r="3" fill="#e8a951" opacity="0.9"/>
+            <circle cx="20" cy="0" r="3" fill="#e8a951" opacity="0.9"/>
+            <circle cx="-15" cy="10" r="3" fill="#e8a951" opacity="0.9"/>
+            <circle cx="15" cy="10" r="3" fill="#e8a951" opacity="0.9"/>
+          </g>
+          <text x="0" y="70" text-anchor="middle" class="ti-caption" fill="#e8a951">many naive T cells</text>
+          <text x="0" y="85" text-anchor="middle" class="ti-caption-sm">mostly active tissue</text>
+        </g>
+
+        <!-- Age 40 -->
+        <g transform="translate(380 130)">
+          <text x="0" y="-74" text-anchor="middle" class="ti-age-label">AGE 40</text>
+          <g>
+            <path d="M -18 -32 Q -28 -25 -26 -5 Q -22 18 -8 22 Q 0 23 0 18 L 0 -20 Q -6 -34 -18 -32 Z"
+                  fill="#9370b9" opacity="0.55" stroke="#4a2d60" stroke-width="1"/>
+            <path d="M 18 -32 Q 28 -25 26 -5 Q 22 18 8 22 Q 0 23 0 18 L 0 -20 Q 6 -34 18 -32 Z"
+                  fill="#9370b9" opacity="0.55" stroke="#4a2d60" stroke-width="1"/>
+            <ellipse cx="-20" cy="-20" rx="5" ry="6" fill="#e8d08a" opacity="0.7"/>
+            <ellipse cx="20" cy="-20" rx="5" ry="6" fill="#e8d08a" opacity="0.7"/>
+            <ellipse cx="-5" cy="12" rx="4" ry="5" fill="#e8d08a" opacity="0.7"/>
+            <ellipse cx="5" cy="12" rx="4" ry="5" fill="#e8d08a" opacity="0.7"/>
+          </g>
+          <g transform="translate(0 42)">
+            <circle cx="-12" cy="0" r="3" fill="#e8a951" opacity="0.9"/>
+            <circle cx="0" cy="4" r="3" fill="#e8a951" opacity="0.9"/>
+            <circle cx="12" cy="0" r="3" fill="#e8a951" opacity="0.9"/>
+            <circle cx="-6" cy="10" r="3" fill="#e8a951" opacity="0.9"/>
+            <circle cx="6" cy="10" r="3" fill="#e8a951" opacity="0.9"/>
+          </g>
+          <text x="0" y="70" text-anchor="middle" class="ti-caption">fewer naive T cells</text>
+          <text x="0" y="85" text-anchor="middle" class="ti-caption-sm">fat beginning to infiltrate</text>
+        </g>
+
+        <!-- Age 60 -->
+        <g transform="translate(620 130)">
+          <text x="0" y="-74" text-anchor="middle" class="ti-age-label">AGE 60</text>
+          <g>
+            <path d="M -24 -38 Q -32 -25 -28 0 Q -22 25 -5 28 Q 0 30 0 22 L 0 -22 Q -8 -40 -24 -38 Z"
+                  fill="#e8d08a" opacity="0.7" stroke="#a87b3c" stroke-width="1"/>
+            <path d="M 24 -38 Q 32 -25 28 0 Q 22 25 5 28 Q 0 30 0 22 L 0 -22 Q 8 -40 24 -38 Z"
+                  fill="#e8d08a" opacity="0.7" stroke="#a87b3c" stroke-width="1"/>
+            <ellipse cx="-12" cy="0" rx="4" ry="8" fill="#9370b9" opacity="0.55"/>
+            <ellipse cx="12" cy="0" rx="4" ry="8" fill="#9370b9" opacity="0.55"/>
+          </g>
+          <g transform="translate(0 42)">
+            <circle cx="-6" cy="0" r="3" fill="#e8a951" opacity="0.75"/>
+            <circle cx="0" cy="5" r="3" fill="#e8a951" opacity="0.75"/>
+            <circle cx="6" cy="0" r="3" fill="#e8a951" opacity="0.75"/>
+          </g>
+          <text x="0" y="70" text-anchor="middle" class="ti-caption" fill="#d14859">few naive T cells</text>
+          <text x="0" y="85" text-anchor="middle" class="ti-caption-sm">mostly fatty tissue</text>
+        </g>
+
+        <!-- Age 80 -->
+        <g transform="translate(860 130)">
+          <text x="0" y="-74" text-anchor="middle" class="ti-age-label">AGE 80</text>
+          <g>
+            <path d="M -26 -40 Q -34 -28 -30 2 Q -24 28 -5 30 Q 0 32 0 22 L 0 -22 Q -9 -42 -26 -40 Z"
+                  fill="#e8d08a" opacity="0.7" stroke="#a87b3c" stroke-width="1"/>
+            <path d="M 26 -40 Q 34 -28 30 2 Q 24 28 5 30 Q 0 32 0 22 L 0 -22 Q 9 -42 26 -40 Z"
+                  fill="#e8d08a" opacity="0.7" stroke="#a87b3c" stroke-width="1"/>
+            <ellipse cx="-10" cy="5" rx="2" ry="4" fill="#9370b9" opacity="0.5"/>
+            <ellipse cx="10" cy="5" rx="2" ry="4" fill="#9370b9" opacity="0.5"/>
+          </g>
+          <g transform="translate(0 42)">
+            <circle cx="-4" cy="0" r="3" fill="#e8a951" opacity="0.5"/>
+            <circle cx="4" cy="0" r="3" fill="#e8a951" opacity="0.5"/>
+          </g>
+          <text x="0" y="70" text-anchor="middle" class="ti-caption" fill="#d14859">almost no new T cells</text>
+          <text x="0" y="85" text-anchor="middle" class="ti-caption-sm">near-complete fatty replacement</text>
+        </g>
+
+        <!-- Legend strip -->
+        <g transform="translate(500 240)">
+          <g transform="translate(-180 0)">
+            <rect x="-6" y="-6" width="12" height="12" rx="2" fill="#9370b9" opacity="0.6"/>
+            <text x="12" y="4" class="ti-caption-ink">active thymic tissue</text>
+          </g>
+          <g transform="translate(0 0)">
+            <rect x="-6" y="-6" width="12" height="12" rx="2" fill="#e8d08a" opacity="0.7"/>
+            <text x="12" y="4" class="ti-caption-ink">fat replacement</text>
+          </g>
+          <g transform="translate(150 0)">
+            <circle cx="0" cy="0" r="5" fill="#e8a951" opacity="0.9"/>
+            <text x="10" y="4" class="ti-caption-ink">naive T cell output</text>
+          </g>
+        </g>
+      </g>
+
+      <!-- ZONE 3 · CONSEQUENCES -->
+      <g transform="translate(0 760)">
+        <line x1="40" y1="-16" x2="960" y2="-16" stroke="#222c3e" stroke-width="1"/>
+
+        <g transform="translate(30 0)">
+          <text x="0" y="0" class="ti-accent">The Chlamydophila experiment:</text>
+          <text x="0" y="16" class="ti-caption-ink">young mouse <tspan style="fill:#4fb8a8; font-weight:700;">clears</tspan> infection · aged mouse <tspan style="fill:#d14859; font-weight:700;">fails</tspan> (despite normal antibodies)</text>
+
+          <g transform="translate(45 45)">
+            <use href="#tiMouse"/>
+            <text x="0" y="20" text-anchor="middle" class="ti-caption-sm">young</text>
+            <text x="0" y="32" text-anchor="middle" class="ti-good" style="font-size:11px;">✓ clears</text>
+          </g>
+          <g transform="translate(170 45)">
+            <use href="#tiMouse"/>
+            <text x="0" y="20" text-anchor="middle" class="ti-caption-sm">aged</text>
+            <text x="0" y="32" text-anchor="middle" class="ti-bad" style="font-size:11px;">✗ persists</text>
+          </g>
+        </g>
+
+        <g transform="translate(560 0)">
+          <text x="0" y="0" class="ti-accent">Elderly reactivation risks:</text>
+          <text x="0" y="16" class="ti-caption-ink">latent intracellular pathogens that T cells usually keep suppressed</text>
+
+          <g transform="translate(30 60)">
+            <path d="M -18 -8 Q 0 -14 18 -8" stroke="#c47b5a" stroke-width="2" fill="none" opacity="0.8"/>
+            <circle cx="-14" cy="-8" r="1.8" fill="#d14859" opacity="0.8"/>
+            <circle cx="-8" cy="-11" r="1.8" fill="#d14859" opacity="0.8"/>
+            <circle cx="-2" cy="-13" r="1.8" fill="#d14859" opacity="0.8"/>
+            <circle cx="4" cy="-13" r="1.8" fill="#d14859" opacity="0.8"/>
+            <circle cx="10" cy="-11" r="1.8" fill="#d14859" opacity="0.8"/>
+            <circle cx="16" cy="-8" r="1.8" fill="#d14859" opacity="0.8"/>
+            <text x="0" y="12" text-anchor="middle" class="ti-caption-sm" fill="#b4becf">shingles (VZV)</text>
+          </g>
+
+          <g transform="translate(150 60)">
+            <path d="M -12 -14 Q -18 -10 -16 0 Q -14 12 -4 14 L -4 -10 Q -8 -16 -12 -14 Z"
+                  fill="none" stroke="#4fb8a8" stroke-width="1.2" opacity="0.8"/>
+            <path d="M 12 -14 Q 18 -10 16 0 Q 14 12 4 14 L 4 -10 Q 8 -16 12 -14 Z"
+                  fill="none" stroke="#4fb8a8" stroke-width="1.2" opacity="0.8"/>
+            <g transform="translate(-10 -3) rotate(30)"><use href="#tiIntra"/></g>
+            <g transform="translate(10 -3) rotate(-30)"><use href="#tiIntra"/></g>
+            <g transform="translate(-8 5) rotate(50)"><use href="#tiIntra"/></g>
+            <text x="0" y="28" text-anchor="middle" class="ti-caption-sm" fill="#b4becf">TB reactivation</text>
+          </g>
+
+          <g transform="translate(280 60)">
+            <circle cx="0" cy="-2" r="13" fill="#4fb8a8" opacity="0.15" stroke="#4fb8a8" stroke-width="1"/>
+            <g transform="translate(-3 -3) rotate(30)"><use href="#tiIntra"/></g>
+            <g transform="translate(3 3) rotate(-20)"><use href="#tiIntra"/></g>
+            <text x="0" y="28" text-anchor="middle" class="ti-caption-sm" fill="#b4becf">other intracellular</text>
+          </g>
+        </g>
+      </g>
+
+      <!-- BOTTOM TAKE-HOME -->
+      <g transform="translate(0 855)">
+        <rect x="60" y="0" width="880" height="22" rx="4" fill="#e8a951" fill-opacity="0.08" stroke="#e8a951" stroke-width="0.8"/>
+        <text x="500" y="12" text-anchor="middle" class="ti-accent">
+          <tspan x="500"><tspan fill="#b4becf" font-weight="400">antibodies handle </tspan><tspan fill="#d14859">EXTRACELLULAR</tspan><tspan fill="#b4becf" font-weight="400"> · T cells handle </tspan><tspan fill="#4fb8a8">INTRACELLULAR</tspan></tspan>
+          <tspan x="500" dy="1.4em" fill="#b4becf" font-weight="400">lose T cells → lose the hidden fight</tspan>
+        </text>
+      </g>
+    </svg>

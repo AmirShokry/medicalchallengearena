@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(100 145)">
+                    <circle r="30" fill="none" stroke="#9370b9" stroke-width="1.5"/>
+                    <g fill="#9370b9" opacity="0.75">
+                      <circle cx="-22" cy="0" r="4"/>
+                      <circle cx="-15" cy="-18" r="4"/>
+                      <circle cx="0" cy="-25" r="4"/>
+                      <circle cx="15" cy="-18" r="4"/>
+                      <circle cx="22" cy="0" r="4"/>
+                      <circle cx="15" cy="18" r="4"/>
+                      <circle cx="0" cy="25" r="4"/>
+                      <circle cx="-15" cy="18" r="4"/>
+                    </g>
+                    <circle r="10" fill="#6b7689" opacity="0.85"/>
+                    <text x="0" y="48" text-anchor="middle" style="fill:#9370b9;font:italic 700 9px Inter,sans-serif">TB</text>
+                    <text x="0" y="60" text-anchor="middle" style="fill:#b4becf;font:italic 7px Inter,sans-serif">caseating</text>
+                  </g>
+                  <g transform="translate(200 145)">
+                    <circle r="30" fill="none" stroke="#9370b9" stroke-width="1.5"/>
+                    <g fill="#9370b9" opacity="0.75">
+                      <circle cx="-22" cy="0" r="4"/>
+                      <circle cx="-15" cy="-18" r="4"/>
+                      <circle cx="0" cy="-25" r="4"/>
+                      <circle cx="15" cy="-18" r="4"/>
+                      <circle cx="22" cy="0" r="4"/>
+                      <circle cx="15" cy="18" r="4"/>
+                      <circle cx="0" cy="25" r="4"/>
+                      <circle cx="-15" cy="18" r="4"/>
+                    </g>
+                    <text x="0" y="48" text-anchor="middle" style="fill:#9370b9;font:italic 700 9px Inter,sans-serif">sarcoid</text>
+                    <text x="0" y="60" text-anchor="middle" style="fill:#b4becf;font:italic 7px Inter,sans-serif">non-caseating</text>
+                  </g>
+                  <g transform="translate(300 145)">
+                    <circle r="30" fill="none" stroke="#9370b9" stroke-width="1.5"/>
+                    <g fill="#9370b9" opacity="0.75">
+                      <circle cx="-22" cy="0" r="4"/>
+                      <circle cx="-15" cy="-18" r="4"/>
+                      <circle cx="0" cy="-25" r="4"/>
+                      <circle cx="15" cy="-18" r="4"/>
+                      <circle cx="22" cy="0" r="4"/>
+                      <circle cx="15" cy="18" r="4"/>
+                      <circle cx="0" cy="25" r="4"/>
+                      <circle cx="-15" cy="18" r="4"/>
+                    </g>
+                    <circle r="10" fill="#d14859" opacity="0.4" stroke="#d14859" stroke-width="1"/>
+                    <text x="0" y="48" text-anchor="middle" style="fill:#9370b9;font:italic 700 9px Inter,sans-serif">fungal</text>
+                    <text x="0" y="60" text-anchor="middle" style="fill:#b4becf;font:italic 7px Inter,sans-serif">suppurative</text>
+                  </g>
+                  <g transform="translate(410 145)">
+                    <circle r="30" fill="none" stroke="#9370b9" stroke-width="2"/>
+                    <g fill="#9370b9" opacity="0.75">
+                      <circle cx="-22" cy="0" r="4"/>
+                      <circle cx="-15" cy="-18" r="4"/>
+                      <circle cx="0" cy="-25" r="4"/>
+                      <circle cx="15" cy="-18" r="4"/>
+                      <circle cx="22" cy="0" r="4"/>
+                      <circle cx="15" cy="18" r="4"/>
+                      <circle cx="0" cy="25" r="4"/>
+                      <circle cx="-15" cy="18" r="4"/>
+                    </g>
+                    <g stroke="#e8a951" stroke-width="3" fill="none" stroke-linecap="round">
+                      <path d="M 0 -12 L 0 12"/>
+                      <path d="M -10 -7 L 10 7"/>
+                      <path d="M 10 -7 L -10 7"/>
+                    </g>
+                    <text x="0" y="48" text-anchor="middle" style="fill:#e8a951;font:italic 700 9px Inter,sans-serif">Bartonella</text>
+                    <text x="0" y="60" text-anchor="middle" style="fill:#b4becf;font:italic 7px Inter,sans-serif">stellate</text>
+                  </g>
+                </svg>

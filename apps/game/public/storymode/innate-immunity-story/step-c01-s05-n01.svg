@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="38" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">THE RESTING CELL — NF-κB ALREADY EXISTS</text>
+                  <path d="M 50 68 Q 250 62 450 68 Q 470 150 450 232 Q 250 240 50 232 Q 32 150 50 68 Z" fill="#111826" stroke="#4fb8a8" stroke-width="1.3" opacity="0.85"/>
+                  <text x="70" y="92" style="fill:#6b7689;font:italic 10px Inter,sans-serif;letter-spacing:1.5px">CYTOPLASM</text>
+                  <ellipse cx="350" cy="152" rx="75" ry="55" fill="#4fb8a8" opacity="0.07" stroke="#4fb8a8" stroke-width="1.3" stroke-dasharray="3 3"/>
+                  <text x="350" y="150" text-anchor="middle" style="fill:#4fb8a8;font:600 11px Inter,sans-serif;letter-spacing:1.5px">NUCLEUS</text>
+                  <text x="350" y="168" text-anchor="middle" style="fill:#6b7689;font:italic 10px Inter,sans-serif">(quiet · genes off)</text>
+                  <g transform="translate(155 152)">
+                    <circle r="45" fill="#e8a951" opacity="0.1"/>
+                    <rect x="-34" y="-17" width="68" height="34" rx="8" fill="#111826" stroke="#e8a951" stroke-width="2.3"/>
+                    <text x="0" y="4" text-anchor="middle" style="fill:#e8a951;font:700 13px Inter,sans-serif">NF-κB</text>
+                    <text x="0" y="-36" text-anchor="middle" style="fill:#b4becf;font:italic 10px Inter,sans-serif">pre-made, waiting</text>
+                  </g>
+                  <text x="250" y="250" text-anchor="middle" style="fill:#e8ecf3;font:italic 600 12px Fraunces,serif">ready to activate — but trapped in the cytoplasm</text>
+                </svg>

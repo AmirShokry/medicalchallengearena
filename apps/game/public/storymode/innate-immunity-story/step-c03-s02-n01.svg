@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(250 140)">
+                    <path d="M -90 -40 Q -105 -10 -95 25 Q -70 55 -20 60 Q 35 60 75 42 Q 105 20 98 -15 Q 85 -48 45 -55 Q 0 -58 -55 -50 Q -85 -45 -90 -40" fill="#d14859" opacity="0.4" stroke="#d14859" stroke-width="2"/>
+                    <g fill="#9370b9" opacity="0.7">
+                      <circle cx="-55" cy="-18" r="5"/>
+                      <circle cx="-30" cy="10" r="5"/>
+                      <circle cx="0" cy="-22" r="5"/>
+                      <circle cx="25" cy="5" r="5"/>
+                      <circle cx="55" cy="-10" r="5"/>
+                      <circle cx="75" cy="18" r="5"/>
+                      <circle cx="-65" cy="25" r="5"/>
+                      <circle cx="-15" cy="32" r="5"/>
+                      <circle cx="35" cy="30" r="5"/>
+                    </g>
+                  </g>
+                  <g transform="translate(80 140)">
+                    <g fill="#d14859" opacity="0.6">
+                      <circle r="4"/>
+                      <circle cx="0" cy="-12" r="4"/>
+                      <circle cx="0" cy="12" r="4"/>
+                    </g>
+                    <path d="M 8 0 L 140 0" stroke="#d14859" stroke-width="1.5" stroke-dasharray="3 2"/>
+                    <polygon points="148,0 140,-4 140,4" fill="#d14859"/>
+                  </g>
+                  <g transform="translate(420 140)">
+                    <path d="M -130 0 L 0 0" stroke="#4fb8a8" stroke-width="1.5" stroke-dasharray="3 2"/>
+                    <polygon points="8,0 0,-4 0,4" fill="#4fb8a8"/>
+                    <circle r="4" fill="#4fb8a8" opacity="0.5"/>
+                  </g>
+                  <text x="80" y="125" style="fill:#d14859;font:italic 700 9px Inter,sans-serif">dirty in</text>
+                  <text x="420" y="125" text-anchor="end" style="fill:#4fb8a8;font:italic 700 9px Inter,sans-serif">clean out</text>
+                </svg>

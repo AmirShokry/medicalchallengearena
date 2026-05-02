@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(60 220)">
+                    <line x1="0" y1="0" x2="400" y2="0" stroke="#6b7689" stroke-width="1.5"/>
+                    <text x="0" y="16" style="fill:#6b7689;font:italic 8px Inter,sans-serif">0</text>
+                    <text x="70" y="16" style="fill:#6b7689;font:italic 8px Inter,sans-serif">2</text>
+                    <text x="150" y="16" style="fill:#6b7689;font:italic 8px Inter,sans-serif">5</text>
+                    <text x="270" y="16" style="fill:#6b7689;font:italic 8px Inter,sans-serif">10</text>
+                    <text x="390" y="16" style="fill:#6b7689;font:italic 8px Inter,sans-serif">age</text>
+                  </g>
+                  <path d="M 60 220 Q 100 210 140 180 Q 190 140 250 115 Q 320 100 400 95 Q 460 92 460 92" stroke="#4fb8a8" stroke-width="3" fill="none"/>
+                  <text x="420" y="88" style="fill:#4fb8a8;font:italic 700 9px Inter,sans-serif">adaptive maturity</text>
+                  <g fill="#d14859" opacity="0.7">
+                    <rect x="60" y="90" width="90" height="130" opacity="0.3"/>
+                  </g>
+                  <text x="105" y="85" text-anchor="middle" style="fill:#d14859;font:italic 700 9px Inter,sans-serif">danger zone</text>
+                  <text x="105" y="130" text-anchor="middle" style="fill:#d14859;font:italic 700 11px Inter,sans-serif">← YOUNG →</text>
+                </svg>

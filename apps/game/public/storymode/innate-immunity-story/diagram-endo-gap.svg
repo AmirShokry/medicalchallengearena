@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 620" preserveAspectRatio="xMidYMid meet">
+      <style>
+        .eg-eyebrow { fill: #e8a951; font: 500 10px "Inter", sans-serif; letter-spacing: 2.5px; }
+        .eg-title { fill: #e8ecf3; font: italic 400 22px "Fraunces", serif; }
+        .eg-side-label { fill: #b4becf; font: 600 11px "Inter", sans-serif; letter-spacing: 2px; }
+        .eg-side-status { fill: #4fb8a8; font: italic 600 12px "Fraunces", serif; }
+        .eg-side-status-bad { fill: #d14859; font: italic 600 12px "Fraunces", serif; }
+        .eg-anatomy { fill: #b4becf; font: 500 10px "Inter", sans-serif; letter-spacing: 0.5px; }
+        .eg-anatomy-dim { fill: #6b7689; font: 500 10px "Inter", sans-serif; letter-spacing: 0.5px; }
+        .eg-step-label { fill: #e8a951; font: 600 9px "Inter", sans-serif; letter-spacing: 1.5px; }
+        .eg-step-label-bad { fill: #d14859; font: 600 9px "Inter", sans-serif; letter-spacing: 1.5px; }
+        .eg-caption { fill: #6b7689; font: italic 400 10px "Inter", sans-serif; }
+        .eg-keypoint { fill: #e8a951; font: 600 10px "Inter", sans-serif; letter-spacing: 1px; }
+        .eg-keypoint-bad { fill: #d14859; font: 600 10px "Inter", sans-serif; letter-spacing: 1px; }
+        .eg-tag-text { fill: #0a0e1a; font: 700 8px "Inter", sans-serif; letter-spacing: 1px; }
+        .eg-mech { fill: #b4becf; font: 500 10px "Inter", sans-serif; }
+        .eg-formula { fill: #e8a951; font: 600 10px "JetBrains Mono", monospace; }
+      </style>
+      <defs>
+        <marker id="egArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8a951"/>
+        </marker>
+        <marker id="egArrowCrimson" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#d14859"/>
+        </marker>
+        <symbol id="plasmaDrop" overflow="visible">
+          <ellipse cx="0" cy="0" rx="3" ry="2.2" fill="#e8a951" opacity="0.55"/>
+        </symbol>
+        <symbol id="endoIntact" overflow="visible">
+          <rect x="-32" y="-12" width="64" height="24" rx="4" ry="4" fill="#4fb8a8" opacity="0.55" stroke="#3a8a7e" stroke-width="1"/>
+          <ellipse cx="0" cy="0" rx="9" ry="4" fill="#3a8a7e" opacity="0.85"/>
+        </symbol>
+        <symbol id="endoContracted" overflow="visible">
+          <rect x="-26" y="-14" width="52" height="28" rx="4" ry="4" fill="#4fb8a8" opacity="0.55" stroke="#3a8a7e" stroke-width="1"/>
+          <ellipse cx="0" cy="0" rx="8" ry="5" fill="#3a8a7e" opacity="0.85"/>
+        </symbol>
+        <symbol id="histamine" overflow="visible">
+          <circle cx="0" cy="0" r="3.5" fill="#e8a951" opacity="0.92"/>
+        </symbol>
+      </defs>
+
+      <text x="500" y="26" text-anchor="middle" class="eg-eyebrow">ENDOTHELIAL GAP FORMATION · WHY THE TISSUE SWELLS</text>
+      <text x="500" y="58" text-anchor="middle" class="eg-title">Same vessel. Before the mediators, and after.</text>
+      <line x1="40" y1="78" x2="960" y2="78" stroke="#222c3e" stroke-width="1"/>
+
+      <!-- LEFT PANEL · BEFORE -->
+      <g transform="translate(40 100)">
+        <text x="220" y="20" text-anchor="middle" class="eg-side-label">BEFORE THE STING</text>
+        <text x="220" y="40" text-anchor="middle" class="eg-side-status">tight sealed wall — no leak</text>
+        <rect x="20" y="60" width="400" height="280" rx="22" ry="22" fill="#0a0e1a" stroke="#4fb8a8" stroke-width="1" stroke-dasharray="4 3" opacity="0.7"/>
+        <text x="220" y="80" text-anchor="middle" class="eg-anatomy-dim">postcapillary venule cross-section</text>
+        <text x="60" y="118" class="eg-anatomy-dim">interstitial space</text>
+
+        <line x1="40" y1="170" x2="400" y2="170" stroke="#3a8a7e" stroke-width="1" opacity="0.4"/>
+        <line x1="40" y1="240" x2="400" y2="240" stroke="#3a8a7e" stroke-width="1" opacity="0.4"/>
+        <rect x="40" y="170" width="360" height="70" fill="#4fb8a8" opacity="0.05"/>
+        <text x="220" y="208" text-anchor="middle" class="eg-anatomy" fill="#4fb8a8" opacity="0.7">vessel lumen (plasma stays here)</text>
+
+        <g transform="translate(80 170)">
+          <use href="#endoIntact" x="0"/><use href="#endoIntact" x="64"/><use href="#endoIntact" x="128"/>
+          <use href="#endoIntact" x="192"/><use href="#endoIntact" x="256"/>
+        </g>
+        <g transform="translate(80 240)">
+          <use href="#endoIntact" x="0"/><use href="#endoIntact" x="64"/><use href="#endoIntact" x="128"/>
+          <use href="#endoIntact" x="192"/><use href="#endoIntact" x="256"/>
+        </g>
+
+        <g stroke="#4fb8a8" stroke-width="2" stroke-linecap="round">
+          <line x1="112" y1="166" x2="112" y2="174"/><line x1="176" y1="166" x2="176" y2="174"/>
+          <line x1="240" y1="166" x2="240" y2="174"/><line x1="304" y1="166" x2="304" y2="174"/>
+          <line x1="112" y1="236" x2="112" y2="244"/><line x1="176" y1="236" x2="176" y2="244"/>
+          <line x1="240" y1="236" x2="240" y2="244"/><line x1="304" y1="236" x2="304" y2="244"/>
+        </g>
+
+        <text x="220" y="155" text-anchor="middle" class="eg-step-label">TIGHT JUNCTIONS · SEALED</text>
+        <text x="220" y="262" text-anchor="middle" class="eg-anatomy">endothelial cells</text>
+
+        <line x1="40" y1="290" x2="400" y2="290" stroke="#222c3e" stroke-width="1"/>
+        <text x="220" y="308" text-anchor="middle" class="eg-keypoint">PLASMA STAYS IN</text>
+        <text x="220" y="324" text-anchor="middle" class="eg-caption">no swelling, no edema</text>
+      </g>
+
+      <!-- RIGHT PANEL · AFTER -->
+      <g transform="translate(540 100)">
+        <rect x="335" y="6" width="58" height="14" rx="3" fill="#d14859" opacity="0.92"/>
+        <text x="364" y="16" text-anchor="middle" class="eg-tag-text">QUESTION</text>
+
+        <text x="220" y="20" text-anchor="middle" class="eg-side-label">AFTER THE STING (~20 MIN)</text>
+        <text x="220" y="40" text-anchor="middle" class="eg-side-status-bad">leaky wall — plasma escapes</text>
+        <rect x="20" y="60" width="400" height="280" rx="22" ry="22" fill="#0a0e1a" stroke="#d14859" stroke-width="1" stroke-dasharray="4 3" opacity="0.7"/>
+        <text x="220" y="80" text-anchor="middle" class="eg-anatomy-dim">same venule, after histamine binding</text>
+        <text x="60" y="118" class="eg-anatomy-dim">interstitial space</text>
+
+        <g transform="translate(220 205)">
+          <use href="#histamine" x="-100"/><use href="#histamine" x="-65"/><use href="#histamine" x="-30"/>
+          <use href="#histamine" x="20"/><use href="#histamine" x="55"/><use href="#histamine" x="95"/>
+          <text x="-100" y="-10" text-anchor="middle" class="eg-step-label">HISTAMINE</text>
+        </g>
+
+        <line x1="40" y1="170" x2="400" y2="170" stroke="#3a8a7e" stroke-width="1" opacity="0.4"/>
+        <line x1="40" y1="240" x2="400" y2="240" stroke="#3a8a7e" stroke-width="1" opacity="0.4"/>
+        <rect x="40" y="170" width="360" height="70" fill="#4fb8a8" opacity="0.05"/>
+
+        <g transform="translate(80 170)">
+          <use href="#endoContracted" x="0"/><use href="#endoContracted" x="68"/><use href="#endoContracted" x="136"/>
+          <use href="#endoContracted" x="204"/><use href="#endoContracted" x="272"/>
+        </g>
+        <g transform="translate(80 240)">
+          <use href="#endoContracted" x="0"/><use href="#endoContracted" x="68"/><use href="#endoContracted" x="136"/>
+          <use href="#endoContracted" x="204"/><use href="#endoContracted" x="272"/>
+        </g>
+
+        <g stroke="#d14859" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="2 2">
+          <line x1="114" y1="158" x2="114" y2="184"/><line x1="182" y1="158" x2="182" y2="184"/>
+          <line x1="250" y1="158" x2="250" y2="184"/><line x1="318" y1="158" x2="318" y2="184"/>
+          <line x1="114" y1="226" x2="114" y2="252"/><line x1="182" y1="226" x2="182" y2="252"/>
+          <line x1="250" y1="226" x2="250" y2="252"/><line x1="318" y1="226" x2="318" y2="252"/>
+        </g>
+
+        <text x="220" y="148" text-anchor="middle" class="eg-step-label-bad">GAPS OPEN BETWEEN CELLS</text>
+
+        <g>
+          <path d="M 114 168 L 114 138" stroke="#e8a951" stroke-width="1.3" stroke-dasharray="2 2" marker-end="url(#egArrow)" opacity="0.85"/>
+          <path d="M 182 168 L 182 138" stroke="#e8a951" stroke-width="1.3" stroke-dasharray="2 2" marker-end="url(#egArrow)" opacity="0.85"/>
+          <path d="M 250 168 L 250 138" stroke="#e8a951" stroke-width="1.3" stroke-dasharray="2 2" marker-end="url(#egArrow)" opacity="0.85"/>
+          <path d="M 318 168 L 318 138" stroke="#e8a951" stroke-width="1.3" stroke-dasharray="2 2" marker-end="url(#egArrow)" opacity="0.85"/>
+        </g>
+
+        <g>
+          <use href="#plasmaDrop" x="105" y="128"/><use href="#plasmaDrop" x="120" y="124"/>
+          <use href="#plasmaDrop" x="173" y="128"/><use href="#plasmaDrop" x="188" y="124"/>
+          <use href="#plasmaDrop" x="241" y="128"/><use href="#plasmaDrop" x="256" y="124"/>
+          <use href="#plasmaDrop" x="309" y="128"/><use href="#plasmaDrop" x="324" y="124"/>
+        </g>
+
+        <g>
+          <path d="M 114 252 L 114 282" stroke="#e8a951" stroke-width="1.3" stroke-dasharray="2 2" marker-end="url(#egArrow)" opacity="0.85"/>
+          <path d="M 182 252 L 182 282" stroke="#e8a951" stroke-width="1.3" stroke-dasharray="2 2" marker-end="url(#egArrow)" opacity="0.85"/>
+          <path d="M 250 252 L 250 282" stroke="#e8a951" stroke-width="1.3" stroke-dasharray="2 2" marker-end="url(#egArrow)" opacity="0.85"/>
+          <path d="M 318 252 L 318 282" stroke="#e8a951" stroke-width="1.3" stroke-dasharray="2 2" marker-end="url(#egArrow)" opacity="0.85"/>
+        </g>
+
+        <g>
+          <use href="#plasmaDrop" x="105" y="290"/><use href="#plasmaDrop" x="120" y="294"/>
+          <use href="#plasmaDrop" x="173" y="290"/><use href="#plasmaDrop" x="188" y="294"/>
+          <use href="#plasmaDrop" x="241" y="290"/><use href="#plasmaDrop" x="256" y="294"/>
+          <use href="#plasmaDrop" x="309" y="290"/><use href="#plasmaDrop" x="324" y="294"/>
+        </g>
+
+        <text x="220" y="262" text-anchor="middle" class="eg-step-label">PLASMA ESCAPES → INTERSTITIUM</text>
+
+        <line x1="40" y1="290" x2="400" y2="290" stroke="#222c3e" stroke-width="1"/>
+        <text x="220" y="308" text-anchor="middle" class="eg-keypoint-bad">PLASMA LEAKS OUT</text>
+        <text x="220" y="324" text-anchor="middle" class="eg-caption">→ swelling, edema, the puffy hand</text>
+      </g>
+
+      <!-- BOTTOM: MOLECULAR MECHANISM -->
+      <g transform="translate(0 460)">
+        <line x1="40" y1="0" x2="960" y2="0" stroke="#222c3e" stroke-width="1"/>
+        <text x="500" y="22" text-anchor="middle" class="eg-step-label">THE MOLECULAR MECHANISM</text>
+        <text x="500" y="42" text-anchor="middle" class="eg-mech">
+          Histamine binds <tspan class="eg-formula">H₁ receptors</tspan> →
+          intracellular signaling →
+          <tspan class="eg-formula">actin/myosin</tspan> contracts the cell →
+          neighbor pulled apart → gap.
+        </text>
+
+        <g transform="translate(500 90)">
+          <g transform="translate(-90 0)">
+            <use href="#endoIntact"/>
+            <text x="0" y="32" text-anchor="middle" class="eg-caption">resting</text>
+          </g>
+          <text x="-30" y="3" text-anchor="middle" class="eg-step-label" fill="#e8a951">→ H₁</text>
+          <g transform="translate(0 0)">
+            <use href="#endoContracted"/>
+            <path d="M -38 0 L -28 0" stroke="#d14859" stroke-width="1.3" marker-end="url(#egArrowCrimson)"/>
+            <path d="M 38 0 L 28 0" stroke="#d14859" stroke-width="1.3" marker-end="url(#egArrowCrimson)"/>
+            <text x="0" y="32" text-anchor="middle" class="eg-caption" fill="#d14859">contracted</text>
+          </g>
+          <text x="60" y="3" text-anchor="middle" class="eg-step-label">→ GAP</text>
+          <g transform="translate(120 0)">
+            <use href="#endoContracted"/>
+            <text x="0" y="32" text-anchor="middle" class="eg-caption">neighbor</text>
+          </g>
+        </g>
+      </g>
+
+      <line x1="40" y1="585" x2="960" y2="585" stroke="#222c3e" stroke-width="1"/>
+      <text x="500" y="598" text-anchor="middle" class="eg-caption">
+        <tspan x="500">This is <tspan fill="#e8a951" font-weight="700">gap formation</tspan> — holes in the wall.</tspan>
+        <tspan x="500" dy="1.4em">Not <tspan fill="#d14859" font-weight="700">vasodilation</tspan> (which only widens the lumen and adds redness/warmth).</tspan>
+      </text>
+    </svg>

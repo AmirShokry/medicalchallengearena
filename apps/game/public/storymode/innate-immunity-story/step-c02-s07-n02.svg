@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 280" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="24" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">THE SECOND WAVE · DAYS 2–3</text>
+
+                  <!-- Timeline -->
+                  <g transform="translate(60 90)">
+                    <line x1="0" y1="0" x2="380" y2="0" stroke="#6b7689" stroke-width="1.5"/>
+                    <line x1="0" y1="-5" x2="0" y2="5" stroke="#6b7689" stroke-width="1.5"/>
+                    <line x1="127" y1="-5" x2="127" y2="5" stroke="#6b7689" stroke-width="1.5"/>
+                    <line x1="253" y1="-5" x2="253" y2="5" stroke="#6b7689" stroke-width="1.5"/>
+                    <line x1="380" y1="-5" x2="380" y2="5" stroke="#6b7689" stroke-width="1.5"/>
+                    <text x="0" y="20" text-anchor="middle" style="fill:#6b7689;font:italic 9px Inter,sans-serif">Day 0</text>
+                    <text x="127" y="20" text-anchor="middle" style="fill:#6b7689;font:italic 9px Inter,sans-serif">Day 2</text>
+                    <text x="253" y="20" text-anchor="middle" style="fill:#6b7689;font:italic 9px Inter,sans-serif">Day 4</text>
+                    <text x="380" y="20" text-anchor="middle" style="fill:#6b7689;font:italic 9px Inter,sans-serif">Day 6+</text>
+                  </g>
+
+                  <!-- PMNs (left side, on/around Day 1) -->
+                  <g transform="translate(130 175)">
+                    <text x="0" y="-38" text-anchor="middle" style="fill:#e8a951;font:700 10px Inter,sans-serif">PMNs</text>
+                    <text x="0" y="-26" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">peak Day 1</text>
+                    <circle r="22" fill="#e8a951" opacity="0.55" stroke="#a87b3c" stroke-width="1.2"/>
+                    <circle cx="-6" cy="-5" r="3" fill="#4a2d60"/>
+                    <circle cx="6" cy="5" r="3" fill="#4a2d60"/>
+                  </g>
+
+                  <!-- arrow between them -->
+                  <g transform="translate(200 175)">
+                    <line x1="0" y1="0" x2="30" y2="0" stroke="#e8a951" stroke-width="1.2" stroke-dasharray="2 2" opacity="0.7"/>
+                    <polygon points="33,0 27,-3 27,3" fill="#e8a951"/>
+                    <text x="15" y="-10" text-anchor="middle" style="fill:#6b7689;font:italic 8px Inter,sans-serif">shift</text>
+                  </g>
+
+                  <!-- Macrophages (right side, on/around Day 4) -->
+                  <g transform="translate(315 175)">
+                    <text x="0" y="-46" text-anchor="middle" style="fill:#9370b9;font:700 10px Inter,sans-serif">MACROPHAGES</text>
+                    <text x="0" y="-34" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">peak Day 4+</text>
+                    <circle r="30" fill="#9370b9" opacity="0.7" stroke="#7a4a9e" stroke-width="1.5"/>
+                    <circle cx="-8" cy="-6" r="5" fill="#4a2d60"/>
+                    <path d="M -40 -20 Q -35 -10 -30 -8 M 38 -18 Q 35 -8 30 -6 M -40 20 Q -32 15 -28 10" stroke="#9370b9" stroke-width="1" fill="none" opacity="0.4"/>
+                  </g>
+
+                  <line x1="40" y1="228" x2="460" y2="228" stroke="#222c3e" stroke-width="1"/>
+                  <text x="250" y="249" text-anchor="middle" style="fill:#b4becf;font:italic 10px Inter,sans-serif">gold PMNs hand off to purple macrophages</text>
+                  <text x="250" y="265" text-anchor="middle" style="fill:#6b7689;font:italic 9px Inter,sans-serif">macrophages derive from blood monocytes · bigger · slower · more specialized</text>
+                </svg>

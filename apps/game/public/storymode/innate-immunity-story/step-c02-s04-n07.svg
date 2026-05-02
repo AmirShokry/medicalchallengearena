@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(250 135)">
+                    <circle cx="0" cy="-85" r="24" fill="#6b7689" opacity="0.4" stroke="#6b7689" stroke-width="1.5"/>
+                    <path d="M -25 -65 Q -30 -40 -35 0 L -38 50 M 25 -65 Q 30 -40 35 0 L 38 50" stroke="#6b7689" stroke-width="15" fill="none" opacity="0.4" stroke-linecap="round"/>
+                    <rect x="-25" y="-60" width="50" height="70" rx="8" fill="#6b7689" opacity="0.4" stroke="#6b7689" stroke-width="1.5"/>
+                    <path d="M -18 10 L -22 70 M 18 10 L 22 70" stroke="#6b7689" stroke-width="14" fill="none" opacity="0.4" stroke-linecap="round"/>
+                  </g>
+                  <g transform="translate(288 165)">
+                    <circle r="7" fill="#d14859" opacity="0.85"/>
+                    <circle r="12" fill="none" stroke="#d14859" stroke-width="1.5" opacity="0.5" stroke-dasharray="2 2"/>
+                    <text x="15" y="4" style="fill:#d14859;font:700 9px Inter,sans-serif">foot infection</text>
+                  </g>
+                  <g stroke="#4fb8a8" stroke-width="2.5" fill="none" stroke-dasharray="5 3">
+                    <path d="M 285 160 Q 278 130 275 105 Q 273 85 272 78"/>
+                  </g>
+                  <g transform="translate(272 78)">
+                    <ellipse cx="0" cy="0" rx="10" ry="7" fill="#4fb8a8" opacity="0.7" stroke="#4fb8a8" stroke-width="2"/>
+                    <circle r="16" fill="none" stroke="#4fb8a8" stroke-width="1.5" opacity="0.5" stroke-dasharray="2 2"/>
+                    <text x="22" y="0" style="fill:#4fb8a8;font:700 9px Inter,sans-serif">inguinal node</text>
+                    <text x="22" y="12" style="fill:#4fb8a8;font:italic 8px Inter,sans-serif">swelling</text>
+                  </g>
+                </svg>

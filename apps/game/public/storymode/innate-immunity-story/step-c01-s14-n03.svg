@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="24" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">CLOSTRIDIUM PERFRINGENS</text>
+                  <g transform="translate(120 145)">
+                    <rect x="-40" y="-16" width="80" height="32" rx="14" fill="#d14859" opacity="0.85" stroke="#a33648" stroke-width="1.5"/>
+                    <rect x="-42" y="-8" width="6" height="16" rx="3" fill="#111826" opacity="0.5"/>
+                    <text x="0" y="45" text-anchor="middle" style="fill:#d14859;font:700 10px Inter,sans-serif;letter-spacing:1px">C. PERFRINGENS</text>
+                    <text x="0" y="58" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">anaerobic G+ rod</text>
+                  </g>
+                  <line x1="165" y1="145" x2="245" y2="145" stroke="#e8a951" stroke-width="1.5"/>
+                  <polygon points="250,145 242,140 242,150" fill="#e8a951"/>
+                  <text x="207" y="138" text-anchor="middle" style="fill:#e8a951;font:italic 9px Inter,sans-serif">releases</text>
+                  <g transform="translate(360 145)">
+                    <rect x="-65" y="-26" width="130" height="52" rx="10" fill="#111826" stroke="#d14859" stroke-width="2"/>
+                    <text x="0" y="-8" text-anchor="middle" style="fill:#d14859;font:700 14px Inter,sans-serif;letter-spacing:1.5px">ALPHA TOXIN</text>
+                    <text x="0" y="8" text-anchor="middle" style="fill:#e8ecf3;font:italic 11px Inter,sans-serif">(α-toxin)</text>
+                    <text x="0" y="22" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">phospholipase</text>
+                  </g>
+                  <text x="250" y="225" text-anchor="middle" style="fill:#e8ecf3;font:italic 600 11px Fraunces,serif">deep dirty wounds → gas gangrene</text>
+                </svg>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid meet">
+      <style>
+        .ms-eyebrow { fill: #e8a951; font: 500 10px "Inter", sans-serif; letter-spacing: 2.5px; }
+        .ms-title { fill: #e8ecf3; font: italic 400 22px "Fraunces", serif; }
+        .ms-axis-label { fill: #b4becf; font: 500 11px "Inter", sans-serif; letter-spacing: 0.5px; }
+        .ms-axis-tick { fill: #6b7689; font: 500 10px "JetBrains Mono", monospace; }
+        .ms-phase-band { fill: #e8a951; font: 600 9px "Inter", sans-serif; letter-spacing: 1.5px; }
+        .ms-phase-sub { fill: #6b7689; font: italic 400 10px "Inter", sans-serif; }
+        .ms-legend-label { fill: #e8ecf3; font: 600 11px "Inter", sans-serif; letter-spacing: 0.3px; }
+        .ms-legend-sub { fill: #b4becf; font: italic 500 10px "Inter", sans-serif; }
+        .ms-step-num { fill: #e8a951; font: 700 11px "JetBrains Mono", monospace; letter-spacing: 1.5px; }
+        .ms-step-label { fill: #e8a951; font: 600 9px "Inter", sans-serif; letter-spacing: 1.5px; }
+        .ms-step-label-bad { fill: #d14859; font: 600 9px "Inter", sans-serif; letter-spacing: 1.5px; }
+        .ms-caption { fill: #6b7689; font: italic 400 10px "Inter", sans-serif; }
+        .ms-tag-text { fill: #0a0e1a; font: 700 8px "Inter", sans-serif; letter-spacing: 1px; }
+        .ms-callout-eyebrow { fill: #d14859; font: 600 9px "Inter", sans-serif; letter-spacing: 2px; }
+        .ms-callout-eyebrow-good { fill: #4fb8a8; font: 600 9px "Inter", sans-serif; letter-spacing: 2px; }
+        .ms-callout-text { fill: #b4becf; font: 400 10.5px "Inter", sans-serif; }
+        .ms-job-title { fill: #e8ecf3; font: 700 11px "Inter", sans-serif; letter-spacing: 0.5px; }
+        .ms-job-desc { fill: #b4becf; font: italic 400 10px "Inter", sans-serif; }
+        .ms-answer-label { fill: #e8a951; font: 700 12px "Inter", sans-serif; letter-spacing: 1px; }
+      </style>
+      <defs>
+        <marker id="msArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8a951"/>
+        </marker>
+        <marker id="msArrowCrimson" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#d14859"/>
+        </marker>
+        <radialGradient id="msGlowGold" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#e8a951" stop-opacity="0.3"/>
+          <stop offset="100%" stop-color="#e8a951" stop-opacity="0"/>
+        </radialGradient>
+        <symbol id="msNeut" overflow="visible">
+          <circle cx="0" cy="0" r="7" fill="#d14859" opacity="0.85" stroke="#0a0e1a" stroke-width="0.8"/>
+          <g fill="#0a0e1a" opacity="0.5">
+            <circle cx="-2" cy="-1" r="1.2"/>
+            <circle cx="2" cy="-1" r="1.2"/>
+            <circle cx="0" cy="2" r="1.2"/>
+          </g>
+        </symbol>
+        <symbol id="msMacro" overflow="visible">
+          <circle cx="0" cy="0" r="9" fill="#e8a951" opacity="0.9" stroke="#0a0e1a" stroke-width="0.8"/>
+          <circle cx="-1" cy="-1" r="3.5" fill="#0a0e1a" opacity="0.55"/>
+        </symbol>
+        <symbol id="msFibro" overflow="visible">
+          <ellipse cx="0" cy="0" rx="9" ry="3" fill="#4fb8a8" opacity="0.85" stroke="#0a0e1a" stroke-width="0.8"/>
+          <ellipse cx="0" cy="0" rx="3" ry="1.5" fill="#0a0e1a" opacity="0.5"/>
+        </symbol>
+      </defs>
+
+      <text x="500" y="26" text-anchor="middle" class="ms-eyebrow">RESOLUTION AND REPAIR · CELLS ON A TIMELINE</text>
+      <text x="500" y="58" text-anchor="middle" class="ms-title">By Day 5, macrophages own the wound.</text>
+      <line x1="40" y1="78" x2="960" y2="78" stroke="#222c3e" stroke-width="1"/>
+
+      <!-- THE GRAPH -->
+      <g>
+        <rect x="120" y="130" width="140" height="230" fill="#d14859" opacity="0.04"/>
+        <rect x="260" y="130" width="220" height="230" fill="#e8a951" opacity="0.03"/>
+        <rect x="480" y="130" width="400" height="230" fill="#e8a951" opacity="0.06"/>
+
+        <line x1="120" y1="130" x2="120" y2="360" stroke="#6b7689" stroke-width="1.2"/>
+        <line x1="120" y1="360" x2="880" y2="360" stroke="#6b7689" stroke-width="1.2"/>
+
+        <text x="50" y="245" text-anchor="middle" class="ms-axis-label" transform="rotate(-90 50 245)">relative cell density in wound</text>
+        <text x="500" y="410" text-anchor="middle" class="ms-axis-label">time after injury (days)</text>
+
+        <g stroke="#6b7689" stroke-width="1">
+          <line x1="120" y1="360" x2="120" y2="365"/>
+          <line x1="190" y1="360" x2="190" y2="365"/>
+          <line x1="260" y1="360" x2="260" y2="365"/>
+          <line x1="330" y1="360" x2="330" y2="365"/>
+          <line x1="400" y1="360" x2="400" y2="365"/>
+          <line x1="480" y1="360" x2="480" y2="365"/>
+          <line x1="600" y1="360" x2="600" y2="365"/>
+          <line x1="720" y1="360" x2="720" y2="365"/>
+          <line x1="840" y1="360" x2="840" y2="365"/>
+        </g>
+        <text x="120" y="380" text-anchor="middle" class="ms-axis-tick">0</text>
+        <text x="190" y="380" text-anchor="middle" class="ms-axis-tick">1</text>
+        <text x="260" y="380" text-anchor="middle" class="ms-axis-tick">2</text>
+        <text x="330" y="380" text-anchor="middle" class="ms-axis-tick">3</text>
+        <text x="400" y="380" text-anchor="middle" class="ms-axis-tick">4</text>
+        <text x="480" y="380" text-anchor="middle" class="ms-axis-tick">5</text>
+        <text x="600" y="380" text-anchor="middle" class="ms-axis-tick">7</text>
+        <text x="720" y="380" text-anchor="middle" class="ms-axis-tick">10</text>
+        <text x="840" y="380" text-anchor="middle" class="ms-axis-tick">14+</text>
+
+        <text x="108" y="363" text-anchor="end" class="ms-axis-tick">0</text>
+        <text x="108" y="158" text-anchor="end" class="ms-axis-tick">peak</text>
+
+        <!-- NEUTROPHIL CURVE -->
+        <path d="M 120 360 C 155 360 170 200 190 170 C 215 155 240 160 260 200 C 290 270 325 340 360 355 C 400 358 440 360 480 360 C 540 360 600 360 880 360" stroke="#d14859" stroke-width="2.5" fill="none" opacity="0.95"/>
+        <circle cx="215" cy="160" r="5" fill="#d14859" stroke="#0a0e1a" stroke-width="1.5"/>
+
+        <!-- MACROPHAGE CURVE -->
+        <path d="M 120 360 C 160 358 190 345 230 320 C 275 285 330 240 400 200 C 440 180 470 170 510 168 C 580 170 660 185 720 210 C 780 240 830 265 880 280" stroke="#e8a951" stroke-width="2.5" fill="none" opacity="0.95"/>
+        <ellipse cx="530" cy="178" rx="80" ry="25" fill="url(#msGlowGold)"/>
+        <circle cx="540" cy="168" r="5" fill="#e8a951" stroke="#0a0e1a" stroke-width="1.5"/>
+
+        <!-- FIBROBLAST CURVE -->
+        <path d="M 120 360 C 200 360 280 358 340 340 C 400 320 450 295 520 270 C 590 250 670 235 720 230 C 790 225 840 225 880 228" stroke="#4fb8a8" stroke-width="2" fill="none" stroke-dasharray="6 3" opacity="0.85"/>
+
+        <!-- DAY 5 QUESTION MARKER -->
+        <g>
+          <line x1="480" y1="130" x2="480" y2="360" stroke="#e8a951" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.8"/>
+          <g transform="translate(480 108)">
+            <rect x="-28" y="-14" width="56" height="20" rx="3" fill="#d14859" opacity="0.92"/>
+            <text x="0" y="-1" text-anchor="middle" class="ms-tag-text">DAY 5</text>
+          </g>
+        </g>
+
+        <!-- PHASE BAND LABELS -->
+        <g transform="translate(0 122)">
+          <text x="190" y="0" text-anchor="middle" class="ms-step-label-bad">NEUTROPHIL ERA</text>
+          <text x="370" y="0" text-anchor="middle" class="ms-phase-sub">transition</text>
+          <text x="680" y="0" text-anchor="middle" class="ms-step-label">MACROPHAGE ERA</text>
+        </g>
+      </g>
+
+      <!-- LEGEND (horizontal strip below graph) -->
+      <g transform="translate(0 420)">
+        <g transform="translate(180 0)">
+          <line x1="0" y1="0" x2="22" y2="0" stroke="#d14859" stroke-width="2.5"/>
+          <g transform="translate(11 0)"><use href="#msNeut"/></g>
+          <text x="36" y="3" class="ms-legend-label">Neutrophils</text>
+          <text x="36" y="16" class="ms-legend-sub">Days 1–2, peak fast</text>
+        </g>
+        <g transform="translate(450 0)">
+          <line x1="0" y1="0" x2="22" y2="0" stroke="#e8a951" stroke-width="2.5"/>
+          <g transform="translate(11 0)"><use href="#msMacro"/></g>
+          <text x="36" y="3" class="ms-legend-label">Macrophages</text>
+          <text x="36" y="16" class="ms-legend-sub">Day 5+, stay late</text>
+        </g>
+        <g transform="translate(720 0)">
+          <line x1="0" y1="0" x2="22" y2="0" stroke="#4fb8a8" stroke-width="2" stroke-dasharray="4 2"/>
+          <g transform="translate(11 0)"><use href="#msFibro"/></g>
+          <text x="36" y="3" class="ms-legend-label">Fibroblasts</text>
+          <text x="36" y="16" class="ms-legend-sub">Repair (recruited by MΦ)</text>
+        </g>
+      </g>
+
+      <!-- MACROPHAGE'S THREE JOBS -->
+      <g transform="translate(0 460)">
+        <line x1="40" y1="0" x2="960" y2="0" stroke="#222c3e" stroke-width="1"/>
+        <text x="500" y="22" text-anchor="middle" class="ms-step-label">WHAT MACROPHAGES ARE DOING AT DAY 5</text>
+
+        <g transform="translate(80 40)">
+          <rect x="0" y="0" width="260" height="90" rx="8" fill="#0a0e1a" stroke="#222c3e" stroke-width="1"/>
+          <text x="16" y="24" class="ms-step-num">01</text>
+          <text x="40" y="24" class="ms-job-title">CLEANUP</text>
+          <text x="16" y="50" class="ms-job-desc">phagocytose dead cells, debris,</text>
+          <text x="16" y="64" class="ms-job-desc">fibrin, dead neutrophils,</text>
+          <text x="16" y="78" class="ms-job-desc">bacterial fragments</text>
+        </g>
+        <g transform="translate(370 40)">
+          <rect x="0" y="0" width="260" height="90" rx="8" fill="#0a0e1a" stroke="#222c3e" stroke-width="1"/>
+          <text x="16" y="24" class="ms-step-num">02</text>
+          <text x="40" y="24" class="ms-job-title">SIGNALING</text>
+          <text x="16" y="50" class="ms-job-desc">release cytokines + growth</text>
+          <text x="16" y="64" class="ms-job-desc">factors → recruit fibroblasts,</text>
+          <text x="16" y="78" class="ms-job-desc">stimulate angiogenesis</text>
+        </g>
+        <g transform="translate(660 40)">
+          <rect x="0" y="0" width="260" height="90" rx="8" fill="#0a0e1a" stroke="#222c3e" stroke-width="1"/>
+          <text x="16" y="24" class="ms-step-num">03</text>
+          <text x="40" y="24" class="ms-job-title">REPAIR COORDINATION</text>
+          <text x="16" y="50" class="ms-job-desc">orchestrate the transition</text>
+          <text x="16" y="64" class="ms-job-desc">from inflammation</text>
+          <text x="16" y="78" class="ms-job-desc">to healing</text>
+        </g>
+      </g>
+
+      <!-- BOTTOM RESOLVER -->
+      <g transform="translate(0 605)">
+        <line x1="40" y1="0" x2="960" y2="0" stroke="#222c3e" stroke-width="1"/>
+        <g transform="translate(40 18)">
+          <text x="0" y="14" class="ms-callout-eyebrow-good">THE TIMELINE RULE</text>
+          <text x="0" y="34" class="ms-callout-text">
+            When a question asks which cells are present at time X,
+          </text>
+          <text x="0" y="50" class="ms-callout-text">
+            <tspan fill="#e8a951" font-weight="700">locate yourself on this curve first</tspan>.
+            The answer follows.
+          </text>
+        </g>
+        <g transform="translate(520 18)">
+          <text x="0" y="14" class="ms-callout-eyebrow">WHERE THE DISTRACTORS LIVE</text>
+          <text x="0" y="34" class="ms-callout-text">
+            <tspan fill="#d14859" font-weight="700">Neutrophils</tspan> = Day 1–2 ·
+            <tspan fill="#d14859" font-weight="700">Eosinophils</tspan> = allergy/parasites ·
+          </text>
+          <text x="0" y="50" class="ms-callout-text">
+            <tspan fill="#d14859" font-weight="700">Lymphocytes/plasma cells</tspan> = weeks (chronic). Wrong phase.
+          </text>
+        </g>
+      </g>
+    </svg>

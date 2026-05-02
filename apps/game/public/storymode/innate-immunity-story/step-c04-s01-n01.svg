@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 300" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="24" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">THE STANDOFF · PHAGOCYTOSED BUT NOT KILLED</text>
+
+                  <!-- Macrophage, larger, on the left -->
+                  <g transform="translate(180 160)">
+                    <circle r="78" fill="#9370b9" opacity="0.55" stroke="#7a4a9e" stroke-width="1.8"/>
+                    <circle cx="-28" cy="-22" r="10" fill="#4a2d60"/>
+                    <!-- Cytoplasm texture dots -->
+                    <g fill="#4a2d60" opacity="0.35">
+                      <circle cx="25" cy="-35" r="2"/><circle cx="35" cy="20" r="2"/><circle cx="-15" cy="35" r="2"/>
+                      <circle cx="-45" cy="8" r="2"/><circle cx="45" cy="-10" r="2"/>
+                    </g>
+
+                    <!-- Phagolysosome (dashed circle) enclosing the bacterium -->
+                    <circle cx="25" cy="10" r="32" fill="none" stroke="#e8a951" stroke-width="1.3" stroke-dasharray="3 2" opacity="0.7"/>
+                    <text x="25" y="-26" text-anchor="middle" style="fill:#e8a951;font:italic 600 8.5px Inter,sans-serif">phagolysosome</text>
+
+                    <!-- Inside: mycobacterium with a thick gold wax coat -->
+                    <ellipse cx="25" cy="10" rx="22" ry="9" fill="#e8a951" opacity="0.35"/>
+                    <ellipse cx="25" cy="10" rx="17" ry="6" fill="#d14859" opacity="0.9" stroke="#a33648" stroke-width="0.8"/>
+                    <!-- Cell wall lines inside bacterium -->
+                    <g stroke="#a33648" stroke-width="0.5" fill="none" opacity="0.7">
+                      <path d="M 10 8 L 40 8"/>
+                      <path d="M 10 12 L 40 12"/>
+                    </g>
+
+                    <!-- Acidification attempt — H+ ions trying to get in but bouncing off -->
+                    <g fill="#4fb8a8" opacity="0.8">
+                      <text x="58" y="-5" style="font:700 9px Inter,sans-serif">H⁺</text>
+                      <text x="58" y="24" style="font:700 9px Inter,sans-serif">H⁺</text>
+                      <text x="-5" y="8" style="font:700 9px Inter,sans-serif">H⁺</text>
+                    </g>
+                    <!-- X marks showing the H+ can't reach -->
+                    <g stroke="#d14859" stroke-width="1.3" fill="none" opacity="0.9">
+                      <path d="M 52 -10 L 58 -4"/><path d="M 58 -10 L 52 -4"/>
+                      <path d="M 52 18 L 58 24"/><path d="M 58 18 L 52 24"/>
+                    </g>
+                  </g>
+
+                  <!-- Macrophage label on left -->
+                  <g transform="translate(45 110)">
+                    <text x="0" y="0" style="fill:#9370b9;font:700 10px Inter,sans-serif">MACROPHAGE</text>
+                    <text x="0" y="13" style="fill:#b4becf;font:italic 9px Inter,sans-serif">has engulfed the bug</text>
+                    <line x1="0" y1="18" x2="50" y2="50" stroke="#9370b9" stroke-width="0.8" opacity="0.55"/>
+                  </g>
+
+                  <!-- Mycobacterium callout on right -->
+                  <g transform="translate(340 110)">
+                    <text x="0" y="0" style="fill:#d14859;font:700 10px Inter,sans-serif">MYCOBACTERIUM</text>
+                    <text x="0" y="13" style="fill:#e8a951;font:italic 700 9px Inter,sans-serif">waxy mycolic-acid wall</text>
+                    <text x="0" y="26" style="fill:#b4becf;font:italic 9px Inter,sans-serif">blocks acidification</text>
+                    <line x1="0" y1="18" x2="-112" y2="60" stroke="#d14859" stroke-width="0.8" opacity="0.55"/>
+                  </g>
+
+                  <line x1="40" y1="252" x2="460" y2="252" stroke="#222c3e" stroke-width="1"/>
+                  <text x="250" y="272" text-anchor="middle" style="fill:#b4becf;font:italic 10px Inter,sans-serif">phagocytosis works · killing fails</text>
+                  <text x="250" y="287" text-anchor="middle" style="fill:#e8a951;font:italic 700 10px Fraunces,serif">→ the bug is inside, alive, and invisible to antibodies</text>
+                </svg>

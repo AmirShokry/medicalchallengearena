@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="24" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">THE NEUTROPHIL'S INTEGRINS — INACTIVE</text>
+
+                  <!-- Neutrophil body -->
+                  <g transform="translate(250 150)">
+                    <circle r="68" fill="#e8a951" opacity="0.12"/>
+                    <circle r="60" fill="#e8a951" opacity="0.9" stroke="#a87b3c" stroke-width="1.5"/>
+                    <circle cx="-10" cy="-5" r="8" fill="#4a2d60" opacity="0.85"/>
+                    <circle cx="12" cy="8" r="8" fill="#4a2d60" opacity="0.85"/>
+                    <circle cx="0" cy="-18" r="6" fill="#4a2d60" opacity="0.75"/>
+                  </g>
+                  <text x="250" y="235" text-anchor="middle" style="fill:#e8a951;font:800 11px Inter,sans-serif;letter-spacing:1.5px">NEUTROPHIL</text>
+
+                  <!-- Integrins embedded IN the cell membrane (surface positions) -->
+                  <!-- Top (90 deg) -->
+                  <g transform="translate(250 90) rotate(0)">
+                    <path d="M -5 0 Q -3 -8 0 -10 Q 3 -8 5 0 Z" fill="#6b7689" opacity="0.75" stroke="#6b7689" stroke-width="0.8"/>
+                  </g>
+                  <!-- Top-right (45 deg) -->
+                  <g transform="translate(292 108) rotate(45)">
+                    <path d="M -5 0 Q -3 -8 0 -10 Q 3 -8 5 0 Z" fill="#6b7689" opacity="0.75" stroke="#6b7689" stroke-width="0.8"/>
+                  </g>
+                  <!-- Right (0 deg) -->
+                  <g transform="translate(310 150) rotate(90)">
+                    <path d="M -5 0 Q -3 -8 0 -10 Q 3 -8 5 0 Z" fill="#6b7689" opacity="0.75" stroke="#6b7689" stroke-width="0.8"/>
+                  </g>
+                  <!-- Bottom-right (-45 deg) -->
+                  <g transform="translate(292 192) rotate(135)">
+                    <path d="M -5 0 Q -3 -8 0 -10 Q 3 -8 5 0 Z" fill="#6b7689" opacity="0.75" stroke="#6b7689" stroke-width="0.8"/>
+                  </g>
+                  <!-- Bottom-left (-135 deg) -->
+                  <g transform="translate(208 192) rotate(-135)">
+                    <path d="M -5 0 Q -3 -8 0 -10 Q 3 -8 5 0 Z" fill="#6b7689" opacity="0.75" stroke="#6b7689" stroke-width="0.8"/>
+                  </g>
+                  <!-- Left (180 deg) -->
+                  <g transform="translate(190 150) rotate(-90)">
+                    <path d="M -5 0 Q -3 -8 0 -10 Q 3 -8 5 0 Z" fill="#6b7689" opacity="0.75" stroke="#6b7689" stroke-width="0.8"/>
+                  </g>
+                  <!-- Top-left (135 deg) -->
+                  <g transform="translate(208 108) rotate(-45)">
+                    <path d="M -5 0 Q -3 -8 0 -10 Q 3 -8 5 0 Z" fill="#6b7689" opacity="0.75" stroke="#6b7689" stroke-width="0.8"/>
+                  </g>
+
+                  <!-- Labels with leader lines to two specific integrins -->
+                  <line x1="190" y1="82" x2="205" y2="105" stroke="#6b7689" stroke-width="0.7" opacity="0.6"/>
+                  <text x="188" y="78" text-anchor="end" style="fill:#6b7689;font:700 9px Inter,sans-serif">LFA-1</text>
+
+                  <line x1="312" y1="82" x2="297" y2="105" stroke="#6b7689" stroke-width="0.7" opacity="0.6"/>
+                  <text x="314" y="78" style="fill:#6b7689;font:700 9px Inter,sans-serif">Mac-1</text>
+
+                  <!-- LOW-AFFINITY badge in top-right -->
+                  <g transform="translate(420 48)">
+                    <rect x="-58" y="-14" width="116" height="24" rx="12" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="3 2"/>
+                    <text x="0" y="3" text-anchor="middle" style="fill:#6b7689;font:italic 700 10px Inter,sans-serif;letter-spacing:1px">LOW-AFFINITY</text>
+                  </g>
+                  <text x="420" y="80" text-anchor="middle" style="fill:#6b7689;font:italic 10px Inter,sans-serif">folded · inactive</text>
+                </svg>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet">
+      <style>
+        .dg7-eyebrow { fill: #e8a951; font: 500 10px "Inter", sans-serif; letter-spacing: 2.5px; }
+        .dg7-title { fill: #e8ecf3; font: italic 400 22px "Fraunces", serif; }
+        .dg7-stage-num { fill: #6b7689; font: 700 11px "JetBrains Mono", monospace; letter-spacing: 1.5px; }
+        .dg7-stage-name { fill: #e8a951; font: italic 600 14px "Fraunces", serif; }
+        .dg7-caption { fill: #b4becf; font: 400 11px "Inter", sans-serif; }
+        .dg7-caption-dim { fill: #6b7689; font: italic 400 10px "Inter", sans-serif; }
+        .dg7-label-crimson { fill: #d14859; font: 600 10px "Inter", sans-serif; letter-spacing: 1px; }
+        .dg7-label-gold { fill: #e8a951; font: 600 10px "Inter", sans-serif; letter-spacing: 1px; }
+        .dg7-driver-label { fill: #e8a951; font: italic 600 11px "Fraunces", serif; }
+      </style>
+      <defs>
+        <marker id="phagoArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8a951"/>
+        </marker>
+        <symbol id="bacterium" overflow="visible">
+          <ellipse cx="0" cy="0" rx="14" ry="6" fill="#d14859" opacity="0.85" stroke="#a53343" stroke-width="1"/>
+          <ellipse cx="-4" cy="-1" rx="2" ry="1.5" fill="#7a1a26" opacity="0.5"/>
+          <ellipse cx="4" cy="1" rx="2" ry="1.5" fill="#7a1a26" opacity="0.5"/>
+        </symbol>
+        <symbol id="actinStrand" overflow="visible">
+          <path d="M 0 0 Q 3 -3 0 -6 Q -3 -9 0 -12 Q 3 -15 0 -18 Q -3 -21 0 -24" stroke="#e8a951" stroke-width="1.5" fill="none" opacity="0.85"/>
+          <path d="M 0 0 Q -3 -3 0 -6 Q 3 -9 0 -12 Q -3 -15 0 -18 Q 3 -21 0 -24" stroke="#e8a951" stroke-width="1.5" fill="none" opacity="0.55"/>
+          <circle cx="0" cy="-6" r="1.5" fill="#e8a951"/>
+          <circle cx="0" cy="-12" r="1.5" fill="#e8a951"/>
+          <circle cx="0" cy="-18" r="1.5" fill="#e8a951"/>
+          <circle cx="0" cy="-24" r="1.5" fill="#e8a951"/>
+        </symbol>
+      </defs>
+
+      <!-- Title -->
+      <text x="500" y="26" text-anchor="middle" class="dg7-eyebrow">PHAGOCYTOSIS · THE CYTOSKELETAL ENGINE</text>
+      <text x="500" y="58" text-anchor="middle" class="dg7-title">Actin builds the pseudopod that swallows the bacterium</text>
+      <line x1="40" y1="78" x2="960" y2="78" stroke="#222c3e" stroke-width="1"/>
+
+      <!-- Stage 1: Contact -->
+      <g transform="translate(125 250)">
+        <text x="0" y="-130" text-anchor="middle" class="dg7-stage-num">FRAME 1</text>
+        <text x="0" y="-114" text-anchor="middle" class="dg7-stage-name">Contact</text>
+        <circle cx="0" cy="0" r="62" fill="#e8a951" opacity="0.75" stroke="#c08537" stroke-width="1.5"/>
+        <g fill="#7a4a1f" opacity="0.6">
+          <ellipse cx="-15" cy="-10" rx="14" ry="11"/>
+          <ellipse cx="15" cy="-5" rx="14" ry="11"/>
+          <ellipse cx="-2" cy="14" rx="14" ry="11"/>
+        </g>
+        <g transform="translate(76 0)"><use href="#bacterium"/></g>
+        <text x="0" y="100" text-anchor="middle" class="dg7-caption">neutrophil meets bacterium</text>
+        <text x="0" y="115" text-anchor="middle" class="dg7-caption-dim">membrane is round, intact</text>
+      </g>
+
+      <path d="M 200 230 L 235 230" stroke="#e8a951" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#phagoArrow)"/>
+
+      <!-- Stage 2: Pseudopods extending -->
+      <g transform="translate(370 250)">
+        <text x="0" y="-130" text-anchor="middle" class="dg7-stage-num">FRAME 2</text>
+        <text x="0" y="-114" text-anchor="middle" class="dg7-stage-name">Pseudopods extend</text>
+        <path d="M -62 -8 Q -65 -50 -30 -56 Q 5 -60 30 -54 Q 35 -52 38 -45 L 38 -32 Q 50 -36 60 -22 Q 70 -8 64 8 L 50 12 L 50 30 Q 60 38 56 50 Q 50 60 32 60 Q 0 64 -28 58 Q -60 50 -62 8 Z" fill="#e8a951" opacity="0.75" stroke="#c08537" stroke-width="1.5"/>
+        <g fill="#7a4a1f" opacity="0.6">
+          <ellipse cx="-18" cy="-8" rx="13" ry="10"/>
+          <ellipse cx="12" cy="-5" rx="13" ry="10"/>
+          <ellipse cx="-5" cy="14" rx="13" ry="10"/>
+        </g>
+        <g transform="translate(50 -28) rotate(-30)"><use href="#actinStrand"/></g>
+        <g transform="translate(50 28) rotate(150)"><use href="#actinStrand"/></g>
+        <g transform="translate(70 0)"><use href="#bacterium"/></g>
+        <text x="-20" y="-72" class="dg7-label-gold">actin polymerization</text>
+        <line x1="20" y1="-68" x2="34" y2="-44" stroke="#e8a951" stroke-width="0.8"/>
+        <text x="0" y="100" text-anchor="middle" class="dg7-caption">membrane projects outward</text>
+        <text x="0" y="115" text-anchor="middle" class="dg7-caption-dim">actin filaments push the cell forward</text>
+      </g>
+
+      <path d="M 445 230 L 480 230" stroke="#e8a951" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#phagoArrow)"/>
+
+      <!-- Stage 3: Wrapping -->
+      <g transform="translate(615 250)">
+        <text x="0" y="-130" text-anchor="middle" class="dg7-stage-num">FRAME 3</text>
+        <text x="0" y="-114" text-anchor="middle" class="dg7-stage-name">Wrapping</text>
+        <path d="M -62 -8 Q -65 -50 -30 -56 Q 10 -60 40 -50 Q 65 -42 68 -22 Q 70 -8 60 -2 L 56 0 L 60 4 Q 70 8 68 22 Q 65 42 40 50 Q 10 60 -28 58 Q -60 50 -62 8 Z" fill="#e8a951" opacity="0.75" stroke="#c08537" stroke-width="1.5"/>
+        <g fill="#7a4a1f" opacity="0.6">
+          <ellipse cx="-22" cy="-8" rx="12" ry="10"/>
+          <ellipse cx="6" cy="-5" rx="12" ry="10"/>
+          <ellipse cx="-10" cy="14" rx="12" ry="10"/>
+        </g>
+        <g transform="translate(40 0)"><use href="#bacterium"/></g>
+        <text x="62" y="3" class="dg7-label-gold" style="font-size: 14px;">→</text>
+        <text x="0" y="100" text-anchor="middle" class="dg7-caption">arms close around the target</text>
+        <text x="0" y="115" text-anchor="middle" class="dg7-caption-dim">membrane is about to seal</text>
+      </g>
+
+      <path d="M 690 230 L 725 230" stroke="#e8a951" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#phagoArrow)"/>
+
+      <!-- Stage 4: Phagosome -->
+      <g transform="translate(860 250)">
+        <text x="0" y="-130" text-anchor="middle" class="dg7-stage-num">FRAME 4</text>
+        <text x="0" y="-114" text-anchor="middle" class="dg7-stage-name">Phagosome formed</text>
+        <circle cx="0" cy="0" r="66" fill="#e8a951" opacity="0.75" stroke="#c08537" stroke-width="1.5"/>
+        <g fill="#7a4a1f" opacity="0.6">
+          <ellipse cx="-22" cy="-12" rx="13" ry="10"/>
+          <ellipse cx="-15" cy="14" rx="13" ry="10"/>
+          <ellipse cx="-32" cy="2" rx="13" ry="10"/>
+        </g>
+        <circle cx="22" cy="6" r="22" fill="#0a0e1a" stroke="#e8a951" stroke-width="1.5" stroke-dasharray="3 2" opacity="0.95"/>
+        <g transform="translate(22 6)"><use href="#bacterium"/></g>
+        <text x="22" y="-22" text-anchor="middle" class="dg7-label-gold" style="font-size: 9px;">PHAGOSOME</text>
+        <text x="0" y="100" text-anchor="middle" class="dg7-caption">bacterium sealed inside the cell</text>
+        <text x="0" y="115" text-anchor="middle" class="dg7-caption-dim">ready for killing in the next station</text>
+      </g>
+
+      <!-- Driver strip -->
+      <line x1="40" y1="412" x2="960" y2="412" stroke="#222c3e" stroke-width="1"/>
+      <g transform="translate(0 440)">
+        <text x="50" y="0" class="dg7-driver-label">THE DRIVER</text>
+        <text x="50" y="14" class="dg7-caption-dim">G-actin → F-actin polymerization</text>
+        <g transform="translate(220 4)">
+          <circle cx="0" cy="0" r="3.5" fill="#e8a951" opacity="0.5"/>
+          <circle cx="14" cy="-6" r="3.5" fill="#e8a951" opacity="0.6"/>
+          <circle cx="22" cy="6" r="3.5" fill="#e8a951" opacity="0.65"/>
+          <circle cx="36" cy="-3" r="3.5" fill="#e8a951" opacity="0.7"/>
+          <line x1="56" y1="0" x2="240" y2="0" stroke="#e8a951" stroke-width="2.4" opacity="0.85"/>
+          <circle cx="56" cy="0" r="3.5" fill="#e8a951"/>
+          <circle cx="80" cy="0" r="3.5" fill="#e8a951"/>
+          <circle cx="104" cy="0" r="3.5" fill="#e8a951"/>
+          <circle cx="128" cy="0" r="3.5" fill="#e8a951"/>
+          <circle cx="152" cy="0" r="3.5" fill="#e8a951"/>
+          <circle cx="176" cy="0" r="3.5" fill="#e8a951"/>
+          <circle cx="200" cy="0" r="3.5" fill="#e8a951"/>
+          <circle cx="224" cy="0" r="3.5" fill="#e8a951"/>
+          <path d="M 250 0 L 270 0" stroke="#e8a951" stroke-width="1.5" marker-end="url(#phagoArrow)"/>
+        </g>
+        <text x="540" y="0" class="dg7-label-crimson">BLOCK THIS</text>
+        <text x="540" y="14" class="dg7-caption-dim">no pseudopod · no engulfment · no phagocytosis</text>
+        <text x="510" y="3" class="dg7-label-crimson" style="font-size: 14px;">✗</text>
+      </g>
+    </svg>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="24" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">THE TRAFFIC CONTROLLER: LYST</text>
+
+                  <!-- LYST protein at the top (the controller) -->
+                  <g transform="translate(250 60)">
+                    <rect x="-52" y="-18" width="104" height="36" rx="6" fill="#111826" stroke="#e8a951" stroke-width="2.2"/>
+                    <text x="0" y="5" text-anchor="middle" style="fill:#e8a951;font:800 14px Inter,sans-serif;letter-spacing:2.5px">LYST</text>
+                  </g>
+                  <text x="250" y="96" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">LYSosomal Trafficking regulator</text>
+
+                  <!-- Dashed "signal" lines from LYST down to each lysosome -->
+                  <g stroke="#e8a951" stroke-width="1" stroke-dasharray="2 3" opacity="0.55" fill="none">
+                    <path d="M 215 80 Q 175 105 140 133"/>
+                    <path d="M 235 80 Q 215 110 198 133"/>
+                    <path d="M 265 80 Q 285 110 302 133"/>
+                    <path d="M 285 80 Q 325 105 360 133"/>
+                  </g>
+                  <text x="168" y="118" text-anchor="middle" style="fill:#e8a951;font:italic 8px Inter,sans-serif">signal</text>
+                  <text x="332" y="118" text-anchor="middle" style="fill:#e8a951;font:italic 8px Inter,sans-serif">signal</text>
+
+                  <!-- 4 lysosomes in a row (being directed by LYST) -->
+                  <g transform="translate(135 145)"><circle r="11" fill="#9370b9" opacity="0.78" stroke="#7a4a9e" stroke-width="1"/><g fill="#0a0e1a" opacity="0.5"><circle cx="-3" cy="-2" r="1.4"/><circle cx="3" cy="2" r="1.4"/></g></g>
+                  <g transform="translate(198 145)"><circle r="11" fill="#9370b9" opacity="0.78" stroke="#7a4a9e" stroke-width="1"/><g fill="#0a0e1a" opacity="0.5"><circle cx="-2" cy="-3" r="1.4"/><circle cx="3" cy="1" r="1.4"/></g></g>
+                  <g transform="translate(302 145)"><circle r="11" fill="#9370b9" opacity="0.78" stroke="#7a4a9e" stroke-width="1"/><g fill="#0a0e1a" opacity="0.5"><circle cx="-3" cy="0" r="1.4"/><circle cx="2" cy="-2" r="1.4"/></g></g>
+                  <g transform="translate(365 145)"><circle r="11" fill="#9370b9" opacity="0.78" stroke="#7a4a9e" stroke-width="1"/><g fill="#0a0e1a" opacity="0.5"><circle cx="-3" cy="-2" r="1.4"/><circle cx="3" cy="2" r="1.4"/></g></g>
+                  <text x="88" y="148" text-anchor="end" style="fill:#9370b9;font:700 9px Inter,sans-serif;letter-spacing:1px">lysosomes</text>
+
+                  <!-- Motion arrows: all lysosomes converging on phagosome -->
+                  <g stroke="#9370b9" stroke-width="1.3" opacity="0.9" fill="none">
+                    <path d="M 140 158 Q 190 175 232 193"/>
+                    <path d="M 200 158 Q 220 175 243 194"/>
+                    <path d="M 300 158 Q 280 175 257 194"/>
+                    <path d="M 360 158 Q 310 175 268 193"/>
+                  </g>
+                  <g fill="#9370b9">
+                    <polygon points="236,196 229,189 236,189"/>
+                    <polygon points="247,197 240,191 247,191"/>
+                    <polygon points="253,197 260,191 253,191"/>
+                    <polygon points="264,196 271,189 264,189"/>
+                  </g>
+
+                  <!-- Phagosome (the target) at bottom center -->
+                  <g transform="translate(250 215)">
+                    <circle r="22" fill="#0a0e1a" stroke="#e8a951" stroke-width="1.6" stroke-dasharray="3 2"/>
+                    <ellipse cx="0" cy="0" rx="11" ry="7" fill="#d14859" opacity="0.88" stroke="#a33648" stroke-width="1"/>
+                  </g>
+                  <text x="282" y="212" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1px">PHAGOSOME</text>
+                  <text x="282" y="224" style="fill:#6b7689;font:italic 8px Inter,sans-serif">(target — fuse here)</text>
+
+                  <text x="250" y="252" text-anchor="middle" style="fill:#b4becf;font:italic 10px Inter,sans-serif">LYST tells lysosomes: where to go · when to fuse</text>
+                </svg>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="32" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">MAC · MEMBRANE ATTACK COMPLEX</text>
+                  <line x1="40" y1="155" x2="460" y2="155" stroke="#d14859" stroke-width="2.2" opacity="0.85"/>
+                  <text x="45" y="148" style="fill:#d14859;font:italic 9px Inter,sans-serif">bacterial membrane</text>
+                  <!-- MAC donut -->
+                  <g transform="translate(250 155)">
+                    <circle cx="0" cy="0" r="30" fill="#0a0e1a" stroke="#e8a951" stroke-width="2"/>
+                    <g fill="#9370b9" opacity="0.85">
+                      <circle cx="0" cy="-22" r="4"/><circle cx="15" cy="-16" r="4"/><circle cx="22" cy="0" r="4"/>
+                      <circle cx="15" cy="16" r="4"/><circle cx="0" cy="22" r="4"/><circle cx="-15" cy="16" r="4"/>
+                      <circle cx="-22" cy="0" r="4"/><circle cx="-15" cy="-16" r="4"/>
+                    </g>
+                    <text x="0" y="3" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif">PORE</text>
+                  </g>
+                  <text x="250" y="210" text-anchor="middle" style="fill:#4fb8a8;font:600 10px Inter,sans-serif">C5b · C6 · C7 · C8 · C9 (multiple)</text>
+                  <!-- water arrows rushing in -->
+                  <g stroke="#4fb8a8" stroke-width="1.5" fill="none" opacity="0.8">
+                    <path d="M 150 75 L 230 140"/><polygon points="228,138 238,143 234,133" fill="#4fb8a8"/>
+                    <path d="M 350 75 L 270 140"/><polygon points="272,138 262,143 266,133" fill="#4fb8a8"/>
+                  </g>
+                  <text x="150" y="65" text-anchor="middle" style="fill:#4fb8a8;font:italic 10px Inter,sans-serif">water rushes in</text>
+                  <text x="350" y="65" text-anchor="middle" style="fill:#4fb8a8;font:italic 10px Inter,sans-serif">water rushes in</text>
+                  <text x="250" y="240" text-anchor="middle" style="fill:#d14859;font:600 10px Inter,sans-serif">→ osmotic lysis · the microbe explodes</text>
+                </svg>

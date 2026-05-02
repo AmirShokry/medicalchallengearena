@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 670" preserveAspectRatio="xMidYMid meet">
+      <style>
+        .cn-eyebrow { fill: #e8a951; font: 500 10px "Inter", sans-serif; letter-spacing: 2.5px; }
+        .cn-title { fill: #e8ecf3; font: italic 400 22px "Fraunces", serif; }
+        .cn-section-label { fill: #e8a951; font: 600 9px "Inter", sans-serif; letter-spacing: 1.5px; }
+        .cn-node-label { fill: #e8ecf3; font: 600 10.5px "Inter", sans-serif; letter-spacing: 0.3px; }
+        .cn-node-label-small { fill: #b4becf; font: 500 9.5px "Inter", sans-serif; letter-spacing: 0.3px; }
+        .cn-lineage-label { fill: #b4becf; font: 600 9px "Inter", sans-serif; letter-spacing: 1.5px; }
+        .cn-caption { fill: #6b7689; font: italic 400 10px "Inter", sans-serif; }
+        .cn-pattern-title { fill: #e8ecf3; font: 700 11px "Inter", sans-serif; letter-spacing: 0.5px; }
+        .cn-pattern-subtitle { fill: #b4becf; font: italic 500 10.5px "Inter", sans-serif; }
+        .cn-pattern-body { fill: #b4becf; font: 400 10.5px "Inter", sans-serif; }
+        .cn-keypoint { fill: #e8a951; font: 600 11px "Inter", sans-serif; letter-spacing: 0.3px; }
+        .cn-patient-flag { fill: #0a0e1a; font: 700 8px "Inter", sans-serif; letter-spacing: 1px; }
+      </style>
+      <defs>
+        <symbol id="cnHSC" overflow="visible">
+          <circle cx="0" cy="0" r="16" fill="#b4becf" opacity="0.35" stroke="#e8ecf3" stroke-width="1.2"/>
+          <circle cx="0" cy="0" r="8" fill="#4a2d60" opacity="0.75"/>
+        </symbol>
+        <symbol id="cnNeutrophil" overflow="visible">
+          <circle cx="0" cy="0" r="9" fill="#e8a951" opacity="0.85" stroke="#a87b3c" stroke-width="0.8"/>
+          <path d="M -4 -3 Q -6 -1 -4 1 Q -2 3 0 2 Q 2 4 4 2 Q 6 0 4 -2 Q 2 -4 0 -3 Q -2 -4 -4 -3 Z" fill="#4a2d60" opacity="0.75"/>
+        </symbol>
+        <symbol id="cnMonocyte" overflow="visible">
+          <circle cx="0" cy="0" r="10" fill="#7a4a9e" opacity="0.55" stroke="#4a2d60" stroke-width="0.8"/>
+          <path d="M -5 -1 Q 0 -7 5 -1 Q 5 5 0 5 Q -5 5 -5 -1 Z" fill="#4a2d60" opacity="0.7"/>
+        </symbol>
+        <symbol id="cnRBC" overflow="visible">
+          <circle cx="0" cy="0" r="9" fill="#d14859" opacity="0.8" stroke="#8b2c38" stroke-width="0.7"/>
+          <circle cx="0" cy="0" r="4" fill="#0a0e1a" opacity="0.4"/>
+        </symbol>
+        <symbol id="cnPlatelet" overflow="visible">
+          <circle cx="0" cy="0" r="5" fill="#b4becf" opacity="0.85" stroke="#6b7689" stroke-width="0.6"/>
+        </symbol>
+        <symbol id="cnLymphocyte" overflow="visible">
+          <circle cx="0" cy="0" r="8" fill="#4fb8a8" opacity="0.55" stroke="#3a8a7e" stroke-width="0.8"/>
+          <circle cx="0" cy="0" r="5" fill="#3a8a7e" opacity="0.7"/>
+        </symbol>
+      </defs>
+
+      <text x="500" y="26" text-anchor="middle" class="cn-eyebrow">HEMATOPOIETIC LINEAGE · WHICH LINE IS LOW TELLS YOU WHERE THE PROBLEM IS</text>
+      <text x="500" y="58" text-anchor="middle" class="cn-title">One tree. Different things can go wrong at different levels.</text>
+      <line x1="40" y1="78" x2="960" y2="78" stroke="#222c3e" stroke-width="1"/>
+
+      <!-- TOP: LINEAGE TREE -->
+      <g transform="translate(0 100)">
+        <text x="500" y="14" text-anchor="middle" class="cn-section-label">THE LINEAGE TREE · A SIMPLIFIED MAP</text>
+
+        <g transform="translate(500 55)">
+          <use href="#cnHSC"/>
+          <text x="0" y="-22" text-anchor="middle" class="cn-node-label">HSC</text>
+          <text x="0" y="36" text-anchor="middle" class="cn-caption">hematopoietic stem cell</text>
+        </g>
+
+        <g stroke="#6b7689" stroke-width="1" fill="none">
+          <path d="M 488 75 Q 350 95 258 118"/>
+          <path d="M 512 75 Q 650 95 742 118"/>
+        </g>
+
+        <g transform="translate(250 130)">
+          <circle cx="0" cy="0" r="12" fill="#e8a951" opacity="0.25" stroke="#a87b3c" stroke-width="1"/>
+          <circle cx="0" cy="0" r="6" fill="#4a2d60" opacity="0.6"/>
+          <text x="0" y="-18" text-anchor="middle" class="cn-node-label-small">CMP</text>
+          <text x="0" y="28" text-anchor="middle" class="cn-caption">common myeloid</text>
+        </g>
+
+        <g transform="translate(750 130)">
+          <circle cx="0" cy="0" r="12" fill="#4fb8a8" opacity="0.25" stroke="#3a8a7e" stroke-width="1"/>
+          <circle cx="0" cy="0" r="6" fill="#3a8a7e" opacity="0.6"/>
+          <text x="0" y="-18" text-anchor="middle" class="cn-node-label-small">CLP</text>
+          <text x="0" y="28" text-anchor="middle" class="cn-caption">common lymphoid</text>
+        </g>
+
+        <g stroke="#6b7689" stroke-width="0.8" fill="none">
+          <path d="M 244 142 Q 150 180 90 205"/>
+          <path d="M 246 142 Q 210 180 180 205"/>
+          <path d="M 254 142 Q 280 180 290 205"/>
+          <path d="M 256 142 Q 330 180 380 205"/>
+        </g>
+
+        <g transform="translate(90 215)">
+          <use href="#cnPlatelet"/>
+          <g transform="translate(10 -3)"><use href="#cnPlatelet"/></g>
+          <g transform="translate(-10 3)"><use href="#cnPlatelet"/></g>
+          <text x="0" y="26" text-anchor="middle" class="cn-node-label-small">platelets</text>
+        </g>
+        <g transform="translate(180 215)">
+          <use href="#cnRBC"/>
+          <text x="0" y="26" text-anchor="middle" class="cn-node-label-small">RBCs</text>
+        </g>
+        <g transform="translate(290 215)">
+          <use href="#cnNeutrophil"/>
+          <text x="0" y="26" text-anchor="middle" class="cn-node-label-small">neutrophils</text>
+        </g>
+        <g transform="translate(380 215)">
+          <use href="#cnMonocyte"/>
+          <text x="0" y="26" text-anchor="middle" class="cn-node-label-small">monocytes</text>
+        </g>
+
+        <g stroke="#6b7689" stroke-width="0.8" fill="none">
+          <path d="M 744 142 Q 700 180 660 205"/>
+          <path d="M 750 142 Q 750 180 750 205"/>
+          <path d="M 756 142 Q 810 180 840 205"/>
+        </g>
+
+        <g transform="translate(660 215)">
+          <use href="#cnLymphocyte"/>
+          <text x="0" y="26" text-anchor="middle" class="cn-node-label-small">T cells</text>
+        </g>
+        <g transform="translate(750 215)">
+          <use href="#cnLymphocyte"/>
+          <text x="0" y="26" text-anchor="middle" class="cn-node-label-small">B cells</text>
+        </g>
+        <g transform="translate(840 215)">
+          <use href="#cnLymphocyte"/>
+          <text x="0" y="26" text-anchor="middle" class="cn-node-label-small">NK cells</text>
+        </g>
+
+        <text x="500" y="272" text-anchor="middle" class="cn-caption">simplified — real hematopoiesis has additional progenitors and branches</text>
+      </g>
+
+      <!-- MIDDLE: THREE PATTERN CARDS -->
+      <g transform="translate(0 390)">
+        <text x="500" y="14" text-anchor="middle" class="cn-section-label">THREE PATTERNS · WHERE THE DEFECT HITS DETERMINES THE CBC</text>
+
+        <!-- PATTERN 1: Isolated neutrophil failure -->
+        <g transform="translate(40 40)">
+          <rect x="0" y="0" width="290" height="170" rx="10" fill="#e8a951" fill-opacity="0.08" stroke="#e8a951" stroke-width="1.3"/>
+          <g transform="translate(145 0)">
+            <rect x="-38" y="-11" width="76" height="20" rx="3" fill="#e8a951" opacity="0.92"/>
+            <text x="0" y="3" text-anchor="middle" class="cn-patient-flag">OUR PATIENT</text>
+          </g>
+          <text x="145" y="32" text-anchor="middle" class="cn-pattern-title">ISOLATED NEUTROPHIL FAILURE</text>
+          <text x="145" y="48" text-anchor="middle" class="cn-pattern-subtitle">only neutrophils are low</text>
+
+          <g transform="translate(145 92)">
+            <g transform="translate(-105 0)"><use href="#cnPlatelet"/></g>
+            <g transform="translate(-70 0)"><use href="#cnRBC"/></g>
+            <g transform="translate(-35 0)" opacity="0.3">
+              <circle cx="0" cy="0" r="9" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2"/>
+            </g>
+            <g transform="translate(-35 0)">
+              <line x1="-7" y1="-7" x2="7" y2="7" stroke="#d14859" stroke-width="1.8"/>
+              <line x1="7" y1="-7" x2="-7" y2="7" stroke="#d14859" stroke-width="1.8"/>
+            </g>
+            <g transform="translate(0 0)"><use href="#cnMonocyte"/></g>
+            <g transform="translate(35 0)"><use href="#cnLymphocyte"/></g>
+            <g transform="translate(70 0)"><use href="#cnLymphocyte"/></g>
+            <g transform="translate(105 0)"><use href="#cnLymphocyte"/></g>
+          </g>
+
+          <text x="145" y="138" text-anchor="middle" class="cn-pattern-body">the neutrophil lineage specifically</text>
+          <text x="145" y="156" text-anchor="middle" class="cn-keypoint">= neutrophil-specific problem</text>
+        </g>
+
+        <!-- PATTERN 2: Stem cell failure -->
+        <g transform="translate(355 40)">
+          <rect x="0" y="0" width="290" height="170" rx="10" fill="#0a0e1a" stroke="#222c3e" stroke-width="1"/>
+          <text x="145" y="32" text-anchor="middle" class="cn-pattern-title">STEM CELL FAILURE</text>
+          <text x="145" y="48" text-anchor="middle" class="cn-pattern-subtitle">everything is low</text>
+
+          <g transform="translate(145 92)">
+            <g transform="translate(-105 0)" opacity="0.3">
+              <circle cx="0" cy="0" r="5" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2"/>
+            </g>
+            <g transform="translate(-70 0)" opacity="0.3">
+              <circle cx="0" cy="0" r="9" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2"/>
+            </g>
+            <g transform="translate(-35 0)" opacity="0.3">
+              <circle cx="0" cy="0" r="9" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2"/>
+            </g>
+            <g transform="translate(0 0)" opacity="0.3">
+              <circle cx="0" cy="0" r="10" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2"/>
+            </g>
+            <g transform="translate(35 0)" opacity="0.3">
+              <circle cx="0" cy="0" r="8" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2"/>
+            </g>
+            <g transform="translate(70 0)" opacity="0.3">
+              <circle cx="0" cy="0" r="8" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2"/>
+            </g>
+            <g transform="translate(105 0)" opacity="0.3">
+              <circle cx="0" cy="0" r="8" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2"/>
+            </g>
+            <line x1="-115" y1="-14" x2="115" y2="14" stroke="#d14859" stroke-width="1.3" opacity="0.7"/>
+            <line x1="115" y1="-14" x2="-115" y2="14" stroke="#d14859" stroke-width="1.3" opacity="0.7"/>
+          </g>
+
+          <text x="145" y="138" text-anchor="middle" class="cn-pattern-body">the HSC itself — all lineages affected</text>
+          <text x="145" y="156" text-anchor="middle" class="cn-keypoint">= stem cell / bone marrow problem</text>
+        </g>
+
+        <!-- PATTERN 3: Lymphoid lineage failure -->
+        <g transform="translate(670 40)">
+          <rect x="0" y="0" width="290" height="170" rx="10" fill="#0a0e1a" stroke="#222c3e" stroke-width="1"/>
+          <text x="145" y="32" text-anchor="middle" class="cn-pattern-title">LYMPHOID LINEAGE FAILURE</text>
+          <text x="145" y="48" text-anchor="middle" class="cn-pattern-subtitle">only lymphocytes are low</text>
+
+          <g transform="translate(145 92)">
+            <g transform="translate(-105 0)"><use href="#cnPlatelet"/></g>
+            <g transform="translate(-70 0)"><use href="#cnRBC"/></g>
+            <g transform="translate(-35 0)"><use href="#cnNeutrophil"/></g>
+            <g transform="translate(0 0)"><use href="#cnMonocyte"/></g>
+            <g transform="translate(35 0)" opacity="0.3">
+              <circle cx="0" cy="0" r="8" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2"/>
+            </g>
+            <g transform="translate(70 0)" opacity="0.3">
+              <circle cx="0" cy="0" r="8" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2"/>
+            </g>
+            <g transform="translate(105 0)" opacity="0.3">
+              <circle cx="0" cy="0" r="8" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2"/>
+            </g>
+            <line x1="28" y1="-10" x2="112" y2="10" stroke="#d14859" stroke-width="1.5" opacity="0.75"/>
+            <line x1="112" y1="-10" x2="28" y2="10" stroke="#d14859" stroke-width="1.5" opacity="0.75"/>
+          </g>
+
+          <text x="145" y="138" text-anchor="middle" class="cn-pattern-body">the CLP branch — T/B/NK affected</text>
+          <text x="145" y="156" text-anchor="middle" class="cn-keypoint">= lymphoid lineage problem</text>
+        </g>
+      </g>
+
+      <!-- KEY PRINCIPLE -->
+      <g transform="translate(0 620)">
+        <line x1="40" y1="0" x2="960" y2="0" stroke="#222c3e" stroke-width="1"/>
+        <text x="500" y="24" text-anchor="middle" class="cn-keypoint">which cell line is low tells you which compartment has a problem</text>
+      </g>
+    </svg>
