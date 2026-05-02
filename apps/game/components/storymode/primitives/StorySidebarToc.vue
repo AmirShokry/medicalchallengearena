@@ -99,7 +99,7 @@ const chapterCounts = computed(() =>
 
 <template>
 	<aside
-		class="story-toc-sidebar fixed top-4 right-4 bottom-4 z-[80] flex w-[320px] flex-col overflow-hidden rounded-xl border border-[#222c3e] bg-[linear-gradient(180deg,rgba(22,29,48,0.92)_0%,rgba(10,14,26,0.92)_100%)] backdrop-blur-md [box-shadow:0_12px_40px_rgba(0,0,0,0.45)] before:absolute before:inset-x-0 before:top-0 before:z-[1] before:h-0.5 before:rounded-tl-xl before:rounded-tr-xl before:bg-[linear-gradient(90deg,transparent_0%,#e8a951_50%,transparent_100%)] before:opacity-35 before:content-['']
+		class="story-toc-sidebar fixed top-4 right-4 bottom-4 z-[80] flex w-[320px] flex-col overflow-hidden rounded-xl border border-border bg-card/95 shadow-2xl backdrop-blur-md before:absolute before:inset-x-0 before:top-0 before:z-[1] before:h-0.5 before:rounded-tl-xl before:rounded-tr-xl before:bg-[linear-gradient(90deg,transparent_0%,#e8a951_50%,transparent_100%)] before:opacity-35 before:content-['']
 		max-[1240px]:w-[280px]
 		max-[1100px]:hidden"
 	>
@@ -113,14 +113,14 @@ const chapterCounts = computed(() =>
 			<div class="flex gap-1.5">
 				<button
 					type="button"
-					class="flex-1 cursor-pointer rounded border border-[#222c3e] bg-transparent px-1.5 py-1 font-jetbrains text-[9px] tracking-[0.18em] uppercase text-[#6b7689] transition-[border-color,color] duration-200 hover:border-[#e8a951] hover:text-[#e8a951]"
+					class="flex-1 cursor-pointer rounded border border-border bg-transparent px-1.5 py-1 font-jetbrains text-[9px] tracking-[0.18em] uppercase text-muted-foreground transition-[border-color,color] duration-200 hover:border-[#e8a951] hover:text-[#e8a951]"
 					@click="expandAll(true)"
 				>
 					Expand all
 				</button>
 				<button
 					type="button"
-					class="flex-1 cursor-pointer rounded border border-[#222c3e] bg-transparent px-1.5 py-1 font-jetbrains text-[9px] tracking-[0.18em] uppercase text-[#6b7689] transition-[border-color,color] duration-200 hover:border-[#e8a951] hover:text-[#e8a951]"
+					class="flex-1 cursor-pointer rounded border border-border bg-transparent px-1.5 py-1 font-jetbrains text-[9px] tracking-[0.18em] uppercase text-muted-foreground transition-[border-color,color] duration-200 hover:border-[#e8a951] hover:text-[#e8a951]"
 					@click="expandAll(false)"
 				>
 					Collapse all
@@ -137,7 +137,7 @@ const chapterCounts = computed(() =>
 			<div
 				v-for="chapter in system.chapters"
 				:key="chapter.num"
-				class="mb-2 overflow-hidden rounded-lg border border-[rgba(107,118,137,0.22)] bg-[rgba(10,14,26,0.55)]"
+				class="mb-2 overflow-hidden rounded-lg border border-border bg-background/55"
 			>
 				<!-- Chapter header -->
 				<div
@@ -151,12 +151,12 @@ const chapterCounts = computed(() =>
 						▾
 					</span>
 					<span
-						class="flex-none font-jetbrains text-[9px] tracking-[0.22em] uppercase text-[#6b7689]"
+						class="flex-none font-jetbrains text-[9px] tracking-[0.22em] uppercase text-muted-foreground"
 					>
 						Chapter {{ String(chapter.num).padStart(2, "0") }}
 					</span>
 					<span
-						class="flex-1 font-fraunces text-[13px] leading-[1.25] text-[#e8ecf3]"
+						class="flex-1 font-fraunces text-[13px] leading-[1.25] text-foreground"
 					>
 						{{ chapter.title }}
 					</span>
@@ -167,7 +167,7 @@ const chapterCounts = computed(() =>
 								(chapterCounts[chapter.num]?.total ?? 0) &&
 							(chapterCounts[chapter.num]?.total ?? 0) > 0
 								? 'bg-[rgba(79,184,168,0.15)] text-[#4fb8a8]'
-								: 'bg-[rgba(107,118,137,0.12)] text-[#b4becf]'
+								: 'bg-muted text-muted-foreground'
 						"
 					>
 						{{ chapterCounts[chapter.num]?.done ?? 0 }} /
@@ -185,9 +185,10 @@ const chapterCounts = computed(() =>
 					<div
 						v-for="(station, idx) in chapter.stations"
 						:key="idx"
-						class="border-t border-[rgba(107,118,137,0.1)] first:border-t-0"
+						class="border-t border-border/60 first:border-t-0"
 						:class="{
-							'opacity-45': statusFor(chapter.num, idx) === 'locked',
+							'opacity-70 dark:opacity-45':
+								statusFor(chapter.num, idx) === 'locked',
 						}"
 					>
 						<div
@@ -202,10 +203,10 @@ const chapterCounts = computed(() =>
 								class="flex h-[18px] w-[18px] flex-none items-center justify-center rounded-full text-[9px] font-bold"
 								:class="
 									statusFor(chapter.num, idx) === 'completed'
-										? 'border-[#4fb8a8] bg-[#4fb8a8] text-[#0a0e1a] border-[1.5px]'
+										? 'border-[#4fb8a8] bg-[#4fb8a8] text-background border-[1.5px]'
 										: statusFor(chapter.num, idx) === 'available'
 											? 'border-[#e8a951] text-[#e8a951] border-[1.5px]'
-											: 'border-[#6b7689] text-[#6b7689] border-[1.5px] border-dashed'
+											: 'border-muted-foreground text-muted-foreground border-[1.5px] border-dashed'
 								"
 							>
 								{{ statusIcon(statusFor(chapter.num, idx)) }}
@@ -215,15 +216,15 @@ const chapterCounts = computed(() =>
 									class="truncate font-fraunces text-[13px] leading-[1.25]"
 									:class="
 										statusFor(chapter.num, idx) === 'completed'
-											? 'text-[#b4becf]'
-											: 'text-[#e8ecf3]'
+											? 'text-muted-foreground'
+											: 'text-foreground'
 									"
 								>
 									{{ station.title }}
 								</div>
 								<div
 									v-if="station.subtitle"
-									class="truncate font-fraunces text-[11px] italic leading-[1.3] text-[#6b7689]"
+									class="truncate font-fraunces text-[11px] italic leading-[1.3] text-muted-foreground"
 								>
 									{{ station.subtitle }}
 								</div>
@@ -234,7 +235,7 @@ const chapterCounts = computed(() =>
 								:class="[
 									stationExpanded[stationKey(chapter.num, idx)]
 										? 'rotate-90 border-[#e8a951] text-[#e8a951]'
-										: 'border-[rgba(107,118,137,0.25)] text-[#6b7689] hover:border-[#e8a951] hover:text-[#e8a951]',
+										: 'border-border text-muted-foreground hover:border-[#e8a951] hover:text-[#e8a951]',
 									stepItemsFor(station).length === 0 ? 'invisible' : '',
 								]"
 								aria-label="Preview steps"
@@ -254,7 +255,7 @@ const chapterCounts = computed(() =>
 							<div
 								v-for="step in stepItemsFor(station)"
 								:key="step.n"
-								class="flex gap-2 py-[3px] font-inter text-[11px] leading-[1.4] text-[#b4becf]"
+								class="flex gap-2 py-[3px] font-inter text-[11px] leading-[1.4] text-muted-foreground"
 							>
 								<span
 									class="min-w-[18px] font-jetbrains text-[9.5px] font-semibold text-[#e8a951]"
@@ -281,7 +282,7 @@ const chapterCounts = computed(() =>
 */
 .story-toc-body {
 	scrollbar-width: thin;
-	scrollbar-color: #222c3e transparent;
+	scrollbar-color: var(--border) transparent;
 }
 .story-toc-body::-webkit-scrollbar {
 	width: 6px;
@@ -290,10 +291,10 @@ const chapterCounts = computed(() =>
 	background: transparent;
 }
 .story-toc-body::-webkit-scrollbar-thumb {
-	background: #222c3e;
+	background: var(--border);
 	border-radius: 3px;
 }
 .story-toc-body::-webkit-scrollbar-thumb:hover {
-	background: #6b7689;
+	background: var(--muted-foreground);
 }
 </style>

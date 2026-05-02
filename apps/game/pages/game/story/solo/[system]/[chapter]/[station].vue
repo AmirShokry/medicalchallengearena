@@ -245,7 +245,7 @@ watch(mode, async (next) => {
 		independently, exactly like the reference HTML's `.card-overlay`.
 	-->
 	<div
-		class="flex flex-col bg-[#0a0e1a] text-[#e8ecf3]"
+		class="flex flex-col bg-background text-foreground"
 		:class="
 			mode === 'explanation'
 				? 'h-screen overflow-hidden'
@@ -253,31 +253,32 @@ watch(mode, async (next) => {
 		"
 	>
 		<!--
-			Top bar — matches the reference HTML's `.card-topbar`: chapter
-			crumbs on the left, close button on the right. No verdict here
-			(the original keeps the verdict inside the explanation block on
-			the right column).
+			Top bar — matches the reference HTML's `.card-topbar`. The
+			content is centered inside a 1320px-max container (same as the
+			body's `.card-container { max-width: 1320px; margin: 0 auto }`)
+			rather than spanning the full viewport. The bottom divider
+			line ends at the same 1320px boundary, just like the original.
 		-->
 		<div
 			v-if="!pending && system && chapter && station"
-			class="z-20 flex flex-none items-center justify-between border-b border-[#222c3e] bg-[#0a0e1a] px-6 py-4 md:px-8"
+			class="z-20 mx-auto flex w-full max-w-[1320px] flex-none items-center justify-between border-b border-border bg-background px-6 py-4 md:px-8"
 		>
 			<div
 				class="flex items-center gap-3 font-jetbrains text-[11px] tracking-[0.3em] uppercase text-[#e8a951]"
 			>
 				<NuxtLink
 					:to="`/game/story/solo/${systemName}`"
-					class="text-[#6b7689] hover:text-[#e8a951]"
+					class="text-muted-foreground hover:text-[#e8a951]"
 					>← Map</NuxtLink
 				>
-				<span class="text-[#6b7689]">/</span>
+				<span class="text-muted-foreground">/</span>
 				<span>Chapter {{ String(chapter.num).padStart(2, "0") }}</span>
-				<span class="text-[#6b7689]">/</span>
-				<span class="text-[#b4becf]">{{ station.label }}</span>
+				<span class="text-muted-foreground">/</span>
+				<span class="text-muted-foreground">{{ station.label }}</span>
 			</div>
 			<NuxtLink
 				:to="`/game/story/solo/${systemName}`"
-				class="flex h-10 w-10 items-center justify-center rounded-full border border-[#222c3e] text-[18px] text-[#b4becf] transition-all duration-200 hover:rotate-90 hover:border-[#6b7689] hover:bg-[#111826] hover:text-[#e8ecf3]"
+				class="flex h-10 w-10 items-center justify-center rounded-full border border-border text-[18px] text-muted-foreground transition-all duration-200 hover:rotate-90 hover:border-muted-foreground hover:bg-card hover:text-foreground"
 				title="Close"
 				>✕</NuxtLink
 			>
@@ -293,7 +294,7 @@ watch(mode, async (next) => {
 		<!-- 404 -->
 		<div
 			v-else-if="!system || !chapter || !station"
-			class="p-12 text-center text-[#6b7689]"
+			class="p-12 text-center text-muted-foreground"
 		>
 			This station could not be found.
 			<NuxtLink
@@ -344,7 +345,7 @@ watch(mode, async (next) => {
 						class="flex flex-col items-center px-6 py-8 md:px-15 lg:py-7"
 						:class="
 							mode === 'explanation'
-								? 'story-explanation-scroll min-h-0 overflow-y-auto border-r-0 lg:border-r lg:border-[#222c3e] lg:items-stretch lg:px-10 lg:pt-7 lg:pb-15'
+								? 'story-explanation-scroll min-h-0 overflow-y-auto border-r-0 lg:border-r lg:border-border lg:items-stretch lg:px-10 lg:pt-7 lg:pb-15'
 								: ''
 						"
 						:data-explanation-scroll="mode === 'explanation' ? 'left' : null"
@@ -394,14 +395,14 @@ watch(mode, async (next) => {
 									{{ reviewVerdictText }}
 								</div>
 								<button
-									class="relative flex w-full cursor-pointer flex-col items-center gap-1.5 overflow-hidden rounded-md border-[1.5px] border-[#e8a951] bg-[linear-gradient(135deg,rgba(232,169,81,0.16)_0%,rgba(232,169,81,0.08)_100%)] px-7 py-5 text-[#e8ecf3] transition-all duration-200 hover:-translate-y-px hover:border-[#ffc674] hover:[box-shadow:0_8px_24px_rgba(232,169,81,0.2)]"
+									class="relative flex w-full cursor-pointer flex-col items-center gap-1.5 overflow-hidden rounded-md border-[1.5px] border-[#e8a951] bg-[linear-gradient(135deg,rgba(232,169,81,0.16)_0%,rgba(232,169,81,0.08)_100%)] px-7 py-5 text-foreground transition-all duration-200 hover:-translate-y-px hover:border-[#ffc674] hover:[box-shadow:0_8px_24px_rgba(232,169,81,0.2)]"
 									@click="startReview(null)"
 								>
 									<span class="font-fraunces text-xl font-semibold text-[#e8a951]">
 										Review the concept
 									</span>
 									<span
-										class="font-jetbrains text-[10px] tracking-[0.2em] uppercase text-[#6b7689]"
+										class="font-jetbrains text-[10px] tracking-[0.2em] uppercase text-muted-foreground"
 									>
 										Walk through it step by step →
 									</span>
@@ -411,7 +412,7 @@ watch(mode, async (next) => {
 								     once we are already in explanation mode. -->
 								<button
 									v-if="mode === 'question'"
-									class="mt-2 w-full cursor-pointer text-center font-jetbrains text-[10px] tracking-[0.2em] uppercase text-[#6b7689] transition-colors duration-200 hover:text-[#b4becf]"
+									class="mt-2 w-full cursor-pointer text-center font-jetbrains text-[10px] tracking-[0.2em] uppercase text-muted-foreground transition-colors duration-200 hover:text-muted-foreground"
 									@click="showExplanation"
 								>
 									Skip review · See explanation
@@ -456,7 +457,7 @@ watch(mode, async (next) => {
 								Previously
 							</div>
 							<div
-								class="font-fraunces text-base italic font-normal leading-[1.55] text-[#b4becf] [&_em]:italic [&_em]:text-[#4fb8a8]"
+								class="font-fraunces text-base italic font-normal leading-[1.55] text-muted-foreground [&_em]:italic [&_em]:text-[#4fb8a8]"
 								v-html="station.previously"
 							/>
 						</div>
@@ -469,18 +470,18 @@ watch(mode, async (next) => {
 								{{ station.stage }}
 							</div>
 							<h2
-								class="m-0 mb-3.5 font-fraunces text-[clamp(26px,2.8vw,36px)] font-light leading-[1.1] tracking-[-0.02em] text-[#e8ecf3] [&_em]:italic [&_em]:font-normal [&_em]:text-[#e8a951]"
+								class="m-0 mb-3.5 font-fraunces text-[clamp(26px,2.8vw,36px)] font-light leading-[1.1] tracking-[-0.02em] text-foreground [&_em]:italic [&_em]:font-normal [&_em]:text-[#e8a951]"
 								v-html="station.cardTitle || station.title"
 							/>
 							<p
-								class="m-0 font-fraunces text-[17px] italic leading-[1.45] text-[#b4becf]"
+								class="m-0 font-fraunces text-[17px] italic leading-[1.45] text-muted-foreground"
 							>
 								{{ station.tagline }}
 							</p>
 						</div>
 
 						<!-- Verdict + explanation -->
-						<div class="border-t border-[#222c3e] pt-6">
+						<div class="border-t border-border pt-6">
 							<div
 								class="mb-2 font-mono text-[11px] tracking-[0.3em] uppercase font-semibold"
 								:class="correct ? 'text-[#6cc27d]' : 'text-[#d14859]'"
@@ -488,7 +489,7 @@ watch(mode, async (next) => {
 								{{ verdictText }}
 							</div>
 							<h3
-								class="m-0 mb-4.5 font-fraunces text-2xl font-normal leading-[1.25] text-[#e8ecf3] [&_em]:italic [&_em]:text-[#e8a951]"
+								class="m-0 mb-4.5 font-fraunces text-2xl font-normal leading-[1.25] text-foreground [&_em]:italic [&_em]:text-[#e8a951]"
 								v-html="station.explanationTitle || ''"
 							/>
 							<StoryRichText
@@ -500,7 +501,7 @@ watch(mode, async (next) => {
 						</div>
 
 						<!-- Story prose -->
-						<div v-if="station.story" class="mt-7 border-t border-[#222c3e] pt-7">
+						<div v-if="station.story" class="mt-7 border-t border-border pt-7">
 							<div
 								class="mb-3.5 font-mono text-[11px] tracking-[0.3em] uppercase font-semibold text-[#4fb8a8]"
 							>
@@ -524,7 +525,7 @@ watch(mode, async (next) => {
 								What happens next
 							</div>
 							<div
-								class="font-fraunces text-base leading-[1.6] text-[#b4becf] [&_em]:italic [&_em]:text-[#e8a951] [&_strong]:font-semibold [&_strong]:text-[#e8ecf3]"
+								class="font-fraunces text-base leading-[1.6] text-muted-foreground [&_em]:italic [&_em]:text-[#e8a951] [&_strong]:font-semibold [&_strong]:text-foreground"
 								v-html="station.whatsNext"
 							/>
 						</div>
@@ -535,7 +536,7 @@ watch(mode, async (next) => {
 						>
 							<button
 								v-if="station.bank.length > 0"
-								class="inline-flex cursor-pointer items-center gap-2.5 rounded-[3px] border border-[#222c3e] bg-transparent px-5 py-3 font-mono text-[11px] font-semibold tracking-[0.15em] uppercase text-[#b4becf] transition-all duration-200 hover:border-[#6b7689] hover:bg-[#1a2334] hover:text-[#e8ecf3] before:text-[18px] before:leading-none before:content-['+']"
+								class="inline-flex cursor-pointer items-center gap-2.5 rounded-[3px] border border-border bg-transparent px-5 py-3 font-mono text-[11px] font-semibold tracking-[0.15em] uppercase text-muted-foreground transition-all duration-200 hover:border-muted-foreground hover:bg-secondary hover:text-foreground before:text-[18px] before:leading-none before:content-['+']"
 								@click="bankOpen = !bankOpen"
 							>
 								Try more cases ({{ station.bank.length }})
@@ -546,7 +547,7 @@ watch(mode, async (next) => {
 								class="inline-flex cursor-pointer items-center gap-2.5 rounded-[3px] border px-5 py-3 font-mono text-[11px] font-semibold tracking-[0.15em] uppercase transition-all duration-200 hover:translate-x-1 after:transition-transform after:duration-200 after:content-['→'] hover:after:translate-x-1"
 								:class="
 									isLastInChapter
-										? 'border-[#d14859] bg-[#d14859] text-[#e8ecf3] hover:border-[#a53343] hover:bg-[#a53343] hover:[box-shadow:0_4px_20px_rgba(209,72,89,0.35)]'
+										? 'border-[#d14859] bg-[#d14859] text-foreground hover:border-[#a53343] hover:bg-[#a53343] hover:[box-shadow:0_4px_20px_rgba(209,72,89,0.35)]'
 										: 'border-[#e8a951] bg-[#e8a951] text-[#0a0e1a] hover:border-[#c08537] hover:bg-[#c08537] hover:[box-shadow:0_4px_20px_rgba(232,169,81,0.35)]'
 								"
 								@click="completeStation"
@@ -561,7 +562,7 @@ watch(mode, async (next) => {
 							class="overflow-hidden transition-[max-height] duration-500"
 							:class="bankOpen ? 'max-h-[50000px]' : 'max-h-0'"
 						>
-							<div class="mt-5 flex items-center gap-3.5 border-t border-[#222c3e] pt-7 pb-5">
+							<div class="mt-5 flex items-center gap-3.5 border-t border-border pt-7 pb-5">
 								<div
 									class="font-mono text-[11px] tracking-[0.3em] uppercase font-semibold text-[#4fb8a8]"
 								>
@@ -569,52 +570,52 @@ watch(mode, async (next) => {
 								</div>
 								<div class="h-px flex-1 bg-[linear-gradient(90deg,#4fb8a8_0%,transparent_100%)] opacity-40" />
 							</div>
-							<p class="mb-6 font-fraunces text-base italic text-[#6b7689]">
+							<p class="mb-6 font-fraunces text-base italic text-muted-foreground">
 								Additional cases that test the same concept in different
 								clinical settings. Try as many as you like, then continue.
 							</p>
 							<div
 								v-for="(bq, bi) in station.bank"
 								:key="bi"
-								class="my-4.5 overflow-hidden rounded-[4px] border border-[#222c3e] bg-[#050811]"
+								class="my-4.5 overflow-hidden rounded-[4px] border border-border bg-background"
 							>
 								<div
-									class="flex items-center gap-2.5 border-b border-[#222c3e] bg-[#111826] px-5 py-4 font-jetbrains text-[10px] tracking-[0.25em] uppercase text-[#4fb8a8] before:h-2 before:w-2 before:flex-none before:rounded-full before:bg-[#4fb8a8] before:content-['']"
+									class="flex items-center gap-2.5 border-b border-border bg-card px-5 py-4 font-jetbrains text-[10px] tracking-[0.25em] uppercase text-[#4fb8a8] before:h-2 before:w-2 before:flex-none before:rounded-full before:bg-[#4fb8a8] before:content-['']"
 								>
 									{{ bq.label }}
 								</div>
 								<div class="px-6 pt-5 pb-5">
 									<div
-										class="mb-4.5 border-b border-[#222c3e] pb-4.5 font-fraunces text-[15px] leading-[1.65] text-[#b4becf] [&_p]:m-0 [&_p]:mb-3 [&_p:last-child]:mb-0"
+										class="mb-4.5 border-b border-border pb-4.5 font-fraunces text-[15px] leading-[1.65] text-muted-foreground [&_p]:m-0 [&_p]:mb-3 [&_p:last-child]:mb-0"
 										v-html="bq.vignette"
 									/>
 									<div
-										class="mb-5 font-fraunces text-base font-medium leading-[1.45] text-[#e8ecf3]"
+										class="mb-5 font-fraunces text-base font-medium leading-[1.45] text-foreground"
 										v-html="bq.stem"
 									/>
 									<ul class="m-0 list-none p-0">
 										<li
 											v-for="c in bq.choices"
 											:key="c.letter"
-											class="my-1.5 flex cursor-pointer items-center gap-4 rounded-[3px] border bg-[#050811] px-4 py-3 font-inter text-sm transition-all duration-200"
+											class="my-1.5 flex cursor-pointer items-center gap-4 rounded-[3px] border bg-background px-4 py-3 font-inter text-sm transition-all duration-200"
 											:class="[
 												bankStatus(bi, c.letter, bq.correct) === 'correct'
-													? 'bg-[rgba(108,194,125,0.08)] border-[rgba(108,194,125,0.4)] text-[#e8ecf3]'
+													? 'bg-[rgba(108,194,125,0.08)] border-[rgba(108,194,125,0.4)] text-foreground'
 													: bankStatus(bi, c.letter, bq.correct) === 'wrong'
-														? 'bg-[rgba(209,72,89,0.08)] border-[rgba(209,72,89,0.35)] text-[#b4becf]'
-														: 'border-[#222c3e] text-[#b4becf] hover:bg-[#1a2334] hover:border-[#6b7689] hover:text-[#e8ecf3] hover:translate-x-1',
+														? 'bg-[rgba(209,72,89,0.08)] border-[rgba(209,72,89,0.35)] text-muted-foreground'
+														: 'border-border text-muted-foreground hover:bg-secondary hover:border-muted-foreground hover:text-foreground hover:translate-x-1',
 												bankRevealed[bi] ? 'cursor-default' : '',
 											]"
 											@click="onPickBankChoice(bi, c.letter)"
 										>
 											<span
-												class="flex h-6 w-6 flex-none items-center justify-center rounded-full border bg-[#0a0e1a] font-mono text-[11px] font-semibold transition-all duration-200"
+												class="flex h-6 w-6 flex-none items-center justify-center rounded-full border bg-background font-mono text-[11px] font-semibold transition-all duration-200"
 												:class="
 													bankStatus(bi, c.letter, bq.correct) === 'correct'
 														? '!bg-[#6cc27d] !border-[#6cc27d] !text-[#0a0e1a]'
 														: bankStatus(bi, c.letter, bq.correct) === 'wrong'
-															? '!bg-[#d14859] !border-[#d14859] !text-[#e8ecf3]'
-															: 'border-[#222c3e] text-[#e8a951]'
+															? '!bg-[#d14859] !border-[#d14859] !text-foreground'
+															: 'border-border text-[#e8a951]'
 												"
 											>
 												{{ c.letter }}
@@ -627,7 +628,7 @@ watch(mode, async (next) => {
 										class="overflow-hidden transition-[max-height] duration-500"
 										:class="bankRevealed[bi] ? 'max-h-[5000px]' : 'max-h-0'"
 									>
-										<div class="mt-6 border-t border-[#222c3e] pt-6">
+										<div class="mt-6 border-t border-border pt-6">
 											<div
 												class="mb-2 font-mono text-[11px] tracking-[0.3em] uppercase font-semibold"
 												:class="
@@ -643,11 +644,11 @@ watch(mode, async (next) => {
 												}}
 											</div>
 											<h3
-												class="m-0 mb-4 font-fraunces text-xl font-normal leading-[1.25] text-[#e8ecf3] [&_em]:italic [&_em]:text-[#e8a951]"
+												class="m-0 mb-4 font-fraunces text-xl font-normal leading-[1.25] text-foreground [&_em]:italic [&_em]:text-[#e8a951]"
 												v-html="bq.explanationTitle || ''"
 											/>
 											<div
-												class="font-fraunces text-[15px] leading-[1.65] text-[#b4becf] [&_p]:m-0 [&_p]:mb-3 [&_p:last-child]:mb-0 [&_strong]:font-semibold [&_strong]:text-[#e8ecf3]"
+												class="font-fraunces text-[15px] leading-[1.65] text-muted-foreground [&_p]:m-0 [&_p]:mb-3 [&_p:last-child]:mb-0 [&_strong]:font-semibold [&_strong]:text-foreground"
 												v-html="bq.explanation || ''"
 											/>
 										</div>
@@ -679,7 +680,7 @@ watch(mode, async (next) => {
 */
 .story-explanation-scroll {
 	scrollbar-width: thin;
-	scrollbar-color: #222c3e transparent;
+	scrollbar-color: var(--border) transparent;
 }
 .story-explanation-scroll::-webkit-scrollbar {
 	width: 6px;
@@ -688,10 +689,10 @@ watch(mode, async (next) => {
 	background: transparent;
 }
 .story-explanation-scroll::-webkit-scrollbar-thumb {
-	background: #222c3e;
+	background: var(--border);
 	border-radius: 4px;
 }
 .story-explanation-scroll::-webkit-scrollbar-thumb:hover {
-	background: #6b7689;
+	background: var(--muted-foreground);
 }
 </style>

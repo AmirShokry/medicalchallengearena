@@ -64,7 +64,7 @@ function onChildEnlarge(payload: { src: string; caption: string }) {
 </script>
 
 <template>
-	<div class="story-rich-text font-fraunces text-[16.5px] leading-[1.65] text-[#b4becf]">
+	<div class="story-rich-text font-fraunces text-[16.5px] leading-[1.65] text-muted-foreground">
 		<template v-for="item in items" :key="item.key">
 			<div
 				v-if="item.kind === 'text'"
@@ -107,7 +107,7 @@ function onChildEnlarge(payload: { src: string; caption: string }) {
 	margin: 0 0 20px;
 }
 .story-rich-text :deep(strong) {
-	color: #e8ecf3;
+	color: var(--foreground);
 	font-weight: 600;
 }
 .story-rich-text :deep(em) {
@@ -117,7 +117,7 @@ function onChildEnlarge(payload: { src: string; caption: string }) {
 .story-rich-text :deep(.highlight) {
 	background: linear-gradient(180deg, transparent 60%, rgba(232, 169, 81, 0.2) 60%);
 	padding: 0 2px;
-	color: #e8ecf3;
+	color: var(--foreground);
 }
 .story-rich-text :deep(.pathway-list) {
 	list-style: none;
@@ -128,11 +128,11 @@ function onChildEnlarge(payload: { src: string; caption: string }) {
 .story-rich-text :deep(.pathway-list li) {
 	position: relative;
 	padding: 12px 0 12px 52px;
-	border-bottom: 1px solid #222c3e;
+	border-bottom: 1px solid var(--border);
 	font-family: "Fraunces", serif;
 	font-size: 16px;
 	line-height: 1.5;
-	color: #b4becf;
+	color: var(--muted-foreground);
 }
 .story-rich-text :deep(.pathway-list li:last-child) {
 	border-bottom: none;
@@ -150,7 +150,7 @@ function onChildEnlarge(payload: { src: string; caption: string }) {
 	letter-spacing: 0.05em;
 }
 .story-rich-text :deep(.pathway-list li strong) {
-	color: #e8ecf3;
+	color: var(--foreground);
 	font-weight: 600;
 }
 </style>

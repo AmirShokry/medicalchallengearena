@@ -37,7 +37,7 @@ function selectSystem(name: string) {
 </script>
 
 <template>
-	<div class="min-h-screen bg-[#0a0e1a] text-[#e8ecf3]">
+	<div class="min-h-screen bg-background text-foreground">
 		<header class="px-6 pt-10 pb-6 md:px-12">
 			<div class="mb-2 font-mono text-[10px] font-medium uppercase tracking-[0.4em] text-[#e8a951]">
 				Story Mode
@@ -48,7 +48,7 @@ function selectSystem(name: string) {
 				Pick a <em class="italic font-normal text-[#e8a951]">system</em>
 			</h1>
 			<p
-				class="mt-2 max-w-[600px] font-fraunces text-base italic leading-relaxed text-[#6b7689]"
+				class="mt-2 max-w-[600px] font-fraunces text-base italic leading-relaxed text-muted-foreground"
 			>
 				Each system is a guided narrative — chapters of stations that build a
 				concept one step at a time, then test it with a question.
@@ -61,7 +61,7 @@ function selectSystem(name: string) {
 				<div
 					v-for="i in 3"
 					:key="i"
-					class="h-[180px] animate-pulse rounded-2xl border border-[#222c3e] bg-[#111826]"
+					class="h-[180px] animate-pulse rounded-2xl border border-border bg-card"
 				/>
 			</div>
 		</div>
@@ -69,7 +69,7 @@ function selectSystem(name: string) {
 		<!-- Empty state -->
 		<div
 			v-else-if="!systems || systems.length === 0"
-			class="px-6 py-20 text-center text-[#6b7689] md:px-12"
+			class="px-6 py-20 text-center text-muted-foreground md:px-12"
 		>
 			No story-mode systems are available yet. Check back soon.
 		</div>
@@ -80,7 +80,7 @@ function selectSystem(name: string) {
 				<button
 					v-for="system in systems"
 					:key="system.name"
-					class="group relative flex flex-col items-start gap-4 overflow-hidden rounded-2xl border border-[#222c3e] bg-[#111826] p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:border-[#e8a951] hover:[box-shadow:0_8px_28px_rgba(232,169,81,0.15)]"
+					class="group relative flex flex-col items-start gap-4 overflow-hidden rounded-2xl border border-border bg-card p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:border-[#e8a951] hover:[box-shadow:0_8px_28px_rgba(232,169,81,0.15)]"
 					@click="selectSystem(system.name)"
 				>
 					<!-- Top accent bar -->
@@ -99,16 +99,16 @@ function selectSystem(name: string) {
 					</div>
 					<div class="flex-1">
 						<div
-							class="mb-1 font-fraunces text-xl font-medium leading-tight text-[#e8ecf3]"
+							class="mb-1 font-fraunces text-xl font-medium leading-tight text-foreground"
 						>
 							{{ system.displayName }}
 						</div>
-						<div class="font-fraunces text-sm italic text-[#6b7689]">
+						<div class="font-fraunces text-sm italic text-muted-foreground">
 							{{ system.title }}
 						</div>
 					</div>
 					<div
-						class="flex w-full items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-[#b4becf]"
+						class="flex w-full items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-foreground"
 					>
 						<span>{{ system.stationCount }} stations</span>
 						<span class="flex items-center gap-1 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-[#e8a951]">

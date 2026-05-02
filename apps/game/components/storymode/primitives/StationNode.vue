@@ -53,10 +53,10 @@ function onClick() {
 				class="relative z-[3] flex h-[38px] w-[38px] items-center justify-center rounded-full border-2 font-fraunces text-[13px] font-medium transition-all duration-300"
 				:class="[
 					status === 'available'
-						? 'bg-[#111826] border-[#e8a951] text-[#e8a951] [box-shadow:0_0_16px_rgba(232,169,81,0.3)]'
+						? 'bg-card border-[#e8a951] text-[#e8a951] [box-shadow:0_0_16px_rgba(232,169,81,0.3)]'
 						: status === 'completed'
-							? 'bg-[#e8a951] border-[#e8a951] text-[#0a0e1a] [box-shadow:0_0_14px_rgba(232,169,81,0.4)]'
-							: 'bg-[#050811] border-[#222c3e] border-dashed text-[#3a4358] cursor-not-allowed',
+							? 'bg-[#e8a951] border-[#e8a951] text-background [box-shadow:0_0_14px_rgba(232,169,81,0.4)]'
+							: 'bg-background border-border border-dashed text-muted-foreground cursor-not-allowed',
 					status !== 'locked' ? 'hover:scale-[1.08]' : '',
 				]"
 			>
@@ -71,7 +71,7 @@ function onClick() {
 					v-else
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 24 24"
-					class="h-2.5 w-2.5 fill-[#3a4358]"
+					class="h-2.5 w-2.5 fill-muted-foreground"
 					aria-hidden="true"
 				>
 					<path d="M17 8V7a5 5 0 0 0-10 0v1H5v13h14V8h-2zm-8-1a3 3 0 1 1 6 0v1H9V7z" />
@@ -83,10 +83,10 @@ function onClick() {
 			class="mb-0.5 font-mono text-[8px] tracking-[0.2em] uppercase transition-colors duration-300"
 			:class="
 				status === 'locked'
-					? 'text-[#3a4358]'
+					? 'text-muted-foreground'
 					: status === 'available'
-						? 'text-[#e8ecf3]'
-						: 'text-[#6b7689]'
+						? 'text-foreground'
+						: 'text-muted-foreground'
 			"
 		>
 			{{ label }}
@@ -95,12 +95,12 @@ function onClick() {
 			class="mb-[3px] font-fraunces text-[12px] font-medium leading-[1.25] transition-colors duration-300"
 			:class="
 				status === 'locked'
-					? 'text-[#3a4358]'
+					? 'text-muted-foreground'
 					: status === 'available'
 						? 'text-[#e8a951]'
 						: status === 'completed'
-							? 'text-[#e8ecf3]'
-							: 'text-[#b4becf]'
+							? 'text-foreground'
+							: 'text-muted-foreground'
 			"
 		>
 			{{ title }}
@@ -110,10 +110,10 @@ function onClick() {
 			class="px-0.5 font-fraunces text-[10.5px] italic font-normal leading-[1.25] transition-colors duration-300"
 			:class="
 				status === 'locked'
-					? 'text-[#3a4358]'
+					? 'text-muted-foreground'
 					: status === 'available'
-						? 'text-[#b4becf]'
-						: 'text-[#6b7689]'
+						? 'text-muted-foreground'
+						: 'text-muted-foreground/80'
 			"
 		>
 			{{ subtitle }}

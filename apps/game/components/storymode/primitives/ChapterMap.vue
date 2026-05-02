@@ -77,30 +77,30 @@ const chapterLabel = computed(
 
 <template>
 	<section
-		class="relative z-[5] border-b border-[#222c3e] py-[22px] pb-6"
-		:class="{ 'pointer-events-none opacity-50': locked }"
+		class="relative z-[5] border-b border-border py-[22px] pb-6"
+		:class="{ 'pointer-events-none opacity-70 dark:opacity-50': locked }"
 	>
 		<!-- Chapter intro -->
 		<div class="relative max-w-[920px] px-12 pt-3 pb-[18px]">
 			<div
-				class="mb-1 font-fraunces text-[clamp(24px,2.8vw,32px)] font-normal leading-[1.15] tracking-[-0.01em] text-[#e8ecf3]"
+				class="mb-1 font-fraunces text-[clamp(24px,2.8vw,32px)] font-normal leading-[1.15] tracking-[-0.01em] text-foreground"
 			>
 				{{ chapterLabel }}
 			</div>
 			<p
 				v-if="chapter.subtitle"
-				class="m-0 font-fraunces text-[15px] italic font-normal leading-[1.5] text-[#6b7689]"
+				class="m-0 font-fraunces text-[15px] italic font-normal leading-[1.5] text-muted-foreground"
 			>
 				{{ chapter.subtitle }}
 			</p>
 			<div
 				v-if="locked"
-				class="mt-3 inline-flex items-center gap-2 rounded-[3px] border border-[#222c3e] bg-[#111826] px-3 py-1.5 font-mono text-[9px] tracking-[0.25em] uppercase text-[#6b7689]"
+				class="mt-3 inline-flex items-center gap-2 rounded-[3px] border border-border bg-card px-3 py-1.5 font-mono text-[9px] tracking-[0.25em] uppercase text-muted-foreground"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 24 24"
-					class="h-2.5 w-2.5 fill-[#6b7689]"
+					class="h-2.5 w-2.5 fill-muted-foreground"
 					aria-hidden="true"
 				>
 					<path d="M17 8V7a5 5 0 0 0-10 0v1H5v13h14V8h-2zm-8-1a3 3 0 1 1 6 0v1H9V7z" />
@@ -110,7 +110,7 @@ const chapterLabel = computed(
 		</div>
 		<div
 			v-if="chapter.mapHint"
-			class="mb-2 flex items-center gap-3.5 px-12 font-mono text-[9px] tracking-[0.3em] uppercase text-[#6b7689] before:content-[''] after:h-px after:flex-1 after:bg-[linear-gradient(90deg,#222c3e_0%,transparent_100%)]"
+			class="mb-2 flex items-center gap-3.5 px-12 font-mono text-[9px] tracking-[0.3em] uppercase text-muted-foreground before:content-[''] after:h-px after:flex-1 after:bg-[linear-gradient(90deg,#222c3e_0%,transparent_100%)]"
 		>
 			{{ chapter.mapHint }}
 		</div>
@@ -167,7 +167,7 @@ const chapterLabel = computed(
 */
 .story-map-scroll {
 	scrollbar-width: thin;
-	scrollbar-color: #222c3e transparent;
+	scrollbar-color: var(--border) transparent;
 }
 .story-map-scroll::-webkit-scrollbar {
 	height: 6px;
@@ -176,10 +176,10 @@ const chapterLabel = computed(
 	background: transparent;
 }
 .story-map-scroll::-webkit-scrollbar-thumb {
-	background: #222c3e;
+	background: var(--border);
 	border-radius: 4px;
 }
 .story-map-scroll::-webkit-scrollbar-thumb:hover {
-	background: #6b7689;
+	background: var(--muted-foreground);
 }
 </style>

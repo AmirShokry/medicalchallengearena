@@ -404,9 +404,9 @@ watch(
 </script>
 
 <template>
-	<div class="fixed inset-0 z-[10000] flex flex-col bg-[#0a0e1a] select-none">
+	<div class="fixed inset-0 z-[10000] flex flex-col bg-background select-none">
 		<!-- Top progress bar -->
-		<div class="relative h-[3px] flex-none overflow-hidden bg-[#222c3e]">
+		<div class="relative h-[3px] flex-none overflow-hidden bg-muted">
 			<div
 				class="absolute inset-y-0 left-0 bg-[linear-gradient(90deg,#b87b24,#e8a951_50%,#f4c97e)] [box-shadow:0_0_10px_rgba(232,169,81,0.5)] transition-[width] duration-500"
 				:style="{ width: `${progressPct}%` }"
@@ -421,9 +421,9 @@ watch(
 
 		<!-- Header -->
 		<header
-			class="flex flex-none items-center gap-3.5 border-b border-[#222c3e] bg-[#050811] px-5 py-3 font-inter"
+			class="flex flex-none items-center gap-3.5 border-b border-border bg-background px-5 py-3 font-inter"
 		>
-			<div class="flex-none text-[10px] font-medium uppercase tracking-[2px] text-[#6b7689]">
+			<div class="flex-none text-[10px] font-medium uppercase tracking-[2px] text-muted-foreground">
 				CH <strong class="font-bold text-[#e8a951]">{{ String(chapterNum).padStart(2, "0") }}</strong>
 				· {{ station.label.replace("Station ", "S") }}
 			</div>
@@ -443,13 +443,13 @@ watch(
 							? 'bg-[#e8a951] scale-[1.4] [box-shadow:0_0_8px_rgba(232,169,81,0.6)]'
 							: displayedStepNumber !== null && step.n < displayedStepNumber
 								? 'bg-[#e8a951] opacity-55'
-								: 'bg-[#222c3e]'
+								: 'bg-muted'
 					"
 				/>
 			</div>
 			<div class="flex flex-none items-center gap-1.5">
 				<button
-					class="flex h-[30px] w-auto cursor-pointer items-center gap-1.5 rounded-md border border-[#e8a951] bg-[#111826] px-3 text-[11px] font-bold tracking-[0.5px] text-[#e8a951] sm:hidden"
+					class="flex h-[30px] w-auto cursor-pointer items-center gap-1.5 rounded-md border border-[#e8a951] bg-card px-3 text-[11px] font-bold tracking-[0.5px] text-[#e8a951] sm:hidden"
 					@click="kpOpen = !kpOpen"
 				>
 					📋 <span>{{ maxStepReached }}</span>
@@ -466,7 +466,7 @@ watch(
 					:class="
 						voiceEnabled
 							? 'border-[#e8a951] bg-[#e8a951] text-[#0a0e1a] hover:bg-[#c08537] hover:border-[#c08537]'
-							: 'border-[#222c3e] bg-[#111826] text-[#b4becf] hover:border-[#6b7689] hover:bg-[#1a2030] hover:text-[#e8ecf3]'
+							: 'border-border bg-card text-muted-foreground hover:border-muted-foreground hover:bg-secondary hover:text-foreground'
 					"
 					:title="voiceEnabled ? 'Mute narration' : 'Unmute narration'"
 					:aria-pressed="voiceEnabled"
@@ -475,14 +475,14 @@ watch(
 					{{ voiceEnabled ? "🔊" : "🔇" }}
 				</button>
 				<button
-					class="flex h-[30px] w-[30px] cursor-pointer items-center justify-center rounded-md border border-[#222c3e] bg-[#111826] text-[13px] text-[#b4becf] transition-all duration-200 hover:border-[#6b7689] hover:bg-[#1a2030] hover:text-[#e8ecf3]"
+					class="flex h-[30px] w-[30px] cursor-pointer items-center justify-center rounded-md border border-border bg-card text-[13px] text-muted-foreground transition-all duration-200 hover:border-muted-foreground hover:bg-secondary hover:text-foreground"
 					title="Restart"
 					@click="start"
 				>
 					↻
 				</button>
 				<button
-					class="flex h-[30px] w-[30px] cursor-pointer items-center justify-center rounded-md border border-[#222c3e] bg-[#111826] text-[13px] text-[#b4becf] transition-all duration-200 hover:border-[#6b7689] hover:bg-[#1a2030] hover:text-[#e8ecf3]"
+					class="flex h-[30px] w-[30px] cursor-pointer items-center justify-center rounded-md border border-border bg-card text-[13px] text-muted-foreground transition-all duration-200 hover:border-muted-foreground hover:bg-secondary hover:text-foreground"
 					title="Close"
 					@click="close"
 				>
@@ -504,7 +504,7 @@ watch(
 				<div
 					v-if="stageDiagram"
 					ref="stageWrap"
-					class="relative flex h-[42%] min-h-[240px] flex-none items-center justify-center overflow-hidden border-b border-[#222c3e] bg-[#050811] p-2.5"
+					class="relative flex h-[42%] min-h-[240px] flex-none items-center justify-center overflow-hidden border-b border-border bg-background p-2.5"
 				>
 					<StoryDiagram :src="stageDiagram.src" mode="stage" />
 					<!--
@@ -520,10 +520,10 @@ watch(
 				</div>
 
 				<!-- Step zone -->
-				<div class="relative flex min-h-0 flex-1 flex-col overflow-hidden bg-[#0a0e1a]">
+				<div class="relative flex min-h-0 flex-1 flex-col overflow-hidden bg-background">
 					<!-- Tap-through step card -->
 					<div
-						class="relative flex flex-1 cursor-pointer flex-col items-center justify-center overflow-y-auto px-7 pt-6 pb-4 text-[#e8ecf3] transition-colors duration-200 hover:bg-white/[0.02]"
+						class="relative flex flex-1 cursor-pointer flex-col items-center justify-center overflow-y-auto px-7 pt-6 pb-4 text-foreground transition-colors duration-200 hover:bg-white/[0.02]"
 						@click="next"
 					>
 						<div
@@ -537,7 +537,7 @@ watch(
 								{{ String(totalSteps).padStart(2, "0") }}
 							</div>
 							<div
-								class="mb-3 font-fraunces text-[clamp(22px,4vw,30px)] font-normal leading-[1.3] text-[#e8ecf3] [&_strong]:font-semibold [&_strong]:text-[#e8a951] [&_em]:not-italic [&_em]:text-[#e8a951]"
+								class="mb-3 font-fraunces text-[clamp(22px,4vw,30px)] font-normal leading-[1.3] text-foreground [&_strong]:font-semibold [&_strong]:text-[#e8a951] [&_em]:not-italic [&_em]:text-[#e8a951]"
 								v-html="currentStep.text"
 							/>
 							<!--
@@ -548,7 +548,7 @@ watch(
 							-->
 							<div
 								v-if="currentStep.subtext"
-								class="text-[clamp(14px,2.3vw,16px)] italic leading-[1.55] text-[#b4becf] [&_strong]:font-semibold [&_strong]:text-[#e8ecf3] [&_em]:italic [&_em]:text-[#e8a951]"
+								class="text-[clamp(14px,2.3vw,16px)] italic leading-[1.55] text-muted-foreground [&_strong]:font-semibold [&_strong]:text-foreground [&_em]:italic [&_em]:text-[#e8a951]"
 								v-html="currentStep.subtext"
 							/>
 						</div>
@@ -570,7 +570,7 @@ watch(
 							⚡ Quick check
 						</div>
 						<p
-							class="mb-6 max-w-[560px] font-fraunces text-[clamp(20px,3.8vw,26px)] leading-[1.35] text-[#e8ecf3]"
+							class="mb-6 max-w-[560px] font-fraunces text-[clamp(20px,3.8vw,26px)] leading-[1.35] text-foreground"
 						>
 							{{ activeQuiz.question }}
 						</p>
@@ -579,21 +579,21 @@ watch(
 								v-for="(c, i) in activeQuiz.choices"
 								:key="i"
 								type="button"
-								class="flex w-full max-w-[380px] cursor-pointer items-center gap-3 rounded-lg border bg-[#111826] px-5 py-3 text-left font-inter text-[14px] font-semibold transition-all duration-200 disabled:cursor-not-allowed"
+								class="flex w-full max-w-[380px] cursor-pointer items-center gap-3 rounded-lg border bg-card px-5 py-3 text-left font-inter text-[14px] font-semibold transition-all duration-200 disabled:cursor-not-allowed"
 								:class="[
 									quizPickedIdx === null
-										? 'border-[#222c3e] text-[#e8ecf3] hover:-translate-y-px hover:border-[#e8a951] hover:bg-[#1a2030]'
+										? 'border-border text-foreground hover:-translate-y-px hover:border-[#e8a951] hover:bg-secondary'
 										: c.correct
 											? 'border-[#4fb8a8] bg-[rgba(79,184,168,0.15)] text-[#4fb8a8]'
 											: i === quizPickedIdx
 												? 'border-[#d14859] bg-[rgba(209,72,89,0.1)] text-[#d14859]'
-												: 'border-[#222c3e] text-[#e8ecf3]',
+												: 'border-border text-foreground',
 								]"
 								:disabled="quizPickedIdx !== null"
 								@click="pickQuizChoice(i)"
 							>
 								<span
-									class="rounded-[4px] bg-[#050811] px-2 py-1 font-jetbrains text-[11px] font-bold text-[#e8a951]"
+									class="rounded-[4px] bg-background px-2 py-1 font-jetbrains text-[11px] font-bold text-[#e8a951]"
 								>
 									{{ String.fromCharCode(65 + i) }}
 								</span>
@@ -601,7 +601,7 @@ watch(
 							</button>
 						</div>
 						<p
-							class="mt-4 min-h-9 max-w-[500px] text-[14px] italic text-[#b4becf]"
+							class="mt-4 min-h-9 max-w-[500px] text-[14px] italic text-muted-foreground"
 						>
 							{{ quizFeedback }}
 						</p>
@@ -618,17 +618,17 @@ watch(
 					<!-- Transition overlay -->
 					<div
 						v-if="showTransition"
-						class="absolute inset-0 z-[10] flex flex-col items-center justify-center bg-[#0a0e1a] p-8 text-center [animation:storyFadeIn_0.3s_ease]"
+						class="absolute inset-0 z-[10] flex flex-col items-center justify-center bg-background p-8 text-center [animation:storyFadeIn_0.3s_ease]"
 					>
 						<div class="mb-3.5 text-[10px] font-semibold tracking-[3px] uppercase text-[#4fb8a8]">
 							You've got the mechanism
 						</div>
 						<h1
-							class="m-0 mb-[18px] max-w-[700px] font-fraunces text-[clamp(32px,6vw,48px)] font-normal leading-[1.15] text-[#e8ecf3]"
+							class="m-0 mb-[18px] max-w-[700px] font-fraunces text-[clamp(32px,6vw,48px)] font-normal leading-[1.15] text-foreground"
 						>
 							Ready to see it in <em class="italic text-[#e8a951]">a patient</em>?
 						</h1>
-						<p class="mb-7 max-w-[560px] text-[clamp(16px,2.8vw,19px)] italic font-normal leading-[1.5] text-[#b4becf]">
+						<p class="mb-7 max-w-[560px] text-[clamp(16px,2.8vw,19px)] italic font-normal leading-[1.5] text-muted-foreground">
 							That's the full picture. Now see the key prose and the explanation for
 							the question you answered.
 						</p>
@@ -642,16 +642,16 @@ watch(
 
 					<!-- Footer -->
 					<div
-						class="flex flex-none items-center justify-between border-t border-[#222c3e] bg-[#0a0e1a] px-5 py-3"
+						class="flex flex-none items-center justify-between border-t border-border bg-background px-5 py-3"
 					>
 						<button
-							class="flex cursor-pointer items-center gap-1.5 rounded-md border border-[#222c3e] bg-transparent px-3.5 py-1.5 font-inter text-[12px] font-medium tracking-[0.5px] text-[#b4becf] transition-all duration-200 hover:border-[#e8a951] hover:text-[#e8a951] disabled:cursor-not-allowed disabled:opacity-25"
+							class="flex cursor-pointer items-center gap-1.5 rounded-md border border-border bg-transparent px-3.5 py-1.5 font-inter text-[12px] font-medium tracking-[0.5px] text-muted-foreground transition-all duration-200 hover:border-[#e8a951] hover:text-[#e8a951] disabled:cursor-not-allowed disabled:opacity-25"
 							:disabled="!canGoBack || showTransition"
 							@click="prev"
 						>
 							<span>←</span><span>Back</span>
 						</button>
-						<div class="flex items-center gap-2 text-[11px] uppercase tracking-[2px] text-[#6b7689]">
+						<div class="flex items-center gap-2 text-[11px] uppercase tracking-[2px] text-muted-foreground">
 							<span>Tap to continue</span>
 							<span class="text-[14px] [animation:storyChevPulse_1.8s_ease-in-out_infinite]">→</span>
 						</div>
@@ -661,36 +661,36 @@ watch(
 
 			<!-- Knowledge panel -->
 			<aside
-				class="flex w-[300px] flex-none flex-col overflow-hidden border-l border-[#222c3e] bg-[#050811] max-md:fixed max-md:right-0 max-md:top-0 max-md:bottom-0 max-md:z-[45] max-md:w-[80%] max-md:max-w-[340px] max-md:transition-transform max-md:duration-300 max-md:[box-shadow:-8px_0_24px_rgba(0,0,0,0.4)]"
+				class="flex w-[300px] flex-none flex-col overflow-hidden border-l border-border bg-background max-md:fixed max-md:right-0 max-md:top-0 max-md:bottom-0 max-md:z-[45] max-md:w-[80%] max-md:max-w-[340px] max-md:transition-transform max-md:duration-300 max-md:[box-shadow:-8px_0_24px_rgba(0,0,0,0.4)]"
 				:class="{
 					'max-md:translate-x-full': !kpOpen,
 					'max-md:translate-x-0': kpOpen,
 				}"
 			>
-				<div class="border-b border-[#222c3e] bg-[#111826] px-5 py-4">
+				<div class="border-b border-border bg-card px-5 py-4">
 					<div class="mb-1 text-[10px] font-semibold tracking-[2px] uppercase text-[#e8a951]">
 						What you're building
 					</div>
-					<div class="font-mono text-[12px] tracking-[1px] text-[#b4becf]">
-						<strong class="font-bold text-[#e8ecf3]">{{ maxStepReached }}</strong>
+					<div class="font-mono text-[12px] tracking-[1px] text-muted-foreground">
+						<strong class="font-bold text-foreground">{{ maxStepReached }}</strong>
 						/ <span>{{ totalSteps }}</span> captured
 					</div>
 				</div>
 				<div class="flex flex-1 flex-col gap-1.5 overflow-y-auto px-3.5 py-3">
 					<div
 						v-if="maxStepReached === 0"
-						class="px-5 py-5 text-center text-[12px] italic leading-[1.5] text-[#6b7689]"
+						class="px-5 py-5 text-center text-[12px] italic leading-[1.5] text-muted-foreground"
 					>
 						Each step adds one key insight to your map.
 					</div>
 					<div
 						v-for="step in stepItems.filter((s) => s.n <= maxStepReached)"
 						:key="step.n"
-						class="flex items-start gap-2.5 rounded-lg border bg-[#111826] px-3 py-2.5 transition-all duration-300 [animation:storySlideInRight_0.4s_cubic-bezier(0.25,0.1,0.25,1)]"
+						class="flex items-start gap-2.5 rounded-lg border bg-card px-3 py-2.5 transition-all duration-300 [animation:storySlideInRight_0.4s_cubic-bezier(0.25,0.1,0.25,1)]"
 						:class="
 							step.n === displayedStepNumber
 								? 'border-[#e8a951] bg-[rgba(232,169,81,0.08)] [box-shadow:0_0_0_1px_rgba(232,169,81,0.2)]'
-								: 'border-[#222c3e]'
+								: 'border-border'
 						"
 					>
 						<div
@@ -700,7 +700,7 @@ watch(
 									? 'bg-[#e8a951] text-[#0a0e1a]'
 									: step.n < (displayedStepNumber ?? 0)
 										? 'bg-[#4fb8a8] text-[#0a0e1a]'
-										: 'bg-[#222c3e] text-[#b4becf]'
+										: 'bg-muted text-muted-foreground'
 							"
 						>
 							{{ step.n === displayedStepNumber ? step.n : "✓" }}
@@ -709,8 +709,8 @@ watch(
 							class="text-[13px] leading-[1.4] transition-colors duration-300"
 							:class="
 								step.n === displayedStepNumber
-									? 'text-[#e8ecf3] font-medium'
-									: 'text-[#b4becf]'
+									? 'text-foreground font-medium'
+									: 'text-muted-foreground'
 							"
 						>
 							{{ step.insight || "" }}
@@ -718,7 +718,7 @@ watch(
 					</div>
 				</div>
 				<div
-					class="flex justify-between border-t border-[#222c3e] bg-[#111826] px-5 py-3 text-[10px] uppercase tracking-[1px] text-[#6b7689]"
+					class="flex justify-between border-t border-border bg-card px-5 py-3 text-[10px] uppercase tracking-[1px] text-muted-foreground"
 				>
 					<span>Knowledge map</span>
 					<span

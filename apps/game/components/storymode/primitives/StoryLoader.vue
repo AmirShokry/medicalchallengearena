@@ -27,7 +27,7 @@ withDefaults(defineProps<Props>(), {
 		class="flex flex-col items-center justify-center gap-4 text-center"
 		:class="
 			variant === 'fill'
-				? 'absolute inset-0 z-10 bg-[#0a0e1a]/80 backdrop-blur-sm'
+				? 'absolute inset-0 z-10 bg-background/80 backdrop-blur-sm'
 				: 'py-16'
 		"
 	>
@@ -44,7 +44,7 @@ withDefaults(defineProps<Props>(), {
 		</div>
 		<div
 			v-if="label"
-			class="font-jetbrains text-[10px] tracking-[0.4em] uppercase text-[#6b7689]"
+			class="font-jetbrains text-[10px] tracking-[0.4em] uppercase text-muted-foreground"
 		>
 			{{ label }}
 		</div>

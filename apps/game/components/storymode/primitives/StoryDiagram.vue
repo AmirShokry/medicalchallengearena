@@ -74,12 +74,12 @@ function onKey(e: KeyboardEvent) {
 		v-if="mode === 'inline'"
 		role="button"
 		tabindex="0"
-		class="group relative my-7 cursor-zoom-in rounded-[10px] border border-[#222c3e] bg-[#050811] px-3.5 pt-5 pb-2.5 transition-[border-color,box-shadow] duration-200 hover:border-[#c08537] hover:[box-shadow:inset_0_0_0_1px_#c08537]"
+		class="group relative my-7 cursor-zoom-in rounded-[10px] border border-border bg-background px-3.5 pt-5 pb-2.5 transition-[border-color,box-shadow] duration-200 hover:border-[#c08537] hover:[box-shadow:inset_0_0_0_1px_#c08537]"
 		@click="onClick"
 		@keydown="onKey"
 	>
 		<figcaption
-			class="pointer-events-none absolute top-2.5 right-3.5 text-[10px] tracking-[1px] uppercase text-[#6b7689] opacity-0 transition-opacity duration-200 group-hover:opacity-90"
+			class="pointer-events-none absolute top-2.5 right-3.5 text-[10px] tracking-[1px] uppercase text-muted-foreground opacity-0 transition-opacity duration-200 group-hover:opacity-90"
 		>
 			↗ click to enlarge
 		</figcaption>
@@ -92,7 +92,7 @@ function onKey(e: KeyboardEvent) {
 		/>
 		<div
 			v-if="caption"
-			class="mt-2 text-center text-[12px] italic leading-[1.5] text-[#6b7689]"
+			class="mt-2 text-center text-[12px] italic leading-[1.5] text-muted-foreground"
 		>
 			{{ caption }}
 		</div>
@@ -108,7 +108,7 @@ function onKey(e: KeyboardEvent) {
 		/>
 		<div
 			v-if="caption"
-			class="mt-4 text-center text-[13px] italic leading-[1.6] text-[#6b7689]"
+			class="mt-4 text-center text-[13px] italic leading-[1.6] text-muted-foreground"
 		>
 			{{ caption }}
 		</div>

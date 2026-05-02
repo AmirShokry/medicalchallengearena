@@ -21,7 +21,7 @@ import type { StorySystem } from "@/composables/storymode/types";
 // Vite resolves the asset URL at build time so the file under
 // `apps/game/assets/images/logo.png` is fingerprinted and served from
 // `_nuxt/...` at runtime.
-import logoUrl from "~/assets/images/logo.png";
+import logoUrl from "~/assets/images/logo.webp";
 
 definePageMeta({
 	layout: "blank",
@@ -93,7 +93,7 @@ function resetProgress() {
 
 <template>
 	<div
-		class="min-h-screen bg-[#0a0e1a] font-inter text-[#e8ecf3] [background-attachment:fixed] [background-image:radial-gradient(ellipse_80%_60%_at_20%_20%,rgba(232,169,81,0.04),transparent),radial-gradient(ellipse_60%_80%_at_80%_80%,rgba(209,72,89,0.04),transparent)]"
+		class="min-h-screen bg-background font-inter text-foreground [background-attachment:fixed] [background-image:radial-gradient(ellipse_80%_60%_at_20%_20%,rgba(232,169,81,0.04),transparent),radial-gradient(ellipse_60%_80%_at_80%_80%,rgba(209,72,89,0.04),transparent)]"
 	>
 		<!-- Loading state -->
 		<StoryLoader v-if="pending" label="Loading system" class="min-h-screen" />
@@ -101,7 +101,7 @@ function resetProgress() {
 		<!-- Missing system -->
 		<div
 			v-else-if="!system"
-			class="px-6 py-20 text-center text-[#6b7689] md:px-12"
+			class="px-6 py-20 text-center text-muted-foreground md:px-12"
 		>
 			This system is not available.
 			<NuxtLink to="/game/story/solo" class="text-[#e8a951] underline">
@@ -142,7 +142,7 @@ function resetProgress() {
 					<div>
 						<NuxtLink
 							to="/game/story/solo"
-							class="mb-3 inline-block font-jetbrains text-[10px] tracking-[0.3em] uppercase text-[#6b7689] hover:text-[#e8a951]"
+							class="mb-3 inline-block font-jetbrains text-[10px] tracking-[0.3em] uppercase text-muted-foreground hover:text-[#e8a951]"
 						>
 							← Story mode
 						</NuxtLink>
@@ -157,12 +157,12 @@ function resetProgress() {
 							<img
 								:src="logoUrl"
 								alt="MCA logo"
-								class="h-13 w-auto opacity-95 [filter:drop-shadow(0_2px_8px_rgba(232,169,81,0.12))] max-md:h-10"
+								class="h-8 w-auto  max-md:h-10"
 								draggable="false"
 							/>
 							<div class="flex flex-col gap-0.5 leading-tight">
 								<div
-									class="font-inter text-[18px] font-extrabold tracking-[0.04em] text-[#e8ecf3] max-md:text-[15px]"
+									class="font-inter text-[18px] font-extrabold tracking-[0.04em] text-foreground max-md:text-[15px]"
 								>
 									Medical<span class="text-[#e8a951]">Challenge</span>Arena
 								</div>
@@ -174,7 +174,7 @@ function resetProgress() {
 							</div>
 						</div>
 						<h1
-							class="font-fraunces text-[34px] font-light leading-none tracking-[-0.02em] text-[#e8ecf3]"
+							class="font-fraunces text-[34px] font-light leading-none tracking-[-0.02em] text-foreground"
 						>
 							{{ system.title.split("·")[0] }}
 							<em class="italic font-normal text-[#e8a951]">
@@ -187,19 +187,19 @@ function resetProgress() {
 					</div>
 					<div class="text-right font-jetbrains">
 						<div
-							class="mb-2 text-[10px] tracking-[0.3em] uppercase text-[#6b7689]"
+							class="mb-2 text-[10px] tracking-[0.3em] uppercase text-muted-foreground"
 						>
 							Total Progress
 						</div>
 						<div
-							class="font-fraunces text-2xl font-light leading-none text-[#e8ecf3]"
+							class="font-fraunces text-2xl font-light leading-none text-foreground"
 						>
 							<span class="text-[#e8a951]">
 								{{ progress.totalCompleted.value }}
 							</span>
 							/ {{ progress.totalStations.value }}
 						</div>
-						<div class="ml-auto mt-2.5 h-0.5 w-40 overflow-hidden bg-[#222c3e]">
+						<div class="ml-auto mt-2.5 h-0.5 w-40 overflow-hidden bg-muted">
 							<div
 								class="h-full bg-[#e8a951] [box-shadow:0_0_12px_rgba(232,169,81,0.4)] transition-[width] duration-700"
 								:style="{
@@ -214,7 +214,7 @@ function resetProgress() {
 							/>
 						</div>
 						<button
-							class="mt-3 cursor-pointer rounded border border-[#222c3e] bg-transparent px-2.5 py-1 font-inter text-[10px] tracking-[0.15em] uppercase text-[#6b7689] transition-all duration-200 hover:border-[#d14859] hover:bg-[rgba(209,72,89,0.08)] hover:text-[#d14859]"
+							class="mt-3 cursor-pointer rounded border border-border bg-transparent px-2.5 py-1 font-inter text-[10px] tracking-[0.15em] uppercase text-muted-foreground transition-all duration-200 hover:border-[#d14859] hover:bg-[rgba(209,72,89,0.08)] hover:text-[#d14859]"
 							title="Reset all progress (cannot be undone)"
 							@click="resetProgress"
 						>

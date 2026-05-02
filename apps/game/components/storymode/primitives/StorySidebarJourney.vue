@@ -46,7 +46,7 @@ function onChapterClick(ch: { num: number }) {
 
 <template>
 	<aside
-		class="story-journey-sidebar fixed top-4 bottom-4 left-4 z-[80] flex w-[280px] flex-col overflow-hidden rounded-xl border border-[#222c3e] bg-[linear-gradient(180deg,rgba(22,29,48,0.92)_0%,rgba(10,14,26,0.92)_100%)] px-4 py-[18px] backdrop-blur-md [box-shadow:0_12px_40px_rgba(0,0,0,0.45)] before:absolute before:inset-x-0 before:top-0 before:z-[1] before:h-0.5 before:rounded-tl-xl before:rounded-tr-xl before:bg-[linear-gradient(90deg,transparent_0%,#e8a951_50%,transparent_100%)] before:opacity-35 before:content-['']
+		class="story-journey-sidebar fixed top-4 bottom-4 left-4 z-[80] flex w-[280px] flex-col overflow-hidden rounded-xl border border-border bg-card/95 px-4 py-[18px] shadow-2xl backdrop-blur-md before:absolute before:inset-x-0 before:top-0 before:z-[1] before:h-0.5 before:rounded-tl-xl before:rounded-tr-xl before:bg-[linear-gradient(90deg,transparent_0%,#e8a951_50%,transparent_100%)] before:opacity-35 before:content-['']
 		max-[1240px]:w-[240px] max-[1240px]:px-[14px] max-[1240px]:py-4
 		max-[1100px]:hidden"
 	>
@@ -62,9 +62,9 @@ function onChapterClick(ch: { num: number }) {
 					<span class="text-[28px] font-semibold leading-none text-[#e8a951]">
 						{{ totalCompleted }}
 					</span>
-					<span class="text-[18px] font-light text-[#6b7689]">/</span>
-					<span class="text-[18px] font-medium text-[#b4becf]">{{ totalStations }}</span>
-					<span class="ml-2 font-inter text-[9px] tracking-[0.22em] uppercase text-[#6b7689]">
+					<span class="text-[18px] font-light text-muted-foreground">/</span>
+					<span class="text-[18px] font-medium text-foreground">{{ totalStations }}</span>
+					<span class="ml-2 font-inter text-[9px] tracking-[0.22em] uppercase text-muted-foreground">
 						stations
 					</span>
 				</div>
@@ -82,15 +82,15 @@ function onChapterClick(ch: { num: number }) {
 					v-for="chapter in system.chapters"
 					:key="chapter.num"
 					type="button"
-					class="relative flex flex-col gap-2 overflow-hidden rounded-lg border bg-[rgba(10,14,26,0.55)] p-3 text-left transition-all duration-200 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[3px] before:opacity-85 before:content-['']"
+					class="relative flex flex-col gap-2 overflow-hidden rounded-lg border bg-background/55 p-3 text-left transition-all duration-200 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[3px] before:opacity-85 before:content-['']"
 					:class="[
 						isChapterLocked(chapter.num)
-							? 'cursor-default opacity-50 border-[rgba(107,118,137,0.22)]'
+							? 'cursor-default opacity-70 dark:opacity-50 border-border'
 							: 'cursor-pointer hover:-translate-y-px',
 						chapterDoneCount(chapter.num) === chapter.stations.length &&
 						chapter.stations.length > 0
 							? 'border-[rgba(79,184,168,0.45)]'
-							: 'border-[rgba(107,118,137,0.22)]',
+							: 'border-border',
 					]"
 					:style="{ '--chapter-color': chapter.color || '#e8a951' }"
 					@click="onChapterClick(chapter)"
@@ -103,7 +103,7 @@ function onChapterClick(ch: { num: number }) {
 					/>
 					<!-- Hero art -->
 					<div
-						class="flex h-20 w-full items-center justify-center rounded-md bg-[rgba(10,14,26,0.7)]"
+						class="flex h-20 w-full items-center justify-center rounded-md bg-background/70"
 					>
 						<img
 							v-if="chapter.heroSrc"
@@ -121,11 +121,11 @@ function onChapterClick(ch: { num: number }) {
 						>
 							Chapter {{ String(chapter.num).padStart(2, "0") }}
 						</div>
-						<div class="font-fraunces text-[13.5px] leading-[1.25] text-[#e8ecf3]">
+						<div class="font-fraunces text-[13.5px] leading-[1.25] text-foreground">
 							{{ chapter.title }}
 						</div>
 						<div
-							class="flex items-center gap-2 font-jetbrains text-[9.5px] text-[#6b7689]"
+							class="flex items-center gap-2 font-jetbrains text-[9.5px] text-muted-foreground"
 						>
 							<span>
 								<span
@@ -141,7 +141,7 @@ function onChapterClick(ch: { num: number }) {
 								>/{{ chapter.stations.length }}
 							</span>
 							<div
-								class="h-[3px] flex-1 overflow-hidden rounded-[2px] bg-[rgba(107,118,137,0.15)]"
+								class="h-[3px] flex-1 overflow-hidden rounded-[2px] bg-muted"
 							>
 								<div
 									class="h-full rounded-[2px] transition-[width] duration-500"
@@ -162,7 +162,7 @@ function onChapterClick(ch: { num: number }) {
 <style scoped>
 .story-journey-body {
 	scrollbar-width: thin;
-	scrollbar-color: #222c3e transparent;
+	scrollbar-color: var(--border) transparent;
 }
 .story-journey-body::-webkit-scrollbar {
 	width: 6px;
@@ -171,10 +171,10 @@ function onChapterClick(ch: { num: number }) {
 	background: transparent;
 }
 .story-journey-body::-webkit-scrollbar-thumb {
-	background: #222c3e;
+	background: var(--border);
 	border-radius: 3px;
 }
 .story-journey-body::-webkit-scrollbar-thumb:hover {
-	background: #6b7689;
+	background: var(--muted-foreground);
 }
 </style>
