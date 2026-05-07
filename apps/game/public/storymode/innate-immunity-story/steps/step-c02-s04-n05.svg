@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(50 135)">
+                    <line x1="0" y1="0" x2="400" y2="0" stroke="#6b7689" stroke-width="1.5"/>
+                    <polygon points="2,0 8,-4 8,4" fill="#6b7689"/>
+                    <polygon points="402,0 394,-4 394,4" fill="#6b7689"/>
+                    <text x="0" y="22" style="fill:#6b7689;font:italic 9px Inter,sans-serif">← less mature</text>
+                    <text x="400" y="22" text-anchor="end" style="fill:#6b7689;font:italic 9px Inter,sans-serif">more mature →</text>
+                  </g>
+                  <g transform="translate(105 135)">
+                    <circle r="18" fill="#d14859" opacity="0.9" stroke="#a33648" stroke-width="1"/>
+                    <path d="M -10 -8 Q -14 0 -10 8 Q -4 12 4 10 Q 10 8 8 0 Q 10 -8 4 -12 Q -4 -12 -10 -8 Z" fill="#4a2d60"/>
+                    <text x="0" y="-28" text-anchor="middle" style="fill:#d14859;font:700 10px Inter,sans-serif">BAND</text>
+                    <text x="0" y="42" text-anchor="middle" style="fill:#b4becf;font:italic 8px Inter,sans-serif">(U-nucleus)</text>
+                  </g>
+                  <g transform="translate(190 135)">
+                    <circle r="18" fill="#d14859" opacity="0.6" stroke="#a33648" stroke-width="1"/>
+                    <circle r="11" fill="#4a2d60"/>
+                    <text x="0" y="-28" text-anchor="middle" style="fill:#d14859;font:700 10px Inter,sans-serif">METAMYELOCYTE</text>
+                    <text x="0" y="42" text-anchor="middle" style="fill:#b4becf;font:italic 8px Inter,sans-serif">(kidney-shaped)</text>
+                  </g>
+                  <g transform="translate(275 135)">
+                    <circle r="18" fill="#e8a951" opacity="0.55" stroke="#a87b3c" stroke-width="1"/>
+                    <circle r="12" fill="#4a2d60"/>
+                    <text x="0" y="-28" text-anchor="middle" style="fill:#e8a951;font:700 10px Inter,sans-serif">MYELOCYTE</text>
+                    <text x="0" y="42" text-anchor="middle" style="fill:#b4becf;font:italic 8px Inter,sans-serif">(round nucleus)</text>
+                  </g>
+                  <g transform="translate(380 135)">
+                    <circle r="18" fill="#e8a951" opacity="0.95" stroke="#a87b3c" stroke-width="1.2"/>
+                    <g fill="#4a2d60">
+                      <ellipse cx="-7" cy="-5" rx="4" ry="3"/>
+                      <ellipse cx="6" cy="-3" rx="4" ry="3"/>
+                      <ellipse cx="-4" cy="6" rx="4" ry="3"/>
+                      <ellipse cx="7" cy="6" rx="4" ry="3"/>
+                      <line x1="-4" y1="-5" x2="2" y2="-3" stroke="#4a2d60" stroke-width="1.5"/>
+                      <line x1="6" y1="0" x2="7" y2="3" stroke="#4a2d60" stroke-width="1.5"/>
+                      <line x1="0" y1="6" x2="3" y2="6" stroke="#4a2d60" stroke-width="1.5"/>
+                    </g>
+                    <text x="0" y="-28" text-anchor="middle" style="fill:#e8a951;font:700 10px Inter,sans-serif">SEG</text>
+                    <text x="0" y="42" text-anchor="middle" style="fill:#b4becf;font:italic 8px Inter,sans-serif">(mature, lobed)</text>
+                  </g>
+                  <g transform="translate(50 48)">
+                    <text x="200" y="0" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">normal: peak here →</text>
+                    <circle cx="330" cy="-5" r="4" fill="#e8a951" opacity="0.6"/>
+                    <rect x="0" y="6" width="400" height="10" rx="5" fill="#d14859" opacity="0.22" stroke="#d14859" stroke-width="1"/>
+                    <path d="M 330 11 Q 250 11 120 11" stroke="#d14859" stroke-width="3" fill="none"/>
+                    <polygon points="115,11 125,6 125,16" fill="#d14859"/>
+                    <text x="200" y="32" text-anchor="middle" style="fill:#d14859;font:italic 700 10px Inter,sans-serif;letter-spacing:1.5px">SHIFT LEFT → infection</text>
+                  </g>
+                  <text x="250" y="220" text-anchor="middle" style="fill:#e8a951;font:italic 700 10px Inter,sans-serif">more immature forms than usual</text>
+                  <text x="250" y="235" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">marrow emptying faster than it can mature cells</text>
+                </svg>

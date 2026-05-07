@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="24" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">TWO MORE SYSTEMS AFFECTED</text>
+
+                  <!-- ========= NEURONS CARD (left) ========= -->
+                  <g transform="translate(125 145)">
+                    <rect x="-95" y="-80" width="190" height="160" rx="10" fill="#111826" stroke="#e8a951" stroke-width="1.3"/>
+                    <text x="0" y="-58" text-anchor="middle" style="fill:#e8a951;font:800 12px Inter,sans-serif;letter-spacing:2px">NEURONS</text>
+
+                    <!-- Full neuron illustration -->
+                    <g transform="translate(0 -5)">
+                      <!-- Soma / cell body -->
+                      <circle cx="-55" cy="0" r="13" fill="#e8a951" opacity="0.3" stroke="#a87b3c" stroke-width="1.3"/>
+                      <!-- Dendrites -->
+                      <g stroke="#a87b3c" stroke-width="1.2" fill="none" opacity="0.65" stroke-linecap="round">
+                        <path d="M -66 -6 Q -76 -12 -82 -20"/>
+                        <path d="M -68 0 Q -78 0 -84 0"/>
+                        <path d="M -66 6 Q -76 12 -82 20"/>
+                      </g>
+                      <!-- Nucleus -->
+                      <circle cx="-55" cy="0" r="5" fill="#4a2d60" opacity="0.65"/>
+                      <!-- Axon (long myelinated) -->
+                      <line x1="-42" y1="0" x2="52" y2="0" stroke="#a87b3c" stroke-width="3" opacity="0.75"/>
+                      <!-- Myelin segments (alternating) -->
+                      <g fill="#e8a951" opacity="0.35" stroke="#a87b3c" stroke-width="0.8">
+                        <rect x="-35" y="-4" width="16" height="8" rx="2"/>
+                        <rect x="-12" y="-4" width="16" height="8" rx="2"/>
+                        <rect x="11" y="-4" width="16" height="8" rx="2"/>
+                        <rect x="34" y="-4" width="16" height="8" rx="2"/>
+                      </g>
+                      <!-- Dense-core vesicles along axon (CLUMPED — big ones) -->
+                      <g fill="#9370b9" opacity="0.9" stroke="#7a4a9e" stroke-width="0.7">
+                        <circle cx="-23" cy="0" r="4"/>
+                        <circle cx="0" cy="0" r="5"/>
+                        <circle cx="23" cy="0" r="5"/>
+                      </g>
+                      <!-- Terminal -->
+                      <g transform="translate(55 0)">
+                        <path d="M -3 -6 Q 6 -10 10 -5 Q 12 0 10 5 Q 6 10 -3 6 Z" fill="#a87b3c" opacity="0.7"/>
+                      </g>
+                      <!-- Little 'defect' flag pointing at vesicles -->
+                      <line x1="0" y1="-9" x2="0" y2="-18" stroke="#d14859" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.7"/>
+                      <text x="0" y="-22" text-anchor="middle" style="fill:#d14859;font:italic 700 7px Inter,sans-serif;letter-spacing:1px">CLUMPED VESICLES</text>
+                    </g>
+
+                    <text x="0" y="42" text-anchor="middle" style="fill:#e8a951;font:700 10px Inter,sans-serif;letter-spacing:1.5px">PERIPHERAL NEUROPATHY</text>
+                    <text x="0" y="55" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">vesicle trafficking fails in nerves</text>
+                  </g>
+
+                  <!-- ========= PLATELETS CARD (right) ========= -->
+                  <g transform="translate(375 145)">
+                    <rect x="-95" y="-80" width="190" height="160" rx="10" fill="#111826" stroke="#e8a951" stroke-width="1.3"/>
+                    <text x="0" y="-58" text-anchor="middle" style="fill:#e8a951;font:800 12px Inter,sans-serif;letter-spacing:2px">PLATELETS</text>
+
+                    <!-- 3 platelet cells with dense granules inside -->
+                    <g transform="translate(-32 -10)">
+                      <ellipse rx="17" ry="11" fill="#d14859" opacity="0.38" stroke="#a33648" stroke-width="1.2"/>
+                      <circle cx="-5" cy="-2" r="3" fill="#6b1828" opacity="0.9"/>
+                      <circle cx="5" cy="2" r="3" fill="#6b1828" opacity="0.9"/>
+                      <text x="0" y="20" text-anchor="middle" style="fill:#6b7689;font:italic 7px Inter,sans-serif">dense granules</text>
+                    </g>
+                    <g transform="translate(5 12)">
+                      <ellipse rx="14" ry="10" fill="#d14859" opacity="0.38" stroke="#a33648" stroke-width="1.2"/>
+                      <circle cx="0" cy="0" r="3.5" fill="#6b1828" opacity="0.9"/>
+                      <circle cx="-4" cy="-2" r="2.3" fill="#6b1828" opacity="0.9"/>
+                    </g>
+                    <g transform="translate(32 -14)">
+                      <ellipse rx="13" ry="9" fill="#d14859" opacity="0.38" stroke="#a33648" stroke-width="1.2"/>
+                      <circle cx="-2" cy="-1" r="2.6" fill="#6b1828" opacity="0.9"/>
+                      <circle cx="3" cy="1" r="2.6" fill="#6b1828" opacity="0.9"/>
+                    </g>
+
+                    <!-- Blood drops (bleeding) below -->
+                    <g fill="#d14859" opacity="0.82">
+                      <path d="M 45 20 Q 49 28 45 34 Q 41 28 45 20 Z"/>
+                      <path d="M 55 28 Q 58 34 55 38 Q 52 34 55 28 Z"/>
+                    </g>
+                    <text x="50" y="52" text-anchor="middle" style="fill:#d14859;font:italic 700 7px Inter,sans-serif">bleeding</text>
+
+                    <text x="0" y="42" text-anchor="middle" style="fill:#e8a951;font:700 10px Inter,sans-serif;letter-spacing:1.5px">MILD BLEEDING</text>
+                    <text x="0" y="55" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">dense-granule defect → poor clotting</text>
+                  </g>
+
+                  <text x="250" y="248" text-anchor="middle" style="fill:#b4becf;font:italic 10px Inter,sans-serif">same fusion machinery · many tissues affected</text>
+                </svg>

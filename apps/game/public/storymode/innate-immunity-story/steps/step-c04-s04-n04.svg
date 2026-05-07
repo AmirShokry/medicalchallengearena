@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(250 145)">
+                    <g stroke="#e8a951" stroke-width="6" fill="none" stroke-linecap="round">
+                      <path d="M 0 -50 L 0 50"/>
+                      <path d="M -42 -28 L 42 28"/>
+                      <path d="M 42 -28 L -42 28"/>
+                      <path d="M -48 0 L 48 0"/>
+                      <path d="M -28 -42 L 28 42"/>
+                      <path d="M 28 -42 L -28 42"/>
+                    </g>
+                    <g fill="#e8a951" opacity="0.95">
+                      <circle cx="0" cy="-30" r="4"/>
+                      <circle cx="-22" cy="-22" r="4"/>
+                      <circle cx="22" cy="-22" r="4"/>
+                      <circle cx="-32" cy="0" r="4"/>
+                      <circle cx="32" cy="0" r="4"/>
+                      <circle cx="-22" cy="22" r="4"/>
+                      <circle cx="22" cy="22" r="4"/>
+                      <circle cx="0" cy="30" r="4"/>
+                    </g>
+                    <g fill="#d14859" opacity="0.6">
+                      <circle cx="0" cy="-40" r="2"/>
+                      <circle cx="-30" cy="-25" r="2"/>
+                      <circle cx="30" cy="-25" r="2"/>
+                      <circle cx="-40" cy="0" r="2"/>
+                      <circle cx="40" cy="0" r="2"/>
+                      <circle cx="-30" cy="25" r="2"/>
+                      <circle cx="30" cy="25" r="2"/>
+                      <circle cx="0" cy="40" r="2"/>
+                    </g>
+                  </g>
+                  <text x="250" y="240" text-anchor="middle" style="fill:#e8a951;font:700 10px Inter,sans-serif;letter-spacing:1.5px">DYING PMN CLUSTER</text>
+                </svg>

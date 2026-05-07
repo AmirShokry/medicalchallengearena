@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="38" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">MEET THE MACROPHAGE</text>
+                  <g transform="translate(250 145)">
+                    <path d="M -72 -42 Q -92 -48 -87 -15 Q -95 12 -80 32 Q -68 58 -38 62 Q -10 72 22 60 Q 55 68 78 45 Q 95 18 85 -15 Q 95 -48 65 -56 Q 35 -66 5 -58 Q -35 -66 -72 -42 Z" fill="#9370b9" opacity="0.32" stroke="#9370b9" stroke-width="1.5"/>
+                    <ellipse cx="-18" cy="-8" rx="26" ry="16" fill="#4a2d60" opacity="0.55"/>
+                    <g fill="#e8a951">
+                      <circle cx="-32" cy="-70" r="4"/><line x1="-32" y1="-66" x2="-32" y2="-55" stroke="#e8a951" stroke-width="2"/>
+                      <circle cx="8" cy="-76" r="4"/><line x1="8" y1="-72" x2="8" y2="-61" stroke="#e8a951" stroke-width="2"/>
+                      <circle cx="52" cy="-68" r="4"/><line x1="52" y1="-64" x2="52" y2="-53" stroke="#e8a951" stroke-width="2"/>
+                      <circle cx="92" cy="-28" r="4"/><line x1="88" y1="-28" x2="77" y2="-28" stroke="#e8a951" stroke-width="2"/>
+                      <circle cx="99" cy="18" r="4"/><line x1="95" y1="18" x2="84" y2="18" stroke="#e8a951" stroke-width="2"/>
+                      <circle cx="55" cy="72" r="4"/><line x1="55" y1="68" x2="55" y2="57" stroke="#e8a951" stroke-width="2"/>
+                      <circle cx="5" cy="80" r="4"/><line x1="5" y1="76" x2="5" y2="65" stroke="#e8a951" stroke-width="2"/>
+                      <circle cx="-38" cy="72" r="4"/><line x1="-38" y1="68" x2="-38" y2="57" stroke="#e8a951" stroke-width="2"/>
+                      <circle cx="-85" cy="28" r="4"/><line x1="-81" y1="28" x2="-70" y2="28" stroke="#e8a951" stroke-width="2"/>
+                      <circle cx="-92" cy="-15" r="4"/><line x1="-88" y1="-15" x2="-77" y2="-15" stroke="#e8a951" stroke-width="2"/>
+                    </g>
+                  </g>
+                  <path d="M 395 60 Q 383 75 366 82" stroke="#e8a951" stroke-width="1" fill="none" stroke-dasharray="3 3" opacity="0.7"/>
+                  <polygon points="363,84 371,77 371,86" fill="#e8a951"/>
+                  <text x="400" y="55" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:1px">built-in sensor</text>
+                  <text x="250" y="240" text-anchor="middle" style="fill:#e8ecf3;font:italic 600 13px Fraunces,serif">already equipped — no training required</text>
+                </svg>

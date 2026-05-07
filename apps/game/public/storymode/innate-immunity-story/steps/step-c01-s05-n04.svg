@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="38" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">SIGNAL ARRIVES — IKK GETS ACTIVATED</text>
+                  <g transform="translate(85 70)">
+                    <line x1="0" y1="0" x2="0" y2="18" stroke="#e8a951" stroke-width="2.5"/>
+                    <ellipse cx="0" cy="24" rx="10" ry="6" stroke="#e8a951" stroke-width="1.8" fill="#e8a951" opacity="0.5"/>
+                    <text x="-48" y="-5" style="fill:#e8a951;font:600 10px Inter,sans-serif">TLR4 / IL-1R / TNF-R</text>
+                  </g>
+                  <path d="M 95 108 Q 130 135 180 160" stroke="#e8a951" stroke-width="1.5" stroke-dasharray="4 3"/>
+                  <polygon points="185,163 175,157 178,166" fill="#e8a951"/>
+                  <text x="105" y="138" style="fill:#b4becf;font:italic 10px Inter,sans-serif">signal</text>
+                  <g transform="translate(230 170)">
+                    <circle r="50" fill="#e8a951" opacity="0.12"/>
+                    <circle r="34" fill="#e8a951" opacity="0.07"/>
+                    <circle r="30" fill="#111826" stroke="#e8a951" stroke-width="2.5"/>
+                    <text x="0" y="5" text-anchor="middle" style="fill:#e8a951;font:700 15px Inter,sans-serif">IKK</text>
+                    <g transform="translate(24 -20)">
+                      <circle r="9" fill="#e8a951"/>
+                      <text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 10px Inter,sans-serif">P</text>
+                    </g>
+                    <text x="0" y="-46" text-anchor="middle" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:1.5px">ACTIVATED</text>
+                  </g>
+                  <path d="M 270 170 Q 320 170 350 170" stroke="#6b7689" stroke-width="1" stroke-dasharray="3 3"/>
+                  <polygon points="355,170 347,166 347,174" fill="#6b7689"/>
+                  <g transform="translate(405 170)" opacity="0.5">
+                    <path d="M -15 -20 Q 25 -24 30 0 Q 25 24 -15 20 Z" fill="#9370b9" opacity="0.5" stroke="#9370b9" stroke-width="1.5"/>
+                    <text x="5" y="4" text-anchor="middle" style="fill:#e8ecf3;font:700 11px Inter,sans-serif">IκB</text>
+                  </g>
+                  <text x="405" y="210" text-anchor="middle" style="fill:#6b7689;font:italic 10px Inter,sans-serif">target</text>
+                  <text x="250" y="245" text-anchor="middle" style="fill:#e8ecf3;font:italic 600 12px Fraunces,serif">a kinase called IKK is armed and ready</text>
+                </svg>

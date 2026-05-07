@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="24" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">INTEGRIN CONFORMATION FLIPS</text>
+                  <g transform="translate(115 175)">
+                    <rect x="-60" y="-95" width="120" height="135" rx="10" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="3 2"/>
+                    <text x="0" y="-78" text-anchor="middle" style="fill:#6b7689;font:600 10px Inter,sans-serif;letter-spacing:1.5px">BEFORE</text>
+                    <text x="0" y="-62" text-anchor="middle" style="fill:#6b7689;font:italic 9px Inter,sans-serif">low-affinity</text>
+                    <line x1="-40" y1="30" x2="40" y2="30" stroke="#4fb8a8" stroke-width="2" opacity="0.6"/>
+                    <g transform="translate(0 22)">
+                      <path d="M 0 0 Q -3 -16 5 -20 Q 14 -16 10 0 Z" fill="#6b7689" opacity="0.6" stroke="#6b7689" stroke-width="1"/>
+                    </g>
+                    <text x="0" y="52" text-anchor="middle" style="fill:#6b7689;font:italic 9px Inter,sans-serif">folded</text>
+                  </g>
+                  <g transform="translate(250 175)">
+                    <line x1="-15" y1="-20" x2="15" y2="-20" stroke="#e8a951" stroke-width="2" stroke-dasharray="4 2"/>
+                    <polygon points="15,-20 8,-24 8,-16" fill="#e8a951"/>
+                    <text x="0" y="-38" text-anchor="middle" style="fill:#e8a951;font:600 9px Inter,sans-serif">chemokine</text>
+                    <text x="0" y="-28" text-anchor="middle" style="fill:#e8a951;font:600 9px Inter,sans-serif">signal</text>
+                  </g>
+                  <g transform="translate(385 175)">
+                    <rect x="-60" y="-95" width="120" height="135" rx="10" fill="#e8a951" opacity="0.12" stroke="#e8a951" stroke-width="1.5"/>
+                    <text x="0" y="-78" text-anchor="middle" style="fill:#e8a951;font:700 10px Inter,sans-serif;letter-spacing:1.5px">AFTER</text>
+                    <text x="0" y="-62" text-anchor="middle" style="fill:#e8a951;font:italic 9px Inter,sans-serif">high-affinity</text>
+                    <line x1="-40" y1="30" x2="40" y2="30" stroke="#4fb8a8" stroke-width="2" opacity="0.6"/>
+                    <g transform="translate(0 30)">
+                      <line x1="0" y1="0" x2="0" y2="-42" stroke="#e8a951" stroke-width="3"/>
+                      <path d="M -6 -48 Q 0 -56 6 -48 L 4 -42 L -4 -42 Z" fill="#e8a951"/>
+                    </g>
+                    <text x="0" y="52" text-anchor="middle" style="fill:#e8a951;font:italic 9px Inter,sans-serif">extended</text>
+                  </g>
+                  <text x="250" y="250" text-anchor="middle" style="fill:#e8ecf3;font:italic 600 12px Fraunces,serif">the receptor changes shape — now it can bind</text>
+                </svg>

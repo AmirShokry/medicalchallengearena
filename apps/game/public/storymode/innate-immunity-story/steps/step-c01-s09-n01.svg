@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="24" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">NEUTROPHIL MEETS BACTERIUM IN THE TISSUE</text>
+                  <g transform="translate(160 145)">
+                    <circle r="50" fill="#e8a951" opacity="0.88" stroke="#a87b3c" stroke-width="1.5"/>
+                    <circle cx="-10" cy="-6" r="8" fill="#4a2d60"/>
+                    <circle cx="10" cy="6" r="8" fill="#4a2d60"/>
+                    <circle cx="2" cy="-18" r="6" fill="#4a2d60" opacity="0.7"/>
+                    <text x="0" y="80" text-anchor="middle" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:1.5px">NEUTROPHIL</text>
+                  </g>
+                  <g transform="translate(350 145)">
+                    <ellipse cx="0" cy="0" rx="26" ry="18" fill="#d14859" opacity="0.85" stroke="#a33648" stroke-width="1.5"/>
+                    <circle cx="-10" cy="0" r="3" fill="#4a2d60" opacity="0.6"/>
+                    <circle cx="10" cy="0" r="3" fill="#4a2d60" opacity="0.6"/>
+                    <text x="0" y="50" text-anchor="middle" style="fill:#d14859;font:600 10px Inter,sans-serif;letter-spacing:1.5px">BACTERIUM</text>
+                  </g>
+                  <g transform="translate(255 145)">
+                    <circle r="18" fill="#0a0e1a" stroke="#6b7689" stroke-width="1"/>
+                    <text x="0" y="4" text-anchor="middle" style="fill:#b4becf;font:italic 10px Inter,sans-serif">vs</text>
+                  </g>
+                  <text x="250" y="240" text-anchor="middle" style="fill:#e8ecf3;font:italic 600 12px Fraunces,serif">now the eating begins</text>
+                </svg>

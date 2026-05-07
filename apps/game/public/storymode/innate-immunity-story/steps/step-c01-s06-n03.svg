@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <line x1="0" y1="140" x2="500" y2="140" stroke="#4fb8a8" stroke-width="2.5" opacity="0.7"/>
+                  <line x1="0" y1="200" x2="500" y2="200" stroke="#4fb8a8" stroke-width="2.5" opacity="0.7"/>
+                  <rect x="0" y="140" width="500" height="60" fill="#4fb8a8" opacity="0.1"/>
+                  <text x="20" y="40" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">ENDOTHELIUM DECORATES ITS LUMINAL SURFACE</text>
+                  <text x="20" y="170" style="fill:#e8ecf3;font:600 10px Inter,sans-serif;letter-spacing:1.5px">ENDOTHELIUM</text>
+                  <text x="20" y="220" style="fill:#6b7689;font:10px Inter,sans-serif;letter-spacing:1.5px">TISSUE</text>
+                  <text x="20" y="95" style="fill:#6b7689;font:10px Inter,sans-serif;letter-spacing:1.5px">LUMEN (bloodstream)</text>
+                  <g>
+                    <path d="M 90 140 Q 85 115 95 105" stroke="#e8a951" stroke-width="2.5" fill="none"/>
+                    <circle cx="95" cy="103" r="4" fill="#e8a951"/>
+                    <path d="M 150 140 Q 145 115 155 105" stroke="#e8a951" stroke-width="2.5" fill="none"/>
+                    <circle cx="155" cy="103" r="4" fill="#e8a951"/>
+                    <path d="M 210 140 Q 205 115 215 105" stroke="#e8a951" stroke-width="2.5" fill="none"/>
+                    <circle cx="215" cy="103" r="4" fill="#e8a951"/>
+                    <path d="M 270 140 Q 265 115 275 105" stroke="#e8a951" stroke-width="2.5" fill="none"/>
+                    <circle cx="275" cy="103" r="4" fill="#e8a951"/>
+                    <path d="M 330 140 Q 325 115 335 105" stroke="#e8a951" stroke-width="2.5" fill="none"/>
+                    <circle cx="335" cy="103" r="4" fill="#e8a951"/>
+                    <path d="M 390 140 Q 385 115 395 105" stroke="#e8a951" stroke-width="2.5" fill="none"/>
+                    <circle cx="395" cy="103" r="4" fill="#e8a951"/>
+                    <path d="M 450 140 Q 445 115 455 105" stroke="#e8a951" stroke-width="2.5" fill="none"/>
+                    <circle cx="455" cy="103" r="4" fill="#e8a951"/>
+                  </g>
+                  <g transform="translate(155 65)">
+                    <rect x="-38" y="-14" width="76" height="22" rx="4" fill="#e8a951"/>
+                    <text x="0" y="2" text-anchor="middle" style="fill:#0a0e1a;font:700 10px Inter,sans-serif;letter-spacing:1.5px">SELECTINS</text>
+                  </g>
+                  <line x1="155" y1="79" x2="155" y2="100" stroke="#e8a951" stroke-width="1" stroke-dasharray="2 2"/>
+                  <text x="480" y="250" text-anchor="end" style="fill:#b4becf;font:italic 11px Inter,sans-serif">sticky patches, newly displayed</text>
+                </svg>

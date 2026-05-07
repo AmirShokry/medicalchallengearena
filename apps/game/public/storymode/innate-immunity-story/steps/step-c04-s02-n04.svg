@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(250 145)">
+                    <circle r="32" fill="#9370b9" opacity="0.85" stroke="#7a4a9e" stroke-width="1.5"/>
+                    <circle cx="-10" cy="-10" r="4" fill="#4a2d60"/>
+                    <circle cx="10" cy="10" r="4" fill="#4a2d60"/>
+                    <g transform="translate(5 -3)">
+                      <ellipse cx="0" cy="0" rx="10" ry="4" fill="#d14859" opacity="0.9" stroke="#a33648" stroke-width="1"/>
+                    </g>
+                  </g>
+                  <g fill="#e8a951" opacity="0.8">
+                    <circle cx="135" cy="100" r="4"/>
+                    <circle cx="120" cy="145" r="4"/>
+                    <circle cx="150" cy="195" r="4"/>
+                    <circle cx="365" cy="100" r="4"/>
+                    <circle cx="380" cy="145" r="4"/>
+                    <circle cx="350" cy="195" r="4"/>
+                  </g>
+                  <g stroke="#e8a951" stroke-width="1.5" fill="none">
+                    <path d="M 145 110 L 200 135 M 128 150 L 205 145 M 160 200 L 210 160"/>
+                    <path d="M 355 110 L 300 135 M 375 150 L 295 145 M 340 200 L 290 160"/>
+                  </g>
+                  <g stroke="#d14859" stroke-width="2" fill="none">
+                    <path d="M 195 135 L 190 145 L 200 150"/>
+                    <path d="M 305 135 L 310 145 L 300 150"/>
+                  </g>
+                  <g transform="translate(95 85)">
+                    <text x="0" y="0" style="fill:#e8a951;font:italic 700 9px Inter,sans-serif">PMN enzymes</text>
+                    <text x="0" y="12" style="fill:#d14859;font:italic 8px Inter,sans-serif">can't reach</text>
+                  </g>
+                  <text x="250" y="230" text-anchor="middle" style="fill:#9370b9;font:italic 700 10px Inter,sans-serif">bug hides inside — must wall off</text>
+                </svg>

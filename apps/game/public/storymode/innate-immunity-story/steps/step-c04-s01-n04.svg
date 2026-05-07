@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(130 145)">
+                    <circle r="50" fill="#9370b9" opacity="0.7" stroke="#7a4a9e" stroke-width="1.5"/>
+                    <circle cx="-15" cy="-10" r="5" fill="#4a2d60"/>
+                    <g transform="translate(48 -5)">
+                      <path d="M -6 -8 L 0 -2 L 6 -8" stroke="#d14859" stroke-width="2" fill="none"/>
+                      <path d="M -6 8 L 0 2 L 6 8" stroke="#d14859" stroke-width="2" fill="none"/>
+                    </g>
+                    <text x="0" y="70" text-anchor="middle" style="fill:#9370b9;font:italic 700 9px Inter,sans-serif">macrophage</text>
+                  </g>
+                  <g transform="translate(370 145)">
+                    <ellipse cx="0" cy="0" rx="26" ry="34" fill="#4fb8a8" opacity="0.7" stroke="#4fb8a8" stroke-width="1.5"/>
+                    <circle cx="-5" cy="-8" r="6" fill="#111826"/>
+                    <text x="0" y="60" text-anchor="middle" style="fill:#4fb8a8;font:italic 700 9px Inter,sans-serif">Th1</text>
+                  </g>
+                  <g fill="#d14859" opacity="0.9">
+                    <circle cx="325" cy="135" r="5"/>
+                    <circle cx="300" cy="125" r="5"/>
+                    <circle cx="275" cy="135" r="5"/>
+                    <circle cx="250" cy="125" r="5"/>
+                    <circle cx="225" cy="135" r="5"/>
+                    <circle cx="205" cy="140" r="4"/>
+                    <circle cx="315" cy="160" r="5"/>
+                    <circle cx="285" cy="165" r="5"/>
+                    <circle cx="255" cy="160" r="5"/>
+                    <circle cx="225" cy="165" r="5"/>
+                  </g>
+                  <g stroke="#d14859" stroke-width="1.5" fill="none" stroke-dasharray="3 2">
+                    <path d="M 340 130 L 200 130"/>
+                    <polygon points="197,130 205,125 205,135" fill="#d14859"/>
+                    <path d="M 335 165 L 200 165"/>
+                    <polygon points="197,165 205,160 205,170" fill="#d14859"/>
+                  </g>
+                  <text x="265" y="90" text-anchor="middle" style="fill:#d14859;font:700 14px Inter,sans-serif;letter-spacing:2px">IFN-γ</text>
+                </svg>

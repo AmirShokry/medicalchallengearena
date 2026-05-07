@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <!-- Title -->
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">LYMPH DRAINAGE — 3 TERRITORIES, IPSILATERAL</text>
+                  <!-- Body silhouette (centered at 180, 130) -->
+                  <g transform="translate(180 130)">
+                    <!-- head -->
+                    <circle cx="0" cy="-82" r="17" fill="#6b7689" opacity="0.32" stroke="#6b7689" stroke-width="1.2"/>
+                    <!-- neck -->
+                    <path d="M -7 -66 L -7 -56 M 7 -66 L 7 -56" stroke="#6b7689" stroke-width="8" fill="none" opacity="0.35" stroke-linecap="round"/>
+                    <!-- torso (shoulders wider than hips) -->
+                    <path d="M -26 -56 Q -30 -54 -30 -48 L -24 18 Q -24 24 -18 24 L 18 24 Q 24 24 24 18 L 30 -48 Q 30 -54 26 -56 Q 0 -62 -26 -56 Z" fill="#6b7689" opacity="0.3" stroke="#6b7689" stroke-width="1.2"/>
+                    <!-- left arm (single open stroke: shoulder → elbow → hand) -->
+                    <path d="M -26 -54 Q -42 -16 -36 55" stroke="#6b7689" stroke-width="10" fill="none" opacity="0.34" stroke-linecap="round"/>
+                    <!-- right arm (mirrored) -->
+                    <path d="M 26 -54 Q 42 -16 36 55" stroke="#6b7689" stroke-width="10" fill="none" opacity="0.34" stroke-linecap="round"/>
+                    <!-- left leg (hip → foot) -->
+                    <path d="M -14 24 Q -17 60 -18 96" stroke="#6b7689" stroke-width="12" fill="none" opacity="0.34" stroke-linecap="round"/>
+                    <!-- right leg -->
+                    <path d="M 14 24 Q 17 60 18 96" stroke="#6b7689" stroke-width="12" fill="none" opacity="0.34" stroke-linecap="round"/>
+                    <!-- infection sites (red) — all on viewer-left side for ipsilateral pairing -->
+                    <g fill="#d14859">
+                      <circle cx="0" cy="-98" r="4.5"/>
+                      <circle cx="-36" cy="55" r="4.5"/>
+                      <circle cx="-18" cy="96" r="4.5"/>
+                    </g>
+                    <!-- drainage arrows (dashed gold, flowing source → node) -->
+                    <g stroke="#e8a951" stroke-width="1.8" fill="none" stroke-dasharray="3 2" opacity="0.9" stroke-linecap="round">
+                      <path d="M 0 -94 Q -3 -74 0 -58"/>
+                      <path d="M -36 51 Q -34 16 -30 -14 Q -28 -30 -28 -40"/>
+                      <path d="M -18 92 Q -17 60 -15 28"/>
+                    </g>
+                    <!-- regional nodes (teal) — same side as their source -->
+                    <g fill="#4fb8a8">
+                      <circle cx="0" cy="-52" r="5.5"/>
+                      <circle cx="-28" cy="-44" r="5.5"/>
+                      <circle cx="-14" cy="24" r="5.5"/>
+                    </g>
+                    <!-- source labels -->
+                    <text x="8" y="-96" style="fill:#d14859;font:italic 600 9px Inter,sans-serif">scalp</text>
+                    <text x="-44" y="59" text-anchor="end" style="fill:#d14859;font:italic 600 9px Inter,sans-serif">hand</text>
+                    <text x="-26" y="94" text-anchor="end" style="fill:#d14859;font:italic 600 9px Inter,sans-serif">foot</text>
+                    <!-- node labels -->
+                    <text x="10" y="-50" style="fill:#4fb8a8;font:italic 700 9px Inter,sans-serif">cervical LN</text>
+                    <text x="-40" y="-42" text-anchor="end" style="fill:#4fb8a8;font:italic 700 9px Inter,sans-serif">axillary LN</text>
+                    <text x="-22" y="27" text-anchor="end" style="fill:#4fb8a8;font:italic 700 9px Inter,sans-serif">inguinal LN</text>
+                  </g>
+                  <!-- Legend (top-right) -->
+                  <g transform="translate(360 55)">
+                    <text x="0" y="0" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:1.5px">LEGEND</text>
+                    <circle cx="6" cy="18" r="4" fill="#d14859"/>
+                    <text x="16" y="21" style="fill:#d14859;font:italic 9px Inter,sans-serif">infection site</text>
+                    <circle cx="6" cy="36" r="5" fill="#4fb8a8"/>
+                    <text x="16" y="39" style="fill:#4fb8a8;font:italic 9px Inter,sans-serif">regional node</text>
+                    <path d="M 0 52 L 14 52" stroke="#e8a951" stroke-width="1.8" stroke-dasharray="3 2" fill="none"/>
+                    <text x="18" y="55" style="fill:#e8a951;font:italic 9px Inter,sans-serif">afferent drainage</text>
+                  </g>
+                  <!-- Pairings rule (bottom) -->
+                  <text x="250" y="252" text-anchor="middle" style="fill:#e8a951;font:italic 700 10px Inter,sans-serif">scalp → cervical  ·  hand → axillary  ·  foot → inguinal</text>
+                </svg>

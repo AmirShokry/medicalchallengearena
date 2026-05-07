@@ -21,8 +21,9 @@ import { computed, nextTick, onMounted, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 
 import StoryQuestionCard from "@/components/storymode/primitives/StoryQuestionCard.vue";
-import StoryRichText from "@/components/storymode/primitives/StoryRichText.vue";
+import StoryDiagram from "@/components/storymode/primitives/StoryDiagram.vue";
 import StoryDiagramLightbox from "@/components/storymode/primitives/StoryDiagramLightbox.vue";
+import StoryKeypoints from "@/components/storymode/primitives/StoryKeypoints.vue";
 import StoryStepFlow from "@/components/storymode/primitives/StoryStepFlow.vue";
 import StoryLoader from "@/components/storymode/primitives/StoryLoader.vue";
 import { useStoryProgress } from "@/composables/storymode/useStoryProgress";
@@ -340,19 +341,29 @@ watch(mode, async (next) => {
 					"
 				>
 					<!-- Left column: the question block. In explanation mode
-					     this column owns its own scroll area. -->
+					     this column owns its own scroll area. In question mode,
+					     the inner wrapper goes full-width so the StoryQuestionCard
+					     can spread its 2-column grid across the full 1320px stage
+					     (matching the reference's `.col-left .question-block
+					     { width: 100%; max-width: none }` rule). Top/bottom
+					     padding is `py-8` (32px) at lg+ to mirror the reference's
+					     `.col-left { padding: 32px 40px }` in compact mode. -->
 					<div
-						class="flex flex-col items-center px-6 py-8 md:px-15 lg:py-7"
+						class="flex flex-col px-6 py-8 md:px-10 lg:py-14"
 						:class="
 							mode === 'explanation'
-								? 'story-explanation-scroll min-h-0 overflow-y-auto border-r-0 lg:border-r lg:border-border lg:items-stretch lg:px-10 lg:pt-7 lg:pb-15'
-								: ''
+								? 'story-explanation-scroll min-h-0 overflow-y-auto border-r-0 items-center lg:border-r lg:border-border lg:items-stretch lg:px-10 lg:pt-8 lg:pb-15'
+								: 'items-stretch lg:px-10'
 						"
 						:data-explanation-scroll="mode === 'explanation' ? 'left' : null"
 					>
 						<div
-							class="w-full max-w-[760px]"
-							:class="mode === 'explanation' ? 'lg:max-w-none' : ''"
+							class="w-full"
+							:class="
+								mode === 'explanation'
+									? 'mx-auto max-w-[760px] lg:mx-0 lg:max-w-none'
+									: ''
+							"
 						>
 							<StoryQuestionCard
 								:bridge="station.bridge"
@@ -364,171 +375,117 @@ watch(mode, async (next) => {
 								:revealed="answered"
 								:compact="mode === 'question'"
 								@select="onSelectChoice"
-							/>
-
-							<!--
-								Review-the-concept CTA. Lives in the LEFT column under
-								the choices, exactly like the original `.review-cta` in
-								the reference HTML. Visible in BOTH question mode (so
-								the user can launch the walkthrough after answering)
-								AND explanation mode (so they can revisit it after
-								reading the explanation) — matches the original where
-								the `answered-needs-review` class is added on answer
-								and never removed.
-							-->
-							<div
-								v-if="
-									answered &&
-									station.stepFlow &&
-									station.stepFlow.flow.length > 0
-								"
-								class="mt-7"
 							>
-								<div
-									class="mb-3.5 rounded-[3px] border px-3.5 py-2 text-center font-jetbrains text-[11px] tracking-[0.25em] uppercase font-bold"
-									:class="
-										correct
-											? 'border-[rgba(79,184,168,0.25)] bg-[rgba(79,184,168,0.08)] text-[#4fb8a8]'
-											: 'border-[rgba(209,72,89,0.25)] bg-[rgba(209,72,89,0.08)] text-[#d14859]'
+								<!--
+									Review-the-concept CTA. Lives inside the question
+									card via the `cta` slot so it lands in column 1
+									below the stem (rather than full-width below the
+									entire 2-col grid) — exactly like the original
+									`.review-cta { grid-column: 1 / 2 }` in the
+									reference HTML. Visible in BOTH question mode
+									(launch the walkthrough after answering) AND
+									explanation mode (revisit it after reading the
+									explanation), matching the original's
+									`answered-needs-review` behaviour.
+								-->
+								<template
+									v-if="
+										answered &&
+										station.stepFlow &&
+										station.stepFlow.flow.length > 0
 									"
+									#cta
 								>
-									{{ reviewVerdictText }}
-								</div>
-								<button
-									class="relative flex w-full cursor-pointer flex-col items-center gap-1.5 overflow-hidden rounded-md border-[1.5px] border-[#e8a951] bg-[linear-gradient(135deg,rgba(232,169,81,0.16)_0%,rgba(232,169,81,0.08)_100%)] px-7 py-5 text-foreground transition-all duration-200 hover:-translate-y-px hover:border-[#ffc674] hover:[box-shadow:0_8px_24px_rgba(232,169,81,0.2)]"
-									@click="startReview(null)"
-								>
-									<span class="font-fraunces text-xl font-semibold text-[#e8a951]">
-										Review the concept
-									</span>
-									<span
-										class="font-jetbrains text-[10px] tracking-[0.2em] uppercase text-muted-foreground"
+									<div
+										class="mb-3.5 rounded-[3px] border px-3.5 py-2 text-center font-jetbrains text-[11px] tracking-[0.25em] uppercase font-bold"
+										:class="
+											correct
+												? 'border-[rgba(79,184,168,0.25)] bg-[rgba(79,184,168,0.08)] text-[#4fb8a8]'
+												: 'border-[rgba(209,72,89,0.25)] bg-[rgba(209,72,89,0.08)] text-[#d14859]'
+										"
 									>
-										Walk through it step by step →
-									</span>
-								</button>
+										{{ reviewVerdictText }}
+									</div>
+									<button
+										class="relative flex w-full cursor-pointer flex-col items-center gap-1.5 overflow-hidden rounded-md border-[1.5px] border-[#e8a951] bg-[linear-gradient(135deg,rgba(232,169,81,0.16)_0%,rgba(232,169,81,0.08)_100%)] px-7 py-5 text-foreground transition-all duration-200 hover:-translate-y-px hover:border-[#ffc674] hover:[box-shadow:0_8px_24px_rgba(232,169,81,0.2)]"
+										@click="startReview(null)"
+									>
+										<span class="font-fraunces text-xl font-semibold text-[#e8a951]">
+											Review the concept
+										</span>
+										<span
+											class="font-jetbrains text-[10px] tracking-[0.2em] uppercase text-muted-foreground"
+										>
+											Walk through it step by step →
+										</span>
+									</button>
 
-								<!-- Skip review and go straight to explanation. Hidden
-								     once we are already in explanation mode. -->
-								<button
-									v-if="mode === 'question'"
-									class="mt-2 w-full cursor-pointer text-center font-jetbrains text-[10px] tracking-[0.2em] uppercase text-muted-foreground transition-colors duration-200 hover:text-muted-foreground"
-									@click="showExplanation"
-								>
-									Skip review · See explanation
-								</button>
-							</div>
+									<!-- Skip review and go straight to explanation. Hidden
+									     once we are already in explanation mode. -->
+									<button
+										v-if="mode === 'question'"
+										class="mt-2 w-full cursor-pointer text-center font-jetbrains text-[10px] tracking-[0.2em] uppercase text-muted-foreground transition-colors duration-200 hover:text-muted-foreground"
+										@click="showExplanation"
+									>
+										Skip review · See explanation
+									</button>
+								</template>
 
-							<!-- Fallback for stations with no stepFlow: jump straight to
-							     the explanation when answered. -->
-							<div
-								v-else-if="answered && mode === 'question'"
-								class="mt-7 flex justify-end"
-							>
-								<button
-									class="flex cursor-pointer items-center gap-2.5 rounded-[3px] border border-[#e8a951] bg-[#e8a951] px-5 py-3 font-jetbrains text-[11px] font-semibold tracking-[0.15em] uppercase text-[#0a0e1a] transition-all duration-200 hover:translate-x-1 hover:bg-[#c08537] hover:[box-shadow:0_4px_20px_rgba(232,169,81,0.35)]"
-									@click="showExplanation"
+								<!-- Fallback for stations with no stepFlow: jump straight
+								     to the explanation when answered. Same slot, different
+								     content. -->
+								<template
+									v-else-if="answered && mode === 'question'"
+									#cta
 								>
-									See explanation →
-								</button>
-							</div>
+									<div class="flex justify-end">
+										<button
+											class="flex cursor-pointer items-center gap-2.5 rounded-[3px] border border-[#e8a951] bg-[#e8a951] px-5 py-3 font-jetbrains text-[11px] font-semibold tracking-[0.15em] uppercase text-[#0a0e1a] transition-all duration-200 hover:translate-x-1 hover:bg-[#c08537] hover:[box-shadow:0_4px_20px_rgba(232,169,81,0.35)]"
+											@click="showExplanation"
+										>
+											See explanation →
+										</button>
+									</div>
+								</template>
+							</StoryQuestionCard>
 						</div>
 					</div>
 
-					<!-- Right column: previously / stage / story / explanation.
-					     Independently scrollable so the user can read this column
-					     without losing their place in the question column. The
-					     Review-the-concept CTA lives in the LEFT column (under
-					     choices) just like the original reference HTML — keeping
-					     it duplicated here would be redundant. -->
+					<!--
+						Right column (explanation mode). Per the user's
+						request the column shows ONLY: explanation diagram(s)
+						on top + the keypoints slideshow below + the action
+						row + practice bank. The previously/stage/cardTitle/
+						tagline/story/whatsNext prose blocks were all removed
+						— the keypoints carry the explanation now, and the
+						station heading already lives in the topbar.
+					-->
 					<div
 						v-if="mode === 'explanation'"
 						data-explanation-scroll="right"
 						class="story-explanation-scroll min-h-0 overflow-y-auto px-6 py-8 md:px-10 lg:py-15"
 					>
-						<!-- Previously card -->
+						<!-- Explanation diagram(s) on top (when present) -->
 						<div
-							v-if="station.previously"
-							class="mb-6 flex items-start gap-3.5 rounded-r-[3px] border-l-[3px] border-[#4fb8a8] bg-[rgba(79,184,168,0.06)] px-5 py-4"
+							v-if="station.explanationDiagrams.length"
+							class="mb-5"
 						>
-							<div
-								class="min-w-[80px] flex-none pt-1 font-mono text-[10px] font-semibold tracking-[0.3em] uppercase text-[#4fb8a8]"
-							>
-								Previously
-							</div>
-							<div
-								class="font-fraunces text-base italic font-normal leading-[1.55] text-muted-foreground [&_em]:italic [&_em]:text-[#4fb8a8]"
-								v-html="station.previously"
-							/>
-						</div>
-
-						<!-- Stage / card title / tagline -->
-						<div class="mb-7">
-							<div
-								class="mb-3.5 font-mono text-[11px] tracking-[0.35em] uppercase text-[#d14859]"
-							>
-								{{ station.stage }}
-							</div>
-							<h2
-								class="m-0 mb-3.5 font-fraunces text-[clamp(26px,2.8vw,36px)] font-light leading-[1.1] tracking-[-0.02em] text-foreground [&_em]:italic [&_em]:font-normal [&_em]:text-[#e8a951]"
-								v-html="station.cardTitle || station.title"
-							/>
-							<p
-								class="m-0 font-fraunces text-[17px] italic leading-[1.45] text-muted-foreground"
-							>
-								{{ station.tagline }}
-							</p>
-						</div>
-
-						<!-- Verdict + explanation -->
-						<div class="border-t border-border pt-6">
-							<div
-								class="mb-2 font-mono text-[11px] tracking-[0.3em] uppercase font-semibold"
-								:class="correct ? 'text-[#6cc27d]' : 'text-[#d14859]'"
-							>
-								{{ verdictText }}
-							</div>
-							<h3
-								class="m-0 mb-4.5 font-fraunces text-2xl font-normal leading-[1.25] text-foreground [&_em]:italic [&_em]:text-[#e8a951]"
-								v-html="station.explanationTitle || ''"
-							/>
-							<StoryRichText
-								class="mb-6"
-								:html="station.explanation"
-								:diagrams="station.explanationDiagrams"
+							<StoryDiagram
+								v-for="d in station.explanationDiagrams"
+								:key="d.id"
+								:src="d.src"
+								:caption="d.caption"
+								mode="inline"
 								@enlarge="onEnlarge"
 							/>
 						</div>
 
-						<!-- Story prose -->
-						<div v-if="station.story" class="mt-7 border-t border-border pt-7">
-							<div
-								class="mb-3.5 font-mono text-[11px] tracking-[0.3em] uppercase font-semibold text-[#4fb8a8]"
-							>
-								The story
-							</div>
-							<StoryRichText
-								:html="station.story"
-								:diagrams="station.diagrams"
-								@enlarge="onEnlarge"
-							/>
-						</div>
-
-						<!-- What's next -->
-						<div
-							v-if="station.whatsNext"
-							class="mt-8 rounded-r-[3px] border-l-[3px] border-[#e8a951] bg-[rgba(232,169,81,0.05)] px-6 py-5"
-						>
-							<div
-								class="mb-2.5 font-mono text-[10px] tracking-[0.3em] uppercase font-semibold text-[#e8a951]"
-							>
-								What happens next
-							</div>
-							<div
-								class="font-fraunces text-base leading-[1.6] text-muted-foreground [&_em]:italic [&_em]:text-[#e8a951] [&_strong]:font-semibold [&_strong]:text-foreground"
-								v-html="station.whatsNext"
-							/>
-						</div>
+						<!-- Keypoints slideshow -->
+						<StoryKeypoints
+							v-if="station.keypoints && station.keypoints.length"
+							class="mb-6"
+							:keypoints="station.keypoints"
+						/>
 
 						<!-- Action row -->
 						<div

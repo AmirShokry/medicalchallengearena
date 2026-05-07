@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="32" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">ADCC · INNATE + ADAPTIVE BRIDGE</text>
+                  <g transform="translate(120 150)">
+                    <circle cx="0" cy="0" r="40" fill="#4fb8a8" opacity="0.4" stroke="#4fb8a8" stroke-width="1.5"/>
+                    <text x="0" y="-44" text-anchor="middle" style="fill:#4fb8a8;font:700 10px Inter,sans-serif">NK</text>
+                    <g transform="translate(38 0)">
+                      <rect x="-3" y="-10" width="6" height="20" rx="2" fill="#9370b9" stroke="#4a2d60" stroke-width="0.8"/>
+                      <text x="16" y="4" style="fill:#9370b9;font:700 9.5px Inter,sans-serif">CD16</text>
+                    </g>
+                  </g>
+                  <g transform="translate(250 150) rotate(90)">
+                    <path d="M 0 -14 L -8 -22 M 0 -14 L 8 -22 M 0 -14 L 0 14" stroke="#e8a951" stroke-width="2.2" fill="none"/>
+                    <circle cx="-8" cy="-22" r="2" fill="#e8a951"/>
+                    <circle cx="8" cy="-22" r="2" fill="#e8a951"/>
+                    <circle cx="0" cy="14" r="2.2" fill="#e8a951"/>
+                  </g>
+                  <text x="250" y="105" text-anchor="middle" style="fill:#e8a951;font:600 9px Inter,sans-serif">IgG</text>
+                  <g transform="translate(380 150)">
+                    <circle cx="0" cy="0" r="40" fill="#d14859" opacity="0.25" stroke="#d14859" stroke-width="1.5"/>
+                    <g fill="#e8a951" opacity="0.3">
+                      <rect x="-26" y="-32" width="4" height="8" rx="1"/><rect x="20" y="22" width="4" height="8" rx="1"/>
+                    </g>
+                    <text x="0" y="4" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">target</text>
+                    <text x="0" y="58" text-anchor="middle" style="fill:#d14859;font:600 9.5px Inter,sans-serif">IgG-coated</text>
+                  </g>
+                  <text x="250" y="240" text-anchor="middle" style="fill:#b4becf;font:italic 10px Inter,sans-serif">NK cell uses antibody made by <tspan fill="#e8a951" font-weight="600">adaptive immunity</tspan> — but kills innately</text>
+                </svg>

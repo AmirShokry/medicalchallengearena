@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="32" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">CONVERGENCE · ONE OUTPUT</text>
+                  <g transform="translate(80 85)">
+                    <rect x="0" y="0" width="70" height="28" rx="4" fill="#9370b9" fill-opacity="0.2" stroke="#9370b9" stroke-width="1"/>
+                    <text x="35" y="18" text-anchor="middle" style="fill:#9370b9;font:700 10px Inter,sans-serif">TLRs</text>
+                  </g>
+                  <g transform="translate(80 125)">
+                    <rect x="0" y="0" width="70" height="28" rx="4" fill="#4fb8a8" fill-opacity="0.2" stroke="#4fb8a8" stroke-width="1"/>
+                    <text x="35" y="18" text-anchor="middle" style="fill:#4fb8a8;font:700 10px Inter,sans-serif">NLRs</text>
+                  </g>
+                  <g transform="translate(80 165)">
+                    <rect x="0" y="0" width="70" height="28" rx="4" fill="#d14859" fill-opacity="0.2" stroke="#d14859" stroke-width="1"/>
+                    <text x="35" y="18" text-anchor="middle" style="fill:#d14859;font:700 10px Inter,sans-serif">RLRs</text>
+                  </g>
+                  <g transform="translate(80 205)">
+                    <rect x="0" y="0" width="70" height="28" rx="4" fill="#e8a951" fill-opacity="0.2" stroke="#e8a951" stroke-width="1"/>
+                    <text x="35" y="18" text-anchor="middle" style="fill:#e8a951;font:700 10px Inter,sans-serif">CLRs</text>
+                  </g>
+                  <g stroke="#e8a951" stroke-width="1.5" fill="none" opacity="0.7">
+                    <path d="M 155 100 Q 220 140 265 140"/>
+                    <path d="M 155 140 L 265 140"/>
+                    <path d="M 155 180 Q 220 140 265 140"/>
+                    <path d="M 155 220 Q 220 140 265 140"/>
+                  </g>
+                  <polygon points="260,136 272,140 260,144" fill="#e8a951"/>
+                  <g transform="translate(290 130)">
+                    <ellipse cx="35" cy="12" rx="42" ry="18" fill="#e8a951" opacity="0.85"/>
+                    <text x="35" y="16" text-anchor="middle" style="fill:#0a0e1a;font:700 12px Inter,sans-serif">NF-κB</text>
+                  </g>
+                  <path d="M 365 154 L 365 178" stroke="#e8a951" stroke-width="1.5" stroke-dasharray="2 2" marker-end=""/>
+                  <polygon points="361,176 365,184 369,176" fill="#e8a951"/>
+                  <text x="430" y="178" text-anchor="middle" style="fill:#4fb8a8;font:600 10px Inter,sans-serif;letter-spacing:1px">CYTOKINES</text>
+                  <text x="430" y="192" text-anchor="middle" style="fill:#b4becf;font:italic 8.5px Inter,sans-serif">TNF · IL-1 · IL-6</text>
+                  <text x="250" y="252" text-anchor="middle" style="fill:#b4becf;font:italic 10px Inter,sans-serif">four families of sensors, <tspan fill="#e8a951" font-weight="600">one shared alarm</tspan></text>
+                </svg>

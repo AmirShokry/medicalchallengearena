@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 460" preserveAspectRatio="xMidYMid meet">
+      <style>
+        .mpo-eyebrow { fill: #e8a951; font: 500 10px "Inter", sans-serif; letter-spacing: 2.5px; }
+        .mpo-title { fill: #e8ecf3; font: italic 400 22px "Fraunces", serif; }
+        .mpo-station-num { fill: #6b7689; font: 700 11px "JetBrains Mono", monospace; letter-spacing: 1.5px; }
+        .mpo-enzyme { fill: #e8ecf3; font: 600 12px "Inter", sans-serif; letter-spacing: 0.5px; }
+        .mpo-enzyme-broken { fill: #d14859; font: 700 12px "Inter", sans-serif; letter-spacing: 0.5px; }
+        .mpo-formula { fill: #e8a951; font: 700 16px "JetBrains Mono", monospace; letter-spacing: 0.5px; }
+        .mpo-formula-dim { fill: #6b7689; font: 700 16px "JetBrains Mono", monospace; letter-spacing: 0.5px; }
+        .mpo-product-name { fill: #e8ecf3; font: 500 10px "Inter", sans-serif; letter-spacing: 0.3px; }
+        .mpo-product-name-dim { fill: #6b7689; font: 500 10px "Inter", sans-serif; letter-spacing: 0.3px; }
+        .mpo-status { fill: #4fb8a8; font: italic 600 9px "Inter", sans-serif; letter-spacing: 1.5px; text-transform: uppercase; }
+        .mpo-status-broken { fill: #d14859; font: italic 700 9px "Inter", sans-serif; letter-spacing: 1.5px; text-transform: uppercase; }
+        .mpo-caption { fill: #6b7689; font: italic 400 10px "Inter", sans-serif; }
+        .mpo-flag-text { fill: #0a0e1a; font: 700 8px "Inter", sans-serif; letter-spacing: 1px; }
+      </style>
+      <defs>
+        <radialGradient id="mpoGlowMild" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#e8a951" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="#e8a951" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="mpoGlowMedium" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#e8a951" stop-opacity="0.45"/>
+          <stop offset="100%" stop-color="#e8a951" stop-opacity="0"/>
+        </radialGradient>
+        <marker id="mpoArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8a951"/>
+        </marker>
+      </defs>
+
+      <!-- Title -->
+      <text x="500" y="26" text-anchor="middle" class="mpo-eyebrow">MPO DEFICIENCY · ONLY THE LAST STEP FAILS</text>
+      <text x="500" y="58" text-anchor="middle" class="mpo-title">The respiratory burst stops one step short</text>
+      <line x1="40" y1="78" x2="960" y2="78" stroke="#222c3e" stroke-width="1"/>
+
+      <!-- STATION 0: O₂ -->
+      <g transform="translate(173 220)">
+        <text x="0" y="-95" text-anchor="middle" class="mpo-station-num">INPUT</text>
+        <text x="0" y="-79" text-anchor="middle" class="mpo-product-name">from the air</text>
+        <circle cx="0" cy="0" r="22" fill="#0a0e1a" stroke="#6b7689" stroke-width="1.2"/>
+        <text x="0" y="5" text-anchor="middle" class="mpo-formula" fill="#b4becf">O₂</text>
+        <text x="0" y="50" text-anchor="middle" class="mpo-product-name">oxygen</text>
+        <text x="0" y="65" text-anchor="middle" class="mpo-status">unchanged</text>
+      </g>
+
+      <!-- ENZYME 1: NADPH oxidase (works) -->
+      <g transform="translate(243 220)">
+        <path d="M 0 0 L 110 0" stroke="#e8a951" stroke-width="2" marker-end="url(#mpoArrow)"/>
+        <text x="62" y="-12" text-anchor="middle" class="mpo-enzyme">NADPH oxidase</text>
+        <text x="62" y="22" text-anchor="middle" class="mpo-status">step 1 ✓</text>
+      </g>
+
+      <!-- STATION 1: O₂⁻ -->
+      <g transform="translate(393 220)">
+        <text x="0" y="-95" text-anchor="middle" class="mpo-station-num">PRODUCT 1</text>
+        <text x="0" y="-79" text-anchor="middle" class="mpo-product-name">superoxide</text>
+        <circle cx="0" cy="0" r="34" fill="url(#mpoGlowMild)"/>
+        <circle cx="0" cy="0" r="22" fill="#0a0e1a" stroke="#e8a951" stroke-width="1.3"/>
+        <text x="0" y="5" text-anchor="middle" class="mpo-formula">O₂⁻</text>
+        <text x="0" y="50" text-anchor="middle" class="mpo-product-name">superoxide anion</text>
+        <text x="0" y="65" text-anchor="middle" class="mpo-status">made normally</text>
+      </g>
+
+      <!-- ENZYME 2: SOD (works) -->
+      <g transform="translate(443 220)">
+        <path d="M 0 0 L 110 0" stroke="#e8a951" stroke-width="2" marker-end="url(#mpoArrow)"/>
+        <text x="55" y="-12" text-anchor="middle" class="mpo-enzyme">SOD</text>
+        <text x="55" y="22" text-anchor="middle" class="mpo-status">step 2 ✓</text>
+      </g>
+
+      <!-- STATION 2: H₂O₂ (made — accumulates) -->
+      <g transform="translate(603 220)">
+        <text x="0" y="-95" text-anchor="middle" class="mpo-station-num">PRODUCT 2</text>
+        <text x="0" y="-79" text-anchor="middle" class="mpo-product-name">hydrogen peroxide</text>
+        <circle cx="0" cy="0" r="40" fill="url(#mpoGlowMedium)"/>
+        <circle cx="0" cy="0" r="24" fill="#0a0e1a" stroke="#e8a951" stroke-width="1.5"/>
+        <text x="0" y="5" text-anchor="middle" class="mpo-formula">H₂O₂</text>
+        <text x="0" y="52" text-anchor="middle" class="mpo-product-name">hydrogen peroxide</text>
+        <text x="0" y="67" text-anchor="middle" class="mpo-status">accumulates here</text>
+      </g>
+
+      <!-- ENZYME 3: MPO — BROKEN (focus) -->
+      <g transform="translate(657 220)">
+        <rect x="25" y="-66" width="60" height="14" rx="3" fill="#d14859" opacity="0.92"/>
+        <text x="55" y="-56" text-anchor="middle" class="mpo-flag-text">QUESTION</text>
+        <line x1="0" y1="0" x2="110" y2="0" stroke="#6b7689" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.6"/>
+        <text x="55" y="6" text-anchor="middle" fill="#d14859" style="font: 700 18px Inter, sans-serif;">✗</text>
+        <text x="55" y="-30" text-anchor="middle" class="mpo-enzyme-broken">MPO</text>
+        <text x="55" y="-16" text-anchor="middle" class="mpo-caption">myeloperoxidase</text>
+        <text x="55" y="32" text-anchor="middle" class="mpo-status-broken">step 3 broken</text>
+      </g>
+
+      <!-- STATION 3: HOCl — never made (ghost) -->
+      <g transform="translate(827 220)">
+        <text x="0" y="-95" text-anchor="middle" class="mpo-station-num" opacity="0.5">PRODUCT 3</text>
+        <text x="0" y="-79" text-anchor="middle" class="mpo-product-name-dim">hypochlorous acid</text>
+        <circle cx="0" cy="0" r="30" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
+        <text x="0" y="5" text-anchor="middle" class="mpo-formula-dim" opacity="0.5">HOCl</text>
+        <text x="0" y="55" text-anchor="middle" class="mpo-product-name-dim" fill="#d14859" style="font-style: italic;">"BLEACH"</text>
+        <text x="0" y="70" text-anchor="middle" class="mpo-status-broken">never made</text>
+      </g>
+
+      <!-- Why usually silent callout -->
+      <g transform="translate(500 340)">
+        <text x="0" y="0" text-anchor="middle" class="mpo-status">WHY USUALLY SILENT</text>
+        <text x="0" y="18" text-anchor="middle" class="mpo-caption">
+          H₂O₂ is already toxic enough. Other antimicrobials (defensins, lysozyme) compensate.
+        </text>
+        <text x="0" y="32" text-anchor="middle" class="mpo-caption" fill="#d14859" style="font-style: italic;">
+          The exception: Candida.
+        </text>
+      </g>
+
+      <!-- Bottom resolver -->
+      <line x1="40" y1="395" x2="960" y2="395" stroke="#222c3e" stroke-width="1"/>
+      <text x="500" y="408" text-anchor="middle" class="mpo-caption">
+        <tspan x="500">Compare to CGD: there, <tspan fill="#d14859" font-weight="700">step 1 fails</tspan> and the entire cascade collapses.</tspan>
+        <tspan x="500" dy="1.4em">Here, <tspan fill="#e8a951" font-weight="700">only step 3 fails</tspan> and the cell still has H₂O₂ to fight with.</tspan>
+        <tspan x="500" dy="1.4em">That's why MPO deficiency is mostly clinically silent — and why the boards still test it.</tspan>
+      </text>
+    </svg>

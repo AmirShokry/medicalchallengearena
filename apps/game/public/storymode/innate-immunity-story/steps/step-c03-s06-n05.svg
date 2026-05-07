@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(135 145)">
+                    <ellipse cx="0" cy="0" rx="55" ry="15" fill="#111826" stroke="#4fb8a8" stroke-width="1.5"/>
+                    <g fill="#e8a951" opacity="0.8">
+                      <rect x="-35" y="-3" width="10" height="6" rx="1"/>
+                      <rect x="-10" y="-3" width="10" height="6" rx="1"/>
+                      <rect x="15" y="-3" width="10" height="6" rx="1"/>
+                      <rect x="35" y="-3" width="8" height="6" rx="1"/>
+                    </g>
+                    <text x="0" y="38" text-anchor="middle" style="fill:#4fb8a8;font:italic 700 9px Inter,sans-serif">clots everywhere</text>
+                    <text x="0" y="52" text-anchor="middle" style="fill:#b4becf;font:italic 8px Inter,sans-serif">(thrombosis)</text>
+                  </g>
+                  <g transform="translate(370 145)">
+                    <ellipse cx="0" cy="0" rx="55" ry="15" fill="#111826" stroke="#d14859" stroke-width="1.5" stroke-dasharray="3 2"/>
+                    <g fill="#d14859" opacity="0.9">
+                      <circle cx="-30" cy="18" r="3"/>
+                      <circle cx="-15" cy="20" r="3"/>
+                      <circle cx="0" cy="22" r="3"/>
+                      <circle cx="15" cy="18" r="3"/>
+                      <circle cx="30" cy="20" r="3"/>
+                      <circle cx="-20" cy="28" r="3"/>
+                      <circle cx="20" cy="26" r="3"/>
+                    </g>
+                    <g stroke="#d14859" stroke-width="1" fill="none" opacity="0.6">
+                      <path d="M -28 8 L -25 14"/>
+                      <path d="M -8 8 L -4 14"/>
+                      <path d="M 15 8 L 18 14"/>
+                    </g>
+                    <text x="0" y="-25" text-anchor="middle" style="fill:#d14859;font:italic 700 9px Inter,sans-serif">bleeding too</text>
+                    <text x="0" y="-13" text-anchor="middle" style="fill:#b4becf;font:italic 8px Inter,sans-serif">(consumed factors)</text>
+                  </g>
+                  <g transform="translate(250 80)">
+                    <text x="0" y="0" text-anchor="middle" style="fill:#d14859;font:700 11px Inter,sans-serif;letter-spacing:2px">DIC</text>
+                    <path d="M -85 5 L -25 5" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2"/>
+                    <path d="M 25 5 L 85 5" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2"/>
+                  </g>
+                </svg>

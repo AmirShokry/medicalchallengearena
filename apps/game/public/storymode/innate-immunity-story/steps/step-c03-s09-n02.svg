@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <line x1="60" y1="220" x2="450" y2="220" stroke="#6b7689" stroke-width="1.5"/>
+                  <line x1="60" y1="60" x2="60" y2="220" stroke="#6b7689" stroke-width="1.5"/>
+                  <line x1="60" y1="130" x2="450" y2="130" stroke="#6b7689" stroke-width="1" stroke-dasharray="3 2" opacity="0.5"/>
+                  <g>
+                    <rect x="95" y="180" width="45" height="40" fill="#d14859" opacity="0.6"/>
+                    <path d="M 110 170 L 117 160 L 124 170" stroke="#d14859" stroke-width="2" fill="none"/>
+                    <path d="M 110 155 L 117 145 L 124 155" stroke="#d14859" stroke-width="2" fill="none"/>
+                    <text x="117" y="238" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif">RBC</text>
+                  </g>
+                  <g>
+                    <rect x="170" y="185" width="45" height="35" fill="#4fb8a8" opacity="0.6"/>
+                    <path d="M 185 175 L 192 165 L 199 175" stroke="#4fb8a8" stroke-width="2" fill="none"/>
+                    <path d="M 185 160 L 192 150 L 199 160" stroke="#4fb8a8" stroke-width="2" fill="none"/>
+                    <text x="192" y="238" text-anchor="middle" style="fill:#4fb8a8;font:700 9px Inter,sans-serif">Plt</text>
+                  </g>
+                  <g>
+                    <rect x="245" y="175" width="45" height="45" fill="#9370b9" opacity="0.6"/>
+                    <path d="M 260 165 L 267 155 L 274 165" stroke="#9370b9" stroke-width="2" fill="none"/>
+                    <path d="M 260 150 L 267 140 L 274 150" stroke="#9370b9" stroke-width="2" fill="none"/>
+                    <text x="267" y="238" text-anchor="middle" style="fill:#9370b9;font:700 9px Inter,sans-serif">Lymph</text>
+                  </g>
+                  <g>
+                    <rect x="320" y="180" width="45" height="40" fill="#e8a951" opacity="0.6"/>
+                    <path d="M 335 170 L 342 160 L 349 170" stroke="#e8a951" stroke-width="2" fill="none"/>
+                    <path d="M 335 155 L 342 145 L 349 155" stroke="#e8a951" stroke-width="2" fill="none"/>
+                    <text x="342" y="238" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif">Neut</text>
+                  </g>
+                  <g transform="translate(420 90)">
+                    <rect x="-20" y="-20" width="40" height="50" rx="6" fill="#d14859" opacity="0.4" stroke="#d14859" stroke-width="1.5"/>
+                    <circle r="8" fill="#d14859" opacity="0.7"/>
+                    <text x="0" y="48" text-anchor="middle" style="fill:#d14859;font:italic 700 9px Inter,sans-serif">MARROW</text>
+                    <text x="0" y="60" text-anchor="middle" style="fill:#d14859;font:italic 9px Inter,sans-serif">failure</text>
+                  </g>
+                  <text x="200" y="50" text-anchor="middle" style="fill:#d14859;font:italic 700 10px Inter,sans-serif">everything down</text>
+                </svg>

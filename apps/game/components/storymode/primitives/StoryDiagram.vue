@@ -98,28 +98,41 @@ function onKey(e: KeyboardEvent) {
 		</div>
 	</figure>
 
-	<!-- LIGHTBOX — natural aspect ratio with a 78vh ceiling, caption below. -->
-	<div v-else-if="mode === 'lightbox'" class="contents">
+	<!--
+		LIGHTBOX — fills the lightbox panel's remaining flex space and
+		uses `object-contain` so the SVG always fits inside the panel's
+		max-height/max-width box without scrollbars, regardless of the
+		source's aspect ratio. Caption (if any) sits below as a fixed
+		row so it doesn't squeeze the image.
+	-->
+	<div v-else-if="mode === 'lightbox'" class="flex min-h-0 flex-1 flex-col">
 		<img
 			:src="src"
 			:alt="alt || caption || ''"
-			class="block h-auto max-h-[78vh] w-full select-none"
+			class="block min-h-0 w-full flex-1 select-none object-contain"
 			draggable="false"
 		/>
 		<div
 			v-if="caption"
-			class="mt-4 text-center text-[13px] italic leading-[1.6] text-muted-foreground"
+			class="mt-4 flex-none text-center text-[13px] italic leading-[1.6] text-muted-foreground"
 		>
 			{{ caption }}
 		</div>
 	</div>
 
-	<!-- STAGE — fills the step-flow's `.sf-diagram-wrap`. -->
+	<!--
+		STAGE — fills the step-flow's `.sf-diagram-wrap`. No max-width
+		cap: in the horizontal layout the wrap takes 60% of the viewport
+		width, so a 720px ceiling would leave large blank gutters on the
+		sides. Mirrors the reference's `.sf-diagram-wrap svg.sf-diagram`
+		override (`max-width: none !important; max-height: 100% !important;
+		object-fit: contain`).
+	-->
 	<img
 		v-else
 		:src="src"
 		:alt="alt || caption || ''"
-		class="block h-full w-full max-w-[720px] select-none object-contain"
+		class="block h-full max-h-full w-full select-none object-contain"
 		draggable="false"
 	/>
 </template>

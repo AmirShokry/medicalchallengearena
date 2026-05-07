@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(140 140)">
+                    <path d="M -55 -30 Q -65 -8 -55 20 Q -35 40 0 42 Q 35 42 55 25 Q 65 5 55 -25 Q 40 -42 5 -45 Q -30 -45 -55 -30" fill="#d14859" opacity="0.3" stroke="#d14859" stroke-width="1.5"/>
+                    <text x="0" y="4" text-anchor="middle" style="fill:#d14859;font:700 10px Inter,sans-serif">spleen</text>
+                    <text x="0" y="-52" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">antibody · filter</text>
+                  </g>
+                  <g transform="translate(370 140)">
+                    <circle r="42" fill="#e8a951" opacity="0.8" stroke="#a87b3c" stroke-width="1.5"/>
+                    <circle cx="-12" cy="-10" r="6" fill="#4a2d60"/>
+                    <circle cx="10" cy="10" r="6" fill="#4a2d60"/>
+                    <text x="0" y="-52" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">pus-making cells</text>
+                    <text x="0" y="64" text-anchor="middle" style="fill:#e8a951;font:700 10px Inter,sans-serif">neutrophils</text>
+                  </g>
+                  <path d="M 205 140 L 315 140" stroke="#6b7689" stroke-width="1" stroke-dasharray="4 3"/>
+                  <text x="260" y="135" text-anchor="middle" style="fill:#e8ecf3;font:italic 600 10px Fraunces,serif">vs.</text>
+                </svg>

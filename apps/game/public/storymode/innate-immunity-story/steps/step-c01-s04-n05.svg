@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="38" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">NF-κB TURNS ON THREE CYTOKINE GENES</text>
+                  <line x1="30" y1="158" x2="470" y2="158" stroke="#4fb8a8" stroke-width="1.5" opacity="0.7"/>
+                  <line x1="30" y1="173" x2="470" y2="173" stroke="#4fb8a8" stroke-width="1.5" opacity="0.7"/>
+                  <text x="30" y="205" style="fill:#6b7689;font:10px Inter,sans-serif;letter-spacing:1.5px">DNA</text>
+                  <g transform="translate(75 160)">
+                    <rect x="-26" y="-18" width="52" height="30" rx="6" fill="#e8a951" opacity="0.25" stroke="#e8a951" stroke-width="2"/>
+                    <text x="0" y="3" text-anchor="middle" style="fill:#e8a951;font:700 11px Inter,sans-serif">NF-κB</text>
+                    <text x="0" y="-28" text-anchor="middle" style="fill:#b4becf;font:italic 10px Inter,sans-serif">on the promoter</text>
+                  </g>
+                  <g transform="translate(195 165)">
+                    <rect x="-32" y="-12" width="64" height="20" rx="3" fill="#e8a951"/>
+                    <text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 11px Inter,sans-serif">TNF-α</text>
+                  </g>
+                  <g transform="translate(290 165)">
+                    <rect x="-30" y="-12" width="60" height="20" rx="3" fill="#e8a951"/>
+                    <text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 11px Inter,sans-serif">IL-1</text>
+                  </g>
+                  <g transform="translate(385 165)">
+                    <rect x="-30" y="-12" width="60" height="20" rx="3" fill="#e8a951"/>
+                    <text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 11px Inter,sans-serif">IL-6</text>
+                  </g>
+                  <path d="M 195 140 Q 200 105 215 88" stroke="#e8a951" stroke-width="1.3" fill="none" opacity="0.75"/>
+                  <polygon points="218,86 212,95 220,94" fill="#e8a951"/>
+                  <path d="M 290 140 Q 295 105 310 88" stroke="#e8a951" stroke-width="1.3" fill="none" opacity="0.75"/>
+                  <polygon points="313,86 307,95 315,94" fill="#e8a951"/>
+                  <path d="M 385 140 Q 390 105 405 88" stroke="#e8a951" stroke-width="1.3" fill="none" opacity="0.75"/>
+                  <polygon points="408,86 402,95 410,94" fill="#e8a951"/>
+                  <text x="305" y="78" text-anchor="middle" style="fill:#b4becf;font:italic 11px Inter,sans-serif">→ transcribed → cytokine proteins made</text>
+                  <g transform="translate(250 228)">
+                    <rect x="-150" y="-14" width="300" height="28" rx="14" fill="#e8a951" opacity="0.12" stroke="#e8a951" stroke-width="1"/>
+                    <text x="0" y="5" text-anchor="middle" style="fill:#e8a951;font:700 11px Inter,sans-serif;letter-spacing:2px">THE THREE BIG INFLAMMATORY CYTOKINES</text>
+                  </g>
+                </svg>

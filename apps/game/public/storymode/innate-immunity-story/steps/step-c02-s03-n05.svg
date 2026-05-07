@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <ellipse cx="250" cy="145" rx="170" ry="50" fill="#d14859" opacity="0.12"/>
+                  <ellipse cx="250" cy="145" rx="130" ry="28" fill="#111826" stroke="#d14859" stroke-width="2"/>
+                  <g transform="translate(120 119)">
+                    <rect x="0" y="0" width="40" height="8" fill="#4fb8a8" opacity="0.85"/>
+                    <rect x="52" y="0" width="35" height="8" fill="#4fb8a8" opacity="0.85"/>
+                    <rect x="100" y="0" width="40" height="8" fill="#4fb8a8" opacity="0.85"/>
+                    <rect x="155" y="0" width="35" height="8" fill="#4fb8a8" opacity="0.85"/>
+                    <rect x="203" y="0" width="40" height="8" fill="#4fb8a8" opacity="0.85"/>
+                  </g>
+                  <g transform="translate(120 165)">
+                    <rect x="0" y="0" width="40" height="8" fill="#4fb8a8" opacity="0.85"/>
+                    <rect x="52" y="0" width="35" height="8" fill="#4fb8a8" opacity="0.85"/>
+                    <rect x="100" y="0" width="40" height="8" fill="#4fb8a8" opacity="0.85"/>
+                    <rect x="155" y="0" width="35" height="8" fill="#4fb8a8" opacity="0.85"/>
+                    <rect x="203" y="0" width="40" height="8" fill="#4fb8a8" opacity="0.85"/>
+                  </g>
+                  <g fill="#d14859" opacity="0.9">
+                    <path d="M 162 119 L 158 107 L 166 107 Z"/>
+                    <path d="M 212 119 L 208 107 L 216 107 Z"/>
+                    <path d="M 262 119 L 258 107 L 266 107 Z"/>
+                    <path d="M 312 119 L 308 107 L 316 107 Z"/>
+                    <path d="M 162 173 L 158 185 L 166 185 Z"/>
+                    <path d="M 212 173 L 208 185 L 216 185 Z"/>
+                    <path d="M 262 173 L 258 185 L 266 185 Z"/>
+                    <path d="M 312 173 L 308 185 L 316 185 Z"/>
+                  </g>
+                  <g transform="translate(186 100)">
+                    <circle r="5" fill="#d14859"/>
+                  </g>
+                  <g transform="translate(236 94)">
+                    <circle r="5" fill="#d14859"/>
+                  </g>
+                  <g transform="translate(286 98)">
+                    <circle r="5" fill="#d14859"/>
+                  </g>
+                  <g transform="translate(180 192)">
+                    <circle r="5" fill="#d14859"/>
+                  </g>
+                  <g transform="translate(240 194)">
+                    <circle r="5" fill="#d14859"/>
+                  </g>
+                  <g transform="translate(290 192)">
+                    <circle r="5" fill="#d14859"/>
+                  </g>
+                  <g transform="translate(62 145)">
+                    <text x="0" y="0" text-anchor="middle" style="fill:#d14859;font:700 13px Inter,sans-serif;letter-spacing:1.5px">H1</text>
+                    <text x="0" y="14" text-anchor="middle" style="fill:#d14859;font:italic 9px Inter,sans-serif">receptor</text>
+                  </g>
+                  <g fill="#e8a951" opacity="0.7">
+                    <circle cx="245" cy="142" r="3"/>
+                    <circle cx="200" cy="148" r="3"/>
+                    <circle cx="300" cy="145" r="3"/>
+                  </g>
+                  <g transform="translate(440 145)">
+                    <text x="0" y="0" text-anchor="middle" style="fill:#e8a951;font:700 10px Inter,sans-serif">LEAK +</text>
+                    <text x="0" y="14" text-anchor="middle" style="fill:#e8a951;font:700 10px Inter,sans-serif">DILATE</text>
+                  </g>
+                </svg>

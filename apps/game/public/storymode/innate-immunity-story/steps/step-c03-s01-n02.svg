@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(250 145)">
+                    <path d="M -45 -50 Q -60 -30 -55 0 Q -48 30 -30 55 Q 0 70 30 55 Q 48 30 55 0 Q 60 -30 45 -50 Q 0 -65 -45 -50" fill="#e8a8a0" opacity="0.4" stroke="#c88a80" stroke-width="1.5"/>
+                    <g fill="#d14859" opacity="0.9">
+                      <circle cx="-20" cy="20" r="3.5"/>
+                      <circle cx="-14" cy="22" r="3.5"/>
+                      <circle cx="-23" cy="25" r="3.5"/>
+                      <circle cx="-17" cy="28" r="3.5"/>
+                      <circle cx="20" cy="20" r="3.5"/>
+                      <circle cx="26" cy="22" r="3.5"/>
+                      <circle cx="17" cy="25" r="3.5"/>
+                      <circle cx="23" cy="28" r="3.5"/>
+                      <circle cx="-5" cy="35" r="3.5"/>
+                      <circle cx="2" cy="38" r="3.5"/>
+                      <circle cx="-2" cy="32" r="3.5"/>
+                      <circle cx="5" cy="35" r="3.5"/>
+                    </g>
+                  </g>
+                  <g transform="translate(80 90)">
+                    <line x1="0" y1="0" x2="340" y2="0" stroke="#4fb8a8" stroke-width="1.5"/>
+                    <polygon points="345,0 337,-5 337,5" fill="#4fb8a8"/>
+                    <text x="0" y="-6" style="fill:#4fb8a8;font:italic 9px Inter,sans-serif">day 0</text>
+                    <text x="170" y="-6" text-anchor="middle" style="fill:#4fb8a8;font:italic 9px Inter,sans-serif">months</text>
+                    <text x="340" y="-6" text-anchor="end" style="fill:#4fb8a8;font:italic 9px Inter,sans-serif">years</text>
+                  </g>
+                  <g fill="#d14859" opacity="0.7">
+                    <circle cx="100" cy="75" r="4"/>
+                    <circle cx="180" cy="75" r="4"/>
+                    <circle cx="260" cy="75" r="4"/>
+                    <circle cx="340" cy="75" r="4"/>
+                    <circle cx="420" cy="75" r="4"/>
+                  </g>
+                  <text x="250" y="235" text-anchor="middle" style="fill:#e8a951;font:italic 700 10px Inter,sans-serif">same strain, for years</text>
+                </svg>

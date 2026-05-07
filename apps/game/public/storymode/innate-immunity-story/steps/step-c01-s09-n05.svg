@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="24" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">SEALED INSIDE — PHAGOSOME FORMED</text>
+                  <g transform="translate(250 150)">
+                    <circle r="80" fill="#e8a951" opacity="0.88" stroke="#a87b3c" stroke-width="1.8"/>
+                    <circle cx="-30" cy="-30" r="8" fill="#4a2d60"/>
+                    <circle cx="-15" cy="-5" r="8" fill="#4a2d60"/>
+                    <circle cx="-8" cy="30" r="8" fill="#4a2d60"/>
+                    <g transform="translate(25 10)">
+                      <circle r="28" fill="#0a0e1a" stroke="#e8a951" stroke-width="1.5" stroke-dasharray="3 2"/>
+                      <ellipse cx="0" cy="0" rx="18" ry="13" fill="#d14859" opacity="0.85" stroke="#a33648" stroke-width="1.3"/>
+                      <circle cx="-5" cy="0" r="2" fill="#4a2d60" opacity="0.6"/>
+                      <circle cx="5" cy="0" r="2" fill="#4a2d60" opacity="0.6"/>
+                    </g>
+                    <text x="0" y="105" text-anchor="middle" style="fill:#b4becf;font:italic 10px Inter,sans-serif">neutrophil (with phagosome inside)</text>
+                  </g>
+                  <g transform="translate(420 100)">
+                    <text x="0" y="0" text-anchor="end" style="fill:#e8a951;font:700 11px Inter,sans-serif;letter-spacing:1px">PHAGOSOME</text>
+                    <text x="0" y="14" text-anchor="end" style="fill:#b4becf;font:italic 9px Inter,sans-serif">bacterium trapped inside</text>
+                    <path d="M -5 8 L -90 52" stroke="#6b7689" stroke-width="0.8" opacity="0.6" fill="none"/>
+                  </g>
+                </svg>

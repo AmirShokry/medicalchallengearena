@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="24" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 2 — SUPEROXIDE DISMUTASE</text>
+                  <g transform="translate(90 150)">
+                    <rect x="-35" y="-18" width="70" height="36" rx="5" fill="#e8a951"/>
+                    <text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 14px Inter,sans-serif">O₂⁻</text>
+                    <text x="0" y="-28" text-anchor="middle" style="fill:#e8a951;font:italic 9px Inter,sans-serif">superoxide</text>
+                  </g>
+                  <g transform="translate(250 150)">
+                    <circle r="30" fill="#111826" stroke="#e8a951" stroke-width="2.3"/>
+                    <text x="0" y="3" text-anchor="middle" style="fill:#e8a951;font:700 13px Inter,sans-serif">SOD</text>
+                    <text x="0" y="-45" text-anchor="middle" style="fill:#e8a951;font:600 10px Inter,sans-serif">superoxide dismutase</text>
+                  </g>
+                  <line x1="130" y1="150" x2="215" y2="150" stroke="#e8a951" stroke-width="1.5"/>
+                  <polygon points="220,150 212,146 212,154" fill="#e8a951"/>
+                  <line x1="285" y1="150" x2="370" y2="150" stroke="#e8a951" stroke-width="1.5"/>
+                  <polygon points="375,150 367,146 367,154" fill="#e8a951"/>
+                  <g transform="translate(410 150)">
+                    <rect x="-35" y="-18" width="70" height="36" rx="5" fill="#e8a951"/>
+                    <text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 14px Inter,sans-serif">H₂O₂</text>
+                    <text x="0" y="-28" text-anchor="middle" style="fill:#e8a951;font:italic 9px Inter,sans-serif">hydrogen peroxide</text>
+                  </g>
+                  <text x="250" y="220" text-anchor="middle" style="fill:#b4becf;font:italic 11px Inter,sans-serif">more reactive. more lethal.</text>
+                </svg>

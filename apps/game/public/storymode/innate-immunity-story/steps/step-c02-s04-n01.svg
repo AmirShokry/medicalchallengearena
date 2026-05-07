@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(140 150)">
+                    <ellipse cx="0" cy="0" rx="100" ry="75" fill="#d14859" opacity="0.18" stroke="#d14859" stroke-width="1" stroke-dasharray="3 2"/>
+                    <g fill="#d14859" opacity="0.85">
+                      <ellipse cx="-68" cy="-42" rx="9" ry="5.5"/>
+                      <ellipse cx="-38" cy="-52" rx="9" ry="5.5"/>
+                      <ellipse cx="-8" cy="-56" rx="9" ry="5.5"/>
+                      <ellipse cx="25" cy="-48" rx="9" ry="5.5"/>
+                      <ellipse cx="55" cy="-40" rx="9" ry="5.5"/>
+                      <ellipse cx="-75" cy="-12" rx="9" ry="5.5"/>
+                      <ellipse cx="-45" cy="-22" rx="9" ry="5.5"/>
+                      <ellipse cx="22" cy="-18" rx="9" ry="5.5"/>
+                      <ellipse cx="55" cy="-8" rx="9" ry="5.5"/>
+                      <ellipse cx="75" cy="-22" rx="9" ry="5.5"/>
+                      <ellipse cx="-80" cy="18" rx="9" ry="5.5"/>
+                      <ellipse cx="-50" cy="12" rx="9" ry="5.5"/>
+                      <ellipse cx="-18" cy="22" rx="9" ry="5.5"/>
+                      <ellipse cx="18" cy="18" rx="9" ry="5.5"/>
+                      <ellipse cx="50" cy="22" rx="9" ry="5.5"/>
+                      <ellipse cx="75" cy="12" rx="9" ry="5.5"/>
+                      <ellipse cx="-65" cy="45" rx="9" ry="5.5"/>
+                      <ellipse cx="-28" cy="50" rx="9" ry="5.5"/>
+                      <ellipse cx="8" cy="48" rx="9" ry="5.5"/>
+                      <ellipse cx="42" cy="52" rx="9" ry="5.5"/>
+                      <ellipse cx="72" cy="42" rx="9" ry="5.5"/>
+                    </g>
+                    <g fill="#e8a951" opacity="0.95" stroke="#a87b3c" stroke-width="0.8">
+                      <circle cx="-28" cy="-4" r="7"/>
+                      <circle cx="14" cy="0" r="7"/>
+                      <circle cx="-4" cy="-25" r="7"/>
+                      <circle cx="-8" cy="22" r="7"/>
+                    </g>
+                    <text x="0" y="-88" text-anchor="middle" style="fill:#d14859;font:700 10px Inter,sans-serif;letter-spacing:1.5px">INFECTED TISSUE</text>
+                  </g>
+                  <g transform="translate(72 62)">
+                    <circle r="4" fill="#d14859"/>
+                    <line x1="4" y1="0" x2="14" y2="0" stroke="#d14859" stroke-width="1"/>
+                    <text x="16" y="3" style="fill:#d14859;font:italic 9px Inter,sans-serif">bacteria</text>
+                  </g>
+                  <g transform="translate(145 235)">
+                    <circle r="4" fill="#e8a951" stroke="#a87b3c" stroke-width="0.6"/>
+                    <line x1="8" y1="0" x2="20" y2="0" stroke="#e8a951" stroke-width="1"/>
+                    <text x="22" y="3" style="fill:#e8a951;font:italic 9px Inter,sans-serif">neutrophils (used up)</text>
+                  </g>
+                  <g transform="translate(395 150)">
+                    <ellipse cx="0" cy="0" rx="65" ry="50" fill="#d14859" opacity="0.22" stroke="#d14859" stroke-width="1.5"/>
+                    <g fill="#e8a951" opacity="0.95" stroke="#a87b3c" stroke-width="0.5">
+                      <circle cx="-22" cy="-18" r="5"/>
+                      <circle cx="8" cy="-22" r="5"/>
+                      <circle cx="-14" cy="8" r="5"/>
+                      <circle cx="18" cy="14" r="5"/>
+                      <circle cx="0" cy="-6" r="5"/>
+                      <circle cx="-30" cy="-2" r="5"/>
+                      <circle cx="28" cy="0" r="5"/>
+                      <circle cx="-2" cy="24" r="5"/>
+                      <circle cx="-12" cy="-28" r="5"/>
+                      <circle cx="14" cy="-6" r="5"/>
+                      <circle cx="-22" cy="24" r="5"/>
+                      <circle cx="22" cy="-28" r="5"/>
+                      <circle cx="32" cy="22" r="5"/>
+                      <circle cx="-38" cy="-20" r="5"/>
+                      <circle cx="-38" cy="20" r="5"/>
+                      <circle cx="36" cy="-14" r="5"/>
+                    </g>
+                    <text x="0" y="-62" text-anchor="middle" style="fill:#e8a951;font:700 10px Inter,sans-serif;letter-spacing:1.5px">BONE MARROW</text>
+                    <text x="0" y="70" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">factory of neutrophils</text>
+                  </g>
+                  <g transform="translate(252 150)">
+                    <path d="M -8 0 L 65 0" stroke="#4fb8a8" stroke-width="2.5" fill="none" stroke-dasharray="5 3"/>
+                    <polygon points="70,0 60,-6 60,6" fill="#4fb8a8"/>
+                    <g fill="#4fb8a8" opacity="0.9">
+                      <circle cx="10" cy="0" r="3"/>
+                      <circle cx="28" cy="-3" r="3"/>
+                      <circle cx="46" cy="0" r="3"/>
+                    </g>
+                    <text x="30" y="-16" text-anchor="middle" style="fill:#4fb8a8;font:italic 700 10px Inter,sans-serif">G-CSF · IL-1 · TNF</text>
+                    <text x="30" y="22" text-anchor="middle" style="fill:#4fb8a8;font:italic 9px Inter,sans-serif">(the SOS signals)</text>
+                  </g>
+                </svg>

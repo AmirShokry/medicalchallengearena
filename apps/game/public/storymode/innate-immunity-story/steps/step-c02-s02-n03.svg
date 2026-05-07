@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(80 70)">
+                    <path d="M -22 -4 Q -18 -14 -8 -12 Q 0 -18 10 -12 Q 20 -14 22 -4 Q 26 6 18 12 Q 8 18 0 14 Q -10 18 -18 12 Q -26 6 -22 -4" fill="#e8a951" opacity="0.3" stroke="#e8a951" stroke-width="1.3"/>
+                    <text x="0" y="38" text-anchor="middle" style="fill:#e8a951;font:italic 9px Inter,sans-serif">Factor XII</text>
+                  </g>
+                  <path d="M 80 95 Q 80 130 135 155" stroke="#e8a951" stroke-width="1.3" fill="none" stroke-dasharray="3 2"/>
+                  <polygon points="136,158 130,152 140,152" fill="#e8a951"/>
+                  <g transform="translate(155 170)">
+                    <g fill="#e8a951" opacity="0.85">
+                      <circle cx="-10" cy="-8" r="5"/>
+                      <circle cx="5" cy="-6" r="5"/>
+                      <circle cx="-4" cy="8" r="5"/>
+                    </g>
+                    <path d="M -18 -4 L 12 -4 L 12 14 L -18 14 Z" fill="none" stroke="#e8a951" stroke-width="1.3" stroke-dasharray="2 2"/>
+                    <text x="0" y="28" text-anchor="middle" style="fill:#e8a951;font:italic 9px Inter,sans-serif">kallikrein</text>
+                  </g>
+                  <g transform="translate(280 170)">
+                    <g fill="#4fb8a8" opacity="0.7">
+                      <circle cx="-42" cy="0" r="8"/>
+                      <circle cx="-30" cy="-6" r="8"/>
+                      <circle cx="-18" cy="3" r="8"/>
+                      <circle cx="-6" cy="-4" r="8"/>
+                      <circle cx="6" cy="4" r="8"/>
+                      <circle cx="18" cy="-4" r="8"/>
+                      <circle cx="30" cy="3" r="8"/>
+                      <circle cx="42" cy="-5" r="8"/>
+                      <circle cx="54" cy="3" r="8"/>
+                    </g>
+                    <text x="0" y="28" text-anchor="middle" style="fill:#4fb8a8;font:italic 10px Inter,sans-serif">kininogen (long)</text>
+                  </g>
+                  <g transform="translate(188 170)">
+                    <path d="M 35 -18 L 45 18 M 45 -18 L 35 18" stroke="#d14859" stroke-width="3"/>
+                    <text x="42" y="-24" text-anchor="middle" style="fill:#d14859;font:italic 9px Inter,sans-serif">cleaves</text>
+                  </g>
+                  <g transform="translate(380 230)">
+                    <g fill="#d14859" opacity="0.9">
+                      <circle cx="-36" cy="0" r="6"/>
+                      <circle cx="-27" cy="-4" r="6"/>
+                      <circle cx="-18" cy="2" r="6"/>
+                      <circle cx="-9" cy="-3" r="6"/>
+                      <circle cx="0" cy="3" r="6"/>
+                      <circle cx="9" cy="-3" r="6"/>
+                      <circle cx="18" cy="3" r="6"/>
+                      <circle cx="27" cy="-2" r="6"/>
+                      <circle cx="36" cy="2" r="6"/>
+                    </g>
+                    <text x="0" y="22" text-anchor="middle" style="fill:#d14859;font:700 11px Inter,sans-serif">BRADYKININ</text>
+                  </g>
+                  <path d="M 340 185 Q 360 205 380 220" stroke="#d14859" stroke-width="1.5" fill="none" stroke-dasharray="3 2"/>
+                  <polygon points="382,223 376,215 384,213" fill="#d14859"/>
+                </svg>

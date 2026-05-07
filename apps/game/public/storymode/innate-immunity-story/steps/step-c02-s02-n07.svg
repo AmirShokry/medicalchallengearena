@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <defs>
+                    <radialGradient id="inflamed1" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stop-color="#d14859" stop-opacity="0.85"/>
+                      <stop offset="60%" stop-color="#d14859" stop-opacity="0.35"/>
+                      <stop offset="100%" stop-color="#e8a8a0" stop-opacity="0.1"/>
+                    </radialGradient>
+                  </defs>
+                  <g transform="translate(250 145)">
+                    <ellipse cx="0" cy="5" rx="110" ry="60" fill="#e8a8a0" opacity="0.2"/>
+                    <ellipse cx="0" cy="0" rx="80" ry="50" fill="url(#inflamed1)"/>
+                    <ellipse cx="0" cy="-8" rx="60" ry="38" fill="#d14859" opacity="0.35"/>
+                    <g stroke="#e8a951" stroke-width="2" fill="none" opacity="0.85">
+                      <path d="M -70 -55 Q -65 -65 -58 -60 Q -55 -70 -48 -65"/>
+                      <path d="M -30 -65 Q -25 -75 -18 -70 Q -15 -80 -8 -75"/>
+                      <path d="M 10 -68 Q 15 -78 22 -73 Q 25 -83 32 -78"/>
+                      <path d="M 48 -60 Q 53 -70 60 -65 Q 63 -75 70 -70"/>
+                    </g>
+                    <g stroke="#d14859" stroke-width="1.5" fill="none" opacity="0.9">
+                      <path d="M -120 -30 L -95 -20 L -120 -10"/>
+                      <path d="M -125 10 L -100 20 L -125 30"/>
+                      <path d="M 120 -30 L 95 -20 L 120 -10"/>
+                      <path d="M 125 10 L 100 20 L 125 30"/>
+                      <path d="M -70 80 L -60 65 L -50 80"/>
+                      <path d="M -15 88 L -5 73 L 5 88"/>
+                      <path d="M 40 85 L 50 70 L 60 85"/>
+                    </g>
+                    <circle r="42" fill="none" stroke="#4fb8a8" stroke-width="1.5" opacity="0.55" stroke-dasharray="4 3"/>
+                  </g>
+                  <g transform="translate(85 55)">
+                    <circle r="6" fill="#d14859" opacity="0.85"/>
+                    <text x="12" y="4" style="fill:#d14859;font:700 9px Inter,sans-serif">RUBOR</text>
+                  </g>
+                  <g transform="translate(405 55)">
+                    <path d="M -4 -6 Q -2 -2 -4 2 Q -2 6 -4 10" stroke="#e8a951" stroke-width="2" fill="none"/>
+                    <text x="6" y="4" style="fill:#e8a951;font:700 9px Inter,sans-serif">CALOR</text>
+                  </g>
+                  <g transform="translate(85 240)">
+                    <circle r="6" fill="none" stroke="#4fb8a8" stroke-width="2"/>
+                    <text x="12" y="4" style="fill:#4fb8a8;font:700 9px Inter,sans-serif">TUMOR</text>
+                  </g>
+                  <g transform="translate(405 240)">
+                    <path d="M -6 -3 L -2 -6 L -4 0 L 0 -3" stroke="#d14859" stroke-width="2" fill="none"/>
+                    <text x="6" y="4" style="fill:#d14859;font:700 9px Inter,sans-serif">DOLOR</text>
+                  </g>
+                </svg>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(250 145)">
+                    <circle r="60" fill="#d14859" opacity="0.55" stroke="#a33648" stroke-width="1.5"/>
+                    <circle cx="-18" cy="-12" r="8" fill="#4a2d60"/>
+                    <circle r="70" fill="none" stroke="#e8a951" stroke-width="2" stroke-dasharray="4 3" opacity="0.8"/>
+                  </g>
+                  <g transform="translate(380 80)">
+                    <line x1="-50" y1="20" x2="0" y2="0" stroke="#e8a951" stroke-width="1.5"/>
+                    <text x="5" y="4" style="fill:#e8a951;font:700 10px Inter,sans-serif;letter-spacing:1px">HOWELL-JOLLY</text>
+                    <text x="5" y="18" style="fill:#b4becf;font:italic 9px Inter,sans-serif">tiny DNA fragment</text>
+                    <text x="5" y="30" style="fill:#b4becf;font:italic 9px Inter,sans-serif">leftover in cytoplasm</text>
+                  </g>
+                </svg>

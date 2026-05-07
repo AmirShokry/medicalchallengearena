@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="32" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">THE SIGNAL BALANCE</text>
+                  <g transform="translate(80 140)">
+                    <rect x="0" y="0" width="150" height="90" rx="8" fill="#4fb8a8" fill-opacity="0.1" stroke="#4fb8a8" stroke-width="1.3"/>
+                    <text x="75" y="22" text-anchor="middle" style="fill:#4fb8a8;font:700 11px Inter,sans-serif">INHIBITORY</text>
+                    <text x="75" y="40" text-anchor="middle" style="fill:#b4becf;font:italic 9.5px Inter,sans-serif">KIRs bind MHC-I</text>
+                    <line x1="20" y1="50" x2="130" y2="50" stroke="#4fb8a8" stroke-opacity="0.3"/>
+                    <text x="75" y="68" text-anchor="middle" style="fill:#4fb8a8;font:italic 700 11px Fraunces,serif">"don't kill"</text>
+                    <text x="75" y="82" text-anchor="middle" style="fill:#6b7689;font:italic 9px Inter,sans-serif">spare the cell</text>
+                  </g>
+                  <g transform="translate(270 140)">
+                    <rect x="0" y="0" width="150" height="90" rx="8" fill="#d14859" fill-opacity="0.12" stroke="#d14859" stroke-width="1.3"/>
+                    <text x="75" y="22" text-anchor="middle" style="fill:#d14859;font:700 11px Inter,sans-serif">ACTIVATING</text>
+                    <text x="75" y="40" text-anchor="middle" style="fill:#b4becf;font:italic 9.5px Inter,sans-serif">NKG2D binds stress ligands</text>
+                    <line x1="20" y1="50" x2="130" y2="50" stroke="#d14859" stroke-opacity="0.3"/>
+                    <text x="75" y="68" text-anchor="middle" style="fill:#d14859;font:italic 700 11px Fraunces,serif">"kill it"</text>
+                    <text x="75" y="82" text-anchor="middle" style="fill:#6b7689;font:italic 9px Inter,sans-serif">release granules</text>
+                  </g>
+                  <text x="250" y="80" text-anchor="middle" style="fill:#e8a951;font:italic 700 11px Fraunces,serif">NK cell integrates both signals</text>
+                  <text x="250" y="245" text-anchor="middle" style="fill:#b4becf;font:italic 10px Inter,sans-serif">the <tspan fill="#e8a951" font-weight="600">strongest</tspan> signal wins</text>
+                </svg>

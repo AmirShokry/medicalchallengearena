@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="24" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">NORMAL — PHAGOSOME + LYSOSOME FUSE</text>
+
+                  <!-- ============== BEFORE PANEL ============== -->
+                  <text x="115" y="46" text-anchor="middle" style="fill:#6b7689;font:italic 700 9px Inter,sans-serif;letter-spacing:2px">BEFORE</text>
+                  <text x="115" y="62" text-anchor="middle" style="fill:#9370b9;font:700 9px Inter,sans-serif;letter-spacing:1.5px">LYSOSOMES</text>
+
+                  <!-- 3 lysosomes (purple circles with enzyme dots inside) -->
+                  <g transform="translate(70 85)">
+                    <circle r="11" fill="#9370b9" opacity="0.78" stroke="#7a4a9e" stroke-width="1"/>
+                    <g fill="#0a0e1a" opacity="0.55"><circle cx="-3" cy="-2" r="1.3"/><circle cx="3" cy="2" r="1.3"/><circle cx="0" cy="4" r="1.3"/></g>
+                  </g>
+                  <g transform="translate(115 78)">
+                    <circle r="11" fill="#9370b9" opacity="0.78" stroke="#7a4a9e" stroke-width="1"/>
+                    <g fill="#0a0e1a" opacity="0.55"><circle cx="-2" cy="-2" r="1.3"/><circle cx="3" cy="1" r="1.3"/><circle cx="-1" cy="3" r="1.3"/></g>
+                  </g>
+                  <g transform="translate(160 85)">
+                    <circle r="11" fill="#9370b9" opacity="0.78" stroke="#7a4a9e" stroke-width="1"/>
+                    <g fill="#0a0e1a" opacity="0.55"><circle cx="-3" cy="0" r="1.3"/><circle cx="2" cy="-2" r="1.3"/><circle cx="0" cy="3" r="1.3"/></g>
+                  </g>
+
+                  <!-- Arrows: lysosomes moving toward phagosome -->
+                  <g stroke="#e8a951" stroke-width="1.3" stroke-dasharray="3 2" fill="none" opacity="0.85">
+                    <line x1="78" y1="98" x2="100" y2="128"/>
+                    <line x1="115" y1="93" x2="115" y2="125"/>
+                    <line x1="152" y1="98" x2="130" y2="128"/>
+                  </g>
+                  <g fill="#e8a951">
+                    <polygon points="102,133 96,127 107,127"/>
+                    <polygon points="115,132 110,125 120,125"/>
+                    <polygon points="128,133 123,127 134,127"/>
+                  </g>
+
+                  <!-- Phagosome with bacterium inside -->
+                  <g transform="translate(115 155)">
+                    <circle r="30" fill="#0a0e1a" stroke="#e8a951" stroke-width="1.8" stroke-dasharray="3 2"/>
+                    <ellipse cx="0" cy="0" rx="14" ry="9" fill="#d14859" opacity="0.88" stroke="#a33648" stroke-width="1"/>
+                  </g>
+                  <text x="115" y="205" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1.5px">PHAGOSOME</text>
+                  <text x="115" y="217" text-anchor="middle" style="fill:#6b7689;font:italic 8px Inter,sans-serif">+ bacterium</text>
+
+                  <!-- ============== TRANSITION ARROW ============== -->
+                  <g transform="translate(250 150)">
+                    <line x1="-20" y1="0" x2="18" y2="0" stroke="#e8a951" stroke-width="3.5" stroke-linecap="round"/>
+                    <polygon points="28,0 14,-8 14,8" fill="#e8a951"/>
+                    <text x="4" y="-16" text-anchor="middle" style="fill:#e8a951;font:800 11px Inter,sans-serif;letter-spacing:2.5px">FUSE</text>
+                  </g>
+
+                  <!-- ============== AFTER PANEL ============== -->
+                  <text x="395" y="46" text-anchor="middle" style="fill:#6b7689;font:italic 700 9px Inter,sans-serif;letter-spacing:2px">AFTER</text>
+
+                  <!-- Phagolysosome (merged — gold membrane + purple interior + enzymes throughout) -->
+                  <g transform="translate(395 142)">
+                    <circle r="45" fill="#9370b9" opacity="0.22"/>
+                    <circle r="45" fill="none" stroke="#e8a951" stroke-width="1.5" stroke-dasharray="4 2" opacity="0.8"/>
+                    <circle r="45" fill="none" stroke="#7a4a9e" stroke-width="0.8" opacity="0.6"/>
+
+                    <!-- Digested bacterium fragments -->
+                    <g fill="#d14859" opacity="0.78">
+                      <path d="M -9 -4 Q -5 -8 0 -7 Q 3 -4 -2 0 Q -9 1 -9 -4 Z"/>
+                      <path d="M 5 4 Q 10 3 12 7 Q 9 11 5 10 Q 2 6 5 4 Z"/>
+                      <ellipse cx="-4" cy="10" rx="3" ry="2"/>
+                      <ellipse cx="10" cy="-6" rx="2.5" ry="1.8"/>
+                      <ellipse cx="-12" cy="2" rx="2" ry="1.5"/>
+                    </g>
+
+                    <!-- Enzyme dots (purple, from the fused lysosomes) scattered throughout -->
+                    <g fill="#9370b9" opacity="0.85">
+                      <circle cx="-26" cy="-18" r="2"/>
+                      <circle cx="20" cy="-22" r="2"/>
+                      <circle cx="-30" cy="8" r="2"/>
+                      <circle cx="24" cy="14" r="2"/>
+                      <circle cx="-15" cy="28" r="2"/>
+                      <circle cx="15" cy="-28" r="2"/>
+                      <circle cx="-8" cy="-24" r="2"/>
+                      <circle cx="26" cy="-2" r="2"/>
+                      <circle cx="-22" cy="18" r="2"/>
+                      <circle cx="8" cy="26" r="2"/>
+                    </g>
+                  </g>
+                  <text x="395" y="205" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1.5px">PHAGOLYSOSOME</text>
+                  <text x="395" y="217" text-anchor="middle" style="fill:#6b7689;font:italic 8px Inter,sans-serif">enzymes + dying bacterium</text>
+
+                  <text x="250" y="245" text-anchor="middle" style="fill:#b4becf;font:italic 10px Inter,sans-serif">lysosomes dump enzymes into phagosome · bacterium killed</text>
+                </svg>

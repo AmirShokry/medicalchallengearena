@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="24" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">THE CLASSIC TRAP: DIABETES + CANDIDA</text>
+
+                  <!-- LEFT: DIABETES — blood drop with sugar crystals -->
+                  <g transform="translate(110 145)">
+                    <!-- Blood drop -->
+                    <path d="M 0 -40 Q 20 -12 20 8 Q 20 32 0 32 Q -20 32 -20 8 Q -20 -12 0 -40 Z"
+                          fill="#d14859" opacity="0.75" stroke="#a33648" stroke-width="1.3"/>
+                    <!-- Highlight on drop -->
+                    <ellipse cx="-8" cy="-8" rx="5" ry="12" fill="#e8a8a0" opacity="0.5"/>
+                    <!-- Sugar crystals (gold diamonds) inside -->
+                    <g fill="#e8a951" opacity="0.95">
+                      <rect x="-7" y="-5" width="4" height="4" transform="rotate(15 -5 -3)"/>
+                      <rect x="2" y="-10" width="4" height="4" transform="rotate(45 4 -8)"/>
+                      <rect x="-4" y="6" width="4" height="4" transform="rotate(30 -2 8)"/>
+                      <rect x="4" y="2" width="4" height="4" transform="rotate(-20 6 4)"/>
+                      <rect x="-6" y="14" width="3.5" height="3.5" transform="rotate(10 -4 16)"/>
+                      <rect x="6" y="18" width="3.5" height="3.5" transform="rotate(25 8 20)"/>
+                    </g>
+                  </g>
+                  <text x="110" y="95" text-anchor="middle" style="fill:#d14859;font:800 12px Inter,sans-serif;letter-spacing:1.5px">DIABETES</text>
+                  <text x="110" y="200" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">hyperglycemia</text>
+                  <text x="110" y="212" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">impaired neutrophils</text>
+
+                  <!-- Trap arrow in middle -->
+                  <g transform="translate(230 145)">
+                    <line x1="0" y1="0" x2="35" y2="0" stroke="#d14859" stroke-width="3.5" stroke-linecap="round"/>
+                    <polygon points="45,0 33,-8 33,8" fill="#d14859"/>
+                    <text x="22" y="-14" text-anchor="middle" style="fill:#d14859;font:italic 800 10px Inter,sans-serif;letter-spacing:2.5px">TRAP</text>
+                  </g>
+
+                  <!-- RIGHT: CANDIDA — yeast cells + budding pseudohyphae -->
+                  <g transform="translate(390 145)">
+                    <!-- Cluster background -->
+                    <ellipse cx="0" cy="0" rx="34" ry="26" fill="#9370b9" opacity="0.28" stroke="#7a4a9e" stroke-width="1"/>
+                    <!-- Yeast cells (ovals) -->
+                    <g fill="#9370b9" opacity="0.88" stroke="#7a4a9e" stroke-width="0.7">
+                      <ellipse cx="-12" cy="-8" rx="7" ry="6"/>
+                      <ellipse cx="8" cy="-6" rx="7" ry="6"/>
+                      <ellipse cx="-4" cy="10" rx="7" ry="6"/>
+                      <ellipse cx="12" cy="10" rx="6" ry="5"/>
+                      <ellipse cx="-3" cy="-2" rx="4" ry="3.5"/>
+                    </g>
+                    <!-- Budding / pseudohyphae extensions -->
+                    <g stroke="#9370b9" stroke-width="1.5" fill="none" opacity="0.75" stroke-linecap="round">
+                      <path d="M -17 -10 L -28 -16"/>
+                      <path d="M 17 -10 L 28 -16"/>
+                      <path d="M 15 15 L 25 24"/>
+                    </g>
+                    <g fill="#9370b9" opacity="0.82">
+                      <ellipse cx="-30" cy="-18" rx="3" ry="2.5"/>
+                      <ellipse cx="30" cy="-18" rx="3" ry="2.5"/>
+                      <ellipse cx="27" cy="25" rx="3" ry="2.5"/>
+                    </g>
+                  </g>
+                  <text x="390" y="95" text-anchor="middle" style="fill:#9370b9;font:800 12px Inter,sans-serif;letter-spacing:1.5px">CANDIDA</text>
+                  <text x="390" y="200" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">thrush · candidemia</text>
+
+                  <!-- Subtitle -->
+                  <text x="250" y="240" text-anchor="middle" style="fill:#b4becf;font:italic 10px Inter,sans-serif">diabetic neutrophils + no HOCl → Candida can't be cleared</text>
+                </svg>

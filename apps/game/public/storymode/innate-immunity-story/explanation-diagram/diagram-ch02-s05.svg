@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 660" preserveAspectRatio="xMidYMid meet">
+      <style>
+        .ln-eyebrow { fill: #e8a951; font: 500 10px "Inter", sans-serif; letter-spacing: 2.5px; }
+        .ln-title { fill: #e8ecf3; font: italic 400 22px "Fraunces", serif; }
+        .ln-side-label { fill: #b4becf; font: 600 11px "Inter", sans-serif; letter-spacing: 2px; }
+        .ln-side-status { fill: #4fb8a8; font: italic 600 12px "Fraunces", serif; }
+        .ln-node-label { fill: #e8a951; font: 600 10px "Inter", sans-serif; letter-spacing: 0.5px; }
+        .ln-source-label { fill: #4fb8a8; font: 600 10px "Inter", sans-serif; letter-spacing: 0.5px; }
+        .ln-body-part { fill: #b4becf; font: italic 500 10px "Inter", sans-serif; }
+        .ln-caption { fill: #6b7689; font: italic 400 10px "Inter", sans-serif; }
+        .ln-tag-text { fill: #0a0e1a; font: 700 8px "Inter", sans-serif; letter-spacing: 1px; }
+        .ln-callout-eyebrow { fill: #d14859; font: 600 9px "Inter", sans-serif; letter-spacing: 2px; }
+        .ln-callout-eyebrow-good { fill: #4fb8a8; font: 600 9px "Inter", sans-serif; letter-spacing: 2px; }
+        .ln-callout-text { fill: #b4becf; font: 400 10.5px "Inter", sans-serif; }
+        .ln-step-num { fill: #e8a951; font: 700 11px "JetBrains Mono", monospace; letter-spacing: 1.5px; }
+        .ln-keypoint { fill: #d14859; font: 700 10px "Inter", sans-serif; letter-spacing: 1px; }
+      </style>
+      <defs>
+        <marker id="lnArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8a951"/>
+        </marker>
+        <symbol id="lnNode" overflow="visible">
+          <ellipse cx="0" cy="0" rx="8" ry="5" fill="#e8a951" opacity="0.85" stroke="#a8762d" stroke-width="1"/>
+        </symbol>
+        <symbol id="lnNodeEnlarged" overflow="visible">
+          <circle cx="0" cy="0" r="16" fill="#d14859" opacity="0.15"/>
+          <ellipse cx="0" cy="0" rx="13" ry="9" fill="#e8a951" opacity="0.95" stroke="#a8762d" stroke-width="1.5"/>
+          <g fill="#a8762d" opacity="0.5">
+            <circle cx="-4" cy="-2" r="1.2"/>
+            <circle cx="3" cy="-3" r="1.2"/>
+            <circle cx="0" cy="2" r="1.2"/>
+            <circle cx="-5" cy="3" r="1"/>
+            <circle cx="5" cy="2" r="1"/>
+          </g>
+        </symbol>
+      </defs>
+
+      <text x="500" y="26" text-anchor="middle" class="ln-eyebrow">REGIONAL LYMPHADENOPATHY · LYMPH DRAINS ON THE SAME SIDE</text>
+      <text x="500" y="58" text-anchor="middle" class="ln-title">The node swells where the lymph goes — always ipsilateral.</text>
+      <line x1="40" y1="78" x2="960" y2="78" stroke="#222c3e" stroke-width="1"/>
+
+      <!-- LEFT PANEL · GENERAL RULE -->
+      <g transform="translate(40 100)">
+        <text x="220" y="20" text-anchor="middle" class="ln-side-label">THE GENERAL RULE</text>
+        <text x="220" y="40" text-anchor="middle" class="ln-side-status">every territory drains to its ipsilateral node</text>
+
+        <rect x="20" y="60" width="400" height="380" rx="22" ry="22" fill="#0a0e1a" stroke="#4fb8a8" stroke-width="1" stroke-dasharray="4 3" opacity="0.7"/>
+
+        <!-- Body silhouette -->
+        <g transform="translate(220 100)" stroke="#3a8a7e" stroke-width="1.3" fill="none" opacity="0.6">
+          <circle cx="0" cy="12" r="18"/>
+          <line x1="0" y1="30" x2="0" y2="42"/>
+          <path d="M -50 50 Q -40 44 -8 44 L 8 44 Q 40 44 50 50"/>
+          <path d="M -50 50 L -48 140 Q -44 150 -32 152 L -32 180 L -26 210 L -8 210 L -8 230 L 8 230 L 8 210 L 26 210 L 32 180 L 32 152 Q 44 150 48 140 L 50 50"/>
+          <path d="M -50 55 L -62 100 L -68 150 L -72 180"/>
+          <path d="M 50 55 L 62 100 L 68 150 L 72 180"/>
+          <circle cx="-72" cy="184" r="4"/>
+          <circle cx="72" cy="184" r="4"/>
+          <path d="M -8 230 L -12 280 L -14 320"/>
+          <path d="M 8 230 L 12 280 L 14 320"/>
+          <ellipse cx="-14" cy="325" rx="6" ry="3"/>
+          <ellipse cx="14" cy="325" rx="6" ry="3"/>
+        </g>
+
+        <!-- Drainage routes -->
+        <g>
+          <circle cx="215" cy="95" r="3" fill="#4fb8a8" opacity="0.9"/>
+          <g transform="translate(245 140)"><use href="#lnNode"/></g>
+          <path d="M 218 98 Q 230 120 242 138" stroke="#e8a951" stroke-width="1.2" fill="none" stroke-dasharray="3 2" marker-end="url(#lnArrow)" opacity="0.75"/>
+          <text x="300" y="144" class="ln-body-part">scalp → cervical</text>
+        </g>
+        <g>
+          <circle cx="205" cy="195" r="3" fill="#4fb8a8" opacity="0.9"/>
+          <g transform="translate(170 215)"><use href="#lnNode"/></g>
+          <path d="M 202 197 Q 188 208 172 213" stroke="#e8a951" stroke-width="1.2" fill="none" stroke-dasharray="3 2" marker-end="url(#lnArrow)" opacity="0.75"/>
+          <text x="50" y="215" class="ln-body-part">breast → ipsilateral axilla</text>
+        </g>
+        <g>
+          <circle cx="148" cy="284" r="3" fill="#4fb8a8" opacity="0.9"/>
+          <path d="M 148 282 Q 158 255 168 220" stroke="#e8a951" stroke-width="1.2" fill="none" stroke-dasharray="3 2" marker-end="url(#lnArrow)" opacity="0.75"/>
+          <text x="50" y="290" class="ln-body-part">hand → axilla (same side)</text>
+        </g>
+        <g>
+          <circle cx="234" cy="425" r="3" fill="#4fb8a8" opacity="0.9"/>
+          <g transform="translate(232 370)"><use href="#lnNode"/></g>
+          <g transform="translate(230 310)"><use href="#lnNodeEnlarged"/></g>
+          <path d="M 234 422 L 232 378" stroke="#e8a951" stroke-width="1.4" fill="none" stroke-dasharray="3 2" marker-end="url(#lnArrow)" opacity="0.9"/>
+          <path d="M 232 362 L 230 324" stroke="#e8a951" stroke-width="1.4" fill="none" stroke-dasharray="3 2" marker-end="url(#lnArrow)" opacity="0.9"/>
+          <text x="280" y="314" class="ln-node-label">inguinal (enlarged)</text>
+          <text x="280" y="374" class="ln-body-part">popliteal</text>
+          <text x="280" y="428" class="ln-body-part">foot ulcer</text>
+        </g>
+      </g>
+
+      <!-- RIGHT PANEL · QUESTION'S SPECIFIC PATH -->
+      <g transform="translate(540 100)">
+        <rect x="335" y="6" width="58" height="14" rx="3" fill="#d14859" opacity="0.92"/>
+        <text x="364" y="16" text-anchor="middle" class="ln-tag-text">QUESTION</text>
+
+        <text x="220" y="20" text-anchor="middle" class="ln-side-label">THE DIABETIC FOOT ULCER</text>
+        <text x="220" y="40" text-anchor="middle" class="ln-side-status">foot → popliteal → <tspan fill="#d14859">groin (same side)</tspan></text>
+
+        <rect x="20" y="60" width="400" height="380" rx="22" ry="22" fill="#0a0e1a" stroke="#d14859" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.7"/>
+
+        <!-- Inguinal (top) -->
+        <g transform="translate(220 110)">
+          <text x="-36" y="4" text-anchor="middle" class="ln-step-num">03</text>
+          <text x="0" y="-12" text-anchor="middle" class="ln-node-label">INGUINAL NODE (GROIN)</text>
+          <use href="#lnNodeEnlarged"/>
+          <text x="0" y="34" text-anchor="middle" class="ln-caption" fill="#d14859">swollen + tender</text>
+          <text x="0" y="48" text-anchor="middle" class="ln-caption">(reactive lymphadenopathy)</text>
+        </g>
+
+        <path d="M 220 175 L 220 240" stroke="#e8a951" stroke-width="1.5" fill="none" stroke-dasharray="4 3" marker-end="url(#lnArrow)" opacity="0.7"/>
+
+        <!-- Popliteal (middle) -->
+        <g transform="translate(220 255)">
+          <text x="-26" y="4" text-anchor="middle" class="ln-step-num">02</text>
+          <use href="#lnNode"/>
+          <text x="0" y="20" text-anchor="middle" class="ln-node-label">popliteal node</text>
+          <text x="0" y="34" text-anchor="middle" class="ln-caption">(behind the knee)</text>
+        </g>
+
+        <path d="M 220 305 L 220 370" stroke="#e8a951" stroke-width="1.5" fill="none" stroke-dasharray="4 3" marker-end="url(#lnArrow)" opacity="0.7"/>
+
+        <!-- Foot + ulcer (bottom) -->
+        <g transform="translate(220 390)">
+          <text x="-40" y="4" text-anchor="middle" class="ln-step-num">01</text>
+          <ellipse cx="0" cy="0" rx="24" ry="8" fill="#b4becf" opacity="0.3" stroke="#6b7689" stroke-width="1"/>
+          <g fill="#d14859" opacity="0.95">
+            <circle cx="-4" cy="0" r="3"/>
+            <circle cx="2" cy="-1" r="2.5"/>
+            <circle cx="6" cy="2" r="2"/>
+          </g>
+          <text x="0" y="22" text-anchor="middle" class="ln-source-label">FOOT ULCER (source)</text>
+          <text x="0" y="36" text-anchor="middle" class="ln-caption">left foot · bacterial infection</text>
+        </g>
+
+        <!-- Flow indicator -->
+        <text x="60" y="250" text-anchor="middle" class="ln-caption" fill="#e8a951" font-style="italic">
+          <tspan x="60" dy="0">lymph</tspan>
+          <tspan x="60" dy="13">flow</tspan>
+          <tspan x="60" dy="13">↑</tspan>
+        </text>
+      </g>
+
+      <!-- BOTTOM RESOLVER -->
+      <g transform="translate(0 555)">
+        <line x1="40" y1="0" x2="960" y2="0" stroke="#222c3e" stroke-width="1"/>
+        <g transform="translate(40 18)">
+          <text x="0" y="14" class="ln-callout-eyebrow-good">WHY THIS NODE, THIS SIDE</text>
+          <text x="0" y="34" class="ln-callout-text">
+            The foot ulcer drains lymph — with bacteria and antigens —
+          </text>
+          <text x="0" y="50" class="ln-callout-text">
+            along channels that end at the
+            <tspan fill="#4fb8a8" font-weight="700">ipsilateral inguinal node</tspan>.
+          </text>
+        </g>
+        <g transform="translate(520 18)">
+          <text x="0" y="14" class="ln-callout-eyebrow">WATCH FOR THE WRONG-SIDE TRAP</text>
+          <text x="0" y="34" class="ln-callout-text">
+            Distractors often flip the side (e.g.
+            <tspan fill="#d14859" font-weight="700">"right leg"</tspan>
+            for a left-foot ulcer).
+          </text>
+          <text x="0" y="50" class="ln-callout-text">
+            Lymph always drains ipsilateral. Check the side before you pick.
+          </text>
+        </g>
+      </g>
+    </svg>

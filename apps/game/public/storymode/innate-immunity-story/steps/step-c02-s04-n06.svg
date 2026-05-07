@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <line x1="60" y1="190" x2="450" y2="190" stroke="#6b7689" stroke-width="1.5"/>
+                  <line x1="60" y1="50" x2="60" y2="190" stroke="#6b7689" stroke-width="1.5"/>
+                  <line x1="60" y1="120" x2="450" y2="120" stroke="#6b7689" stroke-width="1" stroke-dasharray="3 2" opacity="0.5"/>
+                  <text x="55" y="124" text-anchor="end" style="fill:#6b7689;font:italic 9px Inter,sans-serif">normal</text>
+                  <g>
+                    <rect x="95" y="50" width="55" height="140" fill="#e8a951" opacity="0.9"/>
+                    <path d="M 110 40 L 122 28 L 134 40" stroke="#e8a951" stroke-width="3" fill="none"/>
+                    <path d="M 110 25 L 122 13 L 134 25" stroke="#e8a951" stroke-width="3" fill="none"/>
+                    <text x="122" y="205" text-anchor="middle" style="fill:#e8a951;font:700 10px Inter,sans-serif">WBC</text>
+                  </g>
+                  <g>
+                    <rect x="175" y="75" width="55" height="115" fill="#e8a951" opacity="0.75"/>
+                    <path d="M 190 65 L 202 53 L 214 65" stroke="#e8a951" stroke-width="3" fill="none"/>
+                    <text x="202" y="205" text-anchor="middle" style="fill:#e8a951;font:700 10px Inter,sans-serif">Neut</text>
+                  </g>
+                  <g>
+                    <rect x="255" y="90" width="55" height="100" fill="#d14859" opacity="0.85"/>
+                    <path d="M 270 80 L 282 68 L 294 80" stroke="#d14859" stroke-width="3" fill="none"/>
+                    <text x="282" y="205" text-anchor="middle" style="fill:#d14859;font:700 10px Inter,sans-serif">Bands</text>
+                  </g>
+                  <g>
+                    <rect x="335" y="150" width="55" height="40" fill="#6b7689" opacity="0.65"/>
+                    <path d="M 350 165 L 362 178 L 374 165" stroke="#6b7689" stroke-width="3" fill="none"/>
+                    <text x="362" y="205" text-anchor="middle" style="fill:#6b7689;font:700 10px Inter,sans-serif">Lymph</text>
+                  </g>
+                  <text x="45" y="55" text-anchor="end" style="fill:#6b7689;font:italic 9px Inter,sans-serif">high</text>
+                  <text x="45" y="195" text-anchor="end" style="fill:#6b7689;font:italic 9px Inter,sans-serif">low</text>
+                </svg>

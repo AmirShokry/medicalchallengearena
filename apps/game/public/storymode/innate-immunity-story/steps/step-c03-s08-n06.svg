@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(120 145)">
+                    <circle r="42" fill="#d14859" opacity="0.3" stroke="#d14859" stroke-width="2"/>
+                    <path d="M 0 -28 L 0 5 M -3 8 L 3 8" stroke="#d14859" stroke-width="5" stroke-linecap="round"/>
+                    <text x="0" y="60" text-anchor="middle" style="fill:#d14859;font:700 10px Inter,sans-serif;letter-spacing:1px">FEVER</text>
+                  </g>
+                  <g transform="translate(250 145)">
+                    <circle r="38" fill="#111826" stroke="#4fb8a8" stroke-width="2"/>
+                    <circle r="25" fill="none" stroke="#4fb8a8" stroke-width="2" stroke-dasharray="4 3"/>
+                    <text x="0" y="-2" text-anchor="middle" style="fill:#4fb8a8;font:700 18px Inter,sans-serif">1h</text>
+                    <text x="0" y="14" text-anchor="middle" style="fill:#b4becf;font:italic 8px Inter,sans-serif">window</text>
+                  </g>
+                  <g transform="translate(380 145)">
+                    <rect x="-35" y="-18" width="70" height="36" rx="8" fill="#4fb8a8" opacity="0.6" stroke="#4fb8a8" stroke-width="1.5"/>
+                    <line x1="-28" y1="-6" x2="-22" y2="-12" stroke="#4fb8a8" stroke-width="2"/>
+                    <line x1="-22" y1="-12" x2="-8" y2="-12" stroke="#4fb8a8" stroke-width="2"/>
+                    <line x1="-8" y1="-12" x2="-2" y2="-6" stroke="#4fb8a8" stroke-width="2"/>
+                    <circle cx="0" cy="8" r="4" fill="#4fb8a8" opacity="0.8"/>
+                    <text x="0" y="38" text-anchor="middle" style="fill:#4fb8a8;font:700 10px Inter,sans-serif;letter-spacing:1px">IV Abx</text>
+                  </g>
+                  <g stroke="#d14859" stroke-width="2" fill="none">
+                    <path d="M 165 145 L 210 145"/>
+                    <polygon points="213,145 205,141 205,149" fill="#d14859"/>
+                  </g>
+                  <g stroke="#4fb8a8" stroke-width="2" fill="none">
+                    <path d="M 290 145 L 340 145"/>
+                    <polygon points="343,145 335,141 335,149" fill="#4fb8a8"/>
+                  </g>
+                </svg>

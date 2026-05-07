@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="38" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">WHAT CYTOKINES DO TO THE BODY</text>
+                  <g transform="translate(75 140)">
+                    <circle r="28" fill="#9370b9" opacity="0.3" stroke="#9370b9" stroke-width="1.5"/>
+                    <ellipse cx="-5" cy="-3" rx="10" ry="6" fill="#4a2d60" opacity="0.55"/>
+                    <text x="0" y="52" text-anchor="middle" style="fill:#9370b9;font:600 10px Inter,sans-serif;letter-spacing:1.5px">MACROPHAGE</text>
+                  </g>
+                  <g fill="#e8a951">
+                    <circle cx="115" cy="105" r="4"/>
+                    <circle cx="135" cy="95" r="4"/>
+                    <circle cx="125" cy="135" r="4"/>
+                    <circle cx="150" cy="152" r="4"/>
+                    <circle cx="125" cy="178" r="4"/>
+                  </g>
+                  <text x="155" y="130" style="fill:#e8a951;font:italic 10px Inter,sans-serif">TNF · IL-1 · IL-6</text>
+                  <line x1="160" y1="105" x2="290" y2="90" stroke="#e8a951" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.6"/>
+                  <line x1="170" y1="140" x2="290" y2="145" stroke="#e8a951" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.6"/>
+                  <line x1="170" y1="170" x2="290" y2="205" stroke="#e8a951" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.6"/>
+                  <g transform="translate(350 85)">
+                    <rect x="-8" y="-20" width="16" height="28" rx="3" stroke="#d14859" stroke-width="1.5" fill="#111826"/>
+                    <circle cx="0" cy="14" r="8" fill="#d14859"/>
+                    <line x1="-4" y1="-2" x2="4" y2="-2" stroke="#d14859" stroke-width="1"/>
+                    <line x1="-4" y1="-10" x2="4" y2="-10" stroke="#d14859" stroke-width="1"/>
+                    <text x="22" y="-3" style="fill:#d14859;font:700 11px Inter,sans-serif">FEVER</text>
+                    <text x="22" y="10" style="fill:#6b7689;font:italic 9px Inter,sans-serif">↑ hypothalamic set point</text>
+                  </g>
+                  <g transform="translate(350 145)">
+                    <path d="M -22 -9 Q 0 -14 22 -9" stroke="#4fb8a8" stroke-width="2" fill="none"/>
+                    <path d="M -22 9 Q 0 14 22 9" stroke="#4fb8a8" stroke-width="2" fill="none"/>
+                    <path d="M -32 -13 Q 0 -22 32 -13" stroke="#4fb8a8" stroke-width="1" fill="none" stroke-dasharray="2 2" opacity="0.6"/>
+                    <path d="M -32 13 Q 0 22 32 13" stroke="#4fb8a8" stroke-width="1" fill="none" stroke-dasharray="2 2" opacity="0.6"/>
+                    <text x="42" y="-3" style="fill:#4fb8a8;font:700 11px Inter,sans-serif">VASODILATION</text>
+                    <text x="42" y="10" style="fill:#6b7689;font:italic 9px Inter,sans-serif">vessels widen</text>
+                  </g>
+                  <g transform="translate(350 205)">
+                    <circle cx="0" cy="-14" r="6" stroke="#e8a951" stroke-width="1.5" fill="none"/>
+                    <line x1="0" y1="-8" x2="0" y2="10" stroke="#e8a951" stroke-width="1.5"/>
+                    <line x1="-8" y1="-2" x2="8" y2="-2" stroke="#e8a951" stroke-width="1.5"/>
+                    <line x1="0" y1="10" x2="-5" y2="20" stroke="#e8a951" stroke-width="1.5"/>
+                    <line x1="0" y1="10" x2="5" y2="20" stroke="#e8a951" stroke-width="1.5"/>
+                    <text x="22" y="-3" style="fill:#e8a951;font:700 11px Inter,sans-serif">SYSTEMIC</text>
+                    <text x="22" y="10" style="fill:#6b7689;font:italic 9px Inter,sans-serif">malaise, fatigue</text>
+                  </g>
+                </svg>

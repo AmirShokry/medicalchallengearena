@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(250 145)">
+                    <ellipse cx="0" cy="-40" rx="30" ry="35" fill="#e8a8a0" opacity="0.6" stroke="#c88a80" stroke-width="1.5"/>
+                    <circle cx="-8" cy="-45" r="2.5" fill="#0a0e1a"/>
+                    <circle cx="8" cy="-45" r="2.5" fill="#0a0e1a"/>
+                    <path d="M -5 -30 Q 0 -28 5 -30" stroke="#0a0e1a" stroke-width="1" fill="none"/>
+                    <rect x="-22" y="-15" width="44" height="70" rx="16" fill="#e8a8a0" opacity="0.55" stroke="#c88a80" stroke-width="1.5"/>
+                    <rect x="-30" y="-5" width="16" height="40" rx="8" fill="#e8a8a0" opacity="0.45"/>
+                    <rect x="14" y="-5" width="16" height="40" rx="8" fill="#e8a8a0" opacity="0.45"/>
+                  </g>
+                  <g fill="#d14859" opacity="0.85">
+                    <circle cx="235" cy="95" r="5"/>
+                    <path d="M 233 88 L 237 88 L 237 92 L 233 92" fill="none" stroke="#d14859" stroke-width="1"/>
+                    <circle cx="220" cy="150" r="5"/>
+                    <circle cx="280" cy="150" r="5"/>
+                    <circle cx="250" cy="190" r="5"/>
+                    <circle cx="238" cy="215" r="5"/>
+                  </g>
+                  <g transform="translate(95 100)">
+                    <circle r="10" fill="#d14859" opacity="0.7"/>
+                    <text x="16" y="4" style="fill:#d14859;font:italic 700 9px Inter,sans-serif">bacterial</text>
+                  </g>
+                  <g transform="translate(375 100)">
+                    <circle r="10" fill="none" stroke="#d14859" stroke-width="1.3"/>
+                    <circle r="5" fill="#d14859" opacity="0.5"/>
+                    <text x="16" y="4" style="fill:#d14859;font:italic 700 9px Inter,sans-serif">fungal</text>
+                  </g>
+                  <g stroke="#d14859" stroke-width="1" fill="none" stroke-dasharray="3 2" opacity="0.6">
+                    <line x1="110" y1="110" x2="210" y2="140"/>
+                    <line x1="370" y1="110" x2="285" y2="145"/>
+                  </g>
+                </svg>

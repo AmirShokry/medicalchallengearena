@@ -20,6 +20,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import StoryDiagram from "./StoryDiagram.vue";
+import StoryDiagramLightbox from "./StoryDiagramLightbox.vue";
 import type {
 	StoryFlowItem,
 	StoryQuiz,
@@ -79,6 +80,24 @@ const showTransition = ref(false);
 
 /** Mobile-only knowledge panel toggle. */
 const kpOpen = ref(false);
+
+/**
+ * Click-to-zoom on the pinned diagram. Mirrors the reference HTML's
+ * `.sf-diagram-wrap svg.sf-diagram { cursor: zoom-in }` + `.svg-zoom-overlay`
+ * behaviour: the user clicks the diagram pane and a fullscreen lightbox
+ * opens with the same SVG. Closes via the lightbox's own close button or
+ * backdrop click.
+ */
+const diagramLightboxOpen = ref(false);
+
+function openDiagramLightbox() {
+	if (!stageDiagram.value) return;
+	diagramLightboxOpen.value = true;
+}
+
+function closeDiagramLightbox() {
+	diagramLightboxOpen.value = false;
+}
 
 // =====================================================================
 // Quick-check quiz overlay state.
@@ -261,10 +280,12 @@ function next() {
 		next();
 		return;
 	}
+	// Quick-check overlays are disabled per user request — skip the
+	// quiz item just like partners. The overlay template block below
+	// is commented out; without this skip the walkthrough would stall
+	// on hidden quiz items.
 	if (item.type === "quiz") {
-		activeQuiz.value = item;
-		quizPickedIdx.value = null;
-		stopVoice();
+		next();
 		return;
 	}
 	if (item.type === "transition") {
@@ -491,22 +512,45 @@ watch(
 			</div>
 		</header>
 
-		<!-- Body -->
+		<!--
+			Body. At lg+ this is the "STEP-FLOW LAYOUT — diagram BIG on
+			left, step text on right" override from the reference HTML:
+			the inner <main> flips to flex-row, the diagram pane takes
+			60% width on the left (`lg:w-[60%]`, `lg:border-r`), and the
+			step zone takes the remaining 40% on the right. Below lg
+			they stack vertically (diagram on top, step text below) —
+			matches the reference's `@media (max-width: 900px)` block
+			(`flex-direction: column`, diagram has `border-bottom`).
+		-->
 		<div class="flex min-h-0 flex-1 overflow-hidden">
-			<main class="relative flex min-w-0 flex-1 flex-col overflow-hidden">
+			<main class="relative flex min-w-0 flex-1 flex-col overflow-hidden lg:flex-row">
 				<!--
 					Diagram pane. Renders the step's own `stepDiagram` when
 					present; otherwise falls back to the station's main
 					diagram with a spotlight overlay highlighting the
 					step's region — matches the reference HTML's
-					`sfRenderStep`.
+					`sfRenderStep`. Takes 42% height on mobile (border-b),
+					60% width on desktop (border-r).
+				-->
+				<!--
+					Diagram pane is now click-to-zoom. Mirrors the reference
+					HTML's `.sf-diagram-wrap svg.sf-diagram { cursor: zoom-in }`
+					+ hover scale + opens the fullscreen `.svg-zoom-overlay`.
+					We open the existing StoryDiagramLightbox on click. The
+					handler stops event propagation so the click doesn't also
+					trigger the parent step-card's "tap to advance" handler.
 				-->
 				<div
 					v-if="stageDiagram"
 					ref="stageWrap"
-					class="relative flex h-[42%] min-h-[240px] flex-none items-center justify-center overflow-hidden border-b border-border bg-background p-2.5"
+					class="group/diagram relative flex h-[42%] min-h-[240px] flex-none cursor-zoom-in items-center justify-center overflow-hidden border-b border-border bg-background p-2.5 transition-[transform,box-shadow] duration-150 hover:[box-shadow:inset_0_0_0_2px_rgba(232,169,81,0.4)] lg:h-full lg:min-h-0 lg:w-[60%] lg:border-b-0 lg:border-r lg:p-6"
+					@click.stop="openDiagramLightbox"
 				>
-					<StoryDiagram :src="stageDiagram.src" mode="stage" />
+					<StoryDiagram
+						:src="stageDiagram.src"
+						mode="stage"
+						class="transition-transform duration-150 group-hover/diagram:scale-[1.01]"
+					/>
 					<!--
 						Spotlight overlay. Only paints when the active step has a
 						`spotlight` defined AND we're falling back to the main
@@ -519,11 +563,32 @@ watch(
 					/>
 				</div>
 
-				<!-- Step zone -->
-				<div class="relative flex min-h-0 flex-1 flex-col overflow-hidden bg-background">
-					<!-- Tap-through step card -->
+				<!--
+					Step zone. Takes the remaining 58% height on mobile and
+					40% width on desktop (`lg:flex-1` fills whatever the
+					diagram pane didn't claim).
+
+					Background uses a subtle 3% foreground tint so it's
+					just barely brighter than the body's `bg-background`
+					in dark mode and just barely darker in light mode —
+					a tiny shift, not the full `bg-muted` jump. The
+					`foreground` token auto-flips between themes so a
+					single class works for both.
+
+					The outer rectangle (this container) and the footer
+					inside it carry dotted yellow (#e8a951) borders per
+					the user's request.
+				-->
+				<div class="relative flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden border border-dotted border-[#e8a951] bg-foreground/[0.03] lg:h-full">
+					<!--
+						Tap-through step card. Reference's override sets
+						`padding: 32px 36px` and `align-items: flex-start` on
+						desktop (text block left-aligned alongside the diagram);
+						on mobile it stays centred with the looser
+						`24px 28px 16px` padding.
+					-->
 					<div
-						class="relative flex flex-1 cursor-pointer flex-col items-center justify-center overflow-y-auto px-7 pt-6 pb-4 text-foreground transition-colors duration-200 hover:bg-white/[0.02]"
+						class="relative flex flex-1 cursor-pointer flex-col items-center justify-center overflow-y-auto px-7 pt-6 pb-4 text-foreground transition-colors duration-200 hover:bg-foreground/[0.02] lg:items-start lg:px-9 lg:py-8"
 						@click="next"
 					>
 						<div
@@ -556,64 +621,68 @@ watch(
 
 					<!--
 						Quiz overlay — the "Quick check" the original HTML
-						interleaves between steps. Mirrors `.sf-quiz-overlay`:
-						eyebrow + question + choice buttons + feedback line +
-						a Continue button that only appears after answering.
-					-->
-					<div
-						v-if="activeQuiz"
-						class="absolute inset-0 z-[15] flex flex-col items-center justify-center bg-[rgba(10,14,26,0.97)] p-8 text-center backdrop-blur-md [animation:storyFadeIn_0.3s_ease]"
-					>
+						interleaves between steps — disabled per user request.
+						The next() function in script setup also short-circuits
+						any `quiz` flow items so they're skipped silently.
+						Leaving the block commented (rather than deleted) so it
+						can be restored if quick-checks are wanted later.
+
 						<div
-							class="mb-3.5 flex items-center gap-2 text-[10px] font-semibold tracking-[3px] uppercase text-[#e8a951]"
+							v-if="activeQuiz"
+							class="absolute inset-0 z-[15] flex flex-col items-center justify-center bg-[rgba(10,14,26,0.97)] p-8 text-center backdrop-blur-md [animation:storyFadeIn_0.3s_ease]"
 						>
-							⚡ Quick check
-						</div>
-						<p
-							class="mb-6 max-w-[560px] font-fraunces text-[clamp(20px,3.8vw,26px)] leading-[1.35] text-foreground"
-						>
-							{{ activeQuiz.question }}
-						</p>
-						<div class="flex max-w-[520px] flex-wrap justify-center gap-3">
-							<button
-								v-for="(c, i) in activeQuiz.choices"
-								:key="i"
-								type="button"
-								class="flex w-full max-w-[380px] cursor-pointer items-center gap-3 rounded-lg border bg-card px-5 py-3 text-left font-inter text-[14px] font-semibold transition-all duration-200 disabled:cursor-not-allowed"
-								:class="[
-									quizPickedIdx === null
-										? 'border-border text-foreground hover:-translate-y-px hover:border-[#e8a951] hover:bg-secondary'
-										: c.correct
-											? 'border-[#4fb8a8] bg-[rgba(79,184,168,0.15)] text-[#4fb8a8]'
-											: i === quizPickedIdx
-												? 'border-[#d14859] bg-[rgba(209,72,89,0.1)] text-[#d14859]'
-												: 'border-border text-foreground',
-								]"
-								:disabled="quizPickedIdx !== null"
-								@click="pickQuizChoice(i)"
+							<div
+								class="mb-3.5 flex items-center gap-2 text-[10px] font-semibold tracking-[3px] uppercase text-[#e8a951]"
 							>
-								<span
-									class="rounded-[4px] bg-background px-2 py-1 font-jetbrains text-[11px] font-bold text-[#e8a951]"
+								⚡ Quick check
+							</div>
+							<p
+								class="mb-6 max-w-[560px] font-fraunces text-[clamp(20px,3.8vw,26px)] leading-[1.35] text-foreground"
+							>
+								{{ activeQuiz.question }}
+							</p>
+							<div class="flex max-w-[520px] flex-wrap justify-center gap-3">
+								<button
+									v-for="(c, i) in activeQuiz.choices"
+									:key="i"
+									type="button"
+									class="flex w-full max-w-[380px] cursor-pointer items-center gap-3 rounded-lg border bg-card px-5 py-3 text-left font-inter text-[14px] font-semibold transition-all duration-200 disabled:cursor-not-allowed"
+									:class="[
+										quizPickedIdx === null
+											? 'border-border text-foreground hover:-translate-y-px hover:border-[#e8a951] hover:bg-secondary'
+											: c.correct
+												? 'border-[#4fb8a8] bg-[rgba(79,184,168,0.15)] text-[#4fb8a8]'
+												: i === quizPickedIdx
+													? 'border-[#d14859] bg-[rgba(209,72,89,0.1)] text-[#d14859]'
+													: 'border-border text-foreground',
+									]"
+									:disabled="quizPickedIdx !== null"
+									@click="pickQuizChoice(i)"
 								>
-									{{ String.fromCharCode(65 + i) }}
-								</span>
-								<span class="flex-1">{{ c.text }}</span>
+									<span
+										class="rounded-[4px] bg-background px-2 py-1 font-jetbrains text-[11px] font-bold text-[#e8a951]"
+									>
+										{{ String.fromCharCode(65 + i) }}
+									</span>
+									<span class="flex-1">{{ c.text }}</span>
+								</button>
+							</div>
+							<p
+								class="mt-4 min-h-9 max-w-[500px] text-[14px] italic text-muted-foreground"
+							>
+								{{ quizFeedback }}
+							</p>
+							<button
+								v-if="quizPickedIdx !== null"
+								type="button"
+								class="mt-5 cursor-pointer border-0 bg-transparent font-jetbrains text-[13px] font-semibold tracking-[2px] uppercase text-[#e8a951] [animation:storyFadeIn_0.3s_ease] hover:text-[#ffc674]"
+								@click="closeQuiz"
+							>
+								Continue →
 							</button>
 						</div>
-						<p
-							class="mt-4 min-h-9 max-w-[500px] text-[14px] italic text-muted-foreground"
-						>
-							{{ quizFeedback }}
-						</p>
-						<button
-							v-if="quizPickedIdx !== null"
-							type="button"
-							class="mt-5 cursor-pointer border-0 bg-transparent font-jetbrains text-[13px] font-semibold tracking-[2px] uppercase text-[#e8a951] [animation:storyFadeIn_0.3s_ease] hover:text-[#ffc674]"
-							@click="closeQuiz"
-						>
-							Continue →
-						</button>
-					</div>
+					-->
+					<!-- /quiz overlay disabled -->
 
 					<!-- Transition overlay -->
 					<div
@@ -640,9 +709,14 @@ watch(
 						</button>
 					</div>
 
-					<!-- Footer -->
+					<!--
+						Footer. The outer step-zone rectangle already carries
+						the dotted yellow border on its sides; here we use a
+						matching dotted yellow `border-t` so the footer is
+						visually demarcated from the step content above.
+					-->
 					<div
-						class="flex flex-none items-center justify-between border-t border-border bg-background px-5 py-3"
+						class="flex flex-none items-center justify-between border-t border-dotted border-[#e8a951] bg-foreground/[0.03] px-5 py-3"
 					>
 						<button
 							class="flex cursor-pointer items-center gap-1.5 rounded-md border border-border bg-transparent px-3.5 py-1.5 font-inter text-[12px] font-medium tracking-[0.5px] text-muted-foreground transition-all duration-200 hover:border-[#e8a951] hover:text-[#e8a951] disabled:cursor-not-allowed disabled:opacity-25"
@@ -729,6 +803,17 @@ watch(
 				</div>
 			</aside>
 		</div>
+
+		<!--
+			Click-to-zoom lightbox for the pinned diagram. Mounted last so
+			it Teleports to <body> with the highest z-index. Fed the same
+			SVG src that the stage diagram is currently showing.
+		-->
+		<StoryDiagramLightbox
+			:open="diagramLightboxOpen"
+			:src="stageDiagram?.src ?? null"
+			@close="closeDiagramLightbox"
+		/>
 	</div>
 </template>
 

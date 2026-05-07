@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="32" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">TWO UNREACHABLE ENEMIES</text>
+                  <g transform="translate(100 130)">
+                    <ellipse cx="0" cy="0" rx="70" ry="50" fill="#4fb8a8" fill-opacity="0.15" stroke="#4fb8a8" stroke-width="1.5"/>
+                    <ellipse cx="0" cy="-10" rx="15" ry="10" fill="#4fb8a8" fill-opacity="0.3"/>
+                    <g fill="#d14859" opacity="0.9">
+                      <circle cx="-20" cy="15" r="4"/><circle cx="-5" cy="22" r="4"/><circle cx="15" cy="18" r="4"/>
+                      <circle cx="25" cy="5" r="4"/><circle cx="-25" cy="-5" r="4"/>
+                    </g>
+                    <text x="0" y="70" text-anchor="middle" style="fill:#b4becf;font:italic 10px Inter,sans-serif">virus-infected cell</text>
+                    <text x="0" y="85" text-anchor="middle" style="fill:#d14859;font:600 9px Inter,sans-serif">viruses replicating inside</text>
+                  </g>
+                  <g transform="translate(380 130)">
+                    <ellipse cx="0" cy="0" rx="70" ry="50" fill="#9370b9" fill-opacity="0.15" stroke="#9370b9" stroke-width="1.5" stroke-dasharray="4 2"/>
+                    <ellipse cx="5" cy="-5" rx="18" ry="12" fill="#9370b9" fill-opacity="0.4"/>
+                    <ellipse cx="-8" cy="10" rx="10" ry="7" fill="#9370b9" fill-opacity="0.3"/>
+                    <text x="0" y="70" text-anchor="middle" style="fill:#b4becf;font:italic 10px Inter,sans-serif">tumor cell</text>
+                    <text x="0" y="85" text-anchor="middle" style="fill:#9370b9;font:600 9px Inter,sans-serif">looks almost like self</text>
+                  </g>
+                  <text x="250" y="230" text-anchor="middle" style="fill:#6b7689;font:italic 10px Inter,sans-serif">antibodies can't reach the virus · complement can't identify the tumor</text>
+                  <text x="250" y="248" text-anchor="middle" style="fill:#e8a951;font:italic 700 10px Fraunces,serif">→ we need a cell that kills cells</text>
+                </svg>

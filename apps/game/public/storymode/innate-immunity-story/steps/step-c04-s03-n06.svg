@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(250 145)">
+                    <ellipse cx="0" cy="-80" rx="22" ry="25" fill="#e8a8a0" opacity="0.5" stroke="#c88a80" stroke-width="1.2"/>
+                    <circle cx="-8" cy="-85" r="2" fill="#0a0e1a"/>
+                    <circle cx="8" cy="-85" r="2" fill="#0a0e1a"/>
+                    <path d="M -30 -55 Q -38 -30 -35 0 Q -30 25 -15 40 Q 0 45 15 40 Q 30 25 35 0 Q 38 -30 30 -55 Q 0 -65 -30 -55" fill="#e8a8a0" opacity="0.4" stroke="#c88a80" stroke-width="1.2"/>
+                    <g fill="#9370b9" opacity="0.85">
+                      <circle cx="-15" cy="-10" r="4"/>
+                      <circle cx="12" cy="-5" r="4"/>
+                      <circle cx="-8" cy="18" r="4"/>
+                      <circle cx="18" cy="20" r="4"/>
+                    </g>
+                    <rect x="-18" y="-5" width="36" height="25" rx="6" fill="#d14859" opacity="0.35" stroke="#d14859" stroke-width="1"/>
+                    <circle cx="0" cy="5" r="3" fill="#9370b9"/>
+                  </g>
+                  <g transform="translate(90 85)">
+                    <path d="M 0 0 L 8 -4 L 6 4 Z" fill="#9370b9" opacity="0.85"/>
+                    <text x="12" y="4" style="fill:#9370b9;font:italic 9px Inter,sans-serif">lung 90%</text>
+                  </g>
+                  <g transform="translate(410 85)">
+                    <circle r="3" fill="#9370b9" opacity="0.85"/>
+                    <text x="-8" y="4" text-anchor="end" style="fill:#9370b9;font:italic 9px Inter,sans-serif">eye</text>
+                  </g>
+                  <g transform="translate(90 190)">
+                    <circle r="3" fill="#9370b9" opacity="0.85"/>
+                    <text x="8" y="4" style="fill:#9370b9;font:italic 9px Inter,sans-serif">skin</text>
+                  </g>
+                  <g transform="translate(410 190)">
+                    <circle r="3" fill="#9370b9" opacity="0.85"/>
+                    <text x="-8" y="4" text-anchor="end" style="fill:#9370b9;font:italic 9px Inter,sans-serif">heart</text>
+                  </g>
+                </svg>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet">
+      <style>
+        .bk-eyebrow { fill: #e8a951; font: 500 10px "Inter", sans-serif; letter-spacing: 2.5px; }
+        .bk-title { fill: #e8ecf3; font: italic 400 22px "Fraunces", serif; }
+        .bk-mol-label { fill: #0a0e1a; font: 700 14px "Inter", sans-serif; letter-spacing: 1px; }
+        .bk-mol-sub { fill: #6b7689; font: italic 400 10px "Inter", sans-serif; letter-spacing: 0.5px; }
+        .bk-card-num { fill: #6b7689; font: 700 11px "JetBrains Mono", monospace; letter-spacing: 1.5px; }
+        .bk-card-effect { fill: #e8ecf3; font: 600 13px "Inter", sans-serif; letter-spacing: 0.5px; }
+        .bk-card-mech { fill: #b4becf; font: italic 400 10px "Inter", sans-serif; }
+        .bk-arrow-label { fill: #e8a951; font: 600 9px "Inter", sans-serif; letter-spacing: 1.2px; }
+        .bk-sign-label { fill: #4fb8a8; font: italic 600 11px "Fraunces", serif; }
+        .bk-sign-bad { fill: #d14859; font: italic 600 11px "Fraunces", serif; }
+        .bk-caption { fill: #6b7689; font: italic 400 10px "Inter", sans-serif; }
+        .bk-tag-text { fill: #0a0e1a; font: 700 8px "Inter", sans-serif; letter-spacing: 1px; }
+        .bk-clinical-eyebrow { fill: #d14859; font: 600 9px "Inter", sans-serif; letter-spacing: 2px; }
+        .bk-clinical-text { fill: #b4becf; font: 400 11px "Inter", sans-serif; }
+        .bk-formula { fill: #e8a951; font: 600 11px "JetBrains Mono", monospace; }
+      </style>
+      <defs>
+        <radialGradient id="bkGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#e8a951" stop-opacity="0.5"/>
+          <stop offset="100%" stop-color="#e8a951" stop-opacity="0"/>
+        </radialGradient>
+        <marker id="bkArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8a951"/>
+        </marker>
+      </defs>
+
+      <!-- TITLE -->
+      <text x="500" y="26" text-anchor="middle" class="bk-eyebrow">BRADYKININ · ONE PEPTIDE, THREE CARDINAL SIGNS</text>
+      <text x="500" y="58" text-anchor="middle" class="bk-title">Why bradykinin (not histamine) is the answer when there's pain</text>
+      <line x1="40" y1="78" x2="960" y2="78" stroke="#222c3e" stroke-width="1"/>
+
+      <!-- CENTRAL MOLECULE -->
+      <g transform="translate(500 140)">
+        <circle cx="0" cy="0" r="58" fill="url(#bkGlow)"/>
+        <ellipse cx="0" cy="0" rx="68" ry="32" fill="#e8a951" opacity="0.92" stroke="#a8762d" stroke-width="1.5"/>
+        <text x="0" y="-3" text-anchor="middle" class="bk-mol-label">BRADYKININ</text>
+        <text x="0" y="13" text-anchor="middle" class="bk-mol-sub">peptide · kinin cascade</text>
+      </g>
+
+      <!-- BRANCH ARROWS + LABELS (labels off the arrow paths) -->
+      <path d="M 460 175 Q 320 220 235 280" stroke="#e8a951" stroke-width="2" fill="none" marker-end="url(#bkArrow)" opacity="0.9"/>
+      <text x="240" y="208" text-anchor="middle" class="bk-arrow-label">EFFECT 1 →</text>
+
+      <path d="M 500 180 L 500 280" stroke="#e8a951" stroke-width="2" fill="none" marker-end="url(#bkArrow)" opacity="0.9"/>
+      <text x="555" y="235" text-anchor="start" class="bk-arrow-label">← EFFECT 2</text>
+
+      <path d="M 540 175 Q 680 220 765 280" stroke="#e8a951" stroke-width="2.5" fill="none" marker-end="url(#bkArrow)" opacity="1"/>
+      <text x="760" y="208" text-anchor="middle" class="bk-arrow-label" fill="#d14859">← EFFECT 3</text>
+
+      <!-- CARD 1 · VASODILATION -->
+      <g transform="translate(60 290)">
+        <rect x="0" y="0" width="350" height="220" rx="10" ry="10" fill="#0a0e1a" stroke="#222c3e" stroke-width="1"/>
+        <text x="20" y="24" class="bk-card-num">01</text>
+        <text x="48" y="24" class="bk-card-effect">VASODILATION</text>
+        <g transform="translate(175 90)">
+          <g transform="translate(-65 0)">
+            <rect x="-32" y="-18" width="64" height="36" rx="4" fill="none" stroke="#3a8a7e" stroke-width="1" opacity="0.6" stroke-dasharray="2 2"/>
+            <text x="0" y="38" text-anchor="middle" class="bk-caption">narrow</text>
+          </g>
+          <path d="M -22 0 L 22 0" stroke="#e8a951" stroke-width="1.5" marker-end="url(#bkArrow)"/>
+          <g transform="translate(65 0)">
+            <rect x="-44" y="-22" width="88" height="44" rx="5" fill="#4fb8a8" opacity="0.18" stroke="#4fb8a8" stroke-width="1.2"/>
+            <text x="0" y="38" text-anchor="middle" class="bk-caption" fill="#4fb8a8">dilated</text>
+          </g>
+        </g>
+        <text x="175" y="155" text-anchor="middle" class="bk-card-mech">arteriolar smooth muscle relaxes</text>
+        <line x1="20" y1="172" x2="330" y2="172" stroke="#222c3e" stroke-width="1"/>
+        <text x="175" y="190" text-anchor="middle" class="bk-arrow-label">CARDINAL SIGN</text>
+        <text x="175" y="208" text-anchor="middle" class="bk-sign-label">redness (rubor) + warmth (calor)</text>
+      </g>
+
+      <!-- CARD 2 · INCREASED PERMEABILITY -->
+      <g transform="translate(425 290)">
+        <rect x="0" y="0" width="350" height="220" rx="10" ry="10" fill="#0a0e1a" stroke="#222c3e" stroke-width="1"/>
+        <text x="20" y="24" class="bk-card-num">02</text>
+        <text x="48" y="24" class="bk-card-effect">↑ VASCULAR PERMEABILITY</text>
+        <g transform="translate(175 90)">
+          <rect x="-46" y="-12" width="40" height="24" rx="3" fill="#4fb8a8" opacity="0.55" stroke="#3a8a7e" stroke-width="1"/>
+          <ellipse cx="-26" cy="0" rx="6" ry="3" fill="#3a8a7e" opacity="0.85"/>
+          <rect x="6" y="-12" width="40" height="24" rx="3" fill="#4fb8a8" opacity="0.55" stroke="#3a8a7e" stroke-width="1"/>
+          <ellipse cx="26" cy="0" rx="6" ry="3" fill="#3a8a7e" opacity="0.85"/>
+          <line x1="0" y1="-16" x2="0" y2="16" stroke="#d14859" stroke-width="1.4" stroke-dasharray="2 2"/>
+          <g fill="#e8a951" opacity="0.7">
+            <circle cx="-3" cy="-22" r="2"/>
+            <circle cx="3" cy="-26" r="2"/>
+            <circle cx="0" cy="-32" r="1.5"/>
+          </g>
+          <path d="M 0 -14 L 0 -38" stroke="#e8a951" stroke-width="1.2" stroke-dasharray="2 2" marker-end="url(#bkArrow)" opacity="0.85"/>
+        </g>
+        <text x="175" y="155" text-anchor="middle" class="bk-card-mech">endothelial gap formation at venules</text>
+        <text x="175" y="168" text-anchor="middle" class="bk-caption">(same mechanism as Station 1)</text>
+        <line x1="20" y1="178" x2="330" y2="178" stroke="#222c3e" stroke-width="1"/>
+        <text x="175" y="196" text-anchor="middle" class="bk-arrow-label">CARDINAL SIGN</text>
+        <text x="175" y="213" text-anchor="middle" class="bk-sign-label">swelling (tumor)</text>
+      </g>
+
+      <!-- CARD 3 · PAIN FIBERS (the discriminator) -->
+      <g transform="translate(790 290)">
+        <rect x="0" y="0" width="170" height="220" rx="10" ry="10" fill="#0a0e1a" stroke="#d14859" stroke-width="1.5"/>
+        <rect x="105" y="6" width="60" height="14" rx="3" fill="#d14859" opacity="0.92"/>
+        <text x="135" y="16" text-anchor="middle" class="bk-tag-text">KEY ANSWER</text>
+        <text x="14" y="24" class="bk-card-num">03</text>
+        <text x="38" y="24" class="bk-card-effect">PAIN FIBERS</text>
+        <g transform="translate(85 100)">
+          <line x1="-50" y1="0" x2="50" y2="0" stroke="#b4becf" stroke-width="2" opacity="0.8"/>
+          <g stroke="#b4becf" stroke-width="1.3" fill="none" opacity="0.8">
+            <path d="M 50 0 L 65 -10"/>
+            <path d="M 50 0 L 65 10"/>
+            <path d="M 50 0 L 70 0"/>
+          </g>
+          <g stroke="#d14859" stroke-width="2" fill="none" opacity="0.9">
+            <path d="M -10 -25 L 0 -10 L -5 -8 L 5 6"/>
+            <path d="M -10 -25 L -3 -22"/>
+          </g>
+          <text x="0" y="-32" text-anchor="middle" class="bk-arrow-label" fill="#d14859">FIRES!</text>
+        </g>
+        <text x="85" y="155" text-anchor="middle" class="bk-card-mech">directly stimulates</text>
+        <text x="85" y="168" text-anchor="middle" class="bk-card-mech">free nerve endings</text>
+        <line x1="20" y1="178" x2="150" y2="178" stroke="#222c3e" stroke-width="1"/>
+        <text x="85" y="196" text-anchor="middle" class="bk-arrow-label" fill="#d14859">CARDINAL SIGN</text>
+        <text x="85" y="213" text-anchor="middle" class="bk-sign-bad">pain (dolor)</text>
+      </g>
+
+      <!-- BOTTOM CALLOUTS -->
+      <g transform="translate(0 530)">
+        <line x1="40" y1="0" x2="960" y2="0" stroke="#222c3e" stroke-width="1"/>
+        <text x="500" y="22" text-anchor="middle" class="bk-arrow-label">HISTAMINE vs. BRADYKININ — WHY THIS QUESTION MATTERS</text>
+        <text x="500" y="38" text-anchor="middle" class="bk-clinical-text">
+          <tspan x="500">Histamine does <tspan fill="#e8a951" font-weight="700">vasodilation + permeability</tspan>, but <tspan fill="#d14859" font-weight="700">not significant pain</tspan>.</tspan>
+          <tspan x="500" dy="1.4em">Only bradykinin hits all three signs — that's the discriminator.</tspan>
+        </text>
+        <text x="500" y="64" text-anchor="middle" class="bk-clinical-eyebrow">CLINICAL PEARL</text>
+        <text x="500" y="90" text-anchor="middle" class="bk-clinical-text">
+          <tspan x="500">ACE normally degrades bradykinin. Block ACE → <tspan fill="#e8a951" font-weight="700">bradykinin accumulates</tspan></tspan>
+          <tspan x="500" dy="1.4em">→ dry cough or (rarely) angioedema.</tspan>
+        </text>
+      </g>
+    </svg>

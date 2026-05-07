@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(250 145)">
+                    <circle r="55" fill="none" stroke="#9370b9" stroke-width="2"/>
+                    <g fill="#9370b9" opacity="0.85">
+                      <circle cx="-42" cy="0" r="5"/>
+                      <circle cx="-30" cy="-30" r="5"/>
+                      <circle cx="0" cy="-42" r="5"/>
+                      <circle cx="30" cy="-30" r="5"/>
+                      <circle cx="42" cy="0" r="5"/>
+                      <circle cx="30" cy="30" r="5"/>
+                      <circle cx="0" cy="42" r="5"/>
+                      <circle cx="-30" cy="30" r="5"/>
+                    </g>
+                    <g stroke="#e8a951" stroke-width="4" fill="none" stroke-linecap="round">
+                      <path d="M 0 -24 L 0 24"/>
+                      <path d="M -20 -14 L 20 14"/>
+                      <path d="M 20 -14 L -20 14"/>
+                      <path d="M -22 0 L 22 0"/>
+                    </g>
+                    <g fill="#e8a951" opacity="0.95">
+                      <circle cx="0" cy="-20" r="3"/>
+                      <circle cx="-16" cy="-10" r="3"/>
+                      <circle cx="16" cy="-10" r="3"/>
+                      <circle cx="-16" cy="10" r="3"/>
+                      <circle cx="16" cy="10" r="3"/>
+                      <circle cx="0" cy="20" r="3"/>
+                    </g>
+                  </g>
+                  <text x="250" y="235" text-anchor="middle" style="fill:#e8a951;font:italic 700 10px Inter,sans-serif">stellate microabscess</text>
+                </svg>

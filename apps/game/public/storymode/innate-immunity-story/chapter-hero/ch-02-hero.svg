@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Chapter 2 hero icon.
+-->
+<svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <line x1="4" y1="20" x2="56" y2="20" stroke="#4fb8a8" stroke-width="1.4" opacity="0.85"/>
+        <line x1="4" y1="42" x2="56" y2="42" stroke="#4fb8a8" stroke-width="1.4" opacity="0.85"/>
+        <rect x="4" y="20" width="52" height="22" fill="#4fb8a8" opacity="0.08"/>
+        <rect x="24" y="19" width="12" height="2.5" fill="#0a0e1a"/>
+        <g stroke="#a33648" stroke-width="0.3">
+          <ellipse cx="12" cy="30" rx="4" ry="2.5" fill="#d14859" opacity="0.85"/>
+          <ellipse cx="28" cy="35" rx="4" ry="2.5" fill="#d14859" opacity="0.85"/>
+          <ellipse cx="44" cy="28" rx="4" ry="2.5" fill="#d14859" opacity="0.85"/>
+        </g>
+        <g fill="#4fb8a8"><circle cx="27" cy="13" r="1"/><circle cx="32" cy="9" r="1"/><circle cx="34" cy="15" r="1"/></g>
+      </svg>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="32" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">ENDOSOMAL TLRs · NUCLEIC-ACID WATCH</text>
+                  <circle cx="250" cy="140" r="90" fill="#9370b9" fill-opacity="0.08" stroke="#9370b9" stroke-width="1.2" stroke-dasharray="3 3"/>
+                  <text x="250" y="70" text-anchor="middle" style="fill:#9370b9;font:italic 600 10px Inter,sans-serif;letter-spacing:1px">ENDOSOME</text>
+                  <g transform="translate(190 100)">
+                    <path d="M -5 0 Q -5 15 0 22 Q 5 15 5 0 Z" fill="#9370b9" stroke="#4a2d60" stroke-width="0.8"/>
+                    <text x="-28" y="10" style="fill:#9370b9;font:700 9px Inter,sans-serif">TLR3</text>
+                    <text x="-42" y="22" style="fill:#e8a951;font:600 8.5px Inter,sans-serif">dsRNA</text>
+                  </g>
+                  <g transform="translate(310 100)">
+                    <path d="M -5 0 Q -5 15 0 22 Q 5 15 5 0 Z" fill="#9370b9" stroke="#4a2d60" stroke-width="0.8"/>
+                    <text x="12" y="10" style="fill:#9370b9;font:700 9px Inter,sans-serif">TLR7/8</text>
+                    <text x="12" y="22" style="fill:#e8a951;font:600 8.5px Inter,sans-serif">ssRNA</text>
+                  </g>
+                  <g transform="translate(250 200)">
+                    <path d="M -5 0 Q -5 -15 0 -22 Q 5 -15 5 0 Z" fill="#9370b9" stroke="#4a2d60" stroke-width="0.8"/>
+                    <text x="-18" y="16" style="fill:#9370b9;font:700 9px Inter,sans-serif">TLR9</text>
+                    <text x="-32" y="30" style="fill:#e8a951;font:600 8.5px Inter,sans-serif">CpG DNA</text>
+                  </g>
+                  <g fill="#d14859" opacity="0.75">
+                    <ellipse cx="250" cy="150" rx="14" ry="8"/>
+                    <path d="M 236 150 L 264 150" stroke="#a33648" stroke-width="1" fill="none"/>
+                  </g>
+                  <text x="250" y="154" text-anchor="middle" style="fill:#0a0e1a;font:700 8px Inter,sans-serif">virus</text>
+                  <text x="250" y="248" text-anchor="middle" style="fill:#b4becf;font:italic 10px Inter,sans-serif">virus engulfed → its genome is exposed → <tspan fill="#d14859" font-weight="600">TLR sees nucleic acid</tspan></text>
+                </svg>

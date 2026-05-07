@@ -110,23 +110,38 @@ export interface StoryStation {
 	label: string;
 	title: string;
 	subtitle: string | null;
-	stage: string | null;
-	previously: string | null;
-	cardTitle: string | null;
-	tagline: string | null;
-	story: string;
-	diagrams: StoryDiagramRef[];
-	explanationDiagrams: StoryDiagramRef[];
+	/**
+	 * Per-step diagrams + spotlight definitions for the study-mode
+	 * walkthrough. Same as before — only the explanation-column prose
+	 * fields were removed.
+	 */
 	stepFlow: StoryStepFlow | null;
+	/** Question side: bridge prose, vignette, stem, choices. */
 	bridge: string | null;
 	vignette: string | null;
 	stem: string;
 	choices: StoryChoice[];
 	correct: string;
-	explanationTitle: string | null;
-	explanation: string;
-	whatsNext: string | null;
+	/**
+	 * Diagram(s) that paint above the keypoints in the explanation
+	 * column. Most stations don't have any (the field is simply an
+	 * empty array). Click-to-enlarge is wired through `StoryDiagram`'s
+	 * `enlarge` event.
+	 */
+	explanationDiagrams: StoryDiagramRef[];
+	/**
+	 * Bullet-slideshow "key points" — short, punchy lines summarising the
+	 * answer. The `StoryKeypoints` component steps through them one at a
+	 * time (tap to advance, prev/next/dots), mirroring the reference
+	 * HTML's `setupBulletSlideshow` UX. Each entry may carry inline
+	 * markup (`<strong>`, `<em>`, etc). Replaces the previous long-form
+	 * prose fields (`explanation`, `explanationTitle`, `previously`,
+	 * `stage`, `cardTitle`, `tagline`, `story`, `whatsNext`).
+	 */
+	keypoints: string[];
+	/** Label used on the "Continue the journey" button. */
 	nextBtn: string | null;
+	/** Optional extra "Practice bank" cases the user can attempt. */
 	bank: StoryBankQuestion[];
 }
 

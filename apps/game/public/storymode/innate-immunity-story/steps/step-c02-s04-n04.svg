@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <ellipse cx="250" cy="145" rx="225" ry="90" fill="#d14859" opacity="0.14"/>
+                  <ellipse cx="250" cy="145" rx="225" ry="90" fill="none" stroke="#d14859" stroke-width="1" stroke-dasharray="3 2" opacity="0.35"/>
+                  <g fill="#d14859" opacity="0.75">
+                    <ellipse cx="50" cy="95" rx="9" ry="5"/>
+                    <ellipse cx="82" cy="215" rx="9" ry="5"/>
+                    <ellipse cx="430" cy="88" rx="9" ry="5"/>
+                    <ellipse cx="450" cy="220" rx="9" ry="5"/>
+                    <ellipse cx="225" cy="70" rx="9" ry="5"/>
+                    <ellipse cx="265" cy="225" rx="9" ry="5"/>
+                  </g>
+                  <g transform="translate(62 68)">
+                    <ellipse rx="5" ry="3" fill="#d14859" opacity="0.85"/>
+                    <line x1="7" y1="0" x2="18" y2="0" stroke="#d14859" stroke-width="1"/>
+                    <text x="20" y="3" style="fill:#d14859;font:italic 9px Inter,sans-serif">RBC</text>
+                  </g>
+                  <text x="400" y="68" style="fill:#e8a8a0;font:italic 700 10px Inter,sans-serif;letter-spacing:1.5px">BLOOD VESSEL</text>
+                  <g transform="translate(140 145)">
+                    <circle r="40" fill="#e8a951" opacity="0.9" stroke="#a87b3c" stroke-width="1.5"/>
+                    <g fill="#4a2d60">
+                      <ellipse cx="-16" cy="-10" rx="8" ry="6"/>
+                      <ellipse cx="12" cy="-5" rx="8" ry="6"/>
+                      <ellipse cx="-8" cy="14" rx="8" ry="6"/>
+                      <ellipse cx="16" cy="12" rx="8" ry="6"/>
+                      <path d="M -8 -10 L 4 -5" stroke="#4a2d60" stroke-width="2.5"/>
+                      <path d="M 12 1 L 16 6" stroke="#4a2d60" stroke-width="2.5"/>
+                      <path d="M 0 14 L 8 14" stroke="#4a2d60" stroke-width="2.5"/>
+                    </g>
+                    <g stroke="#e8a951" stroke-width="1" fill="none" opacity="0.7">
+                      <line x1="40" y1="-28" x2="50" y2="-36"/>
+                    </g>
+                    <text x="74" y="-33" text-anchor="middle" style="fill:#e8a951;font:italic 9px Inter,sans-serif">cytoplasm</text>
+                    <line x1="-16" y1="-10" x2="-40" y2="-30" stroke="#4a2d60" stroke-width="1" opacity="0.7"/>
+                    <text x="-68" y="-33" text-anchor="middle" style="fill:#9370b9;font:italic 9px Inter,sans-serif">4 lobes</text>
+                    <text x="0" y="65" text-anchor="middle" style="fill:#e8a951;font:700 11px Inter,sans-serif;letter-spacing:1.5px">SEG (mature)</text>
+                    <text x="0" y="79" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">segmented nucleus</text>
+                  </g>
+                  <g transform="translate(360 145)">
+                    <circle r="40" fill="#e8a951" opacity="0.9" stroke="#a87b3c" stroke-width="1.5"/>
+                    <path d="M -22 -18 Q -32 0 -22 18 Q -8 28 10 24 Q 24 18 20 0 Q 24 -18 10 -24 Q -8 -28 -22 -18 Z" fill="#4a2d60"/>
+                    <line x1="0" y1="0" x2="28" y2="-32" stroke="#4a2d60" stroke-width="1" opacity="0.7"/>
+                    <text x="52" y="-33" text-anchor="middle" style="fill:#9370b9;font:italic 9px Inter,sans-serif">U-shape nucleus</text>
+                    <text x="0" y="65" text-anchor="middle" style="fill:#d14859;font:700 11px Inter,sans-serif;letter-spacing:1.5px">BAND (immature)</text>
+                    <text x="0" y="79" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">unsegmented, young</text>
+                  </g>
+                  <g transform="translate(250 145)">
+                    <path d="M -55 0 L 55 0" stroke="#d14859" stroke-width="1.5" stroke-dasharray="4 3"/>
+                    <polygon points="58,0 48,-5 48,5" fill="#d14859"/>
+                    <text x="0" y="-8" text-anchor="middle" style="fill:#d14859;font:italic 700 9px Inter,sans-serif">released early from marrow</text>
+                    <text x="0" y="16" text-anchor="middle" style="fill:#b4becf;font:italic 8px Inter,sans-serif">(supply &gt; maturation time)</text>
+                  </g>
+                </svg>

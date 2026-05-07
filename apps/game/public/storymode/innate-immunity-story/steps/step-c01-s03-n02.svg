@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="24" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">ZOOM IN: THE SENSOR HAS A NAME</text>
+                  <line x1="0" y1="155" x2="500" y2="155" stroke="#4fb8a8" stroke-width="2" opacity="0.45"/>
+                  <line x1="0" y1="183" x2="500" y2="183" stroke="#4fb8a8" stroke-width="2" opacity="0.45"/>
+                  <rect x="0" y="155" width="500" height="28" fill="#4fb8a8" opacity="0.05"/>
+                  <text x="20" y="140" style="fill:#b4becf;font:10px Inter,sans-serif;letter-spacing:1.5px">EXTRACELLULAR SIDE</text>
+                  <text x="20" y="210" style="fill:#b4becf;font:10px Inter,sans-serif;letter-spacing:1.5px">INSIDE THE CELL</text>
+                  <g transform="translate(250 155)">
+                    <text x="0" y="-100" text-anchor="middle" style="fill:#e8a951;font:700 20px Inter,sans-serif;letter-spacing:3px">TLR</text>
+                    <text x="0" y="-82" text-anchor="middle" style="fill:#6b7689;font:italic 10px Inter,sans-serif">Toll-Like Receptor</text>
+                    <path d="M -22 0 Q -24 -38 -13 -58 Q 0 -70 13 -58 Q 24 -38 22 0" stroke="#e8a951" stroke-width="3.2" fill="none"/>
+                    <path d="M -18 -10 Q -21 -33 -11 -48" stroke="#e8a951" stroke-width="1.1" fill="none" opacity="0.7"/>
+                    <path d="M 18 -10 Q 21 -33 11 -48" stroke="#e8a951" stroke-width="1.1" fill="none" opacity="0.7"/>
+                    <line x1="0" y1="0" x2="0" y2="28" stroke="#e8a951" stroke-width="2.8"/>
+                    <ellipse cx="0" cy="36" rx="11" ry="7.5" stroke="#e8a951" stroke-width="2" fill="#e8a951" opacity="0.35"/>
+                  </g>
+                  <path d="M 332 110 Q 300 110 286 110" stroke="#6b7689" stroke-width="0.8" fill="none"/>
+                  <text x="338" y="113" style="fill:#b4becf;font:italic 10px Inter,sans-serif">catches the pattern</text>
+                  <path d="M 332 191 Q 295 191 278 191" stroke="#6b7689" stroke-width="0.8" fill="none"/>
+                  <text x="338" y="194" style="fill:#b4becf;font:italic 10px Inter,sans-serif">signals inward</text>
+                  <text x="250" y="235" text-anchor="middle" style="fill:#6b7689;font:italic 11px Inter,sans-serif">family includes TLR2, TLR4, TLR9 · each watches a different pattern</text>
+                </svg>

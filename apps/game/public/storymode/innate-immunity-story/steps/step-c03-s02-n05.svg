@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(90 145)">
+                    <ellipse cx="0" cy="0" rx="30" ry="22" fill="none" stroke="#9370b9" stroke-width="1.5" stroke-dasharray="3 2" opacity="0.8"/>
+                    <circle cx="-6" cy="-2" r="7" fill="#d14859" opacity="0.85"/>
+                    <circle cx="6" cy="2" r="7" fill="#d14859" opacity="0.85"/>
+                    <text x="0" y="40" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif">S. pneumo</text>
+                  </g>
+                  <g transform="translate(190 145)">
+                    <ellipse cx="0" cy="0" rx="28" ry="20" fill="none" stroke="#9370b9" stroke-width="1.5" stroke-dasharray="3 2" opacity="0.8"/>
+                    <ellipse rx="14" ry="5" fill="#d14859" opacity="0.85"/>
+                    <text x="0" y="40" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif">H. flu</text>
+                  </g>
+                  <g transform="translate(280 145)">
+                    <ellipse cx="0" cy="0" rx="28" ry="22" fill="none" stroke="#9370b9" stroke-width="1.5" stroke-dasharray="3 2" opacity="0.8"/>
+                    <circle cx="-5" cy="0" r="5" fill="#d14859" opacity="0.85"/>
+                    <circle cx="5" cy="0" r="5" fill="#d14859" opacity="0.85"/>
+                    <text x="0" y="40" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif">N. mening</text>
+                  </g>
+                  <g transform="translate(370 145)">
+                    <ellipse cx="0" cy="0" rx="32" ry="22" fill="none" stroke="#9370b9" stroke-width="1.5" stroke-dasharray="3 2" opacity="0.8"/>
+                    <rect x="-12" y="-4" width="24" height="8" rx="3" fill="#d14859" opacity="0.85"/>
+                    <text x="0" y="40" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif">Klebsiella</text>
+                  </g>
+                  <g transform="translate(445 145)">
+                    <ellipse cx="0" cy="0" rx="28" ry="22" fill="none" stroke="#9370b9" stroke-width="1.5" stroke-dasharray="3 2" opacity="0.8"/>
+                    <g fill="#d14859" opacity="0.85">
+                      <circle cx="-6" cy="0" r="5"/>
+                      <circle cx="0" cy="4" r="5"/>
+                      <circle cx="6" cy="-2" r="5"/>
+                    </g>
+                    <text x="0" y="40" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif">GBS</text>
+                  </g>
+                  <text x="250" y="230" text-anchor="middle" style="fill:#e8a951;font:italic 700 10px Inter,sans-serif">S. pneumoniae = #1 threat in asplenia</text>
+                </svg>

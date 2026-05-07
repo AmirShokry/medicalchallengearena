@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 720" preserveAspectRatio="xMidYMid meet">
+      <style>
+        .ce-eyebrow { fill: #e8a951; font: 500 10px "Inter", sans-serif; letter-spacing: 2.5px; }
+        .ce-title { fill: #e8ecf3; font: italic 400 22px "Fraunces", serif; }
+        .ce-anatomy { fill: #b4becf; font: 500 10px "Inter", sans-serif; letter-spacing: 0.5px; }
+        .ce-anatomy-dim { fill: #6b7689; font: 500 10px "Inter", sans-serif; letter-spacing: 0.5px; }
+        .ce-step-num { fill: #e8a951; font: 700 11px "JetBrains Mono", monospace; letter-spacing: 1.5px; }
+        .ce-step-name { fill: #e8ecf3; font: 600 11px "Inter", sans-serif; letter-spacing: 0.5px; }
+        .ce-molecule-endo { fill: #4fb8a8; font: 700 9px "Inter", sans-serif; letter-spacing: 0.3px; }
+        .ce-molecule-neut { fill: #e8a951; font: 700 9px "Inter", sans-serif; letter-spacing: 0.3px; }
+        .ce-side-label { fill: #6b7689; font: italic 500 9px "Inter", sans-serif; letter-spacing: 1px; text-transform: uppercase; }
+        .ce-caption { fill: #6b7689; font: italic 400 10px "Inter", sans-serif; }
+        .ce-tag-text { fill: #0a0e1a; font: 700 8px "Inter", sans-serif; letter-spacing: 1px; }
+        .ce-cytokine { fill: #d14859; font: 700 10px "Inter", sans-serif; letter-spacing: 0.8px; }
+        .ce-cytokine-label { fill: #b4becf; font: italic 500 10px "Inter", sans-serif; }
+        .ce-callout-eyebrow { fill: #d14859; font: 600 9px "Inter", sans-serif; letter-spacing: 2px; }
+        .ce-callout-text { fill: #b4becf; font: 400 10.5px "Inter", sans-serif; }
+        .ce-rate-limit { fill: #e8a951; font: 700 11px "Inter", sans-serif; letter-spacing: 1.5px; }
+      </style>
+      <defs>
+        <marker id="ceArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8a951"/>
+        </marker>
+        <marker id="ceArrowCrimson" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#d14859"/>
+        </marker>
+        <symbol id="neutSmall" overflow="visible">
+          <circle cx="0" cy="0" r="11" fill="#e8a951" opacity="0.85" stroke="#a8762d" stroke-width="1"/>
+          <g fill="#a8762d" opacity="0.7">
+            <circle cx="-3" cy="-1" r="2"/>
+            <circle cx="3" cy="-1" r="2"/>
+            <circle cx="0" cy="3" r="2"/>
+          </g>
+        </symbol>
+        <symbol id="selectinHook" overflow="visible">
+          <path d="M 0 0 L 0 8 L 3 11" stroke="#4fb8a8" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+        </symbol>
+        <symbol id="integrinStub" overflow="visible">
+          <rect x="-1.5" y="-5" width="3" height="5" rx="0.5" fill="#e8a951" opacity="0.9"/>
+        </symbol>
+        <symbol id="icamBar" overflow="visible">
+          <rect x="-1.5" y="0" width="3" height="8" rx="0.5" fill="#4fb8a8" opacity="0.9"/>
+        </symbol>
+        <symbol id="cytokineDrop" overflow="visible">
+          <circle cx="0" cy="0" r="3" fill="#d14859" opacity="0.85"/>
+        </symbol>
+      </defs>
+
+      <text x="500" y="26" text-anchor="middle" class="ce-eyebrow">COORDINATED EXTRAVASATION · ADHESION MOLECULES ARE THE RATE-LIMITING STEP</text>
+      <text x="500" y="58" text-anchor="middle" class="ce-title">Thousands of neutrophils, four molecule pairs, one coordinated wave</text>
+      <line x1="40" y1="78" x2="960" y2="78" stroke="#222c3e" stroke-width="1"/>
+
+      <!-- CYTOKINE DRIVER -->
+      <g transform="translate(0 100)">
+        <text x="60" y="16" class="ce-cytokine">CYTOKINES FROM INFECTED TISSUE ↓</text>
+        <g transform="translate(320 14)">
+          <use href="#cytokineDrop" x="0"/>
+          <use href="#cytokineDrop" x="16"/>
+          <use href="#cytokineDrop" x="32"/>
+          <use href="#cytokineDrop" x="48"/>
+          <text x="86" y="4" class="ce-cytokine-label">
+            <tspan fill="#d14859" font-weight="700">IL-1 · TNF · IL-8</tspan> reach endothelium
+          </text>
+        </g>
+      </g>
+
+      <!-- VESSEL: lumen top, endothelium bottom wall, tissue below -->
+      <text x="60" y="138" class="ce-anatomy-dim">vessel lumen · blood flow →</text>
+      <rect x="40" y="145" width="920" height="100" fill="#4fb8a8" opacity="0.04"/>
+      <line x1="40" y1="145" x2="960" y2="145" stroke="#3a8a7e" stroke-width="0.8" opacity="0.3"/>
+      <path d="M 55 190 L 95 190" stroke="#6b7689" stroke-width="1" marker-end="url(#ceArrow)" opacity="0.4"/>
+
+      <!-- Endothelial cells on bottom wall (with gap at stage 4: x=760-810) -->
+      <g>
+        <rect x="100" y="245" width="90" height="26" rx="3" fill="#4fb8a8" opacity="0.55" stroke="#3a8a7e" stroke-width="1"/>
+        <rect x="195" y="245" width="90" height="26" rx="3" fill="#4fb8a8" opacity="0.55" stroke="#3a8a7e" stroke-width="1"/>
+        <rect x="290" y="245" width="90" height="26" rx="3" fill="#4fb8a8" opacity="0.55" stroke="#3a8a7e" stroke-width="1"/>
+        <rect x="385" y="245" width="90" height="26" rx="3" fill="#4fb8a8" opacity="0.55" stroke="#3a8a7e" stroke-width="1"/>
+        <rect x="480" y="245" width="90" height="26" rx="3" fill="#4fb8a8" opacity="0.55" stroke="#3a8a7e" stroke-width="1"/>
+        <rect x="575" y="245" width="90" height="26" rx="3" fill="#4fb8a8" opacity="0.55" stroke="#3a8a7e" stroke-width="1"/>
+        <rect x="670" y="245" width="90" height="26" rx="3" fill="#4fb8a8" opacity="0.55" stroke="#3a8a7e" stroke-width="1"/>
+        <!-- gap x=760-810 for transmigration -->
+        <rect x="810" y="245" width="90" height="26" rx="3" fill="#4fb8a8" opacity="0.55" stroke="#3a8a7e" stroke-width="1"/>
+      </g>
+
+      <text x="105" y="263" class="ce-caption" opacity="0.6">endothelium</text>
+      <text x="60" y="340" class="ce-anatomy-dim">interstitium (tissue) — neutrophils arrive here</text>
+
+      <!-- STAGE 1 · ROLLING -->
+      <g>
+        <g transform="translate(145 245)">
+          <use href="#selectinHook" x="0"/>
+          <use href="#selectinHook" x="10"/>
+          <use href="#selectinHook" x="20"/>
+          <use href="#selectinHook" x="30"/>
+        </g>
+        <g transform="translate(175 228)">
+          <use href="#neutSmall"/>
+          <g stroke="#e8a951" stroke-width="1" opacity="0.4">
+            <line x1="-20" y1="-2" x2="-26" y2="-2"/>
+            <line x1="-20" y1="2" x2="-26" y2="2"/>
+          </g>
+        </g>
+        <text x="175" y="300" text-anchor="middle" class="ce-step-num">01</text>
+        <text x="175" y="316" text-anchor="middle" class="ce-step-name">ROLLING</text>
+      </g>
+
+      <!-- STAGE 2 · FIRM ADHESION -->
+      <g>
+        <g transform="translate(325 245)">
+          <g transform="scale(1 -1) translate(0 -1)"><use href="#icamBar" x="0" y="-1"/></g>
+          <g transform="scale(1 -1) translate(0 -1)"><use href="#icamBar" x="8" y="-1"/></g>
+          <g transform="scale(1 -1) translate(0 -1)"><use href="#icamBar" x="16" y="-1"/></g>
+          <g transform="scale(1 -1) translate(0 -1)"><use href="#icamBar" x="24" y="-1"/></g>
+        </g>
+        <g transform="translate(345 228)">
+          <use href="#neutSmall"/>
+          <g transform="translate(0 11) scale(1 1)">
+            <use href="#integrinStub" x="-6" y="5"/>
+            <use href="#integrinStub" x="-2" y="5"/>
+            <use href="#integrinStub" x="2" y="5"/>
+            <use href="#integrinStub" x="6" y="5"/>
+          </g>
+        </g>
+        <text x="345" y="300" text-anchor="middle" class="ce-step-num">02</text>
+        <text x="345" y="316" text-anchor="middle" class="ce-step-name">FIRM ADHESION</text>
+      </g>
+
+      <!-- STAGE 3 · INTEGRIN ACTIVATION -->
+      <g>
+        <g transform="translate(525 220)">
+          <use href="#neutSmall"/>
+          <circle cx="0" cy="0" r="15" fill="none" stroke="#e8a951" stroke-width="1" stroke-dasharray="2 2" opacity="0.7"/>
+        </g>
+        <g transform="translate(525 180)">
+          <rect x="-22" y="-8" width="14" height="8" rx="1" fill="#6b7689" opacity="0.5"/>
+          <text x="-15" y="10" text-anchor="middle" class="ce-caption" style="font-size: 8px;">low</text>
+          <path d="M -4 -4 L 4 -4" stroke="#e8a951" stroke-width="1.2" marker-end="url(#ceArrow)"/>
+          <rect x="8" y="-12" width="14" height="12" rx="1" fill="#e8a951" opacity="0.9"/>
+          <text x="15" y="10" text-anchor="middle" class="ce-molecule-neut" style="font-size: 8px;">HIGH</text>
+        </g>
+        <text x="525" y="300" text-anchor="middle" class="ce-step-num">03</text>
+        <text x="525" y="316" text-anchor="middle" class="ce-step-name">INTEGRIN ACTIVATION</text>
+      </g>
+
+      <!-- STAGE 4 · TRANSMIGRATION (cell squeezes through the gap) -->
+      <g>
+        <circle cx="763" cy="258" r="2.5" fill="#4fb8a8"/>
+        <circle cx="807" cy="258" r="2.5" fill="#4fb8a8"/>
+        <text x="785" y="238" text-anchor="middle" class="ce-molecule-endo" style="font-size: 8px;">PECAM-1</text>
+        <ellipse cx="785" cy="232" rx="13" ry="10" fill="#e8a951" opacity="0.85" stroke="#a8762d" stroke-width="1"/>
+        <ellipse cx="785" cy="258" rx="9" ry="8" fill="#e8a951" opacity="0.85" stroke="#a8762d" stroke-width="1"/>
+        <ellipse cx="785" cy="285" rx="12" ry="10" fill="#e8a951" opacity="0.85" stroke="#a8762d" stroke-width="1"/>
+        <g fill="#a8762d" opacity="0.7">
+          <circle cx="782" cy="230" r="2"/>
+          <circle cx="788" cy="232" r="2"/>
+          <circle cx="785" cy="258" r="2"/>
+          <circle cx="782" cy="285" r="2"/>
+          <circle cx="788" cy="287" r="2"/>
+        </g>
+        <path d="M 785 302 L 785 318" stroke="#e8a951" stroke-width="1.4" marker-end="url(#ceArrow)" opacity="0.85"/>
+        <text x="785" y="360" text-anchor="middle" class="ce-step-num">04</text>
+        <text x="785" y="376" text-anchor="middle" class="ce-step-name">TRANSMIGRATION</text>
+      </g>
+
+      <!-- MOLECULE-PAIR CAPTIONS (unified band below all stages) -->
+      <g transform="translate(0 400)">
+        <g transform="translate(175 0)">
+          <text x="0" y="0" text-anchor="middle" class="ce-side-label">endothelium ↑</text>
+          <text x="0" y="14" text-anchor="middle" class="ce-molecule-endo">E-/P-SELECTIN</text>
+          <text x="0" y="30" text-anchor="middle" class="ce-side-label">neutrophil</text>
+          <text x="0" y="44" text-anchor="middle" class="ce-molecule-neut">sialyl-Lewis X</text>
+        </g>
+        <g transform="translate(345 0)">
+          <text x="0" y="0" text-anchor="middle" class="ce-side-label">endothelium ↑</text>
+          <text x="0" y="14" text-anchor="middle" class="ce-molecule-endo">ICAM-1 · VCAM-1</text>
+          <text x="0" y="30" text-anchor="middle" class="ce-side-label">neutrophil</text>
+          <text x="0" y="44" text-anchor="middle" class="ce-molecule-neut">CD11/CD18 integrins</text>
+        </g>
+        <g transform="translate(525 0)">
+          <text x="0" y="0" text-anchor="middle" class="ce-side-label">neutrophil integrins shift</text>
+          <text x="0" y="14" text-anchor="middle" class="ce-molecule-neut">low → HIGH-AFFINITY</text>
+          <text x="0" y="30" text-anchor="middle" class="ce-side-label">trigger</text>
+          <text x="0" y="44" text-anchor="middle" class="ce-molecule-endo">chemokines (IL-8)</text>
+        </g>
+        <g transform="translate(785 0)">
+          <text x="0" y="0" text-anchor="middle" class="ce-side-label">endothelial junctions</text>
+          <text x="0" y="14" text-anchor="middle" class="ce-molecule-endo">PECAM-1 (CD31)</text>
+          <text x="0" y="30" text-anchor="middle" class="ce-side-label">neutrophil</text>
+          <text x="0" y="44" text-anchor="middle" class="ce-molecule-neut">PECAM-1 (also)</text>
+        </g>
+      </g>
+
+      <!-- ACCUMULATED WAVE -->
+      <g transform="translate(0 470)">
+        <text x="500" y="0" text-anchor="middle" class="ce-step-name">THE ACCUMULATED WAVE</text>
+        <text x="500" y="16" text-anchor="middle" class="ce-caption">thousands of cells, hours, coordinated — because all four molecule pairs went up together</text>
+        <g transform="translate(500 45)">
+          <use href="#neutSmall" x="-80" y="0"/>
+          <use href="#neutSmall" x="-55" y="-8"/>
+          <use href="#neutSmall" x="-30" y="4"/>
+          <use href="#neutSmall" x="-8" y="-6"/>
+          <use href="#neutSmall" x="15" y="2"/>
+          <use href="#neutSmall" x="38" y="-4"/>
+          <use href="#neutSmall" x="60" y="6"/>
+          <use href="#neutSmall" x="82" y="-2"/>
+        </g>
+      </g>
+
+      <!-- BOTTOM RESOLVER -->
+      <g transform="translate(0 560)">
+        <line x1="40" y1="0" x2="960" y2="0" stroke="#222c3e" stroke-width="1"/>
+        <g transform="translate(40 18)">
+          <text x="0" y="14" class="ce-callout-eyebrow">THE RATE-LIMITING STEP</text>
+          <text x="0" y="34" class="ce-callout-text">
+            How fast neutrophils can accumulate depends on how fast
+          </text>
+          <text x="0" y="50" class="ce-callout-text">
+            <tspan fill="#e8a951" font-weight="700">adhesion molecules are upregulated</tspan>
+            — not on what they do after arrival.
+          </text>
+        </g>
+        <g transform="translate(520 18)">
+          <text x="0" y="14" class="ce-callout-eyebrow">WHY THE DISTRACTORS ARE WRONG</text>
+          <text x="0" y="34" class="ce-callout-text">
+            Phagocytosis, lysosomal enzymes, Fc receptors —
+          </text>
+          <text x="0" y="50" class="ce-callout-text">
+            these matter for what a neutrophil does
+            <tspan fill="#e8a951" font-weight="700">after</tspan>
+            it reaches tissue, not how it gets there.
+          </text>
+        </g>
+        <line x1="40" y1="80" x2="960" y2="80" stroke="#222c3e" stroke-width="1"/>
+        <text x="500" y="102" text-anchor="middle" class="ce-caption">
+          Every molecule pair goes up at once. That's how cellulitis goes from
+          <tspan fill="#d14859" font-weight="700">nothing to full involvement in hours</tspan>.
+        </text>
+      </g>
+    </svg>

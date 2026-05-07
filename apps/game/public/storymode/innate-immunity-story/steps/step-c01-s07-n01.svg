@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="24" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">WHERE WE LEFT OFF — ROLLING</text>
+                  <line x1="0" y1="185" x2="500" y2="185" stroke="#4fb8a8" stroke-width="2.5" opacity="0.7"/>
+                  <text x="20" y="205" style="fill:#6b7689;font:10px Inter,sans-serif;letter-spacing:1.5px">ENDOTHELIUM (with selectins)</text>
+                  <g>
+                    <path d="M 70 185 Q 65 168 75 160" stroke="#e8a951" stroke-width="2" fill="none"/><circle cx="75" cy="159" r="3" fill="#e8a951"/>
+                    <path d="M 140 185 Q 135 168 145 160" stroke="#e8a951" stroke-width="2" fill="none"/><circle cx="145" cy="159" r="3" fill="#e8a951"/>
+                    <path d="M 210 185 Q 205 168 215 160" stroke="#e8a951" stroke-width="2" fill="none"/><circle cx="215" cy="159" r="3" fill="#e8a951"/>
+                    <path d="M 280 185 Q 275 168 285 160" stroke="#e8a951" stroke-width="2" fill="none"/><circle cx="285" cy="159" r="3" fill="#e8a951"/>
+                    <path d="M 350 185 Q 345 168 355 160" stroke="#e8a951" stroke-width="2" fill="none"/><circle cx="355" cy="159" r="3" fill="#e8a951"/>
+                    <path d="M 420 185 Q 415 168 425 160" stroke="#e8a951" stroke-width="2" fill="none"/><circle cx="425" cy="159" r="3" fill="#e8a951"/>
+                  </g>
+                  <g opacity="0.3"><circle cx="90" cy="144" r="14" fill="#e8a951" stroke="#a87b3c"/><circle cx="87" cy="142" r="3" fill="#4a2d60"/><circle cx="93" cy="146" r="3" fill="#4a2d60"/></g>
+                  <g opacity="0.6"><circle cx="170" cy="140" r="14" fill="#e8a951" stroke="#a87b3c"/><circle cx="173" cy="138" r="3" fill="#4a2d60"/><circle cx="168" cy="144" r="3" fill="#4a2d60"/></g>
+                  <g><circle cx="260" cy="142" r="14" fill="#e8a951" stroke="#a87b3c"/><circle cx="257" cy="140" r="3" fill="#4a2d60"/><circle cx="263" cy="144" r="3" fill="#4a2d60"/></g>
+                  <line x1="258" y1="154" x2="275" y2="159" stroke="#e8a951" stroke-width="1" stroke-dasharray="2 2" opacity="0.6"/>
+                  <polygon points="320,132 344,126 344,138" fill="#6b7689" opacity="0.7"/>
+                  <text x="310" y="110" text-anchor="middle" style="fill:#b4becf;font:italic 11px Inter,sans-serif">still moving — not stopped yet</text>
+                  <text x="250" y="238" text-anchor="middle" style="fill:#e8ecf3;font:italic 600 12px Fraunces,serif">the grip has to get stronger</text>
+                </svg>

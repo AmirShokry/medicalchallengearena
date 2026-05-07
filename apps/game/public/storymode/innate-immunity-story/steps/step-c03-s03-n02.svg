@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="32" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">THREE PATHWAYS · ONE JUNCTION</text>
+                  <g transform="translate(70 80)">
+                    <rect x="0" y="0" width="110" height="40" rx="6" fill="#9370b9" fill-opacity="0.15" stroke="#9370b9" stroke-width="1"/>
+                    <text x="55" y="16" text-anchor="middle" style="fill:#9370b9;font:700 10px Inter,sans-serif">CLASSICAL</text>
+                    <text x="55" y="30" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">Ab-Ag → C1</text>
+                  </g>
+                  <g transform="translate(70 130)">
+                    <rect x="0" y="0" width="110" height="40" rx="6" fill="#4fb8a8" fill-opacity="0.15" stroke="#4fb8a8" stroke-width="1"/>
+                    <text x="55" y="16" text-anchor="middle" style="fill:#4fb8a8;font:700 10px Inter,sans-serif">LECTIN</text>
+                    <text x="55" y="30" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">MBL → mannose</text>
+                  </g>
+                  <g transform="translate(70 180)">
+                    <rect x="0" y="0" width="110" height="40" rx="6" fill="#d14859" fill-opacity="0.15" stroke="#d14859" stroke-width="1"/>
+                    <text x="55" y="16" text-anchor="middle" style="fill:#d14859;font:700 10px Inter,sans-serif">ALTERNATIVE</text>
+                    <text x="55" y="30" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">spontaneous</text>
+                  </g>
+                  <g stroke="#e8a951" stroke-width="1.5" fill="none">
+                    <path d="M 185 100 Q 240 130 275 145"/>
+                    <path d="M 185 150 L 275 150"/>
+                    <path d="M 185 200 Q 240 170 275 155"/>
+                  </g>
+                  <polygon points="273,146 285,150 273,154" fill="#e8a951"/>
+                  <g transform="translate(295 125)">
+                    <rect x="0" y="0" width="150" height="52" rx="8" fill="#e8a951" fill-opacity="0.9"/>
+                    <text x="75" y="22" text-anchor="middle" style="fill:#0a0e1a;font:700 12px Inter,sans-serif">C3 CONVERTASE</text>
+                    <text x="75" y="40" text-anchor="middle" style="fill:#0a0e1a;font:italic 10px Inter,sans-serif">splits C3</text>
+                  </g>
+                  <text x="250" y="250" text-anchor="middle" style="fill:#b4becf;font:italic 10px Inter,sans-serif">every pathway ends at the same enzyme · <tspan fill="#e8a951" font-weight="600">this is the choke point</tspan></text>
+                </svg>

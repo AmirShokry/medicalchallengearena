@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(140 145)">
+                    <rect x="-22" y="-35" width="44" height="70" rx="8" fill="#4fb8a8" opacity="0.6" stroke="#4fb8a8" stroke-width="1.3"/>
+                    <rect x="-8" y="-42" width="16" height="12" rx="3" fill="#4fb8a8" opacity="0.7"/>
+                    <text x="0" y="0" text-anchor="middle" style="fill:#0a0e1a;font:700 9px Inter,sans-serif">VZV</text>
+                    <text x="0" y="52" text-anchor="middle" style="fill:#4fb8a8;font:italic 700 9px Inter,sans-serif">shingles vax</text>
+                  </g>
+                  <g transform="translate(250 145)">
+                    <rect x="-22" y="-35" width="44" height="70" rx="8" fill="#4fb8a8" opacity="0.6" stroke="#4fb8a8" stroke-width="1.3"/>
+                    <rect x="-8" y="-42" width="16" height="12" rx="3" fill="#4fb8a8" opacity="0.7"/>
+                    <text x="0" y="0" text-anchor="middle" style="fill:#0a0e1a;font:700 9px Inter,sans-serif">flu</text>
+                    <text x="0" y="52" text-anchor="middle" style="fill:#4fb8a8;font:italic 700 9px Inter,sans-serif">annual flu</text>
+                  </g>
+                  <g transform="translate(360 145)">
+                    <rect x="-22" y="-35" width="44" height="70" rx="8" fill="#4fb8a8" opacity="0.6" stroke="#4fb8a8" stroke-width="1.3"/>
+                    <rect x="-8" y="-42" width="16" height="12" rx="3" fill="#4fb8a8" opacity="0.7"/>
+                    <text x="0" y="0" text-anchor="middle" style="fill:#0a0e1a;font:700 8px Inter,sans-serif">pneumo</text>
+                    <text x="0" y="52" text-anchor="middle" style="fill:#4fb8a8;font:italic 700 9px Inter,sans-serif">PCV / PPSV</text>
+                  </g>
+                  <text x="250" y="80" text-anchor="middle" style="fill:#e8ecf3;font:italic 600 11px Fraunces,serif">age 50+ essentials</text>
+                </svg>

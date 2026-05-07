@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(85 145)">
+                    <rect x="-20" y="-25" width="40" height="50" rx="6" fill="#4fb8a8" opacity="0.6" stroke="#4fb8a8" stroke-width="1.3"/>
+                    <rect x="-5" y="-30" width="10" height="8" fill="#4fb8a8" opacity="0.7"/>
+                    <path d="M -12 -10 L 12 -10 M -12 0 L 12 0 M -12 10 L 12 10" stroke="#4fb8a8" stroke-width="1" opacity="0.8"/>
+                    <text x="0" y="44" text-anchor="middle" style="fill:#4fb8a8;font:italic 700 9px Inter,sans-serif">vaccines</text>
+                  </g>
+                  <g transform="translate(195 145)">
+                    <rect x="-22" y="-12" width="44" height="24" rx="12" fill="#9370b9" opacity="0.6" stroke="#9370b9" stroke-width="1.3"/>
+                    <line x1="-10" y1="-12" x2="-10" y2="12" stroke="#9370b9" stroke-width="1"/>
+                    <line x1="10" y1="-12" x2="10" y2="12" stroke="#9370b9" stroke-width="1"/>
+                    <text x="0" y="32" text-anchor="middle" style="fill:#9370b9;font:italic 700 9px Inter,sans-serif">prophylaxis</text>
+                  </g>
+                  <g transform="translate(305 145)">
+                    <ellipse cx="0" cy="0" rx="25" ry="16" fill="#e8a951" opacity="0.6" stroke="#e8a951" stroke-width="1.3"/>
+                    <path d="M -12 -5 L 0 5 L 12 -5" stroke="#e8a951" stroke-width="1.5" fill="none"/>
+                    <text x="0" y="32" text-anchor="middle" style="fill:#e8a951;font:italic 700 9px Inter,sans-serif">emergency bag</text>
+                  </g>
+                  <g transform="translate(415 145)">
+                    <circle r="22" fill="#d14859" opacity="0.6" stroke="#d14859" stroke-width="1.3"/>
+                    <text x="0" y="4" text-anchor="middle" style="fill:#e8ecf3;font:700 11px Inter,sans-serif">!</text>
+                    <text x="0" y="38" text-anchor="middle" style="fill:#d14859;font:italic 700 9px Inter,sans-serif">education</text>
+                  </g>
+                </svg>

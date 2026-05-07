@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="38" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">METAPHOR: RACE CAR WITH PARKING BRAKE</text>
+                  <g transform="translate(200 160)">
+                    <path d="M -80 5 Q -85 -20 -60 -22 L 50 -22 Q 70 -26 75 -13 L 90 -8 Q 95 -3 95 3 L 95 10 Q 90 18 75 18 L -60 18 Q -85 22 -80 5 Z" fill="#e8a951" opacity="0.25" stroke="#e8a951" stroke-width="2"/>
+                    <path d="M -28 -20 L -10 -20 L 10 -10 L -23 -10 Z" fill="#e8a951" opacity="0.45"/>
+                    <circle cx="-55" cy="20" r="11" fill="#111826" stroke="#e8a951" stroke-width="2"/>
+                    <circle cx="-55" cy="20" r="4" fill="#e8a951"/>
+                    <circle cx="55" cy="20" r="11" fill="#111826" stroke="#e8a951" stroke-width="2"/>
+                    <circle cx="55" cy="20" r="4" fill="#e8a951"/>
+                    <text x="0" y="-2" text-anchor="middle" style="fill:#e8a951;font:700 12px Inter,sans-serif">NF-κB</text>
+                    <g transform="translate(-92 -5)">
+                      <path d="M 0 0 Q -8 -4 -14 0" stroke="#e8a951" stroke-width="2" fill="none" opacity="0.75"/>
+                      <path d="M 0 4 Q -10 4 -18 8" stroke="#e8a951" stroke-width="2" fill="none" opacity="0.55"/>
+                      <path d="M 0 8 Q -6 12 -12 14" stroke="#e8a951" stroke-width="2" fill="none" opacity="0.35"/>
+                    </g>
+                    <text x="-115" y="-15" text-anchor="end" style="fill:#e8a951;font:italic 10px Inter,sans-serif">ENGINE ON</text>
+                  </g>
+                  <g transform="translate(310 170)">
+                    <polygon points="0,10 30,10 15,-16" fill="#9370b9" opacity="0.55" stroke="#9370b9" stroke-width="2"/>
+                    <text x="15" y="5" text-anchor="middle" style="fill:#e8ecf3;font:700 11px Inter,sans-serif">IκB</text>
+                    <text x="15" y="28" text-anchor="middle" style="fill:#9370b9;font:600 9px Inter,sans-serif;letter-spacing:1.5px">PARKING BRAKE</text>
+                  </g>
+                  <g transform="translate(420 145)">
+                    <circle r="18" fill="none" stroke="#d14859" stroke-width="2"/>
+                    <line x1="-11" y1="-11" x2="11" y2="11" stroke="#d14859" stroke-width="2.2"/>
+                    <line x1="11" y1="-11" x2="-11" y2="11" stroke="#d14859" stroke-width="2.2"/>
+                    <text x="0" y="36" text-anchor="middle" style="fill:#d14859;font:italic 10px Inter,sans-serif">not moving</text>
+                  </g>
+                  <text x="250" y="245" text-anchor="middle" style="fill:#e8ecf3;font:italic 600 12px Fraunces,serif">ready but stuck — the brake has to come off first</text>
+                </svg>

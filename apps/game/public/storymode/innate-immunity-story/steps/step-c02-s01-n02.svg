@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="24" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">VASODILATION — REDNESS + WARMTH</text>
+                  <g transform="translate(100 145)">
+                    <circle r="18" fill="#d14859" opacity="0.5" stroke="#d14859" stroke-width="1.3"/>
+                    <text x="0" y="4" text-anchor="middle" style="fill:#e8ecf3;font:700 11px Inter,sans-serif">H</text>
+                    <text x="0" y="-32" text-anchor="middle" style="fill:#d14859;font:600 9px Inter,sans-serif">HISTAMINE</text>
+                  </g>
+                  <g transform="translate(180 145)">
+                    <circle r="18" fill="#d14859" opacity="0.5" stroke="#d14859" stroke-width="1.3"/>
+                    <text x="0" y="4" text-anchor="middle" style="fill:#e8ecf3;font:700 10px Inter,sans-serif">BK</text>
+                    <text x="0" y="-32" text-anchor="middle" style="fill:#d14859;font:600 9px Inter,sans-serif">BRADYKININ</text>
+                  </g>
+                  <line x1="205" y1="145" x2="255" y2="145" stroke="#e8a951" stroke-width="1.5"/>
+                  <polygon points="260,145 252,140 252,150" fill="#e8a951"/>
+                  <g transform="translate(360 145)">
+                    <ellipse cx="0" cy="0" rx="70" ry="26" fill="#d14859" opacity="0.25" stroke="#d14859" stroke-width="2"/>
+                    <text x="0" y="4" text-anchor="middle" style="fill:#d14859;font:italic 700 12px Inter,sans-serif">DILATED</text>
+                    <text x="0" y="-42" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">arteriole</text>
+                  </g>
+                  <g transform="translate(250 220)">
+                    <rect x="-115" y="-14" width="230" height="28" rx="14" fill="#d14859" opacity="0.22" stroke="#d14859" stroke-width="1.3"/>
+                    <text x="0" y="5" text-anchor="middle" style="fill:#d14859;font:700 10px Inter,sans-serif;letter-spacing:1.5px">RUBOR + CALOR</text>
+                  </g>
+                </svg>

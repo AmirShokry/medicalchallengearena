@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 830" preserveAspectRatio="xMidYMid meet">
+      <style>
+        .ma-eyebrow { fill: #e8a951; font: 500 10px "Inter", sans-serif; letter-spacing: 2.5px; }
+        .ma-title { fill: #e8ecf3; font: italic 400 22px "Fraunces", serif; }
+        .ma-section-label { fill: #e8a951; font: 600 9.5px "Inter", sans-serif; letter-spacing: 1.8px; }
+        .ma-section-label-bad { fill: #d14859; font: 600 9.5px "Inter", sans-serif; letter-spacing: 1.8px; }
+        .ma-anatomy { fill: #e8ecf3; font: 600 11px "Inter", sans-serif; letter-spacing: 0.3px; }
+        .ma-caption { fill: #6b7689; font: italic 400 10px "Inter", sans-serif; }
+        .ma-caption-sm { fill: #6b7689; font: italic 400 9px "Inter", sans-serif; }
+        .ma-label-bad { fill: #d14859; font: 600 10px "Inter", sans-serif; letter-spacing: 0.3px; }
+        .ma-molecule-label { fill: #e8a951; font: 700 9.5px "Inter", sans-serif; letter-spacing: 0.5px; }
+        .ma-step-badge { fill: #0a0e1a; font: 700 9px "JetBrains Mono", monospace; letter-spacing: 0.5px; }
+        .ma-step-text { fill: #e8ecf3; font: 600 10.5px "Inter", sans-serif; letter-spacing: 0.2px; }
+        .ma-state-label { fill: #b4becf; font: 600 9px "Inter", sans-serif; letter-spacing: 2px; }
+      </style>
+      <defs>
+        <marker id="maArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8a951"/>
+        </marker>
+        <symbol id="maMyco" overflow="visible">
+          <rect x="-10" y="-3" width="20" height="6" rx="3" ry="3" fill="#7a4a9e" opacity="0.9" stroke="#4a2d60" stroke-width="0.8"/>
+          <line x1="-7" y1="-3" x2="-5" y2="3" stroke="#e8a951" stroke-width="0.4" opacity="0.7"/>
+          <line x1="-2" y1="-3" x2="0" y2="3" stroke="#e8a951" stroke-width="0.4" opacity="0.7"/>
+          <line x1="3" y1="-3" x2="5" y2="3" stroke="#e8a951" stroke-width="0.4" opacity="0.7"/>
+        </symbol>
+        <symbol id="maLysosome" overflow="visible">
+          <circle cx="0" cy="0" r="10" fill="#4fb8a8" opacity="0.55" stroke="#3a8a7e" stroke-width="0.8"/>
+          <circle cx="-3" cy="-2" r="1.5" fill="#3a8a7e" opacity="0.9"/>
+          <circle cx="2" cy="2" r="1.5" fill="#3a8a7e" opacity="0.9"/>
+          <circle cx="3" cy="-3" r="1.2" fill="#3a8a7e" opacity="0.9"/>
+        </symbol>
+        <symbol id="maTcell" overflow="visible">
+          <circle cx="0" cy="0" r="28" fill="#4fb8a8" opacity="0.45" stroke="#3a8a7e" stroke-width="1.2"/>
+          <circle cx="0" cy="0" r="16" fill="#3a8a7e" opacity="0.65"/>
+        </symbol>
+        <symbol id="maTh1" overflow="visible">
+          <circle cx="0" cy="0" r="28" fill="#4fb8a8" opacity="0.35" stroke="#e8a951" stroke-width="1.8"/>
+          <circle cx="0" cy="0" r="16" fill="#3a8a7e" opacity="0.65"/>
+          <circle cx="0" cy="0" r="33" fill="none" stroke="#e8a951" stroke-width="0.6" stroke-dasharray="2 2" opacity="0.5"/>
+        </symbol>
+        <symbol id="maIL12" overflow="visible">
+          <circle cx="0" cy="0" r="4.5" fill="#e8a951" opacity="0.95" stroke="#a87b3c" stroke-width="0.5"/>
+        </symbol>
+        <symbol id="maIFNg" overflow="visible">
+          <polygon points="-4,4 4,4 0,-4" fill="#e8a951" opacity="0.95" stroke="#a87b3c" stroke-width="0.5"/>
+        </symbol>
+      </defs>
+
+      <!-- TITLE -->
+      <text x="500" y="26" text-anchor="middle" class="ma-eyebrow">MACROPHAGE ACTIVATION · WHY KILLING MYCOBACTERIA TAKES TWO CELLS</text>
+      <text x="500" y="58" text-anchor="middle" class="ma-title">A resting macrophage can engulf. It can't kill. It needs a signal.</text>
+      <line x1="40" y1="78" x2="960" y2="78" stroke="#222c3e" stroke-width="1"/>
+
+      <!-- ZONE 1 · THE PROBLEM -->
+      <g transform="translate(0 100)">
+        <text x="500" y="16" text-anchor="middle" class="ma-section-label-bad">THE PROBLEM · NORMAL KILLING IS BLOCKED</text>
+
+        <g transform="translate(280 140)">
+          <path d="M -110 0 Q -130 -30 -100 -55 Q -70 -72 -30 -62 Q 5 -78 40 -68 Q 80 -76 110 -55 Q 135 -30 120 0 Q 135 30 105 50 Q 70 65 25 60 Q -10 72 -50 58 Q -90 65 -120 40 Q -140 15 -120 -5 Z"
+                fill="#4fb8a8" fill-opacity="0.08" stroke="#4fb8a8" stroke-width="1.2"/>
+          <path d="M -75 -20 Q -95 -15 -90 10 Q -75 22 -55 15 Q -45 -5 -60 -22 Q -70 -25 -75 -20 Z"
+                fill="#3a8a7e" fill-opacity="0.5" stroke="#3a8a7e" stroke-width="0.8"/>
+          <text x="-70" y="4" text-anchor="middle" class="ma-caption-sm" fill="#b4becf">nucleus</text>
+          <g transform="translate(0 -5)">
+            <circle cx="0" cy="0" r="26" fill="#0a0e1a" stroke="#e8a951" stroke-width="1.3" stroke-dasharray="4 3"/>
+            <g transform="translate(-4 -2) rotate(20)"><use href="#maMyco"/></g>
+            <g transform="translate(6 6) rotate(-15)"><use href="#maMyco"/></g>
+          </g>
+          <g transform="translate(80 20)">
+            <use href="#maLysosome"/>
+          </g>
+          <g transform="translate(40 8)">
+            <line x1="-8" y1="-8" x2="8" y2="8" stroke="#d14859" stroke-width="2.2"/>
+            <line x1="8" y1="-8" x2="-8" y2="8" stroke="#d14859" stroke-width="2.2"/>
+          </g>
+        </g>
+
+        <text x="280" y="230" text-anchor="middle" class="ma-label-bad">phagosome can't fuse with lysosome</text>
+        <text x="280" y="246" text-anchor="middle" class="ma-caption">→ bacteria survive inside</text>
+        <text x="280" y="282" text-anchor="middle" class="ma-state-label">RESTING MACROPHAGE · CAN ENGULF, CAN'T KILL</text>
+
+        <g transform="translate(640 50)">
+          <rect x="0" y="0" width="300" height="130" rx="8" fill="#0a0e1a" stroke="#d14859" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.85"/>
+          <text x="150" y="26" text-anchor="middle" class="ma-section-label-bad">MYCOBACTERIA'S TRICKS</text>
+          <text x="22" y="54" class="ma-caption">• block phagosome–lysosome fusion</text>
+          <text x="22" y="74" class="ma-caption">• tolerate acidic pH</text>
+          <text x="22" y="94" class="ma-caption">• waxy mycolic-acid cell wall</text>
+          <text x="22" y="116" class="ma-caption" fill="#d14859" font-style="italic">→ engulfed but still alive</text>
+        </g>
+      </g>
+
+      <!-- ZONE 2 · THE IMMUNOLOGICAL SYNAPSE -->
+      <g transform="translate(0 340)">
+        <text x="500" y="16" text-anchor="middle" class="ma-section-label">THE RESCUE · THE IMMUNOLOGICAL SYNAPSE</text>
+
+        <!-- MACROPHAGE with straight vertical right edge -->
+        <g transform="translate(230 205)">
+          <path d="M -90 -135 Q -118 -120 -122 -85 Q -128 -40 -124 5 Q -130 55 -120 100 Q -105 128 -70 135 Q -25 142 15 132 Q 60 128 95 122 Q 122 118 125 100 L 125 -100 Q 122 -120 95 -128 Q 55 -135 10 -138 Q -40 -138 -70 -140 Q -90 -135 -90 -135 Z"
+                fill="#4fb8a8" fill-opacity="0.08" stroke="#4fb8a8" stroke-width="1.3"/>
+          <path d="M -70 -40 Q -95 -35 -90 -10 Q -80 15 -55 10 Q -40 -10 -55 -35 Q -65 -45 -70 -40 Z"
+                fill="#3a8a7e" fill-opacity="0.5" stroke="#3a8a7e" stroke-width="0.8"/>
+          <text x="-70" y="-12" text-anchor="middle" class="ma-caption-sm" fill="#b4becf">nucleus</text>
+          <g transform="translate(-30 55)">
+            <circle cx="0" cy="0" r="22" fill="#0a0e1a" stroke="#e8a951" stroke-width="1.2" stroke-dasharray="3 2"/>
+            <g transform="translate(-3 -2) rotate(20)"><use href="#maMyco"/></g>
+            <g transform="translate(5 5) rotate(-10)"><use href="#maMyco"/></g>
+          </g>
+          <text x="-30" y="92" text-anchor="middle" class="ma-caption-sm">infected phagosome</text>
+        </g>
+        <text x="230" y="360" text-anchor="middle" class="ma-anatomy">MACROPHAGE</text>
+
+        <!-- Upper synapse background highlight -->
+        <rect x="340" y="100" width="80" height="60" rx="8" fill="#e8a951" fill-opacity="0.04" stroke="none"/>
+
+        <!-- MHC II + PEPTIDE COMPLEX (embedded in macrophage membrane) -->
+        <rect x="348" y="118" width="10" height="24" fill="#e8a951" opacity="0.85" stroke="#a87b3c" stroke-width="0.8"/>
+        <rect x="358" y="118" width="18" height="5" fill="#e8a951" opacity="0.75" stroke="#a87b3c" stroke-width="0.5"/>
+        <rect x="358" y="137" width="18" height="5" fill="#e8a951" opacity="0.75" stroke="#a87b3c" stroke-width="0.5"/>
+        <rect x="361" y="125" width="16" height="11" fill="#d14859" opacity="0.95" stroke="#8b2c38" stroke-width="0.6"/>
+
+        <!-- TCR on T cell — overlaps peptide -->
+        <rect x="395" y="124" width="4" height="12" fill="#4fb8a8" opacity="0.95" stroke="#3a8a7e" stroke-width="0.6"/>
+        <path d="M 395 126 L 385 127" stroke="#3a8a7e" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        <path d="M 395 134 L 385 133" stroke="#3a8a7e" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        <rect x="383" y="126" width="3" height="8" fill="#3a8a7e" opacity="0.95"/>
+
+        <text x="360" y="108" text-anchor="middle" class="ma-molecule-label">MHC II</text>
+        <text x="397" y="108" text-anchor="start" class="ma-molecule-label" fill="#4fb8a8">TCR</text>
+        <text x="375" y="165" text-anchor="middle" class="ma-caption-sm" fill="#d14859">antigen</text>
+
+        <!-- NAIVE T CELL -->
+        <g transform="translate(425 130)">
+          <use href="#maTcell"/>
+        </g>
+        <text x="425" y="175" text-anchor="middle" class="ma-caption" fill="#4fb8a8">naive CD4+ T cell</text>
+
+        <!-- STEP 1 BADGE (high enough to clear labels) -->
+        <g transform="translate(378 72)">
+          <circle cx="0" cy="0" r="12" fill="#e8a951" stroke="#0a0e1a" stroke-width="2"/>
+          <text x="0" y="3" text-anchor="middle" class="ma-step-badge">01</text>
+        </g>
+        <text x="590" y="96" class="ma-step-text">MHC II + antigen</text>
+        <text x="590" y="112" class="ma-step-text" fill="#4fb8a8">physically bind TCR</text>
+        <text x="590" y="128" class="ma-caption">the immunological synapse forms</text>
+
+        <!-- IL-12 IN THE CLEFT -->
+        <g transform="translate(362 200)"><use href="#maIL12"/></g>
+        <g transform="translate(375 192)"><use href="#maIL12"/></g>
+        <g transform="translate(388 200)"><use href="#maIL12"/></g>
+        <path d="M 358 215 L 395 215" stroke="#e8a951" stroke-width="1.3" fill="none" marker-end="url(#maArrow)"/>
+
+        <g transform="translate(356 225)">
+          <circle cx="0" cy="0" r="11" fill="#e8a951" stroke="#0a0e1a" stroke-width="1.5"/>
+          <text x="0" y="3" text-anchor="middle" class="ma-step-badge">02</text>
+        </g>
+        <text x="590" y="198" class="ma-step-text">macrophage releases IL-12</text>
+        <text x="590" y="214" class="ma-caption">into the synaptic cleft</text>
+
+        <!-- Step 3 differentiation arrow -->
+        <path d="M 425 165 Q 460 215 425 265" stroke="#e8a951" stroke-width="1.5" fill="none" marker-end="url(#maArrow)"/>
+        <g transform="translate(468 215)">
+          <circle cx="0" cy="0" r="11" fill="#e8a951" stroke="#0a0e1a" stroke-width="1.5"/>
+          <text x="0" y="3" text-anchor="middle" class="ma-step-badge">03</text>
+        </g>
+        <text x="590" y="252" class="ma-step-text">naive → Th1 differentiation</text>
+        <text x="590" y="268" class="ma-caption">now producing IFN-γ</text>
+
+        <!-- Th1 cell -->
+        <g transform="translate(425 295)">
+          <use href="#maTh1"/>
+          <text x="0" y="4" text-anchor="middle" class="ma-step-text" fill="#e8a951">Th1</text>
+        </g>
+
+        <!-- Lower synapse background highlight -->
+        <rect x="340" y="270" width="80" height="50" rx="8" fill="#e8a951" fill-opacity="0.04" stroke="none"/>
+
+        <!-- IFN-γ receptor — proper transmembrane receptor with base + two chains extending OUT -->
+        <rect x="348" y="284" width="10" height="24" fill="#e8a951" opacity="0.85" stroke="#a87b3c" stroke-width="0.8"/>
+        <rect x="358" y="286" width="18" height="5" fill="#e8a951" opacity="0.55" stroke="#a87b3c" stroke-width="0.5"/>
+        <rect x="358" y="301" width="18" height="5" fill="#e8a951" opacity="0.55" stroke="#a87b3c" stroke-width="0.5"/>
+        <rect x="360" y="291" width="14" height="10" fill="none" stroke="#e8a951" stroke-width="0.6" stroke-dasharray="2 2" opacity="0.6"/>
+
+        <!-- IFN-γ molecules -->
+        <g transform="translate(395 296)"><use href="#maIFNg"/></g>
+        <g transform="translate(385 296)"><use href="#maIFNg"/></g>
+        <path d="M 404 320 L 378 320" stroke="#e8a951" stroke-width="1.3" fill="none" marker-end="url(#maArrow)"/>
+
+        <text x="355" y="278" text-anchor="middle" class="ma-molecule-label">IFN-γ receptor</text>
+
+        <g transform="translate(406 320)">
+          <circle cx="0" cy="0" r="11" fill="#e8a951" stroke="#0a0e1a" stroke-width="1.5"/>
+          <text x="0" y="3" text-anchor="middle" class="ma-step-badge">04</text>
+        </g>
+        <text x="590" y="300" class="ma-step-text">Th1 releases IFN-γ</text>
+        <text x="590" y="316" class="ma-caption">binds IFN-γ receptor on macrophage</text>
+
+        <!-- STEP 5: ACTIVATED -->
+        <g transform="translate(230 390)">
+          <rect x="-140" y="0" width="280" height="34" rx="6" fill="#e8a951" fill-opacity="0.18" stroke="#e8a951" stroke-width="1.5"/>
+          <g transform="translate(-120 17)">
+            <circle cx="0" cy="0" r="11" fill="#e8a951" stroke="#0a0e1a" stroke-width="1.5"/>
+            <text x="0" y="3" text-anchor="middle" class="ma-step-badge">05</text>
+          </g>
+          <text x="15" y="21" text-anchor="middle" class="ma-step-text" fill="#e8a951">macrophage ACTIVATED → kills bacteria</text>
+        </g>
+      </g>
+
+      <!-- ZONE 3 · BREAK POINT -->
+      <g transform="translate(0 790)">
+        <line x1="40" y1="0" x2="960" y2="0" stroke="#222c3e" stroke-width="1"/>
+        <text x="500" y="22" text-anchor="middle" class="ma-section-label-bad">BREAK ANY PIECE OF THIS LOOP · MENDELIAN SUSCEPTIBILITY TO MYCOBACTERIAL DISEASE</text>
+      </g>
+    </svg>

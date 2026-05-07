@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">THE MOMENT OF RECOGNITION</text>
+                  <line x1="0" y1="175" x2="500" y2="175" stroke="#4fb8a8" stroke-width="2" opacity="0.45"/>
+                  <text x="20" y="200" style="fill:#6b7689;font:10px Inter,sans-serif;letter-spacing:1.5px">MACROPHAGE MEMBRANE</text>
+                  <g transform="translate(250 140)">
+                    <circle cx="0" cy="-25" r="80" fill="#e8a951" opacity="0.14"/>
+                    <circle cx="0" cy="-25" r="58" fill="#e8a951" opacity="0.09"/>
+                    <circle cx="0" cy="-25" r="36" fill="#e8a951" opacity="0.07"/>
+                    <g stroke="#e8a951" stroke-width="1.5" opacity="0.75">
+                      <line x1="0" y1="-88" x2="0" y2="-100"/>
+                      <line x1="30" y1="-74" x2="38" y2="-85"/>
+                      <line x1="52" y1="-48" x2="62" y2="-55"/>
+                      <line x1="62" y1="-18" x2="74" y2="-20"/>
+                      <line x1="-30" y1="-74" x2="-38" y2="-85"/>
+                      <line x1="-52" y1="-48" x2="-62" y2="-55"/>
+                      <line x1="-62" y1="-18" x2="-74" y2="-20"/>
+                    </g>
+                    <path d="M -22 0 Q -24 -38 -13 -58 Q 0 -70 13 -58 Q 24 -38 22 0" stroke="#e8a951" stroke-width="3.5" fill="none"/>
+                    <path d="M -18 -10 Q -21 -33 -11 -48" stroke="#e8a951" stroke-width="1.2" fill="none"/>
+                    <path d="M 18 -10 Q 21 -33 11 -48" stroke="#e8a951" stroke-width="1.2" fill="none"/>
+                    <g transform="translate(0 -26)">
+                      <ellipse cx="0" cy="0" rx="6" ry="4" fill="#e8a951"/>
+                      <line x1="0" y1="-4" x2="0" y2="-14" stroke="#e8a951" stroke-width="1.8"/>
+                      <circle cx="0" cy="-19" r="2.5" fill="#e8a951"/>
+                      <circle cx="0" cy="-26" r="2.5" fill="#e8a951"/>
+                    </g>
+                    <line x1="0" y1="0" x2="0" y2="35" stroke="#e8a951" stroke-width="3"/>
+                    <ellipse cx="0" cy="43" rx="11" ry="7.5" stroke="#e8a951" stroke-width="2" fill="#e8a951" opacity="0.55"/>
+                  </g>
+                  <text x="115" y="120" style="fill:#e8a951;font:600 11px Inter,sans-serif">LPS docks in</text>
+                  <path d="M 175 123 Q 205 120 230 117" stroke="#6b7689" stroke-width="0.8" fill="none" stroke-dasharray="2 2"/>
+                  <text x="348" y="158" style="fill:#e8a951;font:600 11px Inter,sans-serif">tail fires inward</text>
+                  <path d="M 345 161 Q 315 175 275 183" stroke="#6b7689" stroke-width="0.8" fill="none" stroke-dasharray="2 2"/>
+                  <text x="250" y="238" text-anchor="middle" style="fill:#e8ecf3;font:italic 600 13px Fraunces,serif">alarm fires → signal enters the cell</text>
+                </svg>

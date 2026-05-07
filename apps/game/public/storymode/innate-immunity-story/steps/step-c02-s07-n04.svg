@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(100 145)">
+                    <circle r="42" fill="#9370b9" opacity="0.7" stroke="#7a4a9e" stroke-width="1.5"/>
+                    <circle cx="-10" cy="-8" r="5" fill="#4a2d60"/>
+                    <circle cx="12" cy="6" r="4" fill="#4a2d60"/>
+                    <path d="M 36 -20 Q 50 -25 64 -18 M 38 20 Q 54 25 68 20 M 42 0 L 62 0" stroke="#4fb8a8" stroke-width="1.3" fill="none" stroke-dasharray="2 2" opacity="0.6"/>
+                  </g>
+                  <g fill="#4fb8a8" opacity="0.85">
+                    <circle cx="200" cy="115" r="5"/>
+                    <circle cx="225" cy="105" r="4"/>
+                    <circle cx="245" cy="120" r="5"/>
+                    <circle cx="210" cy="170" r="5"/>
+                    <circle cx="235" cy="178" r="4"/>
+                    <circle cx="260" cy="165" r="5"/>
+                    <circle cx="220" cy="140" r="4"/>
+                    <circle cx="250" cy="145" r="4"/>
+                  </g>
+                  <g transform="translate(280 105)" fill="#4fb8a8" opacity="0.85">
+                    <circle cx="0" cy="0" r="5"/>
+                    <circle cx="12" cy="-4" r="4"/>
+                    <circle cx="22" cy="2" r="4"/>
+                  </g>
+                  <text x="310" y="88" style="fill:#4fb8a8;font:italic 700 9px Inter,sans-serif">IL-10</text>
+                  <g transform="translate(285 175)" fill="#4fb8a8" opacity="0.85">
+                    <circle cx="0" cy="0" r="5"/>
+                    <circle cx="10" cy="6" r="4"/>
+                    <circle cx="22" cy="0" r="4"/>
+                  </g>
+                  <text x="315" y="195" style="fill:#4fb8a8;font:italic 700 9px Inter,sans-serif">TGF-β</text>
+                  <g transform="translate(400 145)">
+                    <circle r="40" fill="#4fb8a8" opacity="0.2" stroke="#4fb8a8" stroke-width="1.5" stroke-dasharray="3 2"/>
+                    <g stroke="#4fb8a8" stroke-width="2" fill="none">
+                      <path d="M -16 -5 L -10 0 L -16 5"/>
+                      <path d="M 16 -5 L 10 0 L 16 5"/>
+                      <path d="M -10 -16 L -5 -10 L 0 -16"/>
+                      <path d="M 0 16 L 5 10 L 10 16"/>
+                    </g>
+                    <text x="0" y="58" text-anchor="middle" style="fill:#4fb8a8;font:700 9px Inter,sans-serif;letter-spacing:1.5px">SHUT DOWN</text>
+                  </g>
+                </svg>

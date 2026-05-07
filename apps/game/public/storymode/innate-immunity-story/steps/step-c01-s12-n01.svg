@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="24" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">CGD — NADPH OXIDASE IS DEFECTIVE</text>
+
+                  <!-- Phagosome (dashed circle, dimmer than step 1) -->
+                  <g transform="translate(295 145)">
+                    <circle r="73" fill="#0a0e1a" stroke="#e8a951" stroke-width="2" stroke-dasharray="4 2" opacity="0.65"/>
+                    <ellipse cx="26" cy="22" rx="17" ry="11" fill="#d14859" opacity="0.9" stroke="#a33648" stroke-width="1"/>
+                  </g>
+
+                  <!-- O2 molecule (sits unused outside) -->
+                  <g transform="translate(95 145)" opacity="0.55">
+                    <circle cx="-7" cy="0" r="6" fill="#6b7689" opacity="0.5" stroke="#4a5568" stroke-width="0.8"/>
+                    <circle cx="7" cy="0" r="6" fill="#6b7689" opacity="0.5" stroke="#4a5568" stroke-width="0.8"/>
+                    <line x1="-3" y1="0" x2="3" y2="0" stroke="#4a5568" stroke-width="1.2"/>
+                    <text x="0" y="-14" text-anchor="middle" style="fill:#6b7689;font:italic 11px Inter,sans-serif">O₂</text>
+                    <text x="0" y="22" text-anchor="middle" style="fill:#6b7689;font:italic 8px Inter,sans-serif">(unused)</text>
+                  </g>
+
+                  <!-- Dimmed arrow from O2 stopping at broken OX -->
+                  <line x1="117" y1="145" x2="197" y2="145" stroke="#6b7689" stroke-width="1" opacity="0.45"/>
+                  <polygon points="202,145 194,141 194,149" fill="#6b7689" opacity="0.45"/>
+
+                  <!-- Broken OX with big red X -->
+                  <g transform="translate(222 145)">
+                    <rect x="-14" y="-14" width="28" height="28" rx="4" fill="#6b7689" opacity="0.4"/>
+                    <text x="0" y="4" text-anchor="middle" style="fill:#111826;font:800 11px Inter,sans-serif" opacity="0.55">OX</text>
+                    <circle r="17" fill="none" stroke="#d14859" stroke-width="2.2"/>
+                    <line x1="-12" y1="-12" x2="12" y2="12" stroke="#d14859" stroke-width="2.2"/>
+                    <line x1="12" y1="-12" x2="-12" y2="12" stroke="#d14859" stroke-width="2.2"/>
+                  </g>
+
+                  <text x="222" y="112" text-anchor="middle" style="fill:#d14859;font:700 11px Inter,sans-serif;letter-spacing:1px">NADPH oxidase</text>
+                  <text x="222" y="186" text-anchor="middle" style="fill:#d14859;font:italic 700 10px Inter,sans-serif">genetic defect</text>
+                  <text x="222" y="198" text-anchor="middle" style="fill:#6b7689;font:italic 8px Inter,sans-serif">(most often X-linked)</text>
+
+                  <!-- Empty dashed O2- box (not produced) with strike-through -->
+                  <g transform="translate(310 108)" opacity="0.45">
+                    <rect x="-30" y="-13" width="60" height="24" rx="5" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="3 2"/>
+                    <text x="0" y="5" text-anchor="middle" style="fill:#6b7689;font:700 12px Inter,sans-serif">O₂⁻</text>
+                  </g>
+                  <line x1="275" y1="95" x2="345" y2="122" stroke="#d14859" stroke-width="2" opacity="0.75"/>
+                  <text x="310" y="88" text-anchor="middle" style="fill:#6b7689;font:italic 9px Inter,sans-serif">not produced</text>
+
+                  <!-- Phagosome label placed outside the circle (bottom-right) -->
+                  <text x="368" y="212" text-anchor="middle" style="fill:#6b7689;font:italic 9px Inter,sans-serif">phagosome</text>
+
+                  <!-- Subtitle at bottom (no longer collides with phagosome label) -->
+                  <text x="250" y="247" text-anchor="middle" style="fill:#e8ecf3;font:italic 700 11px Fraunces,serif">the burst never starts</text>
+                </svg>

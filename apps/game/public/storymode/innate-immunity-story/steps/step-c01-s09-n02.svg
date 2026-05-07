@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="24" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">MEMBRANE PROJECTIONS — PSEUDOPODS</text>
+                  <g transform="translate(180 145)">
+                    <path d="M -50 -10 Q -55 -45 -30 -50 Q -5 -60 15 -45 Q 35 -52 50 -20 Q 65 -5 60 25 Q 55 55 25 58 Q -5 62 -30 52 Q -55 40 -55 10 Z" fill="#e8a951" opacity="0.88" stroke="#a87b3c" stroke-width="1.5"/>
+                    <path d="M 60 -25 Q 80 -35 95 -20" fill="#e8a951" opacity="0.88" stroke="#a87b3c" stroke-width="1.5"/>
+                    <path d="M 60 25 Q 80 35 95 15" fill="#e8a951" opacity="0.88" stroke="#a87b3c" stroke-width="1.5"/>
+                    <circle cx="-10" cy="-5" r="7" fill="#4a2d60"/>
+                    <circle cx="5" cy="8" r="7" fill="#4a2d60"/>
+                  </g>
+                  <g transform="translate(360 145)">
+                    <ellipse cx="0" cy="0" rx="22" ry="15" fill="#d14859" opacity="0.85" stroke="#a33648" stroke-width="1.5"/>
+                  </g>
+                  <path d="M 265 130 Q 300 125 340 130" stroke="#e8a951" stroke-width="1" fill="none" stroke-dasharray="3 2" opacity="0.6"/>
+                  <path d="M 265 165 Q 300 170 340 160" stroke="#e8a951" stroke-width="1" fill="none" stroke-dasharray="3 2" opacity="0.6"/>
+                  <text x="300" y="96" text-anchor="middle" style="fill:#e8a951;font:600 11px Inter,sans-serif;letter-spacing:1px">PSEUDOPODS reaching out</text>
+                  <text x="250" y="240" text-anchor="middle" style="fill:#b4becf;font:italic 11px Inter,sans-serif">membrane pushes outward toward the target</text>
+                </svg>

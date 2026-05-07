@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(90 145)">
+                    <circle r="9" fill="#6b7689" opacity="0.5"/>
+                    <text x="0" y="28" text-anchor="middle" style="fill:#6b7689;font:italic 9px Inter,sans-serif">histamine</text>
+                    <text x="0" y="-18" text-anchor="middle" style="fill:#6b7689;font:italic 8px Inter,sans-serif">small</text>
+                  </g>
+                  <g transform="translate(250 145)">
+                    <g fill="#d14859" opacity="0.9">
+                      <circle cx="-60" cy="0" r="9"/>
+                      <circle cx="-45" cy="-8" r="9"/>
+                      <circle cx="-30" cy="4" r="9"/>
+                      <circle cx="-15" cy="-6" r="9"/>
+                      <circle cx="0" cy="5" r="9"/>
+                      <circle cx="15" cy="-5" r="9"/>
+                      <circle cx="30" cy="6" r="9"/>
+                      <circle cx="45" cy="-4" r="9"/>
+                      <circle cx="60" cy="3" r="9"/>
+                    </g>
+                    <g stroke="#d14859" stroke-width="2" opacity="0.6" fill="none">
+                      <line x1="-52" y1="-2" x2="-37" y2="-4"/>
+                      <line x1="-38" y1="-2" x2="-22" y2="1"/>
+                      <line x1="-23" y1="-1" x2="-8" y2="-2"/>
+                      <line x1="-8" y1="0" x2="8" y2="0"/>
+                      <line x1="8" y1="0" x2="23" y2="2"/>
+                      <line x1="23" y1="2" x2="37" y2="0"/>
+                      <line x1="38" y1="1" x2="52" y2="-1"/>
+                    </g>
+                    <text x="0" y="28" text-anchor="middle" style="fill:#d14859;font:700 12px Inter,sans-serif;letter-spacing:2px">BRADYKININ</text>
+                    <text x="0" y="-22" text-anchor="middle" style="fill:#b4becf;font:italic 9px Inter,sans-serif">nonapeptide — 9 amino acids</text>
+                  </g>
+                  <g transform="translate(420 145)">
+                    <g fill="#6b7689" opacity="0.5">
+                      <path d="M -12 -8 L 0 -15 L 12 -8 L 8 8 L -8 8 Z"/>
+                    </g>
+                    <text x="0" y="28" text-anchor="middle" style="fill:#6b7689;font:italic 9px Inter,sans-serif">PGs</text>
+                    <text x="0" y="-20" text-anchor="middle" style="fill:#6b7689;font:italic 8px Inter,sans-serif">lipid</text>
+                  </g>
+                </svg>
