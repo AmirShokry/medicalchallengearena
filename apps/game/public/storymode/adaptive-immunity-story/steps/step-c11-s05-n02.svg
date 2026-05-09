@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 01 · ANTI-dsDNA Ab + dsDNA · BOTH IN BLOOD</text>
+
+<!-- Apoptotic cell on left releasing DNA -->
+<g transform="translate(105 145)">
+  <text x="0" y="-78" text-anchor="middle" style="fill:#9370b9;font:700 8.5px Inter,sans-serif;letter-spacing:1.2px">APOPTOTIC CELL</text>
+  
+  <!-- Cell with fragmenting nucleus -->
+  <circle cx="0" cy="0" r="32" fill="rgba(147,112,185,0.20)" stroke="#9370b9" stroke-width="1.6" stroke-dasharray="4 2"/>
+  <!-- Fragmented nucleus chunks -->
+  <ellipse cx="-8" cy="-5" rx="6" ry="5" fill="rgba(74,45,96,0.85)" stroke="#9370b9" stroke-width="0.8"/>
+  <ellipse cx="6" cy="3" rx="5" ry="4" fill="rgba(74,45,96,0.85)" stroke="#9370b9" stroke-width="0.8"/>
+  <ellipse cx="-2" cy="10" rx="4" ry="3" fill="rgba(74,45,96,0.85)" stroke="#9370b9" stroke-width="0.8"/>
+  
+  <!-- DNA strands escaping (helical) -->
+  <g stroke="#4fb8a8" stroke-width="1.6" fill="none">
+    <path d="M 25 -8 Q 30 -4 35 -8 Q 40 -12 45 -8 Q 50 -4 55 -8" />
+    <path d="M 25 -2 Q 30 -6 35 -2 Q 40 2 45 -2 Q 50 -6 55 -2" />
+    <line x1="27" y1="-7" x2="27" y2="-3" stroke-width="0.8"/>
+    <line x1="33" y1="-3" x2="33" y2="-7" stroke-width="0.8"/>
+    <line x1="40" y1="-9" x2="40" y2="-2" stroke-width="0.8"/>
+    <line x1="48" y1="-7" x2="48" y2="-2" stroke-width="0.8"/>
+  </g>
+  <text x="40" y="13" text-anchor="middle" style="fill:#4fb8a8;font:700 7px Inter,sans-serif">dsDNA</text>
+  
+  <text x="0" y="58" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">releases self-DNA</text>
+</g>
+
+<!-- Bloodstream vessel between -->
+<g transform="translate(250 145)">
+  <text x="0" y="-78" text-anchor="middle" style="fill:#d14859;font:700 8.5px Inter,sans-serif;letter-spacing:1.2px">CIRCULATION</text>
+  <!-- Vessel walls -->
+  <line x1="-50" y1="-40" x2="50" y2="-40" stroke="#d14859" stroke-width="1.4" opacity="0.5"/>
+  <line x1="-50" y1="40" x2="50" y2="40" stroke="#d14859" stroke-width="1.4" opacity="0.5"/>
+  <rect x="-50" y="-40" width="100" height="80" fill="rgba(209,72,89,0.06)"/>
+  
+  <!-- Free anti-dsDNA antibodies floating -->
+  <g stroke="#e8a951" stroke-width="1.6" fill="none" stroke-linecap="round">
+    <g transform="translate(-30 -20)">
+      <line x1="0" y1="0" x2="0" y2="10"/>
+      <line x1="-5" y1="-5" x2="0" y2="0"/>
+      <line x1="5" y1="-5" x2="0" y2="0"/>
+    </g>
+    <g transform="translate(-15 15) rotate(-30)">
+      <line x1="0" y1="0" x2="0" y2="10"/>
+      <line x1="-5" y1="-5" x2="0" y2="0"/>
+      <line x1="5" y1="-5" x2="0" y2="0"/>
+    </g>
+    <g transform="translate(20 -15) rotate(20)">
+      <line x1="0" y1="0" x2="0" y2="10"/>
+      <line x1="-5" y1="-5" x2="0" y2="0"/>
+      <line x1="5" y1="-5" x2="0" y2="0"/>
+    </g>
+    <g transform="translate(30 15) rotate(-20)">
+      <line x1="0" y1="0" x2="0" y2="10"/>
+      <line x1="-5" y1="-5" x2="0" y2="0"/>
+      <line x1="5" y1="-5" x2="0" y2="0"/>
+    </g>
+  </g>
+  
+  <!-- Free DNA fragments -->
+  <g stroke="#4fb8a8" stroke-width="1.4" fill="none" opacity="0.85">
+    <path d="M -20 0 Q -16 -3 -12 0 Q -8 3 -4 0"/>
+    <path d="M -20 4 Q -16 1 -12 4 Q -8 7 -4 4"/>
+    <path d="M 5 25 Q 9 22 13 25 Q 17 28 21 25"/>
+    <path d="M 5 29 Q 9 26 13 29 Q 17 32 21 29"/>
+  </g>
+</g>
+
+<!-- B cell on right (the source) -->
+<g transform="translate(395 145)">
+  <text x="0" y="-78" text-anchor="middle" style="fill:#9370b9;font:700 8.5px Inter,sans-serif;letter-spacing:1.2px">SLE PLASMA CELL</text>
+  
+  <circle cx="0" cy="0" r="30" fill="rgba(147,112,185,0.40)" stroke="#9370b9" stroke-width="1.8"/>
+  <ellipse cx="-5" cy="-2" rx="9" ry="7" fill="#4a2d60" opacity="0.7"/>
+  
+  <!-- Antibody factory granules -->
+  <g fill="#e8a951" fill-opacity="0.65">
+    <circle cx="8" cy="0" r="2.5"/>
+    <circle cx="6" cy="8" r="2.5"/>
+    <circle cx="-3" cy="10" r="2.5"/>
+    <circle cx="11" cy="-7" r="2.5"/>
+  </g>
+  
+  <!-- Anti-dsDNA arrows out -->
+  <g stroke="#e8a951" stroke-width="1.8" fill="none" stroke-linecap="round">
+    <g transform="translate(-32 0) rotate(180)">
+      <line x1="0" y1="0" x2="0" y2="8"/>
+      <line x1="-4" y1="-4" x2="0" y2="0"/>
+      <line x1="4" y1="-4" x2="0" y2="0"/>
+    </g>
+    <g transform="translate(-28 -16) rotate(180)">
+      <line x1="0" y1="0" x2="0" y2="8"/>
+      <line x1="-4" y1="-4" x2="0" y2="0"/>
+      <line x1="4" y1="-4" x2="0" y2="0"/>
+    </g>
+  </g>
+  
+  <text x="0" y="50" text-anchor="middle" style="fill:#e8a951;font:700 7px Inter,sans-serif">anti-dsDNA IgG</text>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">Both autoantibody AND self-antigen circulate at the same time</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="395" cy="190" r="21" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="17;27;17" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 11 · ANSWER · B · CURRICULUM COMPLETE</text>
+
+<g transform="translate(250 65)">
+  <rect x="-220" y="-25" width="440" height="50" rx="10" fill="rgba(108,194,125,0.18)" stroke="#6cc27d" stroke-width="2"/>
+  <text x="0" y="-3" text-anchor="middle" style="fill:#6cc27d;font:700 16px Inter,sans-serif;letter-spacing:2.5px">CURRICULUM COMPLETE</text>
+  <text x="0" y="15" text-anchor="middle" style="fill:#b4becf;font:600 9px Inter,sans-serif">16 chapters · 4 modules · 144 stations</text>
+</g>
+
+<g transform="translate(80 130)">
+  <rect x="0" y="0" width="100" height="40" rx="5" fill="rgba(232,169,81,0.18)" stroke="#e8a951" stroke-width="1.4"/>
+  <text x="50" y="15" text-anchor="middle" style="fill:#e8a951;font:700 8px Inter,sans-serif;letter-spacing:1px">MODULE 1</text>
+  <text x="50" y="29" text-anchor="middle" style="fill:#b4becf;font:7px Inter,sans-serif">innate · Ch 1-4</text>
+</g>
+
+<g transform="translate(190 130)">
+  <rect x="0" y="0" width="100" height="40" rx="5" fill="rgba(79,184,168,0.18)" stroke="#4fb8a8" stroke-width="1.4"/>
+  <text x="50" y="15" text-anchor="middle" style="fill:#4fb8a8;font:700 8px Inter,sans-serif;letter-spacing:1px">MODULE 2</text>
+  <text x="50" y="29" text-anchor="middle" style="fill:#b4becf;font:7px Inter,sans-serif">adaptive · Ch 5-9</text>
+</g>
+
+<g transform="translate(300 130)">
+  <rect x="0" y="0" width="100" height="40" rx="5" fill="rgba(209,72,89,0.18)" stroke="#d14859" stroke-width="1.4"/>
+  <text x="50" y="15" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif;letter-spacing:1px">MODULE 3</text>
+  <text x="50" y="29" text-anchor="middle" style="fill:#b4becf;font:7px Inter,sans-serif">dysreg · Ch 10-13</text>
+</g>
+
+<g transform="translate(410 130)">
+  <rect x="0" y="0" width="80" height="40" rx="5" fill="rgba(147,112,185,0.20)" stroke="#9370b9" stroke-width="1.6"/>
+  <text x="40" y="15" text-anchor="middle" style="fill:#9370b9;font:700 8px Inter,sans-serif;letter-spacing:1px">MODULE 4</text>
+  <text x="40" y="29" text-anchor="middle" style="fill:#b4becf;font:7px Inter,sans-serif">applied · Ch 14-16</text>
+</g>
+
+<g transform="translate(250 210)">
+  <rect x="-220" y="-15" width="440" height="34" rx="6" fill="rgba(232,169,81,0.10)" stroke="#e8a951" stroke-width="1"/>
+  <text x="0" y="-1" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1.5px">RSV · v-onc · Bishop &amp; Varmus 1989</text>
+  <text x="0" y="14" text-anchor="middle" style="fill:#b4becf;font:7px Inter,sans-serif">final concept: corrupted self-genes drive disease</text>
+</g>
+
+<text x="250" y="252" text-anchor="middle" style="fill:#6cc27d;font:700 8.5px Inter,sans-serif;letter-spacing:1.2px">★ END OF BOOK ★</text>
+
+                  
+
+                  
+              
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="75" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="204" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="57" r="28" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="24;34;24" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+              </svg>

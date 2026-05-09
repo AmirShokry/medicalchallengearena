@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 16 · MISSING ANY OF C5b–C9 → NO MAC</text>
+
+                  <g opacity="1"><ellipse cx="96" cy="145" rx="22" ry="26" fill="#d14859" fill-opacity="0.55" stroke="#d14859" stroke-width="1.8"></ellipse><ellipse cx="124" cy="145" rx="22" ry="26" fill="#d14859" fill-opacity="0.55" stroke="#d14859" stroke-width="1.8"></ellipse></g><ellipse cx="110" cy="145" rx="42" ry="44" fill="none" stroke="#d14859" stroke-width="1.6" stroke-dasharray="3 3" opacity="0.85"></ellipse><text x="110" y="220" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.5px">SURVIVES</text>
+                    <line x1="200" y1="155" x2="470" y2="155" stroke="#e8a951" stroke-width="2" opacity="0.75"></line>
+                    <line x1="200" y1="175" x2="470" y2="175" stroke="#e8a951" stroke-width="2" opacity="0.75"></line>
+                    <rect x="200" y="155" width="270" height="20" fill="#e8a951" fill-opacity="0.10"></rect>
+                  <text x="205" y="100" style="fill:#b4becf;font:600 7px Inter,sans-serif;letter-spacing:1.5px">EXTRACELLULAR</text><text x="205" y="200" style="fill:#b4becf;font:600 7px Inter,sans-serif;letter-spacing:1.5px">BACTERIAL INTERIOR</text>
+                        <g transform="translate(240 165)">
+                          <rect x="-7" y="-15" width="14" height="30" rx="2" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2" opacity="0.7"></rect>
+                          <text x="0" y="-22" text-anchor="middle" style="fill:#6b7689;font:600 7px Inter,sans-serif">C5b</text>
+                        </g>
+      
+                        <g transform="translate(275 165)">
+                          <rect x="-7" y="-15" width="14" height="30" rx="2" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2" opacity="0.7"></rect>
+                          <text x="0" y="-22" text-anchor="middle" style="fill:#6b7689;font:600 7px Inter,sans-serif">C6</text>
+                        </g>
+      
+                        <g transform="translate(305 165)">
+                          <rect x="-7" y="-15" width="14" height="30" rx="2" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2" opacity="0.7"></rect>
+                          <text x="0" y="-22" text-anchor="middle" style="fill:#6b7689;font:600 7px Inter,sans-serif">C7</text>
+                        </g>
+      
+                        <g transform="translate(335 165)">
+                          <rect x="-7" y="-15" width="14" height="30" rx="2" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2" opacity="0.7"></rect>
+                          <text x="0" y="-22" text-anchor="middle" style="fill:#6b7689;font:600 7px Inter,sans-serif">C8</text>
+                        </g>
+      
+                        <g transform="translate(405 165)">
+                          <rect x="-40" y="-15" width="80" height="30" rx="3" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2" opacity="0.7"></rect>
+                          <text x="0" y="-22" text-anchor="middle" style="fill:#6b7689;font:600 7px Inter,sans-serif">C9 × n</text>
+                        </g>
+      
+
+                  <!-- Big red ✗ over the empty assembly site -->
+                  <g transform="translate(335 165)" opacity="0.9">
+                    <line x1="-50" y1="-25" x2="50" y2="25" stroke="#d14859" stroke-width="2.5" stroke-linecap="round"></line>
+                    <line x1="-50" y1="25" x2="50" y2="-25" stroke="#d14859" stroke-width="2.5" stroke-linecap="round"></line>
+                  </g>
+                  <text x="335" y="115" text-anchor="middle" style="fill:#d14859;font:600 8px Inter,sans-serif;letter-spacing:1.5px">NO MAC ASSEMBLED</text>
+
+                  <text x="250" y="252" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">deficiency of any terminal component → Neisseria walks right in</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="335" cy="110" r="24" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="20;30;20" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="110" cy="215" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="405" cy="138" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 02 · GLYCAN SHIELD HIDES CONSERVED REGIONS</text>
+
+<!-- gp120 with glycan tree shapes covering it -->
+<g transform="translate(250 140)">
+  <!-- Underlying gp120 -->
+  <ellipse cx="0" cy="0" rx="55" ry="44" fill="rgba(79,184,168,0.18)" stroke="#4fb8a8" stroke-width="1.2"/>
+  <circle cx="0" cy="0" r="14" fill="rgba(79,184,168,0.35)"/>
+  <text x="0" y="3" text-anchor="middle" style="fill:#4fb8a8;font:700 7px Inter,sans-serif">CD4 site</text>
+  
+  <!-- Glycans (tree-like Y shapes) -->
+  <g stroke="#9370b9" stroke-width="1.8" fill="none">
+    <line x1="-30" y1="-30" x2="-45" y2="-50"/>
+    <line x1="-45" y1="-50" x2="-55" y2="-58"/>
+    <line x1="-45" y1="-50" x2="-35" y2="-58"/>
+  </g>
+  <g fill="#9370b9" opacity="0.85">
+    <circle cx="-55" cy="-58" r="4"/>
+    <circle cx="-35" cy="-58" r="4"/>
+  </g>
+  
+  <g stroke="#9370b9" stroke-width="1.8" fill="none">
+    <line x1="20" y1="-32" x2="30" y2="-52"/>
+    <line x1="30" y1="-52" x2="40" y2="-60"/>
+    <line x1="30" y1="-52" x2="20" y2="-60"/>
+  </g>
+  <g fill="#9370b9" opacity="0.85">
+    <circle cx="40" cy="-60" r="4"/>
+    <circle cx="20" cy="-60" r="4"/>
+  </g>
+  
+  <g stroke="#9370b9" stroke-width="1.8" fill="none">
+    <line x1="40" y1="15" x2="55" y2="30"/>
+    <line x1="55" y1="30" x2="65" y2="35"/>
+    <line x1="55" y1="30" x2="55" y2="42"/>
+  </g>
+  <g fill="#9370b9" opacity="0.85">
+    <circle cx="65" cy="35" r="4"/>
+    <circle cx="55" cy="42" r="4"/>
+  </g>
+  
+  <g stroke="#9370b9" stroke-width="1.8" fill="none">
+    <line x1="-25" y1="25" x2="-40" y2="40"/>
+    <line x1="-40" y1="40" x2="-52" y2="48"/>
+    <line x1="-40" y1="40" x2="-40" y2="52"/>
+  </g>
+  <g fill="#9370b9" opacity="0.85">
+    <circle cx="-52" cy="48" r="4"/>
+    <circle cx="-40" cy="52" r="4"/>
+  </g>
+</g>
+
+<text x="80" y="60" style="fill:#9370b9;font:700 9px Inter,sans-serif;letter-spacing:1.2px">N-LINKED GLYCANS</text>
+<text x="80" y="74" style="fill:#b4becf;font:7px Inter,sans-serif">host-derived sugars on viral protein</text>
+
+<text x="380" y="60" style="fill:#9370b9;font:700 8px Inter,sans-serif">"SELF" to immune system</text>
+<text x="380" y="74" style="fill:#b4becf;font:7px Inter,sans-serif">no antibody response generated</text>
+
+<text x="250" y="225" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.2px">Conserved CD4-binding site shielded</text>
+<text x="250" y="240" text-anchor="middle" style="fill:#b4becf;font:7.5px Inter,sans-serif">→ antibody can't access it</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="80" cy="69" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="138" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="80" cy="55" r="24" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="20;30;20" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

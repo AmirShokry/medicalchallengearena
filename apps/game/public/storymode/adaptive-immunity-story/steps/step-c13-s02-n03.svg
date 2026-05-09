@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 02 · CASE 1 · HYPERACUTE · 30 MIN</text>
+
+<!-- Mechanism flow: Pre-formed Ab → endothelium → complement → neutrophils → thrombosis -->
+
+<!-- Stage 1: Pre-formed Ab -->
+<g transform="translate(80 105)">
+  <text x="0" y="-32" text-anchor="middle" style="fill:#e8a951;font:700 7.5px Inter,sans-serif;letter-spacing:1.2px">PRE-FORMED Ab</text>
+  <g stroke="#e8a951" stroke-width="2" fill="none" stroke-linecap="round">
+    <g transform="translate(-12 0)">
+      <line x1="0" y1="0" x2="0" y2="10"/>
+      <line x1="-5" y1="-5" x2="0" y2="0"/>
+      <line x1="5" y1="-5" x2="0" y2="0"/>
+    </g>
+    <g transform="translate(0 -8)">
+      <line x1="0" y1="0" x2="0" y2="10"/>
+      <line x1="-5" y1="-5" x2="0" y2="0"/>
+      <line x1="5" y1="-5" x2="0" y2="0"/>
+    </g>
+    <g transform="translate(12 0)">
+      <line x1="0" y1="0" x2="0" y2="10"/>
+      <line x1="-5" y1="-5" x2="0" y2="0"/>
+      <line x1="5" y1="-5" x2="0" y2="0"/>
+    </g>
+  </g>
+  <text x="0" y="30" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">anti-ABO/HLA</text>
+</g>
+
+<g stroke="#d14859" stroke-width="2" fill="none" marker-end="url(#arr13_2_2a)">
+  <line x1="120" y1="105" x2="155" y2="105"/>
+</g>
+<defs>
+  <marker id="arr13_2_2a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#d14859"/>
+  </marker>
+</defs>
+
+<!-- Stage 2: Bind endothelium -->
+<g transform="translate(195 105)">
+  <text x="0" y="-32" text-anchor="middle" style="fill:#9370b9;font:700 7.5px Inter,sans-serif;letter-spacing:1.2px">ENDOTHELIUM</text>
+  <line x1="-30" y1="-5" x2="30" y2="-5" stroke="#9370b9" stroke-width="2.4"/>
+  <line x1="-30" y1="0" x2="30" y2="0" stroke="#9370b9" stroke-width="2.4"/>
+  <!-- Ab bound -->
+  <g stroke="#e8a951" stroke-width="1.4" fill="none" stroke-linecap="round">
+    <g transform="translate(-15 -5) rotate(180)">
+      <line x1="0" y1="0" x2="0" y2="6"/>
+      <line x1="-3" y1="-3" x2="0" y2="0"/>
+      <line x1="3" y1="-3" x2="0" y2="0"/>
+    </g>
+    <g transform="translate(0 -5) rotate(180)">
+      <line x1="0" y1="0" x2="0" y2="6"/>
+      <line x1="-3" y1="-3" x2="0" y2="0"/>
+      <line x1="3" y1="-3" x2="0" y2="0"/>
+    </g>
+    <g transform="translate(15 -5) rotate(180)">
+      <line x1="0" y1="0" x2="0" y2="6"/>
+      <line x1="-3" y1="-3" x2="0" y2="0"/>
+      <line x1="3" y1="-3" x2="0" y2="0"/>
+    </g>
+  </g>
+</g>
+
+<g stroke="#d14859" stroke-width="2" fill="none" marker-end="url(#arr13_2_2a)">
+  <line x1="240" y1="105" x2="275" y2="105"/>
+</g>
+
+<!-- Stage 3: Complement + neutrophils -->
+<g transform="translate(310 105)">
+  <text x="0" y="-32" text-anchor="middle" style="fill:#d14859;font:700 7.5px Inter,sans-serif;letter-spacing:1.2px">C' + PMNs</text>
+  <!-- C3b dots -->
+  <g fill="rgba(209,72,89,0.85)">
+    <circle cx="-12" cy="-8" r="3"/>
+    <circle cx="0" cy="-12" r="3"/>
+    <circle cx="12" cy="-8" r="3"/>
+  </g>
+  <!-- Neutrophils with multilobed nuclei -->
+  <g>
+    <g transform="translate(-10 8)">
+      <circle r="6" fill="rgba(147,112,185,0.55)" stroke="#9370b9" stroke-width="0.8"/>
+      <ellipse cx="-1" cy="-1" rx="1.5" ry="1" fill="#4a2d60"/>
+      <ellipse cx="1" cy="0" rx="1.5" ry="1" fill="#4a2d60"/>
+      <ellipse cx="0" cy="2" rx="1.5" ry="1" fill="#4a2d60"/>
+    </g>
+    <g transform="translate(10 8)">
+      <circle r="6" fill="rgba(147,112,185,0.55)" stroke="#9370b9" stroke-width="0.8"/>
+      <ellipse cx="-1" cy="-1" rx="1.5" ry="1" fill="#4a2d60"/>
+      <ellipse cx="1" cy="0" rx="1.5" ry="1" fill="#4a2d60"/>
+      <ellipse cx="0" cy="2" rx="1.5" ry="1" fill="#4a2d60"/>
+    </g>
+  </g>
+</g>
+
+<g stroke="#d14859" stroke-width="2" fill="none" marker-end="url(#arr13_2_2a)">
+  <line x1="350" y1="105" x2="385" y2="105"/>
+</g>
+
+<!-- Stage 4: Thrombosis + necrosis -->
+<g transform="translate(425 105)">
+  <text x="0" y="-32" text-anchor="middle" style="fill:#d14859;font:700 7.5px Inter,sans-serif;letter-spacing:1.2px">THROMBOSIS</text>
+  <circle cx="0" cy="0" r="20" fill="rgba(180,190,207,0.20)" stroke="#b4becf" stroke-width="1.4"/>
+  <!-- Wall fibrinoid necrosis (orange ring) -->
+  <circle cx="0" cy="0" r="18" fill="none" stroke="#e8a951" stroke-width="3" stroke-dasharray="2 1.5"/>
+  <!-- Thrombus filling lumen -->
+  <circle cx="0" cy="0" r="13" fill="rgba(209,72,89,0.85)"/>
+  <text x="0" y="3" text-anchor="middle" style="fill:#fff;font:700 6px Inter,sans-serif">CLOT</text>
+</g>
+
+<!-- Biopsy panel below -->
+<g transform="translate(250 200)">
+  <rect x="-200" y="-25" width="400" height="50" rx="8" fill="rgba(20,24,40,0.85)" stroke="#3a4358" stroke-width="1.4"/>
+  <text x="-180" y="-8" style="fill:#9370b9;font:700 8px Inter,sans-serif;letter-spacing:1.2px">BIOPSY:</text>
+  <text x="-180" y="6" style="fill:#e8a951;font:700 8px Inter,sans-serif">FIBRINOID NECROSIS</text>
+  <text x="-180" y="18" style="fill:#b4becf;font:6.5px Inter,sans-serif">orange-pink vessel walls + neutrophil infiltrate + thrombi</text>
+  <!-- Verdict chip on right -->
+  <rect x="60" y="-15" width="130" height="30" rx="6" fill="rgba(209,72,89,0.30)" stroke="#d14859" stroke-width="1.8"/>
+  <text x="125" y="-2" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.5px">HYPERACUTE</text>
+  <text x="125" y="10" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">minutes-hours</text>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">Pre-formed Abs already there at transplant · attack within minutes</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="375" cy="193" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

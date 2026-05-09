@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Chapter 9 hero icon.
+-->
+<svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <!-- Syringe / vaccine -->
+          <g transform="translate(8 18) rotate(20 0 0)">
+            <rect x="0" y="0" width="28" height="9" rx="1.5" fill="#4fb8a8" opacity="0.7" stroke="#4fb8a8" stroke-width="0.7"/>
+            <rect x="2" y="1.5" width="20" height="6" fill="#4fb8a8" opacity="0.4"/>
+            <rect x="28" y="2" width="6" height="5" fill="#9370b9" opacity="0.6"/>
+            <line x1="34" y1="4.5" x2="46" y2="4.5" stroke="#b4becf" stroke-width="1.2"/>
+          </g>
+          <!-- droplets / antibodies forming -->
+          <g fill="#e8a951" opacity="0.85">
+            <circle cx="44" cy="34" r="1.6"/>
+            <circle cx="50" cy="42" r="1.6"/>
+            <circle cx="38" cy="44" r="1.6"/>
+            <circle cx="46" cy="50" r="1.4"/>
+          </g>
+          <!-- memory: shield -->
+          <path d="M 14 38 L 14 46 Q 14 52 22 54 Q 30 52 30 46 L 30 38 Z" fill="#6cc27d" opacity="0.55" stroke="#6cc27d" stroke-width="0.7"/>
+          <text x="22" y="48" text-anchor="middle" fill="#6cc27d" font-family="Inter,sans-serif" font-size="5" font-weight="700">✓</text>
+        </svg>

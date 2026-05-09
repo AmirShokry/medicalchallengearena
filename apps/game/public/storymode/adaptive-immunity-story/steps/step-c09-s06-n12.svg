@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 06 · VACCINATED vs RECOVERED</text>
+
+                  <!-- Vaccinated panel on left -->
+                  <g transform="translate(135 145)">
+                    <g transform="translate(0 0)" opacity="1"><rect x="-72" y="-58" width="144" height="116" rx="6" fill="#1a2030" stroke="#3a4358" stroke-width="1.4"></rect><text x="0" y="-44" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif;letter-spacing:1.5px">VACCINATED</text><text x="-62" y="-19" style="fill:#e8ecf3;font:600 8px Inter,sans-serif">HBsAg</text><rect x="22" y="-29" width="40" height="14" rx="3" fill="#d14859" fill-opacity="0.20" stroke="#d14859" stroke-width="1.2"></rect><text x="42" y="-19" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif">−</text><text x="-62" y="3" style="fill:#e8ecf3;font:600 8px Inter,sans-serif">anti-HBs</text><rect x="22" y="-7" width="40" height="14" rx="3" fill="#6cc27d" fill-opacity="0.35" stroke="#6cc27d" stroke-width="1.2"></rect><text x="42" y="3" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif">+</text><text x="-62" y="25" style="fill:#e8ecf3;font:600 8px Inter,sans-serif">anti-HBc</text><rect x="22" y="15" width="40" height="14" rx="3" fill="#d14859" fill-opacity="0.20" stroke="#d14859" stroke-width="1.2"></rect><text x="42" y="25" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif">−</text></g>
+                  </g>
+
+                  <!-- Recovered panel on right -->
+                  <g transform="translate(370 145)">
+                    <g transform="translate(0 0)" opacity="1"><rect x="-72" y="-58" width="144" height="116" rx="6" fill="#1a2030" stroke="#3a4358" stroke-width="1.4"></rect><text x="0" y="-44" text-anchor="middle" style="fill:#4fb8a8;font:700 8px Inter,sans-serif;letter-spacing:1.5px">RECOVERED FROM HBV</text><text x="-62" y="-19" style="fill:#e8ecf3;font:600 8px Inter,sans-serif">HBsAg</text><rect x="22" y="-29" width="40" height="14" rx="3" fill="#d14859" fill-opacity="0.20" stroke="#d14859" stroke-width="1.2"></rect><text x="42" y="-19" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif">−</text><text x="-62" y="3" style="fill:#e8ecf3;font:600 8px Inter,sans-serif">anti-HBs</text><rect x="22" y="-7" width="40" height="14" rx="3" fill="#6cc27d" fill-opacity="0.35" stroke="#6cc27d" stroke-width="1.2"></rect><text x="42" y="3" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif">+</text><text x="-62" y="25" style="fill:#e8ecf3;font:600 8px Inter,sans-serif">anti-HBc</text><rect x="22" y="15" width="40" height="14" rx="3" fill="#6cc27d" fill-opacity="0.35" stroke="#6cc27d" stroke-width="1.2"></rect><text x="42" y="25" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif">+</text></g>
+                  </g>
+
+                  <!-- Highlight the difference (below the two panels) -->
+                  <g transform="translate(250 220)">
+                    <rect x="-130" y="-12" width="260" height="22" rx="11" fill="#9370b9" fill-opacity="0.30" stroke="#9370b9" stroke-width="1.5"></rect>
+                    <text x="0" y="3" text-anchor="middle" style="fill:#9370b9;font:700 8px Inter,sans-serif;letter-spacing:1.5px">anti-HBc = THE TELLTALE MARKER</text>
+                  </g>
+
+                  <text x="250" y="245" text-anchor="middle" style="fill:#b4becf;font:italic 7.5px Fraunces,serif">both are protected · only the recovered patient has anti-HBc · vaccine can never cause it</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="218" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="370" cy="96" r="27" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="23;33;23" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

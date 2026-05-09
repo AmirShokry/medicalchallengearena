@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 02 · RESTING NFAT · PHOSPHO · CYTOPLASMIC</text>
+
+<!-- Resting T cell with everything in cytoplasm -->
+<g transform="translate(250 145)">
+  <ellipse cx="0" cy="0" rx="220" ry="80" fill="rgba(108,194,125,0.10)" stroke="#6cc27d" stroke-width="1.4"/>
+  <ellipse cx="80" cy="0" rx="100" ry="60" fill="rgba(74,45,96,0.20)" stroke="#9370b9" stroke-width="1.4"/>
+  <text x="80" y="-45" text-anchor="middle" style="fill:#9370b9;font:700 8px Inter,sans-serif;letter-spacing:1.2px">NUCLEUS · EMPTY</text>
+  <text x="-180" y="-65" style="fill:#6cc27d;font:700 8px Inter,sans-serif;letter-spacing:1.2px">CYTOPLASM</text>
+  
+  <!-- NFAT with phosphates -->
+  <g transform="translate(-100 0)">
+    <ellipse cx="0" cy="0" rx="28" ry="20" fill="rgba(232,169,81,0.85)" stroke="#e8a951" stroke-width="1.6"/>
+    <text x="0" y="-2" text-anchor="middle" style="fill:#0a0e1a;font:700 9px Inter,sans-serif">NFAT</text>
+    <text x="0" y="9" text-anchor="middle" style="fill:#0a0e1a;font:6.5px Inter,sans-serif">NLS hidden</text>
+    
+    <!-- Multiple phosphate groups blocking NLS -->
+    <g fill="#d14859" stroke="#fff" stroke-width="0.4">
+      <circle cx="-22" cy="-15" r="4"/>
+      <text x="-22" y="-13" text-anchor="middle" style="fill:#fff;font:700 6px Inter,sans-serif">P</text>
+      <circle cx="-8" cy="-22" r="4"/>
+      <text x="-8" y="-20" text-anchor="middle" style="fill:#fff;font:700 6px Inter,sans-serif">P</text>
+      <circle cx="8" cy="-22" r="4"/>
+      <text x="8" y="-20" text-anchor="middle" style="fill:#fff;font:700 6px Inter,sans-serif">P</text>
+      <circle cx="22" cy="-15" r="4"/>
+      <text x="22" y="-13" text-anchor="middle" style="fill:#fff;font:700 6px Inter,sans-serif">P</text>
+      <circle cx="-22" cy="15" r="4"/>
+      <text x="-22" y="17" text-anchor="middle" style="fill:#fff;font:700 6px Inter,sans-serif">P</text>
+      <circle cx="22" cy="15" r="4"/>
+      <text x="22" y="17" text-anchor="middle" style="fill:#fff;font:700 6px Inter,sans-serif">P</text>
+    </g>
+  </g>
+  
+  <!-- Translocation barrier (X over arrow toward nucleus) -->
+  <g transform="translate(-25 0)">
+    <line x1="0" y1="0" x2="40" y2="0" stroke="#6b7689" stroke-width="1.4" stroke-dasharray="2 2" opacity="0.5"/>
+    <line x1="10" y1="-10" x2="30" y2="10" stroke="#d14859" stroke-width="3" stroke-linecap="round"/>
+    <line x1="10" y1="10" x2="30" y2="-10" stroke="#d14859" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <text x="-5" y="-15" text-anchor="middle" style="fill:#d14859;font:700 7px Inter,sans-serif">no entry</text>
+  
+  <!-- Importin protein can't grab phospho-NFAT -->
+  <g transform="translate(40 25)">
+    <ellipse cx="0" cy="0" rx="20" ry="11" fill="rgba(180,190,207,0.55)" stroke="#b4becf" stroke-width="1"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 7px Inter,sans-serif">importin</text>
+    <text x="0" y="20" text-anchor="middle" style="fill:#b4becf;font:italic 6px Fraunces,serif">can't bind</text>
+  </g>
+  
+  <!-- IL-2 promoter (empty) inside nucleus -->
+  <g transform="translate(80 5)">
+    <line x1="-30" y1="0" x2="30" y2="0" stroke="#9370b9" stroke-width="2"/>
+    <line x1="-30" y1="5" x2="30" y2="5" stroke="#9370b9" stroke-width="2"/>
+    <rect x="-15" y="-5" width="30" height="15" rx="2" fill="rgba(232,169,81,0.20)" stroke="#e8a951" stroke-width="0.8"/>
+    <text x="0" y="6" text-anchor="middle" style="fill:#e8a951;font:6px Inter,sans-serif">IL-2 promoter</text>
+    <text x="0" y="22" text-anchor="middle" style="fill:#6b7689;font:italic 6.5px Fraunces,serif">silent</text>
+  </g>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">Phosphates mask NLS · NFAT trapped in cytoplasm · IL-2 gene off</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="70" cy="75" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

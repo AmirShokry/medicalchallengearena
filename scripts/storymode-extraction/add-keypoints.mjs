@@ -1,34 +1,34 @@
 /**
- * Adds a `keypoints: string[]` field to every station in
- * `apps/game/server/data/storymode/innate-immunity-story.json`.
+ * Post-processes every story-mode JSON produced by `extract.mjs`:
  *
- * Replaces the long `explanation` HTML with a small list of summary
- * "key points" — short, punchy lines that the bullet-slideshow UI
- * (`StoryKeypoints.vue`) can step through one at a time, mirroring the
- * `setupBulletSlideshow` UX from the reference HTML.
+ *   1. Overlays hand-curated `keypoints` arrays onto the
+ *      auto-seeded ones for stations that have curated entries
+ *      below (innate immunity is fully curated; adaptive immunity
+ *      currently falls back to the seeded paragraph split).
+ *   2. Ensures every station has an `explanationDiagrams[0]` —
+ *      seeding from the first step-flow diagram if `extract.mjs`
+ *      somehow left it empty.
+ *   3. Drops the long-prose explanation column fields so the
+ *      front-end's "diagram + keypoints" layout is the only thing
+ *      that can render. Removed: `explanation`,
+ *      `explanationTitle`, `previously`, `stage`, `cardTitle`,
+ *      `tagline`, `story`, `diagrams`, `whatsNext`.
  *
- * The keypoints are hand-crafted (not auto-extracted) so each station
- * gets a tight summary of its existing explanation rather than a copy
- * of the prose. To refine a station, edit its entry in the KEYPOINTS
- * map below and re-run this script.
- *
- * The original `explanation` field is left untouched so no data is lost
- * — the front-end simply reads from `keypoints` for the slideshow and
- * ignores the long prose.
+ * The script reads `index.json` and processes every system listed
+ * there, so adding a new system to `extract.mjs` automatically
+ * flows it through this stage too.
  *
  * Run with:
  *   node scripts/storymode-extraction/add-keypoints.mjs
  */
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = resolve(__dirname, "..", "..");
-const JSON_PATH = join(
-	REPO_ROOT,
-	"apps/game/server/data/storymode/innate-immunity-story.json",
-);
+const DATA_DIR = join(REPO_ROOT, "apps/game/server/data/storymode");
+const INDEX_PATH = join(DATA_DIR, "index.json");
 
 /**
  * Keypoints keyed by `${chapterNum}.${stationIdx}`. Station idx is the
@@ -223,19 +223,13 @@ const KEYPOINTS = {
 // =====================================================================
 // Apply
 // =====================================================================
-const data = JSON.parse(readFileSync(JSON_PATH, "utf8"));
-
-let appliedCount = 0;
-let missingCount = 0;
-const missing = [];
 
 /**
- * Most stations ship with an empty `explanationDiagrams` array — the
- * source HTML attached the diagram to the step-flow walkthrough rather
- * than the explanation panel. The user wants a diagram visible above
- * the keypoints, so when the array is empty we seed it with the first
- * step's diagram (which the extraction script already auto-fills with
- * a copy of the station's main diagram for spotlight-only steps).
+ * Ensure a station has at least one explanation diagram. Most source
+ * data attaches diagrams to the step-flow walkthrough rather than the
+ * explanation panel; `extract.mjs` already falls back to the station's
+ * main diagram, but we double-check here in case a system was extracted
+ * with an older script version.
  */
 function seedExplanationDiagram(station) {
 	if (Array.isArray(station.explanationDiagrams) && station.explanationDiagrams.length) {
@@ -255,42 +249,57 @@ function seedExplanationDiagram(station) {
 	];
 }
 
-for (const chapter of data.chapters) {
-	for (const station of chapter.stations) {
-		const key = `${chapter.num}.${station.idx}`;
-		const points = KEYPOINTS[key];
-		if (points && Array.isArray(points) && points.length) {
-			station.keypoints = points;
-			appliedCount++;
-		} else {
-			missing.push(`${key} ${station.title}`);
-			missingCount++;
-		}
-
-		seedExplanationDiagram(station);
-		// Drop every prose field that the explanation column used to
-		// render. The user's final structure for that column is just
-		// "explanation diagram + keypoints, nothing more" — so the
-		// previously / stage / cardTitle / tagline / story / story
-		// diagrams / whatsNext fields no longer have a place. The
-		// station's `title` (in the topbar) still gives the user a
-		// heading; everything else is conveyed by the keypoints.
-		delete station.explanation;
-		delete station.explanationTitle;
-		delete station.previously;
-		delete station.stage;
-		delete station.cardTitle;
-		delete station.tagline;
-		delete station.story;
-		delete station.diagrams;
-		delete station.whatsNext;
+function processSystem(systemKey) {
+	const jsonPath = join(DATA_DIR, `${systemKey}.json`);
+	if (!existsSync(jsonPath)) {
+		console.log(`[${systemKey}] skipped — JSON not found at ${jsonPath}`);
+		return;
 	}
+	const data = JSON.parse(readFileSync(jsonPath, "utf8"));
+
+	let curatedCount = 0;
+	let seededOnly = 0;
+
+	for (const chapter of data.chapters) {
+		for (const station of chapter.stations) {
+			const key = `${chapter.num}.${station.idx}`;
+			const points = KEYPOINTS[key];
+			if (points && Array.isArray(points) && points.length) {
+				station.keypoints = points;
+				curatedCount++;
+			} else {
+				// Leave the auto-seeded `keypoints` (paragraph split from
+				// the source explanation) in place. Curated overlays can
+				// be added to the KEYPOINTS map above any time.
+				seededOnly++;
+			}
+
+			seedExplanationDiagram(station);
+
+			// Drop every prose field that the explanation column used to
+			// render. The user's final structure is just "explanation
+			// diagram + keypoints, nothing more" — `title` (in the
+			// topbar) still gives the user a heading.
+			delete station.explanation;
+			delete station.explanationTitle;
+			delete station.previously;
+			delete station.stage;
+			delete station.cardTitle;
+			delete station.tagline;
+			delete station.story;
+			delete station.diagrams;
+			delete station.whatsNext;
+		}
+	}
+
+	writeFileSync(jsonPath, JSON.stringify(data, null, 2), "utf8");
+
+	console.log(
+		`[${systemKey}] processed — curated keypoints: ${curatedCount}, seeded fallback: ${seededOnly}`,
+	);
 }
 
-writeFileSync(JSON_PATH, JSON.stringify(data, null, 2), "utf8");
-
-console.log(`Applied keypoints to ${appliedCount} stations`);
-if (missingCount) {
-	console.log(`Missing keypoints for ${missingCount} stations:`);
-	for (const m of missing) console.log("  - " + m);
+const systemsIndex = JSON.parse(readFileSync(INDEX_PATH, "utf8"));
+for (const sys of systemsIndex) {
+	processSystem(sys.name);
 }

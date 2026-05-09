@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 06 · C3a DRIFTS · MOBILE · DIFFUSIBLE</text>
+
+  
+                      <text x="90" y="65" text-anchor="middle" style="fill:#b4becf;font:600 7px Inter,sans-serif;letter-spacing:1.5px">CLEAVAGE</text>
+                      <text x="270" y="65" text-anchor="middle" style="fill:#b4becf;font:600 7px Inter,sans-serif;letter-spacing:1.5px">EFFECTOR</text>
+                      <text x="410" y="65" text-anchor="middle" style="fill:#b4becf;font:600 7px Inter,sans-serif;letter-spacing:1.5px">RESPONSE</text>
+    
+                      <g opacity="1">
+                        <ellipse cx="90" cy="145" rx="38" ry="32" fill="#4fb8a8" fill-opacity="0.45" stroke="#4fb8a8" stroke-width="1.8"></ellipse>
+                        <text x="90" y="151" text-anchor="middle" style="fill:#e8ecf3;font:700 17px Inter,sans-serif">C3</text>
+                      </g>
+    
+                      <line x1="65" y1="120" x2="115" y2="170" stroke="#e8a951" stroke-width="2.5" stroke-dasharray="5 3" opacity="0.95"></line>
+                      <text x="125" y="145" style="fill:#e8a951;font:600 8px Inter,sans-serif;letter-spacing:1.5px">CLEAVED</text>
+    
+                      <g transform="translate(60 95)">
+                        <circle cx="0" cy="0" r="14" fill="#e8a951" fill-opacity="0.85" stroke="#e8a951" stroke-width="1.8"></circle>
+                        <text x="0" y="4" text-anchor="middle" style="fill:#0a0e1a;font:700 11px Inter,sans-serif">C3a</text>
+                      </g>
+                      <text x="60" y="120" text-anchor="middle" style="fill:#e8a951;font:600 7px Inter,sans-serif;letter-spacing:1.2px">SMALL · ANAPHYLATOXIN</text>
+    
+                      <g transform="translate(120 200)">
+                        <ellipse cx="0" cy="0" rx="20" ry="15" fill="#4fb8a8" fill-opacity="0.55" stroke="#4fb8a8" stroke-width="1.6"></ellipse>
+                        <text x="0" y="4" text-anchor="middle" style="fill:#e8ecf3;font:700 11px Inter,sans-serif">C3b</text>
+                      </g>
+                      <text x="120" y="225" text-anchor="middle" style="fill:#4fb8a8;font:600 7px Inter,sans-serif;letter-spacing:1.2px">LARGE · OPSONIN</text>
+    
+                      <ellipse cx="155" cy="220" rx="18" ry="12" fill="#9370b9" fill-opacity="0.45" stroke="#9370b9" stroke-width="1.4"></ellipse>
+    
+                      <path d="M 80 95 Q 160 90 230 130" stroke="#e8a951" stroke-width="1.4" fill="none" stroke-dasharray="3 2"></path>
+                      <polygon points="230,130 222,127 224,134" fill="#e8a951"></polygon>
+    
+
+                  <text x="250" y="252" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">C3a is free in tissue fluid · diffusing toward its target</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="60" cy="94" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

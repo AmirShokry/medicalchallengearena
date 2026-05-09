@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 280" preserveAspectRatio="xMidYMid meet">
+                <text x="20" y="26" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 05 · CLASS II BUILT IN ER</text>
+                <rect x="40" y="70" width="420" height="180" rx="18" fill="#0e1422" stroke="#3a4358" stroke-width="1.2"/>
+                <text x="50" y="64" style="fill:#6b7689;font:600 8px Inter,sans-serif;letter-spacing:1.5px">EXTRACELLULAR</text>
+                <text x="50" y="246" style="fill:#6b7689;font:600 8px Inter,sans-serif;letter-spacing:1.5px">CYTOPLASM</text>
+                <line x1="40" y1="70" x2="460" y2="70" stroke="#4fb8a8" stroke-width="1.5" opacity="0.7"/>
+                <g opacity="0.30">
+                  <ellipse cx="290" cy="170" rx="68" ry="48" fill="none" stroke="#e8a951" stroke-width="1.3" stroke-dasharray="4 3"/>
+                  <text x="290" y="120" text-anchor="middle" style="fill:#e8a951;font:600 9px Inter,sans-serif">endosome</text>
+                  <circle cx="270" cy="170" r="9" fill="#d14859" opacity="0.7"/>
+                </g>
+                <path d="M 70 180 Q 55 205 80 220 Q 130 230 175 220 Q 200 215 205 198 Q 210 175 188 162 Q 130 154 70 180 Z" fill="#4fb8a8" opacity="0.20" stroke="#4fb8a8" stroke-width="2"/>
+                <text x="135" y="245" text-anchor="middle" style="fill:#4fb8a8;font:700 10px Inter,sans-serif;letter-spacing:2px">ER</text>
+                <g transform="translate(105 190)">
+                  <path d="M -22 -6 L 22 -6 L 24 4 L 14 4 L 11 -2 L -11 -2 L -14 4 L -24 4 Z" fill="#4fb8a8" opacity="0.85" stroke="#4fb8a8" stroke-width="1.2"/>
+                  <text x="0" y="20" text-anchor="middle" style="fill:#4fb8a8;font:600 8px Inter,sans-serif">Class II</text>
+                </g>
+                <g transform="translate(160 195)">
+                  <path d="M -18 -5 L 18 -5 L 20 3 L 12 3 L 10 -2 L -10 -2 L -12 3 L -20 3 Z" fill="#4fb8a8" opacity="0.65" stroke="#4fb8a8" stroke-width="1"/>
+                </g>
+                <g opacity="0.35">
+                  <path d="M 80 175 L 120 100" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 3"/>
+                  <text x="125" y="100" style="fill:#6b7689;font:italic 8px Fraunces,serif">Class I leaves to surface</text>
+                </g>
+                <text x="250" y="270" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">both classes start in the ER · they part ways from here</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="105" cy="205" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

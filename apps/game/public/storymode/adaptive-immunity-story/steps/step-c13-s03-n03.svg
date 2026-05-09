@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 02 · CONDITIONING · TBI + CHEMO · HOST IMMUNITY GONE</text><g>
+    <rect x="20" y="30" width="186" height="14" rx="7" fill="rgba(232, 169, 81, 0.18)" stroke="#e8a951" stroke-width="1"/>
+    <text x="113" y="40" text-anchor="middle" style="fill:#e8a951;font:700 7.5px Inter,sans-serif;letter-spacing:1.2px">GVHD · DONOR T → HOST</text>
+  </g><text x="30" y="62" style="fill:#b4becf;font:600 7px 'JetBrains Mono',monospace;letter-spacing:1.5px">BMT GRAFT</text><text x="470" y="62" text-anchor="end" style="fill:#b4becf;font:600 7px 'JetBrains Mono',monospace;letter-spacing:1.5px">HOST</text><g opacity="1">
+    <path d="M 65 75 L 65 70 Q 65 67 68 67 L 122 67 Q 125 67 125 70 L 125 75 L 130 80 L 130 145 Q 130 155 120 155 L 70 155 Q 60 155 60 145 L 60 80 Z" 
+          fill="#1a2030" stroke="#b4becf" stroke-width="1.4"/><circle cx="78" cy="92" r="2.5" fill="#d14859" opacity="0.85" stroke="#a53343" stroke-width="0.5"/><circle cx="95" cy="88" r="2.5" fill="#d14859" opacity="0.85" stroke="#a53343" stroke-width="0.5"/><circle cx="112" cy="94" r="2.5" fill="#d14859" opacity="0.85" stroke="#a53343" stroke-width="0.5"/><circle cx="82" cy="108" r="2.5" fill="#d14859" opacity="0.85" stroke="#a53343" stroke-width="0.5"/><circle cx="105" cy="110" r="2.5" fill="#d14859" opacity="0.85" stroke="#a53343" stroke-width="0.5"/><circle cx="90" cy="122" r="2.5" fill="#d14859" opacity="0.85" stroke="#a53343" stroke-width="0.5"/><circle cx="110" cy="125" r="2.5" fill="#d14859" opacity="0.85" stroke="#a53343" stroke-width="0.5"/><circle cx="85" cy="100" r="1.6" fill="#9370b9" opacity="0.95"/><circle cx="102" cy="102" r="1.6" fill="#9370b9" opacity="0.95"/><circle cx="75" cy="118" r="1.6" fill="#9370b9" opacity="0.95"/><circle cx="99" cy="119" r="1.6" fill="#9370b9" opacity="0.95"/><circle cx="118" cy="115" r="1.6" fill="#9370b9" opacity="0.95"/><circle cx="80" cy="138" r="1.6" fill="#9370b9" opacity="0.95"/><circle cx="98" cy="138" r="1.6" fill="#9370b9" opacity="0.95"/><circle cx="115" cy="140" r="1.6" fill="#9370b9" opacity="0.95"/><circle cx="78" cy="130" r="1.6" fill="#9370b9" opacity="0.95"/><circle cx="110" cy="132" r="1.6" fill="#9370b9" opacity="0.95"/><g transform="translate(95 168)">
+    <circle cx="-30" cy="0" r="2.5" fill="#d14859" opacity="0.85"/>
+    <text x="-25" y="2" style="fill:#b4becf;font:6px 'JetBrains Mono',monospace">HSC</text>
+    <circle cx="3" cy="0" r="1.6" fill="#9370b9" opacity="0.95"/>
+    <text x="8" y="2" style="fill:#9370b9;font:600 6px 'JetBrains Mono',monospace">donor T</text>
+  </g></g><g opacity="1"><text x="225" y="78" text-anchor="middle" style="fill:#e8a951;font:600 7px Inter,sans-serif;letter-spacing:0.5px">CONDITIONING</text><text x="225" y="88" text-anchor="middle" style="fill:#6b7689;font:italic 6px Fraunces,serif">TBI + chemo · host immunity ablated</text><g>
+    <line x1="155" y1="115" x2="270" y2="115" stroke="#e8a951" stroke-width="1.6" stroke-linecap="round"/>
+    <polygon points="265,108 280,115 265,122" fill="#e8a951" opacity="0.95"/>
+  </g><text x="225" y="135" text-anchor="middle" style="fill:#e8a951;font:600 7px Inter,sans-serif">infusion</text></g><g opacity="1">
+    <g stroke="#b4becf" stroke-width="1.4" fill="#b4becf" fill-opacity="0.10">
+      <circle cx="380" cy="80" r="11"/>
+      <path d="M 368 92 Q 362 102 362 130 L 362 155 Q 368 163 380 163 Q 392 163 398 155 L 398 130 Q 398 102 392 92 Z"/>
+      <path d="M 362 102 Q 346 112 342 138" fill="none"/>
+      <path d="M 398 102 Q 414 112 418 138" fill="none"/>
+      <path d="M 372 163 Q 370 173 370 180" fill="none"/>
+      <path d="M 388 163 Q 390 173 390 180" fill="none"/>
+    </g></g>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="103" cy="165" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

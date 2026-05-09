@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 03 · NORMAL · ANTIGEN-SPECIFIC</text>
+
+                  <g opacity="1"><circle cx="130" cy="145" r="42" fill="#9370b9" fill-opacity="0.35" stroke="#9370b9" stroke-width="1.8"></circle><ellipse cx="123" cy="140" rx="11" ry="9" fill="#4a2d60" opacity="0.7"></ellipse>
+                      <g transform="translate(172 145)">
+                        <!-- Class II body — paired chains forming a groove -->
+                        <path d="M -8 -10 L -8 4 L -2 4 L -2 -3 L 2 -3 L 2 4 L 8 4 L 8 -10 Z" fill="#4fb8a8" fill-opacity="0.85" stroke="#4fb8a8" stroke-width="1.4"></path>
+    
+                        <g fill="#d14859" opacity="0.95">
+                          <circle cx="-3" cy="-7" r="2.2"></circle>
+                          <circle cx="0" cy="-7" r="2.2"></circle>
+                          <circle cx="3" cy="-7" r="2.2"></circle>
+                        </g>
+                      </g><text x="130" y="205" text-anchor="middle" style="fill:#9370b9;font:600 8px Inter,sans-serif;letter-spacing:1.2px">APC</text></g><g opacity="1"><circle cx="370" cy="145" r="38" fill="#6cc27d" fill-opacity="0.35" stroke="#6cc27d" stroke-width="1.8"></circle><ellipse cx="375" cy="142" rx="9" ry="7" fill="#4a2d60" opacity="0.75"></ellipse>
+                      <g transform="translate(330 145)">
+                        <!-- TCR body -->
+                        <path d="M 0 -8 L -14 -12 L -14 12 L 0 8 Z" fill="#e8a951" fill-opacity="0.85" stroke="#e8a951" stroke-width="1.5"></path>
+                        <!-- Vβ region — outer edge -->
+                        <text x="-22" y="-12" style="fill:#e8a951;font:600 7px Inter,sans-serif">Vβ</text>
+                      </g>
+                    <text x="370" y="200" text-anchor="middle" style="fill:#6cc27d;font:600 8px Inter,sans-serif;letter-spacing:1.2px">SPECIFIC T CELL</text></g><line x1="172" y1="138" x2="316" y2="138" stroke="#6cc27d" stroke-width="1.5" stroke-dasharray="3 2"></line><text x="244" y="115" text-anchor="middle" style="fill:#6cc27d;font:600 7px Inter,sans-serif;letter-spacing:1.5px">SPECIFIC · IN THE GROOVE</text>
+
+                  <text x="250" y="105" text-anchor="middle" style="fill:#b4becf;font:italic 8px Fraunces,serif">~1 in 100,000 T-cell clones recognize this peptide</text>
+
+                  <text x="250" y="252" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">normal recognition: TCR reads a specific peptide held in the MHC groove</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="100" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

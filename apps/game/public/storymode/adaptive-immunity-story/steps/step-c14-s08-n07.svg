@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 04 · ENFUVIRTIDE · 36-AA HR2 MIMIC</text>
+
+<!-- Native gp41 HR2 on left -->
+<g transform="translate(125 145)">
+  <text x="0" y="-78" text-anchor="middle" style="fill:#6cc27d;font:700 9px Inter,sans-serif;letter-spacing:1.5px">NATIVE HR2</text>
+  <text x="0" y="-65" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">part of gp41</text>
+  
+  <!-- HR2 helix structure (string of beads) -->
+  <g fill="rgba(108,194,125,0.85)" stroke="#6cc27d" stroke-width="0.6">
+    <circle cx="-28" cy="0" r="3"/>
+    <circle cx="-22" cy="-3" r="3"/>
+    <circle cx="-15" cy="-5" r="3"/>
+    <circle cx="-8" cy="-3" r="3"/>
+    <circle cx="-1" cy="0" r="3"/>
+    <circle cx="6" cy="3" r="3"/>
+    <circle cx="13" cy="5" r="3"/>
+    <circle cx="20" cy="3" r="3"/>
+    <circle cx="27" cy="0" r="3"/>
+  </g>
+  <text x="0" y="22" text-anchor="middle" style="fill:#6cc27d;font:6.5px Inter,sans-serif">part of viral protein</text>
+</g>
+
+<!-- ≈ symbol -->
+<text x="250" y="148" text-anchor="middle" style="fill:#b4becf;font:700 18px Inter,sans-serif">≈</text>
+
+<!-- Enfuvirtide on right -->
+<g transform="translate(375 145)">
+  <text x="0" y="-78" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1.5px">ENFUVIRTIDE</text>
+  <text x="0" y="-65" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">36-aa peptide drug</text>
+  
+  <!-- Same shape, drug version (orange) -->
+  <g fill="rgba(232,169,81,0.85)" stroke="#e8a951" stroke-width="0.6">
+    <circle cx="-28" cy="0" r="3"/>
+    <circle cx="-22" cy="-3" r="3"/>
+    <circle cx="-15" cy="-5" r="3"/>
+    <circle cx="-8" cy="-3" r="3"/>
+    <circle cx="-1" cy="0" r="3"/>
+    <circle cx="6" cy="3" r="3"/>
+    <circle cx="13" cy="5" r="3"/>
+    <circle cx="20" cy="3" r="3"/>
+    <circle cx="27" cy="0" r="3"/>
+  </g>
+  <text x="0" y="22" text-anchor="middle" style="fill:#e8a951;font:6.5px Inter,sans-serif">free drug · mimics HR2</text>
+</g>
+
+<!-- Result banner -->
+<g transform="translate(250 215)">
+  <rect x="-200" y="-13" width="400" height="26" rx="6" fill="rgba(232,169,81,0.30)" stroke="#e8a951" stroke-width="1.6"/>
+  <text x="0" y="3" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1.5px">COMPETITIVE DECOY · BINDS HR1</text>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">36 amino acids designed to mimic HR2 · binds HR1 in place of native HR2</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="125" cy="62" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="213" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="375" cy="162" r="33" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="29;39;29" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

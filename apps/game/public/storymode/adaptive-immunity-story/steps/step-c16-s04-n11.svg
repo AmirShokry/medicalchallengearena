@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 06 · FACTOR HALF-LIVES · II IS RATE-LIMITING</text>
+
+<g transform="translate(80 65)">
+  <rect x="0" y="0" width="40" height="22" rx="3" fill="rgba(108,194,125,0.18)" stroke="#6cc27d" stroke-width="1"/>
+  <text x="20" y="14" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif">VII</text>
+</g>
+<text x="135" y="80" style="fill:#6cc27d;font:700 8px Inter,sans-serif">6 hr</text>
+<text x="200" y="80" style="fill:#b4becf;font:7px Inter,sans-serif">→ falls fastest, INR responds early</text>
+
+<g transform="translate(80 100)">
+  <rect x="0" y="0" width="40" height="22" rx="3" fill="rgba(232,169,81,0.18)" stroke="#e8a951" stroke-width="1"/>
+  <text x="20" y="14" text-anchor="middle" style="fill:#e8a951;font:700 8px Inter,sans-serif">IX</text>
+</g>
+<text x="135" y="115" style="fill:#e8a951;font:700 8px Inter,sans-serif">24 hr</text>
+
+<g transform="translate(80 135)">
+  <rect x="0" y="0" width="40" height="22" rx="3" fill="rgba(232,169,81,0.18)" stroke="#e8a951" stroke-width="1"/>
+  <text x="20" y="14" text-anchor="middle" style="fill:#e8a951;font:700 8px Inter,sans-serif">X</text>
+</g>
+<text x="135" y="150" style="fill:#e8a951;font:700 8px Inter,sans-serif">36 hr</text>
+
+<g transform="translate(80 170)">
+  <rect x="0" y="0" width="40" height="22" rx="3" fill="rgba(209,72,89,0.18)" stroke="#d14859" stroke-width="1.6"/>
+  <text x="20" y="14" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif">II</text>
+</g>
+<text x="135" y="185" style="fill:#d14859;font:700 8px Inter,sans-serif">60–72 hr ◄</text>
+<text x="240" y="185" style="fill:#d14859;font:700 7px Inter,sans-serif">RATE-LIMITING</text>
+
+<g transform="translate(250 230)">
+  <rect x="-200" y="-15" width="400" height="34" rx="6" fill="rgba(209,72,89,0.10)" stroke="#d14859" stroke-width="1"/>
+  <text x="0" y="-1" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif;letter-spacing:1.2px">PROTHROMBIN (II) IS THE LAST TO DEPLETE</text>
+  <text x="0" y="14" text-anchor="middle" style="fill:#b4becf;font:7px Inter,sans-serif">~5 days needed for true anticoagulation</text>
+</g>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="200" cy="75" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="135" cy="110" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="135" cy="145" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

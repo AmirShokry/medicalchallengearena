@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 03 · ECHINOCANDIN · 1ST-LINE INVASIVE CANDIDA</text>
+
+<!-- Patient ICU scenario -->
+<g transform="translate(135 145)">
+  <text x="0" y="-95" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.5px">UNSTABLE PATIENT</text>
+  
+  <!-- ICU bed/monitor -->
+  <rect x="-50" y="-65" width="100" height="50" rx="4" fill="rgba(20,24,40,0.85)" stroke="#3a4358" stroke-width="1.4"/>
+  <!-- Monitor lines -->
+  <g stroke="#d14859" stroke-width="1.4" fill="none">
+    <path d="M -45 -45 L -38 -45 L -32 -55 L -28 -35 L -22 -45 L 5 -45 L 12 -35 L 18 -55 L 22 -45 L 45 -45"/>
+  </g>
+  <text x="0" y="-22" text-anchor="middle" style="fill:#d14859;font:700 7px 'JetBrains Mono',monospace">HR 120</text>
+  
+  <!-- Patient body below -->
+  <g transform="translate(0 5)">
+    <rect x="-30" y="-5" width="60" height="40" rx="6" fill="rgba(180,190,207,0.30)" stroke="#b4becf" stroke-width="1.2"/>
+    <circle cx="0" cy="-15" r="10" fill="rgba(180,190,207,0.45)" stroke="#b4becf"/>
+  </g>
+  
+  <text x="0" y="55" text-anchor="middle" style="fill:#d14859;font:6.5px Inter,sans-serif">Candidemia + AKI</text>
+</g>
+
+<!-- Decision arrow -->
+<g stroke="#e8a951" stroke-width="2" fill="none" marker-end="url(#arr15_5_3a)">
+  <line x1="200" y1="145" x2="240" y2="145"/>
+</g>
+<defs>
+  <marker id="arr15_5_3a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8a951"/>
+  </marker>
+</defs>
+
+<!-- Echinocandin selected -->
+<g transform="translate(305 145)">
+  <rect x="-65" y="-30" width="130" height="60" rx="8" fill="rgba(108,194,125,0.30)" stroke="#6cc27d" stroke-width="2"/>
+  <text x="0" y="-12" text-anchor="middle" style="fill:#6cc27d;font:700 9px Inter,sans-serif;letter-spacing:1.2px">ECHINOCANDIN</text>
+  <line x1="-50" y1="-3" x2="50" y2="-3" stroke="#3a4358" stroke-width="0.6"/>
+  <text x="0" y="9" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">✓ fungicidal</text>
+  <text x="0" y="20" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">✓ no nephro</text>
+</g>
+
+<!-- Why not amphotericin -->
+<g transform="translate(425 145)">
+  <rect x="-50" y="-30" width="100" height="60" rx="8" fill="rgba(180,190,207,0.10)" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2"/>
+  <text x="0" y="-12" text-anchor="middle" style="fill:#6b7689;font:700 8px Inter,sans-serif">amphoB</text>
+  <line x1="-15" y1="-5" x2="15" y2="10" stroke="#d14859" stroke-width="2" stroke-linecap="round"/>
+  <line x1="-15" y1="10" x2="15" y2="-5" stroke="#d14859" stroke-width="2" stroke-linecap="round"/>
+  <text x="0" y="22" text-anchor="middle" style="fill:#d14859;font:6.5px Inter,sans-serif">AKI = no</text>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">Active vs fluconazole-resistant species (glabrata, krusei) · IDSA first-line</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="135" cy="45" r="24" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="20;30;20" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="135" cy="195" r="24" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="20;30;20" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="305" cy="128" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

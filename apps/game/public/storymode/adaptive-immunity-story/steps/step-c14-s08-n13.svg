@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 07 · ENTRY INHIBITOR FAMILY</text>
+
+<!-- Cell with all targets shown -->
+<g transform="translate(120 145)">
+  <text x="0" y="-90" text-anchor="middle" style="fill:#9370b9;font:700 9px Inter,sans-serif;letter-spacing:1.5px">TARGETS ON CELL</text>
+  
+  <!-- Cell membrane -->
+  <line x1="-50" y1="35" x2="50" y2="35" stroke="#6cc27d" stroke-width="3"/>
+  <line x1="-50" y1="-25" x2="50" y2="-25" stroke="#b4becf" stroke-width="3"/>
+  
+  <!-- CD4 -->
+  <rect x="-32" y="13" width="6" height="24" rx="2" fill="rgba(108,194,125,0.85)"/>
+  <text x="-29" y="50" text-anchor="middle" style="fill:#6cc27d;font:6.5px 'JetBrains Mono',monospace">CD4</text>
+  
+  <!-- CCR5 -->
+  <rect x="-3" y="13" width="8" height="24" rx="2" fill="rgba(232,169,81,0.85)"/>
+  <text x="1" y="50" text-anchor="middle" style="fill:#e8a951;font:6.5px 'JetBrains Mono',monospace">CCR5</text>
+  
+  <!-- gp120 (free + on virus) -->
+  <circle cx="-29" cy="-5" r="5" fill="rgba(147,112,185,0.85)"/>
+  <text x="-15" y="-10" style="fill:#9370b9;font:6.5px 'JetBrains Mono',monospace">gp120</text>
+  
+  <!-- gp41 -->
+  <line x1="20" y1="-25" x2="20" y2="-5" stroke="#d14859" stroke-width="2"/>
+  <text x="30" y="-15" style="fill:#d14859;font:6.5px 'JetBrains Mono',monospace">gp41</text>
+  
+  <!-- Capsid (inside) -->
+  <path d="M 35 -45 L 47 -45 L 50 -32 L 32 -32 Z" fill="rgba(108,194,125,0.45)" stroke="#6cc27d" stroke-width="1"/>
+  <text x="35" y="-50" text-anchor="end" style="fill:#6cc27d;font:6px 'JetBrains Mono',monospace">capsid</text>
+</g>
+
+<!-- 4 drug cards on right -->
+<g transform="translate(355 75)">
+  <rect x="-110" y="-15" width="220" height="30" rx="5" fill="rgba(232,169,81,0.20)" stroke="#e8a951" stroke-width="1.4"/>
+  <text x="-95" y="3" style="fill:#e8a951;font:700 8px Inter,sans-serif;letter-spacing:1.2px">MARAVIROC</text>
+  <text x="35" y="3" style="fill:#b4becf;font:6.5px Inter,sans-serif">CCR5 · oral</text>
+</g>
+
+<g transform="translate(355 110)">
+  <rect x="-110" y="-15" width="220" height="30" rx="5" fill="rgba(108,194,125,0.20)" stroke="#6cc27d" stroke-width="1.4"/>
+  <text x="-95" y="3" style="fill:#6cc27d;font:700 8px Inter,sans-serif;letter-spacing:1.2px">IBALIZUMAB</text>
+  <text x="20" y="3" style="fill:#b4becf;font:6.5px Inter,sans-serif">anti-CD4 · IV q2wk</text>
+</g>
+
+<g transform="translate(355 145)">
+  <rect x="-110" y="-15" width="220" height="30" rx="5" fill="rgba(147,112,185,0.20)" stroke="#9370b9" stroke-width="1.4"/>
+  <text x="-95" y="3" style="fill:#9370b9;font:700 8px Inter,sans-serif;letter-spacing:1.2px">FOSTEMSAVIR</text>
+  <text x="30" y="3" style="fill:#b4becf;font:6.5px Inter,sans-serif">gp120 · oral</text>
+</g>
+
+<g transform="translate(355 180)">
+  <rect x="-110" y="-15" width="220" height="30" rx="5" fill="rgba(209,72,89,0.20)" stroke="#d14859" stroke-width="1.4"/>
+  <text x="-95" y="3" style="fill:#d14859;font:700 8px Inter,sans-serif;letter-spacing:1.2px">LENACAPAVIR</text>
+  <text x="20" y="3" style="fill:#b4becf;font:6.5px Inter,sans-serif">capsid · subQ q6mo</text>
+</g>
+
+<g transform="translate(355 215)">
+  <rect x="-110" y="-15" width="220" height="30" rx="5" fill="rgba(79,184,168,0.20)" stroke="#4fb8a8" stroke-width="1.4"/>
+  <text x="-95" y="3" style="fill:#4fb8a8;font:700 8px Inter,sans-serif;letter-spacing:1.2px">ENFUVIRTIDE</text>
+  <text x="20" y="3" style="fill:#b4becf;font:6.5px Inter,sans-serif">gp41 HR1 · subQ</text>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">Multiple entry strategies · lenacapavir is the newest (2x/year SC capsid blocker)</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="155" cy="90" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="105" cy="130" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="375" cy="178" r="27" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="23;33;23" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

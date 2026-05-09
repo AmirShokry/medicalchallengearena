@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 430" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 06 · THE MAC · MEMBRANE ATTACK COMPLEX</text>
+
+                  <g opacity="1"><ellipse cx="96" cy="145" rx="22" ry="26" fill="#d14859" fill-opacity="0.55" stroke="#d14859" stroke-width="1.8"></ellipse><ellipse cx="124" cy="145" rx="22" ry="26" fill="#d14859" fill-opacity="0.55" stroke="#d14859" stroke-width="1.8"></ellipse></g><text x="110" y="200" text-anchor="middle" style="fill:#d14859;font:600 9px Inter,sans-serif;letter-spacing:1.2px">NEISSERIA</text><text x="110" y="213" text-anchor="middle" style="fill:#b4becf;font:italic 8px Fraunces,serif">gram-negative diplococcus</text>
+                    <line x1="200" y1="155" x2="470" y2="155" stroke="#e8a951" stroke-width="2" opacity="0.75"></line>
+                    <line x1="200" y1="175" x2="470" y2="175" stroke="#e8a951" stroke-width="2" opacity="0.75"></line>
+                    <rect x="200" y="155" width="270" height="20" fill="#e8a951" fill-opacity="0.10"></rect>
+                  <text x="205" y="100" style="fill:#b4becf;font:600 7px Inter,sans-serif;letter-spacing:1.5px">EXTRACELLULAR</text><text x="205" y="200" style="fill:#b4becf;font:600 7px Inter,sans-serif;letter-spacing:1.5px">BACTERIAL INTERIOR</text><text x="335" y="232" text-anchor="middle" style="fill:#e8a951;font:700 10px Inter,sans-serif;letter-spacing:2.5px">MEMBRANE ATTACK COMPLEX</text>
+
+                  <!-- Big MAC name overlay above membrane -->
+                  <g transform="translate(335 110)">
+                    <rect x="-90" y="-15" width="180" height="30" rx="6" fill="#e8a951" fill-opacity="0.30" stroke="#e8a951" stroke-width="1.6"></rect>
+                    <text x="0" y="3" text-anchor="middle" style="fill:#e8a951;font:700 10px Inter,sans-serif;letter-spacing:2px">MAC</text>
+                  </g>
+
+                  <text x="250" y="252" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">the membrane attack complex · complement's pore-drilling weapon</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="335" cy="108" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

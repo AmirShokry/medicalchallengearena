@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 280" preserveAspectRatio="xMidYMid meet">
+                <text x="20" y="26" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 10 · HLA-DM · CLIP OUT, PEPTIDE IN</text>
+                <rect x="40" y="70" width="420" height="180" rx="18" fill="#0e1422" stroke="#3a4358" stroke-width="1.2"/>
+                <text x="50" y="64" style="fill:#6b7689;font:600 8px Inter,sans-serif;letter-spacing:1.5px">EXTRACELLULAR</text>
+                <text x="50" y="246" style="fill:#6b7689;font:600 8px Inter,sans-serif;letter-spacing:1.5px">CYTOPLASM</text>
+                <line x1="40" y1="70" x2="460" y2="70" stroke="#4fb8a8" stroke-width="1.5" opacity="0.7"/>
+                <g opacity="0.18">
+                  <path d="M 70 180 Q 55 205 80 220 Q 130 230 175 220 Q 200 215 205 198 Q 210 175 188 162 Q 130 154 70 180 Z" fill="#4fb8a8" stroke="#4fb8a8" stroke-width="1"/>
+                  <text x="135" y="245" text-anchor="middle" style="fill:#4fb8a8;font:600 8px Inter,sans-serif">ER</text>
+                </g>
+                <ellipse cx="280" cy="170" rx="135" ry="72" fill="#e8a951" opacity="0.13" stroke="#e8a951" stroke-width="1.8" stroke-dasharray="5 3"/>
+                <text x="280" y="100" text-anchor="middle" style="fill:#e8a951;font:700 10px Inter,sans-serif;letter-spacing:2px">ENDOSOME · LOADING</text>
+                <g transform="translate(180 175)">
+                  <path d="M -22 -6 L 22 -6 L 24 4 L 14 4 L 11 -2 L -11 -2 L -14 4 L -24 4 Z" fill="#4fb8a8" opacity="0.85" stroke="#4fb8a8" stroke-width="1.3"/>
+                  <rect x="-7" y="-10" width="14" height="6" rx="2" fill="#9370b9"/>
+                  <text x="0" y="-5" text-anchor="middle" style="fill:#e8ecf3;font:700 6px Inter,sans-serif">CLIP</text>
+                  <text x="0" y="22" text-anchor="middle" style="fill:#b4becf;font:italic 9px Fraunces,serif">before</text>
+                </g>
+                <g transform="translate(280 175)">
+                  <ellipse cx="0" cy="0" rx="22" ry="18" fill="#e8a951" opacity="0.85" stroke="#e8a951" stroke-width="2"/>
+                  <text x="0" y="4" text-anchor="middle" style="fill:#0a0e1a;font:700 11px Inter,sans-serif">DM</text>
+                  <text x="0" y="32" text-anchor="middle" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:1.5px">CHAPERONE</text>
+                </g>
+                <g transform="translate(380 175)">
+                  <path d="M -22 -6 L 22 -6 L 24 4 L 14 4 L 11 -2 L -11 -2 L -14 4 L -24 4 Z" fill="#4fb8a8" opacity="0.85" stroke="#4fb8a8" stroke-width="1.3"/>
+                  <g transform="translate(0 -10)" fill="#d14859">
+                    <circle cx="-7" cy="0" r="2.4"/><circle cx="-2" cy="0" r="2.4"/>
+                    <circle cx="3" cy="0" r="2.4"/><circle cx="8" cy="0" r="2.4"/>
+                  </g>
+                  <text x="0" y="22" text-anchor="middle" style="fill:#b4becf;font:italic 9px Fraunces,serif">after</text>
+                </g>
+                <path d="M 210 165 Q 245 150 252 165" stroke="#9370b9" stroke-width="1.2" fill="none" stroke-dasharray="3 2"/>
+                <polygon points="252,165 247,160 248,168" fill="#9370b9"/>
+                <text x="225" y="148" style="fill:#9370b9;font:600 7px Inter,sans-serif">CLIP out</text>
+                <path d="M 312 165 Q 340 150 360 165" stroke="#d14859" stroke-width="1.2" fill="none" stroke-dasharray="3 2"/>
+                <polygon points="360,165 354,160 354,168" fill="#d14859"/>
+                <text x="324" y="148" style="fill:#d14859;font:600 7px Inter,sans-serif">peptide in</text>
+                <text x="250" y="270" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">HLA-DM only works at endosomal pH</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="324" cy="143" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="280" cy="202" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="180" cy="165" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

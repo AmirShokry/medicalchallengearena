@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 06 · IF · GRANULAR (LUPUS) vs LINEAR (Goodpasture)</text>
+
+<!-- LUPUS PANEL -->
+<g transform="translate(125 130)">
+  <text x="0" y="-72" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1.5px">LUPUS · GRANULAR</text>
+  
+  <!-- Round IF microscope view -->
+  <circle cx="0" cy="20" r="58" fill="rgba(10,14,26,0.85)" stroke="#3a4358" stroke-width="2"/>
+  
+  <!-- GBM as faint curved line -->
+  <path d="M -45 35 Q 0 5 45 35" fill="none" stroke="#b4becf" stroke-width="1.4" opacity="0.4"/>
+  <path d="M -45 50 Q 0 20 45 50" fill="none" stroke="#b4becf" stroke-width="1.4" opacity="0.4"/>
+  <path d="M -45 5 Q 0 -25 45 5" fill="none" stroke="#b4becf" stroke-width="1.4" opacity="0.4"/>
+  
+  <!-- DISCRETE GRANULAR DEPOSITS (clumpy) -->
+  <g fill="rgba(108,194,125,0.95)">
+    <circle cx="-35" cy="22" r="3"/>
+    <circle cx="-22" cy="14" r="3.5"/>
+    <circle cx="-10" cy="8" r="3"/>
+    <circle cx="3" cy="6" r="4"/>
+    <circle cx="15" cy="9" r="3"/>
+    <circle cx="28" cy="16" r="3.5"/>
+    <circle cx="38" cy="24" r="3"/>
+    <circle cx="-30" cy="40" r="3"/>
+    <circle cx="-15" cy="32" r="3.5"/>
+    <circle cx="0" cy="30" r="3"/>
+    <circle cx="18" cy="32" r="3"/>
+    <circle cx="32" cy="40" r="3.5"/>
+    <circle cx="-32" cy="-12" r="3"/>
+    <circle cx="-15" cy="-18" r="3"/>
+    <circle cx="5" cy="-22" r="3.5"/>
+    <circle cx="22" cy="-15" r="3"/>
+    <circle cx="35" cy="-7" r="3"/>
+  </g>
+  
+  <text x="0" y="93" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif;letter-spacing:1.2px">discrete clumps · IgG + C3</text>
+</g>
+
+<!-- VS divider -->
+<text x="250" y="135" text-anchor="middle" style="fill:#b4becf;font:italic 700 11px Fraunces,serif">vs</text>
+
+<!-- GOODPASTURE PANEL -->
+<g transform="translate(375 130)">
+  <text x="0" y="-72" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.5px">GOODPASTURE · LINEAR</text>
+  
+  <circle cx="0" cy="20" r="58" fill="rgba(10,14,26,0.85)" stroke="#3a4358" stroke-width="2"/>
+  
+  <!-- GBM as continuous bright lines -->
+  <g stroke="rgba(108,194,125,0.95)" stroke-width="3" fill="none">
+    <path d="M -45 35 Q 0 5 45 35"/>
+    <path d="M -45 50 Q 0 20 45 50"/>
+    <path d="M -45 5 Q 0 -25 45 5"/>
+  </g>
+  
+  <text x="0" y="93" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif;letter-spacing:1.2px">smooth ribbon · anti-GBM Ab</text>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">Granular = pre-formed complexes deposited · Linear = Ab binds GBM antigen directly</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="125" cy="218" r="39" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="35;45;35" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="375" cy="53" r="30" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="26;36;26" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="125" cy="53" r="24" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="20;30;20" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+              </svg>

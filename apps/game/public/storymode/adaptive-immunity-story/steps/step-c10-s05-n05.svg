@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 03 · ADA PATHWAY · dAdo TRAPPED → dATP</text>
+
+<!-- Top normal pathway: dAdo → ADA → dInosine -->
+<g transform="translate(250 90)">
+  <text x="0" y="-22" text-anchor="middle" style="fill:#b4becf;font:700 7.5px Inter,sans-serif;letter-spacing:1.2px">NORMAL · CLEARED BY ADA</text>
+  
+  <!-- dAdo substrate (left) -->
+  <g transform="translate(-110 0)">
+    <rect x="-32" y="-12" width="64" height="24" rx="6" fill="rgba(232,169,81,0.30)" stroke="#e8a951" stroke-width="1.4"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif">dAdo</text>
+  </g>
+  
+  <!-- ADA enzyme arrow -->
+  <g transform="translate(-30 0)">
+    <line x1="-40" y1="0" x2="40" y2="0" stroke="#9370b9" stroke-width="2" stroke-dasharray="3 2"/>
+    <polygon points="40,0 33,-4 33,4" fill="#9370b9"/>
+    <rect x="-15" y="-13" width="30" height="14" rx="3" fill="rgba(147,112,185,0.85)" stroke="#9370b9" stroke-width="1.4"/>
+    <text x="0" y="-3" text-anchor="middle" style="fill:#0a0e1a;font:700 8px Inter,sans-serif">ADA</text>
+  </g>
+  
+  <!-- dInosine product (right) -->
+  <g transform="translate(70 0)">
+    <rect x="-32" y="-12" width="64" height="24" rx="6" fill="rgba(108,194,125,0.30)" stroke="#6cc27d" stroke-width="1.4"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#6cc27d;font:700 9px Inter,sans-serif">dInosine</text>
+  </g>
+  
+  <!-- Cleared label -->
+  <text x="155" y="3" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif">→ excreted</text>
+</g>
+
+<!-- Divider -->
+<line x1="50" y1="135" x2="450" y2="135" stroke="#3a4358" stroke-width="1" stroke-dasharray="3 3"/>
+
+<!-- Bottom: ADA blocked → accumulates → dAK → dATP -->
+<g transform="translate(250 195)">
+  <text x="0" y="-30" text-anchor="middle" style="fill:#d14859;font:700 7.5px Inter,sans-serif;letter-spacing:1.2px">ADA SCID · BLOCKED</text>
+  
+  <!-- dAdo accumulating (left) -->
+  <g transform="translate(-160 0)">
+    <rect x="-32" y="-12" width="64" height="24" rx="6" fill="rgba(232,169,81,0.65)" stroke="#e8a951" stroke-width="1.6"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 9px Inter,sans-serif">dAdo</text>
+    <text x="0" y="22" text-anchor="middle" style="fill:#e8a951;font:700 7px Inter,sans-serif">↑↑ accumulates</text>
+  </g>
+  
+  <!-- ADA blocked arrow -->
+  <g transform="translate(-80 0)">
+    <line x1="-40" y1="0" x2="40" y2="0" stroke="#6b7689" stroke-width="1.4" stroke-dasharray="3 2" opacity="0.5"/>
+    <polygon points="40,0 33,-4 33,4" fill="#6b7689" opacity="0.5"/>
+    <rect x="-15" y="-13" width="30" height="14" rx="3" fill="none" stroke="#9370b9" stroke-width="1.2" stroke-dasharray="2 2" opacity="0.5"/>
+    <text x="0" y="-3" text-anchor="middle" style="fill:#9370b9;font:700 8px Inter,sans-serif" opacity="0.5">ADA</text>
+    <line x1="-12" y1="-12" x2="12" y2="0" stroke="#d14859" stroke-width="2.4" stroke-linecap="round"/>
+    <line x1="-12" y1="0" x2="12" y2="-12" stroke="#d14859" stroke-width="2.4" stroke-linecap="round"/>
+  </g>
+  
+  <!-- dAK alternate path (down) -->
+  <g transform="translate(-160 25)">
+    <line x1="0" y1="0" x2="0" y2="20" stroke="#e8a951" stroke-width="2"/>
+    <polygon points="0,20 -4,13 4,13" fill="#e8a951"/>
+    <text x="-30" y="14" text-anchor="end" style="fill:#e8a951;font:700 7.5px Inter,sans-serif;letter-spacing:1px">dAK</text>
+    <text x="-30" y="24" text-anchor="end" style="fill:#b4becf;font:6.5px Inter,sans-serif">phos.</text>
+  </g>
+  
+  <!-- dATP downstream -->
+  <g transform="translate(-160 65)">
+    <rect x="-32" y="-12" width="64" height="24" rx="6" fill="rgba(209,72,89,0.85)" stroke="#d14859" stroke-width="1.6"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 9px Inter,sans-serif">dATP</text>
+    <text x="0" y="22" text-anchor="middle" style="fill:#d14859;font:700 7px Inter,sans-serif">↑↑ TOXIC</text>
+  </g>
+  
+  <!-- Lymphocyte panel right showing dATP trapping -->
+  <g transform="translate(80 25)">
+    <text x="0" y="-22" text-anchor="middle" style="fill:#9370b9;font:700 8px Inter,sans-serif;letter-spacing:1.2px">LYMPHOCYTE · HIGH dAK</text>
+    <ellipse cx="0" cy="20" rx="60" ry="40" fill="rgba(147,112,185,0.30)" stroke="#9370b9" stroke-width="1.6"/>
+    <ellipse cx="-3" cy="18" rx="14" ry="11" fill="rgba(74,45,96,0.7)" opacity="0.6"/>
+    <text x="-3" y="22" text-anchor="middle" style="fill:#e8ecf3;font:700 9px Inter,sans-serif">B/T</text>
+    <!-- dATP labels inside -->
+    <g fill="rgba(209,72,89,0.95)">
+      <rect x="-44" y="-1" width="20" height="9" rx="2"/>
+      <text x="-34" y="6" text-anchor="middle" style="fill:#0a0e1a;font:700 6.5px Inter,sans-serif">dATP</text>
+      <rect x="22" y="-1" width="20" height="9" rx="2"/>
+      <text x="32" y="6" text-anchor="middle" style="fill:#0a0e1a;font:700 6.5px Inter,sans-serif">dATP</text>
+      <rect x="-30" y="35" width="20" height="9" rx="2"/>
+      <text x="-20" y="42" text-anchor="middle" style="fill:#0a0e1a;font:700 6.5px Inter,sans-serif">dATP</text>
+      <rect x="14" y="38" width="20" height="9" rx="2"/>
+      <text x="24" y="45" text-anchor="middle" style="fill:#0a0e1a;font:700 6.5px Inter,sans-serif">dATP</text>
+    </g>
+  </g>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">Lymphocytes have HIGH dAK · so they make and trap the most dATP</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="296" cy="221" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="362" cy="221" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

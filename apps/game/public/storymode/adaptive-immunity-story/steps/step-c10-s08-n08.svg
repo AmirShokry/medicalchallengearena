@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 05 · GAMMA IRRADIATE · 25 Gy</text>
+
+                  <g transform="translate(115 145)" opacity="1"><rect x="-3" y="-48" width="6" height="6" fill="#6b7689" opacity="0.65"></rect><path d="M -25 -40 L 25 -40 L 21 40 L -21 40 Z" fill="#d14859" fill-opacity="0.55" stroke="#d14859" stroke-width="1.5"></path><g fill="#9c2937" fill-opacity="0.85"><ellipse cx="-12" cy="-25" rx="3" ry="2"></ellipse><ellipse cx="10" cy="-28" rx="3" ry="2"></ellipse><ellipse cx="0" cy="-10" rx="3" ry="2"></ellipse><ellipse cx="-10" cy="-5" rx="3" ry="2"></ellipse><ellipse cx="12" cy="-8" rx="3" ry="2"></ellipse><ellipse cx="-15" cy="8" rx="3" ry="2"></ellipse><ellipse cx="10" cy="12" rx="3" ry="2"></ellipse><ellipse cx="-5" cy="22" rx="3" ry="2"></ellipse><ellipse cx="12" cy="25" rx="3" ry="2"></ellipse><ellipse cx="-12" cy="28" rx="3" ry="2"></ellipse></g><g fill="#e8a951" fill-opacity="0.95" stroke="#e8a951" stroke-width="0.8"><circle cx="-10" cy="-15" r="4"></circle><circle cx="6" cy="0" r="4"></circle><circle cx="-3" cy="20" r="4"></circle></g></g>
+                  <text x="115" y="200" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif;letter-spacing:1.2px">unit of blood</text>
+
+                  <g transform="translate(220 145)">
+                    <text x="0" y="-65" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1.5px">25 Gy γ</text>
+                    <g stroke="#e8a951" stroke-width="2.4" fill="#e8a951" stroke-linejoin="round">
+<polygon points="-12,-30 -2,-10 -8,-10 0,15 -10,-5 -2,-5"></polygon>
+<polygon points="12,-30 22,-10 16,-10 24,15 14,-5 22,-5"></polygon>
+                    </g>
+                    <text x="0" y="35" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">damages T-cell DNA</text>
+                    <text x="0" y="46" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">prevents proliferation</text>
+                  </g>
+
+                  <path d="M 280 145 L 320 145" stroke="#e8a951" stroke-width="1.8" fill="none"></path>
+                  <polygon points="320,145 313,141 313,149" fill="#e8a951"></polygon>
+
+                  <g transform="translate(380 145)" opacity="1"><rect x="-3" y="-48" width="6" height="6" fill="#6b7689" opacity="0.65"></rect><path d="M -25 -40 L 25 -40 L 21 40 L -21 40 Z" fill="#d14859" fill-opacity="0.55" stroke="#d14859" stroke-width="1.5"></path><g fill="#9c2937" fill-opacity="0.85"><ellipse cx="-12" cy="-25" rx="3" ry="2"></ellipse><ellipse cx="10" cy="-28" rx="3" ry="2"></ellipse><ellipse cx="0" cy="-10" rx="3" ry="2"></ellipse><ellipse cx="-10" cy="-5" rx="3" ry="2"></ellipse><ellipse cx="12" cy="-8" rx="3" ry="2"></ellipse><ellipse cx="-15" cy="8" rx="3" ry="2"></ellipse><ellipse cx="10" cy="12" rx="3" ry="2"></ellipse><ellipse cx="-5" cy="22" rx="3" ry="2"></ellipse><ellipse cx="12" cy="25" rx="3" ry="2"></ellipse><ellipse cx="-12" cy="28" rx="3" ry="2"></ellipse></g><g fill="#6b7689" fill-opacity="0.45" stroke="#6b7689" stroke-width="0.8"><circle cx="-10" cy="-15" r="4"></circle><circle cx="6" cy="0" r="4"></circle><circle cx="-3" cy="20" r="4"></circle></g><g stroke="#d14859" stroke-width="1.2" stroke-linecap="round"><line x1="-13" y1="-18" x2="-7" y2="-12"></line><line x1="-13" y1="-12" x2="-7" y2="-18"></line><line x1="3" y1="-3" x2="9" y2="3"></line><line x1="3" y1="3" x2="9" y2="-3"></line><line x1="-6" y1="17" x2="0" y2="23"></line><line x1="-6" y1="23" x2="0" y2="17"></line></g></g>
+                  <text x="380" y="200" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif;letter-spacing:1.2px">irradiated · safe</text>
+
+                  <g transform="translate(250 230)">
+                    <rect x="-150" y="-10" width="300" height="20" rx="8" fill="#6cc27d" fill-opacity="0.30" stroke="#6cc27d" stroke-width="1.4"></rect>
+                    <text x="0" y="3" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif;letter-spacing:1.5px">DONOR T CELLS INACTIVATED · RBCs PRESERVED</text>
+                  </g>
+
+                  <text x="250" y="245" text-anchor="middle" style="fill:#b4becf;font:italic 7.5px Fraunces,serif">RBCs and platelets are radioresistant · T-cell DNA isn't · 25 Gy kills lymphocytes specifically</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="228" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="220" cy="186" r="33" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="29;39;29" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="220" cy="175" r="27" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="23;33;23" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

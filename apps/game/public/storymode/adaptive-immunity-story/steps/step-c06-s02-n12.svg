@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 07 · TRADE-OFF · GLOBAL CLASS I SHUTDOWN</text>
+
+                  <!-- left: myeloma cell dying (success) -->
+                  <g transform="translate(130 140)">
+                    <text x="0" y="-50" text-anchor="middle" style="fill:#6cc27d;font:600 9px Inter,sans-serif;letter-spacing:1.5px">INTENDED</text>
+                    <circle cx="0" cy="0" r="28" fill="#9370b9" fill-opacity="0.20" stroke="#9370b9" stroke-width="1.4" stroke-dasharray="3 2"></circle>
+                    <ellipse cx="-5" cy="-2" rx="8" ry="6" fill="#1a2030" opacity="0.55"></ellipse>
+                    <!-- shrinking / blebs -->
+                    <circle cx="22" cy="-15" r="5" fill="#9370b9" fill-opacity="0.30" stroke="#9370b9" stroke-width="1"></circle>
+                    <circle cx="-18" cy="20" r="4" fill="#9370b9" fill-opacity="0.30" stroke="#9370b9" stroke-width="1"></circle>
+                    <text x="0" y="42" text-anchor="middle" style="fill:#6cc27d;font:600 8px Inter,sans-serif;letter-spacing:1.2px">MYELOMA APOPTOSIS</text>
+                    <!-- check mark -->
+                    <g transform="translate(28 -22)">
+                      <circle cx="0" cy="0" r="8" fill="#6cc27d" fill-opacity="0.40" stroke="#6cc27d" stroke-width="1.4"></circle>
+                      <path d="M -3 0 L -1 2 L 3 -2" stroke="#6cc27d" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </g>
+                  </g>
+
+                  <!-- divider -->
+                  <line x1="250" y1="60" x2="250" y2="220" stroke="#3a4358" stroke-width="0.8" stroke-dasharray="3 3"></line>
+
+                  <!-- right: normal cell with bare surface (side effect) -->
+                  <g transform="translate(370 140)">
+                    <text x="0" y="-50" text-anchor="middle" style="fill:#d14859;font:600 9px Inter,sans-serif;letter-spacing:1.5px">SIDE EFFECT</text>
+                    <!-- normal cell with bare surface -->
+                    <line x1="-44" y1="-30" x2="44" y2="-30" stroke="#4fb8a8" stroke-width="2" opacity="0.6"></line>
+                    <line x1="-44" y1="-26" x2="44" y2="-26" stroke="#4fb8a8" stroke-width="2" opacity="0.6"></line>
+                    <rect x="-44" y="-26" width="88" height="56" fill="#4fb8a8" fill-opacity="0.05"></rect>
+                    <!-- proteasome blocked inside -->
+    
+                    <g opacity="1">
+                      <!-- barrel: top ring, body, bottom ring -->
+                      <ellipse cx="0" cy="-17" rx="22" ry="6" fill="#6b7689" fill-opacity="0.3" stroke="#6b7689" stroke-width="1.5"></ellipse>
+                      <rect x="-22" y="-17" width="44" height="44" fill="#6b7689" fill-opacity="0.255" stroke="#6b7689" stroke-width="1.5"></rect>
+                      <ellipse cx="0" cy="27" rx="22" ry="6" fill="#6b7689" fill-opacity="0.3" stroke="#6b7689" stroke-width="1.5"></ellipse>
+                      <!-- horizontal lines suggesting subunits -->
+                      <line x1="-22" y1="-3" x2="22" y2="-3" stroke="#3a4358" stroke-width="0.8" opacity="0.5"></line>
+                      <line x1="-22" y1="13" x2="22" y2="13" stroke="#3a4358" stroke-width="0.8" opacity="0.5"></line>
+                      <text x="0" y="45" text-anchor="middle" style="fill:#6b7689;font:600 9px Inter,sans-serif;letter-spacing:1.5px">PROTEASOME</text>
+                    </g>
+  
+                    <!-- empty Class I outlines on surface -->
+    
+                    <g transform="translate(-25 -36)" opacity="0.5">
+                      <path d="M -14 0 L 14 0 L 16 10 L 9 10 L 7 4 L -7 4 L -9 10 L -16 10 Z" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2"></path>
+                    </g>
+  
+    
+                    <g transform="translate(0 -36)" opacity="0.5">
+                      <path d="M -14 0 L 14 0 L 16 10 L 9 10 L 7 4 L -7 4 L -9 10 L -16 10 Z" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2"></path>
+                    </g>
+  
+    
+                    <g transform="translate(25 -36)" opacity="0.5">
+                      <path d="M -14 0 L 14 0 L 16 10 L 9 10 L 7 4 L -7 4 L -9 10 L -16 10 Z" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2"></path>
+                    </g>
+  
+                    <text x="0" y="50" text-anchor="middle" style="fill:#d14859;font:600 8px Inter,sans-serif;letter-spacing:1.2px">NORMAL CELL · BARE</text>
+                    <!-- X mark -->
+                    <g transform="translate(38 -42)">
+                      <circle cx="0" cy="0" r="8" fill="#d14859" fill-opacity="0.40" stroke="#d14859" stroke-width="1.4"></circle>
+                      <line x1="-3" y1="-3" x2="3" y2="3" stroke="#d14859" stroke-width="2" stroke-linecap="round"></line>
+                      <line x1="-3" y1="3" x2="3" y2="-3" stroke="#d14859" stroke-width="2" stroke-linecap="round"></line>
+                    </g>
+                  </g>
+
+                  <text x="250" y="252" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">drug doesn't discriminate · CD8 surveillance drops body-wide</text>
+              
+                  
+              
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="130" cy="177" r="26" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="22;32;22" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="370" cy="85" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+              </svg>

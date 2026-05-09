@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 06 · RITONAVIR · CYP3A4 BOOST</text>
+
+<g transform="translate(125 145)">
+  <text x="0" y="-92" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.5px">PI ALONE</text>
+  <rect x="-22" y="-50" width="44" height="22" rx="11" fill="rgba(232,169,81,0.55)" stroke="#e8a951" stroke-width="1.4"/>
+  <text x="0" y="-36" text-anchor="middle" style="fill:#0a0e1a;font:700 7px Inter,sans-serif">PI drug</text>
+  <line x1="0" y1="-25" x2="0" y2="-10" stroke="#3a4358" stroke-width="1.4"/>
+  <polygon points="0,-10 -3,-16 3,-16" fill="#3a4358"/>
+  <ellipse cx="0" cy="0" rx="30" ry="18" fill="rgba(147,112,185,0.55)" stroke="#9370b9" stroke-width="1.4"/>
+  <text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 8px Inter,sans-serif">CYP3A4</text>
+  <line x1="0" y1="20" x2="0" y2="32" stroke="#d14859" stroke-width="1.4"/>
+  <polygon points="0,32 -3,26 3,26" fill="#d14859"/>
+  <rect x="-50" y="40" width="100" height="22" rx="6" fill="rgba(209,72,89,0.20)" stroke="#d14859" stroke-width="1.4"/>
+  <text x="0" y="55" text-anchor="middle" style="fill:#d14859;font:700 7.5px Inter,sans-serif">LOW PI LEVELS</text>
+</g>
+
+<line x1="250" y1="55" x2="250" y2="220" stroke="#3a4358" stroke-width="1" stroke-dasharray="3 3"/>
+
+<g transform="translate(375 145)">
+  <text x="0" y="-92" text-anchor="middle" style="fill:#6cc27d;font:700 9px Inter,sans-serif;letter-spacing:1.5px">PI + RITONAVIR</text>
+  <rect x="-30" y="-50" width="22" height="22" rx="11" fill="rgba(232,169,81,0.55)" stroke="#e8a951" stroke-width="1.4"/>
+  <text x="-19" y="-36" text-anchor="middle" style="fill:#0a0e1a;font:700 6px Inter,sans-serif">PI</text>
+  <rect x="8" y="-50" width="22" height="22" rx="11" fill="rgba(108,194,125,0.85)" stroke="#6cc27d" stroke-width="1.4"/>
+  <text x="19" y="-36" text-anchor="middle" style="fill:#0a0e1a;font:700 6px Inter,sans-serif">RTV</text>
+  <line x1="-19" y1="-25" x2="-3" y2="-10" stroke="#3a4358" stroke-width="1.4"/>
+  <line x1="19" y1="-25" x2="3" y2="-10" stroke="#3a4358" stroke-width="1.4"/>
+  <ellipse cx="0" cy="0" rx="30" ry="18" fill="rgba(147,112,185,0.55)" stroke="#9370b9" stroke-width="1.4"/>
+  <text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 8px Inter,sans-serif">CYP3A4</text>
+  <line x1="-12" y1="-12" x2="12" y2="12" stroke="#d14859" stroke-width="2.4" stroke-linecap="round"/>
+  <line x1="-12" y1="12" x2="12" y2="-12" stroke="#d14859" stroke-width="2.4" stroke-linecap="round"/>
+  <text x="0" y="-26" text-anchor="middle" style="fill:#d14859;font:700 7px Inter,sans-serif">RTV blocks</text>
+  <rect x="-50" y="40" width="100" height="22" rx="6" fill="rgba(108,194,125,0.30)" stroke="#6cc27d" stroke-width="1.4"/>
+  <text x="0" y="55" text-anchor="middle" style="fill:#6cc27d;font:700 7.5px Inter,sans-serif">SUSTAINED PI</text>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">Low-dose RTV inhibits CYP3A4 · boosts other PI levels · cobicistat = newer alternative</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="125" cy="195" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="125" cy="104" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="125" cy="48" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

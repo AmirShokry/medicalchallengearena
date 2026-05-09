@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 05 · 6-MP · 3 METABOLIC FATES</text>
+
+<!-- Center: 6-MP -->
+<g transform="translate(250 130)">
+  <circle cx="0" cy="0" r="34" fill="rgba(232,169,81,0.18)" stroke="#e8a951" stroke-width="1.6"/>
+  <text x="0" y="-3" text-anchor="middle" style="fill:#e8a951;font:700 11px Inter,sans-serif;letter-spacing:1.2px">6-MP</text>
+  <text x="0" y="9" text-anchor="middle" style="fill:#b4becf;font:7px Inter,sans-serif">prodrug AZA</text>
+</g>
+
+<!-- 3 fates -->
+<g stroke="#e8a951" stroke-width="1.4" fill="none" marker-end="url(#arr16_5_5a)">
+  <line x1="220" y1="115" x2="135" y2="80"/>
+  <line x1="280" y1="115" x2="365" y2="80"/>
+  <line x1="250" y1="170" x2="250" y2="200"/>
+</g>
+<defs>
+  <marker id="arr16_5_5a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8a951"/>
+  </marker>
+</defs>
+
+<g transform="translate(125 70)">
+  <rect x="-50" y="-15" width="100" height="30" rx="5" fill="rgba(108,194,125,0.18)" stroke="#6cc27d" stroke-width="1.2"/>
+  <text x="0" y="0" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif">6-TGN</text>
+  <text x="0" y="11" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">therapeutic</text>
+</g>
+
+<g transform="translate(375 70)">
+  <rect x="-50" y="-15" width="100" height="30" rx="5" fill="rgba(79,184,168,0.18)" stroke="#4fb8a8" stroke-width="1.2"/>
+  <text x="0" y="0" text-anchor="middle" style="fill:#4fb8a8;font:700 8px Inter,sans-serif">TPMT</text>
+  <text x="0" y="11" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">methylates</text>
+</g>
+
+<g transform="translate(250 220)">
+  <rect x="-50" y="-15" width="100" height="30" rx="5" fill="rgba(209,72,89,0.18)" stroke="#d14859" stroke-width="1.4"/>
+  <text x="0" y="0" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif">XO</text>
+  <text x="0" y="11" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">→ thiouric acid</text>
+</g>
+
+<text x="125" y="105" text-anchor="middle" style="fill:#6cc27d;font:700 7px Inter,sans-serif">↓ activates</text>
+<text x="375" y="105" text-anchor="middle" style="fill:#4fb8a8;font:700 7px Inter,sans-serif">↓ inactivates</text>
+<text x="345" y="220" style="fill:#d14859;font:700 7px Inter,sans-serif">← inactivates</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="215" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="226" r="22" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="18;28;18" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

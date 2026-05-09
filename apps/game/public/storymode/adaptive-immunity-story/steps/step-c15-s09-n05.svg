@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 04 · ENCAPSULATED ORGANISMS (MNEMONIC)</text>
+
+<text x="250" y="55" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.2px">CAPSULE → BLOCKS COMPLEMENT + PHAGOCYTOSIS</text>
+
+<g transform="translate(80 80)">
+  <rect x="0" y="0" width="160" height="22" rx="3" fill="rgba(209,72,89,0.18)" stroke="#d14859" stroke-width="1.4"/>
+  <text x="80" y="14" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif">S. pneumoniae</text>
+</g>
+<g transform="translate(80 110)">
+  <rect x="0" y="0" width="160" height="22" rx="3" fill="rgba(209,72,89,0.18)" stroke="#d14859" stroke-width="1.4"/>
+  <text x="80" y="14" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif">H. influenzae type b</text>
+</g>
+<g transform="translate(80 140)">
+  <rect x="0" y="0" width="160" height="22" rx="3" fill="rgba(209,72,89,0.18)" stroke="#d14859" stroke-width="1.4"/>
+  <text x="80" y="14" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif">N. meningitidis</text>
+</g>
+
+<g transform="translate(260 80)">
+  <rect x="0" y="0" width="160" height="22" rx="3" fill="rgba(209,72,89,0.18)" stroke="#d14859" stroke-width="1.4"/>
+  <text x="80" y="14" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif">Klebsiella</text>
+</g>
+<g transform="translate(260 110)">
+  <rect x="0" y="0" width="160" height="22" rx="3" fill="rgba(209,72,89,0.18)" stroke="#d14859" stroke-width="1.4"/>
+  <text x="80" y="14" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif">Group B Streptococcus</text>
+</g>
+<g transform="translate(260 140)">
+  <rect x="0" y="0" width="160" height="22" rx="3" fill="rgba(209,72,89,0.18)" stroke="#d14859" stroke-width="1.4"/>
+  <text x="80" y="14" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif">Salmonella</text>
+</g>
+
+<g transform="translate(250 200)">
+  <rect x="-180" y="-15" width="360" height="34" rx="6" fill="rgba(232,169,81,0.06)" stroke="#e8a951" stroke-width="0.8" stroke-dasharray="3 2"/>
+  <text x="0" y="-1" text-anchor="middle" style="fill:#e8a951;font:700 8px Inter,sans-serif;letter-spacing:1.2px">"SHiN-SKiS"</text>
+  <text x="0" y="14" text-anchor="middle" style="fill:#b4becf;font:6.5px 'JetBrains Mono',monospace">Strep · Hib · Neisseria · Salmonella · Klebsiella · GBS</text>
+</g>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="209" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="50" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="340" cy="119" r="32" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="28;38;28" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

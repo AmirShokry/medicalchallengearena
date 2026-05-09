@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 08 · ANTI-DONOR T CLONES · DELETED</text>
+
+<!-- Thymus -->
+<g transform="translate(125 130)">
+  <ellipse cx="0" cy="0" rx="60" ry="50" fill="rgba(232,169,81,0.10)" stroke="#e8a951" stroke-width="1.4"/>
+  <text x="0" y="-60" text-anchor="middle" style="fill:#e8a951;font:700 8px Inter,sans-serif;letter-spacing:1.2px">THYMUS</text>
+  
+  <!-- Donor HLA on APC -->
+  <rect x="-15" y="-10" width="30" height="10" fill="#4fb8a8" stroke="#4fb8a8" stroke-width="1.4"/>
+  <text x="0" y="-3" text-anchor="middle" style="fill:#0a0e1a;font:700 7px Inter,sans-serif">HLA-D</text>
+  
+  <!-- T cell encountering it - too reactive -->
+  <circle cx="0" cy="20" r="15" fill="rgba(108,194,125,0.30)" stroke="#6cc27d" stroke-width="1.4"/>
+  <text x="0" y="23" text-anchor="middle" style="fill:#6cc27d;font:700 7px Inter,sans-serif">T</text>
+  <line x1="-5" y1="5" x2="5" y2="5" stroke="#9370b9" stroke-width="2"/>
+  <text x="20" y="9" style="fill:#9370b9;font:700 6.5px 'JetBrains Mono',monospace">TCR</text>
+</g>
+
+<!-- Arrow with apoptosis -->
+<g stroke="#d14859" stroke-width="2" fill="none" marker-end="url(#arr7_9_8a)">
+  <line x1="200" y1="130" x2="290" y2="130"/>
+</g>
+<defs>
+  <marker id="arr7_9_8a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#d14859"/>
+  </marker>
+</defs>
+<text x="245" y="118" text-anchor="middle" style="fill:#d14859;font:700 7.5px Inter,sans-serif;letter-spacing:1px">DELETE</text>
+
+<!-- Deleted T cell -->
+<g transform="translate(380 130)">
+  <circle cx="0" cy="0" r="32" fill="rgba(107,118,137,0.10)" stroke="#6b7689" stroke-width="1.4" stroke-dasharray="3 2"/>
+  <line x1="-22" y1="-22" x2="22" y2="22" stroke="#d14859" stroke-width="2.5"/>
+  <line x1="22" y1="-22" x2="-22" y2="22" stroke="#d14859" stroke-width="2.5"/>
+  <text x="0" y="50" text-anchor="middle" style="fill:#d14859;font:700 7.5px Inter,sans-serif">APOPTOSIS</text>
+</g>
+
+<text x="250" y="222" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1.2px">ANTI-DONOR CLONES NEVER REACH PERIPHERY</text>
+<text x="250" y="242" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">Mature repertoire is born tolerant to donor</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="217" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="380" cy="175" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="125" cy="65" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

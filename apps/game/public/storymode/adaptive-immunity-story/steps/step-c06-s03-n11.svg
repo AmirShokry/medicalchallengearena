@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 10 · SURFACE · BARE</text>
+
+  
+                    <line x1="40" y1="58" x2="460" y2="58" stroke="#4fb8a8" stroke-width="2" opacity="0.6"></line>
+                    <line x1="40" y1="62" x2="460" y2="62" stroke="#4fb8a8" stroke-width="2" opacity="0.6"></line>
+                    <text x="44" y="52" style="fill:#b4becf;font:600 7px Inter,sans-serif;letter-spacing:1.5px">CELL SURFACE</text>
+                  <rect x="40" y="62" width="420" height="170" rx="0" fill="#4fb8a8" fill-opacity="0.04"></rect><text x="44" y="78" style="fill:#b4becf;font:600 7px Inter,sans-serif;letter-spacing:1.5px">CYTOPLASM</text>
+                    <rect x="140" y="140" width="220" height="80" rx="14" fill="#9370b9" fill-opacity="0.10" stroke="#9370b9" stroke-width="1.4"></rect>
+                    <text x="148" y="156" style="fill:#9370b9;font:600 7px Inter,sans-serif;letter-spacing:1.5px">ER LUMEN</text>
+  
+                      <g transform="translate(80 105)">
+                        <!-- proteasome as stacked rings -->
+                        <rect x="-12" y="-10" width="24" height="6" rx="2" fill="#6cc27d" opacity="0.55" stroke="#6cc27d" stroke-width="1"></rect>
+                        <rect x="-12" y="-3" width="24" height="6" rx="2" fill="#6cc27d" opacity="0.65" stroke="#6cc27d" stroke-width="1"></rect>
+                        <rect x="-12" y="4" width="24" height="6" rx="2" fill="#6cc27d" opacity="0.55" stroke="#6cc27d" stroke-width="1"></rect>
+                        <text x="0" y="22" text-anchor="middle" style="fill:#6cc27d;font:600 7px Inter,sans-serif;letter-spacing:1px">PROTEASOME</text>
+                      </g>
+    
+                      <g fill="#d14859">
+                        <circle cx="115" cy="105" r="3"></circle>
+                        <circle cx="125" cy="100" r="3"></circle>
+                        <circle cx="120" cy="115" r="3"></circle>
+                      </g>
+    
+                        <g fill="#d14859" opacity="0.85">
+                          <circle cx="155" cy="115" r="3"></circle>
+                          <circle cx="170" cy="110" r="3"></circle>
+                          <circle cx="180" cy="120" r="3"></circle>
+                          <circle cx="195" cy="105" r="3"></circle>
+                          <circle cx="210" cy="118" r="3"></circle>
+                          <circle cx="225" cy="108" r="3"></circle>
+                          <circle cx="240" cy="120" r="3"></circle>
+                          <circle cx="385" cy="100" r="3"></circle>
+                          <circle cx="395" cy="115" r="3"></circle>
+                          <circle cx="370" cy="118" r="3"></circle>
+                          <circle cx="350" cy="105" r="3"></circle>
+                        </g>
+      
+                      <g transform="translate(250 140)">
+                        <!-- transporter body: barrel shape spanning the membrane -->
+                        <rect x="-14" y="-14" width="28" height="28" rx="4" fill="#6b7689" fill-opacity="0.4" stroke="#6b7689" stroke-width="1.6"></rect>
+                        <!-- internal channel -->
+                        <rect x="-3" y="-12" width="6" height="24" fill="#0a0e1a" opacity="0.5"></rect>
+                        <text x="0" y="3" text-anchor="middle" style="fill:#e8ecf3;font:700 8px Inter,sans-serif">TAP</text>
+                      </g>
+    
+                        <g transform="translate(250 140)">
+                          <line x1="-18" y1="-18" x2="18" y2="18" stroke="#d14859" stroke-width="3" stroke-linecap="round"></line>
+                          <line x1="-18" y1="18" x2="18" y2="-18" stroke="#d14859" stroke-width="3" stroke-linecap="round"></line>
+                        </g>
+      
+                      <g transform="translate(120 50)" opacity="0.5">
+                        <path d="M -14 0 L 14 0 L 16 10 L 9 10 L 7 4 L -7 4 L -9 10 L -16 10 Z" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2"></path>
+                      </g>
+    
+                      <g transform="translate(210 50)" opacity="0.5">
+                        <path d="M -14 0 L 14 0 L 16 10 L 9 10 L 7 4 L -7 4 L -9 10 L -16 10 Z" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2"></path>
+                      </g>
+    
+                      <g transform="translate(290 50)" opacity="0.5">
+                        <path d="M -14 0 L 14 0 L 16 10 L 9 10 L 7 4 L -7 4 L -9 10 L -16 10 Z" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2"></path>
+                      </g>
+    
+                      <g transform="translate(380 50)" opacity="0.5">
+                        <path d="M -14 0 L 14 0 L 16 10 L 9 10 L 7 4 L -7 4 L -9 10 L -16 10 Z" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2"></path>
+                      </g>
+    
+
+                  <text x="250" y="252" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">every nucleated cell loses surface Class I — that's what flow detects</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="113" cy="106" r="60" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="56;66;56" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

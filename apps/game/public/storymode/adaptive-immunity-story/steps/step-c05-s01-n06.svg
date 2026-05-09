@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 06 · C5a · FREE · MOBILE</text>
+
+  
+                      <line x1="40" y1="70" x2="460" y2="70" stroke="#d14859" stroke-width="2" opacity="0.7"></line>
+                      <line x1="40" y1="100" x2="460" y2="100" stroke="#d14859" stroke-width="2" opacity="0.7"></line>
+                      <rect x="40" y="70" width="420" height="30" fill="#d14859" fill-opacity="0.10"></rect>
+                    <text x="44" y="62" style="fill:#b4becf;font:600 7px Inter,sans-serif;letter-spacing:1.5px">VESSEL</text><text x="44" y="118" style="fill:#b4becf;font:600 7px Inter,sans-serif;letter-spacing:1.5px">TISSUE</text><g transform="translate(100 85)" opacity="1"><circle cx="0" cy="0" r="9" fill="#e8ecf3" fill-opacity="0.55" stroke="#e8ecf3" stroke-width="1.2"></circle><g fill="#9370b9" opacity="0.85">
+                      <circle cx="-3" cy="-2" r="2.2"></circle>
+                      <circle cx="3" cy="-2" r="2.2"></circle>
+                      <circle cx="0" cy="3" r="2.2"></circle>
+                    </g></g><g transform="translate(200 85)" opacity="1"><circle cx="0" cy="0" r="11" fill="#4fb8a8" fill-opacity="0.40" stroke="#4fb8a8" stroke-width="1.2"></circle><path d="M -5 -3 Q 0 -7 5 -3 Q 7 0 5 3 Q 0 7 -5 3 Z" fill="#1a2030" opacity="0.7"></path></g><g transform="translate(300 85)" opacity="1"><circle cx="0" cy="0" r="9" fill="#d14859" fill-opacity="0.40" stroke="#d14859" stroke-width="1.2"></circle><g fill="#1a2030" opacity="0.8">
+                      <ellipse cx="-3" cy="-1" rx="2.2" ry="2.4"></ellipse>
+                      <ellipse cx="3" cy="-1" rx="2.2" ry="2.4"></ellipse>
+                    </g></g><g transform="translate(400 85)" opacity="1"><circle cx="0" cy="0" r="9" fill="#9370b9" fill-opacity="0.55" stroke="#9370b9" stroke-width="1.2"></circle><g fill="#0a0e1a" opacity="0.9">
+                      <circle cx="-3" cy="-2" r="1.5"></circle>
+                      <circle cx="3" cy="-2" r="1.5"></circle>
+                      <circle cx="0" cy="2" r="1.5"></circle>
+                      <circle cx="-2" cy="3" r="1.5"></circle>
+                    </g></g>
+                      <ellipse cx="250" cy="175" rx="32" ry="24" fill="#4fb8a8" fill-opacity="0.20" stroke="#4fb8a8" stroke-width="1" stroke-dasharray="3 2"></ellipse>
+    
+                      <line x1="225" y1="155" x2="275" y2="195" stroke="#e8a951" stroke-width="2.5" stroke-dasharray="5 3" opacity="0.95"></line>
+    
+                      <g transform="translate(220 138)">
+                        <circle cx="0" cy="0" r="13" fill="#e8a951" fill-opacity="0.85" stroke="#e8a951" stroke-width="1.6"></circle>
+                        <text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 11px Inter,sans-serif">C5a</text>
+                      </g>
+    
+                        <line x1="270" y1="215" x2="320" y2="215" stroke="#9370b9" stroke-width="1.5" opacity="0.7"></line>
+                        <line x1="270" y1="222" x2="320" y2="222" stroke="#9370b9" stroke-width="1.5" opacity="0.7"></line>
+      
+                        <g transform="translate(295 210)">
+                          <ellipse cx="0" cy="0" rx="18" ry="13" fill="#4fb8a8" fill-opacity="0.55" stroke="#4fb8a8" stroke-width="1.6"></ellipse>
+                          <text x="0" y="4" text-anchor="middle" style="fill:#e8ecf3;font:700 11px Inter,sans-serif">C5b</text>
+                        </g>
+                        <text x="295" y="240" text-anchor="middle" style="fill:#4fb8a8;font:italic 7px Fraunces,serif">→ MAC seed</text>
+      
+
+                  <!-- C5a drift trail (curved arrow showing diffusion) -->
+                  <g stroke="#e8a951" stroke-width="1.3" fill="none" stroke-dasharray="3 2" opacity="0.75">
+                    <path d="M 235 138 Q 270 130 305 145"></path>
+                    <path d="M 220 130 Q 220 120 230 110"></path>
+                    <path d="M 215 145 Q 195 150 175 145"></path>
+                  </g>
+
+                  <text x="250" y="252" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">C5a is small and free in tissue fluid · diffuses outward in all directions</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="220" cy="136" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="295" cy="209" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

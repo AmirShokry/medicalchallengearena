@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 03 · IPV INJECTION → SYSTEMIC IgG</text>
+
+                  <g opacity="1"><rect x="80" y="80" width="340" height="35" rx="4" fill="#4fb8a8" fill-opacity="0.15" stroke="#4fb8a8" stroke-width="1.4" stroke-dasharray="3 2"></rect><text x="90" y="100" style="fill:#4fb8a8;font:600 8px Inter,sans-serif;letter-spacing:1.5px">GUT LUMEN</text><line x1="80" y1="118" x2="420" y2="118" stroke="#9370b9" stroke-width="1.4" stroke-dasharray="2 2" opacity="0.7"></line><rect x="80" y="125" width="340" height="50" rx="4" fill="#9370b9" fill-opacity="0.30" stroke="#9370b9" stroke-width="2" stroke-dasharray="0"></rect><text x="90" y="155" style="fill:#9370b9;font:600 8px Inter,sans-serif;letter-spacing:1.5px">SERUM / BLOODSTREAM</text><rect x="80" y="185" width="340" height="35" rx="4" fill="#e8a951" fill-opacity="0.15" stroke="#e8a951" stroke-width="1.4" stroke-dasharray="3 2"></rect><text x="90" y="205" style="fill:#e8a951;font:600 8px Inter,sans-serif;letter-spacing:1.5px">CNS · MOTOR NEURONS</text></g>
+
+                  <!-- IPV syringe -->
+                  <g transform="translate(45 145)">
+                    <rect x="-10" y="-3" width="20" height="6" rx="1" fill="#9370b9" fill-opacity="0.85" stroke="#9370b9" stroke-width="1"></rect>
+                    <line x1="10" y1="0" x2="25" y2="0" stroke="#b4becf" stroke-width="1.4"></line>
+                    <text x="0" y="-10" text-anchor="middle" style="fill:#9370b9;font:700 7px Inter,sans-serif;letter-spacing:1.5px">IPV</text>
+                  </g>
+
+                  <!-- Arrow injection → serum -->
+                  <path d="M 70 145 L 95 145" stroke="#9370b9" stroke-width="1.6" fill="none"></path>
+                  <polygon points="95,145 88,141 88,149" fill="#9370b9"></polygon>
+
+                  <!-- Lymph node depicted -->
+                  <g transform="translate(140 145)">
+                    <ellipse cx="0" cy="0" rx="12" ry="8" fill="#9370b9" fill-opacity="0.50" stroke="#9370b9" stroke-width="1.4"></ellipse>
+                    <text x="0" y="-12" text-anchor="middle" style="fill:#9370b9;font:600 6px Inter,sans-serif;letter-spacing:1.2px">LN</text>
+                  </g>
+
+                  <!-- IgG molecules filling serum zone -->
+                  <g transform="translate(180 142)" opacity="1"><path d="M -5 -4 L -1 0 L 1 0 L 5 -4" stroke="#e8a951" stroke-width="1.8" fill="none" stroke-linecap="round"></path><line x1="0" y1="0" x2="0" y2="6" stroke="#e8a951" stroke-width="1.8" stroke-linecap="round"></line></g>
+                  <g transform="translate(210 148)" opacity="1"><path d="M -5 -4 L -1 0 L 1 0 L 5 -4" stroke="#e8a951" stroke-width="1.8" fill="none" stroke-linecap="round"></path><line x1="0" y1="0" x2="0" y2="6" stroke="#e8a951" stroke-width="1.8" stroke-linecap="round"></line></g>
+                  <g transform="translate(240 142)" opacity="1"><path d="M -5 -4 L -1 0 L 1 0 L 5 -4" stroke="#e8a951" stroke-width="1.8" fill="none" stroke-linecap="round"></path><line x1="0" y1="0" x2="0" y2="6" stroke="#e8a951" stroke-width="1.8" stroke-linecap="round"></line></g>
+                  <g transform="translate(270 152)" opacity="1"><path d="M -5 -4 L -1 0 L 1 0 L 5 -4" stroke="#e8a951" stroke-width="1.8" fill="none" stroke-linecap="round"></path><line x1="0" y1="0" x2="0" y2="6" stroke="#e8a951" stroke-width="1.8" stroke-linecap="round"></line></g>
+                  <g transform="translate(300 142)" opacity="1"><path d="M -5 -4 L -1 0 L 1 0 L 5 -4" stroke="#e8a951" stroke-width="1.8" fill="none" stroke-linecap="round"></path><line x1="0" y1="0" x2="0" y2="6" stroke="#e8a951" stroke-width="1.8" stroke-linecap="round"></line></g>
+                  <g transform="translate(330 148)" opacity="1"><path d="M -5 -4 L -1 0 L 1 0 L 5 -4" stroke="#e8a951" stroke-width="1.8" fill="none" stroke-linecap="round"></path><line x1="0" y1="0" x2="0" y2="6" stroke="#e8a951" stroke-width="1.8" stroke-linecap="round"></line></g>
+                  <g transform="translate(360 142)" opacity="1"><path d="M -5 -4 L -1 0 L 1 0 L 5 -4" stroke="#e8a951" stroke-width="1.8" fill="none" stroke-linecap="round"></path><line x1="0" y1="0" x2="0" y2="6" stroke="#e8a951" stroke-width="1.8" stroke-linecap="round"></line></g>
+                  <g transform="translate(390 152)" opacity="1"><path d="M -5 -4 L -1 0 L 1 0 L 5 -4" stroke="#e8a951" stroke-width="1.8" fill="none" stroke-linecap="round"></path><line x1="0" y1="0" x2="0" y2="6" stroke="#e8a951" stroke-width="1.8" stroke-linecap="round"></line></g>
+
+                  <!-- IgG label -->
+                  <text x="320" y="125" style="fill:#e8a951;font:600 8px Inter,sans-serif;letter-spacing:1.5px">SERUM IgG</text>
+
+                  <text x="250" y="245" text-anchor="middle" style="fill:#b4becf;font:italic 7.5px Fraunces,serif">injected antigen drains to systemic lymph nodes · primes B cells that secrete IgG into blood</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="320" cy="120" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

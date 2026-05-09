@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 02 · ALDESLEUKIN EXPANDS CD8 + NK CELLS</text><g>
+    <rect x="20" y="30" width="280" height="14" rx="7" fill="rgba(232, 169, 81, 0.18)" stroke="#e8a951" stroke-width="1"/>
+    <text x="160" y="40" text-anchor="middle" style="fill:#e8a951;font:700 7.5px Inter,sans-serif;letter-spacing:1.2px">IL-2 THERAPY · TUMOR LYSIS + CAPILLARY LEAK</text>
+  </g><text x="30" y="62" style="fill:#4fb8a8;font:600 7px 'JetBrains Mono',monospace;letter-spacing:1.5px">TUMOR PATH</text><text x="470" y="62" text-anchor="end" style="fill:#3a4358;font:600 7px 'JetBrains Mono',monospace;letter-spacing:1.5px">ENDOTHELIAL PATH</text><g opacity="1">
+    <text x="250" y="60" text-anchor="middle" style="fill:#6b7689;font:6.5px 'JetBrains Mono',monospace;letter-spacing:0.5px">aldesleukin · pharmacologic</text>
+    <g transform="translate(250 78)">
+      <polygon points="-22,0 -11,-12 11,-12 22,0 11,12 -11,12" fill="rgba(232, 169, 81, 0.18)" stroke="#e8a951" stroke-width="1.6"/>
+      <text x="0" y="3" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1px">IL-2</text>
+    </g>
+  </g><g opacity="1"><g>
+    <line x1="232" y1="92" x2="135" y2="118" stroke="#4fb8a8" stroke-width="1.8"/>
+    <polygon points="138,114 130,120 140,121" fill="#4fb8a8"/>
+  </g><g>
+    <line x1="268" y1="92" x2="365" y2="118" stroke="#3a4358" stroke-width="1"/>
+    <polygon points="362,114 370,120 360,121" fill="#3a4358"/>
+  </g></g><g opacity="1"><g transform="translate(60 130)">
+      <circle cx="0" cy="0" r="11" fill="rgba(79, 184, 168, 0.2)" stroke="#4fb8a8" stroke-width="1.2"/>
+      <ellipse cx="0" cy="0" rx="3" ry="2" fill="#4fb8a8" opacity="0.9"/>
+      <text x="0" y="22" text-anchor="middle" style="fill:#4fb8a8;font:600 7px Inter,sans-serif">CD8</text>
+    </g><g transform="translate(100 125)">
+      <circle cx="0" cy="0" r="11" fill="rgba(79, 184, 168, 0.2)" stroke="#4fb8a8" stroke-width="1.2"/>
+      <ellipse cx="0" cy="0" rx="3" ry="2" fill="#4fb8a8" opacity="0.9"/>
+      <text x="0" y="22" text-anchor="middle" style="fill:#4fb8a8;font:600 7px Inter,sans-serif">NK</text>
+    </g><g transform="translate(140 130)">
+      <circle cx="0" cy="0" r="11" fill="rgba(79, 184, 168, 0.2)" stroke="#4fb8a8" stroke-width="1.2"/>
+      <ellipse cx="0" cy="0" rx="3" ry="2" fill="#4fb8a8" opacity="0.9"/>
+      <text x="0" y="22" text-anchor="middle" style="fill:#4fb8a8;font:600 7px Inter,sans-serif">CD8</text>
+    </g><text x="100" y="113" text-anchor="middle" style="fill:#4fb8a8;font:700 7px Inter,sans-serif;letter-spacing:0.8px">EXPANSION ↑↑</text><g transform="translate(180 145)">
+    <ellipse cx="0" cy="0" rx="14" ry="10" fill="#9370b9" fill-opacity="0.65" stroke="#9370b9" stroke-width="1"/>
+    <text x="0" y="22" text-anchor="middle" style="fill:#9370b9;font:600 7px Inter,sans-serif;letter-spacing:0.5px">TUMOR</text>
+  </g></g>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="180" cy="162" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

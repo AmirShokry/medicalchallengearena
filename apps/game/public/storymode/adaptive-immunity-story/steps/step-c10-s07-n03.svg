@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 02 · MOM · TWO BANDS · CARRIER</text>
+
+<!-- Mom figure left -->
+<g transform="translate(105 130)">
+  <text x="0" y="-72" text-anchor="middle" style="fill:#9370b9;font:700 9px Inter,sans-serif;letter-spacing:1.5px">MOM</text>
+  <!-- Pedigree circle (female) -->
+  <circle cx="0" cy="0" r="32" fill="rgba(147,112,185,0.30)" stroke="#9370b9" stroke-width="2.4"/>
+  <!-- Half-shaded (carrier convention) -->
+  <path d="M 0 -32 A 32 32 0 0 1 0 32 Z" fill="rgba(147,112,185,0.65)"/>
+  <text x="0" y="3" text-anchor="middle" style="fill:#e8ecf3;font:700 11px Inter,sans-serif">♀</text>
+  <text x="0" y="50" text-anchor="middle" style="fill:#9370b9;font:700 8px Inter,sans-serif;letter-spacing:1.2px">CARRIER</text>
+  <text x="0" y="62" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">heterozygous</text>
+</g>
+
+<!-- Two X chromosomes -->
+<g transform="translate(225 100)">
+  <!-- WT X -->
+  <rect x="-12" y="-22" width="24" height="44" rx="3" fill="rgba(108,194,125,0.30)" stroke="#6cc27d" stroke-width="1.4"/>
+  <text x="0" y="-2" text-anchor="middle" style="fill:#6cc27d;font:700 7px Inter,sans-serif">X</text>
+  <text x="0" y="9" text-anchor="middle" style="fill:#6cc27d;font:700 7px Inter,sans-serif">WT</text>
+</g>
+<g transform="translate(225 165)">
+  <!-- Mutant X -->
+  <rect x="-12" y="-22" width="24" height="44" rx="3" fill="rgba(209,72,89,0.30)" stroke="#d14859" stroke-width="1.4"/>
+  <text x="0" y="-2" text-anchor="middle" style="fill:#d14859;font:700 7px Inter,sans-serif">X</text>
+  <text x="0" y="9" text-anchor="middle" style="fill:#d14859;font:700 7px Inter,sans-serif">MUT</text>
+</g>
+
+<!-- Southern blot gel on right -->
+<g transform="translate(370 130)">
+  <text x="0" y="-72" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1.2px">SOUTHERN BLOT</text>
+  <!-- Gel rectangle -->
+  <rect x="-45" y="-55" width="90" height="115" rx="3" fill="#1a2030" fill-opacity="0.85" stroke="#3a4358" stroke-width="1.4"/>
+  <!-- Well -->
+  <rect x="-15" y="-53" width="30" height="6" fill="#3a4358"/>
+  <!-- Top band: 6 kb (mutant) -->
+  <rect x="-30" y="-15" width="60" height="6" rx="1" fill="rgba(209,72,89,0.95)" stroke="#d14859" stroke-width="1.2"/>
+  <text x="42" y="-9" style="fill:#d14859;font:700 9px Inter,sans-serif">6 kb</text>
+  <!-- Bottom band: 4 kb (WT) -->
+  <rect x="-30" y="25" width="60" height="6" rx="1" fill="rgba(108,194,125,0.95)" stroke="#6cc27d" stroke-width="1.2"/>
+  <text x="42" y="31" style="fill:#6cc27d;font:700 9px Inter,sans-serif">4 kb</text>
+  <text x="0" y="78" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1.5px">2 BANDS</text>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">Two X chromosomes · two alleles · two bands</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="105" cy="175" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="412" cy="116" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

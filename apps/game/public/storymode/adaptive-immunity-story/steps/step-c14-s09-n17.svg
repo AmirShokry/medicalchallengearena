@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 08 · DRUG INTERACTIONS</text>
+
+<!-- CYP3A4 interactions (left) -->
+<g transform="translate(135 145)">
+  <text x="0" y="-95" text-anchor="middle" style="fill:#9370b9;font:700 9px Inter,sans-serif;letter-spacing:1.5px">CYP3A4 INHIBITION</text>
+  
+  <!-- CYP3A4 enzyme blocked -->
+  <ellipse cx="0" cy="-40" rx="35" ry="20" fill="rgba(147,112,185,0.45)" stroke="#9370b9" stroke-width="1.6"/>
+  <text x="0" y="-37" text-anchor="middle" style="fill:#0a0e1a;font:700 9px Inter,sans-serif">CYP3A4</text>
+  <line x1="-15" y1="-50" x2="15" y2="-30" stroke="#d14859" stroke-width="2.4" stroke-linecap="round"/>
+  <line x1="-15" y1="-30" x2="15" y2="-50" stroke="#d14859" stroke-width="2.4" stroke-linecap="round"/>
+  
+  <!-- Drugs affected listed below -->
+  <g transform="translate(0 -5)">
+    <text x="0" y="0" text-anchor="middle" style="fill:#d14859;font:700 7.5px Inter,sans-serif">↑ LEVELS:</text>
+    <text x="-50" y="13" style="fill:#b4becf;font:6.5px Inter,sans-serif">statins</text>
+    <text x="0" y="13" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">BZD</text>
+    <text x="50" y="13" text-anchor="end" style="fill:#b4becf;font:6.5px Inter,sans-serif">ergots</text>
+    <text x="-50" y="25" style="fill:#b4becf;font:6.5px Inter,sans-serif">sildenafil</text>
+    <text x="0" y="25" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">AEDs</text>
+    <text x="50" y="25" text-anchor="end" style="fill:#b4becf;font:6.5px Inter,sans-serif">SSRIs</text>
+  </g>
+  
+  <!-- Triggered by -->
+  <g transform="translate(0 50)">
+    <rect x="-50" y="-13" width="100" height="26" rx="5" fill="rgba(232,169,81,0.20)" stroke="#e8a951" stroke-width="1.2"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#e8a951;font:700 7.5px Inter,sans-serif">RTV / COBI</text>
+  </g>
+</g>
+
+<line x1="250" y1="55" x2="250" y2="220" stroke="#3a4358" stroke-width="1" stroke-dasharray="3 3"/>
+
+<!-- Cation chelation (right) -->
+<g transform="translate(365 145)">
+  <text x="0" y="-95" text-anchor="middle" style="fill:#9370b9;font:700 9px Inter,sans-serif;letter-spacing:1.5px">CATION CHELATION</text>
+  
+  <!-- INSTI molecule -->
+  <g transform="translate(-25 -40)">
+    <rect x="-22" y="-12" width="44" height="22" rx="11" fill="rgba(147,112,185,0.65)" stroke="#9370b9" stroke-width="1.4"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#fff;font:700 7px Inter,sans-serif">INSTI</text>
+  </g>
+  
+  <!-- + -->
+  <text x="15" y="-37" text-anchor="middle" style="fill:#b4becf;font:700 14px Inter,sans-serif">+</text>
+  
+  <!-- Cations -->
+  <g transform="translate(35 -40)">
+    <circle cx="0" cy="0" r="9" fill="rgba(232,169,81,0.85)" stroke="#e8a951" stroke-width="1"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 6.5px Inter,sans-serif">Ca²⁺</text>
+    <text x="0" y="20" text-anchor="middle" style="fill:#e8a951;font:6.5px Inter,sans-serif">Mg · Fe · Al</text>
+  </g>
+  
+  <!-- Down arrow -->
+  <line x1="0" y1="-15" x2="0" y2="0" stroke="#d14859" stroke-width="1.6"/>
+  <polygon points="0,0 -3,-6 3,-6" fill="#d14859"/>
+  
+  <!-- Result: chelated, not absorbed -->
+  <g transform="translate(0 15)">
+    <ellipse cx="0" cy="0" rx="35" ry="14" fill="rgba(180,190,207,0.30)" stroke="#6b7689" stroke-width="1.2" stroke-dasharray="2 2"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#6b7689;font:700 7px Inter,sans-serif">chelate</text>
+  </g>
+  
+  <text x="0" y="50" text-anchor="middle" style="fill:#d14859;font:700 7.5px Inter,sans-serif">↓ INSTI absorbed</text>
+  <text x="0" y="62" text-anchor="middle" style="fill:#b4becf;font:6px Inter,sans-serif">separate from antacids</text>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">CYP3A4 (PIs/RTV/cobi) + cation chelation (INSTIs) = the two big interaction patterns</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="365" cy="202" r="33" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="29;39;29" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="135" cy="45" r="26" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="22;32;22" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="365" cy="45" r="24" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="20;30;20" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

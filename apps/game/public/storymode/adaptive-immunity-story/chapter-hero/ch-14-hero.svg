@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Chapter 14 hero icon.
+-->
+<svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <!-- HIV virion attacking CD4 T cell -->
+          <!-- T cell -->
+          <circle cx="38" cy="34" r="13" fill="#9370b9" opacity="0.35" stroke="#9370b9" stroke-width="0.8"/>
+          <text x="38" y="36" text-anchor="middle" fill="#e8ecf3" font-family="Inter,sans-serif" font-size="6" font-weight="700">CD4</text>
+          <!-- HIV virion -->
+          <circle cx="14" cy="20" r="7" fill="#d14859" opacity="0.55" stroke="#d14859" stroke-width="0.8"/>
+          <!-- spikes -->
+          <g stroke="#d14859" stroke-width="0.7" fill="none">
+            <line x1="14" y1="13" x2="14" y2="9"/>
+            <line x1="14" y1="27" x2="14" y2="31"/>
+            <line x1="7" y1="20" x2="3" y2="20"/>
+            <line x1="21" y1="20" x2="25" y2="20"/>
+            <line x1="9" y1="15" x2="6" y2="12"/>
+            <line x1="19" y1="25" x2="22" y2="28"/>
+          </g>
+          <!-- spike tips (gp120) -->
+          <g fill="#d14859">
+            <circle cx="14" cy="9" r="1"/><circle cx="14" cy="31" r="1"/>
+            <circle cx="3" cy="20" r="1"/><circle cx="25" cy="20" r="1"/>
+          </g>
+          <!-- entry arrow -->
+          <path d="M 22 22 L 28 26" stroke="#e8a951" stroke-width="1.2" stroke-dasharray="1.5 1"/>
+          <polygon points="28,26 25,24 25,28" fill="#e8a951"/>
+        </svg>

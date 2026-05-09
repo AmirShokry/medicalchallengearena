@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 13 · THE ANSWER</text>
+
+                  <!-- Ghosted canvas behind -->
+                  <g opacity="0.30">
+                    <g opacity="1"><circle cx="130" cy="145" r="42" fill="#9370b9" fill-opacity="0.35" stroke="#9370b9" stroke-width="1.8"></circle><ellipse cx="125" cy="140" rx="14" ry="11" fill="#4a2d60" opacity="0.75"></ellipse>
+                      <g fill="#d14859">
+                        <circle cx="115" cy="125" r="4" fill-opacity="0.85" stroke="#d14859" stroke-width="1"></circle>
+                        <circle cx="148" cy="135" r="4" fill-opacity="0.85" stroke="#d14859" stroke-width="1"></circle>
+                        <circle cx="120" cy="160" r="4" fill-opacity="0.85" stroke="#d14859" stroke-width="1"></circle>
+                        <circle cx="145" cy="165" r="4" fill-opacity="0.85" stroke="#d14859" stroke-width="1"></circle>
+                      </g>
+    
+                      <g transform="translate(168 155) rotate(90)">
+                        <path d="M -12 0 L 12 0 L 14 8 L 7 8 L 5 4 L -5 4 L -7 8 L -14 8 Z" fill="#e8a951" fill-opacity="0.85" stroke="#e8a951" stroke-width="1.2"></path>
+                        <circle cx="-3" cy="-2.5" r="2" fill="#d14859"></circle>
+                        <circle cx="0" cy="-2.5" r="2" fill="#d14859"></circle>
+                        <circle cx="3" cy="-2.5" r="2" fill="#d14859"></circle>
+                      </g>
+                    </g><text x="130" y="205" text-anchor="middle" style="fill:#9370b9;font:600 8px Inter,sans-serif;letter-spacing:1.2px">INFECTED B CELL</text><g opacity="1"><path d="M 370 100 Q 410 95 420 130 Q 425 165 410 185 Q 395 200 365 195 Q 345 200 332 195 Q 320 190 322 170 Q 320 152 335 145 Q 322 130 330 115 Q 345 100 370 100 Z" fill="#e8a951" fill-opacity="0.40" stroke="#e8a951" stroke-width="2"></path><ellipse cx="365" cy="140" rx="16" ry="13" fill="#4a2d60" opacity="0.8"></ellipse>
+                      <g transform="translate(325 145)">
+                        <path d="M 0 0 L 12 -8 L 12 8 Z" fill="#e8a951" opacity="0.95" transform="rotate(180)"></path>
+                        <text x="-15" y="-8" style="fill:#e8a951;font:600 8px Inter,sans-serif">TCR</text>
+                      </g>
+    
+                      <g>
+                        <ellipse cx="335" cy="170" rx="10" ry="7" fill="#d14859" fill-opacity="0.85" stroke="#d14859" stroke-width="1"></ellipse>
+                        <ellipse cx="335" cy="170" rx="4.5" ry="3" fill="#1a2030" opacity="0.85"></ellipse>
+                      </g>
+                      <g>
+                        <ellipse cx="430" cy="155" rx="10" ry="7" fill="#d14859" fill-opacity="0.85" stroke="#d14859" stroke-width="1"></ellipse>
+                        <ellipse cx="430" cy="155" rx="4.5" ry="3" fill="#1a2030" opacity="0.85"></ellipse>
+                      </g>
+                    <text x="370" y="220" text-anchor="middle" style="fill:#e8a951;font:600 8px Inter,sans-serif;letter-spacing:1.2px">DOWNEY CELL</text><text x="370" y="232" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">reactive CD8</text></g>
+                  </g>
+
+                  <!-- distractors crossed out at top -->
+                  <g opacity="0.45">
+                    <text x="44" y="80" style="fill:#6b7689;font:9px Inter,sans-serif">A · ALL</text>
+                    <line x1="40" y1="76" x2="80" y2="76" stroke="#d14859" stroke-width="1" opacity="0.85"></line>
+                    <text x="115" y="80" style="fill:#6b7689;font:9px Inter,sans-serif">B · AML</text>
+                    <line x1="111" y1="76" x2="155" y2="76" stroke="#d14859" stroke-width="1" opacity="0.85"></line>
+                    <text x="225" y="80" style="fill:#6b7689;font:9px Inter,sans-serif">D · CLL</text>
+                    <line x1="221" y1="76" x2="262" y2="76" stroke="#d14859" stroke-width="1" opacity="0.85"></line>
+                    <text x="335" y="80" style="fill:#6b7689;font:9px Inter,sans-serif">E · CML</text>
+                    <line x1="331" y1="76" x2="376" y2="76" stroke="#d14859" stroke-width="1" opacity="0.85"></line>
+                  </g>
+
+                  <!-- Hero answer banner -->
+                  <g transform="translate(250 145)">
+                    <rect x="-220" y="-26" width="440" height="52" rx="10" fill="#e8a951" fill-opacity="0.42" stroke="#e8a951" stroke-width="2.6"></rect>
+                    <text x="0" y="6" text-anchor="middle" style="fill:#e8a951;font:700 14px Inter,sans-serif;letter-spacing:2px">C · INFECTIOUS MONONUCLEOSIS</text>
+                  </g>
+
+                  <text x="250" y="252" text-anchor="middle" style="fill:#e8a951;font:italic 600 10px Fraunces,serif">EBV in B cells · reactive CD8s on the smear · written in the cytoplasm</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="146" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

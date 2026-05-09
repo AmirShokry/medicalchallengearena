@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 11 · POLYCLONAL &gt; MONOCLONAL · IN DIVERSITY</text>
+
+                  <!-- Antigen with multiple epitopes (top) -->
+                  <g transform="translate(250 80)">
+                    <ellipse cx="0" cy="0" rx="80" ry="22" fill="#9370b9" fill-opacity="0.35" stroke="#9370b9" stroke-width="1.4"></ellipse>
+                    <text x="0" y="3" text-anchor="middle" style="fill:#e8ecf3;font:600 9px Inter,sans-serif">ANTIGEN · multiple epitopes</text>
+                    <!-- 4 epitope tags on top -->
+                    <polygon points="-60,-22 -55,-28 -50,-22" fill="#4fb8a8"></polygon>
+                    <polygon points="-20,-22 -15,-28 -10,-22" fill="#e8a951"></polygon>
+                    <polygon points="20,-22 25,-28 30,-22" fill="#6cc27d"></polygon>
+                    <polygon points="60,-22 65,-28 70,-22" fill="#d14859"></polygon>
+                  </g>
+
+                  <!-- Monoclonal: single Ab targeting one epitope -->
+                  <g transform="translate(135 195)">
+                    <text x="0" y="-30" text-anchor="middle" style="fill:#9370b9;font:700 9px Inter,sans-serif;letter-spacing:1.5px">MONOCLONAL</text>
+                    <g transform="translate(0 0)" opacity="1"><g stroke="#e8a951" stroke-width="3" fill="none" stroke-linecap="round"><path d="M -16 -10 L -7 -2 L 7 -2 L 16 -10"></path><line x1="0" y1="-2" x2="0" y2="14"></line></g><circle cx="-16" cy="-10" r="3" fill="#d14859"></circle><circle cx="16" cy="-10" r="3" fill="#d14859"></circle></g>
+                    <text x="0" y="22" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">one epitope · pristine specificity</text>
+                  </g>
+
+                  <!-- Polyclonal: many Abs targeting different epitopes -->
+                  <g transform="translate(370 195)">
+                    <text x="0" y="-30" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1.5px">POLYCLONAL</text>
+                    <g transform="translate(-30 0)" opacity="1"><g stroke="#e8a951" stroke-width="3" fill="none" stroke-linecap="round"><path d="M -16 -10 L -7 -2 L 7 -2 L 16 -10"></path><line x1="0" y1="-2" x2="0" y2="14"></line></g><circle cx="-16" cy="-10" r="3" fill="#d14859"></circle><circle cx="16" cy="-10" r="3" fill="#d14859"></circle></g>
+                    <g transform="translate(-10 0)" opacity="1"><g stroke="#e8a951" stroke-width="3" fill="none" stroke-linecap="round"><path d="M -16 -10 L -7 -2 L 7 -2 L 16 -10"></path><line x1="0" y1="-2" x2="0" y2="14"></line></g><circle cx="-16" cy="-10" r="3" fill="#d14859"></circle><circle cx="16" cy="-10" r="3" fill="#d14859"></circle></g>
+                    <g transform="translate(10 0)" opacity="1"><g stroke="#e8a951" stroke-width="3" fill="none" stroke-linecap="round"><path d="M -16 -10 L -7 -2 L 7 -2 L 16 -10"></path><line x1="0" y1="-2" x2="0" y2="14"></line></g><circle cx="-16" cy="-10" r="3" fill="#d14859"></circle><circle cx="16" cy="-10" r="3" fill="#d14859"></circle></g>
+                    <g transform="translate(30 0)" opacity="1"><g stroke="#e8a951" stroke-width="3" fill="none" stroke-linecap="round"><path d="M -16 -10 L -7 -2 L 7 -2 L 16 -10"></path><line x1="0" y1="-2" x2="0" y2="14"></line></g><circle cx="-16" cy="-10" r="3" fill="#d14859"></circle><circle cx="16" cy="-10" r="3" fill="#d14859"></circle></g>
+                    <text x="0" y="22" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">many epitopes · greater diversity</text>
+                  </g>
+
+                  <!-- Connecting lines back to antigen -->
+                  <line x1="135" y1="180" x2="190" y2="105" stroke="#9370b9" stroke-width="1" stroke-dasharray="3 2" opacity="0.5"></line>
+                  <line x1="340" y1="180" x2="230" y2="105" stroke="#e8a951" stroke-width="1" stroke-dasharray="3 2" opacity="0.5"></line>
+                  <line x1="370" y1="180" x2="270" y2="105" stroke="#e8a951" stroke-width="1" stroke-dasharray="3 2" opacity="0.5"></line>
+                  <line x1="400" y1="180" x2="310" y2="105" stroke="#e8a951" stroke-width="1" stroke-dasharray="3 2" opacity="0.5"></line>
+
+                  <text x="250" y="252" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">polyclonal sera = many B-cell clones = many epitopes · monoclonal = one B-cell clone = one site</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="135" cy="160" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="370" cy="160" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="135" cy="212" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

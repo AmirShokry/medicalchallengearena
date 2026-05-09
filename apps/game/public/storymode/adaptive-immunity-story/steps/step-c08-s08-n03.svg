@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 02 · THE TRIAD OF FAILURE</text>
+
+                  <!-- Weak antibody trying three jobs, failing each -->
+                  <g transform="translate(120 145)">
+                    <text x="0" y="-65" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.5px">WEAK BINDING</text>
+                    <!-- BCR/antibody not gripping antigen well -->
+                    <g transform="translate(0 0)" opacity="1"><g stroke="#9370b9" stroke-width="1.4" fill="none" stroke-linecap="round"><path d="M -10 -10 L -3 0 L 3 0 L 10 -10"></path><line x1="0" y1="0" x2="0" y2="14"></line></g></g>
+                    <!-- antigen drifting away -->
+                    <polygon points="20,-15 12,-8 20,-1 28,-8" fill="#d14859" opacity="0.6" stroke="#d14859" stroke-width="1"></polygon>
+                    <line x1="3" y1="-8" x2="13" y2="-12" stroke="#d14859" stroke-width="1" stroke-dasharray="2 2" opacity="0.6"></line>
+                    <text x="0" y="35" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">antigen falls off</text>
+                  </g>
+
+                  <line x1="190" y1="80" x2="190" y2="220" stroke="#3a4358" stroke-width="0.8" stroke-dasharray="3 3"></line>
+
+                  <!-- Poor opsonization -->
+                  <g transform="translate(255 145)">
+                    <text x="0" y="-65" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.5px">POOR OPSONIZATION</text>
+                    <!-- bacterium with weak antibody, phagocyte ignoring it -->
+                    <ellipse cx="-15" cy="0" rx="14" ry="10" fill="#d14859" fill-opacity="0.7"></ellipse>
+                    <g transform="translate(-15 -16)" opacity="1"><g stroke="#9370b9" stroke-width="1.4" fill="none" stroke-linecap="round"><path d="M -10 -10 L -3 0 L 3 0 L 10 -10"></path><line x1="0" y1="0" x2="0" y2="14"></line></g></g>
+                    <!-- phagocyte turning away -->
+                    <circle cx="22" cy="0" r="14" fill="#9370b9" fill-opacity="0.30" stroke="#9370b9" stroke-width="1.4"></circle>
+                    <ellipse cx="20" cy="-1" rx="3" ry="2.5" fill="#4a2d60" opacity="0.7"></ellipse>
+                    <text x="22" y="18" style="fill:#d14859;font:700 9px Inter,sans-serif">✗</text>
+                    <text x="0" y="35" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">no eat-me signal</text>
+                  </g>
+
+                  <line x1="320" y1="80" x2="320" y2="220" stroke="#3a4358" stroke-width="0.8" stroke-dasharray="3 3"></line>
+
+                  <!-- Poor precipitation -->
+                  <g transform="translate(385 145)">
+                    <text x="0" y="-65" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.5px">POOR PRECIPITATION</text>
+                    <!-- antigen molecules scattered, antibodies can't lattice them -->
+                    <g fill="#d14859" fill-opacity="0.7">
+                      <polygon points="-20,-10 -25,-5 -20,0 -15,-5"></polygon>
+                      <polygon points="0,-15 -5,-10 0,-5 5,-10"></polygon>
+                      <polygon points="20,-5 15,0 20,5 25,0"></polygon>
+                      <polygon points="-15,15 -20,20 -15,25 -10,20"></polygon>
+                      <polygon points="15,15 10,20 15,25 20,20"></polygon>
+                    </g>
+                    <text x="0" y="40" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">antigen stays soluble</text>
+                  </g>
+
+                  <text x="250" y="252" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">three failures · all need a TIGHT grip on antigen · all are sensitive to affinity</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="120" cy="175" r="26" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="22;32;22" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="385" cy="180" r="32" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="28;38;28" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

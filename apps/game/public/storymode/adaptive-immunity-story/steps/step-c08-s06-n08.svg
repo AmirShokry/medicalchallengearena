@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 11 · THE ANSWER</text>
+
+                  <!-- Ghosted full canvas behind -->
+                  <g opacity="0.30">
+                    <g opacity="1"><ellipse cx="250" cy="80" rx="65" ry="25" fill="#4fb8a8" fill-opacity="0.30" stroke="#4fb8a8" stroke-width="2"></ellipse><text x="250" y="55" text-anchor="middle" style="fill:#4fb8a8;font:600 8px Inter,sans-serif;letter-spacing:1.5px">NASAL MALT</text>
+                      <g fill="#9370b9" fill-opacity="0.85" stroke="#9370b9" stroke-width="1">
+                        <circle cx="225" cy="83" r="6"></circle>
+                        <circle cx="245" cy="78" r="6"></circle>
+                        <circle cx="265" cy="83" r="6"></circle>
+                        <circle cx="285" cy="78" r="6"></circle>
+                      </g>
+                    </g>
+                    <g opacity="1"><rect x="240" y="100" width="20" height="100" fill="#e8a951" fill-opacity="0.10" stroke="#e8a951" stroke-width="1.4" stroke-dasharray="3 2"></rect>
+                      <g fill="#9370b9" fill-opacity="0.85" stroke="#9370b9" stroke-width="1">
+                        <circle cx="246" cy="115" r="5"></circle>
+                        <circle cx="252" cy="135" r="5"></circle>
+                        <circle cx="248" cy="160" r="5"></circle>
+                        <circle cx="254" cy="185" r="5"></circle>
+                      </g>
+                    <line x1="250" y1="105" x2="250" y2="195" stroke="#9370b9" stroke-width="1" stroke-dasharray="2 2" opacity="0.6"></line><polygon points="250,195 247,189 253,189" fill="#9370b9" opacity="0.7"></polygon></g>
+                    <g opacity="1"><ellipse cx="250" cy="215" rx="65" ry="22" fill="#d14859" fill-opacity="0.30" stroke="#d14859" stroke-width="2"></ellipse><text x="250" y="244" text-anchor="middle" style="fill:#d14859;font:600 8px Inter,sans-serif;letter-spacing:1.5px">VAGINAL MUCOSA</text>
+                      <g fill="#9370b9" fill-opacity="0.85" stroke="#9370b9" stroke-width="1">
+                        <circle cx="225" cy="218" r="6"></circle>
+                        <circle cx="245" cy="212" r="6"></circle>
+                        <circle cx="265" cy="218" r="6"></circle>
+                        <circle cx="285" cy="213" r="6"></circle>
+                      </g>
+                    </g>
+                  </g>
+
+                  <!-- distractors crossed out at top -->
+                  <g opacity="0.45" font-family="Inter,sans-serif">
+                    <text x="44" y="50" style="fill:#6b7689;font:8px Inter,sans-serif">A · fecal-oral</text>
+                    <line x1="40" y1="46" x2="125" y2="46" stroke="#d14859" stroke-width="1" opacity="0.85"></line>
+                    <text x="145" y="50" style="fill:#6b7689;font:8px Inter,sans-serif">B · IgG synthesis</text>
+                    <line x1="141" y1="46" x2="245" y2="46" stroke="#d14859" stroke-width="1" opacity="0.85"></line>
+                    <text x="265" y="50" style="fill:#6b7689;font:8px Inter,sans-serif">D · bacterial transfer</text>
+                    <line x1="261" y1="46" x2="385" y2="46" stroke="#d14859" stroke-width="1" opacity="0.85"></line>
+                    <text x="405" y="50" style="fill:#6b7689;font:8px Inter,sans-serif">E · IgM</text>
+                    <line x1="401" y1="46" x2="450" y2="46" stroke="#d14859" stroke-width="1" opacity="0.85"></line>
+                  </g>
+
+                  <!-- Hero answer banner -->
+                  <g transform="translate(250 145)">
+                    <rect x="-225" y="-26" width="450" height="52" rx="10" fill="#e8a951" fill-opacity="0.42" stroke="#e8a951" stroke-width="2.6"></rect>
+                    <text x="0" y="0" text-anchor="middle" style="fill:#e8a951;font:700 11px Inter,sans-serif;letter-spacing:1.5px">C · IgA-PRODUCING LYMPHOCYTES</text>
+                    <text x="0" y="14" text-anchor="middle" style="fill:#e8a951;font:700 10px Inter,sans-serif;letter-spacing:1.5px">SEED ALL MUCOSAL SITES</text>
+                  </g>
+
+                  <text x="250" y="252" text-anchor="middle" style="fill:#e8a951;font:italic 600 10px Fraunces,serif">common mucosal immune system · primed cells home to any mucosa · same B cells, different sites</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="154" r="33" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="29;39;29" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="140" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

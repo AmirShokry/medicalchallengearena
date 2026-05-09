@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 05 · NO dNTPs · NO DNA · NO DIVISION</text>
+
+<!-- RNR off in upper left -->
+<g transform="translate(95 100)">
+  <text x="0" y="-32" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif;letter-spacing:1.2px">RNR OFF</text>
+  <ellipse cx="0" cy="0" rx="30" ry="22" fill="rgba(147,112,185,0.30)" stroke="#9370b9" stroke-width="1.4"/>
+  <text x="0" y="3" text-anchor="middle" style="fill:#9370b9;font:700 9px Inter,sans-serif">RNR</text>
+  <line x1="-15" y1="-12" x2="15" y2="12" stroke="#d14859" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="-15" y1="12" x2="15" y2="-12" stroke="#d14859" stroke-width="2.5" stroke-linecap="round"/>
+</g>
+
+<!-- Arrow → no dNTPs -->
+<g stroke="#d14859" stroke-width="2" fill="none" marker-end="url(#arr10_5_5a)">
+  <line x1="135" y1="100" x2="180" y2="100"/>
+</g>
+<defs>
+  <marker id="arr10_5_5a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#d14859"/>
+  </marker>
+</defs>
+
+<!-- Empty dNTP pool with all 4 absent -->
+<g transform="translate(245 100)">
+  <text x="0" y="-32" text-anchor="middle" style="fill:#9370b9;font:700 8px Inter,sans-serif;letter-spacing:1.2px">dNTP POOL · DEPLETED</text>
+  <rect x="-65" y="-22" width="130" height="44" rx="6" fill="#0a0e1a" stroke="#9370b9" stroke-width="1.4"/>
+  <g transform="translate(-45 -5)">
+    <rect x="-12" y="-7" width="24" height="14" rx="2" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#6b7689;font:700 7px Inter,sans-serif">dATP</text>
+  </g>
+  <g transform="translate(-15 -5)">
+    <rect x="-12" y="-7" width="24" height="14" rx="2" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#6b7689;font:700 7px Inter,sans-serif">dGTP</text>
+  </g>
+  <g transform="translate(15 -5)">
+    <rect x="-12" y="-7" width="24" height="14" rx="2" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#6b7689;font:700 7px Inter,sans-serif">dCTP</text>
+  </g>
+  <g transform="translate(45 -5)">
+    <rect x="-12" y="-7" width="24" height="14" rx="2" fill="none" stroke="#6b7689" stroke-width="1" stroke-dasharray="2 2"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#6b7689;font:700 7px Inter,sans-serif">dTTP</text>
+  </g>
+  <text x="0" y="18" text-anchor="middle" style="fill:#d14859;font:700 7px Inter,sans-serif">none synthesized</text>
+</g>
+
+<!-- Arrow → DNA replication fork -->
+<g stroke="#d14859" stroke-width="2" fill="none" marker-end="url(#arr10_5_5a)">
+  <line x1="320" y1="100" x2="365" y2="100"/>
+</g>
+
+<!-- Stalled replication fork -->
+<g transform="translate(420 100)">
+  <text x="0" y="-32" text-anchor="middle" style="fill:#9370b9;font:700 8px Inter,sans-serif;letter-spacing:1.2px">DNA · STALLED FORK</text>
+  
+  <!-- Parent DNA (joined) on left -->
+  <g stroke="#4fb8a8" stroke-width="1.6" fill="none">
+    <path d="M -45 -8 Q -40 -10 -35 -8 Q -30 -6 -25 -8"/>
+    <path d="M -45 -4 Q -40 -2 -35 -4 Q -30 -6 -25 -4"/>
+  </g>
+  
+  <!-- Fork point -->
+  <circle cx="-22" cy="-6" r="3" fill="rgba(232,169,81,0.85)" stroke="#e8a951" stroke-width="1"/>
+  
+  <!-- Two daughter strands - INCOMPLETE -->
+  <line x1="-22" y1="-6" x2="-5" y2="-15" stroke="#4fb8a8" stroke-width="1.6"/>
+  <line x1="-22" y1="-6" x2="-5" y2="3" stroke="#4fb8a8" stroke-width="1.6"/>
+  
+  <!-- Stop indicators -->
+  <circle cx="-5" cy="-15" r="3" fill="#d14859"/>
+  <circle cx="-5" cy="3" r="3" fill="#d14859"/>
+  <text x="20" y="-13" style="fill:#d14859;font:700 6.5px Inter,sans-serif">stalled</text>
+  
+  <text x="0" y="22" text-anchor="middle" style="fill:#d14859;font:700 7px Inter,sans-serif">no dNTPs to extend</text>
+</g>
+
+<!-- Bottom: Cell cycle arrest -->
+<g transform="translate(250 195)">
+  <text x="0" y="-22" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.5px">CELL CYCLE · ARRESTED</text>
+  
+  <!-- Cell cycle wheel diagram -->
+  <circle cx="0" cy="0" r="32" fill="none" stroke="#3a4358" stroke-width="1.4"/>
+  <!-- G1 → S blocked -->
+  <path d="M 0 -32 A 32 32 0 0 1 32 0" fill="none" stroke="#6cc27d" stroke-width="2.4"/>
+  <text x="22" y="-22" text-anchor="middle" style="fill:#6cc27d;font:700 7px Inter,sans-serif">G1</text>
+  <!-- S phase highlighted in red - blocked -->
+  <path d="M 32 0 A 32 32 0 0 1 0 32" fill="none" stroke="#d14859" stroke-width="3.5"/>
+  <text x="22" y="22" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif">S</text>
+  <!-- G2 + M (faded) -->
+  <path d="M 0 32 A 32 32 0 0 1 -32 0" fill="none" stroke="#6b7689" stroke-width="1.4" opacity="0.5" stroke-dasharray="2 2"/>
+  <text x="-22" y="22" text-anchor="middle" style="fill:#6b7689;font:700 7px Inter,sans-serif" opacity="0.5">G2</text>
+  <path d="M -32 0 A 32 32 0 0 1 0 -32" fill="none" stroke="#6b7689" stroke-width="1.4" opacity="0.5" stroke-dasharray="2 2"/>
+  <text x="-22" y="-22" text-anchor="middle" style="fill:#6b7689;font:700 7px Inter,sans-serif" opacity="0.5">M</text>
+  
+  <!-- Stop sign in S -->
+  <line x1="22" y1="-3" x2="34" y2="9" stroke="#d14859" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="22" y1="9" x2="34" y2="-3" stroke="#d14859" stroke-width="2.5" stroke-linecap="round"/>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">Cells stop in S-phase · proliferating cells (lymphocytes) die first</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="420" cy="63" r="27" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="23;33;23" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

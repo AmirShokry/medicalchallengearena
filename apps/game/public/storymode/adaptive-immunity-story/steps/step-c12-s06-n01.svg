@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 01 · LATENT TB · CONTAINED INSIDE GRANULOMA</text><g>
+    <rect x="20" y="30" width="220" height="14" rx="7" fill="rgba(232, 169, 81, 0.18)" stroke="#e8a951" stroke-width="1"/>
+    <text x="130" y="40" text-anchor="middle" style="fill:#e8a951;font:700 7.5px Inter,sans-serif;letter-spacing:1.2px">ANTI-TNF · GRANULOMA MAINTENANCE</text>
+  </g><g opacity="1"><circle cx="250" cy="115" r="58" fill="none" stroke="#4fb8a8" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.5"/><circle cx="250" cy="115" r="42" fill="#4fb8a8" fill-opacity="0.06" stroke="#4fb8a8" stroke-width="0.6" opacity="0.4"/><g transform="translate(302 115)" opacity="1">
+      <circle cx="0" cy="0" r="4.5" fill="#4fb8a8" opacity="0.55" stroke="#4fb8a8" stroke-width="0.9"/>
+      <ellipse cx="0" cy="0" rx="2" ry="1.7" fill="#4fb8a8" opacity="0.95"/>
+    </g><g transform="translate(295.0333209967908 141)" opacity="1">
+      <circle cx="0" cy="0" r="4.5" fill="#4fb8a8" opacity="0.55" stroke="#4fb8a8" stroke-width="0.9"/>
+      <ellipse cx="0" cy="0" rx="2" ry="1.7" fill="#4fb8a8" opacity="0.95"/>
+    </g><g transform="translate(276 160.0333209967908)" opacity="1">
+      <circle cx="0" cy="0" r="4.5" fill="#4fb8a8" opacity="0.55" stroke="#4fb8a8" stroke-width="0.9"/>
+      <ellipse cx="0" cy="0" rx="2" ry="1.7" fill="#4fb8a8" opacity="0.95"/>
+    </g><g transform="translate(250 167)" opacity="1">
+      <circle cx="0" cy="0" r="4.5" fill="#4fb8a8" opacity="0.55" stroke="#4fb8a8" stroke-width="0.9"/>
+      <ellipse cx="0" cy="0" rx="2" ry="1.7" fill="#4fb8a8" opacity="0.95"/>
+    </g><g transform="translate(224 160.03332099679082)" opacity="1">
+      <circle cx="0" cy="0" r="4.5" fill="#4fb8a8" opacity="0.55" stroke="#4fb8a8" stroke-width="0.9"/>
+      <ellipse cx="0" cy="0" rx="2" ry="1.7" fill="#4fb8a8" opacity="0.95"/>
+    </g><g transform="translate(204.96667900320918 141)" opacity="1">
+      <circle cx="0" cy="0" r="4.5" fill="#4fb8a8" opacity="0.55" stroke="#4fb8a8" stroke-width="0.9"/>
+      <ellipse cx="0" cy="0" rx="2" ry="1.7" fill="#4fb8a8" opacity="0.95"/>
+    </g><g transform="translate(198 115)" opacity="1">
+      <circle cx="0" cy="0" r="4.5" fill="#4fb8a8" opacity="0.55" stroke="#4fb8a8" stroke-width="0.9"/>
+      <ellipse cx="0" cy="0" rx="2" ry="1.7" fill="#4fb8a8" opacity="0.95"/>
+    </g><g transform="translate(204.9666790032092 89)" opacity="1">
+      <circle cx="0" cy="0" r="4.5" fill="#4fb8a8" opacity="0.55" stroke="#4fb8a8" stroke-width="0.9"/>
+      <ellipse cx="0" cy="0" rx="2" ry="1.7" fill="#4fb8a8" opacity="0.95"/>
+    </g><g transform="translate(223.99999999999997 69.96667900320921)" opacity="1">
+      <circle cx="0" cy="0" r="4.5" fill="#4fb8a8" opacity="0.55" stroke="#4fb8a8" stroke-width="0.9"/>
+      <ellipse cx="0" cy="0" rx="2" ry="1.7" fill="#4fb8a8" opacity="0.95"/>
+    </g><g transform="translate(250 63)" opacity="1">
+      <circle cx="0" cy="0" r="4.5" fill="#4fb8a8" opacity="0.55" stroke="#4fb8a8" stroke-width="0.9"/>
+      <ellipse cx="0" cy="0" rx="2" ry="1.7" fill="#4fb8a8" opacity="0.95"/>
+    </g><g transform="translate(276 69.9666790032092)" opacity="1">
+      <circle cx="0" cy="0" r="4.5" fill="#4fb8a8" opacity="0.55" stroke="#4fb8a8" stroke-width="0.9"/>
+      <ellipse cx="0" cy="0" rx="2" ry="1.7" fill="#4fb8a8" opacity="0.95"/>
+    </g><g transform="translate(295.0333209967908 88.99999999999997)" opacity="1">
+      <circle cx="0" cy="0" r="4.5" fill="#4fb8a8" opacity="0.55" stroke="#4fb8a8" stroke-width="0.9"/>
+      <ellipse cx="0" cy="0" rx="2" ry="1.7" fill="#4fb8a8" opacity="0.95"/>
+    </g><g transform="translate(274.24871130596426 129) rotate(120)" opacity="1">
+        <ellipse cx="0" cy="0" rx="9" ry="4" fill="#4fb8a8" opacity="0.55" stroke="#4fb8a8" stroke-width="1"/>
+        <ellipse cx="-2" cy="0" rx="2.5" ry="1.5" fill="#2d8a7c" opacity="0.85"/>
+      </g><g transform="translate(250 143) rotate(180)" opacity="1">
+        <ellipse cx="0" cy="0" rx="9" ry="4" fill="#4fb8a8" opacity="0.55" stroke="#4fb8a8" stroke-width="1"/>
+        <ellipse cx="-2" cy="0" rx="2.5" ry="1.5" fill="#2d8a7c" opacity="0.85"/>
+      </g><g transform="translate(225.7512886940357 129) rotate(240)" opacity="1">
+        <ellipse cx="0" cy="0" rx="9" ry="4" fill="#4fb8a8" opacity="0.55" stroke="#4fb8a8" stroke-width="1"/>
+        <ellipse cx="-2" cy="0" rx="2.5" ry="1.5" fill="#2d8a7c" opacity="0.85"/>
+      </g><g transform="translate(225.7512886940357 101) rotate(300)" opacity="1">
+        <ellipse cx="0" cy="0" rx="9" ry="4" fill="#4fb8a8" opacity="0.55" stroke="#4fb8a8" stroke-width="1"/>
+        <ellipse cx="-2" cy="0" rx="2.5" ry="1.5" fill="#2d8a7c" opacity="0.85"/>
+      </g><g transform="translate(250 87) rotate(360)" opacity="1">
+        <ellipse cx="0" cy="0" rx="9" ry="4" fill="#4fb8a8" opacity="0.55" stroke="#4fb8a8" stroke-width="1"/>
+        <ellipse cx="-2" cy="0" rx="2.5" ry="1.5" fill="#2d8a7c" opacity="0.85"/>
+      </g><g transform="translate(274.24871130596426 100.99999999999999) rotate(420)" opacity="1">
+        <ellipse cx="0" cy="0" rx="9" ry="4" fill="#4fb8a8" opacity="0.55" stroke="#4fb8a8" stroke-width="1"/>
+        <ellipse cx="-2" cy="0" rx="2.5" ry="1.5" fill="#2d8a7c" opacity="0.85"/>
+      </g><g transform="translate(238 109)" opacity="1">
+      <ellipse cx="0" cy="0" rx="11" ry="8" fill="#4fb8a8" opacity="0.65" stroke="#4fb8a8" stroke-width="1.2"/>
+      <circle cx="-5" cy="-1" r="1.4" fill="#2d8a7c" opacity="0.9"/>
+      <circle cx="0" cy="-2" r="1.4" fill="#2d8a7c" opacity="0.9"/>
+      <circle cx="5" cy="-1" r="1.4" fill="#2d8a7c" opacity="0.9"/>
+      <circle cx="-3" cy="3" r="1.3" fill="#2d8a7c" opacity="0.9"/>
+      <circle cx="4" cy="3" r="1.3" fill="#2d8a7c" opacity="0.9"/>
+    </g>
+    <g transform="translate(264 121)" opacity="1">
+      <ellipse cx="0" cy="0" rx="9" ry="7" fill="#4fb8a8" opacity="0.65" stroke="#4fb8a8" stroke-width="1.2"/>
+      <circle cx="-3" cy="-1" r="1.3" fill="#2d8a7c" opacity="0.9"/>
+      <circle cx="3" cy="-1" r="1.3" fill="#2d8a7c" opacity="0.9"/>
+      <circle cx="0" cy="2.5" r="1.3" fill="#2d8a7c" opacity="0.9"/>
+    </g><g transform="translate(246 111) rotate(30)">
+        <ellipse cx="0" cy="0" rx="3" ry="1.2" fill="#d14859" opacity="0.95" stroke="#a53343" stroke-width="0.4"/>
+      </g><g transform="translate(258 113) rotate(-30)">
+        <ellipse cx="0" cy="0" rx="3" ry="1.2" fill="#d14859" opacity="0.95" stroke="#a53343" stroke-width="0.4"/>
+      </g><g transform="translate(248 121) rotate(60)">
+        <ellipse cx="0" cy="0" rx="3" ry="1.2" fill="#d14859" opacity="0.95" stroke="#a53343" stroke-width="0.4"/>
+      </g><text x="250" y="51" text-anchor="middle" style="fill:#4fb8a8;font:700 7px Inter,sans-serif;letter-spacing:1.5px">GRANULOMA</text></g>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="46" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="130" cy="35" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

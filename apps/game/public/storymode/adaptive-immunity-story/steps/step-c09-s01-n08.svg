@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 08 · OPV · ORAL → MUCOSAL IgA</text>
+
+                  <g opacity="1"><rect x="80" y="80" width="340" height="35" rx="4" fill="#4fb8a8" fill-opacity="0.30" stroke="#4fb8a8" stroke-width="2" stroke-dasharray="0"></rect><text x="90" y="100" style="fill:#4fb8a8;font:600 8px Inter,sans-serif;letter-spacing:1.5px">GUT LUMEN</text><line x1="80" y1="118" x2="420" y2="118" stroke="#9370b9" stroke-width="1.4" stroke-dasharray="2 2" opacity="0.7"></line><rect x="80" y="125" width="340" height="50" rx="4" fill="#9370b9" fill-opacity="0.15" stroke="#9370b9" stroke-width="1.4" stroke-dasharray="3 2"></rect><text x="90" y="155" style="fill:#9370b9;font:600 8px Inter,sans-serif;letter-spacing:1.5px">SERUM / BLOODSTREAM</text><rect x="80" y="185" width="340" height="35" rx="4" fill="#e8a951" fill-opacity="0.15" stroke="#e8a951" stroke-width="1.4" stroke-dasharray="3 2"></rect><text x="90" y="205" style="fill:#e8a951;font:600 8px Inter,sans-serif;letter-spacing:1.5px">CNS · MOTOR NEURONS</text></g>
+
+                  <!-- OPV drop entering through mouth -->
+                  <g transform="translate(45 95)">
+                    <path d="M 0 -8 Q -6 0 0 6 Q 6 0 0 -8 Z" fill="#4fb8a8" opacity="0.85" stroke="#4fb8a8" stroke-width="1.2"></path>
+                    <text x="0" y="-15" text-anchor="middle" style="fill:#4fb8a8;font:700 7px Inter,sans-serif;letter-spacing:1.5px">OPV</text>
+                    <text x="0" y="-23" text-anchor="middle" style="fill:#b4becf;font:italic 6px Fraunces,serif">oral drop</text>
+                  </g>
+                  <path d="M 60 95 L 80 95" stroke="#4fb8a8" stroke-width="1.6" fill="none"></path>
+                  <polygon points="80,95 73,91 73,99" fill="#4fb8a8"></polygon>
+
+                  <!-- IgA dimers populating gut lumen -->
+                  <g transform="translate(170 97)" opacity="1"><g transform="translate(-7 0)"><path d="M -4 -3 L -1 0 L 1 0 L 4 -3" stroke="#4fb8a8" stroke-width="1.6" fill="none" stroke-linecap="round"></path><line x1="0" y1="0" x2="0" y2="5" stroke="#4fb8a8" stroke-width="1.6" stroke-linecap="round"></line></g><g transform="translate(7 0) scale(-1 1)"><path d="M -4 -3 L -1 0 L 1 0 L 4 -3" stroke="#4fb8a8" stroke-width="1.6" fill="none" stroke-linecap="round"></path><line x1="0" y1="0" x2="0" y2="5" stroke="#4fb8a8" stroke-width="1.6" stroke-linecap="round"></line></g><rect x="-2" y="3" width="4" height="3" rx="0.5" fill="#e8a951" opacity="0.95"></rect></g>
+                  <g transform="translate(205 97)" opacity="1"><g transform="translate(-7 0)"><path d="M -4 -3 L -1 0 L 1 0 L 4 -3" stroke="#4fb8a8" stroke-width="1.6" fill="none" stroke-linecap="round"></path><line x1="0" y1="0" x2="0" y2="5" stroke="#4fb8a8" stroke-width="1.6" stroke-linecap="round"></line></g><g transform="translate(7 0) scale(-1 1)"><path d="M -4 -3 L -1 0 L 1 0 L 4 -3" stroke="#4fb8a8" stroke-width="1.6" fill="none" stroke-linecap="round"></path><line x1="0" y1="0" x2="0" y2="5" stroke="#4fb8a8" stroke-width="1.6" stroke-linecap="round"></line></g><rect x="-2" y="3" width="4" height="3" rx="0.5" fill="#e8a951" opacity="0.95"></rect></g>
+                  <g transform="translate(240 97)" opacity="1"><g transform="translate(-7 0)"><path d="M -4 -3 L -1 0 L 1 0 L 4 -3" stroke="#4fb8a8" stroke-width="1.6" fill="none" stroke-linecap="round"></path><line x1="0" y1="0" x2="0" y2="5" stroke="#4fb8a8" stroke-width="1.6" stroke-linecap="round"></line></g><g transform="translate(7 0) scale(-1 1)"><path d="M -4 -3 L -1 0 L 1 0 L 4 -3" stroke="#4fb8a8" stroke-width="1.6" fill="none" stroke-linecap="round"></path><line x1="0" y1="0" x2="0" y2="5" stroke="#4fb8a8" stroke-width="1.6" stroke-linecap="round"></line></g><rect x="-2" y="3" width="4" height="3" rx="0.5" fill="#e8a951" opacity="0.95"></rect></g>
+                  <g transform="translate(275 97)" opacity="1"><g transform="translate(-7 0)"><path d="M -4 -3 L -1 0 L 1 0 L 4 -3" stroke="#4fb8a8" stroke-width="1.6" fill="none" stroke-linecap="round"></path><line x1="0" y1="0" x2="0" y2="5" stroke="#4fb8a8" stroke-width="1.6" stroke-linecap="round"></line></g><g transform="translate(7 0) scale(-1 1)"><path d="M -4 -3 L -1 0 L 1 0 L 4 -3" stroke="#4fb8a8" stroke-width="1.6" fill="none" stroke-linecap="round"></path><line x1="0" y1="0" x2="0" y2="5" stroke="#4fb8a8" stroke-width="1.6" stroke-linecap="round"></line></g><rect x="-2" y="3" width="4" height="3" rx="0.5" fill="#e8a951" opacity="0.95"></rect></g>
+                  <g transform="translate(310 97)" opacity="1"><g transform="translate(-7 0)"><path d="M -4 -3 L -1 0 L 1 0 L 4 -3" stroke="#4fb8a8" stroke-width="1.6" fill="none" stroke-linecap="round"></path><line x1="0" y1="0" x2="0" y2="5" stroke="#4fb8a8" stroke-width="1.6" stroke-linecap="round"></line></g><g transform="translate(7 0) scale(-1 1)"><path d="M -4 -3 L -1 0 L 1 0 L 4 -3" stroke="#4fb8a8" stroke-width="1.6" fill="none" stroke-linecap="round"></path><line x1="0" y1="0" x2="0" y2="5" stroke="#4fb8a8" stroke-width="1.6" stroke-linecap="round"></line></g><rect x="-2" y="3" width="4" height="3" rx="0.5" fill="#e8a951" opacity="0.95"></rect></g>
+                  <g transform="translate(345 97)" opacity="1"><g transform="translate(-7 0)"><path d="M -4 -3 L -1 0 L 1 0 L 4 -3" stroke="#4fb8a8" stroke-width="1.6" fill="none" stroke-linecap="round"></path><line x1="0" y1="0" x2="0" y2="5" stroke="#4fb8a8" stroke-width="1.6" stroke-linecap="round"></line></g><g transform="translate(7 0) scale(-1 1)"><path d="M -4 -3 L -1 0 L 1 0 L 4 -3" stroke="#4fb8a8" stroke-width="1.6" fill="none" stroke-linecap="round"></path><line x1="0" y1="0" x2="0" y2="5" stroke="#4fb8a8" stroke-width="1.6" stroke-linecap="round"></line></g><rect x="-2" y="3" width="4" height="3" rx="0.5" fill="#e8a951" opacity="0.95"></rect></g>
+                  <g transform="translate(380 97)" opacity="1"><g transform="translate(-7 0)"><path d="M -4 -3 L -1 0 L 1 0 L 4 -3" stroke="#4fb8a8" stroke-width="1.6" fill="none" stroke-linecap="round"></path><line x1="0" y1="0" x2="0" y2="5" stroke="#4fb8a8" stroke-width="1.6" stroke-linecap="round"></line></g><g transform="translate(7 0) scale(-1 1)"><path d="M -4 -3 L -1 0 L 1 0 L 4 -3" stroke="#4fb8a8" stroke-width="1.6" fill="none" stroke-linecap="round"></path><line x1="0" y1="0" x2="0" y2="5" stroke="#4fb8a8" stroke-width="1.6" stroke-linecap="round"></line></g><rect x="-2" y="3" width="4" height="3" rx="0.5" fill="#e8a951" opacity="0.95"></rect></g>
+
+                  <!-- IgA label -->
+                  <text x="250" y="80" text-anchor="middle" style="fill:#4fb8a8;font:600 8px Inter,sans-serif;letter-spacing:1.5px">SECRETORY IgA · BLOCKS GUT ENTRY</text>
+
+                  <!-- Result chips -->
+                  <g transform="translate(450 145)" font-family="Inter,sans-serif">
+                    <g transform="translate(0 -55)">
+<rect x="-30" y="-9" width="60" height="18" rx="9" fill="#6cc27d" fill-opacity="0.30" stroke="#6cc27d" stroke-width="1.3"></rect>
+<text x="0" y="3" text-anchor="middle" style="fill:#6cc27d;font:600 7px Inter,sans-serif">✓ NO PARALYSIS</text>
+                    </g>
+                    <g transform="translate(0 55)">
+<rect x="-30" y="-9" width="60" height="18" rx="9" fill="#6cc27d" fill-opacity="0.30" stroke="#6cc27d" stroke-width="1.3"></rect>
+<text x="0" y="3" text-anchor="middle" style="fill:#6cc27d;font:600 7px Inter,sans-serif">✓ NO SHEDDING</text>
+                    </g>
+                  </g>
+
+                  <text x="250" y="245" text-anchor="middle" style="fill:#b4becf;font:italic 7.5px Fraunces,serif">live attenuated virus replicates in gut · primes mucosal B cells · secretory IgA blocks shedding</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="75" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

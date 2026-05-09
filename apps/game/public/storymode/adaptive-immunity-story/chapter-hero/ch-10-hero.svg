@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Chapter 10 hero icon.
+-->
+<svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <!-- Broken shield (immunodeficiency) -->
+          <path d="M 12 14 L 12 32 Q 12 44 30 50 Q 48 44 48 32 L 48 14 Z"
+                fill="#9370b9" opacity="0.25" stroke="#9370b9" stroke-width="1"/>
+          <!-- crack -->
+          <path d="M 30 16 L 26 24 L 32 28 L 28 36 L 32 44"
+                stroke="#d14859" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <!-- missing piece -->
+          <path d="M 30 16 L 26 24 L 32 28" fill="#d14859" opacity="0.18"/>
+          <!-- bacteria escaping -->
+          <g fill="#6cc27d" opacity="0.7">
+            <ellipse cx="44" cy="22" rx="2.4" ry="1.4"/>
+            <ellipse cx="50" cy="30" rx="2.4" ry="1.4" transform="rotate(30 50 30)"/>
+            <ellipse cx="46" cy="40" rx="2.4" ry="1.4" transform="rotate(-15 46 40)"/>
+          </g>
+          <text x="44" y="55" text-anchor="middle" fill="#6cc27d" font-family="Inter,sans-serif" font-size="4">infection</text>
+        </svg>

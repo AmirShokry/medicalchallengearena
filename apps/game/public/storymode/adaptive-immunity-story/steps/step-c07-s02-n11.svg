@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 13 · THE ANSWER</text>
+
+                  <!-- Ghosted three-cell scene behind -->
+                  <g opacity="0.30">
+                    <g opacity="1"><circle cx="100" cy="145" r="38" fill="#4fb8a8" fill-opacity="0.30" stroke="#4fb8a8" stroke-width="1.8"></circle><ellipse cx="92" cy="138" rx="10" ry="8" fill="#4a2d60" opacity="0.65"></ellipse>
+                      <g fill="#d14859">
+                        <circle cx="115" cy="135" r="5" fill-opacity="0.75" stroke="#d14859" stroke-width="1.2"></circle>
+                        <circle cx="116" cy="160" r="5" fill-opacity="0.75" stroke="#d14859" stroke-width="1.2"></circle>
+                        <text x="115" y="138" text-anchor="middle" style="fill:#0a0e1a;font:700 5px Inter,sans-serif">V</text>
+                        <text x="116" y="163" text-anchor="middle" style="fill:#0a0e1a;font:700 5px Inter,sans-serif">V</text>
+                      </g>
+    
+                      <g transform="translate(140 130) rotate(90)">
+                        <path d="M -14 0 L 14 0 L 16 10 L 9 10 L 7 4 L -7 4 L -9 10 L -16 10 Z" fill="#e8a951" fill-opacity="0.85" stroke="#e8a951" stroke-width="1.3"></path>
+                        <circle cx="-4" cy="-3" r="2.5" fill="#d14859"></circle>
+                        <circle cx="0" cy="-3" r="2.5" fill="#d14859"></circle>
+                        <circle cx="4" cy="-3" r="2.5" fill="#d14859"></circle>
+                      </g>
+                    <text x="100" y="200" text-anchor="middle" style="fill:#4fb8a8;font:600 8px Inter,sans-serif;letter-spacing:1.2px">INFECTED CELL</text></g><g opacity="1"><circle cx="400" cy="145" r="32" fill="#9370b9" fill-opacity="0.45" stroke="#9370b9" stroke-width="1.8"></circle><ellipse cx="395" cy="142" rx="9" ry="7" fill="#4a2d60" opacity="0.75"></ellipse><text x="402" y="148" text-anchor="middle" style="fill:#e8ecf3;font:600 9px Inter,sans-serif">CD4</text><text x="400" y="195" text-anchor="middle" style="fill:#9370b9;font:600 8px Inter,sans-serif;letter-spacing:1.2px">CD4 HELPER</text>
+                      <g fill="#e8a951" opacity="0.95">
+                        <circle cx="372" cy="135" r="2.5"></circle>
+                        <circle cx="365" cy="148" r="2.5"></circle>
+                        <circle cx="372" cy="160" r="2.5"></circle>
+                        <circle cx="358" cy="142" r="2"></circle>
+                      </g>
+                    </g><g opacity="1"><circle cx="255" cy="145" r="32" fill="#9370b9" fill-opacity="0.30" stroke="#9370b9" stroke-width="1.8"></circle><ellipse cx="250" cy="142" rx="9" ry="7" fill="#4a2d60" opacity="0.7"></ellipse><text x="260" y="148" text-anchor="middle" style="fill:#e8ecf3;font:600 9px Inter,sans-serif">CD8</text>
+                      <g transform="translate(223 145)">
+                        <path d="M 0 0 L 10 -7 L 10 7 Z" fill="#e8a951" opacity="0.85" transform="rotate(180)"></path>
+                        <text x="-15" y="-6" style="fill:#e8a951;font:600 8px Inter,sans-serif">TCR</text>
+                      </g>
+    
+                      <g transform="translate(279 123)">
+                        <rect x="-8" y="-6" width="16" height="12" rx="2" fill="#e8a951" fill-opacity="0.85" stroke="#e8a951" stroke-width="1.2"></rect>
+                        <text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 6px Inter,sans-serif">IL-2R</text>
+                      </g>
+                    <text x="255" y="195" text-anchor="middle" style="fill:#9370b9;font:600 8px Inter,sans-serif;letter-spacing:1.2px">ACTIVATED CD8</text></g>
+                      <path d="M 158 130 L 220 145" stroke="#e8a951" stroke-width="1.6" fill="none" stroke-dasharray="3 2"></path>
+                      <polygon points="220,145 213,141 213,148" fill="#e8a951"></polygon>
+                      <g transform="translate(190 110)">
+                        <rect x="-30" y="-10" width="60" height="20" rx="4" fill="#e8a951" fill-opacity="0.30" stroke="#e8a951" stroke-width="1.4"></rect>
+                        <text x="0" y="3" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1.5px">SIGNAL 1</text>
+                      </g>
+    
+                      <path d="M 365 140 L 290 130" stroke="#e8a951" stroke-width="1.6" fill="none" stroke-dasharray="3 2"></path>
+                      <polygon points="290,130 297,127 297,134" fill="#e8a951"></polygon>
+                      <g transform="translate(330 105)">
+                        <rect x="-30" y="-10" width="60" height="20" rx="4" fill="#e8a951" fill-opacity="0.30" stroke="#e8a951" stroke-width="1.4"></rect>
+                        <text x="0" y="3" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1.5px">SIGNAL 2</text>
+                      </g>
+                      <text x="330" y="135" text-anchor="middle" style="fill:#e8a951;font:italic 8px Fraunces,serif">IL-2</text>
+    
+                  </g>
+
+                  <!-- distractors crossed out at top -->
+                  <g opacity="0.45">
+                    <text x="44" y="80" style="fill:#6b7689;font:8px Inter,sans-serif">A · I + IFN-γ</text>
+                    <line x1="40" y1="76" x2="115" y2="76" stroke="#d14859" stroke-width="1" opacity="0.85"></line>
+                    <text x="135" y="80" style="fill:#6b7689;font:8px Inter,sans-serif">C · I + IL-4</text>
+                    <line x1="131" y1="76" x2="195" y2="76" stroke="#d14859" stroke-width="1" opacity="0.85"></line>
+                    <text x="215" y="80" style="fill:#6b7689;font:8px Inter,sans-serif">D · II + IFN-γ</text>
+                    <line x1="211" y1="76" x2="290" y2="76" stroke="#d14859" stroke-width="1" opacity="0.85"></line>
+                    <text x="310" y="80" style="fill:#6b7689;font:8px Inter,sans-serif">E · II + IL-2</text>
+                    <line x1="306" y1="76" x2="375" y2="76" stroke="#d14859" stroke-width="1" opacity="0.85"></line>
+                    <text x="395" y="80" style="fill:#6b7689;font:8px Inter,sans-serif">F · II + IL-4</text>
+                    <line x1="391" y1="76" x2="455" y2="76" stroke="#d14859" stroke-width="1" opacity="0.85"></line>
+                  </g>
+
+                  <!-- Hero answer banner -->
+                  <g transform="translate(250 145)">
+                    <rect x="-220" y="-26" width="440" height="52" rx="10" fill="#e8a951" fill-opacity="0.42" stroke="#e8a951" stroke-width="2.6"></rect>
+                    <text x="0" y="6" text-anchor="middle" style="fill:#e8a951;font:700 13px Inter,sans-serif;letter-spacing:2px">B · CLASS I MHC + IL-2</text>
+                  </g>
+
+                  <text x="250" y="252" text-anchor="middle" style="fill:#e8a951;font:italic 600 10px Fraunces,serif">CD8 reads Class I · IL-2 from CD4 drives proliferation · two signals, one CTL army</text>
+              
+                  
+
+                  
+              
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="146" r="33" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="29;39;29" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="255" cy="190" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="310" cy="75" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+              </svg>

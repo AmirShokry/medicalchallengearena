@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 01 · PREGNANCY · CORD BLOOD HAS MATERNAL Ab</text>
+
+                  <!-- Mother silhouette on left -->
+                  <g transform="translate(120 145)">
+                    <circle cx="0" cy="-40" r="14" fill="#b4becf" fill-opacity="0.55" stroke="#b4becf" stroke-width="1.4"></circle>
+                    <!-- pregnant body -->
+                    <path d="M -22 -25 Q -32 -10 -34 15 Q -32 38 -28 50 L 28 50 Q 32 38 34 15 Q 32 -10 22 -25 Z" fill="#b4becf" fill-opacity="0.40" stroke="#b4becf" stroke-width="1.4"></path>
+                    <!-- baby silhouette inside -->
+                    <ellipse cx="0" cy="20" rx="14" ry="12" fill="#6cc27d" fill-opacity="0.70" stroke="#6cc27d" stroke-width="1.2"></ellipse>
+                    <text x="0" y="80" text-anchor="middle" style="fill:#b4becf;font:600 8px Inter,sans-serif">28 y/o · 34 weeks</text>
+                  </g>
+
+                  <!-- Booster syringe -->
+                  <g transform="translate(80 110)">
+                    <rect x="-10" y="-2" width="14" height="6" rx="1" fill="#9370b9" fill-opacity="0.85" stroke="#9370b9" stroke-width="1"></rect>
+                    <line x1="4" y1="1" x2="14" y2="1" stroke="#b4becf" stroke-width="1.4"></line>
+                    <text x="-3" y="-7" text-anchor="middle" style="fill:#9370b9;font:600 6px Inter,sans-serif">BOOSTER</text>
+                  </g>
+
+                  <!-- Maternal antibodies -->
+                  <g transform="translate(280 100)">
+                    <text x="0" y="0" text-anchor="middle" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:1.5px">MATERNAL ANTIBODIES</text>
+                    <g transform="translate(-50 20) scale(1.5)" opacity="1"><path d="M -7 -6 L -2 0 L 2 0 L 7 -6" stroke="#e8a951" stroke-width="2" fill="none" stroke-linecap="round"></path><line x1="0" y1="0" x2="0" y2="8" stroke="#e8a951" stroke-width="2" stroke-linecap="round"></line></g>
+                    <g transform="translate(-25 25) scale(1.5)" opacity="1"><path d="M -7 -6 L -2 0 L 2 0 L 7 -6" stroke="#e8a951" stroke-width="2" fill="none" stroke-linecap="round"></path><line x1="0" y1="0" x2="0" y2="8" stroke="#e8a951" stroke-width="2" stroke-linecap="round"></line></g>
+                    <g transform="translate(0 18) scale(1.5)" opacity="1"><path d="M -7 -6 L -2 0 L 2 0 L 7 -6" stroke="#e8a951" stroke-width="2" fill="none" stroke-linecap="round"></path><line x1="0" y1="0" x2="0" y2="8" stroke="#e8a951" stroke-width="2" stroke-linecap="round"></line></g>
+                    <g transform="translate(25 25) scale(1.5)" opacity="1"><path d="M -7 -6 L -2 0 L 2 0 L 7 -6" stroke="#e8a951" stroke-width="2" fill="none" stroke-linecap="round"></path><line x1="0" y1="0" x2="0" y2="8" stroke="#e8a951" stroke-width="2" stroke-linecap="round"></line></g>
+                    <g transform="translate(50 20) scale(1.5)" opacity="1"><path d="M -7 -6 L -2 0 L 2 0 L 7 -6" stroke="#e8a951" stroke-width="2" fill="none" stroke-linecap="round"></path><line x1="0" y1="0" x2="0" y2="8" stroke="#e8a951" stroke-width="2" stroke-linecap="round"></line></g>
+                  </g>
+
+                  <!-- Cord blood arrow + label -->
+                  <path d="M 280 130 Q 280 165 200 175" stroke="#e8a951" stroke-width="1.6" fill="none" stroke-dasharray="3 2"></path>
+                  <polygon points="200,175 207,170 207,178" fill="#e8a951"></polygon>
+
+                  <g transform="translate(370 175)">
+                    <rect x="-65" y="-15" width="130" height="30" rx="6" fill="#6cc27d" fill-opacity="0.25" stroke="#6cc27d" stroke-width="1.4"></rect>
+                    <text x="0" y="-2" text-anchor="middle" style="fill:#6cc27d;font:700 9px Inter,sans-serif;letter-spacing:1.5px">CORD BLOOD</text>
+                    <text x="0" y="11" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">contains maternal Ab</text>
+                  </g>
+
+                  <text x="250" y="252" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">vaccine antibodies cross from mother to fetus · which isotype makes the trip?</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="280" cy="95" r="28" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="24;34;24" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 07 · THE ANSWER</text>
+
+                  <!-- Ghosted: chromosome with vector + activated proto-oncogene -->
+                  <g opacity="0.30">
+                    <g transform="translate(250 130)" opacity="1"><line x1="-160" y1="-1" x2="160" y2="-1" stroke="#9370b9" stroke-width="1.4" opacity="0.6"></line><line x1="-160" y1="3" x2="160" y2="3" stroke="#9370b9" stroke-width="1.4" opacity="0.6"></line><g stroke="#9370b9" stroke-width="0.6" opacity="0.4"><line x1="-156" y1="-1" x2="-156" y2="3"></line><line x1="-145.3" y1="-1" x2="-145.3" y2="3"></line><line x1="-134.7" y1="-1" x2="-134.7" y2="3"></line><line x1="-124" y1="-1" x2="-124" y2="3"></line><line x1="-113.3" y1="-1" x2="-113.3" y2="3"></line><line x1="-102.7" y1="-1" x2="-102.7" y2="3"></line><line x1="-92" y1="-1" x2="-92" y2="3"></line><line x1="-81.3" y1="-1" x2="-81.3" y2="3"></line><line x1="-70.7" y1="-1" x2="-70.7" y2="3"></line><line x1="-60" y1="-1" x2="-60" y2="3"></line><line x1="-49.3" y1="-1" x2="-49.3" y2="3"></line><line x1="-38.7" y1="-1" x2="-38.7" y2="3"></line><line x1="-28" y1="-1" x2="-28" y2="3"></line><line x1="-17.3" y1="-1" x2="-17.3" y2="3"></line><line x1="-6.7" y1="-1" x2="-6.7" y2="3"></line><line x1="4" y1="-1" x2="4" y2="3"></line><line x1="14.7" y1="-1" x2="14.7" y2="3"></line><line x1="25.3" y1="-1" x2="25.3" y2="3"></line><line x1="36" y1="-1" x2="36" y2="3"></line><line x1="46.7" y1="-1" x2="46.7" y2="3"></line><line x1="57.3" y1="-1" x2="57.3" y2="3"></line><line x1="68" y1="-1" x2="68" y2="3"></line><line x1="78.7" y1="-1" x2="78.7" y2="3"></line><line x1="89.3" y1="-1" x2="89.3" y2="3"></line><line x1="100" y1="-1" x2="100" y2="3"></line><line x1="110.7" y1="-1" x2="110.7" y2="3"></line><line x1="121.3" y1="-1" x2="121.3" y2="3"></line><line x1="132" y1="-1" x2="132" y2="3"></line><line x1="142.7" y1="-1" x2="142.7" y2="3"></line><line x1="153.3" y1="-1" x2="153.3" y2="3"></line></g><rect x="-104" y="-6" width="16" height="14" rx="1.5" fill="#6b7689" fill-opacity="0.65" stroke="#6b7689" stroke-width="0.8"></rect><rect x="-40" y="-6" width="16" height="14" rx="1.5" fill="#6b7689" fill-opacity="0.65" stroke="#6b7689" stroke-width="0.8"></rect><rect x="24" y="-6" width="16" height="14" rx="1.5" fill="#6b7689" fill-opacity="0.65" stroke="#6b7689" stroke-width="0.8"></rect><rect x="88" y="-6" width="16" height="14" rx="1.5" fill="#6b7689" fill-opacity="0.65" stroke="#6b7689" stroke-width="0.8"></rect><rect x="-28" y="-9" width="14" height="20" rx="2" fill="#e8a951" fill-opacity="0.70" stroke="#e8a951" stroke-width="1.4"></rect><text x="-21" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 6px Inter,sans-serif">LTR</text><rect x="-13" y="-7" width="26" height="16" rx="2" fill="#4fb8a8" fill-opacity="0.70" stroke="#4fb8a8" stroke-width="1.4"></rect><text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 7px Inter,sans-serif">ADA</text><rect x="14" y="-9" width="14" height="20" rx="2" fill="#e8a951" fill-opacity="0.70" stroke="#e8a951" stroke-width="1.4"></rect><text x="21" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 6px Inter,sans-serif">LTR</text><rect x="42" y="-9" width="36" height="20" rx="2.5" fill="#d14859" fill-opacity="0.55" stroke="#d14859" stroke-width="2"></rect><text x="60" y="3" text-anchor="middle" style="fill:#e8ecf3;font:700 7px Inter,sans-serif">LMO2</text><text x="60" y="22" text-anchor="middle" style="fill:#d14859;font:700 7px Inter,sans-serif;letter-spacing:1.2px">ACTIVATED</text><path d="M 22 -10 Q 35 -22 50 -14" stroke="#e8a951" stroke-width="1.6" fill="none"></path><polygon points="50,-14 47,-19 53,-19" fill="#e8a951"></polygon><text x="36" y="-26" text-anchor="middle" style="fill:#e8a951;font:700 6px Inter,sans-serif;letter-spacing:1px">ENHANCER →</text></g>
+                  </g>
+
+                  <!-- Distractors crossed out -->
+                  <g opacity="0.45" font-family="Inter,sans-serif">
+                    <text x="40" y="65" style="fill:#6b7689;font:9px Inter,sans-serif">A · anaphylaxis</text>
+                    <line x1="36" y1="61" x2="135" y2="61" stroke="#d14859" stroke-width="1" opacity="0.85"></line>
+                    <text x="155" y="65" style="fill:#6b7689;font:9px Inter,sans-serif">B · GVHD</text>
+                    <line x1="151" y1="61" x2="225" y2="61" stroke="#d14859" stroke-width="1" opacity="0.85"></line>
+                    <text x="245" y="65" style="fill:#6b7689;font:9px Inter,sans-serif">D · viremia</text>
+                    <line x1="241" y1="61" x2="335" y2="61" stroke="#d14859" stroke-width="1" opacity="0.85"></line>
+                    <text x="355" y="65" style="fill:#6b7689;font:9px Inter,sans-serif">E · transf rxn</text>
+                    <line x1="351" y1="61" x2="455" y2="61" stroke="#d14859" stroke-width="1" opacity="0.85"></line>
+                  </g>
+
+                  <!-- Hero answer banner -->
+                  <g transform="translate(250 215)">
+                    <rect x="-235" y="-22" width="470" height="44" rx="10" fill="#e8a951" fill-opacity="0.42" stroke="#e8a951" stroke-width="2.6"></rect>
+                    <text x="0" y="0" text-anchor="middle" style="fill:#e8a951;font:700 11px Inter,sans-serif;letter-spacing:1.5px">C · INSERTIONAL MUTAGENESIS</text>
+                    <text x="0" y="14" text-anchor="middle" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:1.5px">vector LTR activates proto-oncogene → leukemia</text>
+                  </g>
+
+                  <text x="250" y="245" text-anchor="middle" style="fill:#e8a951;font:italic 600 7.5px Fraunces,serif">strong viral enhancer + nearby proto-oncogene = oncogenic side effect</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="224" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="210" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

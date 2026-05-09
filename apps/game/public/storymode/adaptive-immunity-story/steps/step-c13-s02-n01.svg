@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 01 · 3 REJECTION TYPES · TIME × MECHANISM × BIOPSY</text>
+
+<!-- Timeline at top -->
+<g transform="translate(250 60)">
+  <line x1="-200" y1="0" x2="200" y2="0" stroke="#3a4358" stroke-width="2"/>
+  <!-- Tick marks + labels -->
+  <line x1="-180" y1="-4" x2="-180" y2="4" stroke="#b4becf" stroke-width="1.4"/>
+  <text x="-180" y="-10" text-anchor="middle" style="fill:#b4becf;font:7px Inter,sans-serif">0</text>
+  <text x="-180" y="18" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">transplant</text>
+  
+  <line x1="-100" y1="-4" x2="-100" y2="4" stroke="#d14859" stroke-width="1.4"/>
+  <text x="-100" y="-10" text-anchor="middle" style="fill:#d14859;font:700 7px Inter,sans-serif">30 min</text>
+  
+  <line x1="0" y1="-4" x2="0" y2="4" stroke="#9370b9" stroke-width="1.4"/>
+  <text x="0" y="-10" text-anchor="middle" style="fill:#9370b9;font:700 7px Inter,sans-serif">2 weeks</text>
+  
+  <line x1="180" y1="-4" x2="180" y2="4" stroke="#4fb8a8" stroke-width="1.4"/>
+  <text x="180" y="-10" text-anchor="middle" style="fill:#4fb8a8;font:700 7px Inter,sans-serif">2 years</text>
+</g>
+
+<!-- 3 rejection panels -->
+
+<!-- HYPERACUTE -->
+<g transform="translate(110 165)">
+  <rect x="-65" y="-55" width="130" height="110" rx="8" fill="rgba(209,72,89,0.15)" stroke="#d14859" stroke-width="1.6"/>
+  <text x="0" y="-40" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.2px">HYPERACUTE</text>
+  
+  <!-- Antibody attack icon -->
+  <g transform="translate(0 -10)">
+    <!-- Vessel cross section -->
+    <circle cx="0" cy="0" r="20" fill="rgba(180,190,207,0.25)" stroke="#b4becf" stroke-width="1.2"/>
+    <!-- Pre-formed antibodies clinging -->
+    <g stroke="#e8a951" stroke-width="1.4" fill="none" stroke-linecap="round">
+      <g transform="translate(-18 0) rotate(-90)">
+        <line x1="0" y1="0" x2="0" y2="6"/>
+        <line x1="-3" y1="-3" x2="0" y2="0"/>
+        <line x1="3" y1="-3" x2="0" y2="0"/>
+      </g>
+      <g transform="translate(0 -18)">
+        <line x1="0" y1="0" x2="0" y2="6"/>
+        <line x1="-3" y1="-3" x2="0" y2="0"/>
+        <line x1="3" y1="-3" x2="0" y2="0"/>
+      </g>
+      <g transform="translate(18 0) rotate(90)">
+        <line x1="0" y1="0" x2="0" y2="6"/>
+        <line x1="-3" y1="-3" x2="0" y2="0"/>
+        <line x1="3" y1="-3" x2="0" y2="0"/>
+      </g>
+    </g>
+    <!-- Thrombus inside -->
+    <circle cx="0" cy="0" r="10" fill="rgba(209,72,89,0.65)" stroke="#d14859" stroke-width="1"/>
+  </g>
+  
+  <text x="0" y="22" text-anchor="middle" style="fill:#e8a951;font:700 7px Inter,sans-serif">Pre-formed Ab</text>
+  <text x="0" y="34" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">fibrinoid necrosis</text>
+  <text x="0" y="46" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">+ neutrophils</text>
+</g>
+
+<!-- ACUTE CELLULAR -->
+<g transform="translate(250 165)">
+  <rect x="-65" y="-55" width="130" height="110" rx="8" fill="rgba(147,112,185,0.15)" stroke="#9370b9" stroke-width="1.6"/>
+  <text x="0" y="-40" text-anchor="middle" style="fill:#9370b9;font:700 9px Inter,sans-serif;letter-spacing:1.2px">ACUTE CELLULAR</text>
+  
+  <!-- T cells infiltrating tubule -->
+  <g transform="translate(0 -10)">
+    <!-- Tubule -->
+    <ellipse cx="0" cy="0" rx="22" ry="14" fill="rgba(232,169,81,0.18)" stroke="#e8a951" stroke-width="1.4"/>
+    <!-- Tubular cells lining -->
+    <rect x="-20" y="-6" width="40" height="12" rx="1" fill="rgba(232,169,81,0.40)" stroke="#e8a951" stroke-width="0.6"/>
+    <!-- T cells crossing -->
+    <g fill="rgba(108,194,125,0.85)" stroke="#6cc27d" stroke-width="0.8">
+      <circle cx="-15" cy="-12" r="4"/>
+      <circle cx="-3" cy="-15" r="4"/>
+      <circle cx="10" cy="-12" r="4"/>
+      <circle cx="-10" cy="0" r="4"/>
+      <circle cx="6" cy="0" r="4"/>
+      <circle cx="-15" cy="12" r="4"/>
+      <circle cx="3" cy="12" r="4"/>
+      <circle cx="14" cy="12" r="4"/>
+    </g>
+  </g>
+  
+  <text x="0" y="22" text-anchor="middle" style="fill:#6cc27d;font:700 7px Inter,sans-serif">CD8 T cells</text>
+  <text x="0" y="34" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">tubulitis</text>
+  <text x="0" y="46" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">mononuclear infiltrate</text>
+</g>
+
+<!-- CHRONIC -->
+<g transform="translate(390 165)">
+  <rect x="-65" y="-55" width="130" height="110" rx="8" fill="rgba(79,184,168,0.15)" stroke="#4fb8a8" stroke-width="1.6"/>
+  <text x="0" y="-40" text-anchor="middle" style="fill:#4fb8a8;font:700 9px Inter,sans-serif;letter-spacing:1.2px">CHRONIC</text>
+  
+  <!-- Vessel with intimal thickening -->
+  <g transform="translate(0 -10)">
+    <circle cx="0" cy="0" r="22" fill="rgba(180,190,207,0.20)" stroke="#b4becf" stroke-width="1.2"/>
+    <!-- Concentric thickening rings -->
+    <circle cx="0" cy="0" r="18" fill="rgba(79,184,168,0.30)" stroke="#4fb8a8" stroke-width="1"/>
+    <circle cx="0" cy="0" r="14" fill="rgba(79,184,168,0.45)" stroke="#4fb8a8" stroke-width="1"/>
+    <circle cx="0" cy="0" r="10" fill="rgba(79,184,168,0.65)" stroke="#4fb8a8" stroke-width="1"/>
+    <!-- Tiny lumen -->
+    <circle cx="0" cy="0" r="4" fill="rgba(209,72,89,0.55)"/>
+  </g>
+  
+  <text x="0" y="22" text-anchor="middle" style="fill:#4fb8a8;font:700 7px Inter,sans-serif">Intimal thickening</text>
+  <text x="0" y="34" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">interstitial fibrosis</text>
+  <text x="0" y="46" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">obliterative arterio.</text>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">Time + biopsy = rejection type · each has distinct mechanism + treatment</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="234" cy="139" r="60" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="56;66;56" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

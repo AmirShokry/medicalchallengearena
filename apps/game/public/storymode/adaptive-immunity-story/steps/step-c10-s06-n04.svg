@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 03 · INTEGRATION IS SEMI-RANDOM</text>
+
+                  <!-- Multiple cells with vector at different sites -->
+                  <text x="250" y="55" text-anchor="middle" style="fill:#9370b9;font:700 9px Inter,sans-serif;letter-spacing:1.5px">DIFFERENT CELLS · DIFFERENT INSERTION SITES</text>
+
+                  <!-- 4 cells with chromosomes showing vectors at varying positions -->
+                  <g transform="translate(120 110)">
+                    <line x1="-50" y1="0" x2="50" y2="0" stroke="#9370b9" stroke-width="1.4" opacity="0.6"></line>
+                    <line x1="-50" y1="4" x2="50" y2="4" stroke="#9370b9" stroke-width="1.4" opacity="0.6"></line>
+                    <!-- vector at left -->
+                    <rect x="-44" y="-6" width="8" height="14" rx="1" fill="#e8a951" fill-opacity="0.70"></rect>
+                    <rect x="-35" y="-5" width="14" height="12" rx="1" fill="#4fb8a8" fill-opacity="0.70"></rect>
+                    <rect x="-20" y="-6" width="8" height="14" rx="1" fill="#e8a951" fill-opacity="0.70"></rect>
+                    <text x="0" y="22" text-anchor="middle" style="fill:#b4becf;font:italic 6px Fraunces,serif">cell A · site 1</text>
+                  </g>
+
+                  <g transform="translate(380 110)">
+                    <line x1="-50" y1="0" x2="50" y2="0" stroke="#9370b9" stroke-width="1.4" opacity="0.6"></line>
+                    <line x1="-50" y1="4" x2="50" y2="4" stroke="#9370b9" stroke-width="1.4" opacity="0.6"></line>
+                    <rect x="0" y="-6" width="8" height="14" rx="1" fill="#e8a951" fill-opacity="0.70"></rect>
+                    <rect x="9" y="-5" width="14" height="12" rx="1" fill="#4fb8a8" fill-opacity="0.70"></rect>
+                    <rect x="24" y="-6" width="8" height="14" rx="1" fill="#e8a951" fill-opacity="0.70"></rect>
+                    <text x="0" y="22" text-anchor="middle" style="fill:#b4becf;font:italic 6px Fraunces,serif">cell B · site 2</text>
+                  </g>
+
+                  <g transform="translate(120 175)">
+                    <line x1="-50" y1="0" x2="50" y2="0" stroke="#9370b9" stroke-width="1.4" opacity="0.6"></line>
+                    <line x1="-50" y1="4" x2="50" y2="4" stroke="#9370b9" stroke-width="1.4" opacity="0.6"></line>
+                    <rect x="-15" y="-6" width="8" height="14" rx="1" fill="#e8a951" fill-opacity="0.70"></rect>
+                    <rect x="-6" y="-5" width="14" height="12" rx="1" fill="#4fb8a8" fill-opacity="0.70"></rect>
+                    <rect x="9" y="-6" width="8" height="14" rx="1" fill="#e8a951" fill-opacity="0.70"></rect>
+                    <text x="0" y="22" text-anchor="middle" style="fill:#b4becf;font:italic 6px Fraunces,serif">cell C · site 3</text>
+                  </g>
+
+                  <g transform="translate(380 175)">
+                    <line x1="-50" y1="0" x2="50" y2="0" stroke="#9370b9" stroke-width="1.4" opacity="0.6"></line>
+                    <line x1="-50" y1="4" x2="50" y2="4" stroke="#9370b9" stroke-width="1.4" opacity="0.6"></line>
+                    <rect x="20" y="-6" width="8" height="14" rx="1" fill="#e8a951" fill-opacity="0.70"></rect>
+                    <rect x="29" y="-5" width="14" height="12" rx="1" fill="#4fb8a8" fill-opacity="0.70"></rect>
+                    <rect x="44" y="-6" width="8" height="14" rx="1" fill="#e8a951" fill-opacity="0.70"></rect>
+                    <text x="0" y="22" text-anchor="middle" style="fill:#b4becf;font:italic 6px Fraunces,serif">cell D · site 4</text>
+                  </g>
+
+                  <!-- Annotation -->
+                  <g transform="translate(250 230)">
+                    <rect x="-150" y="-10" width="300" height="20" rx="8" fill="#e8a951" fill-opacity="0.25" stroke="#e8a951" stroke-width="1.4"></rect>
+                    <text x="0" y="3" text-anchor="middle" style="fill:#e8a951;font:700 7px Inter,sans-serif;letter-spacing:1.2px">PREFERS ACTIVE GENE REGIONS</text>
+                  </g>
+
+                  <text x="250" y="245" text-anchor="middle" style="fill:#b4becf;font:italic 7.5px Fraunces,serif">most cells get a safe insertion · but a few will land near a gene that shouldn't be on</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="228" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

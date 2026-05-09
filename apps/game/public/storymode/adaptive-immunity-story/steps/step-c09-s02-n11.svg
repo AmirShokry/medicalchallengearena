@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 08 · OUTPUT · ANTI-PRP IgG + MEMORY</text>
+
+<!-- Plasma cell on left -->
+<g transform="translate(110 145)">
+  <text x="0" y="-65" text-anchor="middle" style="fill:#9370b9;font:700 9px Inter,sans-serif;letter-spacing:1.2px">PLASMA CELL</text>
+  <circle cx="0" cy="0" r="38" fill="rgba(147,112,185,0.40)" stroke="#9370b9" stroke-width="1.8"/>
+  <ellipse cx="-5" cy="-2" rx="11" ry="8" fill="#4a2d60" opacity="0.7"/>
+  <g fill="#4fb8a8" fill-opacity="0.55">
+    <circle cx="8" cy="-2" r="2.5"/>
+    <circle cx="6" cy="8" r="2.5"/>
+    <circle cx="-2" cy="10" r="2.5"/>
+    <circle cx="12" cy="10" r="2.5"/>
+  </g>
+</g>
+
+<g stroke="#e8a951" stroke-width="2.4" fill="none" marker-end="url(#arr9_2_8a)">
+  <line x1="160" y1="145" x2="220" y2="145"/>
+</g>
+<defs>
+  <marker id="arr9_2_8a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8a951"/>
+  </marker>
+</defs>
+
+<!-- Anti-PRP IgG cluster -->
+<g transform="translate(290 145)">
+  <text x="0" y="-65" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1.2px">ANTI-PRP IgG</text>
+  <g stroke="#e8a951" stroke-width="2.4" fill="none" stroke-linecap="round">
+    <g transform="translate(-30 -8)">
+      <line x1="0" y1="0" x2="0" y2="14"/>
+      <line x1="-7" y1="-7" x2="0" y2="0"/>
+      <line x1="7" y1="-7" x2="0" y2="0"/>
+    </g>
+    <g transform="translate(0 -14)">
+      <line x1="0" y1="0" x2="0" y2="14"/>
+      <line x1="-7" y1="-7" x2="0" y2="0"/>
+      <line x1="7" y1="-7" x2="0" y2="0"/>
+    </g>
+    <g transform="translate(30 -8)">
+      <line x1="0" y1="0" x2="0" y2="14"/>
+      <line x1="-7" y1="-7" x2="0" y2="0"/>
+      <line x1="7" y1="-7" x2="0" y2="0"/>
+    </g>
+    <g transform="translate(-15 14)">
+      <line x1="0" y1="0" x2="0" y2="14"/>
+      <line x1="-7" y1="-7" x2="0" y2="0"/>
+      <line x1="7" y1="-7" x2="0" y2="0"/>
+    </g>
+    <g transform="translate(15 14)">
+      <line x1="0" y1="0" x2="0" y2="14"/>
+      <line x1="-7" y1="-7" x2="0" y2="0"/>
+      <line x1="7" y1="-7" x2="0" y2="0"/>
+    </g>
+  </g>
+</g>
+
+<!-- Memory cell on far right -->
+<g transform="translate(425 145)">
+  <text x="0" y="-65" text-anchor="middle" style="fill:#6cc27d;font:700 9px Inter,sans-serif;letter-spacing:1.2px">MEMORY B</text>
+  <circle cx="0" cy="0" r="34" fill="rgba(108,194,125,0.30)" stroke="#6cc27d" stroke-width="1.8"/>
+  <ellipse cx="-3" cy="-2" rx="9" ry="7" fill="#1d4422" opacity="0.7"/>
+  <text x="0" y="3" text-anchor="middle" style="fill:#e8ecf3;font:700 9px Inter,sans-serif">M</text>
+  <text x="0" y="50" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">long-lived</text>
+</g>
+
+<text x="250" y="225" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1.2px">CLASS-SWITCHED IgG · HIGH AFFINITY · MEMORY · WORKS IN INFANTS</text>
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">Hib conjugate has reduced invasive disease &gt; 99%</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="321" cy="130" r="60" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="56;66;56" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 02 · ESBL SPECTRUM · WHAT IT HYDROLYZES</text>
+
+<!-- HYDROLYZED column -->
+<text x="125" y="55" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.2px">HYDROLYZED ✕</text>
+
+<g transform="translate(125 80)">
+  <rect x="-90" y="0" width="180" height="22" rx="3" fill="rgba(209,72,89,0.18)" stroke="#d14859" stroke-width="1.2"/>
+  <text x="0" y="14" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif">PENICILLINS</text>
+</g>
+<g transform="translate(125 110)">
+  <rect x="-90" y="0" width="180" height="22" rx="3" fill="rgba(209,72,89,0.18)" stroke="#d14859" stroke-width="1.2"/>
+  <text x="0" y="14" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif">1st – 3rd gen CEPHs</text>
+</g>
+<g transform="translate(125 140)">
+  <rect x="-90" y="0" width="180" height="22" rx="3" fill="rgba(209,72,89,0.18)" stroke="#d14859" stroke-width="1.2"/>
+  <text x="0" y="14" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif">AZTREONAM</text>
+</g>
+
+<!-- NOT HYDROLYZED column -->
+<text x="375" y="55" text-anchor="middle" style="fill:#6cc27d;font:700 9px Inter,sans-serif;letter-spacing:1.2px">NOT HYDROLYZED ✓</text>
+
+<g transform="translate(375 80)">
+  <rect x="-90" y="0" width="180" height="22" rx="3" fill="rgba(108,194,125,0.18)" stroke="#6cc27d" stroke-width="1.4"/>
+  <text x="0" y="14" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif">CARBAPENEMS</text>
+</g>
+<g transform="translate(375 110)">
+  <rect x="-90" y="0" width="180" height="22" rx="3" fill="rgba(108,194,125,0.18)" stroke="#6cc27d" stroke-width="1.2"/>
+  <text x="0" y="14" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif">cefepime (4th gen)</text>
+</g>
+<g transform="translate(375 140)">
+  <rect x="-90" y="0" width="180" height="22" rx="3" fill="rgba(108,194,125,0.18)" stroke="#6cc27d" stroke-width="1.2"/>
+  <text x="0" y="14" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif">+ β-lactamase inhibitors</text>
+</g>
+
+<text x="250" y="220" text-anchor="middle" style="fill:#e8a951;font:700 8.5px Inter,sans-serif;letter-spacing:1.2px">SPECTRUM IS WHY ESBL IS DANGEROUS — KILLS MOST FIRST-LINE OPTIONS</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="125" cy="89" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="375" cy="89" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="125" cy="149" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

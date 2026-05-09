@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 01 · NRTIs = NUCLEOSIDE ANALOGS</text>
+
+<!-- Natural thymidine on left -->
+<g transform="translate(125 145)">
+  <text x="0" y="-92" text-anchor="middle" style="fill:#6cc27d;font:700 9px Inter,sans-serif;letter-spacing:1.5px">NATURAL · THYMIDINE</text>
+  
+  <!-- Base + Sugar -->
+  <!-- Thymine base (top) -->
+  <rect x="-18" y="-60" width="36" height="22" rx="3" fill="rgba(108,194,125,0.55)" stroke="#6cc27d" stroke-width="1.4"/>
+  <text x="0" y="-46" text-anchor="middle" style="fill:#0a0e1a;font:700 8px Inter,sans-serif">T</text>
+  
+  <!-- Glycosidic bond -->
+  <line x1="0" y1="-38" x2="0" y2="-30" stroke="#6cc27d" stroke-width="1.4"/>
+  
+  <!-- Deoxyribose sugar (pentagon) -->
+  <polygon points="0,-30 20,-15 13,10 -13,10 -20,-15" fill="rgba(232,169,81,0.45)" stroke="#e8a951" stroke-width="1.4"/>
+  <text x="0" y="-3" text-anchor="middle" style="fill:#0a0e1a;font:700 7px Inter,sans-serif">deoxyribose</text>
+  
+  <!-- Position labels on sugar -->
+  <text x="-22" y="-15" text-anchor="end" style="fill:#9370b9;font:6.5px 'JetBrains Mono',monospace">5'</text>
+  <text x="22" y="-15" style="fill:#9370b9;font:6.5px 'JetBrains Mono',monospace">1'</text>
+  
+  <!-- 3' OH highlighted (the key) -->
+  <g transform="translate(13 10)">
+    <line x1="0" y1="0" x2="6" y2="14" stroke="#6cc27d" stroke-width="1.6"/>
+    <circle cx="6" cy="14" r="5" fill="rgba(108,194,125,0.85)" stroke="#6cc27d" stroke-width="1.4"/>
+    <text x="6" y="17" text-anchor="middle" style="fill:#0a0e1a;font:700 6.5px Inter,sans-serif">OH</text>
+    <text x="22" y="14" style="fill:#6cc27d;font:700 7px 'JetBrains Mono',monospace">3'-OH</text>
+  </g>
+  
+  <text x="0" y="55" text-anchor="middle" style="fill:#6cc27d;font:italic 700 7px Fraunces,serif">3'-OH = chain extends</text>
+</g>
+
+<!-- VS divider -->
+<line x1="250" y1="55" x2="250" y2="220" stroke="#3a4358" stroke-width="1" stroke-dasharray="3 3"/>
+
+<!-- AZT on right -->
+<g transform="translate(375 145)">
+  <text x="0" y="-92" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.5px">AZT · ZIDOVUDINE</text>
+  
+  <!-- Same thymine base -->
+  <rect x="-18" y="-60" width="36" height="22" rx="3" fill="rgba(108,194,125,0.55)" stroke="#6cc27d" stroke-width="1.4"/>
+  <text x="0" y="-46" text-anchor="middle" style="fill:#0a0e1a;font:700 8px Inter,sans-serif">T</text>
+  
+  <line x1="0" y1="-38" x2="0" y2="-30" stroke="#6cc27d" stroke-width="1.4"/>
+  
+  <!-- Same sugar -->
+  <polygon points="0,-30 20,-15 13,10 -13,10 -20,-15" fill="rgba(232,169,81,0.45)" stroke="#e8a951" stroke-width="1.4"/>
+  <text x="0" y="-3" text-anchor="middle" style="fill:#0a0e1a;font:700 7px Inter,sans-serif">deoxyribose</text>
+  
+  <text x="-22" y="-15" text-anchor="end" style="fill:#9370b9;font:6.5px 'JetBrains Mono',monospace">5'</text>
+  <text x="22" y="-15" style="fill:#9370b9;font:6.5px 'JetBrains Mono',monospace">1'</text>
+  
+  <!-- 3' AZIDE instead of OH -->
+  <g transform="translate(13 10)">
+    <line x1="0" y1="0" x2="6" y2="14" stroke="#d14859" stroke-width="1.6"/>
+    <rect x="-2" y="11" width="16" height="14" rx="2" fill="rgba(209,72,89,0.85)" stroke="#d14859" stroke-width="1.4"/>
+    <text x="6" y="22" text-anchor="middle" style="fill:#fff;font:700 6.5px Inter,sans-serif">N₃</text>
+    <text x="22" y="20" style="fill:#d14859;font:700 7px 'JetBrains Mono',monospace">3'-N₃</text>
+  </g>
+  
+  <text x="0" y="55" text-anchor="middle" style="fill:#d14859;font:italic 700 7px Fraunces,serif">no 3'-OH = chain stops</text>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">Same shape · DIFFERENT 3' position · the trick that makes it a chain terminator</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="375" cy="48" r="24" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="20;30;20" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

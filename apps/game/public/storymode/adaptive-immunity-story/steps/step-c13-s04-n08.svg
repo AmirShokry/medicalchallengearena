@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 05 · MODULATION + Fc-MEDIATED DEPLETION</text><g>
+    <rect x="20" y="30" width="266" height="14" rx="7" fill="rgba(232, 169, 81, 0.18)" stroke="#e8a951" stroke-width="1"/>
+    <text x="153" y="40" text-anchor="middle" style="fill:#e8a951;font:700 7.5px Inter,sans-serif;letter-spacing:1.2px">OKT3 · ANTI-CD3-ε · DISABLE + DEPLETE</text>
+  </g><text x="30" y="62" style="fill:#b4becf;font:600 7px 'JetBrains Mono',monospace;letter-spacing:1.5px">TCR-CD3 COMPLEX</text><text x="470" y="62" text-anchor="end" style="fill:#b4becf;font:600 7px 'JetBrains Mono',monospace;letter-spacing:1.5px">MECHANISM</text><g opacity="1"><rect x="35" y="80" width="130" height="100" rx="50" fill="rgba(180, 190, 207, 0.06)" stroke="#3a4358" stroke-width="0.8"/><line x1="38" y1="110" x2="162" y2="110" stroke="#b4becf" stroke-width="1.5"/><g transform="translate(100 105)">
+    <line x1="-3" y1="0" x2="-3" y2="-15" stroke="#4fb8a8" stroke-width="1.6"/>
+    <ellipse cx="-3" cy="-19" rx="3.5" ry="3" fill="#4fb8a8" opacity="0.5" stroke="#4fb8a8" stroke-width="1.2"/>
+    <line x1="3" y1="0" x2="3" y2="-15" stroke="#4fb8a8" stroke-width="1.6"/>
+    <ellipse cx="3" cy="-19" rx="3.5" ry="3" fill="#4fb8a8" opacity="0.5" stroke="#4fb8a8" stroke-width="1.2"/>
+    <text x="0" y="-26" text-anchor="middle" style="fill:#4fb8a8;font:700 6.5px Inter,sans-serif">TCR αβ</text>
+  </g><g>
+      <ellipse cx="68" cy="105" rx="3" ry="2.5" fill="#9370b9" opacity="0.4" stroke="#9370b9" stroke-width="0.9"/>
+      <line x1="68" y1="110" x2="68" y2="140" stroke="#9370b9" stroke-width="1.4"/>
+      <text x="68" y="99" text-anchor="middle" style="fill:#9370b9;font:700 5.5px Inter,sans-serif">ζ</text>
+      <circle cx="66" cy="138" r="1.4" fill="#9370b9" opacity="0.7"/>
+      <circle cx="70" cy="138" r="1.4" fill="#9370b9" opacity="0.7"/>
+    </g><g>
+      <ellipse cx="76" cy="105" rx="3" ry="2.5" fill="#9370b9" opacity="0.4" stroke="#9370b9" stroke-width="0.9"/>
+      <line x1="76" y1="110" x2="76" y2="140" stroke="#9370b9" stroke-width="1.4"/>
+      <text x="76" y="99" text-anchor="middle" style="fill:#9370b9;font:700 5.5px Inter,sans-serif">γ</text>
+      <circle cx="74" cy="138" r="1.4" fill="#9370b9" opacity="0.7"/>
+      <circle cx="78" cy="138" r="1.4" fill="#9370b9" opacity="0.7"/>
+    </g><g>
+      <ellipse cx="84" cy="105" rx="3" ry="2.5" fill="#9370b9" opacity="0.4" stroke="#9370b9" stroke-width="0.9"/>
+      <line x1="84" y1="110" x2="84" y2="140" stroke="#9370b9" stroke-width="1.4"/>
+      <text x="84" y="99" text-anchor="middle" style="fill:#9370b9;font:700 5.5px Inter,sans-serif">ε</text>
+      <circle cx="82" cy="138" r="1.4" fill="#9370b9" opacity="0.7"/>
+      <circle cx="86" cy="138" r="1.4" fill="#9370b9" opacity="0.7"/>
+    </g><g>
+      <ellipse cx="116" cy="105" rx="3" ry="2.5" fill="#9370b9" opacity="0.4" stroke="#9370b9" stroke-width="0.9"/>
+      <line x1="116" y1="110" x2="116" y2="140" stroke="#9370b9" stroke-width="1.4"/>
+      <text x="116" y="99" text-anchor="middle" style="fill:#9370b9;font:700 5.5px Inter,sans-serif">ε</text>
+      <circle cx="114" cy="138" r="1.4" fill="#9370b9" opacity="0.7"/>
+      <circle cx="118" cy="138" r="1.4" fill="#9370b9" opacity="0.7"/>
+    </g><g>
+      <ellipse cx="124" cy="105" rx="3" ry="2.5" fill="#9370b9" opacity="0.4" stroke="#9370b9" stroke-width="0.9"/>
+      <line x1="124" y1="110" x2="124" y2="140" stroke="#9370b9" stroke-width="1.4"/>
+      <text x="124" y="99" text-anchor="middle" style="fill:#9370b9;font:700 5.5px Inter,sans-serif">δ</text>
+      <circle cx="122" cy="138" r="1.4" fill="#9370b9" opacity="0.7"/>
+      <circle cx="126" cy="138" r="1.4" fill="#9370b9" opacity="0.7"/>
+    </g><g>
+      <ellipse cx="132" cy="105" rx="3" ry="2.5" fill="#9370b9" opacity="0.4" stroke="#9370b9" stroke-width="0.9"/>
+      <line x1="132" y1="110" x2="132" y2="140" stroke="#9370b9" stroke-width="1.4"/>
+      <text x="132" y="99" text-anchor="middle" style="fill:#9370b9;font:700 5.5px Inter,sans-serif">ζ</text>
+      <circle cx="130" cy="138" r="1.4" fill="#9370b9" opacity="0.7"/>
+      <circle cx="134" cy="138" r="1.4" fill="#9370b9" opacity="0.7"/>
+    </g><g transform="translate(84 86)" stroke="#d14859" stroke-width="1.6" fill="none">
+        <line x1="0" y1="14" x2="0" y2="6"/>
+        <line x1="0" y1="6" x2="-4" y2="0"/>
+        <line x1="0" y1="6" x2="4" y2="0"/>
+      </g><g transform="translate(116 86)" stroke="#d14859" stroke-width="1.6" fill="none">
+        <line x1="0" y1="14" x2="0" y2="6"/>
+        <line x1="0" y1="6" x2="-4" y2="0"/>
+        <line x1="0" y1="6" x2="4" y2="0"/>
+      </g><line x1="84" y1="92" x2="116" y2="92" stroke="#d14859" stroke-width="1.2" stroke-dasharray="2 1.5" opacity="0.7"/><text x="100" y="66" text-anchor="middle" style="fill:#d14859;font:700 7.5px Inter,sans-serif;letter-spacing:0.5px">OKT3</text><g stroke="#d14859" stroke-width="1.4" fill="none">
+      <line x1="84" y1="115" x2="84" y2="145" stroke-dasharray="2 1.5"/>
+      <polygon points="82,143 84,148 86,143" fill="#d14859"/>
+      <line x1="116" y1="115" x2="116" y2="145" stroke-dasharray="2 1.5"/>
+      <polygon points="114,143 116,148 118,143" fill="#d14859"/>
+    </g>
+    <text x="100" y="160" text-anchor="middle" style="fill:#d14859;font:700 7px Inter,sans-serif;letter-spacing:0.8px">MODULATION</text>
+    <text x="100" y="170" text-anchor="middle" style="fill:#6b7689;font:italic 6.5px Fraunces,serif">CD3 internalized</text></g><g opacity="1"><g transform="translate(335 115)">
+      <rect x="-115" y="-50" width="230" height="100" rx="6" fill="rgba(147, 112, 185, 0.10)" stroke="#9370b9" stroke-width="1.4"/>
+      <text x="0" y="-32" text-anchor="middle" style="fill:#9370b9;font:700 8px Inter,sans-serif;letter-spacing:1px">MODULATION + DEPLETION</text>
+      <g style="font:7.5px Inter,sans-serif;fill:#b4becf">
+        <text x="-105" y="-15">▸ TCR-CD3 internalized</text>
+        <text x="-105" y="-2">▸ Ab-coated T cells cleared</text>
+        <text x="-105" y="11">▸ spleen Fc receptors + complement</text>
+        <text x="-105" y="24">▸ circulating T cells drop sharply</text>
+        <text x="0" y="42" text-anchor="middle" style="fill:#9370b9;font:italic 7px Fraunces,serif">profound T-cell suppression</text>
+      </g>
+    </g></g>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="100" cy="61" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

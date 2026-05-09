@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 07 · INFLUENZA CONTRAST · NO LATENCY</text>
+
+<g transform="translate(125 130)">
+  <rect x="-90" y="-30" width="180" height="60" rx="8" fill="rgba(232,169,81,0.10)" stroke="#e8a951" stroke-width="1.4"/>
+  <text x="0" y="-12" text-anchor="middle" style="fill:#e8a951;font:700 10px Inter,sans-serif;letter-spacing:1.2px">HERPESVIRUSES</text>
+  <text x="0" y="3" text-anchor="middle" style="fill:#b4becf;font:7.5px Inter,sans-serif">DNA · LATENT lifelong</text>
+  <text x="0" y="18" text-anchor="middle" style="fill:#b4becf;font:7px Inter,sans-serif">reactivate sporadically</text>
+</g>
+
+<g transform="translate(375 130)">
+  <rect x="-90" y="-30" width="180" height="60" rx="8" fill="rgba(209,72,89,0.10)" stroke="#d14859" stroke-width="1.4"/>
+  <text x="0" y="-12" text-anchor="middle" style="fill:#d14859;font:700 10px Inter,sans-serif;letter-spacing:1.2px">INFLUENZA</text>
+  <text x="0" y="3" text-anchor="middle" style="fill:#b4becf;font:7.5px Inter,sans-serif">RNA · ACUTE only</text>
+  <text x="0" y="18" text-anchor="middle" style="fill:#b4becf;font:7px Inter,sans-serif">no latent reservoir</text>
+</g>
+
+<g transform="translate(250 220)">
+  <rect x="-200" y="-15" width="400" height="34" rx="6" fill="rgba(209,72,89,0.06)" stroke="#d14859" stroke-width="0.8" stroke-dasharray="3 2"/>
+  <text x="0" y="-1" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif;letter-spacing:1.2px">FLU EVADES VIA ANTIGENIC SHIFT</text>
+  <text x="0" y="14" text-anchor="middle" style="fill:#b4becf;font:7px Inter,sans-serif">reassortment of segments in pigs (mixing vessels)</text>
+</g>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="125" cy="128" r="32" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="28;38;28" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="375" cy="128" r="24" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="20;30;20" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

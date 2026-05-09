@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 07 · INTEGRASE · PROVIRUS PERMANENT</text>
+
+<!-- Stage 1: dsDNA in cytoplasm -->
+<g transform="translate(95 145)">
+  <text x="0" y="-78" text-anchor="middle" style="fill:#9370b9;font:700 9px Inter,sans-serif;letter-spacing:1.5px">VIRAL dsDNA</text>
+  <g stroke="#9370b9" stroke-width="2" fill="none">
+    <path d="M -28 -8 Q -22 -10 -16 -8 Q -10 -6 -4 -8 Q 2 -10 8 -8 Q 14 -6 20 -8 Q 26 -10 28 -8"/>
+    <path d="M -28 8 Q -22 10 -16 8 Q -10 6 -4 8 Q 2 10 8 8 Q 14 6 20 8 Q 26 10 28 8"/>
+  </g>
+  <text x="0" y="32" text-anchor="middle" style="fill:#b4becf;font:7px Inter,sans-serif">post-RT</text>
+</g>
+
+<!-- Integrase enzyme arrow -->
+<g stroke="#e8a951" stroke-width="2.4" fill="none" marker-end="url(#arr14_1_7a)">
+  <line x1="155" y1="145" x2="220" y2="145"/>
+</g>
+<defs>
+  <marker id="arr14_1_7a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8a951"/>
+  </marker>
+</defs>
+<g transform="translate(187 130)">
+  <ellipse cx="0" cy="0" rx="22" ry="11" fill="rgba(232,169,81,0.85)" stroke="#e8a951" stroke-width="1.4"/>
+  <text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 7px Inter,sans-serif">IN</text>
+</g>
+
+<!-- Host genome with integrated provirus -->
+<g transform="translate(345 145)">
+  <text x="0" y="-78" text-anchor="middle" style="fill:#9370b9;font:700 9px Inter,sans-serif;letter-spacing:1.5px">HOST CHROMOSOME</text>
+  <!-- Long DNA -->
+  <g stroke="#b4becf" stroke-width="2" fill="none">
+    <path d="M -90 -10 Q -82 -12 -74 -10 Q -66 -8 -58 -10 Q -50 -12 -42 -10 Q -34 -8 -26 -10 Q -18 -12 -10 -10"/>
+    <path d="M -90 10 Q -82 12 -74 10 Q -66 8 -58 10 Q -50 12 -42 10 Q -34 8 -26 10 Q -18 12 -10 10"/>
+    <path d="M 30 -10 Q 38 -12 46 -10 Q 54 -8 62 -10 Q 70 -12 78 -10 Q 86 -8 94 -10"/>
+    <path d="M 30 10 Q 38 12 46 10 Q 54 8 62 10 Q 70 12 78 10 Q 86 8 94 10"/>
+  </g>
+  <!-- Provirus inserted in middle -->
+  <g transform="translate(10 0)">
+    <rect x="-22" y="-13" width="44" height="26" fill="rgba(209,72,89,0.45)" stroke="#d14859" stroke-width="1.6"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#fff;font:700 8px Inter,sans-serif">PROVIRUS</text>
+  </g>
+  
+  <text x="0" y="32" text-anchor="middle" style="fill:#d14859;font:italic 700 7px Fraunces,serif">replicated with host every division</text>
+</g>
+
+<!-- Bottom: latent reservoir -->
+<g transform="translate(250 215)">
+  <rect x="-180" y="-13" width="360" height="26" rx="6" fill="rgba(209,72,89,0.25)" stroke="#d14859" stroke-width="1.8"/>
+  <text x="0" y="3" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.5px">LATENT RESERVOIR · NO CURE POSSIBLE</text>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">Resting memory T cells with integrated provirus = silent reservoir for life</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="355" cy="143" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="213" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

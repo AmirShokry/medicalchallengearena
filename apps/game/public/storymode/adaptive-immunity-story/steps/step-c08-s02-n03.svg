@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 03 · RECALL · V(D)J DELETES INTERVENING DNA</text>
+
+<!-- Before: full germline -->
+<text x="20" y="58" style="fill:#b4becf;font:700 8px Inter,sans-serif;letter-spacing:1.2px">BEFORE · GERMLINE</text>
+<g transform="translate(60 80)">
+  <line x1="0" y1="0" x2="370" y2="0" stroke="#6b7689" stroke-width="1.8"/>
+  <!-- V segments -->
+  <g fill="#4fb8a8" fill-opacity="0.85">
+    <rect x="10" y="-7" width="14" height="14" rx="2"/>
+    <rect x="30" y="-7" width="14" height="14" rx="2"/>
+    <rect x="50" y="-7" width="14" height="14" rx="2"/>
+    <rect x="70" y="-7" width="14" height="14" rx="2"/>
+    <rect x="90" y="-7" width="14" height="14" rx="2"/>
+  </g>
+  <!-- D segments -->
+  <g fill="#e8a951" fill-opacity="0.85">
+    <rect x="135" y="-7" width="12" height="14" rx="2"/>
+    <rect x="153" y="-7" width="12" height="14" rx="2"/>
+    <rect x="171" y="-7" width="12" height="14" rx="2"/>
+  </g>
+  <!-- J segments -->
+  <g fill="#9370b9" fill-opacity="0.95">
+    <rect x="220" y="-9" width="14" height="18" rx="2"/>
+    <rect x="240" y="-9" width="14" height="18" rx="2"/>
+    <rect x="260" y="-9" width="14" height="18" rx="2"/>
+  </g>
+  <!-- C -->
+  <rect x="320" y="-10" width="44" height="20" rx="3" fill="#6b7689" fill-opacity="0.85"/>
+  <text x="342" y="3" text-anchor="middle" style="fill:#e8ecf3;font:700 9px Inter,sans-serif">C</text>
+</g>
+
+<!-- Arrow + RAG annotation -->
+<g transform="translate(250 130)">
+  <text x="0" y="0" text-anchor="middle" style="fill:#e8a951;font:700 8.5px Inter,sans-serif;letter-spacing:1.5px">RAG · CUT · LOOP OUT · REJOIN</text>
+  <line x1="0" y1="6" x2="0" y2="22" stroke="#e8a951" stroke-width="2"/>
+  <polygon points="0,22 -5,15 5,15" fill="#e8a951"/>
+</g>
+
+<!-- After: rearranged compact -->
+<text x="20" y="170" style="fill:#b4becf;font:700 8px Inter,sans-serif;letter-spacing:1.2px">AFTER · REARRANGED</text>
+<g transform="translate(60 195)">
+  <line x1="0" y1="0" x2="220" y2="0" stroke="#6b7689" stroke-width="1.8"/>
+  <!-- chosen V -->
+  <rect x="50" y="-8" width="16" height="16" rx="2" fill="#4fb8a8" fill-opacity="0.95" stroke="#4fb8a8" stroke-width="1.4"/>
+  <!-- D -->
+  <rect x="72" y="-8" width="14" height="16" rx="2" fill="#e8a951" fill-opacity="0.95" stroke="#e8a951" stroke-width="1.4"/>
+  <!-- J -->
+  <rect x="92" y="-9" width="14" height="18" rx="2" fill="#9370b9" fill-opacity="0.95" stroke="#9370b9" stroke-width="1.6"/>
+  <!-- C -->
+  <rect x="135" y="-10" width="44" height="20" rx="3" fill="#6b7689" fill-opacity="0.85"/>
+  <text x="157" y="3" text-anchor="middle" style="fill:#e8ecf3;font:700 9px Inter,sans-serif">C</text>
+  
+  <text x="220" y="3" style="fill:#d14859;font:italic 700 8px Fraunces,serif">intervening DNA · GONE</text>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">Rearrangement physically removes DNA between chosen V, D, J segments</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="280" cy="193" r="33" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="29;39;29" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

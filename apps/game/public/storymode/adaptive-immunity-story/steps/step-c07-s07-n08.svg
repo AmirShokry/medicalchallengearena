@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 08 · POLYCLONAL · ~25% OF T CELLS</text>
+
+                  <!-- Single APC on left -->
+                  <g opacity="1"><circle cx="130" cy="145" r="42" fill="#9370b9" fill-opacity="0.35" stroke="#9370b9" stroke-width="1.8"></circle><ellipse cx="123" cy="140" rx="11" ry="9" fill="#4a2d60" opacity="0.7"></ellipse>
+                      <g transform="translate(172 145)">
+                        <!-- Class II body — paired chains forming a groove -->
+                        <path d="M -8 -10 L -8 4 L -2 4 L -2 -3 L 2 -3 L 2 4 L 8 4 L 8 -10 Z" fill="#4fb8a8" fill-opacity="0.85" stroke="#4fb8a8" stroke-width="1.4"></path>
+                    </g><text x="130" y="205" text-anchor="middle" style="fill:#9370b9;font:600 8px Inter,sans-serif;letter-spacing:1.2px">APC</text></g>
+
+                  <!-- Many T cells on right, all engaged -->
+                  <g>
+                    <!-- T cell cluster -->
+                    <g fill="#6cc27d" fill-opacity="0.40" stroke="#6cc27d" stroke-width="1.4">
+                      <circle cx="290" cy="105" r="14"></circle>
+                      <circle cx="335" cy="95" r="14"></circle>
+                      <circle cx="380" cy="105" r="14"></circle>
+                      <circle cx="425" cy="95" r="14"></circle>
+                      <circle cx="290" cy="145" r="14"></circle>
+                      <circle cx="335" cy="145" r="14"></circle>
+                      <circle cx="380" cy="145" r="14"></circle>
+                      <circle cx="425" cy="145" r="14"></circle>
+                      <circle cx="290" cy="185" r="14"></circle>
+                      <circle cx="335" cy="195" r="14"></circle>
+                      <circle cx="380" cy="185" r="14"></circle>
+                      <circle cx="425" cy="195" r="14"></circle>
+                    </g>
+                    <!-- Each engaged via superantigen mini bridges -->
+                    <g stroke="#d14859" stroke-width="1.2" stroke-dasharray="2 2" opacity="0.7" fill="none">
+                      <line x1="170" y1="140" x2="276" y2="105"></line>
+                      <line x1="170" y1="145" x2="276" y2="145"></line>
+                      <line x1="170" y1="150" x2="276" y2="185"></line>
+                    </g>
+                  </g>
+
+                  <!-- Annotation -->
+                  <g transform="translate(370 220)">
+                    <rect x="-60" y="-12" width="120" height="22" rx="11" fill="#d14859" fill-opacity="0.25" stroke="#d14859" stroke-width="1.4"></rect>
+                    <text x="0" y="3" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif;letter-spacing:1.5px">~25% ACTIVATED</text>
+                  </g>
+
+                  <text x="250" y="252" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">single toxin · vast number of T-cell clones engaged simultaneously</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="370" cy="218" r="21" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="17;27;17" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

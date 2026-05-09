@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 07 · CARRIER T HELPS PRP B</text>
+
+<!-- B cell on left -->
+<g transform="translate(125 145)">
+  <text x="0" y="-72" text-anchor="middle" style="fill:#9370b9;font:700 9px Inter,sans-serif;letter-spacing:1.2px">B CELL · PRP-specific</text>
+  <circle cx="0" cy="0" r="44" fill="rgba(147,112,185,0.30)" stroke="#9370b9" stroke-width="1.8"/>
+  <ellipse cx="-3" cy="-2" rx="11" ry="9" fill="#4a2d60" opacity="0.7"/>
+  <text x="0" y="3" text-anchor="middle" style="fill:#e8ecf3;font:700 11px Inter,sans-serif">B</text>
+  
+  <!-- MHC II + carrier peptide on right edge -->
+  <g transform="translate(42 -10)">
+    <path d="M -10 8 L -10 -2 L -3 -2 L -3 -7 L 3 -7 L 3 -2 L 10 -2 L 10 8 Z" fill="#9370b9" fill-opacity="0.95" stroke="#9370b9" stroke-width="1.4"/>
+    <rect x="-3" y="-6" width="6" height="3" fill="#e8a951" stroke="#e8a951"/>
+    <text x="-15" y="-15" text-anchor="end" style="fill:#9370b9;font:700 6.5px 'JetBrains Mono',monospace">MHC II</text>
+  </g>
+  
+  <!-- CD40 below -->
+  <g transform="translate(42 18)">
+    <rect x="-7" y="-10" width="14" height="20" rx="2" fill="rgba(232,169,81,0.95)" stroke="#e8a951" stroke-width="1.4"/>
+    <text x="-12" y="3" text-anchor="end" style="fill:#e8a951;font:700 6.5px 'JetBrains Mono',monospace">CD40</text>
+  </g>
+</g>
+
+<!-- T cell on right -->
+<g transform="translate(380 145)">
+  <text x="0" y="-72" text-anchor="middle" style="fill:#6cc27d;font:700 9px Inter,sans-serif;letter-spacing:1.2px">CD4 T · CARRIER-specific</text>
+  <circle cx="0" cy="0" r="40" fill="rgba(108,194,125,0.30)" stroke="#6cc27d" stroke-width="1.8"/>
+  <ellipse cx="3" cy="-3" rx="10" ry="8" fill="#1d4422" opacity="0.7"/>
+  <text x="0" y="3" text-anchor="middle" style="fill:#e8ecf3;font:700 10px Inter,sans-serif">CD4</text>
+  
+  <!-- TCR top -->
+  <g transform="translate(-40 -10)">
+    <rect x="-7" y="-7" width="14" height="14" rx="2" fill="#9370b9" fill-opacity="0.85" stroke="#9370b9" stroke-width="1.4"/>
+    <text x="14" y="-12" style="fill:#9370b9;font:700 6.5px 'JetBrains Mono',monospace">TCR</text>
+  </g>
+  
+  <!-- CD40L bottom -->
+  <g transform="translate(-40 18)">
+    <rect x="-7" y="-10" width="14" height="20" rx="2" fill="rgba(232,169,81,0.95)" stroke="#e8a951" stroke-width="1.4"/>
+    <text x="14" y="3" style="fill:#e8a951;font:700 6.5px 'JetBrains Mono',monospace">CD40L</text>
+  </g>
+</g>
+
+<!-- Two bonds -->
+<line x1="180" y1="135" x2="338" y2="135" stroke="#9370b9" stroke-width="2.2"/>
+<line x1="180" y1="163" x2="338" y2="163" stroke="#e8a951" stroke-width="2.6"/>
+
+<text x="250" y="225" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1.2px">T DOESN'T CARE B IS PRP-SPECIFIC · HELP FLOWS BACK</text>
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">CD40L + cytokines → class switching · affinity maturation · memory</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="220" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="380" cy="68" r="36" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="32;42;32" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

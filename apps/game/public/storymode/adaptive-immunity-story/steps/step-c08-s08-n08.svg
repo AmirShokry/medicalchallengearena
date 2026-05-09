@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 05 · BROKEN · STAYS AT GERMLINE</text>
+
+                  <!-- Germinal center container with X over selection step -->
+                  <ellipse cx="250" cy="155" rx="200" ry="55" fill="#d14859" fill-opacity="0.10" stroke="#d14859" stroke-width="1.4" stroke-dasharray="3 2"></ellipse>
+                  <text x="250" y="80" text-anchor="middle" style="fill:#d14859;font:600 9px Inter,sans-serif;letter-spacing:1.5px">GERMINAL CENTER · BROKEN</text>
+
+                  <g transform="translate(120 155)">
+                    <g transform="translate(0 0)" opacity="1"><g stroke="#9370b9" stroke-width="1.4" fill="none" stroke-linecap="round"><path d="M -10 -10 L -3 0 L 3 0 L 10 -10"></path><line x1="0" y1="0" x2="0" y2="14"></line></g><polygon points="0,-22 -8,-15 0,-8 8,-15" fill="#d14859" opacity="0.9" stroke="#d14859" stroke-width="1"></polygon><text x="0" y="32" text-anchor="middle" style="fill:#9370b9;font:700 8px Inter,sans-serif;letter-spacing:1.2px">LOW</text></g>
+                  </g>
+
+                  <g transform="translate(180 155)">
+                    <path d="M -15 0 L 15 0" stroke="#3a4358" stroke-width="1.4" stroke-dasharray="3 2"></path>
+                    <g transform="translate(0 0)">
+                      <line x1="-7" y1="-7" x2="7" y2="7" stroke="#d14859" stroke-width="3" stroke-linecap="round"></line>
+                      <line x1="-7" y1="7" x2="7" y2="-7" stroke="#d14859" stroke-width="3" stroke-linecap="round"></line>
+                    </g>
+                  </g>
+
+                  <g transform="translate(240 155)" opacity="0.4">
+                    <g transform="translate(0 0)" opacity="1"><g stroke="#e8a951" stroke-width="2" fill="none" stroke-linecap="round"><path d="M -10 -10 L -3 0 L 3 0 L 10 -10"></path><line x1="0" y1="0" x2="0" y2="14"></line></g><text x="0" y="32" text-anchor="middle" style="fill:#e8a951;font:700 8px Inter,sans-serif;letter-spacing:1.2px">MID</text></g>
+                  </g>
+
+                  <g transform="translate(380 155)" opacity="0.4">
+                    <g transform="translate(0 0)" opacity="1"><g stroke="#6cc27d" stroke-width="2.6" fill="none" stroke-linecap="round"><path d="M -10 -10 L -3 0 L 3 0 L 10 -10"></path><line x1="0" y1="0" x2="0" y2="14"></line></g><text x="0" y="32" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif;letter-spacing:1.2px">HIGH</text></g>
+                  </g>
+
+                  <!-- Verdict at bottom (below the oval) -->
+                  <g transform="translate(250 230)">
+                    <rect x="-130" y="-12" width="260" height="22" rx="11" fill="#d14859" fill-opacity="0.20" stroke="#d14859" stroke-width="1.4"></rect>
+                    <text x="0" y="3" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif;letter-spacing:1.5px">STUCK AT LOW · CAN'T OPSONIZE</text>
+                  </g>
+
+                  <text x="250" y="252" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">selection step fails · antibodies stay at germline grip · weak binding · weak function</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="228" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="75" r="36" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="32;42;32" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="380" cy="182" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

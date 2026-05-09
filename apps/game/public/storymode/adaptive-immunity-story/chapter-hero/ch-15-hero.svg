@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Chapter 15 hero icon.
+-->
+<svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <!-- Pathogen menagerie: bacteria + virus + fungus -->
+          <!-- bacterium -->
+          <ellipse cx="14" cy="18" rx="6" ry="3.5" fill="#4fb8a8" opacity="0.7" stroke="#4fb8a8" stroke-width="0.7"/>
+          <line x1="20" y1="18" x2="24" y2="14" stroke="#4fb8a8" stroke-width="0.6"/>
+          <line x1="20" y1="18" x2="24" y2="22" stroke="#4fb8a8" stroke-width="0.6"/>
+          <!-- virus -->
+          <circle cx="44" cy="20" r="6" fill="#d14859" opacity="0.55" stroke="#d14859" stroke-width="0.7"/>
+          <g stroke="#d14859" stroke-width="0.5" fill="none">
+            <line x1="44" y1="14" x2="44" y2="11"/>
+            <line x1="44" y1="26" x2="44" y2="29"/>
+            <line x1="38" y1="20" x2="35" y2="20"/>
+            <line x1="50" y1="20" x2="53" y2="20"/>
+            <line x1="40" y1="16" x2="38" y2="14"/>
+            <line x1="48" y1="24" x2="50" y2="26"/>
+          </g>
+          <!-- fungus (branching) -->
+          <g stroke="#9370b9" stroke-width="1.4" fill="none" stroke-linecap="round">
+            <path d="M 24 50 L 30 38"/>
+            <path d="M 30 38 L 24 32"/>
+            <path d="M 30 38 L 36 32"/>
+            <path d="M 30 38 L 30 30"/>
+          </g>
+          <g fill="#9370b9" opacity="0.85">
+            <circle cx="24" cy="32" r="1.6"/>
+            <circle cx="36" cy="32" r="1.6"/>
+            <circle cx="30" cy="30" r="1.6"/>
+          </g>
+        </svg>

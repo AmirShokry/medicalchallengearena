@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 01 · GENE THERAPY · 3-STEP PROCEDURE</text>
+
+                  <!-- 1: Harvest -->
+                  <g transform="translate(85 145)">
+                    <text x="0" y="-65" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1.5px">1 · HARVEST</text>
+                    <g transform="translate(0 0)" opacity="1"><circle cx="0" cy="0" r="22" fill="#9370b9" fill-opacity="0.40" stroke="#9370b9" stroke-width="1.5"></circle><ellipse cx="-3" cy="-1" rx="6.6" ry="5.5" fill="#4a2d60" opacity="0.7"></ellipse><rect x="19" y="-24" width="14" height="8" rx="2" fill="#9370b9" fill-opacity="0.85"></rect><text x="26" y="-19" text-anchor="middle" style="fill:#0a0e1a;font:700 5px Inter,sans-serif">CD34+</text></g>
+                    <text x="0" y="42" text-anchor="middle" style="fill:#9370b9;font:600 7px Inter,sans-serif;letter-spacing:1.2px">CD34+ HSCs</text>
+                    <text x="0" y="52" text-anchor="middle" style="fill:#b4becf;font:italic 6px Fraunces,serif">from patient marrow</text>
+                  </g>
+
+                  <!-- Arrow -->
+                  <path d="M 130 145 L 165 145" stroke="#e8a951" stroke-width="1.6" fill="none"></path>
+                  <polygon points="165,145 158,141 158,149" fill="#e8a951"></polygon>
+
+                  <!-- 2: Transduce ex vivo -->
+                  <g transform="translate(245 145)">
+                    <text x="0" y="-65" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1.5px">2 · TRANSDUCE EX VIVO</text>
+                    <g transform="translate(0 0)" opacity="1"><circle cx="0" cy="0" r="22" fill="#9370b9" fill-opacity="0.40" stroke="#9370b9" stroke-width="1.5"></circle><ellipse cx="-3" cy="-1" rx="6.6" ry="5.5" fill="#4a2d60" opacity="0.7"></ellipse><rect x="19" y="-24" width="14" height="8" rx="2" fill="#9370b9" fill-opacity="0.85"></rect><text x="26" y="-19" text-anchor="middle" style="fill:#0a0e1a;font:700 5px Inter,sans-serif">CD34+</text></g>
+                    <!-- vectors near it -->
+                    <g transform="translate(-30 -8)" opacity="1"><circle cx="0" cy="0" r="8" fill="#d14859" fill-opacity="0.40" stroke="#d14859" stroke-width="1.4"></circle><g stroke="#d14859" stroke-width="1.4" fill="none" stroke-linecap="round"><line x1="8" y1="0" x2="11" y2="0"></line><circle cx="11" cy="0" r="1.5" fill="#d14859"></circle><line x1="4" y1="6.9" x2="5.5" y2="9.5"></line><circle cx="5.5" cy="9.5" r="1.5" fill="#d14859"></circle><line x1="-4" y1="6.9" x2="-5.5" y2="9.5"></line><circle cx="-5.5" cy="9.5" r="1.5" fill="#d14859"></circle><line x1="-8" y1="0" x2="-11" y2="0"></line><circle cx="-11" cy="0" r="1.5" fill="#d14859"></circle><line x1="-4" y1="-6.9" x2="-5.5" y2="-9.5"></line><circle cx="-5.5" cy="-9.5" r="1.5" fill="#d14859"></circle><line x1="4" y1="-6.9" x2="5.5" y2="-9.5"></line><circle cx="5.5" cy="-9.5" r="1.5" fill="#d14859"></circle></g><path d="M -5 -2 Q -1 -5 3 -2 Q -1 1 5 3" stroke="#e8a951" stroke-width="1.2" fill="none"></path></g>
+                    <g transform="translate(28 8)" opacity="1"><circle cx="0" cy="0" r="8" fill="#d14859" fill-opacity="0.40" stroke="#d14859" stroke-width="1.4"></circle><g stroke="#d14859" stroke-width="1.4" fill="none" stroke-linecap="round"><line x1="8" y1="0" x2="11" y2="0"></line><circle cx="11" cy="0" r="1.5" fill="#d14859"></circle><line x1="4" y1="6.9" x2="5.5" y2="9.5"></line><circle cx="5.5" cy="9.5" r="1.5" fill="#d14859"></circle><line x1="-4" y1="6.9" x2="-5.5" y2="9.5"></line><circle cx="-5.5" cy="9.5" r="1.5" fill="#d14859"></circle><line x1="-8" y1="0" x2="-11" y2="0"></line><circle cx="-11" cy="0" r="1.5" fill="#d14859"></circle><line x1="-4" y1="-6.9" x2="-5.5" y2="-9.5"></line><circle cx="-5.5" cy="-9.5" r="1.5" fill="#d14859"></circle><line x1="4" y1="-6.9" x2="5.5" y2="-9.5"></line><circle cx="5.5" cy="-9.5" r="1.5" fill="#d14859"></circle></g><path d="M -5 -2 Q -1 -5 3 -2 Q -1 1 5 3" stroke="#e8a951" stroke-width="1.2" fill="none"></path></g>
+                    <g transform="translate(-25 18)" opacity="1"><circle cx="0" cy="0" r="7" fill="#d14859" fill-opacity="0.40" stroke="#d14859" stroke-width="1.4"></circle><g stroke="#d14859" stroke-width="1.4" fill="none" stroke-linecap="round"><line x1="7" y1="0" x2="10" y2="0"></line><circle cx="10" cy="0" r="1.5" fill="#d14859"></circle><line x1="3.5" y1="6.1" x2="5" y2="8.7"></line><circle cx="5" cy="8.7" r="1.5" fill="#d14859"></circle><line x1="-3.5" y1="6.1" x2="-5" y2="8.7"></line><circle cx="-5" cy="8.7" r="1.5" fill="#d14859"></circle><line x1="-7" y1="0" x2="-10" y2="0"></line><circle cx="-10" cy="0" r="1.5" fill="#d14859"></circle><line x1="-3.5" y1="-6.1" x2="-5" y2="-8.7"></line><circle cx="-5" cy="-8.7" r="1.5" fill="#d14859"></circle><line x1="3.5" y1="-6.1" x2="5" y2="-8.7"></line><circle cx="5" cy="-8.7" r="1.5" fill="#d14859"></circle></g><path d="M -5 -2 Q -1 -5 3 -2 Q -1 1 5 3" stroke="#e8a951" stroke-width="1.2" fill="none"></path></g>
+                    <text x="0" y="42" text-anchor="middle" style="fill:#d14859;font:600 7px Inter,sans-serif;letter-spacing:1.2px">+ retroviral vector</text>
+                    <text x="0" y="52" text-anchor="middle" style="fill:#b4becf;font:italic 6px Fraunces,serif">carries normal ADA gene</text>
+                  </g>
+
+                  <!-- Arrow -->
+                  <path d="M 305 145 L 340 145" stroke="#e8a951" stroke-width="1.6" fill="none"></path>
+                  <polygon points="340,145 333,141 333,149" fill="#e8a951"></polygon>
+
+                  <!-- 3: Reinfuse -->
+                  <g transform="translate(420 145)">
+                    <text x="0" y="-65" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1.5px">3 · REINFUSE</text>
+                    <g transform="translate(0 0)" opacity="1"><circle cx="0" cy="0" r="22" fill="#6cc27d" fill-opacity="0.40" stroke="#6cc27d" stroke-width="1.5"></circle><ellipse cx="-3" cy="-1" rx="6.6" ry="5.5" fill="#4a2d60" opacity="0.7"></ellipse><rect x="19" y="-24" width="14" height="8" rx="2" fill="#6cc27d" fill-opacity="0.85"></rect><text x="26" y="-19" text-anchor="middle" style="fill:#0a0e1a;font:700 5px Inter,sans-serif">CD34+</text></g>
+                    <text x="0" y="42" text-anchor="middle" style="fill:#6cc27d;font:600 7px Inter,sans-serif;letter-spacing:1.2px">CORRECTED HSCs</text>
+                    <text x="0" y="52" text-anchor="middle" style="fill:#b4becf;font:italic 6px Fraunces,serif">→ make ADA</text>
+                  </g>
+
+                  <text x="250" y="245" text-anchor="middle" style="fill:#b4becf;font:italic 7.5px Fraunces,serif">harvest patient's own stem cells · add the missing gene · put them back</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="245" cy="192" r="34" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="30;40;30" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

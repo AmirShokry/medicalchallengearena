@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 02 · TWO INFECTION SITES</text>
+
+                  <g opacity="1"><rect x="80" y="80" width="340" height="35" rx="4" fill="#4fb8a8" fill-opacity="0.15" stroke="#4fb8a8" stroke-width="1.4" stroke-dasharray="3 2"></rect><text x="90" y="100" style="fill:#4fb8a8;font:600 8px Inter,sans-serif;letter-spacing:1.5px">GUT LUMEN</text><line x1="80" y1="118" x2="420" y2="118" stroke="#9370b9" stroke-width="1.4" stroke-dasharray="2 2" opacity="0.7"></line><rect x="80" y="125" width="340" height="50" rx="4" fill="#9370b9" fill-opacity="0.15" stroke="#9370b9" stroke-width="1.4" stroke-dasharray="3 2"></rect><text x="90" y="155" style="fill:#9370b9;font:600 8px Inter,sans-serif;letter-spacing:1.5px">SERUM / BLOODSTREAM</text><rect x="80" y="185" width="340" height="35" rx="4" fill="#e8a951" fill-opacity="0.15" stroke="#e8a951" stroke-width="1.4" stroke-dasharray="3 2"></rect><text x="90" y="205" style="fill:#e8a951;font:600 8px Inter,sans-serif;letter-spacing:1.5px">CNS · MOTOR NEURONS</text></g>
+
+                  <!-- Virus entering gut → bloodstream → CNS -->
+                  <g transform="translate(180 97)" opacity="1"><circle cx="0" cy="0" r="8" fill="#d14859" fill-opacity="0.85" stroke="#d14859" stroke-width="1"></circle><circle cx="7" cy="0" r="1.2" fill="#0a0e1a"></circle><circle cx="3.5" cy="6.1" r="1.2" fill="#0a0e1a"></circle><circle cx="-3.5" cy="6.1" r="1.2" fill="#0a0e1a"></circle><circle cx="-7" cy="0" r="1.2" fill="#0a0e1a"></circle><circle cx="-3.5" cy="-6.1" r="1.2" fill="#0a0e1a"></circle><circle cx="3.5" cy="-6.1" r="1.2" fill="#0a0e1a"></circle></g>
+                  <g transform="translate(220 95)" opacity="1"><circle cx="0" cy="0" r="8" fill="#d14859" fill-opacity="0.85" stroke="#d14859" stroke-width="1"></circle><circle cx="7" cy="0" r="1.2" fill="#0a0e1a"></circle><circle cx="3.5" cy="6.1" r="1.2" fill="#0a0e1a"></circle><circle cx="-3.5" cy="6.1" r="1.2" fill="#0a0e1a"></circle><circle cx="-7" cy="0" r="1.2" fill="#0a0e1a"></circle><circle cx="-3.5" cy="-6.1" r="1.2" fill="#0a0e1a"></circle><circle cx="3.5" cy="-6.1" r="1.2" fill="#0a0e1a"></circle></g>
+
+                  <!-- Arrow from gut → bloodstream -->
+                  <path d="M 220 105 L 220 130" stroke="#d14859" stroke-width="1.4" fill="none" stroke-dasharray="3 2"></path>
+                  <polygon points="220,130 217,124 223,124" fill="#d14859"></polygon>
+
+                  <g transform="translate(220 145)" opacity="1"><circle cx="0" cy="0" r="7" fill="#d14859" fill-opacity="0.85" stroke="#d14859" stroke-width="1"></circle><circle cx="6" cy="0" r="1.2" fill="#0a0e1a"></circle><circle cx="3" cy="5.2" r="1.2" fill="#0a0e1a"></circle><circle cx="-3" cy="5.2" r="1.2" fill="#0a0e1a"></circle><circle cx="-6" cy="0" r="1.2" fill="#0a0e1a"></circle><circle cx="-3" cy="-5.2" r="1.2" fill="#0a0e1a"></circle><circle cx="3" cy="-5.2" r="1.2" fill="#0a0e1a"></circle></g>
+
+                  <!-- Arrow bloodstream → CNS -->
+                  <path d="M 220 162 L 220 185" stroke="#d14859" stroke-width="1.4" fill="none" stroke-dasharray="3 2"></path>
+                  <polygon points="220,185 217,179 223,179" fill="#d14859"></polygon>
+
+                  <g transform="translate(220 200)" opacity="1"><circle cx="0" cy="0" r="7" fill="#d14859" fill-opacity="0.85" stroke="#d14859" stroke-width="1"></circle><circle cx="6" cy="0" r="1.2" fill="#0a0e1a"></circle><circle cx="3" cy="5.2" r="1.2" fill="#0a0e1a"></circle><circle cx="-3" cy="5.2" r="1.2" fill="#0a0e1a"></circle><circle cx="-6" cy="0" r="1.2" fill="#0a0e1a"></circle><circle cx="-3" cy="-5.2" r="1.2" fill="#0a0e1a"></circle><circle cx="3" cy="-5.2" r="1.2" fill="#0a0e1a"></circle></g>
+
+                  <!-- Annotations -->
+                  <g transform="translate(370 95)">
+                    <rect x="-50" y="-9" width="100" height="18" rx="9" fill="#d14859" fill-opacity="0.20" stroke="#d14859" stroke-width="1.2"></rect>
+                    <text x="0" y="3" text-anchor="middle" style="fill:#d14859;font:600 7px Inter,sans-serif;letter-spacing:1.2px">SHEDDING (stool)</text>
+                  </g>
+
+                  <g transform="translate(370 200)">
+                    <rect x="-50" y="-9" width="100" height="18" rx="9" fill="#e8a951" fill-opacity="0.30" stroke="#e8a951" stroke-width="1.2"></rect>
+                    <text x="0" y="3" text-anchor="middle" style="fill:#e8a951;font:600 7px Inter,sans-serif;letter-spacing:1.2px">PARALYSIS</text>
+                  </g>
+
+                  <text x="250" y="245" text-anchor="middle" style="fill:#b4becf;font:italic 7.5px Fraunces,serif">two clinical outcomes · two anatomical sites · two antibody compartments needed</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="370" cy="198" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="90" cy="150" r="28" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="24;34;24" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

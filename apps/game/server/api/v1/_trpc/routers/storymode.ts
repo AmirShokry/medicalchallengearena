@@ -25,6 +25,7 @@ import { authProcedure, createTRPCRouter } from "../init";
 // story-mode system, add its JSON file here and to the SYSTEMS map below.
 import systemsIndex from "@/server/data/storymode/index.json";
 import innateImmunity from "@/server/data/storymode/innate-immunity-story.json";
+import adaptiveImmunity from "@/server/data/storymode/adaptive-immunity-story.json";
 
 /**
  * Registry mapping system slug → bundled JSON metadata. Names must match
@@ -33,6 +34,7 @@ import innateImmunity from "@/server/data/storymode/innate-immunity-story.json";
  */
 const SYSTEMS: Record<string, unknown> = {
 	"innate-immunity-story": innateImmunity,
+	"adaptive-immunity-story": adaptiveImmunity,
 };
 
 export const storymode = createTRPCRouter({

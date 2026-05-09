@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 03 · COLD AGGLUTININS ARE IgM · WHY?</text>
+
+                  <!-- Clumped RBCs -->
+                  <g transform="translate(180 145)">
+                    <g opacity="1"><ellipse cx="-30" cy="-15" rx="13" ry="9" fill="#d14859" fill-opacity="0.85" stroke="#d14859" stroke-width="1"></ellipse><ellipse cx="-30" cy="-15" rx="5.46" ry="3.78" fill="#1a2030" opacity="0.85"></ellipse></g>
+                    <g opacity="1"><ellipse cx="0" cy="-20" rx="13" ry="9" fill="#d14859" fill-opacity="0.85" stroke="#d14859" stroke-width="1"></ellipse><ellipse cx="0" cy="-20" rx="5.46" ry="3.78" fill="#1a2030" opacity="0.85"></ellipse></g>
+                    <g opacity="1"><ellipse cx="30" cy="-15" rx="13" ry="9" fill="#d14859" fill-opacity="0.85" stroke="#d14859" stroke-width="1"></ellipse><ellipse cx="30" cy="-15" rx="5.46" ry="3.78" fill="#1a2030" opacity="0.85"></ellipse></g>
+                    <g opacity="1"><ellipse cx="-15" cy="5" rx="13" ry="9" fill="#d14859" fill-opacity="0.85" stroke="#d14859" stroke-width="1"></ellipse><ellipse cx="-15" cy="5" rx="5.46" ry="3.78" fill="#1a2030" opacity="0.85"></ellipse></g>
+                    <g opacity="1"><ellipse cx="20" cy="10" rx="13" ry="9" fill="#d14859" fill-opacity="0.85" stroke="#d14859" stroke-width="1"></ellipse><ellipse cx="20" cy="10" rx="5.46" ry="3.78" fill="#1a2030" opacity="0.85"></ellipse></g>
+                    <g opacity="1"><ellipse cx="-30" cy="22" rx="13" ry="9" fill="#d14859" fill-opacity="0.85" stroke="#d14859" stroke-width="1"></ellipse><ellipse cx="-30" cy="22" rx="5.46" ry="3.78" fill="#1a2030" opacity="0.85"></ellipse></g>
+                    <g opacity="1"><ellipse cx="5" cy="25" rx="13" ry="9" fill="#d14859" fill-opacity="0.85" stroke="#d14859" stroke-width="1"></ellipse><ellipse cx="5" cy="25" rx="5.46" ry="3.78" fill="#1a2030" opacity="0.85"></ellipse></g>
+                    <g opacity="1"><ellipse cx="35" cy="22" rx="13" ry="9" fill="#d14859" fill-opacity="0.85" stroke="#d14859" stroke-width="1"></ellipse><ellipse cx="35" cy="22" rx="5.46" ry="3.78" fill="#1a2030" opacity="0.85"></ellipse></g>
+                  </g>
+
+                  <!-- Question mark in center -->
+                  <g transform="translate(380 145)">
+                    <rect x="-70" y="-22" width="140" height="44" rx="8" fill="#9370b9" fill-opacity="0.20" stroke="#9370b9" stroke-width="1.5"></rect>
+                    <text x="0" y="-3" text-anchor="middle" style="fill:#9370b9;font:700 11px Inter,sans-serif;letter-spacing:1.5px">IgM?</text>
+                    <text x="0" y="14" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">why this isotype?</text>
+                  </g>
+
+                  <!-- Arrow from clumps to IgM? -->
+                  <path d="M 245 145 L 305 145" stroke="#e8a951" stroke-width="1.4" fill="none" stroke-dasharray="3 2"></path>
+                  <polygon points="305,145 298,141 298,149" fill="#e8a951"></polygon>
+                  <text x="275" y="135" text-anchor="middle" style="fill:#e8a951;font:600 7px Inter,sans-serif">CAUSED BY?</text>
+
+                  <text x="250" y="252" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">cold agglutinins are always IgM · the structure is the reason</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="380" cy="137" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

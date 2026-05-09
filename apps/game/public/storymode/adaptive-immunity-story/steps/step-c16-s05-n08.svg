@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 04 · GROWTH FACTOR TOOLKIT BY LINEAGE</text>
+
+<g transform="translate(80 75)">
+  <rect x="0" y="0" width="160" height="22" rx="3" fill="rgba(209,72,89,0.18)" stroke="#d14859" stroke-width="1.4"/>
+  <text x="80" y="14" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif">EPO (erythropoietin)</text>
+</g>
+<text x="265" y="89" style="fill:#b4becf;font:7.5px Inter,sans-serif">RBC line → CKD anemia</text>
+
+<g transform="translate(80 105)">
+  <rect x="0" y="0" width="160" height="22" rx="3" fill="rgba(232,169,81,0.18)" stroke="#e8a951" stroke-width="1.4"/>
+  <text x="80" y="14" text-anchor="middle" style="fill:#e8a951;font:700 8px Inter,sans-serif">G-CSF (filgrastim)</text>
+</g>
+<text x="265" y="119" style="fill:#e8a951;font:700 7.5px Inter,sans-serif">→ neutrophil-specific</text>
+
+<g transform="translate(80 135)">
+  <rect x="0" y="0" width="160" height="22" rx="3" fill="rgba(232,169,81,0.18)" stroke="#e8a951" stroke-width="1.4"/>
+  <text x="80" y="14" text-anchor="middle" style="fill:#e8a951;font:700 8px Inter,sans-serif">GM-CSF (sargramostim)</text>
+</g>
+<text x="265" y="149" style="fill:#b4becf;font:7.5px Inter,sans-serif">broader (also monocytes)</text>
+
+<g transform="translate(80 165)">
+  <rect x="0" y="0" width="160" height="22" rx="3" fill="rgba(147,112,185,0.18)" stroke="#9370b9" stroke-width="1.4"/>
+  <text x="80" y="14" text-anchor="middle" style="fill:#9370b9;font:700 8px Inter,sans-serif">TPO mimetics</text>
+</g>
+<text x="265" y="179" style="fill:#b4becf;font:7.5px Inter,sans-serif">platelets (eltrombopag, romiplostim)</text>
+
+<text x="250" y="230" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">Each lineage has its own dedicated growth factor</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="217" cy="140" r="60" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="56;66;56" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 280" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 08 · A T CELL RECOGNIZES THIS COMBINATION</text>
+
+                  <!-- APC cell on left -->
+                  <g transform="translate(120 165)">
+                    <circle cx="0" cy="0" r="55" fill="#9370b9" opacity="0.20" stroke="#9370b9" stroke-width="1.5"></circle>
+                    <ellipse cx="-5" cy="-3" rx="14" ry="10" fill="#1a2030" opacity="0.7"></ellipse>
+                    <text x="0" y="78" text-anchor="middle" style="fill:#9370b9;font:600 9px Inter,sans-serif;letter-spacing:1.5px">APC</text>
+                  </g>
+
+                  <!-- HLA molecule on top of APC, with self-peptide highlighted -->
+  
+                    <g opacity="1">
+                      <!-- base of molecule -->
+                      <path d="M 90 105 L 150 105 L 154 115 L 142 115 L 138 109 L 102 109 L 98 115 L 86 115 Z" fill="#e8a951" fill-opacity="0.75" stroke="#e8a951" stroke-width="1.4"></path>
+                      <!-- groove indication: a small notch on top -->
+                      <line x1="96" y1="104" x2="144" y2="104" stroke="#e8a951" stroke-width="1" opacity="0.5"></line>
+                      <g transform="translate(120 93)"><circle cx="-7.5" cy="0" r="2.5" fill="#d14859"></circle><circle cx="-2.5" cy="0" r="2.5" fill="#d14859"></circle><circle cx="2.5" cy="0" r="2.5" fill="#d14859"></circle><circle cx="7.5" cy="0" r="2.5" fill="#d14859"></circle></g>
+                    </g>
+  
+                  <text x="120" y="80" text-anchor="middle" style="fill:#e8a951;font:600 8px Inter,sans-serif;letter-spacing:1.5px">AT-RISK HLA</text>
+
+                  <!-- recognition lightning between them -->
+                  <path d="M 165 100 L 200 95 L 235 100 L 270 95" stroke="#e8a951" stroke-width="1.5" fill="none" stroke-dasharray="3 2">
+                    <animate attributeName="stroke-opacity" values="1;0.3;1" dur="1.2s" repeatCount="indefinite"></animate>
+                  </path>
+
+                  <!-- T cell on right with TCR -->
+                  <g transform="translate(380 130)">
+                    <circle cx="0" cy="0" r="55" fill="#d14859" opacity="0.28" stroke="#d14859" stroke-width="1.6"></circle>
+                    <ellipse cx="-7" cy="-4" rx="14" ry="10" fill="#5a1f24" opacity="0.7"></ellipse>
+                    <!-- TCR pointing at HLA -->
+                    <g transform="translate(-55 -25)">
+                      <path d="M 0 0 L -14 -7 L -14 7 Z" fill="#e8a951" opacity="0.95"></path>
+                      <text x="-10" y="-12" style="fill:#e8a951;font:600 8px Inter,sans-serif">TCR</text>
+                    </g>
+                    <text x="0" y="78" text-anchor="middle" style="fill:#d14859;font:600 9px Inter,sans-serif;letter-spacing:1.5px">AUTOREACTIVE T</text>
+                  </g>
+
+                  <!-- Pulsing recognition glow at the contact point -->
+                  <circle cx="155" cy="100" r="8" fill="none" stroke="#e8a951" stroke-width="1" opacity="0.5">
+                    <animate attributeName="r" values="8;14;8" dur="1.6s" repeatCount="indefinite"></animate>
+                    <animate attributeName="opacity" values="0.7;0.1;0.7" dur="1.6s" repeatCount="indefinite"></animate>
+                  </circle>
+
+                  <text x="250" y="245" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">a T cell that escaped thymic deletion now finds a target</text>
+                  <text x="250" y="265" text-anchor="middle" style="fill:#e8a951;font:italic 600 10px Fraunces,serif">attack on self · autoimmune disease begins</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="120" cy="75" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

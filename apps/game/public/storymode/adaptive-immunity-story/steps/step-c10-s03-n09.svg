@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 07 · NEURAL CREST FAILS · CONOTRUNCAL DEFECTS</text>
+
+<!-- Neural crest cells failing on left -->
+<g transform="translate(105 145)">
+  <text x="0" y="-72" text-anchor="middle" style="fill:#9370b9;font:700 9px Inter,sans-serif;letter-spacing:1.2px">NEURAL CREST</text>
+  
+  <!-- Source area top -->
+  <rect x="-30" y="-50" width="60" height="14" rx="3" fill="rgba(147,112,185,0.30)" stroke="#9370b9" stroke-width="1.4"/>
+  <text x="0" y="-40" text-anchor="middle" style="fill:#9370b9;font:7px Inter,sans-serif">SOURCE</text>
+  
+  <!-- Cells migrating down (some, then X marker) -->
+  <g fill="rgba(147,112,185,0.85)">
+    <circle cx="-12" cy="-25" r="3"/>
+    <circle cx="0" cy="-22" r="3"/>
+    <circle cx="12" cy="-25" r="3"/>
+  </g>
+  
+  <!-- Dotted migration arrows down -->
+  <g stroke="#9370b9" stroke-width="1" stroke-dasharray="2 2" fill="none">
+    <line x1="-12" y1="-22" x2="-12" y2="0"/>
+    <line x1="0" y1="-19" x2="0" y2="0"/>
+    <line x1="12" y1="-22" x2="12" y2="0"/>
+  </g>
+  
+  <!-- Heart outflow tract (truncus) below - empty/malformed -->
+  <g transform="translate(0 25)">
+    <rect x="-22" y="-8" width="44" height="30" rx="3" fill="rgba(209,72,89,0.18)" stroke="#d14859" stroke-width="1.6" stroke-dasharray="3 2"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#d14859;font:700 7.5px Inter,sans-serif">OUTFLOW</text>
+    <text x="0" y="14" text-anchor="middle" style="fill:#d14859;font:700 7.5px Inter,sans-serif">TRACT</text>
+    <!-- X over -->
+    <line x1="-25" y1="-10" x2="25" y2="22" stroke="#d14859" stroke-width="2.4" stroke-linecap="round"/>
+    <line x1="-25" y1="22" x2="25" y2="-10" stroke="#d14859" stroke-width="2.4" stroke-linecap="round"/>
+  </g>
+</g>
+
+<!-- 4 conotruncal defects on right -->
+<g transform="translate(290 80)">
+  <rect x="-95" y="-15" width="190" height="30" rx="6" fill="rgba(209,72,89,0.30)" stroke="#d14859" stroke-width="1.8"/>
+  <text x="0" y="-2" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.2px">TETRALOGY OF FALLOT</text>
+  <text x="0" y="11" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">PT'S DIAGNOSIS · most common</text>
+</g>
+
+<g transform="translate(290 122)">
+  <rect x="-95" y="-15" width="190" height="30" rx="6" fill="rgba(209,72,89,0.18)" stroke="#d14859" stroke-width="1.4"/>
+  <text x="0" y="-2" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.2px">INTERRUPTED AORTIC ARCH</text>
+  <text x="0" y="11" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">type B · classic for DiGeorge</text>
+</g>
+
+<g transform="translate(290 164)">
+  <rect x="-95" y="-15" width="190" height="30" rx="6" fill="rgba(209,72,89,0.18)" stroke="#d14859" stroke-width="1.4"/>
+  <text x="0" y="-2" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.2px">TRUNCUS ARTERIOSUS</text>
+  <text x="0" y="11" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">aorta + PA stay fused</text>
+</g>
+
+<g transform="translate(290 206)">
+  <rect x="-95" y="-15" width="190" height="30" rx="6" fill="rgba(209,72,89,0.18)" stroke="#d14859" stroke-width="1.4"/>
+  <text x="0" y="-2" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.2px">VSD</text>
+  <text x="0" y="11" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">ventricular septal defect</text>
+</g>
+
+<!-- Heart icon on far right -->
+<g transform="translate(440 145)">
+  <path d="M 0 -15 Q -20 -25 -20 -5 Q -20 10 0 25 Q 20 10 20 -5 Q 20 -25 0 -15 Z" 
+        fill="rgba(209,72,89,0.35)" stroke="#d14859" stroke-width="2"/>
+  <text x="0" y="3" text-anchor="middle" style="fill:#d14859;font:700 8.5px Inter,sans-serif">HEART</text>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">Same TBX1 deletion · neural crest can't build outflow tract · TOF is this patient</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="290" cy="128" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

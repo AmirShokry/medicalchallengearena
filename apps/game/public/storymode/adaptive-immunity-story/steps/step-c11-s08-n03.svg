@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 02 · PRIOR SENSITIZATION · Th1 MEMORY</text>
+
+<!-- Timeline at top -->
+<g transform="translate(250 75)">
+  <line x1="-200" y1="0" x2="200" y2="0" stroke="#3a4358" stroke-width="1.6"/>
+  <!-- Past event -->
+  <circle cx="-150" cy="0" r="8" fill="rgba(209,72,89,0.85)" stroke="#d14859" stroke-width="1.4"/>
+  <text x="-150" y="-15" text-anchor="middle" style="fill:#d14859;font:700 7px Inter,sans-serif">PAST</text>
+  <text x="-150" y="20" text-anchor="middle" style="fill:#d14859;font:6.5px Inter,sans-serif">TB exposure</text>
+  <text x="-150" y="30" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">or BCG</text>
+  
+  <!-- Memory persists -->
+  <line x1="-145" y1="0" x2="145" y2="0" stroke="#6cc27d" stroke-width="2.6" stroke-dasharray="4 2"/>
+  <text x="0" y="-8" text-anchor="middle" style="fill:#6cc27d;font:700 7.5px Inter,sans-serif">MEMORY · YEARS</text>
+  
+  <!-- Today -->
+  <circle cx="150" cy="0" r="8" fill="rgba(232,169,81,0.85)" stroke="#e8a951" stroke-width="1.4"/>
+  <text x="150" y="-15" text-anchor="middle" style="fill:#e8a951;font:700 7px Inter,sans-serif">TODAY</text>
+  <text x="150" y="20" text-anchor="middle" style="fill:#e8a951;font:6.5px Inter,sans-serif">PPD test</text>
+</g>
+
+<!-- Memory Th1 cells in lymph nodes -->
+<g transform="translate(140 175)">
+  <text x="0" y="-50" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif;letter-spacing:1.2px">MEMORY Th1 POOL</text>
+  <!-- Lymph node outline -->
+  <ellipse cx="0" cy="0" rx="42" ry="32" fill="rgba(108,194,125,0.10)" stroke="#6cc27d" stroke-width="1.4" stroke-dasharray="3 2"/>
+  <!-- Multiple memory T cells inside -->
+  <g>
+    <circle cx="-15" cy="-10" r="9" fill="rgba(108,194,125,0.55)" stroke="#6cc27d" stroke-width="1.2"/>
+    <text x="-15" y="-7" text-anchor="middle" style="fill:#0a0e1a;font:700 6px Inter,sans-serif">Th1</text>
+    <circle cx="12" cy="-8" r="9" fill="rgba(108,194,125,0.55)" stroke="#6cc27d" stroke-width="1.2"/>
+    <text x="12" y="-5" text-anchor="middle" style="fill:#0a0e1a;font:700 6px Inter,sans-serif">Th1</text>
+    <circle cx="-10" cy="10" r="9" fill="rgba(108,194,125,0.55)" stroke="#6cc27d" stroke-width="1.2"/>
+    <text x="-10" y="13" text-anchor="middle" style="fill:#0a0e1a;font:700 6px Inter,sans-serif">Th1</text>
+    <circle cx="15" cy="12" r="9" fill="rgba(108,194,125,0.55)" stroke="#6cc27d" stroke-width="1.2"/>
+    <text x="15" y="15" text-anchor="middle" style="fill:#0a0e1a;font:700 6px Inter,sans-serif">Th1</text>
+  </g>
+</g>
+
+<!-- TCR specificity -->
+<g transform="translate(360 175)">
+  <text x="0" y="-50" text-anchor="middle" style="fill:#9370b9;font:700 8px Inter,sans-serif;letter-spacing:1.2px">TCR SPECIFICITY</text>
+  <!-- TCR with mycobacterial peptide ready -->
+  <rect x="-50" y="-20" width="100" height="40" rx="6" fill="rgba(147,112,185,0.18)" stroke="#9370b9" stroke-width="1.4"/>
+  <g transform="translate(-25 0)">
+    <rect x="-8" y="-8" width="16" height="16" rx="2" fill="rgba(147,112,185,0.85)" stroke="#9370b9" stroke-width="1.4"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 7px Inter,sans-serif">TCR</text>
+  </g>
+  <line x1="-13" y1="0" x2="-3" y2="0" stroke="#3a4358" stroke-width="1" stroke-dasharray="2 1"/>
+  <g transform="translate(15 0)">
+    <rect x="-12" y="-6" width="24" height="12" rx="2" fill="rgba(232,169,81,0.85)"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 6.5px Inter,sans-serif">TB ag</text>
+  </g>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">Memory Th1 specific for mycobacterial antigens · ready to respond on re-exposure</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="400" cy="90" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="140" cy="120" r="22" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="18;28;18" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

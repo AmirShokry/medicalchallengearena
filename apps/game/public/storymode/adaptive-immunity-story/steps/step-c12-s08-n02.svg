@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 02 · c-ANCA · CYTOPLASMIC IF · TARGET = PR3</text><g>
+    <rect x="20" y="30" width="186" height="14" rx="7" fill="rgba(232, 169, 81, 0.18)" stroke="#e8a951" stroke-width="1"/>
+    <text x="113" y="40" text-anchor="middle" style="fill:#e8a951;font:700 7.5px Inter,sans-serif;letter-spacing:1.2px">GPA · c-ANCA / anti-PR3</text>
+  </g><text x="30" y="62" style="fill:#b4becf;font:600 7px 'JetBrains Mono',monospace;letter-spacing:1.5px">TRIAD</text><text x="252" y="62" text-anchor="middle" style="fill:#b4becf;font:600 7px 'JetBrains Mono',monospace;letter-spacing:1.5px">SEROLOGY · c-ANCA</text><text x="470" y="62" text-anchor="end" style="fill:#b4becf;font:600 7px 'JetBrains Mono',monospace;letter-spacing:1.5px">RENAL BIOPSY</text><g opacity="1">
+    <g stroke="#b4becf" stroke-width="1.4" fill="#b4becf" fill-opacity="0.10">
+      <!-- head -->
+      <circle cx="100" cy="80" r="11"/>
+      <!-- torso -->
+      <path d="M 88 92 Q 82 102 82 130 L 82 155 Q 88 163 100 163 Q 112 163 118 155 L 118 130 Q 118 102 112 92 Z"/>
+      <!-- arms -->
+      <path d="M 82 102 Q 66 112 62 138" fill="none"/>
+      <path d="M 118 102 Q 134 112 138 138" fill="none"/>
+      <!-- legs -->
+      <path d="M 92 163 Q 90 173 90 180" fill="none"/>
+      <path d="M 108 163 Q 110 173 110 180" fill="none"/>
+    </g><g opacity="0.95">
+      <!-- saddle nose: depression in middle of face -->
+      <ellipse cx="100" cy="82" rx="2.5" ry="1.2" fill="#d14859" opacity="0.7"/>
+      <!-- sinus inflammation around upper face -->
+      <ellipse cx="93" cy="76" rx="3" ry="2" fill="#d14859" opacity="0.55"/>
+      <ellipse cx="107" cy="76" rx="3" ry="2" fill="#d14859" opacity="0.55"/>
+      <!-- ENT label leader to right -->
+      <line x1="155" y1="80" x2="115" y2="80" stroke="#d14859" stroke-width="0.6" opacity="0.7"/>
+      <text x="158" y="78" style="fill:#d14859;font:700 7.5px Inter,sans-serif">ENT</text>
+      <text x="158" y="87" style="fill:#6b7689;font:italic 6.5px Fraunces,serif">sinusitis · saddle</text>
+    </g><g opacity="0.95">
+      <!-- cavitary nodules in chest (3 small circles in torso area) -->
+      <g>
+        <circle cx="92" cy="115" r="3.5" fill="#d14859" fill-opacity="0.4" stroke="#d14859" stroke-width="1"/>
+        <circle cx="92" cy="115" r="1.5" fill="#0a0e1a"/>
+        <circle cx="108" cy="120" r="3" fill="#d14859" fill-opacity="0.4" stroke="#d14859" stroke-width="1"/>
+        <circle cx="108" cy="120" r="1.2" fill="#0a0e1a"/>
+        <circle cx="100" cy="105" r="2.5" fill="#d14859" fill-opacity="0.4" stroke="#d14859" stroke-width="0.9"/>
+        <circle cx="100" cy="105" r="1" fill="#0a0e1a"/>
+      </g>
+      <line x1="155" y1="115" x2="115" y2="115" stroke="#d14859" stroke-width="0.6" opacity="0.7"/>
+      <text x="158" y="113" style="fill:#d14859;font:700 7.5px Inter,sans-serif">LUNG</text>
+      <text x="158" y="122" style="fill:#6b7689;font:italic 6.5px Fraunces,serif">cavitary nodules</text>
+    </g><g opacity="0.95">
+      <ellipse cx="93" cy="148" rx="3" ry="4" fill="#d14859" fill-opacity="0.6" stroke="#d14859" stroke-width="1"/>
+      <ellipse cx="107" cy="148" rx="3" ry="4" fill="#d14859" fill-opacity="0.6" stroke="#d14859" stroke-width="1"/>
+      <line x1="155" y1="148" x2="115" y2="148" stroke="#d14859" stroke-width="0.6" opacity="0.7"/>
+      <text x="158" y="146" style="fill:#d14859;font:700 7.5px Inter,sans-serif">KIDNEY</text>
+      <text x="158" y="155" style="fill:#6b7689;font:italic 6.5px Fraunces,serif">RPGN</text>
+    </g></g><g opacity="1">
+    <!-- Neutrophil cell representation -->
+    <circle cx="252" cy="115" r="32" fill="#1a2030" stroke="#e8a951" stroke-width="1.6"/>
+    <!-- multilobed nucleus -->
+    <g fill="#0a0e1a" stroke="#e8a951" stroke-width="0.9" opacity="0.85">
+      <ellipse cx="240" cy="106" rx="6" ry="4"/>
+      <ellipse cx="248" cy="118" rx="6" ry="4"/>
+      <ellipse cx="263" cy="113" rx="6" ry="4"/>
+    </g>
+    <!-- CYTOPLASMIC granules - speckled throughout cytoplasm (NOT in nucleus) --><circle cx="238" cy="95" r="1.5" fill="#e8a951" opacity="0.95"/><circle cx="246" cy="99" r="1.5" fill="#e8a951" opacity="0.95"/><circle cx="268" cy="100" r="1.5" fill="#e8a951" opacity="0.95"/><circle cx="270" cy="110" r="1.5" fill="#e8a951" opacity="0.95"/><circle cx="232" cy="115" r="1.5" fill="#e8a951" opacity="0.95"/><circle cx="236" cy="125" r="1.5" fill="#e8a951" opacity="0.95"/><circle cx="256" cy="130" r="1.5" fill="#e8a951" opacity="0.95"/><circle cx="270" cy="122" r="1.5" fill="#e8a951" opacity="0.95"/><circle cx="244" cy="132" r="1.5" fill="#e8a951" opacity="0.95"/><circle cx="264" cy="132" r="1.5" fill="#e8a951" opacity="0.95"/><circle cx="230" cy="105" r="1.5" fill="#e8a951" opacity="0.95"/><circle cx="272" cy="92" r="1.5" fill="#e8a951" opacity="0.95"/><text x="252" y="78" text-anchor="middle" style="fill:#e8a951;font:700 8px Inter,sans-serif;letter-spacing:1px">CYTOPLASMIC IF</text><text x="252" y="160" text-anchor="middle" style="fill:#e8a951;font:700 8.5px Inter,sans-serif;letter-spacing:1.5px">c-ANCA</text><text x="252" y="172" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">target = PR3 (proteinase 3)</text></g><g opacity="1"><circle cx="400" cy="115" r="36" fill="none" stroke="#b4becf" stroke-width="1.2" opacity="0.7"/><circle cx="400" cy="115" r="22" fill="#4fb8a8" fill-opacity="0.20" stroke="#4fb8a8" stroke-width="0.9" opacity="0.6"/><text x="400" y="160" text-anchor="middle" style="fill:#e8a951;font:700 7.5px Inter,sans-serif;letter-spacing:1px">PAUCI-IMMUNE CRESCENTIC GN</text></g>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="252" cy="167" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

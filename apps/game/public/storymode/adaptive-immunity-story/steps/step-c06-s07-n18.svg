@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 13 · OTHER ANSWERS DON'T FIT</text>
+
+  
+                      <text x="220" y="80" text-anchor="middle" style="fill:#4fb8a8;font:700 12px Inter,sans-serif">C</text>
+                      <text x="280" y="80" text-anchor="middle" style="fill:#4fb8a8;font:700 12px Inter,sans-serif">D</text>
+                      <text x="250" y="65" text-anchor="middle" style="fill:#4fb8a8;font:600 7px Inter,sans-serif;letter-spacing:1.5px">FROM DAD</text>
+    
+                      <text x="190" y="124" text-anchor="middle" style="fill:#d14859;font:700 12px Inter,sans-serif">A</text>
+                      <text x="190" y="184" text-anchor="middle" style="fill:#d14859;font:700 12px Inter,sans-serif">B</text>
+                      <text x="170" y="150" text-anchor="middle" style="fill:#d14859;font:600 7px Inter,sans-serif;letter-spacing:1.5px" transform="rotate(-90 170 150)">FROM MOM</text>
+    
+                      <rect x="190" y="90" width="60" height="60" rx="5" fill="#6cc27d" fill-opacity="0.42" stroke="#6cc27d" stroke-opacity="1" stroke-width="2.4"></rect>
+                    <text x="220" y="122" text-anchor="middle" style="fill:#e8ecf3;font:700 13px Inter,sans-serif">A · C</text>
+                      <rect x="250" y="90" width="60" height="60" rx="5" fill="#3a4358" fill-opacity="0.1" stroke="#3a4358" stroke-opacity="0.35" stroke-width="1.4"></rect>
+                    <text x="280" y="122" text-anchor="middle" style="fill:#e8ecf3;font:700 13px Inter,sans-serif">A · D</text>
+                      <rect x="190" y="150" width="60" height="60" rx="5" fill="#3a4358" fill-opacity="0.1" stroke="#3a4358" stroke-opacity="0.35" stroke-width="1.4"></rect>
+                    <text x="220" y="182" text-anchor="middle" style="fill:#e8ecf3;font:700 13px Inter,sans-serif">B · C</text>
+                      <rect x="250" y="150" width="60" height="60" rx="5" fill="#3a4358" fill-opacity="0.1" stroke="#3a4358" stroke-opacity="0.35" stroke-width="1.4"></rect>
+                    <text x="280" y="182" text-anchor="middle" style="fill:#e8ecf3;font:700 13px Inter,sans-serif">B · D</text>
+
+                  <!-- distractors as a row at bottom, each crossed out -->
+                  <g transform="translate(60 245)">
+                    <text x="0" y="0" style="fill:#6b7689;font:700 11px Inter,sans-serif">1:1</text>
+                    <line x1="-2" y1="-3" x2="22" y2="-3" stroke="#d14859" stroke-width="1.5" opacity="0.85"></line>
+                    <text x="0" y="14" style="fill:#6b7689;font:italic 7px Fraunces,serif">twins only</text>
+                  </g>
+                  <g transform="translate(150 245)">
+                    <text x="0" y="0" style="fill:#6b7689;font:700 11px Inter,sans-serif">1:2</text>
+                    <line x1="-2" y1="-3" x2="22" y2="-3" stroke="#d14859" stroke-width="1.5" opacity="0.85"></line>
+                    <text x="0" y="14" style="fill:#6b7689;font:italic 7px Fraunces,serif">parent–child</text>
+                  </g>
+                  <g transform="translate(330 245)">
+                    <text x="0" y="0" style="fill:#6b7689;font:700 11px Inter,sans-serif">1:6</text>
+                    <line x1="-2" y1="-3" x2="22" y2="-3" stroke="#d14859" stroke-width="1.5" opacity="0.85"></line>
+                    <text x="0" y="14" style="fill:#6b7689;font:italic 7px Fraunces,serif">no Mendelian fit</text>
+                  </g>
+                  <g transform="translate(420 245)">
+                    <text x="0" y="0" style="fill:#6b7689;font:700 11px Inter,sans-serif">1:8</text>
+                    <line x1="-2" y1="-3" x2="22" y2="-3" stroke="#d14859" stroke-width="1.5" opacity="0.85"></line>
+                    <text x="0" y="14" style="fill:#6b7689;font:italic 7px Fraunces,serif">no Mendelian fit</text>
+                  </g>
+              
+                  
+              
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="230" cy="124" r="60" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="56;66;56" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+              </svg>

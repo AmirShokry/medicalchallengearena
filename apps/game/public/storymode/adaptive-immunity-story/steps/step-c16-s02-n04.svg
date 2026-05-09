@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 03 · IP₃ → ER → Ca²⁺ RELEASE</text>
+
+<!-- IP3 -->
+<g transform="translate(80 130)">
+  <circle cx="0" cy="0" r="22" fill="rgba(79,184,168,0.20)" stroke="#4fb8a8" stroke-width="1.4"/>
+  <text x="0" y="3" text-anchor="middle" style="fill:#fff;font:700 8px Inter,sans-serif">IP₃</text>
+</g>
+
+<g stroke="#4fb8a8" stroke-width="1.4" fill="none" marker-end="url(#arr16_2_3a)">
+  <line x1="110" y1="130" x2="180" y2="130"/>
+</g>
+<defs>
+  <marker id="arr16_2_3a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#4fb8a8"/>
+  </marker>
+</defs>
+
+<!-- ER with IP3R -->
+<g transform="translate(310 130)">
+  <rect x="-90" y="-50" width="180" height="100" rx="8" fill="rgba(232,169,81,0.10)" stroke="#e8a951" stroke-width="1.4"/>
+  <text x="0" y="-30" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1.2px">ER</text>
+  
+  <!-- Ca pool -->
+  <g fill="#9370b9">
+    <circle cx="-30" cy="0" r="3"/>
+    <circle cx="-15" cy="-10" r="3"/>
+    <circle cx="0" cy="5" r="3"/>
+    <circle cx="15" cy="-5" r="3"/>
+    <circle cx="30" cy="-12" r="3"/>
+    <circle cx="-25" cy="15" r="3"/>
+    <circle cx="10" cy="20" r="3"/>
+    <circle cx="35" cy="10" r="3"/>
+  </g>
+  
+  <!-- IP3R channel -->
+  <rect x="-95" y="-7" width="10" height="14" fill="#d14859" stroke="#d14859" stroke-width="1.4"/>
+  <text x="-90" y="-12" text-anchor="middle" style="fill:#d14859;font:700 6.5px Inter,sans-serif">IP3R</text>
+</g>
+
+<!-- Ca released -->
+<g transform="translate(170 130)" fill="#9370b9">
+  <circle cx="0" cy="0" r="3"/>
+  <circle cx="20" cy="-10" r="3"/>
+  <circle cx="-15" cy="-5" r="3"/>
+  <circle cx="-25" cy="10" r="3"/>
+  <text x="0" y="30" text-anchor="middle" style="fill:#9370b9;font:700 7.5px Inter,sans-serif">Ca²⁺</text>
+</g>
+
+<text x="250" y="220" text-anchor="middle" style="fill:#9370b9;font:700 9px Inter,sans-serif;letter-spacing:1.2px">Ca²⁺ RELEASED INTO CYTOPLASM</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="170" cy="155" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

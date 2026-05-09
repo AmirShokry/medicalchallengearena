@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 07 · PI TOXICITY · METABOLIC SYNDROME</text>
+
+<g transform="translate(135 145)">
+  <text x="0" y="-100" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.5px">METABOLIC PHENOTYPE</text>
+  <circle cx="0" cy="-72" r="18" fill="rgba(180,190,207,0.40)" stroke="#b4becf" stroke-width="1.4"/>
+  <path d="M -25 -52 Q -32 -25 -34 0 Q -32 25 -28 50 L 28 50 Q 32 25 34 0 Q 32 -25 25 -52 Z" 
+        fill="rgba(232,169,81,0.30)" stroke="#e8a951" stroke-width="1.4"/>
+  <rect x="-38" y="-45" width="6" height="35" rx="3" fill="rgba(180,190,207,0.30)" stroke="#b4becf" stroke-width="1"/>
+  <rect x="32" y="-45" width="6" height="35" rx="3" fill="rgba(180,190,207,0.30)" stroke="#b4becf" stroke-width="1"/>
+  <text x="-40" y="-25" text-anchor="end" style="fill:#b4becf;font:6.5px Inter,sans-serif">thin limbs</text>
+  <text x="40" y="0" style="fill:#e8a951;font:6.5px Inter,sans-serif">central fat</text>
+</g>
+
+<g transform="translate(360 80)">
+  <rect x="-95" y="-13" width="190" height="26" rx="5" fill="rgba(232,169,81,0.20)" stroke="#e8a951" stroke-width="1.4"/>
+  <text x="-80" y="3" style="fill:#e8a951;font:700 8px Inter,sans-serif;letter-spacing:1.2px">INSULIN RESISTANCE</text>
+  <text x="50" y="3" style="fill:#b4becf;font:6.5px Inter,sans-serif">↑ glucose</text>
+</g>
+<g transform="translate(360 115)">
+  <rect x="-95" y="-13" width="190" height="26" rx="5" fill="rgba(232,169,81,0.20)" stroke="#e8a951" stroke-width="1.4"/>
+  <text x="-80" y="3" style="fill:#e8a951;font:700 8px Inter,sans-serif;letter-spacing:1.2px">HYPERLIPIDEMIA</text>
+  <text x="50" y="3" style="fill:#b4becf;font:6.5px Inter,sans-serif">↑ TG · ↑ LDL</text>
+</g>
+<g transform="translate(360 150)">
+  <rect x="-95" y="-13" width="190" height="26" rx="5" fill="rgba(209,72,89,0.20)" stroke="#d14859" stroke-width="1.4"/>
+  <text x="-80" y="3" style="fill:#d14859;font:700 8px Inter,sans-serif;letter-spacing:1.2px">LIPODYSTROPHY</text>
+  <text x="50" y="3" style="fill:#b4becf;font:6.5px Inter,sans-serif">fat redistribution</text>
+</g>
+<g transform="translate(360 185)">
+  <rect x="-95" y="-13" width="190" height="26" rx="5" fill="rgba(147,112,185,0.20)" stroke="#9370b9" stroke-width="1.4"/>
+  <text x="-80" y="3" style="fill:#9370b9;font:700 8px Inter,sans-serif;letter-spacing:1.2px">DRUG INTERACTIONS</text>
+  <text x="50" y="3" style="fill:#b4becf;font:6.5px Inter,sans-serif">CYP3A4</text>
+</g>
+<g transform="translate(360 220)">
+  <rect x="-95" y="-13" width="190" height="26" rx="5" fill="rgba(180,190,207,0.18)" stroke="#6b7689" stroke-width="1.2"/>
+  <text x="-80" y="3" style="fill:#b4becf;font:700 7.5px Inter,sans-serif">atazanavir → ↑ bili</text>
+  <text x="50" y="3" style="fill:#b4becf;font:6.5px Inter,sans-serif">indinavir → stones</text>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">Newer PIs (darunavir) reduced metabolic toxicity · drug-specific toxicities still vary</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="135" cy="40" r="28" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="24;34;24" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="280" cy="218" r="28" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="24;34;24" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="280" cy="78" r="27" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="23;33;23" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+              </svg>

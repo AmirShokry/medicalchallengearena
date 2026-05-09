@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 01 · gp120 HAS 5 HYPERVARIABLE LOOPS (V1–V5)</text>
+
+<!-- gp120 trimer -->
+<g transform="translate(250 130)">
+  <ellipse cx="0" cy="0" rx="65" ry="50" fill="rgba(232,169,81,0.10)" stroke="#e8a951" stroke-width="1.4"/>
+  <text x="0" y="-58" text-anchor="middle" style="fill:#e8a951;font:700 10px Inter,sans-serif;letter-spacing:1.5px">gp120</text>
+  
+  <!-- V1-V5 loops as colored arcs/pinches -->
+  <g>
+    <circle cx="-40" cy="-25" r="9" fill="#d14859" opacity="0.85"/>
+    <text x="-40" y="-22" text-anchor="middle" style="fill:#fff;font:700 8px Inter,sans-serif">V1</text>
+  </g>
+  <g>
+    <circle cx="35" cy="-30" r="9" fill="#d14859" opacity="0.85"/>
+    <text x="35" y="-27" text-anchor="middle" style="fill:#fff;font:700 8px Inter,sans-serif">V2</text>
+  </g>
+  <g>
+    <circle cx="50" cy="5" r="9" fill="#d14859" opacity="0.85"/>
+    <text x="50" y="8" text-anchor="middle" style="fill:#fff;font:700 8px Inter,sans-serif">V3</text>
+  </g>
+  <g>
+    <circle cx="20" cy="35" r="9" fill="#d14859" opacity="0.85"/>
+    <text x="20" y="38" text-anchor="middle" style="fill:#fff;font:700 8px Inter,sans-serif">V4</text>
+  </g>
+  <g>
+    <circle cx="-30" cy="30" r="9" fill="#d14859" opacity="0.85"/>
+    <text x="-30" y="33" text-anchor="middle" style="fill:#fff;font:700 8px Inter,sans-serif">V5</text>
+  </g>
+  
+  <!-- Conserved core -->
+  <circle cx="0" cy="0" r="14" fill="rgba(79,184,168,0.30)" stroke="#4fb8a8" stroke-width="0.8"/>
+  <text x="0" y="3" text-anchor="middle" style="fill:#4fb8a8;font:700 7px Inter,sans-serif">CORE</text>
+</g>
+
+<text x="80" y="200" style="fill:#d14859;font:700 8px Inter,sans-serif;letter-spacing:1px">● HYPERVARIABLE LOOPS</text>
+<text x="80" y="214" style="fill:#b4becf;font:7.5px Inter,sans-serif">mutate constantly under immune pressure</text>
+
+<text x="80" y="232" style="fill:#4fb8a8;font:700 8px Inter,sans-serif;letter-spacing:1px">● CONSERVED CORE</text>
+<text x="80" y="246" style="fill:#b4becf;font:7.5px Inter,sans-serif">CD4 binding site, structurally constrained</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="67" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

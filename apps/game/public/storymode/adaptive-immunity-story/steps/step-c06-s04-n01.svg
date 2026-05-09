@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 280" preserveAspectRatio="xMidYMid meet">
+                <text x="20" y="26" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 01 · DIVISION OF LABOR</text>
+                <rect x="60" y="60" width="380" height="180" rx="14" fill="#111826" stroke="#3a4358" stroke-width="1.2"/>
+                <text x="250" y="80" text-anchor="middle" style="fill:#6b7689;font:italic 10px Fraunces,serif">one cell · two presentation systems</text>
+                <g transform="translate(160 165)">
+                  <rect x="-70" y="-50" width="140" height="100" rx="8" fill="#4fb8a8" opacity="0.10" stroke="#4fb8a8" stroke-width="1.3" stroke-dasharray="4 3"/>
+                  <text x="0" y="-30" text-anchor="middle" style="fill:#4fb8a8;font:700 11px Inter,sans-serif;letter-spacing:1.5px">CLASS I</text>
+                  <circle cx="0" cy="0" r="8" fill="#4fb8a8" opacity="0.35"/>
+                  <text x="0" y="3" text-anchor="middle" style="fill:#e8ecf3;font:700 8px Inter,sans-serif">in</text>
+                  <text x="0" y="22" text-anchor="middle" style="fill:#e8ecf3;font:9px Inter,sans-serif">endogenous</text>
+                  <text x="0" y="38" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">→ CD8</text>
+                </g>
+                <g transform="translate(340 165)">
+                  <rect x="-70" y="-50" width="140" height="100" rx="8" fill="#e8a951" opacity="0.12" stroke="#e8a951" stroke-width="1.5"/>
+                  <text x="0" y="-30" text-anchor="middle" style="fill:#e8a951;font:700 11px Inter,sans-serif;letter-spacing:1.5px">CLASS II</text>
+                  <circle cx="-18" cy="0" r="6" fill="#d14859" opacity="0.55"/>
+                  <path d="M -10 0 L 6 0" stroke="#e8a951" stroke-width="1.2"/>
+                  <polygon points="6,0 1,-3 1,3" fill="#e8a951"/>
+                  <circle cx="14" cy="0" r="8" fill="#e8a951" opacity="0.35"/>
+                  <text x="0" y="22" text-anchor="middle" style="fill:#e8ecf3;font:9px Inter,sans-serif">exogenous</text>
+                  <text x="0" y="38" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">→ CD4</text>
+                </g>
+                <text x="250" y="262" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">we'll follow the right side · the Class II pathway</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="160" cy="130" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="340" cy="130" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

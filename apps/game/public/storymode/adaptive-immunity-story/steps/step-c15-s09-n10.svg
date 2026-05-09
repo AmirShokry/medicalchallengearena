@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 06 · PCN PROPHYLAXIS · STANDARD OF CARE</text>
+
+<g transform="translate(250 100)">
+  <rect x="-200" y="-30" width="400" height="60" rx="10" fill="rgba(108,194,125,0.18)" stroke="#6cc27d" stroke-width="1.6"/>
+  <text x="0" y="-8" text-anchor="middle" style="fill:#6cc27d;font:700 13px Inter,sans-serif;letter-spacing:1.5px">DAILY PENICILLIN V</text>
+  <text x="0" y="14" text-anchor="middle" style="fill:#b4becf;font:600 9px Inter,sans-serif">until at least age 5 in sickle cell</text>
+</g>
+
+<g transform="translate(125 200)">
+  <rect x="-90" y="-15" width="180" height="34" rx="6" fill="rgba(232,169,81,0.18)" stroke="#e8a951" stroke-width="1.2"/>
+  <text x="0" y="-1" text-anchor="middle" style="fill:#e8a951;font:700 8px Inter,sans-serif;letter-spacing:1px">DOSING</text>
+  <text x="0" y="14" text-anchor="middle" style="fill:#b4becf;font:7px Inter,sans-serif">125 mg BID &lt;3y · 250 mg BID ≥3y</text>
+</g>
+
+<g transform="translate(375 200)">
+  <rect x="-90" y="-15" width="180" height="34" rx="6" fill="rgba(108,194,125,0.18)" stroke="#6cc27d" stroke-width="1.2"/>
+  <text x="0" y="-1" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif;letter-spacing:1px">REDUCES OPSI</text>
+  <text x="0" y="14" text-anchor="middle" style="fill:#b4becf;font:7px Inter,sans-serif">covers S. pneumoniae</text>
+</g>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="167" r="60" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="56;66;56" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

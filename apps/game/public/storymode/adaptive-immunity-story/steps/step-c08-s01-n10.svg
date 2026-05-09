@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 08 · COMBINATORIAL × JUNCTIONAL · 10¹¹</text>
+
+                  <!-- Ghosted joined VDJ at top -->
+                  <g opacity="0.55">
+                    <g opacity="1" transform="translate(0 -55)"><line x1="160" y1="145" x2="340" y2="145" stroke="#6b7689" stroke-width="1.4" opacity="0.7"></line><rect x="170" y="138" width="22" height="14" rx="2" fill="#4fb8a8" fill-opacity="0.95" stroke="#4fb8a8" stroke-width="1.2"></rect><text x="181" y="148" text-anchor="middle" style="fill:#0a0e1a;font:700 8px Inter,sans-serif">V</text><g fill="#d14859" opacity="0.95"><circle cx="200" cy="145" r="2.5"></circle><circle cx="206" cy="145" r="2.5"></circle><circle cx="212" cy="145" r="2.5"></circle></g><rect x="225" y="138" width="18" height="14" rx="2" fill="#e8a951" fill-opacity="0.95" stroke="#e8a951" stroke-width="1.2"></rect><text x="234" y="148" text-anchor="middle" style="fill:#0a0e1a;font:700 8px Inter,sans-serif">D</text><g fill="#d14859" opacity="0.95"><circle cx="255" cy="145" r="2.5"></circle><circle cx="261" cy="145" r="2.5"></circle></g><rect x="275" y="138" width="18" height="14" rx="2" fill="#9370b9" fill-opacity="0.95" stroke="#9370b9" stroke-width="1.2"></rect><text x="284" y="148" text-anchor="middle" style="fill:#0a0e1a;font:700 8px Inter,sans-serif">J</text><rect x="305" y="135" width="30" height="20" rx="2" fill="#6b7689" fill-opacity="0.85" stroke="#6b7689" stroke-width="1.2"></rect><text x="320" y="148" text-anchor="middle" style="fill:#e8ecf3;font:700 8px Inter,sans-serif">C</text></g>
+                  </g>
+
+                  <!-- Math equation in the middle -->
+                  <g transform="translate(250 130)" font-family="Inter, sans-serif">
+                    <!-- 40 × 25 × 6 = combinatorial -->
+                    <text x="-115" y="0" text-anchor="middle" style="fill:#4fb8a8;font:700 14px Inter,sans-serif">40</text>
+                    <text x="-105" y="14" text-anchor="middle" style="fill:#4fb8a8;font:600 6px Inter,sans-serif">V</text>
+
+                    <text x="-85" y="0" text-anchor="middle" style="fill:#b4becf;font:700 12px Inter,sans-serif">×</text>
+
+                    <text x="-60" y="0" text-anchor="middle" style="fill:#e8a951;font:700 14px Inter,sans-serif">25</text>
+                    <text x="-50" y="14" text-anchor="middle" style="fill:#e8a951;font:600 6px Inter,sans-serif">D</text>
+
+                    <text x="-30" y="0" text-anchor="middle" style="fill:#b4becf;font:700 12px Inter,sans-serif">×</text>
+
+                    <text x="-10" y="0" text-anchor="middle" style="fill:#9370b9;font:700 14px Inter,sans-serif">6</text>
+                    <text x="0" y="14" text-anchor="middle" style="fill:#9370b9;font:600 6px Inter,sans-serif">J</text>
+
+                    <text x="20" y="0" text-anchor="middle" style="fill:#b4becf;font:700 12px Inter,sans-serif">×</text>
+
+                    <text x="55" y="0" text-anchor="middle" style="fill:#d14859;font:700 14px Inter,sans-serif">TdT</text>
+                    <text x="65" y="14" text-anchor="middle" style="fill:#d14859;font:600 6px Inter,sans-serif">N's</text>
+
+                    <text x="100" y="0" text-anchor="middle" style="fill:#b4becf;font:700 12px Inter,sans-serif">×</text>
+
+                    <text x="135" y="0" text-anchor="middle" style="fill:#b4becf;font:700 12px Inter,sans-serif">light</text>
+                    <text x="135" y="14" text-anchor="middle" style="fill:#b4becf;font:600 6px Inter,sans-serif">chain</text>
+                  </g>
+
+                  <!-- Equals -->
+                  <text x="250" y="180" text-anchor="middle" style="fill:#b4becf;font:700 18px Inter,sans-serif">=</text>
+
+                  <!-- Result -->
+                  <g transform="translate(250 215)">
+                    <rect x="-100" y="-15" width="200" height="30" rx="8" fill="#e8a951" fill-opacity="0.42" stroke="#e8a951" stroke-width="2.4"></rect>
+                    <text x="0" y="6" text-anchor="middle" style="fill:#e8a951;font:700 16px Inter,sans-serif;letter-spacing:1.5px">~10¹¹ BCRs</text>
+                  </g>
+
+                  <text x="250" y="252" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">enough diversity to recognize anything we'll ever encounter</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="216" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

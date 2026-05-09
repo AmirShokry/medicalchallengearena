@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 04 · T CELLS · ALSO CROSS-REACTIVE</text>
+
+                  <!-- Infected cell presenting peptide -->
+                  <g transform="translate(160 145)">
+                    <text x="0" y="-65" text-anchor="middle" style="fill:#9370b9;font:700 9px Inter,sans-serif;letter-spacing:1.5px">INFECTED CELL</text>
+                    <circle cx="0" cy="0" r="32" fill="#9370b9" fill-opacity="0.30" stroke="#9370b9" stroke-width="1.5"></circle>
+                    <ellipse cx="-3" cy="-1" rx="8" ry="6" fill="#4a2d60" opacity="0.7"></ellipse>
+                    <!-- MHC presenting peptide on surface -->
+                    <g transform="translate(32 0)" opacity="1"><path d="M -10 6 L -10 -2 L -3 -2 L -3 -6 L 3 -6 L 3 -2 L 10 -2 L 10 6 Z" fill="#9370b9" fill-opacity="0.85" stroke="#9370b9" stroke-width="1.4"></path><rect x="-3" y="-5" width="6" height="2.5" fill="#9370b9" stroke="#9370b9" stroke-width="0.8"></rect></g>
+                    <!-- viral material inside -->
+                    <g fill="#d14859" fill-opacity="0.65">
+<rect x="-12" y="8" width="14" height="6" rx="1"></rect>
+<rect x="2" y="-12" width="14" height="6" rx="1"></rect>
+                    </g>
+                    <text x="0" y="42" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">processes either virus</text>
+                  </g>
+
+                  <!-- Arrow -->
+                  <path d="M 215 145 L 260 145" stroke="#e8a951" stroke-width="1.6" fill="none"></path>
+                  <polygon points="260,145 253,141 253,149" fill="#e8a951"></polygon>
+
+                  <!-- T cell recognizes peptide -->
+                  <g transform="translate(330 145)">
+                    <text x="0" y="-65" text-anchor="middle" style="fill:#6cc27d;font:700 9px Inter,sans-serif;letter-spacing:1.5px">VACCINIA-PRIMED T</text>
+                    <g transform="translate(0 0)" opacity="1"><circle cx="0" cy="0" r="22" fill="#6cc27d" fill-opacity="0.35" stroke="#6cc27d" stroke-width="1.5"></circle><ellipse cx="-3" cy="-1" rx="6" ry="5" fill="#4a2d60" opacity="0.7"></ellipse><text x="0" y="3" text-anchor="middle" style="fill:#e8ecf3;font:700 8px Inter,sans-serif">T</text></g>
+                    <!-- TCR -->
+                    <g transform="translate(-22 0)">
+<path d="M 5 -7 L -3 0 L 5 7" stroke="#e8a951" stroke-width="2" fill="none" stroke-linecap="round"></path>
+                    </g>
+                    <text x="0" y="35" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">recognizes shared peptide</text>
+                  </g>
+
+                  <!-- Verdict -->
+                  <g transform="translate(440 145)">
+                    <rect x="-40" y="-22" width="80" height="44" rx="6" fill="#6cc27d" fill-opacity="0.30" stroke="#6cc27d" stroke-width="1.5"></rect>
+                    <text x="0" y="-2" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif;letter-spacing:1.2px">DOUBLE</text>
+                    <text x="0" y="11" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif;letter-spacing:1.2px">PROTECTION</text>
+                  </g>
+
+                  <text x="250" y="245" text-anchor="middle" style="fill:#b4becf;font:italic 7.5px Fraunces,serif">conserved viral peptides on MHC are recognized by vaccinia-trained T cells · adds cellular immunity</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="160" cy="75" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="160" cy="182" r="33" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="29;39;29" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 03 · AB TOXIN · ADP-RIBOSYLATES EF-2</text>
+
+<!-- AB toxin structure on left -->
+<g transform="translate(125 130)">
+  <text x="0" y="-78" text-anchor="middle" style="fill:#9370b9;font:700 9px Inter,sans-serif;letter-spacing:1.5px">AB TOXIN</text>
+  
+  <!-- A subunit (top, catalytic) -->
+  <ellipse cx="0" cy="-10" rx="22" ry="14" fill="rgba(209,72,89,0.85)" stroke="#d14859" stroke-width="1.6"/>
+  <text x="0" y="-7" text-anchor="middle" style="fill:#fff;font:700 9px Inter,sans-serif">A</text>
+  <text x="35" y="-15" style="fill:#d14859;font:700 6.5px Inter,sans-serif">active</text>
+  <text x="35" y="-7" style="fill:#d14859;font:6px Inter,sans-serif">ADP-ribosyl</text>
+  
+  <!-- Linker -->
+  <line x1="0" y1="4" x2="0" y2="14" stroke="#9370b9" stroke-width="1.6"/>
+  
+  <!-- B subunit (bottom, binding) -->
+  <ellipse cx="0" cy="25" rx="28" ry="16" fill="rgba(108,194,125,0.55)" stroke="#6cc27d" stroke-width="1.6"/>
+  <text x="0" y="28" text-anchor="middle" style="fill:#fff;font:700 9px Inter,sans-serif">B</text>
+  <text x="40" y="20" style="fill:#6cc27d;font:700 6.5px Inter,sans-serif">binding</text>
+  <text x="40" y="30" style="fill:#6cc27d;font:6px Inter,sans-serif">heparin-EGF</text>
+</g>
+
+<!-- Mechanism: enters cell, ribosylates EF-2 -->
+<g transform="translate(330 130)">
+  <text x="0" y="-78" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.5px">EF-2 RIBOSYLATED</text>
+  
+  <!-- Ribosome -->
+  <ellipse cx="0" cy="0" rx="32" ry="20" fill="rgba(180,190,207,0.30)" stroke="#b4becf" stroke-width="1.4"/>
+  <text x="0" y="3" text-anchor="middle" style="fill:#b4becf;font:700 7px Inter,sans-serif">RIBOSOME</text>
+  
+  <!-- EF-2 with ADP-ribose attached (red marker) -->
+  <g transform="translate(28 -15)">
+    <ellipse cx="0" cy="0" rx="13" ry="9" fill="rgba(232,169,81,0.55)" stroke="#e8a951" stroke-width="1.4"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 6.5px Inter,sans-serif">EF-2</text>
+    <!-- ADP-ribose tag (red) -->
+    <circle cx="12" cy="-7" r="4" fill="rgba(209,72,89,0.95)" stroke="#d14859" stroke-width="0.6"/>
+    <text x="12" y="-5" text-anchor="middle" style="fill:#fff;font:700 4.5px Inter,sans-serif">ADP</text>
+  </g>
+  
+  <!-- X over translation -->
+  <line x1="-15" y1="-12" x2="15" y2="12" stroke="#d14859" stroke-width="2.4" stroke-linecap="round"/>
+  <line x1="-15" y1="12" x2="15" y2="-12" stroke="#d14859" stroke-width="2.4" stroke-linecap="round"/>
+  
+  <!-- Result: cell death -->
+  <g transform="translate(0 50)">
+    <rect x="-65" y="-13" width="130" height="26" rx="6" fill="rgba(209,72,89,0.30)" stroke="#d14859" stroke-width="1.6"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif;letter-spacing:1.2px">NO PROTEIN · CELL DIES</text>
+  </g>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">Same mechanism as Pseudomonas exotoxin A · both ADP-ribosylate EF-2</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="370" cy="105" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 02 · LIVES INSIDE THE MACROPHAGE</text>
+
+                  <g opacity="1"><circle cx="140" cy="145" r="50" fill="#9370b9" fill-opacity="0.30" stroke="#9370b9" stroke-width="1.8"></circle><path d="M 110 130 Q 105 140 110 155 Q 120 165 135 160 Q 130 145 135 130 Q 120 122 110 130 Z" fill="#4a2d60" opacity="0.70"></path>
+                      <g fill="#d14859" opacity="0.9" stroke="#d14859" stroke-width="1">
+                        <rect x="155" y="135" width="14" height="6" rx="2"></rect>
+                        <rect x="160" y="160" width="14" height="6" rx="2"></rect>
+                        <rect x="148" y="170" width="14" height="6" rx="2"></rect>
+                        <rect x="135" y="180" width="14" height="6" rx="2"></rect>
+                      </g>
+                    <ellipse cx="162" cy="138" rx="14" ry="9" fill="none" stroke="#9370b9" stroke-width="1" stroke-dasharray="2 2" opacity="0.7"></ellipse></g><text x="140" y="210" text-anchor="middle" style="fill:#9370b9;font:600 8px Inter,sans-serif;letter-spacing:1.2px">INFECTED MACROPHAGE</text>
+
+                  <!-- Annotation: phagolysosome fusion blocked -->
+                  <g transform="translate(360 135)">
+                    <rect x="-78" y="-15" width="156" height="30" rx="6" fill="#d14859" fill-opacity="0.20" stroke="#d14859" stroke-width="1.4"></rect>
+                    <text x="0" y="-2" text-anchor="middle" style="fill:#d14859;font:600 8px Inter,sans-serif;letter-spacing:1.2px">PHAGOLYSOSOME · BLOCKED</text>
+                    <text x="0" y="11" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">bacteria survive in vesicle</text>
+                  </g>
+                  <path d="M 280 135 L 195 145" stroke="#d14859" stroke-width="1" fill="none" stroke-dasharray="2 2" opacity="0.7"></path>
+
+                  <text x="250" y="252" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">Legionella hides where the immune system can't see · stuck in a phagosome</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="360" cy="128" r="34" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="30;40;30" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="140" cy="205" r="28" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="24;34;24" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 01 · 4-MO INFANT · LOW TRECs</text>
+
+<!-- Infant on left -->
+<g transform="translate(105 145)">
+  <!-- Head -->
+  <circle cx="0" cy="-40" r="22" fill="rgba(180,190,207,0.55)" stroke="#b4becf" stroke-width="1.6"/>
+  <!-- Body in onesie -->
+  <path d="M -28 -22 Q -32 -10 -32 0 L -32 50 L -18 50 L -18 30 L -8 30 L -8 50 L 8 50 L 8 30 L 18 30 L 18 50 L 32 50 L 32 0 Q 32 -10 28 -22 Z" fill="rgba(180,190,207,0.40)" stroke="#b4becf" stroke-width="1.6"/>
+  <!-- Heel prick - red dot -->
+  <circle cx="13" cy="46" r="2.5" fill="#d14859"/>
+  <line x1="20" y1="49" x2="34" y2="55" stroke="#d14859" stroke-width="1" stroke-dasharray="2 1"/>
+  <text x="38" y="58" style="fill:#d14859;font:italic 6.5px Fraunces,serif">heel prick</text>
+  <text x="0" y="74" text-anchor="middle" style="fill:#b4becf;font:700 7.5px Inter,sans-serif">4-mo · NB screen</text>
+</g>
+
+<!-- Lab result card -->
+<g transform="translate(310 130)">
+  <!-- Card background -->
+  <rect x="-110" y="-65" width="220" height="130" rx="8" fill="rgba(20,24,40,0.85)" stroke="#3a4358" stroke-width="1.4"/>
+  <!-- Card title -->
+  <rect x="-110" y="-65" width="220" height="22" rx="8" fill="rgba(147,112,185,0.40)" stroke="none"/>
+  <text x="0" y="-50" text-anchor="middle" style="fill:#9370b9;font:700 8.5px Inter,sans-serif;letter-spacing:1.5px">NEWBORN SCREEN · TREC qPCR</text>
+  
+  <!-- Reference range bar -->
+  <text x="-95" y="-25" style="fill:#b4becf;font:700 7px Inter,sans-serif">REFERENCE</text>
+  <rect x="-95" y="-18" width="190" height="6" rx="2" fill="#3a4358"/>
+  <rect x="0" y="-18" width="95" height="6" rx="2" fill="rgba(108,194,125,0.65)"/>
+  <text x="48" y="-7" text-anchor="middle" style="fill:#6cc27d;font:6.5px Inter,sans-serif">normal range</text>
+  
+  <!-- Patient result -->
+  <text x="-95" y="14" style="fill:#b4becf;font:700 7px Inter,sans-serif">PATIENT</text>
+  <rect x="-95" y="22" width="190" height="6" rx="2" fill="#3a4358"/>
+  <rect x="-95" y="22" width="22" height="6" rx="2" fill="rgba(209,72,89,0.85)"/>
+  <text x="-87" y="38" style="fill:#d14859;font:700 8px Inter,sans-serif">↓ LOW</text>
+  
+  <!-- Diagnosis -->
+  <line x1="-100" y1="46" x2="100" y2="46" stroke="#3a4358" stroke-width="0.8"/>
+  <text x="0" y="60" text-anchor="middle" style="fill:#d14859;font:700 11px Inter,sans-serif;letter-spacing:1.5px">⚠ SUSPECTED SCID</text>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">TRECs = byproducts of T-cell development · low = no T cells made</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="310" cy="75" r="39" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="35;45;35" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="310" cy="185" r="24" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="20;30;20" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

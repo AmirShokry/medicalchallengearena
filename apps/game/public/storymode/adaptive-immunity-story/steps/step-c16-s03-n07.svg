@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 04 · DIC · SYSTEMIC CASCADE ACTIVATION</text>
+
+<!-- Normal local clot (left) -->
+<g transform="translate(125 130)">
+  <ellipse cx="0" cy="0" rx="50" ry="35" fill="rgba(108,194,125,0.18)" stroke="#6cc27d" stroke-width="1.4"/>
+  <text x="0" y="-50" text-anchor="middle" style="fill:#6cc27d;font:700 9px Inter,sans-serif;letter-spacing:1.2px">NORMAL</text>
+  <circle cx="-15" cy="0" r="6" fill="#6cc27d"/>
+  <circle cx="0" cy="-5" r="6" fill="#6cc27d"/>
+  <circle cx="15" cy="3" r="6" fill="#6cc27d"/>
+  <text x="0" y="55" text-anchor="middle" style="fill:#b4becf;font:700 7.5px Inter,sans-serif">LOCAL clot</text>
+  <text x="0" y="68" text-anchor="middle" style="fill:#6b7689;font:italic 6.5px Fraunces,serif">controlled</text>
+</g>
+
+<g stroke="#d14859" stroke-width="2" fill="none" marker-end="url(#arr16_3_4a)">
+  <line x1="190" y1="130" x2="290" y2="130"/>
+</g>
+<defs>
+  <marker id="arr16_3_4a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#d14859"/>
+  </marker>
+</defs>
+<text x="240" y="120" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif;letter-spacing:1px">SEPSIS / TRAUMA</text>
+
+<g transform="translate(375 130)">
+  <ellipse cx="0" cy="0" rx="60" ry="40" fill="rgba(209,72,89,0.18)" stroke="#d14859" stroke-width="1.6"/>
+  <text x="0" y="-55" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.2px">DIC</text>
+  
+  <!-- Many tiny clots -->
+  <g fill="#d14859">
+    <circle cx="-30" cy="-10" r="3"/>
+    <circle cx="-20" cy="5" r="3"/>
+    <circle cx="-10" cy="-15" r="3"/>
+    <circle cx="0" cy="0" r="3"/>
+    <circle cx="10" cy="-10" r="3"/>
+    <circle cx="20" cy="5" r="3"/>
+    <circle cx="30" cy="-5" r="3"/>
+    <circle cx="-15" cy="15" r="3"/>
+    <circle cx="15" cy="15" r="3"/>
+    <circle cx="0" cy="-20" r="3"/>
+    <circle cx="-30" cy="15" r="3"/>
+    <circle cx="30" cy="15" r="3"/>
+  </g>
+  
+  <text x="0" y="60" text-anchor="middle" style="fill:#d14859;font:700 7.5px Inter,sans-serif">SYSTEMIC clots</text>
+  <text x="0" y="73" text-anchor="middle" style="fill:#6b7689;font:italic 6.5px Fraunces,serif">throughout body</text>
+</g>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="375" cy="198" r="22" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="18;28;18" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

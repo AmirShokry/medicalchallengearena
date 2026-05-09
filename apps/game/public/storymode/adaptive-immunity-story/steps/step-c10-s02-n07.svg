@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 05 · ENCAPSULATED · AFTER MATERNAL IgG WANES</text>
+
+                  <!-- Timeline: 0-6 mo protected (maternal IgG), 6+ mo vulnerable -->
+                  <g transform="translate(250 100)">
+                    <text x="0" y="-25" text-anchor="middle" style="fill:#9370b9;font:700 8px Inter,sans-serif;letter-spacing:1.5px">MATERNAL IgG TIMELINE</text>
+
+                    <!-- Timeline bar -->
+                    <line x1="-180" y1="0" x2="180" y2="0" stroke="#3a4358" stroke-width="1.4"></line>
+                    <!-- 0 to 6 mo: green -->
+                    <rect x="-180" y="-8" width="180" height="16" rx="2" fill="#6cc27d" fill-opacity="0.40" stroke="#6cc27d" stroke-width="1"></rect>
+                    <!-- 6+ mo: red -->
+                    <rect x="0" y="-8" width="180" height="16" rx="2" fill="#d14859" fill-opacity="0.30" stroke="#d14859" stroke-width="1"></rect>
+                    <!-- ticks -->
+                    <text x="-180" y="22" text-anchor="middle" style="fill:#b4becf;font:600 7px Inter,sans-serif">birth</text>
+                    <text x="0" y="22" text-anchor="middle" style="fill:#b4becf;font:600 7px Inter,sans-serif">6 mo</text>
+                    <text x="180" y="22" text-anchor="middle" style="fill:#b4becf;font:600 7px Inter,sans-serif">9 mo</text>
+                    <!-- labels -->
+                    <text x="-90" y="-15" text-anchor="middle" style="fill:#6cc27d;font:600 7px Inter,sans-serif;letter-spacing:1px">PROTECTED</text>
+                    <text x="90" y="-15" text-anchor="middle" style="fill:#d14859;font:600 7px Inter,sans-serif;letter-spacing:1px">VULNERABLE</text>
+                  </g>
+
+                  <!-- Encapsulated bacteria attacking -->
+                  <text x="250" y="170" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif;letter-spacing:1.5px">ENCAPSULATED BACTERIA</text>
+                  <g transform="translate(120 200)" opacity="1"><circle cx="0" cy="0" r="14" fill="#4fb8a8" fill-opacity="0.18" stroke="#4fb8a8" stroke-width="1.2" stroke-dasharray="2 2"></circle><circle cx="-3" cy="0" r="5" fill="#d14859" fill-opacity="0.85" stroke="#d14859" stroke-width="0.8"></circle><circle cx="3" cy="0" r="5" fill="#d14859" fill-opacity="0.85" stroke="#d14859" stroke-width="0.8"></circle></g>
+                  <text x="120" y="225" text-anchor="middle" style="fill:#b4becf;font:italic 6px Fraunces,serif">S. pneumoniae</text>
+                  <g transform="translate(220 200)" opacity="1"><circle cx="0" cy="0" r="14" fill="#4fb8a8" fill-opacity="0.18" stroke="#4fb8a8" stroke-width="1.2" stroke-dasharray="2 2"></circle><circle cx="-3" cy="0" r="5" fill="#d14859" fill-opacity="0.85" stroke="#d14859" stroke-width="0.8"></circle><circle cx="3" cy="0" r="5" fill="#d14859" fill-opacity="0.85" stroke="#d14859" stroke-width="0.8"></circle></g>
+                  <text x="220" y="225" text-anchor="middle" style="fill:#b4becf;font:italic 6px Fraunces,serif">H. influenzae</text>
+                  <g transform="translate(320 200)" opacity="1"><circle cx="0" cy="0" r="14" fill="#4fb8a8" fill-opacity="0.18" stroke="#4fb8a8" stroke-width="1.2" stroke-dasharray="2 2"></circle><circle cx="-3" cy="0" r="5" fill="#d14859" fill-opacity="0.85" stroke="#d14859" stroke-width="0.8"></circle><circle cx="3" cy="0" r="5" fill="#d14859" fill-opacity="0.85" stroke="#d14859" stroke-width="0.8"></circle></g>
+                  <text x="320" y="225" text-anchor="middle" style="fill:#b4becf;font:italic 6px Fraunces,serif">N. meningitidis</text>
+                  <g transform="translate(420 200)" opacity="1"><circle cx="0" cy="0" r="14" fill="#4fb8a8" fill-opacity="0.18" stroke="#4fb8a8" stroke-width="1.2" stroke-dasharray="2 2"></circle><circle cx="-3" cy="0" r="5" fill="#d14859" fill-opacity="0.85" stroke="#d14859" stroke-width="0.8"></circle><circle cx="3" cy="0" r="5" fill="#d14859" fill-opacity="0.85" stroke="#d14859" stroke-width="0.8"></circle></g>
+                  <text x="420" y="225" text-anchor="middle" style="fill:#b4becf;font:italic 6px Fraunces,serif">others</text>
+
+                  <text x="250" y="245" text-anchor="middle" style="fill:#b4becf;font:italic 7.5px Fraunces,serif">passive maternal IgG runs out at 6 mo · no endogenous antibody to take over · onset of disease</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="257" cy="148" r="60" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="56;66;56" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

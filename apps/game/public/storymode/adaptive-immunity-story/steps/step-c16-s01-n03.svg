@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 02 · INITIATOR → EXECUTIONER CASCADE</text>
+
+<!-- Two boxes -->
+<g transform="translate(125 130)">
+  <rect x="-90" y="-30" width="180" height="60" rx="8" fill="rgba(232,169,81,0.18)" stroke="#e8a951" stroke-width="1.4"/>
+  <text x="0" y="-10" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1.2px">INITIATOR</text>
+  <text x="0" y="6" text-anchor="middle" style="fill:#b4becf;font:7.5px Inter,sans-serif">caspase 8 (extrinsic)</text>
+  <text x="0" y="18" text-anchor="middle" style="fill:#b4becf;font:7px Inter,sans-serif">caspase 9 (intrinsic)</text>
+</g>
+
+<g stroke="#d14859" stroke-width="2" fill="none" marker-end="url(#arr16_1_2a)">
+  <line x1="215" y1="130" x2="290" y2="130"/>
+</g>
+<defs>
+  <marker id="arr16_1_2a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#d14859"/>
+  </marker>
+</defs>
+<text x="250" y="120" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif;letter-spacing:1px">activates</text>
+
+<g transform="translate(375 130)">
+  <rect x="-90" y="-30" width="180" height="60" rx="8" fill="rgba(209,72,89,0.18)" stroke="#d14859" stroke-width="1.6"/>
+  <text x="0" y="-10" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.2px">EXECUTIONER</text>
+  <text x="0" y="6" text-anchor="middle" style="fill:#b4becf;font:7.5px Inter,sans-serif">caspase 3, 6, 7</text>
+  <text x="0" y="18" text-anchor="middle" style="fill:#d14859;font:700 7px Inter,sans-serif">cleaves cell substrates</text>
+</g>
+
+<text x="250" y="220" text-anchor="middle" style="fill:#b4becf;font:600 8px Inter,sans-serif">CASCADE AMPLIFIES SIGNAL</text>
+<text x="250" y="240" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">One initiator activates many executioners</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="115" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="215" r="36" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="32;42;32" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

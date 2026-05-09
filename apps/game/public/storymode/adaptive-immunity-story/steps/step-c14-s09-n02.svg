@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 01 · UNDETECTABLE ≠ CURED · RESERVOIR</text>
+
+<!-- Plasma (left) - undetectable -->
+<g transform="translate(125 145)">
+  <text x="0" y="-90" text-anchor="middle" style="fill:#6cc27d;font:700 9px Inter,sans-serif;letter-spacing:1.5px">PLASMA</text>
+  
+  <!-- Test tube with low VL -->
+  <rect x="-20" y="-50" width="40" height="80" rx="4" fill="rgba(180,190,207,0.20)" stroke="#b4becf" stroke-width="1.4"/>
+  <rect x="-22" y="-55" width="44" height="6" rx="2" fill="rgba(180,190,207,0.55)" stroke="#b4becf"/>
+  <!-- Bottom level (essentially empty) -->
+  <rect x="-18" y="25" width="36" height="3" fill="rgba(108,194,125,0.85)"/>
+  
+  <!-- Result -->
+  <text x="0" y="50" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif">VL &lt; 20</text>
+  <text x="0" y="62" text-anchor="middle" style="fill:#6cc27d;font:6.5px Inter,sans-serif">undetectable</text>
+</g>
+
+<!-- VS divider -->
+<line x1="250" y1="55" x2="250" y2="220" stroke="#3a4358" stroke-width="1" stroke-dasharray="3 3"/>
+
+<!-- Memory T cell with latent provirus (right) -->
+<g transform="translate(375 145)">
+  <text x="0" y="-90" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.5px">RESERVOIR</text>
+  
+  <!-- Resting memory T cell -->
+  <circle cx="0" cy="0" r="42" fill="rgba(180,190,207,0.30)" stroke="#b4becf" stroke-width="1.6"/>
+  <ellipse cx="-3" cy="-3" rx="22" ry="18" fill="rgba(74,45,96,0.45)" stroke="#9370b9" stroke-width="1.4"/>
+  <text x="-3" y="-15" text-anchor="middle" style="fill:#b4becf;font:6.5px 'JetBrains Mono',monospace">resting</text>
+  <text x="-3" y="-5" text-anchor="middle" style="fill:#b4becf;font:6.5px 'JetBrains Mono',monospace">memory</text>
+  
+  <!-- Provirus inside (silent red box) -->
+  <rect x="-12" y="3" width="24" height="14" rx="2" fill="rgba(209,72,89,0.85)" stroke="#d14859" stroke-width="1.4"/>
+  <text x="0" y="13" text-anchor="middle" style="fill:#fff;font:700 6.5px Inter,sans-serif">HIV</text>
+  
+  <text x="0" y="58" text-anchor="middle" style="fill:#d14859;font:italic 700 7px Fraunces,serif">silent · invisible to ART</text>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">VL reflects active replication only · integrated provirus = lifelong reservoir</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="375" cy="50" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="375" cy="198" r="38" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="34;44;34" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

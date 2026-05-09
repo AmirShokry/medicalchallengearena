@@ -1,26 +1,30 @@
 /**
- * Extracts the story-mode content from the source `MCA innate immunity story
- * mode.html` reference file into:
+ * Extracts story-mode content from one or more reference HTML files
+ * (each one a self-contained "system" — innate immunity, adaptive
+ * immunity, etc) into:
  *
- *   1) A JSON metadata file at:
- *        apps/game/server/data/storymode/innate-immunity-story.json
- *      The JSON contains NO svg markup. Each diagram entry carries an
- *      `id`, a `src` URL, and the original `viewBox`. The `src` value is
- *      the source of truth for diagram location — change it (e.g. to a
- *      cloud object-storage URL) without redeploying any code.
+ *   1) Per-system JSON metadata at:
+ *        apps/game/server/data/storymode/<system-key>.json
+ *      Each JSON contains NO svg markup. Each diagram entry carries an
+ *      `id` and a `src` URL. The `src` is the source of truth for
+ *      diagram location — change it (e.g. to a cloud object-storage
+ *      URL) without redeploying any code.
  *
- *   2) One standalone .svg file per diagram at:
- *        apps/game/public/storymode/<systemKey>/<id>.svg
- *      Each SVG is self-contained and visually identical to the original
- *      (no styling changes, no data loss). Files in `public/` are served
- *      from `/storymode/<systemKey>/<id>.svg` by Nuxt at runtime.
+ *   2) Per-system standalone .svg files at:
+ *        apps/game/public/storymode/<system-key>/...
+ *      Organised in three subfolders for clarity:
+ *        - chapter-hero/ch-NN-hero.svg
+ *        - steps/step-cNN-sNN-nNN.svg
+ *        - explanation-diagram/diagram-chNN-sNN.svg
  *
- *   3) An index entry at:
+ *   3) A systems index at:
  *        apps/game/server/data/storymode/index.json
- *      Listing every system available in story mode.
+ *      Listing every system that this script has emitted.
  *
- * Re-running this script overwrites the generated artifacts so the editor
- * can simply re-extract after authoring changes upstream.
+ * Adding a new system: append a config object to the `SYSTEMS` array
+ * at the bottom of this file. Re-running the script overwrites every
+ * generated artefact for every system, so new systems and edits to
+ * existing ones can both flow through the same single command.
  */
 import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
@@ -28,55 +32,33 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = resolve(__dirname, "..", "..");
-
-const SOURCE_HTML = join(
-	REPO_ROOT,
-	"apps/game/MCA innate immunity story mode.html",
-);
-
-const SYSTEM_KEY = "innate-immunity-story";
-const SYSTEM_DISPLAY_NAME = "Innate Immunity";
-const SYSTEM_TITLE = "High Yield NBME · Innate Immunity";
-
-/**
- * Public URL prefix used in the JSON `src` field. Files saved under
- * `apps/game/public/storymode/...` are served from this URL prefix at
- * runtime. To swap in a CDN / object-storage URL later, the operator just
- * edits the JSON — no code or extraction-script changes needed.
- */
-const PUBLIC_URL_PREFIX = `/storymode/${SYSTEM_KEY}`;
-
-const SVG_OUT_DIR = join(
-	REPO_ROOT,
-	"apps/game/public/storymode",
-	SYSTEM_KEY,
-);
 const DATA_OUT_DIR = join(REPO_ROOT, "apps/game/server/data/storymode");
-const SYSTEM_JSON_PATH = join(DATA_OUT_DIR, `${SYSTEM_KEY}.json`);
 const SYSTEMS_INDEX_PATH = join(DATA_OUT_DIR, "index.json");
 
-const html = readFileSync(SOURCE_HTML, "utf8");
+// ============================================================
+// Pure helpers — these have no system-specific state and are
+// defined once at module scope.
+// ============================================================
 
-// =====================================================================
-// 1) Extract every <symbol id="diagram-..."> block from the SVG library.
-//    These are the "shared" diagrams referenced from CHAPTERS via { id }.
-// =====================================================================
+function pad2(n) {
+	return String(n).padStart(2, "0");
+}
 
-/** @returns {Map<string, {viewBox: string, inner: string}>} */
+/**
+ * Extract every top-level `<symbol id="diagram-...">` block from the
+ * SVG library at the top of a story HTML. Symbols can nest, so we
+ * balance with a manual stack.
+ *
+ * @returns {Map<string, {viewBox: string, inner: string}>}
+ */
 function extractTopLevelDiagramSymbols(html) {
-	/** @type {Map<string, {viewBox: string, inner: string}>} */
 	const map = new Map();
-
-	// Match each top-level `<symbol id="diagram-...">` until its matching
-	// closing tag. Symbols can nest, so we manually balance with a stack.
 	const openRe = /<symbol\s+id="(diagram-[a-z0-9-]+)"\s+viewBox="([^"]+)">/g;
 	let m;
 	while ((m = openRe.exec(html))) {
 		const id = m[1];
 		const viewBox = m[2];
 		const start = m.index + m[0].length;
-
-		// Walk forward, balancing nested <symbol> tags.
 		let depth = 1;
 		let cursor = start;
 		const tagRe = /<\/?symbol\b[^>]*>/g;
@@ -87,8 +69,7 @@ function extractTopLevelDiagramSymbols(html) {
 				depth--;
 				if (depth === 0) {
 					const end = tagMatch.index;
-					const inner = html.slice(start, end);
-					map.set(id, { viewBox, inner });
+					map.set(id, { viewBox, inner: html.slice(start, end) });
 					cursor = tagRe.lastIndex;
 					break;
 				}
@@ -98,52 +79,42 @@ function extractTopLevelDiagramSymbols(html) {
 		}
 		openRe.lastIndex = cursor;
 	}
-
 	return map;
 }
 
-const sharedDiagrams = extractTopLevelDiagramSymbols(html);
-
 /**
- * Extract the chapter "hero" SVGs from the JS literal `SP_HERO_SVG = { 1: `<svg>…</svg>`, 2: …, … }`.
- * These are the small (60×60) chapter illustrations shown in the left
- * sidebar's "Your Journey" panel. They are emitted to public/ as their
- * own .svg files and the chapter JSON gets a `heroSrc` reference.
+ * Extract the chapter "hero" SVGs from `const SP_HERO_SVG = { … }`.
+ * Each value is a complete `<svg>…</svg>` document.
  *
- * @returns {Map<number, string>} chapter num -> full <svg>…</svg> markup
+ * @returns {Map<number, string>} chapter num -> svg markup
  */
 function extractChapterHeroSvgs(html) {
-	/** @type {Map<number, string>} */
 	const map = new Map();
-	const blockRe = /const\s+SP_HERO_SVG\s*=\s*\{([\s\S]*?)\n\s*\};/;
-	const block = html.match(blockRe);
+	const block = html.match(/const\s+SP_HERO_SVG\s*=\s*\{([\s\S]*?)\n\s*\};/);
 	if (!block) return map;
-	const body = block[1];
 	const entryRe = /(\d+)\s*:\s*`([\s\S]*?)`\s*,?/g;
 	let m;
-	while ((m = entryRe.exec(body))) {
-		const num = parseInt(m[1], 10);
-		const svg = m[2].trim();
-		map.set(num, svg);
+	while ((m = entryRe.exec(block[1]))) {
+		map.set(parseInt(m[1], 10), m[2].trim());
 	}
 	return map;
 }
 
-const chapterHeroSvgs = extractChapterHeroSvgs(html);
-
-// =====================================================================
-// 2) Evaluate the embedded `const CHAPTERS = [...]` literal so we can
-//    walk the data tree and serialize a clean JSON document.
-// =====================================================================
-
-/** @returns {string} The JS expression text for the CHAPTERS array. */
+/**
+ * Pull the `const CHAPTERS = [...]` array literal out of the HTML
+ * source as raw JS text we can pass to `new Function(...)`.
+ *
+ * The walker honours strings (single, double, backtick) and line +
+ * block comments so embedded `]` characters inside SVG strings or
+ * inline comments don't terminate the array prematurely.
+ */
 function extractChaptersJsLiteral(html) {
 	const startMarker = "const CHAPTERS = [";
 	const startIdx = html.indexOf(startMarker);
-	if (startIdx < 0)
+	if (startIdx < 0) {
 		throw new Error("Could not locate CHAPTERS in source HTML");
-
-	let i = startIdx + startMarker.length - 1; // position at the opening `[`
+	}
+	let i = startIdx + startMarker.length - 1;
 	let depth = 0;
 	let inString = null;
 	let prev = "";
@@ -167,8 +138,7 @@ function extractChaptersJsLiteral(html) {
 		}
 		if (prev === "/" && c === "*") {
 			i++;
-			while (i < html.length && !(html[i] === "*" && html[i + 1] === "/"))
-				i++;
+			while (i < html.length && !(html[i] === "*" && html[i + 1] === "/")) i++;
 			i++;
 			continue;
 		}
@@ -184,121 +154,409 @@ function extractChaptersJsLiteral(html) {
 	throw new Error("Unterminated CHAPTERS array literal");
 }
 
-const chaptersLiteral = extractChaptersJsLiteral(html);
-
-let CHAPTERS;
-try {
-	CHAPTERS = new Function(`return (${chaptersLiteral});`)();
-} catch (err) {
-	console.error("Failed to evaluate CHAPTERS literal:", err);
-	throw err;
-}
-
-// =====================================================================
-// 3) Walk CHAPTERS, normalize to JSON, and harvest per-step inline SVGs
-//    into their own .svg files so the JSON contains zero markup.
-// =====================================================================
-
-/** Map of every diagram we need to write to disk. id -> { viewBox, inner }. */
-const allDiagrams = new Map(sharedDiagrams);
-
 /**
- * Build a unique, file-friendly id for a per-step inline diagram.
+ * Convert a station's raw explanation HTML into an array of "key
+ * points" suitable for the bullet slideshow.
  *
- * @param {number} chapterNum
- * @param {number} stationIdx zero-based
- * @param {number} stepN one-based
+ * Strategy mirrors the reference HTML's `setupBulletSlideshow`:
+ *   1. If the explanation contains `<ul class="pathway-list">`,
+ *      return its top-level `<li>` items.
+ *   2. Otherwise split top-level `<p>` blocks.
+ * Returns [] if nothing usable is found. The post-processing
+ * `add-keypoints.mjs` script can override these with hand-curated
+ * summaries; this seed just keeps the field non-empty so the column
+ * isn't blank if a system ships before keypoints are curated.
  */
-function stepDiagramId(chapterNum, stationIdx, stepN) {
-	const ch = String(chapterNum).padStart(2, "0");
-	const st = String(stationIdx + 1).padStart(2, "0");
-	const sn = String(stepN).padStart(2, "0");
-	return `step-c${ch}-s${st}-n${sn}`;
-}
-
-/**
- * SVG output is split across three subfolders for organisation:
- *
- *   - public/storymode/<system>/chapter-hero/ch-NN-hero.svg
- *   - public/storymode/<system>/steps/step-cNN-sNN-nNN.svg
- *   - public/storymode/<system>/explanation-diagram/diagram-sNN.svg
- *
- * The src builders below own the URL <-> file mapping. Anywhere the
- * script needs to write or reference a file, route through these so the
- * folder structure stays consistent.
- */
-function pad2(n) {
-	return String(n).padStart(2, "0");
-}
-
-function chapterHeroSrc(num) {
-	return `${PUBLIC_URL_PREFIX}/chapter-hero/ch-${pad2(num)}-hero.svg`;
-}
-
-function chapterHeroFileName(num) {
-	return `ch-${pad2(num)}-hero.svg`;
-}
-
-/** URL for a per-step diagram. The id keeps its descriptive form
- *  (`step-c01-s02-n03`) — the folder makes the layout obvious. */
-function stepSrc(stepId) {
-	return `${PUBLIC_URL_PREFIX}/steps/${stepId}.svg`;
-}
-
-/** URL + file name for a station's explanation diagram, addressed by
- *  CHAPTER number + STATION number within that chapter (both 1-based,
- *  zero-padded to 2). E.g. chapter 1 station 0 → `diagram-ch01-s01.svg`,
- *  chapter 2 station 6 → `diagram-ch02-s07.svg`. */
-function explanationDiagramId(chapterNum, stationIdx) {
-	return `diagram-ch${pad2(chapterNum)}-s${pad2(stationIdx + 1)}`;
-}
-function explanationDiagramSrc(chapterNum, stationIdx) {
-	return `${PUBLIC_URL_PREFIX}/explanation-diagram/${explanationDiagramId(chapterNum, stationIdx)}.svg`;
+function extractKeypoints(html) {
+	if (!html || typeof html !== "string") return [];
+	const listMatch = html.match(
+		/<ul[^>]*class="[^"]*pathway-list[^"]*"[^>]*>([\s\S]*?)<\/ul>/,
+	);
+	if (listMatch) {
+		const inner = listMatch[1];
+		const itemRe = /<li[^>]*>([\s\S]*?)<\/li>/g;
+		const out = [];
+		let m;
+		while ((m = itemRe.exec(inner))) {
+			const text = m[1].trim();
+			if (text) out.push(text);
+		}
+		if (out.length) return out;
+	}
+	const paraRe = /<p[^>]*>([\s\S]*?)<\/p>/g;
+	const paras = [];
+	let pm;
+	while ((pm = paraRe.exec(html))) {
+		const text = pm[1].trim();
+		if (text) paras.push(text);
+	}
+	return paras;
 }
 
 /**
- * Generic src lookup used during the metadata-build pass. Step diagrams
- * resolve via `stepSrc`; everything else is treated as a shared/legacy
- * symbol that lives at the system root (used only as a temporary value
- * — the post-processing step rewrites every diagram URL into one of
- * the three subfolder URLs above before the JSON is written).
+ * Browsers tolerate duplicate XML attributes (taking the first); some
+ * parsers reject them. We strip second-occurrence attrs so the SVG
+ * file parses cleanly while preserving the visible result.
  */
-function srcFor(id) {
-	if (typeof id === "string" && id.startsWith("step-")) return stepSrc(id);
-	return `${PUBLIC_URL_PREFIX}/${id}.svg`;
+function dedupeAttrs(svg) {
+	return svg.replace(/<[a-zA-Z][^>]*?>/g, (tag) => {
+		const seen = new Set();
+		return tag.replace(/\s([a-z][a-zA-Z-]*)="[^"]*"/g, (match, name) => {
+			if (seen.has(name)) return "";
+			seen.add(name);
+			return match;
+		});
+	});
 }
 
 /**
- * Normalize a diagram ref. Either points to a shared symbol (already in
- * `sharedDiagrams`) or to a per-step diagram we just registered.
- *
- * The `viewBox` is intentionally NOT carried into the JSON — the SVG
- * file itself declares its viewBox in the `<svg>` root, which is what
- * the browser uses when rendering via <img>. Duplicating it in JSON
- * just creates two sources of truth.
- *
- * @returns {{ id: string, src: string, caption?: string } | null}
+ * Wrap a symbol's inner contents in a self-contained <svg> element so
+ * the file renders identically to the original `<use href="#id"/>`
+ * reference.
  */
-function normalizeDiagramRef(d) {
-	if (!d || !d.id) return null;
+function renderStandaloneSvg(viewBox, inner) {
+	const cleanInner = dedupeAttrs(inner.replace(/\r\n/g, "\n"));
+	return `<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="${viewBox}" preserveAspectRatio="xMidYMid meet">${cleanInner}</svg>
+`;
+}
+
+// ============================================================
+// processSystem — one full extraction pass for a single system.
+// All outputs (SVG files, JSON file) are written under that
+// system's prefix; the function returns a summary entry suitable
+// for the systems index.
+// ============================================================
+
+function processSystem({ key, displayName, title, sourceHtml, chapterMeta }) {
+	const PUBLIC_URL_PREFIX = `/storymode/${key}`;
+	const SVG_OUT_DIR = join(REPO_ROOT, "apps/game/public/storymode", key);
+	const SYSTEM_JSON_PATH = join(DATA_OUT_DIR, `${key}.json`);
+
+	const html = readFileSync(join(REPO_ROOT, sourceHtml), "utf8");
+
+	// SVG library + chapter heroes + the CHAPTERS literal.
+	const sharedDiagrams = extractTopLevelDiagramSymbols(html);
+	const chapterHeroSvgs = extractChapterHeroSvgs(html);
+	const chaptersLiteral = extractChaptersJsLiteral(html);
+	let CHAPTERS;
+	try {
+		CHAPTERS = new Function(`return (${chaptersLiteral});`)();
+	} catch (err) {
+		console.error(`[${key}] Failed to evaluate CHAPTERS literal:`, err);
+		throw err;
+	}
+
+	// Master map of every diagram we'll emit. We seed it with the shared
+	// symbol library; per-step copies + per-station explanation copies
+	// are added during the metadata pass below.
+	const allDiagrams = new Map(sharedDiagrams);
+
+	// ----- system-prefix-aware path helpers -----
+	function chapterHeroSrc(num) {
+		return `${PUBLIC_URL_PREFIX}/chapter-hero/ch-${pad2(num)}-hero.svg`;
+	}
+	function chapterHeroFileName(num) {
+		return `ch-${pad2(num)}-hero.svg`;
+	}
+	function stepSrc(stepId) {
+		return `${PUBLIC_URL_PREFIX}/steps/${stepId}.svg`;
+	}
+	function stepDiagramId(chapterNum, stationIdx, stepN) {
+		return `step-c${pad2(chapterNum)}-s${pad2(stationIdx + 1)}-n${pad2(stepN)}`;
+	}
+	function explanationDiagramId(chapterNum, stationIdx) {
+		return `diagram-ch${pad2(chapterNum)}-s${pad2(stationIdx + 1)}`;
+	}
+	function explanationDiagramSrc(chapterNum, stationIdx) {
+		return `${PUBLIC_URL_PREFIX}/explanation-diagram/${explanationDiagramId(chapterNum, stationIdx)}.svg`;
+	}
+	/**
+	 * Generic src lookup used during the metadata-build pass. Step
+	 * diagrams resolve via `stepSrc`; everything else is treated as a
+	 * shared/legacy symbol that lives at the system root (used only as
+	 * a temporary value — section 3.5 below rewrites every diagram URL
+	 * into a step or explanation URL before the JSON is written).
+	 */
+	function srcFor(id) {
+		if (typeof id === "string" && id.startsWith("step-")) return stepSrc(id);
+		return `${PUBLIC_URL_PREFIX}/${id}.svg`;
+	}
+	function normalizeDiagramRef(d) {
+		if (!d || !d.id) return null;
+		return {
+			id: d.id,
+			src: srcFor(d.id),
+			...(d.caption ? { caption: d.caption } : {}),
+		};
+	}
+
+	// =================================================================
+	// Build normalised JSON for this system.
+	// =================================================================
+	const normalized = {
+		name: key,
+		displayName,
+		title,
+		chapters: [],
+	};
+
+	for (const chapter of CHAPTERS) {
+		const meta = (chapterMeta && chapterMeta[chapter.num]) || {};
+		const hasHero = chapterHeroSvgs.has(chapter.num);
+		const chapterOut = {
+			num: chapter.num,
+			slug: `chapter-${chapter.num}`,
+			title: chapter.title,
+			subtitle: meta.subtitle || null,
+			mapHint: meta.mapHint || null,
+			color: meta.color || null,
+			heroSrc: hasHero ? chapterHeroSrc(chapter.num) : null,
+			stations: [],
+		};
+
+		chapter.stations.forEach((s, stationIdx) => {
+			// Pre-compute the station's "main" diagram so we can reuse it
+			// as a per-step diagram when a step doesn't define its own.
+			const stationMainDiagramSrc = s.diagrams?.[0] || s.diagram || null;
+
+			let stepFlow = null;
+			if (s.stepFlow) {
+				stepFlow = {
+					flow: (s.stepFlow.flow || []).map((f) => {
+						if (f.type !== "step") return { ...f };
+						const out = {
+							type: "step",
+							n: f.n,
+							text: f.text,
+							...(f.subtext ? { subtext: f.subtext } : {}),
+							...(f.insight ? { insight: f.insight } : {}),
+							...(f.spotlight ? { spotlight: f.spotlight } : {}),
+							stepDiagram: null,
+						};
+						if (f.stepDiagram) {
+							if (f.stepDiagram.svg) {
+								const id = stepDiagramId(chapter.num, stationIdx, f.n);
+								allDiagrams.set(id, {
+									viewBox: f.stepDiagram.viewBox,
+									inner: f.stepDiagram.svg,
+								});
+								out.stepDiagram = { id, src: srcFor(id) };
+							} else if (f.stepDiagram.id) {
+								out.stepDiagram = {
+									id: f.stepDiagram.id,
+									src: srcFor(f.stepDiagram.id),
+								};
+							}
+						} else if (stationMainDiagramSrc?.id) {
+							// Spotlight-only steps inherit the station's main
+							// diagram. Emit a per-step COPY so every step has
+							// its own .svg file in `public/`.
+							const baseId = stationMainDiagramSrc.id;
+							const base = sharedDiagrams.get(baseId);
+							if (base) {
+								const copyId = stepDiagramId(chapter.num, stationIdx, f.n);
+								allDiagrams.set(copyId, {
+									viewBox: base.viewBox,
+									inner: base.inner,
+								});
+								out.stepDiagram = { id: copyId, src: srcFor(copyId) };
+							} else {
+								out.stepDiagram = { id: baseId, src: srcFor(baseId) };
+							}
+						}
+						return out;
+					}),
+				};
+			}
+
+			// First step-flow diagram, used as the LAST-resort source for
+			// the explanation diagram. Some stations (especially in the
+			// adaptive immunity dataset) have NO `s.diagram` /
+			// `s.diagrams` at all — every diagram lives inside the
+			// step-flow as inline SVG. In that case we fall back to the
+			// first step's diagram so the explanation column still has
+			// something to show. (The 3.5 pass below then makes a
+			// dedicated per-station copy under `explanation-diagram/`.)
+			const firstStepDiagram = stepFlow
+				? stepFlow.flow.find(
+						(f) => f.type === "step" && f.stepDiagram && f.stepDiagram.id,
+					)?.stepDiagram
+				: null;
+
+			const stationOut = {
+				idx: stationIdx,
+				slug: `station-${pad2(stationIdx + 1)}`,
+				label: s.label,
+				title: s.title,
+				subtitle: s.subtitle || null,
+				stage: s.stage || null,
+				previously: s.previously || null,
+				cardTitle: s.cardTitle || null,
+				tagline: s.tagline || null,
+				story: s.story || "",
+				diagrams: (s.diagrams || (s.diagram ? [s.diagram] : []))
+					.map(normalizeDiagramRef)
+					.filter(Boolean),
+				/**
+				 * Diagram source priority — every station ends up with at
+				 * least one diagram so the explanation column always
+				 * paints. Order:
+				 *   1. `explanationDiagrams` (authored array)
+				 *   2. `explanationDiagram` (authored single)
+				 *   3. `diagrams[0]` / `diagram` (station main diagram)
+				 *   4. First step-flow diagram (covers step-only stations)
+				 */
+				explanationDiagrams: (
+					s.explanationDiagrams && s.explanationDiagrams.length
+						? s.explanationDiagrams
+						: s.explanationDiagram
+							? [s.explanationDiagram]
+							: s.diagrams && s.diagrams.length
+								? [s.diagrams[0]]
+								: s.diagram
+									? [s.diagram]
+									: firstStepDiagram
+										? [{ id: firstStepDiagram.id }]
+										: []
+				)
+					.map(normalizeDiagramRef)
+					.filter(Boolean),
+				stepFlow,
+				bridge: s.bridge || null,
+				vignette: s.vignette || null,
+				stem: s.stem,
+				choices: s.choices,
+				correct: s.correct,
+				keypoints: extractKeypoints(s.explanation || ""),
+				whatsNext: s.whatsNext || null,
+				nextBtn: s.nextBtn || null,
+				bank: s.bank || [],
+			};
+
+			chapterOut.stations.push(stationOut);
+		});
+
+		normalized.chapters.push(chapterOut);
+	}
+
+	// =================================================================
+	// 3.5) Per-station explanation diagram copies — keyed by chapter
+	//      number + station-within-chapter (e.g. `diagram-ch01-s07`).
+	// =================================================================
+	const explanationDiagramFiles = new Map();
+	for (const chapter of normalized.chapters) {
+		for (const station of chapter.stations) {
+			if (!Array.isArray(station.explanationDiagrams) || !station.explanationDiagrams.length) continue;
+			const original = station.explanationDiagrams[0];
+			const sourceContent =
+				allDiagrams.get(original.id) || sharedDiagrams.get(original.id);
+			if (!sourceContent) continue;
+			const copyId = explanationDiagramId(chapter.num, station.idx);
+			explanationDiagramFiles.set(copyId, sourceContent);
+			station.explanationDiagrams = [
+				{
+					id: copyId,
+					src: explanationDiagramSrc(chapter.num, station.idx),
+					...(original.caption ? { caption: original.caption } : {}),
+				},
+			];
+		}
+	}
+
+	// =================================================================
+	// 4) Emit standalone .svg files into the three subfolders.
+	// =================================================================
+	if (existsSync(SVG_OUT_DIR)) rmSync(SVG_OUT_DIR, { recursive: true, force: true });
+	mkdirSync(SVG_OUT_DIR, { recursive: true });
+	mkdirSync(join(SVG_OUT_DIR, "chapter-hero"), { recursive: true });
+	mkdirSync(join(SVG_OUT_DIR, "steps"), { recursive: true });
+	mkdirSync(join(SVG_OUT_DIR, "explanation-diagram"), { recursive: true });
+	mkdirSync(DATA_OUT_DIR, { recursive: true });
+
+	let totalSvgFiles = 0;
+
+	// Step diagrams — every diagram with a `step-` id is a per-step
+	// copy. Other shared symbols are no longer emitted at the system
+	// root; they're consumed only as content sources for step copies
+	// and explanation copies.
+	for (const [id, { viewBox, inner }] of allDiagrams) {
+		if (!id.startsWith("step-")) continue;
+		writeFileSync(
+			join(SVG_OUT_DIR, "steps", `${id}.svg`),
+			renderStandaloneSvg(viewBox, inner),
+			"utf8",
+		);
+		totalSvgFiles++;
+	}
+
+	// Per-station explanation-diagram copies.
+	for (const [id, { viewBox, inner }] of explanationDiagramFiles) {
+		writeFileSync(
+			join(SVG_OUT_DIR, "explanation-diagram", `${id}.svg`),
+			renderStandaloneSvg(viewBox, inner),
+			"utf8",
+		);
+		totalSvgFiles++;
+	}
+
+	// Chapter heroes — already complete <svg>…</svg> documents.
+	// `SP_HERO_SVG` in some sources covers more chapter numbers than the
+	// system actually defines (e.g. the adaptive HTML carries hero icons
+	// for chapters 1-16, but only chapters 5-16 are actual chapters in
+	// its CHAPTERS array). Restrict emission to the chapters this system
+	// actually owns so the public folder doesn't carry orphan icons.
+	const ownedChapterNums = new Set(CHAPTERS.map((c) => c.num));
+	for (const [num, svg] of chapterHeroSvgs) {
+		if (!ownedChapterNums.has(num)) continue;
+		const cleaned = dedupeAttrs(svg.replace(/\r\n/g, "\n"));
+		const withDecl = `<?xml version="1.0" encoding="UTF-8"?>\n<!--\n  Auto-generated from the reference HTML by\n  scripts/storymode-extraction/extract.mjs.\n  Chapter ${num} hero icon.\n-->\n${cleaned}\n`;
+		writeFileSync(
+			join(SVG_OUT_DIR, "chapter-hero", chapterHeroFileName(num)),
+			withDecl,
+			"utf8",
+		);
+		totalSvgFiles++;
+	}
+
+	// =================================================================
+	// 5) Emit the system's metadata JSON.
+	// =================================================================
+	writeFileSync(SYSTEM_JSON_PATH, JSON.stringify(normalized, null, 2), "utf8");
+
+	const stationCount = normalized.chapters.reduce(
+		(sum, c) => sum + c.stations.length,
+		0,
+	);
+
+	console.log(`[${key}] extraction complete.`);
+	console.log(`  Chapters:   ${normalized.chapters.length}`);
+	console.log(`  Stations:   ${stationCount}`);
+	console.log(`  SVG files:  ${totalSvgFiles}`);
+	console.log(`  JSON:       ${SYSTEM_JSON_PATH}`);
+	console.log(`  SVG dir:    ${SVG_OUT_DIR}`);
+
 	return {
-		id: d.id,
-		src: srcFor(d.id),
-		...(d.caption ? { caption: d.caption } : {}),
+		name: key,
+		displayName,
+		title,
+		chapterCount: normalized.chapters.length,
+		stationCount,
 	};
 }
 
-const normalized = {
-	name: SYSTEM_KEY,
-	displayName: SYSTEM_DISPLAY_NAME,
-	title: SYSTEM_TITLE,
-	chapters: [],
-};
+// ============================================================
+// Hand-curated chapter meta. Kept here (not in the source HTML)
+// because subtitles / map hints / colors are editorial choices
+// rather than structural data — they belong with the extractor.
+// ============================================================
 
-// Hand-curated chapter intros pulled from the source file body. Keeping
-// them here lets the JSON drive the chapter map UI without re-parsing the
-// HTML at runtime.
-const CHAPTER_META = {
+const INNATE_CHAPTER_META = {
 	1: {
 		subtitle:
 			"Follow one cell, one signal, one enzyme at a time — from the moment a pathogen is detected to the moment it's destroyed.",
@@ -325,389 +583,115 @@ const CHAPTER_META = {
 	},
 };
 
-/**
- * Convert a station's raw explanation HTML into an array of "key points"
- * suitable for the bullet slideshow.
- *
- * Strategy mirrors the reference HTML's `setupBulletSlideshow` (which
- * grabs the first top-level `<ul class="pathway-list">` and turns each
- * `<li>` into one slide):
- *
- *   1. If the explanation contains `<ul class="pathway-list">`, return
- *      its top-level `<li>` items (inline markup preserved).
- *   2. Otherwise, fall back to splitting top-level `<p>` blocks — this
- *      handles the common case where the explanation is 2-3 paragraphs
- *      and there's no explicit pathway list to slice on.
- *
- * Returns an empty array if no usable structure is found.
- */
-function extractKeypoints(html) {
-	if (!html || typeof html !== "string") return [];
+const ADAPTIVE_CHAPTER_META = {
+	5: {
+		subtitle:
+			"A protein cascade that opsonises, lyses, and recruits — bridging innate sensors to adaptive memory.",
+		mapHint: "complement system",
+		color: "#4fb8a8",
+	},
+	6: {
+		subtitle:
+			"How cells advertise self vs. not-self on MHC platters so T cells know what to attack.",
+		mapHint: "antigen presentation & MHC",
+		color: "#9370b9",
+	},
+	7: {
+		subtitle:
+			"Thymic education, activation, and the effector and helper differentiations T cells make in the periphery.",
+		mapHint: "T-cell biology",
+		color: "#e8a951",
+	},
+	8: {
+		subtitle:
+			"From naïve B cell to plasma cell — class-switching, affinity maturation, and the antibodies they produce.",
+		mapHint: "B-cell biology & antibodies",
+		color: "#d14859",
+	},
+	9: {
+		subtitle:
+			"How memory is built, why it lasts, and how each vaccine type exploits a different arm of immunity.",
+		mapHint: "vaccines & immune memory",
+		color: "#6cc27d",
+	},
+	10: {
+		subtitle:
+			"When a single gene defect breaks adaptive immunity — the inherited patterns boards love to test.",
+		mapHint: "primary immunodeficiencies",
+		color: "#5b9bd5",
+	},
+	11: {
+		subtitle:
+			"Type I through IV — when the same machinery that protects starts attacking the wrong target.",
+		mapHint: "hypersensitivity reactions",
+		color: "#c08537",
+	},
+	12: {
+		subtitle:
+			"When self-tolerance breaks down — the autoantibodies, the affected organs, the diagnostic patterns.",
+		mapHint: "autoimmune disease",
+		color: "#ffc674",
+	},
+	13: {
+		subtitle:
+			"Hyperacute, acute, chronic — the three rejection timelines and the immunology behind each one.",
+		mapHint: "transplant immunology",
+		color: "#b87b24",
+	},
+	14: {
+		subtitle:
+			"A virus that disassembles the immune system — receptor binding, CD4 collapse, opportunistic infections.",
+		mapHint: "HIV",
+		color: "#d14859",
+	},
+	15: {
+		subtitle:
+			"How specific pathogens get past, hide from, or hijack the system you've just learned.",
+		mapHint: "infection immunology",
+		color: "#4fb8a8",
+	},
+	16: {
+		subtitle:
+			"Pharmacology, lab values, and adjacent topics that round out the immunology picture.",
+		mapHint: "supporting concepts",
+		color: "#9370b9",
+	},
+};
 
-	// Look for the FIRST `<ul class="pathway-list">` that's not nested
-	// inside an `<li>` (the reference skips nested lists explicitly).
-	const listMatch = html.match(
-		/<ul[^>]*class="[^"]*pathway-list[^"]*"[^>]*>([\s\S]*?)<\/ul>/,
-	);
-	if (listMatch) {
-		const inner = listMatch[1];
-		// Top-level <li> only — naive but works because pathway-list items
-		// in this dataset don't contain nested <li>s.
-		const itemRe = /<li[^>]*>([\s\S]*?)<\/li>/g;
-		const out = [];
-		let m;
-		while ((m = itemRe.exec(inner))) {
-			const text = m[1].trim();
-			if (text) out.push(text);
-		}
-		if (out.length) return out;
-	}
+// ============================================================
+// Systems list. Add a new entry here to extract another story.
+// ============================================================
 
-	// Paragraph fallback. Match each `<p ...>...</p>` block at any nesting
-	// (the explanations are flat HTML, no nested <p>).
-	const paraRe = /<p[^>]*>([\s\S]*?)<\/p>/g;
-	const paras = [];
-	let pm;
-	while ((pm = paraRe.exec(html))) {
-		const text = pm[1].trim();
-		if (text) paras.push(text);
-	}
-	return paras;
-}
-
-for (const chapter of CHAPTERS) {
-	const meta = CHAPTER_META[chapter.num] || {};
-	const hasHero = chapterHeroSvgs.has(chapter.num);
-	const chapterOut = {
-		num: chapter.num,
-		slug: `chapter-${chapter.num}`,
-		title: chapter.title,
-		subtitle: meta.subtitle || null,
-		mapHint: meta.mapHint || null,
-		color: meta.color || null,
-		heroSrc: hasHero ? chapterHeroSrc(chapter.num) : null,
-		stations: [],
-	};
-
-	chapter.stations.forEach((s, stationIdx) => {
-		// Pre-compute the station's "main" diagram so we can reuse it as
-		// the per-step diagram when a step doesn't define its own.
-		// Reasoning: orientation-style stations (e.g. station 1 / chapter
-		// 1) author every step as a different *spotlight* on the SAME
-		// big-picture diagram, with no inline `stepDiagram.svg` per step.
-		// The reference HTML achieved this with a runtime fallback; we
-		// bake the same intent into the JSON so every step explicitly
-		// references the SVG file it should display, instead of leaving
-		// a confusing `"stepDiagram": null` next to a defined spotlight.
-		const stationMainDiagramSrc = s.diagrams?.[0] || s.diagram || null;
-
-		// Per-step inline SVGs become their own .svg file, with the JSON
-		// referencing them by id + src. The original `hook` + `estimate`
-		// fields are intentionally dropped — the intro screen they drove
-		// was removed from StoryStepFlow.
-		let stepFlow = null;
-		if (s.stepFlow) {
-			stepFlow = {
-				flow: (s.stepFlow.flow || []).map((f) => {
-					if (f.type !== "step") return { ...f };
-					// `voice` is intentionally NOT carried into the JSON — the
-					// frontend strips HTML from `text` (+ `subtext`) at runtime
-					// and feeds that to the TTS engine, so storing a separate
-					// narration string would be a second source of truth.
-					const out = {
-						type: "step",
-						n: f.n,
-						text: f.text,
-						...(f.subtext ? { subtext: f.subtext } : {}),
-						...(f.insight ? { insight: f.insight } : {}),
-						...(f.spotlight ? { spotlight: f.spotlight } : {}),
-						stepDiagram: null,
-					};
-					if (f.stepDiagram) {
-						if (f.stepDiagram.svg) {
-							const id = stepDiagramId(chapter.num, stationIdx, f.n);
-							allDiagrams.set(id, {
-								viewBox: f.stepDiagram.viewBox,
-								inner: f.stepDiagram.svg,
-							});
-							out.stepDiagram = { id, src: srcFor(id) };
-						} else if (f.stepDiagram.id) {
-							out.stepDiagram = {
-								id: f.stepDiagram.id,
-								src: srcFor(f.stepDiagram.id),
-							};
-						}
-					} else if (stationMainDiagramSrc?.id) {
-						// Fallback: spotlight-only steps inherit the station's
-						// main diagram. We emit a per-step COPY of that diagram
-						// (rather than just pointing back at the shared file)
-						// so every step has its own consistently-named .svg
-						// file in `public/` — i.e. step-cXX-sYY-nNN.svg always
-						// exists, regardless of whether the source authored
-						// inline SVG or only a spotlight. Operators editing
-						// the JSON later can swap individual step files
-						// independently without affecting the shared symbol.
-						const baseId = stationMainDiagramSrc.id;
-						const base = sharedDiagrams.get(baseId);
-						if (base) {
-							const copyId = stepDiagramId(
-								chapter.num,
-								stationIdx,
-								f.n,
-							);
-							allDiagrams.set(copyId, {
-								viewBox: base.viewBox,
-								inner: base.inner,
-							});
-							out.stepDiagram = {
-								id: copyId,
-								src: srcFor(copyId),
-							};
-						} else {
-							// Source main diagram couldn't be found in the
-							// symbol library — fall back to referencing it
-							// directly so we don't drop the field entirely.
-							out.stepDiagram = {
-								id: baseId,
-								src: srcFor(baseId),
-							};
-						}
-					}
-					return out;
-				}),
-			};
-		}
-
-		const stationOut = {
-			idx: stationIdx,
-			slug: `station-${String(stationIdx + 1).padStart(2, "0")}`,
-			label: s.label,
-			title: s.title,
-			subtitle: s.subtitle || null,
-			stage: s.stage || null,
-			previously: s.previously || null,
-			cardTitle: s.cardTitle || null,
-			tagline: s.tagline || null,
-			story: s.story || "",
-			diagrams: (s.diagrams || (s.diagram ? [s.diagram] : []))
-				.map(normalizeDiagramRef)
-				.filter(Boolean),
-			/**
-			 * Diagrams shown above the keypoints in the explanation
-			 * column. Source priority:
-			 *   1. `s.explanationDiagrams` (array, when authored).
-			 *   2. `s.explanationDiagram` (singular, when authored).
-			 *   3. Fallback: the station's MAIN diagram (`s.diagram` or
-			 *      `s.diagrams[0]`) — every station has one, so the
-			 *      explanation column always has a diagram to show.
-			 *      The earlier behaviour ignored this fallback and
-			 *      emitted an empty array, which left ~33 of 35
-			 *      stations without a visible diagram on the
-			 *      explanation page. Wrong; fixed.
-			 */
-			explanationDiagrams: (
-				s.explanationDiagrams && s.explanationDiagrams.length
-					? s.explanationDiagrams
-					: s.explanationDiagram
-						? [s.explanationDiagram]
-						: s.diagrams && s.diagrams.length
-							? [s.diagrams[0]]
-							: s.diagram
-								? [s.diagram]
-								: []
-			)
-				.map(normalizeDiagramRef)
-				.filter(Boolean),
-			stepFlow,
-			bridge: s.bridge || null,
-			vignette: s.vignette || null,
-			stem: s.stem,
-			choices: s.choices,
-			correct: s.correct,
-			/**
-			 * Bullet-slideshow "key points" — short, punchy summary lines
-			 * for the explanation column. Hand-curated (see
-			 * `add-keypoints.mjs`) rather than auto-extracted, because the
-			 * goal is a tight summary, not a copy of the prose. The
-			 * extraction step seeds an empty array so re-running this
-			 * script never wipes existing keypoints — the post-processing
-			 * `add-keypoints.mjs` script fills them back in. The original
-			 * `explanation` / `explanationTitle` fields are no longer
-			 * emitted because the column shows only diagram + keypoints.
-			 */
-			keypoints: extractKeypoints(s.explanation || ""),
-			whatsNext: s.whatsNext || null,
-			nextBtn: s.nextBtn || null,
-			bank: s.bank || [],
-		};
-
-		chapterOut.stations.push(stationOut);
-	});
-
-	normalized.chapters.push(chapterOut);
-}
-
-// =====================================================================
-// 3.5) Per-station explanation diagram copies.
-//
-//   For each station's first explanationDiagram, make a station-named
-//   copy keyed by CHAPTER + STATION-WITHIN-CHAPTER (e.g.
-//   `diagram-ch01-s07`). The new id replaces the original in the JSON
-//   so every station ends up with its own file under
-//   `explanation-diagram/`. Reusing a single shared symbol across
-//   multiple stations is fine — we just emit a duplicate file per
-//   station, mirroring how the per-step copy logic already works.
-// =====================================================================
-
-const explanationDiagramFiles = new Map(); // copyId -> { viewBox, inner }
-
-for (const chapter of normalized.chapters) {
-	for (const station of chapter.stations) {
-		if (!Array.isArray(station.explanationDiagrams) || !station.explanationDiagrams.length) {
-			continue;
-		}
-		const original = station.explanationDiagrams[0];
-		// Look up the underlying SVG markup. Most refs point at a shared
-		// symbol; some point at a step copy that we just emitted.
-		const sourceContent =
-			allDiagrams.get(original.id) || sharedDiagrams.get(original.id);
-		if (!sourceContent) continue;
-		const copyId = explanationDiagramId(chapter.num, station.idx);
-		explanationDiagramFiles.set(copyId, sourceContent);
-		station.explanationDiagrams = [
-			{
-				id: copyId,
-				src: explanationDiagramSrc(chapter.num, station.idx),
-				...(original.caption ? { caption: original.caption } : {}),
-			},
-		];
-	}
-}
-
-// =====================================================================
-// 4) Emit standalone .svg files. Each is self-contained: viewBox is
-//    baked in, internal <symbol>/<defs>/<style> are preserved. Files go
-//    into three subfolders (chapter-hero/, steps/, explanation-diagram/)
-//    so the public folder stays organised.
-// =====================================================================
-
-if (existsSync(SVG_OUT_DIR))
-	rmSync(SVG_OUT_DIR, { recursive: true, force: true });
-mkdirSync(SVG_OUT_DIR, { recursive: true });
-mkdirSync(join(SVG_OUT_DIR, "chapter-hero"), { recursive: true });
-mkdirSync(join(SVG_OUT_DIR, "steps"), { recursive: true });
-mkdirSync(join(SVG_OUT_DIR, "explanation-diagram"), { recursive: true });
-mkdirSync(DATA_OUT_DIR, { recursive: true });
-
-/**
- * Wrap a symbol's inner contents in a self-contained <svg> element so the
- * file renders identically to the original `<use href="#id"/>` reference.
- * The inner markup is preserved verbatim.
- *
- * Browsers tolerate duplicate attributes (taking the first); some parsers
- * reject them. The reference HTML has exactly one such case
- * (`opacity="..." ... opacity="..."` on diagram-friendly-fire). We strip
- * the second occurrence so the SVG file parses cleanly while preserving
- * the same visible result.
- */
-function dedupeAttrs(svg) {
-	return svg.replace(/<[a-zA-Z][^>]*?>/g, (tag) => {
-		const seen = new Set();
-		return tag.replace(/\s([a-z][a-zA-Z-]*)="[^"]*"/g, (match, name) => {
-			if (seen.has(name)) return "";
-			seen.add(name);
-			return match;
-		});
-	});
-}
-
-function renderStandaloneSvg(viewBox, inner) {
-	const cleanInner = dedupeAttrs(inner.replace(/\r\n/g, "\n"));
-	return `<?xml version="1.0" encoding="UTF-8"?>
-<!--
-  Auto-generated from the reference HTML by
-  scripts/storymode-extraction/extract.mjs.
-  Do not edit by hand — regenerate the file instead.
--->
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="${viewBox}" preserveAspectRatio="xMidYMid meet">${cleanInner}</svg>
-`;
-}
-
-let totalSvgFiles = 0;
-
-// Step diagrams. Every diagram whose id starts with `step-` is a
-// per-step copy and goes to `steps/`. Other shared symbols are no
-// longer emitted at the system root — they're only used as content
-// sources for step copies and explanation copies. Anything still
-// referenced by the JSON has already been rewritten to a step or
-// explanation URL by the build passes above.
-for (const [id, { viewBox, inner }] of allDiagrams) {
-	if (!id.startsWith("step-")) continue;
-	writeFileSync(
-		join(SVG_OUT_DIR, "steps", `${id}.svg`),
-		renderStandaloneSvg(viewBox, inner),
-		"utf8",
-	);
-	totalSvgFiles++;
-}
-
-// Per-station explanation-diagram copies, written as
-// `explanation-diagram/diagram-sNN.svg`.
-for (const [id, { viewBox, inner }] of explanationDiagramFiles) {
-	writeFileSync(
-		join(SVG_OUT_DIR, "explanation-diagram", `${id}.svg`),
-		renderStandaloneSvg(viewBox, inner),
-		"utf8",
-	);
-	totalSvgFiles++;
-}
-
-// Chapter hero SVGs are already complete <svg>…</svg> documents in the
-// source — write them out verbatim (just dedupe attributes) into
-// `chapter-hero/ch-NN-hero.svg`.
-for (const [num, svg] of chapterHeroSvgs) {
-	const cleaned = dedupeAttrs(svg.replace(/\r\n/g, "\n"));
-	const withDecl = `<?xml version="1.0" encoding="UTF-8"?>\n<!--\n  Auto-generated from the reference HTML by\n  scripts/storymode-extraction/extract.mjs.\n  Chapter ${num} hero icon.\n-->\n${cleaned}\n`;
-	writeFileSync(
-		join(SVG_OUT_DIR, "chapter-hero", chapterHeroFileName(num)),
-		withDecl,
-		"utf8",
-	);
-	totalSvgFiles++;
-}
-
-// =====================================================================
-// 5) Emit the metadata JSON + the systems index JSON.
-// =====================================================================
-
-writeFileSync(SYSTEM_JSON_PATH, JSON.stringify(normalized, null, 2), "utf8");
-
-const systemsIndex = [
+const SYSTEMS = [
 	{
-		name: SYSTEM_KEY,
-		displayName: SYSTEM_DISPLAY_NAME,
-		title: SYSTEM_TITLE,
-		chapterCount: normalized.chapters.length,
-		stationCount: normalized.chapters.reduce(
-			(sum, c) => sum + c.stations.length,
-			0,
-		),
+		key: "innate-immunity-story",
+		displayName: "Innate Immunity",
+		title: "High Yield NBME · Innate Immunity",
+		sourceHtml: "apps/game/MCA innate immunity story mode.html",
+		chapterMeta: INNATE_CHAPTER_META,
+	},
+	{
+		key: "adaptive-immunity-story",
+		displayName: "Adaptive Immunity",
+		title: "High Yield NBME · Adaptive Immunity",
+		sourceHtml: "apps/game/MCA adaptive immunity story.html",
+		chapterMeta: ADAPTIVE_CHAPTER_META,
 	},
 ];
+
+// ============================================================
+// Run.
+// ============================================================
+
+mkdirSync(DATA_OUT_DIR, { recursive: true });
+
+const systemsIndex = [];
+for (const system of SYSTEMS) {
+	systemsIndex.push(processSystem(system));
+}
+
 writeFileSync(SYSTEMS_INDEX_PATH, JSON.stringify(systemsIndex, null, 2), "utf8");
 
-// =====================================================================
-// 6) Summary
-// =====================================================================
-
-const stationCount = normalized.chapters.reduce(
-	(sum, c) => sum + c.stations.length,
-	0,
-);
-console.log("Story-mode extraction complete.");
-console.log(`  Chapters:    ${normalized.chapters.length}`);
-console.log(`  Stations:    ${stationCount}`);
-console.log(`  SVG files:   ${totalSvgFiles}`);
-console.log(`  System JSON: ${SYSTEM_JSON_PATH}`);
-console.log(`  Index JSON:  ${SYSTEMS_INDEX_PATH}`);
-console.log(`  SVG dir:     ${SVG_OUT_DIR}`);
+console.log("");
+console.log("All systems extracted.");
+console.log(`  Index: ${SYSTEMS_INDEX_PATH}`);

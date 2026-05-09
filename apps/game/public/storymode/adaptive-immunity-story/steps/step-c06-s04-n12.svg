@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 280" preserveAspectRatio="xMidYMid meet">
+                <text x="20" y="26" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 12 · CD4 RECOGNIZES THE COMPLEX</text>
+                <rect x="40" y="70" width="420" height="180" rx="18" fill="#0e1422" stroke="#3a4358" stroke-width="1.2"/>
+                <text x="50" y="64" style="fill:#6b7689;font:600 8px Inter,sans-serif;letter-spacing:1.5px">EXTRACELLULAR</text>
+                <text x="50" y="246" style="fill:#6b7689;font:600 8px Inter,sans-serif;letter-spacing:1.5px">APC CYTOPLASM</text>
+                <line x1="40" y1="70" x2="460" y2="70" stroke="#4fb8a8" stroke-width="1.5" opacity="0.7"/>
+                <g opacity="0.18">
+                  <path d="M 70 180 Q 55 205 80 220 Q 130 230 175 220 Q 200 215 205 198 Q 210 175 188 162 Q 130 154 70 180 Z" fill="#4fb8a8" stroke="#4fb8a8" stroke-width="1"/>
+                  <text x="135" y="245" text-anchor="middle" style="fill:#4fb8a8;font:600 8px Inter,sans-serif">ER</text>
+                  <ellipse cx="245" cy="190" rx="55" ry="38" fill="none" stroke="#e8a951" stroke-width="1.2" stroke-dasharray="4 3"/>
+                  <text x="245" y="194" text-anchor="middle" style="fill:#e8a951;font:600 9px Inter,sans-serif">endosome</text>
+                  <path d="M 270 175 Q 300 140 350 100" stroke="#e8a951" stroke-width="1" fill="none" stroke-dasharray="3 3"/>
+                </g>
+                <g transform="translate(200 70)">
+                  <path d="M -22 0 L 22 0 L 24 12 L 14 12 L 11 5 L -11 5 L -14 12 L -22 12 Z" fill="#4fb8a8" opacity="1" stroke="#4fb8a8" stroke-width="1.5"/>
+                  <g transform="translate(0 -8)" fill="#d14859"><circle cx="-7" cy="0" r="2.4"/><circle cx="-2" cy="0" r="2.4"/><circle cx="3" cy="0" r="2.4"/><circle cx="8" cy="0" r="2.4"/></g>
+                </g>
+                <g transform="translate(200 50)">
+                  <path d="M -10 12 L -6 0 L 6 0 L 10 12 Z" fill="#e8a951" opacity="0.85"/>
+                  <text x="0" y="-3" text-anchor="middle" style="fill:#e8a951;font:600 7px Inter,sans-serif">TCR</text>
+                </g>
+                <g transform="translate(225 53)">
+                  <path d="M 0 9 L -5 -2 L 5 -2 Z" fill="#6cc27d" opacity="0.85"/>
+                  <text x="14" y="2" style="fill:#6cc27d;font:600 7px Inter,sans-serif">CD4</text>
+                </g>
+                <g transform="translate(200 25)">
+                  <ellipse cx="0" cy="-5" rx="48" ry="22" fill="#6cc27d" opacity="0.30" stroke="#6cc27d" stroke-width="1.5"/>
+                  <ellipse cx="-3" cy="-7" rx="9" ry="6" fill="#2a5a36" opacity="0.7"/>
+                  <text x="0" y="-3" text-anchor="middle" style="fill:#e8ecf3;font:600 9px Inter,sans-serif">CD4 T cell</text>
+                </g>
+                <circle cx="200" cy="55" r="20" fill="none" stroke="#e8a951" stroke-width="1" opacity="0.5">
+                  <animate attributeName="r" values="14;22;14" dur="2.5s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values="0.6;0.1;0.6" dur="2.5s" repeatCount="indefinite"/>
+                </circle>
+                <text x="250" y="270" text-anchor="middle" style="fill:#6cc27d;font:italic 600 10px Fraunces,serif">CD4 binds Class II · helper response begins</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="239" cy="50" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

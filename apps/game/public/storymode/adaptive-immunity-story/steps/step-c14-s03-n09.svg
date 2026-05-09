@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 06 · RNA + 4th-GEN · COMBO WORKUP</text>
+
+<!-- Test 1: HIV RNA -->
+<g transform="translate(140 130)">
+  <text x="0" y="-72" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.5px">HIV RNA</text>
+  <rect x="-55" y="-50" width="110" height="100" rx="8" fill="rgba(209,72,89,0.20)" stroke="#d14859" stroke-width="1.6"/>
+  
+  <!-- DNA-like icon -->
+  <g transform="translate(0 -15)">
+    <g stroke="#d14859" stroke-width="1.8" fill="none">
+      <path d="M -18 0 Q -12 -3 -6 0 Q 0 3 6 0 Q 12 -3 18 0"/>
+      <path d="M -18 6 Q -12 3 -6 6 Q 0 9 6 6 Q 12 3 18 6"/>
+    </g>
+  </g>
+  
+  <text x="0" y="20" text-anchor="middle" style="fill:#d14859;font:700 7.5px Inter,sans-serif">EARLIEST</text>
+  <text x="0" y="32" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">10-14 days</text>
+  <text x="0" y="44" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">VL > 10⁶</text>
+</g>
+
+<!-- + sign -->
+<text x="245" y="135" text-anchor="middle" style="fill:#b4becf;font:700 18px Inter,sans-serif">+</text>
+
+<!-- Test 2: 4th-gen -->
+<g transform="translate(360 130)">
+  <text x="0" y="-72" text-anchor="middle" style="fill:#6cc27d;font:700 9px Inter,sans-serif;letter-spacing:1.5px">4th-GEN Ag/Ab</text>
+  <rect x="-55" y="-50" width="110" height="100" rx="8" fill="rgba(108,194,125,0.20)" stroke="#6cc27d" stroke-width="1.6"/>
+  
+  <!-- Combo icon -->
+  <g transform="translate(0 -15)">
+    <g stroke="#e8a951" stroke-width="1.4" fill="none" stroke-linecap="round" transform="translate(-12 0)">
+      <line x1="0" y1="0" x2="0" y2="8"/>
+      <line x1="-3" y1="-3" x2="0" y2="0"/>
+      <line x1="3" y1="-3" x2="0" y2="0"/>
+    </g>
+    <polygon points="12,-7 18,-3 18,4 12,8 6,4 6,-3" fill="rgba(209,72,89,0.85)"/>
+  </g>
+  
+  <text x="0" y="20" text-anchor="middle" style="fill:#6cc27d;font:700 7.5px Inter,sans-serif">Ab + p24</text>
+  <text x="0" y="32" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">2-4 wk</text>
+  <text x="0" y="44" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">SoC test</text>
+</g>
+
+<!-- Bottom banner -->
+<g transform="translate(250 215)">
+  <rect x="-200" y="-13" width="400" height="26" rx="6" fill="rgba(232,169,81,0.30)" stroke="#e8a951" stroke-width="1.8"/>
+  <text x="0" y="3" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1.5px">CATCHES NEARLY ALL ARS · CONFIRM W/ HIV-1/2 DIFF</text>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">RNA closes window period gaps · 4th-gen handles seroconverted infections</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="213" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="360" cy="53" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="360" cy="169" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+              </svg>

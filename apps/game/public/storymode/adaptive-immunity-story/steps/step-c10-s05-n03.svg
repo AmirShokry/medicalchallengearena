@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 02 · ADA-SPECIFIC LABS</text>
+
+<g transform="translate(250 145)">
+  <!-- Lab card background -->
+  <rect x="-200" y="-90" width="400" height="180" rx="8" fill="rgba(20,24,40,0.85)" stroke="#3a4358" stroke-width="1.4"/>
+  <text x="0" y="-72" text-anchor="middle" style="fill:#9370b9;font:700 9px Inter,sans-serif;letter-spacing:1.5px">PATIENT · BIOCHEMISTRY</text>
+  
+  <!-- Reference markers -->
+  <line x1="-100" y1="-58" x2="-100" y2="80" stroke="#6b7689" stroke-width="0.6" stroke-dasharray="2 2"/>
+  <line x1="100" y1="-58" x2="100" y2="80" stroke="#6b7689" stroke-width="0.6" stroke-dasharray="2 2"/>
+  <text x="0" y="-45" text-anchor="middle" style="fill:#6cc27d;font:6.5px Inter,sans-serif">normal range</text>
+  
+  <!-- ADA enzyme - ZERO -->
+  <g transform="translate(0 -22)">
+    <text x="-180" y="3" style="fill:#e8ecf3;font:700 9px Inter,sans-serif">ADA enzyme</text>
+    <rect x="-150" y="-7" width="300" height="14" rx="2" fill="#0a0e1a" stroke="#3a4358" stroke-width="0.6"/>
+    <rect x="-100" y="-7" width="200" height="14" fill="rgba(108,194,125,0.20)"/>
+    <!-- Patient bar - essentially zero (2px) -->
+    <rect x="-150" y="-7" width="3" height="14" rx="1" fill="rgba(209,72,89,0.95)"/>
+    <text x="160" y="3" style="fill:#d14859;font:700 8px Inter,sans-serif">↓↓↓ ZERO</text>
+  </g>
+  
+  <!-- Deoxyadenosine - HIGH (substrate) -->
+  <g transform="translate(0 8)">
+    <text x="-180" y="3" style="fill:#e8ecf3;font:700 9px Inter,sans-serif">dAdo</text>
+    <text x="-180" y="13" style="fill:#b4becf;font:6.5px Inter,sans-serif">deoxyadenosine</text>
+    <rect x="-150" y="-7" width="300" height="14" rx="2" fill="#0a0e1a" stroke="#3a4358" stroke-width="0.6"/>
+    <rect x="-100" y="-7" width="200" height="14" fill="rgba(108,194,125,0.20)"/>
+    <rect x="-150" y="-7" width="280" height="14" rx="2" fill="rgba(232,169,81,0.85)"/>
+    <text x="160" y="3" style="fill:#e8a951;font:700 8px Inter,sans-serif">↑↑↑ HIGH</text>
+  </g>
+  
+  <!-- dATP - HIGH in lymphocytes -->
+  <g transform="translate(0 42)">
+    <text x="-180" y="3" style="fill:#e8ecf3;font:700 9px Inter,sans-serif">dATP</text>
+    <text x="-180" y="13" style="fill:#b4becf;font:6.5px Inter,sans-serif">in lymphocytes</text>
+    <rect x="-150" y="-7" width="300" height="14" rx="2" fill="#0a0e1a" stroke="#3a4358" stroke-width="0.6"/>
+    <rect x="-100" y="-7" width="200" height="14" fill="rgba(108,194,125,0.20)"/>
+    <rect x="-150" y="-7" width="290" height="14" rx="2" fill="rgba(232,169,81,0.85)"/>
+    <text x="160" y="3" style="fill:#e8a951;font:700 8px Inter,sans-serif">↑↑↑ HIGH</text>
+  </g>
+  
+  <!-- Pattern label -->
+  <text x="0" y="73" text-anchor="middle" style="fill:#9370b9;font:italic 700 8px Fraunces,serif">enzyme gone · substrate piles up · downstream metabolite piles up</text>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">ADA enzyme assay (RBC) + dAdo and dATP measured in lymphocytes</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="70" cy="121" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="70" cy="161" r="21" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="17;27;17" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

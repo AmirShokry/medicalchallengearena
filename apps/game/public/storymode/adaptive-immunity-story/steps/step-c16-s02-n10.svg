@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 06 · PKC → NF-κB + AP-1 + CYTOSKELETON</text>
+
+<g transform="translate(125 100)">
+  <rect x="-50" y="-15" width="100" height="30" rx="5" fill="rgba(108,194,125,0.20)" stroke="#6cc27d" stroke-width="1.6"/>
+  <text x="0" y="3" text-anchor="middle" style="fill:#6cc27d;font:700 11px Inter,sans-serif;letter-spacing:1.5px">PKC</text>
+</g>
+
+<g stroke="#6cc27d" stroke-width="1.4" fill="none" marker-end="url(#arr16_2_6a)">
+  <line x1="180" y1="95" x2="280" y2="80"/>
+  <line x1="180" y1="100" x2="280" y2="135"/>
+  <line x1="180" y1="105" x2="280" y2="190"/>
+</g>
+<defs>
+  <marker id="arr16_2_6a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#6cc27d"/>
+  </marker>
+</defs>
+
+<g transform="translate(370 80)">
+  <rect x="-90" y="-15" width="180" height="30" rx="5" fill="rgba(232,169,81,0.18)" stroke="#e8a951" stroke-width="1.2"/>
+  <text x="0" y="3" text-anchor="middle" style="fill:#e8a951;font:700 8.5px Inter,sans-serif">NF-κB</text>
+</g>
+
+<g transform="translate(370 135)">
+  <rect x="-90" y="-15" width="180" height="30" rx="5" fill="rgba(232,169,81,0.18)" stroke="#e8a951" stroke-width="1.2"/>
+  <text x="0" y="3" text-anchor="middle" style="fill:#e8a951;font:700 8.5px Inter,sans-serif">AP-1 (Fos/Jun)</text>
+</g>
+
+<g transform="translate(370 190)">
+  <rect x="-90" y="-15" width="180" height="30" rx="5" fill="rgba(79,184,168,0.18)" stroke="#4fb8a8" stroke-width="1.2"/>
+  <text x="0" y="3" text-anchor="middle" style="fill:#4fb8a8;font:700 8.5px Inter,sans-serif">cytoskeleton</text>
+</g>
+
+<text x="250" y="240" text-anchor="middle" style="fill:#b4becf;font:600 8px Inter,sans-serif">Many downstream substrates · widespread effects</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="125" cy="98" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

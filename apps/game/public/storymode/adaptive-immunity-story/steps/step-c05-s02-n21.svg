@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 16 · ALL THREE → SAME MAST CELL</text>
+
+                  <!-- Mast cell at center -->
+                  <g opacity="1"><circle cx="270" cy="145" r="36" fill="#d14859" fill-opacity="0.30" stroke="#d14859" stroke-width="1.8"></circle><ellipse cx="266" cy="143" rx="9" ry="7" fill="#4a2d60" opacity="0.7"></ellipse>
+                      <g fill="#e8a951" opacity="0.5">
+                        <circle cx="282" cy="135" r="1.8"></circle>
+                        <circle cx="278" cy="160" r="1.8"></circle>
+                      </g>
+                      <!-- scattered granules outside -->
+                      <g fill="#e8a951" opacity="0.85">
+                        <circle cx="305" cy="125" r="2.5"></circle>
+                        <circle cx="312" cy="145" r="2.5"></circle>
+                        <circle cx="305" cy="170" r="2.5"></circle>
+                        <circle cx="240" cy="125" r="2.2"></circle>
+                        <circle cx="232" cy="145" r="2.2"></circle>
+                        <circle cx="240" cy="170" r="2.2"></circle>
+                        <circle cx="270" cy="105" r="2.2"></circle>
+                        <circle cx="270" cy="190" r="2.2"></circle>
+                      </g>
+                    </g>
+                  <text x="270" y="200" text-anchor="middle" style="fill:#d14859;font:600 8px Inter,sans-serif;letter-spacing:1.5px">MAST CELL</text>
+
+                  <!-- Three anaphylatoxins arriving from different directions -->
+                  <g transform="translate(80 100)">
+                    <circle cx="0" cy="0" r="16" fill="#e8a951" fill-opacity="0.85" stroke="#e8a951" stroke-width="1.6"></circle>
+                    <text x="0" y="4" text-anchor="middle" style="fill:#0a0e1a;font:700 11px Inter,sans-serif">C3a</text>
+                  </g>
+                  <path d="M 100 110 L 235 130" stroke="#e8a951" stroke-width="1.3" fill="none" stroke-dasharray="3 2"></path>
+                  <polygon points="235,130 227,128 230,134" fill="#e8a951"></polygon>
+
+                  <g transform="translate(80 190)">
+                    <circle cx="0" cy="0" r="13" fill="#e8a951" fill-opacity="0.55" stroke="#e8a951" stroke-width="1.4"></circle>
+                    <text x="0" y="4" text-anchor="middle" style="fill:#0a0e1a;font:700 10px Inter,sans-serif">C4a</text>
+                  </g>
+                  <path d="M 100 185 L 235 165" stroke="#e8a951" stroke-width="1.3" fill="none" stroke-dasharray="3 2"></path>
+                  <polygon points="235,165 228,162 226,168" fill="#e8a951"></polygon>
+
+                  <g transform="translate(450 100)">
+                    <circle cx="0" cy="0" r="20" fill="#e8a951" fill-opacity="0.95" stroke="#e8a951" stroke-width="2"></circle>
+                    <text x="0" y="5" text-anchor="middle" style="fill:#0a0e1a;font:700 12px Inter,sans-serif">C5a</text>
+                  </g>
+                  <path d="M 432 110 L 305 130" stroke="#e8a951" stroke-width="1.3" fill="none" stroke-dasharray="3 2"></path>
+                  <polygon points="305,130 313,128 311,134" fill="#e8a951"></polygon>
+
+                  <text x="250" y="252" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">same final pathway · same histamine output</text>
+              
+                  
+              
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="270" cy="195" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+              </svg>

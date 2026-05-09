@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 01 · OBSERVED · FLAT SECOND RESPONSE</text>
+
+<!-- Axes -->
+<line x1="60" y1="200" x2="450" y2="200" stroke="#b4becf" stroke-width="1.4" opacity="0.7"/>
+<line x1="60" y1="55" x2="60" y2="200" stroke="#b4becf" stroke-width="1.4" opacity="0.7"/>
+<text x="445" y="215" text-anchor="end" style="fill:#b4becf;font:8px Inter,sans-serif">time →</text>
+<text x="55" y="62" text-anchor="end" style="fill:#b4becf;font:8px Inter,sans-serif">titer</text>
+
+<!-- Dose marks -->
+<line x1="120" y1="195" x2="120" y2="205" stroke="#e8a951" stroke-width="1.6"/>
+<text x="120" y="220" text-anchor="middle" style="fill:#e8a951;font:700 8px Inter,sans-serif">1st dose</text>
+<line x1="290" y1="195" x2="290" y2="205" stroke="#e8a951" stroke-width="1.6"/>
+<text x="290" y="220" text-anchor="middle" style="fill:#e8a951;font:700 8px Inter,sans-serif">2nd dose</text>
+
+<!-- IgM curve - small bump after each dose, no escalation -->
+<path d="M 60 200 L 120 200 Q 145 130 175 125 Q 200 135 230 175 Q 250 195 290 200 Q 315 130 345 125 Q 370 135 400 180 Q 425 195 450 200" stroke="#9370b9" stroke-width="2.5" fill="none"/>
+<text x="155" y="115" style="fill:#9370b9;font:700 9px Inter,sans-serif">IgM</text>
+
+<!-- IgG curve - weak after each dose, no boost -->
+<path d="M 60 200 L 150 200 Q 175 175 200 170 Q 225 175 250 195 Q 270 200 290 200 Q 320 175 345 170 Q 370 175 395 195 Q 420 200 450 200" stroke="#e8a951" stroke-width="2" fill="none" stroke-dasharray="3 2"/>
+<text x="200" y="158" style="fill:#e8a951;font:700 8px Inter,sans-serif">IgG (weak)</text>
+
+<!-- Highlight box around 2nd response -->
+<rect x="280" y="60" width="170" height="135" rx="6" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.9"/>
+<text x="365" y="50" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.5px">FLAT 2nd RESPONSE</text>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">2nd dose looks just like the 1st · no anamnestic boost</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="155" cy="110" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="200" cy="153" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 02 · ENTRY · CD4 + CCR5 + gp41 FUSION</text>
+
+<!-- Three stages of entry -->
+
+<!-- Stage A: gp120 docks CD4 -->
+<g transform="translate(110 130)">
+  <text x="0" y="-72" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif;letter-spacing:1.2px">A · gp120 + CD4</text>
+  
+  <!-- Cell membrane bottom -->
+  <line x1="-50" y1="35" x2="50" y2="35" stroke="#6cc27d" stroke-width="3"/>
+  <text x="-45" y="48" style="fill:#6cc27d;font:6px Inter,sans-serif">CD4 T cell</text>
+  
+  <!-- CD4 receptor -->
+  <g transform="translate(-15 30)">
+    <rect x="-4" y="-22" width="8" height="22" rx="2" fill="rgba(108,194,125,0.85)" stroke="#6cc27d" stroke-width="1.2"/>
+    <text x="13" y="-10" style="fill:#6cc27d;font:700 6.5px 'JetBrains Mono',monospace">CD4</text>
+  </g>
+  
+  <!-- Virus membrane top -->
+  <line x1="-50" y1="-25" x2="50" y2="-25" stroke="#b4becf" stroke-width="3"/>
+  
+  <!-- gp120 spike -->
+  <g transform="translate(-15 -22)">
+    <line x1="0" y1="0" x2="0" y2="14" stroke="#9370b9" stroke-width="1.6"/>
+    <circle cx="0" cy="18" r="4" fill="rgba(147,112,185,0.85)" stroke="#9370b9"/>
+    <text x="-12" y="-4" text-anchor="end" style="fill:#9370b9;font:700 6.5px 'JetBrains Mono',monospace">gp120</text>
+  </g>
+  <!-- gp41 (next to gp120, embedded in viral membrane) -->
+  <rect x="-8" y="-25" width="6" height="6" fill="rgba(209,72,89,0.85)" stroke="#d14859" stroke-width="0.8"/>
+  <text x="2" y="-15" style="fill:#d14859;font:700 5.5px 'JetBrains Mono',monospace">gp41</text>
+</g>
+
+<!-- Arrow → -->
+<g stroke="#e8a951" stroke-width="2" fill="none" marker-end="url(#arr14_1_2a)">
+  <line x1="170" y1="130" x2="200" y2="130"/>
+</g>
+<defs>
+  <marker id="arr14_1_2a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8a951"/>
+  </marker>
+</defs>
+
+<!-- Stage B: Co-receptor binding -->
+<g transform="translate(250 130)">
+  <text x="0" y="-72" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif;letter-spacing:1.2px">B · CCR5 BINDING</text>
+  
+  <line x1="-50" y1="35" x2="50" y2="35" stroke="#6cc27d" stroke-width="3"/>
+  <line x1="-50" y1="-25" x2="50" y2="-25" stroke="#b4becf" stroke-width="3"/>
+  
+  <!-- CD4 + bound gp120 -->
+  <g transform="translate(-15 30)">
+    <rect x="-4" y="-22" width="8" height="22" rx="2" fill="rgba(108,194,125,0.85)" stroke="#6cc27d" stroke-width="1.2"/>
+  </g>
+  <g transform="translate(-15 -8)">
+    <circle cx="0" cy="0" r="4" fill="rgba(147,112,185,0.85)" stroke="#9370b9"/>
+  </g>
+  
+  <!-- CCR5 (7TM receptor) -->
+  <g transform="translate(15 30)">
+    <rect x="-6" y="-20" width="12" height="20" rx="2" fill="rgba(232,169,81,0.85)" stroke="#e8a951" stroke-width="1.2"/>
+    <!-- 7 TM hint -->
+    <g stroke="#e8a951" stroke-width="0.5" fill="none">
+      <line x1="-3" y1="-18" x2="-3" y2="-2"/>
+      <line x1="0" y1="-18" x2="0" y2="-2"/>
+      <line x1="3" y1="-18" x2="3" y2="-2"/>
+    </g>
+    <text x="14" y="-12" style="fill:#e8a951;font:700 6px 'JetBrains Mono',monospace">CCR5</text>
+  </g>
+  
+  <!-- Conformational change: gp120 reaches over to CCR5 -->
+  <line x1="-15" y1="-8" x2="13" y2="8" stroke="#9370b9" stroke-width="1.4" stroke-dasharray="2 2"/>
+  <text x="0" y="-30" style="fill:#9370b9;font:italic 6px Fraunces,serif">conf change</text>
+</g>
+
+<!-- Arrow → -->
+<g stroke="#e8a951" stroke-width="2" fill="none" marker-end="url(#arr14_1_2a)">
+  <line x1="310" y1="130" x2="340" y2="130"/>
+</g>
+
+<!-- Stage C: gp41 fusion -->
+<g transform="translate(395 130)">
+  <text x="0" y="-72" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif;letter-spacing:1.2px">C · gp41 FUSION</text>
+  
+  <!-- Membranes touching -->
+  <line x1="-50" y1="35" x2="50" y2="35" stroke="#6cc27d" stroke-width="3"/>
+  <line x1="-50" y1="-25" x2="50" y2="-25" stroke="#b4becf" stroke-width="3"/>
+  
+  <!-- gp41 inserting through both membranes (V shape) -->
+  <g stroke="#d14859" stroke-width="2.4" fill="none">
+    <line x1="0" y1="-25" x2="0" y2="35"/>
+    <line x1="-3" y1="-22" x2="3" y2="-22"/>
+    <line x1="-3" y1="32" x2="3" y2="32"/>
+  </g>
+  <text x="10" y="5" style="fill:#d14859;font:700 6.5px 'JetBrains Mono',monospace">gp41</text>
+  <text x="10" y="16" style="fill:#d14859;font:italic 6px Fraunces,serif">spans both</text>
+  
+  <!-- Membrane fusion happening -->
+  <g fill="#e8a951">
+    <circle cx="-15" cy="5" r="2"/>
+    <circle cx="-25" cy="-5" r="2"/>
+    <circle cx="20" cy="0" r="2"/>
+    <circle cx="30" cy="-8" r="2"/>
+  </g>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">3-step entry · CCR5 in transmitted strains · capsid then enters cytoplasm</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="112" cy="110" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="405" cy="130" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="110" cy="53" r="22" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="18;28;18" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

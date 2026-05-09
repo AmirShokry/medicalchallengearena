@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 07 · pIgR · TRANSCYTOSIS → SECRETORY IgA</text>
+
+                  <!-- Three-zone barrier: mucosa-side bottom, epithelium middle, lumen top -->
+                  <!-- Lumen (top) -->
+                  <rect x="40" y="55" width="420" height="50" rx="3" fill="#1a2030" fill-opacity="0.6"></rect>
+                  <text x="48" y="68" style="fill:#e8a951;font:600 8px Inter,sans-serif;letter-spacing:1.5px">MUCOSAL LUMEN</text>
+
+                  <!-- Epithelium (middle) -->
+                  <rect x="40" y="105" width="420" height="55" rx="3" fill="#9370b9" fill-opacity="0.18" stroke="#9370b9" stroke-width="1.4"></rect>
+                  <text x="48" y="135" style="fill:#9370b9;font:600 8px Inter,sans-serif;letter-spacing:1.5px">EPITHELIUM</text>
+
+                  <!-- Lamina propria (bottom) -->
+                  <rect x="40" y="160" width="420" height="65" rx="3" fill="#4fb8a8" fill-opacity="0.12"></rect>
+                  <text x="48" y="218" style="fill:#4fb8a8;font:600 8px Inter,sans-serif;letter-spacing:1.5px">LAMINA PROPRIA</text>
+
+                  <!-- pIgR receptors on basolateral side (bottom of epithelium) -->
+                  <g>
+                    <g transform="translate(150 160)">
+                      <rect x="-7" y="-5" width="14" height="10" rx="2" fill="#d14859" fill-opacity="0.85" stroke="#d14859" stroke-width="1.2"></rect>
+                      <text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 5px Inter,sans-serif">pIgR</text>
+                    </g>
+                    <g transform="translate(250 160)">
+                      <rect x="-7" y="-5" width="14" height="10" rx="2" fill="#d14859" fill-opacity="0.85" stroke="#d14859" stroke-width="1.2"></rect>
+                      <text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 5px Inter,sans-serif">pIgR</text>
+                    </g>
+                    <g transform="translate(350 160)">
+                      <rect x="-7" y="-5" width="14" height="10" rx="2" fill="#d14859" fill-opacity="0.85" stroke="#d14859" stroke-width="1.2"></rect>
+                      <text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 5px Inter,sans-serif">pIgR</text>
+                    </g>
+                  </g>
+
+                  <!-- IgA dimers in lamina propria approaching pIgR -->
+                  <g transform="translate(150 195)" opacity="1"><g transform="translate(-15 0)"><path d="M -9 -10 L -3 -2 L 3 -2 L 9 -10" stroke="#4fb8a8" stroke-width="3" fill="none" stroke-linecap="round"></path><line x1="0" y1="-2" x2="0" y2="10" stroke="#4fb8a8" stroke-width="3" stroke-linecap="round"></line></g><g transform="translate(15 0)"><path d="M -9 -10 L -3 -2 L 3 -2 L 9 -10" stroke="#4fb8a8" stroke-width="3" fill="none" stroke-linecap="round"></path><line x1="0" y1="-2" x2="0" y2="10" stroke="#4fb8a8" stroke-width="3" stroke-linecap="round"></line></g><rect x="-5" y="6" width="10" height="6" rx="1" fill="#e8a951" fill-opacity="0.95" stroke="#e8a951" stroke-width="1"></rect><text x="0" y="11" text-anchor="middle" style="fill:#0a0e1a;font:700 5px Inter,sans-serif">J</text></g>
+                  <g transform="translate(250 195)" opacity="1"><g transform="translate(-15 0)"><path d="M -9 -10 L -3 -2 L 3 -2 L 9 -10" stroke="#4fb8a8" stroke-width="3" fill="none" stroke-linecap="round"></path><line x1="0" y1="-2" x2="0" y2="10" stroke="#4fb8a8" stroke-width="3" stroke-linecap="round"></line></g><g transform="translate(15 0)"><path d="M -9 -10 L -3 -2 L 3 -2 L 9 -10" stroke="#4fb8a8" stroke-width="3" fill="none" stroke-linecap="round"></path><line x1="0" y1="-2" x2="0" y2="10" stroke="#4fb8a8" stroke-width="3" stroke-linecap="round"></line></g><rect x="-5" y="6" width="10" height="6" rx="1" fill="#e8a951" fill-opacity="0.95" stroke="#e8a951" stroke-width="1"></rect><text x="0" y="11" text-anchor="middle" style="fill:#0a0e1a;font:700 5px Inter,sans-serif">J</text></g>
+                  <g transform="translate(350 195)" opacity="1"><g transform="translate(-15 0)"><path d="M -9 -10 L -3 -2 L 3 -2 L 9 -10" stroke="#4fb8a8" stroke-width="3" fill="none" stroke-linecap="round"></path><line x1="0" y1="-2" x2="0" y2="10" stroke="#4fb8a8" stroke-width="3" stroke-linecap="round"></line></g><g transform="translate(15 0)"><path d="M -9 -10 L -3 -2 L 3 -2 L 9 -10" stroke="#4fb8a8" stroke-width="3" fill="none" stroke-linecap="round"></path><line x1="0" y1="-2" x2="0" y2="10" stroke="#4fb8a8" stroke-width="3" stroke-linecap="round"></line></g><rect x="-5" y="6" width="10" height="6" rx="1" fill="#e8a951" fill-opacity="0.95" stroke="#e8a951" stroke-width="1"></rect><text x="0" y="11" text-anchor="middle" style="fill:#0a0e1a;font:700 5px Inter,sans-serif">J</text></g>
+
+                  <!-- Transcytosis arrows up through epithelium -->
+                  <g stroke="#e8a951" stroke-width="1.4" fill="none" stroke-dasharray="3 2" opacity="0.85">
+                    <path d="M 150 158 L 150 110"></path>
+                    <path d="M 250 158 L 250 110"></path>
+                    <path d="M 350 158 L 350 110"></path>
+                  </g>
+                  <g fill="#e8a951">
+                    <polygon points="150,110 146,116 154,116"></polygon>
+                    <polygon points="250,110 246,116 254,116"></polygon>
+                    <polygon points="350,110 346,116 354,116"></polygon>
+                  </g>
+
+                  <!-- Secretory IgA emerging in lumen — with SC -->
+                  <g transform="translate(150 80)" opacity="1"><g transform="translate(-15 0)"><path d="M -9 -10 L -3 -2 L 3 -2 L 9 -10" stroke="#4fb8a8" stroke-width="3" fill="none" stroke-linecap="round"></path><line x1="0" y1="-2" x2="0" y2="10" stroke="#4fb8a8" stroke-width="3" stroke-linecap="round"></line></g><g transform="translate(15 0)"><path d="M -9 -10 L -3 -2 L 3 -2 L 9 -10" stroke="#4fb8a8" stroke-width="3" fill="none" stroke-linecap="round"></path><line x1="0" y1="-2" x2="0" y2="10" stroke="#4fb8a8" stroke-width="3" stroke-linecap="round"></line></g><rect x="-5" y="6" width="10" height="6" rx="1" fill="#e8a951" fill-opacity="0.95" stroke="#e8a951" stroke-width="1"></rect><text x="0" y="11" text-anchor="middle" style="fill:#0a0e1a;font:700 5px Inter,sans-serif">J</text><path d="M -25 -12 Q -28 0 -25 14 Q 0 18 25 14 Q 28 0 25 -12" stroke="#d14859" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.9"></path><text x="32" y="0" style="fill:#d14859;font:600 7px Inter,sans-serif">SC</text><text x="0" y="-18" text-anchor="middle" style="fill:#4fb8a8;font:600 7px Inter,sans-serif">IgA dimer</text></g>
+                  <g transform="translate(250 80)" opacity="1"><g transform="translate(-15 0)"><path d="M -9 -10 L -3 -2 L 3 -2 L 9 -10" stroke="#4fb8a8" stroke-width="3" fill="none" stroke-linecap="round"></path><line x1="0" y1="-2" x2="0" y2="10" stroke="#4fb8a8" stroke-width="3" stroke-linecap="round"></line></g><g transform="translate(15 0)"><path d="M -9 -10 L -3 -2 L 3 -2 L 9 -10" stroke="#4fb8a8" stroke-width="3" fill="none" stroke-linecap="round"></path><line x1="0" y1="-2" x2="0" y2="10" stroke="#4fb8a8" stroke-width="3" stroke-linecap="round"></line></g><rect x="-5" y="6" width="10" height="6" rx="1" fill="#e8a951" fill-opacity="0.95" stroke="#e8a951" stroke-width="1"></rect><text x="0" y="11" text-anchor="middle" style="fill:#0a0e1a;font:700 5px Inter,sans-serif">J</text><path d="M -25 -12 Q -28 0 -25 14 Q 0 18 25 14 Q 28 0 25 -12" stroke="#d14859" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.9"></path></g>
+                  <g transform="translate(350 80)" opacity="1"><g transform="translate(-15 0)"><path d="M -9 -10 L -3 -2 L 3 -2 L 9 -10" stroke="#4fb8a8" stroke-width="3" fill="none" stroke-linecap="round"></path><line x1="0" y1="-2" x2="0" y2="10" stroke="#4fb8a8" stroke-width="3" stroke-linecap="round"></line></g><g transform="translate(15 0)"><path d="M -9 -10 L -3 -2 L 3 -2 L 9 -10" stroke="#4fb8a8" stroke-width="3" fill="none" stroke-linecap="round"></path><line x1="0" y1="-2" x2="0" y2="10" stroke="#4fb8a8" stroke-width="3" stroke-linecap="round"></line></g><rect x="-5" y="6" width="10" height="6" rx="1" fill="#e8a951" fill-opacity="0.95" stroke="#e8a951" stroke-width="1"></rect><text x="0" y="11" text-anchor="middle" style="fill:#0a0e1a;font:700 5px Inter,sans-serif">J</text><path d="M -25 -12 Q -28 0 -25 14 Q 0 18 25 14 Q 28 0 25 -12" stroke="#d14859" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.9"></path></g>
+
+                  <!-- Secretory IgA label (in upper-right corner of lumen zone) -->
+                  <g transform="translate(430 60)">
+                    <rect x="-50" y="-9" width="50" height="14" rx="3" fill="#d14859" fill-opacity="0.20" stroke="#d14859" stroke-width="1"></rect>
+                    <text x="-25" y="2" text-anchor="middle" style="fill:#d14859;font:700 7px Inter,sans-serif;letter-spacing:1px">sIgA</text>
+                  </g>
+
+                  <text x="250" y="252" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">pIgR ferries dimeric IgA across epithelium · releases it with secretory component attached</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="150" cy="57" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

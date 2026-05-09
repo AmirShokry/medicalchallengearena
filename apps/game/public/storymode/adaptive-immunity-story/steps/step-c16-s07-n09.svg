@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 04 · IM LATERAL THIGH · FASTEST ABSORPTION</text>
+
+<!-- Leg with thigh -->
+<g transform="translate(250 130)">
+  <ellipse cx="0" cy="0" rx="50" ry="80" fill="rgba(232,169,81,0.10)" stroke="#3a4358" stroke-width="1.4"/>
+  <text x="0" y="-90" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1px">THIGH</text>
+  
+  <!-- Vastus lateralis -->
+  <ellipse cx="-22" cy="0" rx="14" ry="40" fill="rgba(209,72,89,0.20)" stroke="#d14859" stroke-width="1.4"/>
+  <text x="-22" y="60" text-anchor="middle" style="fill:#d14859;font:700 7px Inter,sans-serif">vastus</text>
+  <text x="-22" y="72" text-anchor="middle" style="fill:#d14859;font:700 7px Inter,sans-serif">lateralis</text>
+  
+  <!-- EpiPen needle -->
+  <line x1="-65" y1="-15" x2="-30" y2="-5" stroke="#e8a951" stroke-width="2"/>
+  <circle cx="-30" cy="-5" r="3" fill="#e8a951"/>
+  <text x="-90" y="-20" text-anchor="end" style="fill:#e8a951;font:700 8px Inter,sans-serif">IM</text>
+</g>
+
+<text x="120" y="240" text-anchor="middle" style="fill:#b4becf;font:600 8px Inter,sans-serif">Highly vascular muscle</text>
+<text x="380" y="240" text-anchor="middle" style="fill:#b4becf;font:600 8px Inter,sans-serif">EpiPen autoinjector</text>
+<text x="250" y="222" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1.2px">FASTEST ABSORPTION · NOT GLUTEAL · NOT SC</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="217" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="228" cy="197" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="228" cy="185" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

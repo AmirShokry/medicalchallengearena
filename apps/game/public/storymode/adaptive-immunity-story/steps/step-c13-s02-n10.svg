@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 05 · TREATMENT LADDER</text>
+
+<!-- Step ladder visualization -->
+<g transform="translate(95 130)">
+  <text x="0" y="-72" text-anchor="middle" style="fill:#6cc27d;font:700 9px Inter,sans-serif;letter-spacing:1.5px">FIRST LINE</text>
+  <rect x="-55" y="-50" width="110" height="100" rx="8" fill="rgba(108,194,125,0.20)" stroke="#6cc27d" stroke-width="1.8"/>
+  
+  <!-- IV bag with steroid -->
+  <g transform="translate(0 -10)">
+    <rect x="-12" y="-22" width="24" height="32" rx="3" fill="rgba(232,169,81,0.55)" stroke="#e8a951" stroke-width="1.2"/>
+    <line x1="0" y1="10" x2="0" y2="22" stroke="#b4becf" stroke-width="1.4"/>
+    <text x="0" y="-4" text-anchor="middle" style="fill:#0a0e1a;font:700 7px Inter,sans-serif">SOLU</text>
+    <text x="0" y="5" text-anchor="middle" style="fill:#0a0e1a;font:700 7px Inter,sans-serif">MEDROL</text>
+  </g>
+  
+  <text x="0" y="32" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif;letter-spacing:1.2px">PULSE STEROIDS</text>
+  <text x="0" y="44" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">methylprednisolone</text>
+</g>
+
+<!-- Arrow → second line -->
+<g stroke="#e8a951" stroke-width="2" fill="none" marker-end="url(#arr13_2_5a)">
+  <line x1="160" y1="125" x2="195" y2="125"/>
+</g>
+<defs>
+  <marker id="arr13_2_5a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8a951"/>
+  </marker>
+</defs>
+<text x="178" y="118" text-anchor="middle" style="fill:#e8a951;font:6.5px Inter,sans-serif">if resistant</text>
+
+<!-- Second line: anti-T -->
+<g transform="translate(255 130)">
+  <text x="0" y="-72" text-anchor="middle" style="fill:#9370b9;font:700 9px Inter,sans-serif;letter-spacing:1.5px">STEROID-RESISTANT</text>
+  <rect x="-55" y="-50" width="110" height="100" rx="8" fill="rgba(147,112,185,0.20)" stroke="#9370b9" stroke-width="1.8"/>
+  
+  <!-- T cell with antibody attacking -->
+  <g transform="translate(0 -10)">
+    <circle cx="-8" cy="0" r="14" fill="rgba(108,194,125,0.55)" stroke="#6cc27d" stroke-width="1.2"/>
+    <text x="-8" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 8px Inter,sans-serif">T</text>
+    <!-- Antibody attacking -->
+    <g stroke="#e8a951" stroke-width="1.6" fill="none" stroke-linecap="round" transform="translate(15 -10)">
+      <line x1="0" y1="0" x2="0" y2="10"/>
+      <line x1="-4" y1="-4" x2="0" y2="0"/>
+      <line x1="4" y1="-4" x2="0" y2="0"/>
+    </g>
+    <line x1="3" y1="-2" x2="13" y2="-7" stroke="#d14859" stroke-width="1.4"/>
+  </g>
+  
+  <text x="0" y="32" text-anchor="middle" style="fill:#9370b9;font:700 8px Inter,sans-serif;letter-spacing:1.2px">ANTI-T-CELL Ab</text>
+  <text x="0" y="44" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">ATG · alemtuzumab</text>
+</g>
+
+<!-- Acute Humoral box on right -->
+<g transform="translate(420 130)">
+  <text x="0" y="-72" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.5px">ACUTE HUMORAL</text>
+  <rect x="-55" y="-50" width="110" height="100" rx="8" fill="rgba(209,72,89,0.18)" stroke="#d14859" stroke-width="1.6"/>
+  
+  <text x="0" y="-28" text-anchor="middle" style="fill:#d14859;font:700 7px Inter,sans-serif">de novo DSA</text>
+  <text x="0" y="-15" text-anchor="middle" style="fill:#d14859;font:700 7px Inter,sans-serif">+ C4d on caps</text>
+  <line x1="-40" y1="-7" x2="40" y2="-7" stroke="#3a4358" stroke-width="0.8"/>
+  
+  <text x="0" y="6" text-anchor="middle" style="fill:#b4becf;font:700 7px Inter,sans-serif;letter-spacing:1px">RX:</text>
+  <text x="0" y="18" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">plasmapheresis</text>
+  <text x="0" y="28" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">+ IVIG</text>
+  <text x="0" y="38" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">+ rituximab</text>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">Often reversible if caught early · split into cellular vs humoral subtypes</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="420" cy="53" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

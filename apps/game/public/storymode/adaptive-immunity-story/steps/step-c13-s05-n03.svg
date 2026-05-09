@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 02 · CaN → DEPHOS NFAT → NUCLEUS → IL-2</text>
+
+<!-- Cytoplasm + Nucleus boundary -->
+<g transform="translate(250 135)">
+  <!-- Cell membrane -->
+  <ellipse cx="0" cy="0" rx="220" ry="85" fill="rgba(108,194,125,0.08)" stroke="#6cc27d" stroke-width="1.4"/>
+  <!-- Nucleus -->
+  <ellipse cx="80" cy="0" rx="100" ry="65" fill="rgba(74,45,96,0.25)" stroke="#9370b9" stroke-width="1.6"/>
+  <text x="80" y="-50" text-anchor="middle" style="fill:#9370b9;font:700 8px Inter,sans-serif;letter-spacing:1.2px">NUCLEUS</text>
+  <text x="-180" y="-65" style="fill:#6cc27d;font:700 8px Inter,sans-serif;letter-spacing:1.2px">CYTOPLASM</text>
+  
+  <!-- CaN active on left -->
+  <g transform="translate(-160 0)">
+    <ellipse cx="0" cy="0" rx="22" ry="14" fill="rgba(209,72,89,0.55)" stroke="#d14859" stroke-width="1.4"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 8px Inter,sans-serif">CaN</text>
+  </g>
+  
+  <!-- NFAT phospho -->
+  <g transform="translate(-90 0)">
+    <ellipse cx="0" cy="0" rx="20" ry="14" fill="rgba(232,169,81,0.85)" stroke="#e8a951" stroke-width="1.4"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 7px Inter,sans-serif">NFAT</text>
+    <!-- Phosphate groups -->
+    <g fill="#d14859" stroke="#d14859" stroke-width="0.4">
+      <circle cx="-15" cy="-10" r="3"/>
+      <text x="-15" y="-8" text-anchor="middle" style="fill:#fff;font:700 5px Inter,sans-serif">P</text>
+      <circle cx="0" cy="-15" r="3"/>
+      <text x="0" y="-13" text-anchor="middle" style="fill:#fff;font:700 5px Inter,sans-serif">P</text>
+      <circle cx="15" cy="-10" r="3"/>
+      <text x="15" y="-8" text-anchor="middle" style="fill:#fff;font:700 5px Inter,sans-serif">P</text>
+    </g>
+  </g>
+  
+  <!-- CaN strips P -->
+  <line x1="-138" y1="0" x2="-115" y2="0" stroke="#d14859" stroke-width="2" stroke-dasharray="3 2"/>
+  <text x="-126" y="-7" text-anchor="middle" style="fill:#d14859;font:700 6.5px Inter,sans-serif">strip P</text>
+  
+  <!-- Dephospho NFAT -->
+  <g transform="translate(-25 0)">
+    <ellipse cx="0" cy="0" rx="20" ry="14" fill="rgba(232,169,81,0.85)" stroke="#e8a951" stroke-width="1.4"/>
+    <text x="0" y="-2" text-anchor="middle" style="fill:#0a0e1a;font:700 7px Inter,sans-serif">NFAT</text>
+    <text x="0" y="8" text-anchor="middle" style="fill:#0a0e1a;font:5.5px Inter,sans-serif">NLS exposed</text>
+  </g>
+  
+  <!-- Translocates to nucleus -->
+  <line x1="-3" y1="0" x2="32" y2="0" stroke="#6cc27d" stroke-width="2" stroke-dasharray="3 2"/>
+  <polygon points="32,0 26,-3 26,3" fill="#6cc27d"/>
+  <text x="14" y="-7" text-anchor="middle" style="fill:#6cc27d;font:700 6.5px Inter,sans-serif">translocate</text>
+  
+  <!-- Nuclear NFAT + AP-1 + IL-2 promoter -->
+  <g transform="translate(80 0)">
+    <!-- NFAT in nucleus -->
+    <ellipse cx="-25" cy="-15" rx="18" ry="12" fill="rgba(232,169,81,0.85)" stroke="#e8a951" stroke-width="1.4"/>
+    <text x="-25" y="-12" text-anchor="middle" style="fill:#0a0e1a;font:700 7px Inter,sans-serif">NFAT</text>
+    <!-- AP-1 partner -->
+    <ellipse cx="25" cy="-15" rx="18" ry="12" fill="rgba(79,184,168,0.85)" stroke="#4fb8a8" stroke-width="1.4"/>
+    <text x="25" y="-12" text-anchor="middle" style="fill:#0a0e1a;font:700 7px Inter,sans-serif">AP-1</text>
+    
+    <!-- DNA promoter below -->
+    <line x1="-50" y1="20" x2="50" y2="20" stroke="#9370b9" stroke-width="2"/>
+    <line x1="-50" y1="25" x2="50" y2="25" stroke="#9370b9" stroke-width="2"/>
+    <rect x="-25" y="14" width="50" height="17" rx="2" fill="rgba(232,169,81,0.30)" stroke="#e8a951" stroke-width="1"/>
+    <text x="0" y="26" text-anchor="middle" style="fill:#e8a951;font:700 7px Inter,sans-serif">IL-2 promoter</text>
+    
+    <!-- Bonds NFAT/AP-1 to promoter -->
+    <line x1="-25" y1="-3" x2="-25" y2="13" stroke="#3a4358" stroke-width="1"/>
+    <line x1="25" y1="-3" x2="25" y2="13" stroke="#3a4358" stroke-width="1"/>
+    
+    <!-- Transcription arrow -->
+    <line x1="0" y1="35" x2="0" y2="50" stroke="#e8a951" stroke-width="2"/>
+    <polygon points="0,50 -3,44 3,44" fill="#e8a951"/>
+    <text x="0" y="62" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif">IL-2 mRNA</text>
+  </g>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">Calcineurin = phosphatase · NFAT moves to nucleus only when dephosphorylated</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="70" cy="65" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="330" cy="80" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="160" cy="133" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

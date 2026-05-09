@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 01 · LIVE WORKS FOR MANY · WHY NOT HBV?</text>
+
+                  <!-- Successful live attenuated vaccines (chips) -->
+                  <g font-family="Inter,sans-serif">
+                    <text x="125" y="75" text-anchor="middle" style="fill:#6cc27d;font:600 9px Inter,sans-serif;letter-spacing:1.5px">LIVE ATTENUATED · SUCCESS</text>
+
+                    <g transform="translate(60 110)">
+<rect x="-25" y="-12" width="50" height="22" rx="11" fill="#6cc27d" fill-opacity="0.30" stroke="#6cc27d" stroke-width="1.3"></rect>
+<text x="0" y="3" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif;letter-spacing:1.2px">MMR</text>
+                    </g>
+                    <g transform="translate(125 110)">
+<rect x="-25" y="-12" width="50" height="22" rx="11" fill="#6cc27d" fill-opacity="0.30" stroke="#6cc27d" stroke-width="1.3"></rect>
+<text x="0" y="3" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif;letter-spacing:1.2px">VZV</text>
+                    </g>
+                    <g transform="translate(190 110)">
+<rect x="-25" y="-12" width="50" height="22" rx="11" fill="#6cc27d" fill-opacity="0.30" stroke="#6cc27d" stroke-width="1.3"></rect>
+<text x="0" y="3" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif;letter-spacing:1.2px">OPV</text>
+                    </g>
+                    <g transform="translate(60 145)">
+<rect x="-25" y="-12" width="50" height="22" rx="11" fill="#6cc27d" fill-opacity="0.30" stroke="#6cc27d" stroke-width="1.3"></rect>
+<text x="0" y="3" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif;letter-spacing:1.2px">YF</text>
+                    </g>
+                    <g transform="translate(125 145)">
+<rect x="-25" y="-12" width="50" height="22" rx="11" fill="#6cc27d" fill-opacity="0.30" stroke="#6cc27d" stroke-width="1.3"></rect>
+<text x="0" y="3" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif;letter-spacing:1.2px">RV</text>
+                    </g>
+                    <g transform="translate(190 145)">
+<rect x="-25" y="-12" width="50" height="22" rx="11" fill="#6cc27d" fill-opacity="0.30" stroke="#6cc27d" stroke-width="1.3"></rect>
+<text x="0" y="3" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif;letter-spacing:1.2px">FluMist</text>
+                    </g>
+                  </g>
+
+                  <!-- Divider -->
+                  <line x1="280" y1="75" x2="280" y2="200" stroke="#3a4358" stroke-width="0.8" stroke-dasharray="3 3"></line>
+
+                  <!-- HBV with question mark -->
+                  <g transform="translate(390 145)">
+                    <text x="0" y="-65" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.5px">HBV · NEVER LIVE</text>
+                    <g transform="translate(0 0)" opacity="1"><circle cx="0" cy="0" r="22" fill="#4fb8a8" fill-opacity="0.40" stroke="#4fb8a8" stroke-width="1.4"></circle><g stroke="#4fb8a8" stroke-width="1.4" fill="none" stroke-linecap="round"><line x1="22" y1="0" x2="25" y2="0"></line><line x1="11" y1="19.1" x2="12.5" y2="21.7"></line><line x1="-11" y1="19.1" x2="-12.5" y2="21.7"></line><line x1="-22" y1="0" x2="-25" y2="0"></line><line x1="-11" y1="-19.1" x2="-12.5" y2="-21.7"></line><line x1="11" y1="-19.1" x2="12.5" y2="-21.7"></line></g><circle cx="0" cy="0" r="9.9" fill="#9370b9" fill-opacity="0.85"></circle><path d="M -4 -1 Q -1 -3 1 -1 Q 3 1 -1 2" stroke="#e8a951" stroke-width="1" fill="none"></path></g>
+                    <text x="-32" y="3" text-anchor="end" style="fill:#d14859;font:700 22px Inter,sans-serif">?</text>
+                    <text x="0" y="40" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">why is HBV the exception?</text>
+                  </g>
+
+                  <text x="250" y="245" text-anchor="middle" style="fill:#b4becf;font:italic 7.5px Fraunces,serif">live attenuated dominates the vaccine schedule · HBV stands apart · what makes it different?</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="125" cy="70" r="38" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="34;44;34" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="390" cy="75" r="24" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="20;30;20" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

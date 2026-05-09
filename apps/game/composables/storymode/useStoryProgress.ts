@@ -80,17 +80,37 @@ export function useStoryProgress(systemRef: () => StorySystem | null | undefined
 		{ immediate: true },
 	);
 
+	/**
+	 * Look up a chapter and its preceding chapter by `num`, NOT by
+	 * `chapterNum - 1` array indexing. Different systems use different
+	 * chapter number ranges (innate is 1-4, adaptive is 5-16) but the
+	 * array indices always start at 0 — so subtracting from the chapter
+	 * number gave the wrong neighbour for any system that doesn't start
+	 * at chapter 1.
+	 */
+	function findChapter(chapterNum: number) {
+		const system = systemRef();
+		if (!system) return { chapter: null, prev: null, isFirst: false };
+		const idx = system.chapters.findIndex((c) => c.num === chapterNum);
+		if (idx === -1) return { chapter: null, prev: null, isFirst: false };
+		return {
+			chapter: system.chapters[idx] ?? null,
+			prev: idx > 0 ? (system.chapters[idx - 1] ?? null) : null,
+			isFirst: idx === 0,
+		};
+	}
+
 	/** Status for a specific station, computed lazily so callers stay reactive. */
 	function getStatus(chapterNum: number, stationIdx: number): StationStatus {
-		const system = systemRef();
-		if (!system) return "locked";
 		const key = getStationKey(chapterNum, stationIdx);
 		if (completed.value.has(key)) return "completed";
 
-		// A chapter past the first is locked until every station of the
-		// preceding chapter is finished.
-		if (chapterNum > 1) {
-			const prev = system.chapters[chapterNum - 2];
+		const { chapter, prev, isFirst } = findChapter(chapterNum);
+		if (!chapter) return "locked";
+
+		// Non-first chapters are locked until every station of the
+		// preceding chapter (in display order) is finished.
+		if (!isFirst) {
 			if (!prev) return "locked";
 			const prevAllDone = prev.stations.every((_, i) =>
 				completed.value.has(getStationKey(prev.num, i)),
@@ -98,10 +118,9 @@ export function useStoryProgress(systemRef: () => StorySystem | null | undefined
 			if (!prevAllDone) return "locked";
 		}
 
-		// Within an unlocked chapter, only the first incomplete station is
-		// available.
-		const chapter = system.chapters[chapterNum - 1];
-		if (!chapter) return "locked";
+		// Within an unlocked chapter, only the first not-yet-completed
+		// station is available; later ones stay locked until earlier
+		// ones are done.
 		for (let i = 0; i < chapter.stations.length; i++) {
 			if (!completed.value.has(getStationKey(chapterNum, i))) {
 				return i === stationIdx ? "available" : "locked";
@@ -111,10 +130,8 @@ export function useStoryProgress(systemRef: () => StorySystem | null | undefined
 	}
 
 	function isChapterLocked(chapterNum: number): boolean {
-		if (chapterNum === 1) return false;
-		const system = systemRef();
-		if (!system) return true;
-		const prev = system.chapters[chapterNum - 2];
+		const { prev, isFirst } = findChapter(chapterNum);
+		if (isFirst) return false;
 		if (!prev) return true;
 		return !prev.stations.every((_, i) =>
 			completed.value.has(getStationKey(prev.num, i)),
@@ -122,9 +139,7 @@ export function useStoryProgress(systemRef: () => StorySystem | null | undefined
 	}
 
 	function chapterDoneCount(chapterNum: number): number {
-		const system = systemRef();
-		if (!system) return 0;
-		const chapter = system.chapters[chapterNum - 1];
+		const { chapter } = findChapter(chapterNum);
 		if (!chapter) return 0;
 		return chapter.stations.filter((_, i) =>
 			completed.value.has(getStationKey(chapterNum, i)),

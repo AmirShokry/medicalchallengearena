@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Chapter 13 hero icon.
+-->
+<svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <!-- Donor and recipient organs / arrow -->
+          <!-- donor -->
+          <path d="M 6 22 Q 8 14 16 14 Q 20 14 22 18 Q 24 14 28 14 Q 36 14 36 22 Q 36 30 21 38 Q 6 30 6 22 Z"
+                fill="#6cc27d" opacity="0.6" stroke="#6cc27d" stroke-width="0.9"/>
+          <text x="21" y="47" text-anchor="middle" fill="#6cc27d" font-family="Inter,sans-serif" font-size="4" letter-spacing="0.3">DONOR</text>
+          <!-- arrow -->
+          <path d="M 38 26 L 48 26" stroke="#e8a951" stroke-width="1.6" stroke-linecap="round"/>
+          <polygon points="48,26 44,24 44,28" fill="#e8a951"/>
+          <!-- recipient body -->
+          <ellipse cx="52" cy="26" rx="4" ry="6" fill="#9370b9" opacity="0.55" stroke="#9370b9" stroke-width="0.8"/>
+          <!-- HLA mismatch warning markers -->
+          <g fill="#d14859" opacity="0.85">
+            <circle cx="14" cy="22" r="1.2"/>
+            <circle cx="22" cy="20" r="1.2"/>
+            <circle cx="28" cy="24" r="1.2"/>
+          </g>
+        </svg>

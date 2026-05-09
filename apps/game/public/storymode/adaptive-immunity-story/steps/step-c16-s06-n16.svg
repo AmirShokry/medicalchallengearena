@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 08 · SERUM SICKNESS PENTAD + ↓COMPLEMENT</text>
+
+<g transform="translate(80 65)">
+  <rect x="0" y="0" width="160" height="22" rx="3" fill="rgba(232,169,81,0.18)" stroke="#e8a951" stroke-width="1.4"/>
+  <text x="80" y="14" text-anchor="middle" style="fill:#e8a951;font:700 8px Inter,sans-serif">FEVER</text>
+</g>
+<g transform="translate(80 95)">
+  <rect x="0" y="0" width="160" height="22" rx="3" fill="rgba(232,169,81,0.18)" stroke="#e8a951" stroke-width="1.4"/>
+  <text x="80" y="14" text-anchor="middle" style="fill:#e8a951;font:700 8px Inter,sans-serif">URTICARIAL/MP RASH</text>
+</g>
+<g transform="translate(80 125)">
+  <rect x="0" y="0" width="160" height="22" rx="3" fill="rgba(232,169,81,0.18)" stroke="#e8a951" stroke-width="1.4"/>
+  <text x="80" y="14" text-anchor="middle" style="fill:#e8a951;font:700 8px Inter,sans-serif">ARTHRALGIA</text>
+</g>
+<g transform="translate(80 155)">
+  <rect x="0" y="0" width="160" height="22" rx="3" fill="rgba(232,169,81,0.18)" stroke="#e8a951" stroke-width="1.4"/>
+  <text x="80" y="14" text-anchor="middle" style="fill:#e8a951;font:700 8px Inter,sans-serif">LYMPHADENOPATHY</text>
+</g>
+<g transform="translate(80 185)">
+  <rect x="0" y="0" width="160" height="22" rx="3" fill="rgba(232,169,81,0.18)" stroke="#e8a951" stroke-width="1.4"/>
+  <text x="80" y="14" text-anchor="middle" style="fill:#e8a951;font:700 8px Inter,sans-serif">± GLOMERULONEPHRITIS</text>
+</g>
+
+<g transform="translate(335 130)">
+  <rect x="-90" y="-50" width="180" height="100" rx="8" fill="rgba(147,112,185,0.20)" stroke="#9370b9" stroke-width="1.6"/>
+  <text x="0" y="-25" text-anchor="middle" style="fill:#9370b9;font:700 11px Inter,sans-serif;letter-spacing:1.2px">↓ C3, C4</text>
+  <text x="0" y="-5" text-anchor="middle" style="fill:#b4becf;font:7.5px Inter,sans-serif">complement</text>
+  <text x="0" y="9" text-anchor="middle" style="fill:#b4becf;font:7.5px Inter,sans-serif">consumed by</text>
+  <text x="0" y="23" text-anchor="middle" style="fill:#b4becf;font:7.5px Inter,sans-serif">immune complex</text>
+  <text x="0" y="40" text-anchor="middle" style="fill:#9370b9;font:700 7.5px Inter,sans-serif">DIAGNOSTIC</text>
+</g>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="335" cy="148" r="21" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="17;27;17" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

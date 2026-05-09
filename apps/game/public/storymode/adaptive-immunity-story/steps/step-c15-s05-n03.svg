@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 01 · 4 CLASSES · 4 TARGETS</text>
+
+<!-- Fungal cell anatomy with all 4 targets -->
+<g transform="translate(250 145)">
+  <text x="0" y="-100" text-anchor="middle" style="fill:#9370b9;font:700 9px Inter,sans-serif;letter-spacing:1.5px">FUNGAL CELL</text>
+  
+  <!-- Cell wall (outer) -->
+  <circle cx="0" cy="0" r="78" fill="rgba(232,169,81,0.10)" stroke="#e8a951" stroke-width="3"/>
+  <text x="0" y="-78" text-anchor="middle" style="fill:#e8a951;font:6.5px 'JetBrains Mono',monospace">β-glucan wall</text>
+  
+  <!-- Cell membrane -->
+  <circle cx="0" cy="0" r="55" fill="rgba(108,194,125,0.10)" stroke="#6cc27d" stroke-width="2"/>
+  <text x="0" y="-55" text-anchor="middle" style="fill:#6cc27d;font:6.5px 'JetBrains Mono',monospace">ergosterol membrane</text>
+  
+  <!-- Nucleus inside -->
+  <circle cx="0" cy="0" r="22" fill="rgba(147,112,185,0.30)" stroke="#9370b9" stroke-width="1.4"/>
+  <text x="0" y="3" text-anchor="middle" style="fill:#9370b9;font:700 7px Inter,sans-serif">DNA</text>
+  
+  <!-- ER for ergosterol synthesis (small organelle) -->
+  <g transform="translate(35 0)">
+    <ellipse cx="0" cy="0" rx="11" ry="6" fill="rgba(232,169,81,0.85)" stroke="#e8a951" stroke-width="1.2"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 5px Inter,sans-serif">ER</text>
+  </g>
+  
+  <!-- Drug arrows pointing in -->
+  <!-- Azole → ER (ergosterol synth) -->
+  <g transform="translate(95 0)">
+    <rect x="-30" y="-13" width="60" height="26" rx="13" fill="rgba(209,72,89,0.30)" stroke="#d14859" stroke-width="1.4"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif">AZOLE</text>
+    <line x1="-30" y1="0" x2="-50" y2="0" stroke="#d14859" stroke-width="1.4" stroke-dasharray="2 1"/>
+  </g>
+  
+  <!-- Echinocandin → cell wall -->
+  <g transform="translate(0 -100)">
+    <rect x="-45" y="-13" width="90" height="26" rx="13" fill="rgba(232,169,81,0.30)" stroke="#e8a951" stroke-width="1.4"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#e8a951;font:700 8px Inter,sans-serif">ECHINOCANDIN</text>
+    <line x1="0" y1="13" x2="0" y2="22" stroke="#e8a951" stroke-width="1.4" stroke-dasharray="2 1"/>
+  </g>
+  
+  <!-- Amphotericin → membrane -->
+  <g transform="translate(-95 0)">
+    <rect x="-30" y="-13" width="60" height="26" rx="13" fill="rgba(147,112,185,0.30)" stroke="#9370b9" stroke-width="1.4"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#9370b9;font:700 8px Inter,sans-serif">AMPHO B</text>
+    <line x1="30" y1="0" x2="50" y2="0" stroke="#9370b9" stroke-width="1.4" stroke-dasharray="2 1"/>
+  </g>
+  
+  <!-- Flucytosine → DNA -->
+  <g transform="translate(0 100)">
+    <rect x="-40" y="-13" width="80" height="26" rx="13" fill="rgba(108,194,125,0.30)" stroke="#6cc27d" stroke-width="1.4"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif">FLUCYTOSINE</text>
+    <line x1="0" y1="-13" x2="0" y2="-22" stroke="#6cc27d" stroke-width="1.4" stroke-dasharray="2 1"/>
+  </g>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">Each class targets a different fungal-specific structure</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="43" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

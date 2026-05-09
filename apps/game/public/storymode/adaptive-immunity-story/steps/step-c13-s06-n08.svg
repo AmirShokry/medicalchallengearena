@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 05 · CAPILLARY LEAK · HYPOTENSION + OLIGURIA + PULM EDEMA</text><g>
+    <rect x="20" y="30" width="280" height="14" rx="7" fill="rgba(232, 169, 81, 0.18)" stroke="#e8a951" stroke-width="1"/>
+    <text x="160" y="40" text-anchor="middle" style="fill:#e8a951;font:700 7.5px Inter,sans-serif;letter-spacing:1.2px">IL-2 THERAPY · TUMOR LYSIS + CAPILLARY LEAK</text>
+  </g><text x="30" y="62" style="fill:#4fb8a8;font:600 7px 'JetBrains Mono',monospace;letter-spacing:1.5px">TUMOR PATH</text><text x="470" y="62" text-anchor="end" style="fill:#d14859;font:600 7px 'JetBrains Mono',monospace;letter-spacing:1.5px">ENDOTHELIAL PATH</text><g opacity="1">
+    <text x="250" y="60" text-anchor="middle" style="fill:#6b7689;font:6.5px 'JetBrains Mono',monospace;letter-spacing:0.5px">aldesleukin · pharmacologic</text>
+    <g transform="translate(250 78)">
+      <polygon points="-22,0 -11,-12 11,-12 22,0 11,12 -11,12" fill="rgba(232, 169, 81, 0.18)" stroke="#e8a951" stroke-width="1.6"/>
+      <text x="0" y="3" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1px">IL-2</text>
+    </g>
+  </g><g opacity="1"><g>
+    <line x1="232" y1="92" x2="135" y2="118" stroke="#4fb8a8" stroke-width="1.8"/>
+    <polygon points="138,114 130,120 140,121" fill="#4fb8a8"/>
+  </g><g>
+    <line x1="268" y1="92" x2="365" y2="118" stroke="#d14859" stroke-width="1.8"/>
+    <polygon points="362,114 370,120 360,121" fill="#d14859"/>
+  </g></g><g opacity="1"><g transform="translate(60 130)">
+      <circle cx="0" cy="0" r="11" fill="rgba(79, 184, 168, 0.2)" stroke="#4fb8a8" stroke-width="1.2"/>
+      <ellipse cx="0" cy="0" rx="3" ry="2" fill="#4fb8a8" opacity="0.9"/>
+      <text x="0" y="22" text-anchor="middle" style="fill:#4fb8a8;font:600 7px Inter,sans-serif">CD8</text>
+    </g><g transform="translate(100 125)">
+      <circle cx="0" cy="0" r="11" fill="rgba(79, 184, 168, 0.2)" stroke="#4fb8a8" stroke-width="1.2"/>
+      <ellipse cx="0" cy="0" rx="3" ry="2" fill="#4fb8a8" opacity="0.9"/>
+      <text x="0" y="22" text-anchor="middle" style="fill:#4fb8a8;font:600 7px Inter,sans-serif">NK</text>
+    </g><g transform="translate(140 130)">
+      <circle cx="0" cy="0" r="11" fill="rgba(79, 184, 168, 0.2)" stroke="#4fb8a8" stroke-width="1.2"/>
+      <ellipse cx="0" cy="0" rx="3" ry="2" fill="#4fb8a8" opacity="0.9"/>
+      <text x="0" y="22" text-anchor="middle" style="fill:#4fb8a8;font:600 7px Inter,sans-serif">CD8</text>
+    </g><text x="100" y="113" text-anchor="middle" style="fill:#4fb8a8;font:700 7px Inter,sans-serif;letter-spacing:0.8px">EXPANSION ↑↑</text><g transform="translate(180 145)">
+    <ellipse cx="0" cy="0" rx="14" ry="10" fill="#d14859" fill-opacity="0.4" stroke="#d14859" stroke-width="1"/>
+    <text x="0" y="22" text-anchor="middle" style="fill:#d14859;font:600 7px Inter,sans-serif;letter-spacing:0.5px">TUMOR</text>
+  </g><g stroke="#d14859" stroke-width="1.2" fill="none" stroke-dasharray="2 1.5" opacity="0.85">
+      <line x1="148" y1="135" x2="170" y2="142"/>
+      <line x1="148" y1="135" x2="172" y2="148"/>
+    </g><g stroke="#0a0e1a" stroke-width="0.9" opacity="0.6">
+      <line x1="172" y1="138" x2="188" y2="152"/>
+      <line x1="180" y1="138" x2="178" y2="152"/>
+    </g><text x="100" y="180" text-anchor="middle" style="fill:#4fb8a8;font:700 7.5px Inter,sans-serif;letter-spacing:0.5px">~15-20% MELANOMA / RCC</text></g><g opacity="1"><g>
+    <text x="375" y="113" text-anchor="middle" style="fill:#d14859;font:600 6.5px 'JetBrains Mono',monospace;letter-spacing:0.5px">ENDOTHELIUM</text>
+    <rect x="290" y="118" width="170" height="18" rx="9" fill="rgba(180, 190, 207, 0.08)" stroke="#d14859" stroke-width="1.4"/>
+  </g><ellipse cx="305" cy="121" rx="3" ry="1.4" fill="#d14859" opacity="0.7"/><ellipse cx="325" cy="133" rx="3" ry="1.4" fill="#d14859" opacity="0.7"/><ellipse cx="350" cy="121" rx="3" ry="1.4" fill="#d14859" opacity="0.7"/><ellipse cx="375" cy="133" rx="3" ry="1.4" fill="#d14859" opacity="0.7"/><ellipse cx="400" cy="121" rx="3" ry="1.4" fill="#d14859" opacity="0.7"/><ellipse cx="425" cy="133" rx="3" ry="1.4" fill="#d14859" opacity="0.7"/><ellipse cx="445" cy="121" rx="3" ry="1.4" fill="#d14859" opacity="0.7"/><text x="375" y="148" text-anchor="middle" style="fill:#d14859;font:700 7px Inter,sans-serif;letter-spacing:0.8px">SYSTEMIC ACTIVATION</text><g transform="translate(310 152)">
+        <path d="M 0 0 Q -3 4 0 8 Q 3 4 0 0 Z" fill="#4fb8a8" opacity="0.7"/>
+      </g><g transform="translate(340 158)">
+        <path d="M 0 0 Q -3 4 0 8 Q 3 4 0 0 Z" fill="#4fb8a8" opacity="0.7"/>
+      </g><g transform="translate(370 152)">
+        <path d="M 0 0 Q -3 4 0 8 Q 3 4 0 0 Z" fill="#4fb8a8" opacity="0.7"/>
+      </g><g transform="translate(400 158)">
+        <path d="M 0 0 Q -3 4 0 8 Q 3 4 0 0 Z" fill="#4fb8a8" opacity="0.7"/>
+      </g><g transform="translate(430 152)">
+        <path d="M 0 0 Q -3 4 0 8 Q 3 4 0 0 Z" fill="#4fb8a8" opacity="0.7"/>
+      </g><text x="375" y="176" text-anchor="middle" style="fill:#d14859;font:700 7.5px Inter,sans-serif;letter-spacing:0.8px">CAPILLARY LEAK</text></g><g transform="translate(250 200)">
+    <rect x="-220" y="-12" width="440" height="22" rx="11" fill="rgba(209, 72, 89, 0.15)" stroke="#d14859" stroke-width="1.2"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#d14859;font:700 7.5px Inter,sans-serif;letter-spacing:1px">HYPOTENSION · OLIGURIA · PULMONARY EDEMA · ICU</text>
+  </g>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="100" cy="108" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

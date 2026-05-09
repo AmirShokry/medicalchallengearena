@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 280" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 14 · THE ANSWER</text>
+
+                  <!-- distractor row faintly at top -->
+                  <g opacity="0.35">
+                    <text x="60" y="50" style="fill:#6b7689;font:9px Inter,sans-serif">A · CD4 markers</text>
+                    <text x="160" y="50" style="fill:#6b7689;font:9px Inter,sans-serif">B · CD8 markers</text>
+                    <text x="260" y="50" style="fill:#6b7689;font:9px Inter,sans-serif">C · BCR Ig receptors</text>
+                    <text x="380" y="50" style="fill:#6b7689;font:9px Inter,sans-serif">D · β-integrins</text>
+                    <line x1="55" y1="46" x2="155" y2="46" stroke="#d14859" stroke-width="1" opacity="0.8"></line>
+                    <line x1="155" y1="46" x2="245" y2="46" stroke="#d14859" stroke-width="1" opacity="0.8"></line>
+                    <line x1="255" y1="46" x2="375" y2="46" stroke="#d14859" stroke-width="1" opacity="0.8"></line>
+                    <line x1="375" y1="46" x2="455" y2="46" stroke="#d14859" stroke-width="1" opacity="0.8"></line>
+                  </g>
+
+                  <!-- ghosted family scene -->
+                  <g opacity="0.40">
+    
+                    <g opacity="1">
+                      <circle cx="120" cy="88" r="8" fill="#d14859" fill-opacity="0.35" stroke="#d14859" stroke-width="1.4"></circle>
+                      <path d="M 108 114 Q 107 102 113 98 L 127 98 Q 133 102 132 114 Z" fill="#d14859" fill-opacity="0.35" stroke="#d14859" stroke-width="1.4"></path>
+                      <text x="120" y="130" text-anchor="middle" style="fill:#d14859;font:600 8px Inter,sans-serif;letter-spacing:1px">mother</text>
+                    </g>
+  
+    
+                    <g opacity="1">
+                      <circle cx="220" cy="88" r="8" fill="#3a4358" fill-opacity="0.3" stroke="#6b7689" stroke-width="1.4"></circle>
+                      <path d="M 208 114 Q 207 102 213 98 L 227 98 Q 233 102 232 114 Z" fill="#3a4358" fill-opacity="0.3" stroke="#6b7689" stroke-width="1.4"></path>
+                      <text x="220" y="130" text-anchor="middle" style="fill:#6b7689;font:600 8px Inter,sans-serif;letter-spacing:1px">father</text>
+                    </g>
+  
+    
+                    <g opacity="1">
+                      <circle cx="320" cy="183" r="8" fill="#d14859" fill-opacity="0.35" stroke="#d14859" stroke-width="1.4"></circle>
+                      <path d="M 308 209 Q 307 197 313 193 L 327 193 Q 333 197 332 209 Z" fill="#d14859" fill-opacity="0.35" stroke="#d14859" stroke-width="1.4"></path>
+                      <text x="320" y="225" text-anchor="middle" style="fill:#d14859;font:600 8px Inter,sans-serif;letter-spacing:1px">sister</text>
+                    </g>
+  
+    
+                    <g opacity="1">
+                      <circle cx="420" cy="183" r="8" fill="#e8a951" fill-opacity="0.45" stroke="#e8a951" stroke-width="1.4"></circle>
+                      <path d="M 408 209 Q 407 197 413 193 L 427 193 Q 433 197 432 209 Z" fill="#e8a951" fill-opacity="0.45" stroke="#e8a951" stroke-width="1.4"></path>
+                      <text x="420" y="225" text-anchor="middle" style="fill:#e8a951;font:600 8px Inter,sans-serif;letter-spacing:1px">patient</text>
+                    </g>
+  
+                    <line x1="132" y1="107" x2="208" y2="107" stroke="#4fb8a8" stroke-width="1"></line>
+                    <line x1="170" y1="107" x2="170" y2="160" stroke="#4fb8a8" stroke-width="1"></line>
+                    <line x1="320" y1="160" x2="170" y2="160" stroke="#4fb8a8" stroke-width="1"></line>
+                    <line x1="320" y1="160" x2="320" y2="170" stroke="#4fb8a8" stroke-width="1"></line>
+                    <line x1="420" y1="160" x2="420" y2="170" stroke="#4fb8a8" stroke-width="1"></line>
+                    <line x1="320" y1="160" x2="420" y2="160" stroke="#4fb8a8" stroke-width="1"></line>
+                  </g>
+
+                  <!-- hero banner -->
+                  <g transform="translate(250 175)">
+                    <rect x="-205" y="-26" width="410" height="52" rx="10" fill="#e8a951" opacity="0.32" stroke="#e8a951" stroke-width="2.6"></rect>
+                    <text x="0" y="6" text-anchor="middle" style="fill:#e8a951;font:700 15px Inter,sans-serif;letter-spacing:2.5px">E · HISTOCOMPATIBILITY ANTIGENS</text>
+                  </g>
+
+                  <text x="250" y="240" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">HLA = MHC · inherited · varies between people · disease-linked</text>
+                  <text x="250" y="262" text-anchor="middle" style="fill:#e8a951;font:italic 600 10px Fraunces,serif">the only option that fits all four properties</text>
+              
+                  
+              
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="176" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="260" cy="45" r="30" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="26;36;26" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="60" cy="45" r="22" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="18;28;18" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+              </svg>

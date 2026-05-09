@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 03 · WHAT WORKS · AVIDITY TRICKS</text>
+
+                  <!-- Hemagglutination — many low-affinity Ab crosslinking RBCs -->
+                  <g transform="translate(135 145)">
+                    <text x="0" y="-65" text-anchor="middle" style="fill:#6cc27d;font:700 9px Inter,sans-serif;letter-spacing:1.5px">HEMAGGLUTINATION</text>
+                    <!-- Three RBCs clumped -->
+                    <g>
+                      <ellipse cx="-20" cy="-10" rx="10" ry="7" fill="#d14859" fill-opacity="0.85"></ellipse>
+                      <ellipse cx="-20" cy="-10" rx="4" ry="3" fill="#1a2030" opacity="0.85"></ellipse>
+                      <ellipse cx="20" cy="-10" rx="10" ry="7" fill="#d14859" fill-opacity="0.85"></ellipse>
+                      <ellipse cx="20" cy="-10" rx="4" ry="3" fill="#1a2030" opacity="0.85"></ellipse>
+                      <ellipse cx="0" cy="10" rx="10" ry="7" fill="#d14859" fill-opacity="0.85"></ellipse>
+                      <ellipse cx="0" cy="10" rx="4" ry="3" fill="#1a2030" opacity="0.85"></ellipse>
+                    </g>
+                    <!-- Lots of weak antibodies bridging -->
+                    <g stroke="#9370b9" stroke-width="1.2" fill="none">
+                      <line x1="-12" y1="-8" x2="12" y2="-8"></line>
+                      <line x1="-15" y1="0" x2="-3" y2="3"></line>
+                      <line x1="15" y1="0" x2="3" y2="3"></line>
+                    </g>
+                    <text x="0" y="35" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">many weak grips · works</text>
+                  </g>
+
+                  <line x1="250" y1="80" x2="250" y2="220" stroke="#3a4358" stroke-width="0.8" stroke-dasharray="3 3"></line>
+
+                  <!-- Complement-mediated lysis -->
+                  <g transform="translate(370 145)">
+                    <text x="0" y="-65" text-anchor="middle" style="fill:#6cc27d;font:700 9px Inter,sans-serif;letter-spacing:1.5px">COMPLEMENT LYSIS</text>
+                    <!-- antigen-coated RBC with weak antibody triggering complement -->
+                    <g transform="translate(0 0)" opacity="1"><circle cx="0" cy="0" r="18" fill="#d14859" fill-opacity="0.55" stroke="#d14859" stroke-width="1.4"></circle>
+                    <g fill="#e8a951" fill-opacity="0.95" stroke="#e8a951" stroke-width="0.8">
+                      <polygon points="0,-22 -4,-16 0,-10 4,-16"></polygon>
+                      <polygon points="22,0 16,-4 10,0 16,4"></polygon>
+                      <polygon points="0,22 -4,16 0,10 4,16"></polygon>
+                      <polygon points="-22,0 -16,-4 -10,0 -16,4"></polygon>
+                    </g>
+                  </g>
+                    <!-- a few weak antibodies clustered on surface -->
+                    <g transform="translate(-10 -22)" opacity="1"><g stroke="#9370b9" stroke-width="1.4" fill="none" stroke-linecap="round"><path d="M -10 -10 L -3 0 L 3 0 L 10 -10"></path><line x1="0" y1="0" x2="0" y2="14"></line></g></g>
+                    <g transform="translate(10 -22)" opacity="1"><g stroke="#9370b9" stroke-width="1.4" fill="none" stroke-linecap="round"><path d="M -10 -10 L -3 0 L 3 0 L 10 -10"></path><line x1="0" y1="0" x2="0" y2="14"></line></g></g>
+                    <!-- C1q complex visible -->
+                    <g transform="translate(0 -34)" fill="#4fb8a8" fill-opacity="0.95">
+                      <circle cx="-6" cy="0" r="3"></circle>
+                      <circle cx="0" cy="-2" r="3"></circle>
+                      <circle cx="6" cy="0" r="3"></circle>
+                      <text x="0" y="11" text-anchor="middle" style="fill:#4fb8a8;font:700 6px Inter,sans-serif">C1q</text>
+                    </g>
+                    <text x="0" y="38" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">crosslinked Fc · works</text>
+                  </g>
+
+                  <text x="250" y="252" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">avidity (many bonds at once) substitutes for affinity (single-bond strength)</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="249" cy="95" r="60" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="56;66;56" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 03 · RT · RNA → dsDNA · 3 ACTIVITIES</text>
+
+<!-- RT enzyme central with 3 activities labeled -->
+<g transform="translate(250 145)">
+  <text x="0" y="-95" text-anchor="middle" style="fill:#9370b9;font:700 9px Inter,sans-serif;letter-spacing:1.5px">REVERSE TRANSCRIPTASE</text>
+  
+  <!-- Stage 1: RNA → first DNA strand -->
+  <g transform="translate(-150 -50)">
+    <text x="0" y="-12" text-anchor="middle" style="fill:#e8a951;font:700 7px Inter,sans-serif">1 · RNA-dep DNA pol</text>
+    <!-- RNA template (orange) -->
+    <g stroke="#e8a951" stroke-width="1.6" fill="none">
+      <path d="M -28 0 Q -22 -2 -16 0 Q -10 2 -4 0 Q 2 -2 8 0 Q 14 2 20 0 Q 26 -2 28 0"/>
+    </g>
+    <!-- New DNA strand (purple) being made below -->
+    <g stroke="#9370b9" stroke-width="1.6" fill="none" stroke-dasharray="3 1">
+      <path d="M -28 8 Q -22 6 -16 8 Q -10 10 -4 8"/>
+    </g>
+    <text x="0" y="22" text-anchor="middle" style="fill:#b4becf;font:6px Inter,sans-serif">tRNA-Lys primer</text>
+  </g>
+  
+  <!-- Stage 2: RNase H degrades RNA -->
+  <g transform="translate(0 -50)">
+    <text x="0" y="-12" text-anchor="middle" style="fill:#d14859;font:700 7px Inter,sans-serif">2 · RNase H</text>
+    <!-- RNA fragments (degraded) -->
+    <g fill="rgba(232,169,81,0.85)">
+      <circle cx="-20" cy="0" r="2"/>
+      <circle cx="-10" cy="-2" r="2"/>
+      <circle cx="0" cy="1" r="2"/>
+      <circle cx="10" cy="-1" r="2"/>
+      <circle cx="20" cy="0" r="2"/>
+    </g>
+    <!-- DNA preserved -->
+    <g stroke="#9370b9" stroke-width="1.6" fill="none">
+      <path d="M -28 8 Q -22 6 -16 8 Q -10 10 -4 8 Q 2 6 8 8 Q 14 10 20 8 Q 26 6 28 8"/>
+    </g>
+    <text x="0" y="22" text-anchor="middle" style="fill:#b4becf;font:6px Inter,sans-serif">RNA degraded</text>
+  </g>
+  
+  <!-- Stage 3: DNA → DNA (second strand) -->
+  <g transform="translate(150 -50)">
+    <text x="0" y="-12" text-anchor="middle" style="fill:#6cc27d;font:700 7px Inter,sans-serif">3 · DNA-dep DNA pol</text>
+    <!-- dsDNA -->
+    <g stroke="#9370b9" stroke-width="1.6" fill="none">
+      <path d="M -28 0 Q -22 -2 -16 0 Q -10 2 -4 0 Q 2 -2 8 0 Q 14 2 20 0 Q 26 -2 28 0"/>
+      <path d="M -28 8 Q -22 6 -16 8 Q -10 10 -4 8 Q 2 6 8 8 Q 14 10 20 8 Q 26 6 28 8"/>
+    </g>
+    <text x="0" y="22" text-anchor="middle" style="fill:#b4becf;font:6px Inter,sans-serif">double-stranded</text>
+  </g>
+  
+  <!-- RT enzyme circle below -->
+  <g transform="translate(0 30)">
+    <ellipse cx="0" cy="0" rx="60" ry="22" fill="rgba(147,112,185,0.45)" stroke="#9370b9" stroke-width="1.8"/>
+    <text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 11px Inter,sans-serif">RT</text>
+    <text x="0" y="38" text-anchor="middle" style="fill:#9370b9;font:6.5px Inter,sans-serif">single enzyme · 3 activities</text>
+  </g>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">RT does the entire RNA → dsDNA conversion · uses host tRNA-Lys as primer</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="100" cy="78" r="28" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="24;34;24" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="400" cy="78" r="28" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="24;34;24" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

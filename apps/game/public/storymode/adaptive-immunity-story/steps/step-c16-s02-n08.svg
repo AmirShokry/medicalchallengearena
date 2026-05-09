@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 05 · DAG → PKC ACTIVATION</text>
+
+<!-- DAG in membrane -->
+<g transform="translate(60 130)">
+  <line x1="0" y1="0" x2="380" y2="0" stroke="#3a4358" stroke-width="1.5"/>
+</g>
+
+<g transform="translate(125 110)">
+  <rect x="-30" y="0" width="60" height="20" rx="4" fill="rgba(232,169,81,0.30)" stroke="#e8a951" stroke-width="1.4"/>
+  <text x="0" y="14" text-anchor="middle" style="fill:#fff;font:700 8px Inter,sans-serif">DAG</text>
+</g>
+
+<!-- PKC recruited -->
+<g transform="translate(280 75)">
+  <rect x="-50" y="-15" width="100" height="30" rx="5" fill="rgba(108,194,125,0.20)" stroke="#6cc27d" stroke-width="1.4"/>
+  <text x="0" y="3" text-anchor="middle" style="fill:#6cc27d;font:700 9px Inter,sans-serif;letter-spacing:1.2px">PKC</text>
+</g>
+
+<g stroke="#6cc27d" stroke-width="1.4" fill="none" marker-end="url(#arr16_2_5a)">
+  <path d="M 230 90 Q 200 100 165 110"/>
+</g>
+<defs>
+  <marker id="arr16_2_5a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#6cc27d"/>
+  </marker>
+</defs>
+<text x="225" y="125" text-anchor="middle" style="fill:#6cc27d;font:700 7px Inter,sans-serif">recruited</text>
+
+<!-- Calcium also -->
+<g transform="translate(380 110)">
+  <circle cx="0" cy="0" r="14" fill="rgba(147,112,185,0.30)" stroke="#9370b9" stroke-width="1.4"/>
+  <text x="0" y="3" text-anchor="middle" style="fill:#fff;font:700 7px Inter,sans-serif">Ca²⁺</text>
+</g>
+
+<g stroke="#9370b9" stroke-width="1.4" fill="none" marker-end="url(#arr16_2_5b)">
+  <path d="M 365 100 Q 340 90 320 85"/>
+</g>
+<defs>
+  <marker id="arr16_2_5b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#9370b9"/>
+  </marker>
+</defs>
+<text x="345" y="80" style="fill:#9370b9;font:700 6.5px Inter,sans-serif">conventional</text>
+<text x="345" y="91" style="fill:#9370b9;font:700 6.5px Inter,sans-serif">PKCs</text>
+
+<text x="250" y="220" text-anchor="middle" style="fill:#e8a951;font:700 9px Inter,sans-serif;letter-spacing:1.2px">DAG + Ca²⁺ → PKC ACTIVATED at membrane</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="215" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

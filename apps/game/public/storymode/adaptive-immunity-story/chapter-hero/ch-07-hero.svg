@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Chapter 7 hero icon.
+-->
+<svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <!-- T cell with TCR sensing peptide-MHC -->
+          <circle cx="20" cy="30" r="14" fill="#9370b9" opacity="0.4" stroke="#9370b9" stroke-width="0.8"/>
+          <circle cx="17" cy="28" r="5" fill="#4a2d60" opacity="0.7"/>
+          <text x="20" y="48" text-anchor="middle" fill="#9370b9" font-family="Inter,sans-serif" font-size="4" font-weight="600">T</text>
+          <!-- TCR antenna -->
+          <g transform="translate(34 30)">
+            <path d="M 0 -3 L 4 -5 L 4 5 L 0 3 Z" fill="#e8a951" opacity="0.85" stroke="#e8a951" stroke-width="0.6"/>
+          </g>
+          <!-- MHC presentation block -->
+          <g transform="translate(46 30)">
+            <path d="M -7 -5 L 7 -5 L 8 0 L 4 0 L 3 -2 L -3 -2 L -4 0 L -8 0 Z" fill="#e8a951" opacity="0.7" stroke="#e8a951" stroke-width="0.5"/>
+            <circle cx="0" cy="-4" r="1" fill="#d14859"/>
+          </g>
+          <!-- spark -->
+          <g transform="translate(40 30)" fill="#e8a951" opacity="0.85">
+            <circle r="1"/>
+          </g>
+        </svg>

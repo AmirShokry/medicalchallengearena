@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 03 · RF-IgG COMPLEXES DEPOSIT IN SYNOVIUM (TYPE III)</text><g>
+    <rect x="20" y="30" width="184" height="14" rx="7" fill="rgba(232, 169, 81, 0.18)" stroke="#e8a951" stroke-width="1"/>
+    <text x="112" y="40" text-anchor="middle" style="fill:#e8a951;font:700 7.5px Inter,sans-serif;letter-spacing:1.2px">RA · TYPE III IN SYNOVIUM</text>
+  </g><text x="30" y="62" style="fill:#b4becf;font:600 7px 'JetBrains Mono',monospace;letter-spacing:1.5px">JOINT PATTERN</text><text x="470" y="62" text-anchor="end" style="fill:#b4becf;font:600 7px 'JetBrains Mono',monospace;letter-spacing:1.5px">PANNUS · JOINT</text><g opacity="1">
+    <!-- hand silhouette - palm + fingers -->
+    <g stroke="#b4becf" stroke-width="1.4" fill="#b4becf" fill-opacity="0.12">
+      <!-- palm (rounded rectangle) -->
+      <path d="M 60 130 Q 55 134 55 140 L 55 160 Q 55 170 65 170 L 105 170 Q 115 170 115 160 L 115 140 Q 115 134 110 130 Z"/>
+      <!-- thumb -->
+      <path d="M 53 145 Q 42 145 40 152 Q 40 158 48 160 L 55 158" fill="none"/>
+      <!-- 4 fingers extending up -->
+      <path d="M 65 130 L 65 100 Q 65 96 68 96 Q 71 96 71 100 L 71 130" fill="#b4becf" fill-opacity="0.12"/>
+      <path d="M 78 130 L 78 92 Q 78 88 81 88 Q 84 88 84 92 L 84 130" fill="#b4becf" fill-opacity="0.12"/>
+      <path d="M 91 130 L 91 95 Q 91 91 94 91 Q 97 91 97 95 L 97 130" fill="#b4becf" fill-opacity="0.12"/>
+      <path d="M 104 130 L 104 102 Q 104 98 107 98 Q 110 98 110 102 L 110 130" fill="#b4becf" fill-opacity="0.12"/>
+    </g><g opacity="0.95">
+      <ellipse cx="85" cy="172" rx="32" ry="5" fill="#d14859" opacity="0.45" stroke="#d14859" stroke-width="1.1"/>
+      <text x="85" y="186" text-anchor="middle" style="fill:#d14859;font:700 7.5px Inter,sans-serif;letter-spacing:1px">WRIST</text>
+    </g><g opacity="0.95">
+      <circle cx="68" cy="130" r="3.5" fill="#d14859" opacity="0.55" stroke="#d14859" stroke-width="1"/>
+      <circle cx="81" cy="130" r="3.5" fill="#d14859" opacity="0.55" stroke="#d14859" stroke-width="1"/>
+      <circle cx="94" cy="130" r="3.5" fill="#d14859" opacity="0.55" stroke="#d14859" stroke-width="1"/>
+      <circle cx="107" cy="130" r="3.5" fill="#d14859" opacity="0.55" stroke="#d14859" stroke-width="1"/>
+      <text x="60" y="123" text-anchor="end" style="fill:#d14859;font:700 7px Inter,sans-serif">MCP</text>
+    </g><g opacity="0.95">
+      <circle cx="68" cy="112" r="2.6" fill="#d14859" opacity="0.6" stroke="#d14859" stroke-width="0.9"/>
+      <circle cx="81" cy="106" r="2.8" fill="#d14859" opacity="0.6" stroke="#d14859" stroke-width="0.9"/>
+      <circle cx="94" cy="108" r="2.7" fill="#d14859" opacity="0.6" stroke="#d14859" stroke-width="0.9"/>
+      <circle cx="107" cy="115" r="2.6" fill="#d14859" opacity="0.6" stroke="#d14859" stroke-width="0.9"/>
+      <text x="123" y="105" style="fill:#d14859;font:700 7px Inter,sans-serif">PIP</text>
+    </g><text x="85" y="195" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">SYMMETRIC · bilateral</text></g><g opacity="1">
+    <text x="240" y="62" text-anchor="middle" style="fill:#b4becf;font:600 7px 'JetBrains Mono',monospace;letter-spacing:1.5px">RF TARGET</text><g>
+    <!-- Fab arms (variable region) - two arms forming a V at top -->
+    <g stroke="#b4becf" stroke-width="2.4" fill="none" stroke-linecap="round">
+      <line x1="224" y1="80" x2="240" y2="100"/>
+      <line x1="256" y1="80" x2="240" y2="100"/>
+    </g>
+    <!-- Variable region label - small bracket at top -->
+    <text x="240" y="74" text-anchor="middle" style="fill:#6b7689;font:italic 7px Fraunces,serif">variable region (Fab)</text><line x1="240" y1="100" x2="240" y2="145" stroke="#e8a951" stroke-width="4" stroke-linecap="round"/><circle cx="240" cy="125" r="14" fill="#e8a951" opacity="0.18"/><text x="248" y="155" style="fill:#e8a951;font:700 8.5px Inter,sans-serif">Fc</text><text x="248" y="165" style="fill:#6b7689;font:italic 7px Fraunces,serif">constant region</text><text x="218" y="112" text-anchor="end" style="fill:#b4becf;font:700 8px Inter,sans-serif">IgG</text></g><g>
+      <!-- RF antibody body (Y-shape) -->
+      <g stroke="#9370b9" stroke-width="2.2" fill="none" stroke-linecap="round">
+        <!-- Two Fab arms of the RF reaching toward Fc -->
+        <line x1="290" y1="115" x2="254" y2="125"/>
+        <line x1="290" y1="135" x2="254" y2="128"/>
+        <!-- RF stem (Fc of IgM) -->
+        <line x1="290" y1="115" x2="310" y2="115"/>
+        <line x1="290" y1="135" x2="310" y2="135"/>
+      </g>
+      <!-- RF label -->
+      <text x="315" y="121" style="fill:#9370b9;font:700 8px Inter,sans-serif">RF</text>
+      <text x="315" y="131" style="fill:#9370b9;font:700 7px Inter,sans-serif">(IgM)</text>
+    </g><text x="240" y="183" text-anchor="middle" style="fill:#e8a951;font:700 8px Inter,sans-serif;letter-spacing:1px">RF binds Fc of IgG</text></g><g opacity="1"><rect x="370" y="70" width="80" height="32" rx="6" fill="#e8ecf3" fill-opacity="0.10" stroke="#b4becf" stroke-width="1" opacity="0.7"/><rect x="370" y="130" width="80" height="32" rx="6" fill="#e8ecf3" fill-opacity="0.10" stroke="#b4becf" stroke-width="1" opacity="0.7"/><text x="455" y="80" style="fill:#6b7689;font:6px 'JetBrains Mono',monospace">bone</text><text x="455" y="158" style="fill:#6b7689;font:6px 'JetBrains Mono',monospace">bone</text><rect x="372" y="100" width="76" height="3" fill="#4fb8a8" fill-opacity="0.55"/><rect x="372" y="127" width="76" height="3" fill="#4fb8a8" fill-opacity="0.55"/><text x="455" y="105" style="fill:#4fb8a8;font:6px 'JetBrains Mono',monospace">cartilage</text><rect x="372" y="103" width="76" height="24" fill="#d14859" fill-opacity="0.18"/><circle cx="380" cy="107" r="1.6" fill="#d14859" opacity="0.85"/><circle cx="390" cy="111" r="1.6" fill="#d14859" opacity="0.85"/><circle cx="400" cy="108" r="1.6" fill="#d14859" opacity="0.85"/><circle cx="412" cy="113" r="1.6" fill="#d14859" opacity="0.85"/><circle cx="425" cy="110" r="1.6" fill="#d14859" opacity="0.85"/><circle cx="437" cy="114" r="1.6" fill="#d14859" opacity="0.85"/><circle cx="386" cy="118" r="1.6" fill="#d14859" opacity="0.85"/><circle cx="398" cy="121" r="1.6" fill="#d14859" opacity="0.85"/><circle cx="410" cy="118" r="1.6" fill="#d14859" opacity="0.85"/><circle cx="421" cy="122" r="1.6" fill="#d14859" opacity="0.85"/><circle cx="433" cy="120" r="1.6" fill="#d14859" opacity="0.85"/><circle cx="380" cy="124" r="1.6" fill="#d14859" opacity="0.85"/><circle cx="393" cy="124" r="1.6" fill="#d14859" opacity="0.85"/><circle cx="418" cy="124" r="1.6" fill="#d14859" opacity="0.85"/><circle cx="432" cy="124" r="1.6" fill="#d14859" opacity="0.85"/><text x="410" y="190" text-anchor="middle" style="fill:#d14859;font:700 7.5px Inter,sans-serif;letter-spacing:1px">PANNUS</text><text x="410" y="200" text-anchor="middle" style="fill:#6b7689;font:italic 6.5px Fraunces,serif">TNF · IL-6 · MMPs · RANKL</text></g><g>
+    <!-- arrow from antibody binding center toward pannus -->
+    <g stroke="#e8a951" stroke-width="0.9" fill="none" stroke-dasharray="3 2" opacity="0.7">
+      <path d="M 312 125 L 360 115"/>
+      <polygon points="357,112 363,115 357,118" fill="#e8a951" opacity="0.85"/>
+    </g>
+    <text x="335" y="105" text-anchor="middle" style="fill:#e8a951;font:600 6.5px 'JetBrains Mono',monospace;letter-spacing:0.8px">DEPOSIT</text>
+  </g>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="218" cy="107" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="315" cy="126" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="240" cy="178" r="27" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="23;33;23" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

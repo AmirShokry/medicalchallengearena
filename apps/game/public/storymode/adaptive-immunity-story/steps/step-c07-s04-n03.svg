@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 03 · ATYPICAL LYMPH ≠ INFECTED CELL</text>
+
+                  <g opacity="1"><path d="M 370 100 Q 410 95 420 130 Q 425 165 410 185 Q 395 200 365 195 Q 345 200 332 195 Q 320 190 322 170 Q 320 152 335 145 Q 322 130 330 115 Q 345 100 370 100 Z" fill="#e8a951" fill-opacity="0.40" stroke="#e8a951" stroke-width="2"></path><ellipse cx="365" cy="140" rx="16" ry="13" fill="#4a2d60" opacity="0.8"></ellipse>
+                      <g>
+                        <ellipse cx="335" cy="170" rx="10" ry="7" fill="#d14859" fill-opacity="0.85" stroke="#d14859" stroke-width="1"></ellipse>
+                        <ellipse cx="335" cy="170" rx="4.5" ry="3" fill="#1a2030" opacity="0.85"></ellipse>
+                      </g>
+                      <g>
+                        <ellipse cx="430" cy="155" rx="10" ry="7" fill="#d14859" fill-opacity="0.85" stroke="#d14859" stroke-width="1"></ellipse>
+                        <ellipse cx="430" cy="155" rx="4.5" ry="3" fill="#1a2030" opacity="0.85"></ellipse>
+                      </g>
+                    <text x="370" y="220" text-anchor="middle" style="fill:#e8a951;font:600 8px Inter,sans-serif;letter-spacing:1.2px">DOWNEY CELL</text><text x="370" y="232" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">reactive CD8</text></g>
+
+                  <!-- "Infected?" label crossed out above -->
+                  <g transform="translate(370 75)">
+                    <rect x="-65" y="-15" width="130" height="30" rx="6" fill="#d14859" fill-opacity="0.20" stroke="#d14859" stroke-width="1.5"></rect>
+                    <text x="0" y="-2" text-anchor="middle" style="fill:#d14859;font:600 8px Inter,sans-serif;letter-spacing:1.5px">INFECTED?</text>
+                    <line x1="-50" y1="-2" x2="50" y2="-2" stroke="#d14859" stroke-width="2" stroke-linecap="round"></line>
+                    <text x="0" y="11" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">no — reactive</text>
+                  </g>
+
+                  <text x="250" y="252" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">trap to avoid · the atypical lymph is a RESPONDER, not a victim</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="370" cy="68" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

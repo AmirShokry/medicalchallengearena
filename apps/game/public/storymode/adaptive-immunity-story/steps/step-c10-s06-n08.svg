@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 05 · LMO2 ACTIVATED → T-CELL LEUKEMIA</text>
+
+                  <!-- Chromosome zoomed showing vector → LMO2 activated -->
+                  <g transform="translate(135 110)" opacity="1"><line x1="-115" y1="-1" x2="115" y2="-1" stroke="#9370b9" stroke-width="1.4" opacity="0.6"></line><line x1="-115" y1="3" x2="115" y2="3" stroke="#9370b9" stroke-width="1.4" opacity="0.6"></line><g stroke="#9370b9" stroke-width="0.6" opacity="0.4"><line x1="-111" y1="-1" x2="-111" y2="3"></line><line x1="-103.3" y1="-1" x2="-103.3" y2="3"></line><line x1="-95.7" y1="-1" x2="-95.7" y2="3"></line><line x1="-88" y1="-1" x2="-88" y2="3"></line><line x1="-80.3" y1="-1" x2="-80.3" y2="3"></line><line x1="-72.7" y1="-1" x2="-72.7" y2="3"></line><line x1="-65" y1="-1" x2="-65" y2="3"></line><line x1="-57.3" y1="-1" x2="-57.3" y2="3"></line><line x1="-49.7" y1="-1" x2="-49.7" y2="3"></line><line x1="-42" y1="-1" x2="-42" y2="3"></line><line x1="-34.3" y1="-1" x2="-34.3" y2="3"></line><line x1="-26.7" y1="-1" x2="-26.7" y2="3"></line><line x1="-19" y1="-1" x2="-19" y2="3"></line><line x1="-11.3" y1="-1" x2="-11.3" y2="3"></line><line x1="-3.7" y1="-1" x2="-3.7" y2="3"></line><line x1="4" y1="-1" x2="4" y2="3"></line><line x1="11.7" y1="-1" x2="11.7" y2="3"></line><line x1="19.3" y1="-1" x2="19.3" y2="3"></line><line x1="27" y1="-1" x2="27" y2="3"></line><line x1="34.7" y1="-1" x2="34.7" y2="3"></line><line x1="42.3" y1="-1" x2="42.3" y2="3"></line><line x1="50" y1="-1" x2="50" y2="3"></line><line x1="57.7" y1="-1" x2="57.7" y2="3"></line><line x1="65.3" y1="-1" x2="65.3" y2="3"></line><line x1="73" y1="-1" x2="73" y2="3"></line><line x1="80.7" y1="-1" x2="80.7" y2="3"></line><line x1="88.3" y1="-1" x2="88.3" y2="3"></line><line x1="96" y1="-1" x2="96" y2="3"></line><line x1="103.7" y1="-1" x2="103.7" y2="3"></line><line x1="111.3" y1="-1" x2="111.3" y2="3"></line></g><rect x="-65.5" y="-6" width="16" height="14" rx="1.5" fill="#6b7689" fill-opacity="0.65" stroke="#6b7689" stroke-width="0.8"></rect><rect x="-28" y="-9" width="14" height="20" rx="2" fill="#e8a951" fill-opacity="0.70" stroke="#e8a951" stroke-width="1.4"></rect><text x="-21" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 6px Inter,sans-serif">LTR</text><rect x="-13" y="-7" width="26" height="16" rx="2" fill="#4fb8a8" fill-opacity="0.70" stroke="#4fb8a8" stroke-width="1.4"></rect><text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 7px Inter,sans-serif">ADA</text><rect x="14" y="-9" width="14" height="20" rx="2" fill="#e8a951" fill-opacity="0.70" stroke="#e8a951" stroke-width="1.4"></rect><text x="21" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 6px Inter,sans-serif">LTR</text><rect x="42" y="-9" width="36" height="20" rx="2.5" fill="#d14859" fill-opacity="0.55" stroke="#d14859" stroke-width="2"></rect><text x="60" y="3" text-anchor="middle" style="fill:#e8ecf3;font:700 7px Inter,sans-serif">LMO2</text><text x="60" y="22" text-anchor="middle" style="fill:#d14859;font:700 7px Inter,sans-serif;letter-spacing:1.2px">ACTIVATED</text><path d="M 22 -10 Q 35 -22 50 -14" stroke="#e8a951" stroke-width="1.6" fill="none"></path><polygon points="50,-14 47,-19 53,-19" fill="#e8a951"></polygon><text x="36" y="-26" text-anchor="middle" style="fill:#e8a951;font:700 6px Inter,sans-serif;letter-spacing:1px">ENHANCER →</text></g>
+
+                  <!-- Arrow down to outcome -->
+                  <g transform="translate(135 145)">
+                    <line x1="0" y1="0" x2="0" y2="22" stroke="#d14859" stroke-width="1.6"></line>
+                    <polygon points="0,22 -4,15 4,15" fill="#d14859"></polygon>
+                  </g>
+
+                  <!-- T-cell expansion (multiple T cells) -->
+                  <g transform="translate(135 200)">
+                    <text x="0" y="-23" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif;letter-spacing:1.2px">UNCONTROLLED T-CELL EXPANSION</text>
+                    <g transform="translate(-30 0)" opacity="1"><circle cx="0" cy="0" r="11" fill="#d14859" fill-opacity="0.45" stroke="#d14859" stroke-width="1.5"></circle><ellipse cx="-2" cy="-1" rx="4.4" ry="3.8" fill="#4a2d60" opacity="0.85"></ellipse><text x="0" y="2" text-anchor="middle" style="fill:#e8ecf3;font:700 7px Inter,sans-serif">T</text></g>
+                    <g transform="translate(-10 0)" opacity="1"><circle cx="0" cy="0" r="11" fill="#d14859" fill-opacity="0.45" stroke="#d14859" stroke-width="1.5"></circle><ellipse cx="-2" cy="-1" rx="4.4" ry="3.8" fill="#4a2d60" opacity="0.85"></ellipse><text x="0" y="2" text-anchor="middle" style="fill:#e8ecf3;font:700 7px Inter,sans-serif">T</text></g>
+                    <g transform="translate(10 0)" opacity="1"><circle cx="0" cy="0" r="11" fill="#d14859" fill-opacity="0.45" stroke="#d14859" stroke-width="1.5"></circle><ellipse cx="-2" cy="-1" rx="4.4" ry="3.8" fill="#4a2d60" opacity="0.85"></ellipse><text x="0" y="2" text-anchor="middle" style="fill:#e8ecf3;font:700 7px Inter,sans-serif">T</text></g>
+                    <g transform="translate(30 0)" opacity="1"><circle cx="0" cy="0" r="11" fill="#d14859" fill-opacity="0.45" stroke="#d14859" stroke-width="1.5"></circle><ellipse cx="-2" cy="-1" rx="4.4" ry="3.8" fill="#4a2d60" opacity="0.85"></ellipse><text x="0" y="2" text-anchor="middle" style="fill:#e8ecf3;font:700 7px Inter,sans-serif">T</text></g>
+                  </g>
+
+                  <!-- Arrow → leukemia -->
+                  <g transform="translate(295 200)">
+                    <line x1="-15" y1="0" x2="20" y2="0" stroke="#d14859" stroke-width="1.6"></line>
+                    <polygon points="20,0 13,-4 13,4" fill="#d14859"></polygon>
+                  </g>
+
+                  <!-- Leukemia verdict box -->
+                  <g transform="translate(395 200)">
+                    <rect x="-65" y="-25" width="130" height="50" rx="8" fill="#d14859" fill-opacity="0.30" stroke="#d14859" stroke-width="1.8"></rect>
+                    <text x="0" y="-7" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.5px">T-CELL LEUKEMIA</text>
+                    <text x="0" y="6" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">historical complication</text>
+                    <text x="0" y="17" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">of early X-SCID GT</text>
+                  </g>
+
+                  <text x="250" y="245" text-anchor="middle" style="fill:#b4becf;font:italic 7.5px Fraunces,serif">LMO2 is a T-cell-lineage proto-oncogene · vector LTR turned it on · clonal T-cell expansion → leukemia</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="395" cy="212" r="27" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="23;33;23" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

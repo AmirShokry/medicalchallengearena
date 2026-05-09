@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 02 · gp41 · HR1 + HR2 REGIONS</text>
+
+<!-- gp41 monomer expanded -->
+<g transform="translate(250 145)">
+  <text x="0" y="-95" text-anchor="middle" style="fill:#9370b9;font:700 9px Inter,sans-serif;letter-spacing:1.5px">gp41 MONOMER</text>
+  
+  <!-- Linear protein representation -->
+  <rect x="-180" y="-22" width="360" height="34" rx="4" fill="rgba(180,190,207,0.10)" stroke="#3a4358" stroke-width="1.4"/>
+  
+  <!-- Domain structure left to right -->
+  <!-- Fusion peptide (N-terminal) -->
+  <rect x="-180" y="-15" width="50" height="20" rx="3" fill="rgba(232,169,81,0.65)" stroke="#e8a951" stroke-width="1.4"/>
+  <text x="-155" y="-2" text-anchor="middle" style="fill:#0a0e1a;font:700 7px Inter,sans-serif">FP</text>
+  <text x="-155" y="22" text-anchor="middle" style="fill:#e8a951;font:6px Inter,sans-serif">fusion peptide</text>
+  
+  <!-- HR1 -->
+  <rect x="-126" y="-15" width="100" height="20" rx="3" fill="rgba(209,72,89,0.65)" stroke="#d14859" stroke-width="1.6"/>
+  <text x="-76" y="-2" text-anchor="middle" style="fill:#fff;font:700 8px Inter,sans-serif">HR1</text>
+  <text x="-76" y="22" text-anchor="middle" style="fill:#d14859;font:700 6.5px Inter,sans-serif">N-terminal heptad</text>
+  
+  <!-- Loop -->
+  <rect x="-22" y="-15" width="44" height="20" rx="3" fill="rgba(180,190,207,0.30)" stroke="#6b7689" stroke-width="1"/>
+  <text x="0" y="-2" text-anchor="middle" style="fill:#b4becf;font:700 7px Inter,sans-serif">loop</text>
+  
+  <!-- HR2 -->
+  <rect x="26" y="-15" width="100" height="20" rx="3" fill="rgba(108,194,125,0.65)" stroke="#6cc27d" stroke-width="1.6"/>
+  <text x="76" y="-2" text-anchor="middle" style="fill:#fff;font:700 8px Inter,sans-serif">HR2</text>
+  <text x="76" y="22" text-anchor="middle" style="fill:#6cc27d;font:700 6.5px Inter,sans-serif">C-terminal heptad</text>
+  
+  <!-- TM (membrane anchor) -->
+  <rect x="130" y="-15" width="50" height="20" rx="3" fill="rgba(147,112,185,0.65)" stroke="#9370b9" stroke-width="1.4"/>
+  <text x="155" y="-2" text-anchor="middle" style="fill:#fff;font:700 7px Inter,sans-serif">TM</text>
+  
+  <!-- N/C terminal markers -->
+  <text x="-188" y="-2" text-anchor="end" style="fill:#9370b9;font:700 7px 'JetBrains Mono',monospace">N</text>
+  <text x="195" y="-2" style="fill:#9370b9;font:700 7px 'JetBrains Mono',monospace">C</text>
+</g>
+
+<!-- Annotation: HR1 + HR2 will fold to interact -->
+<g transform="translate(250 215)">
+  <rect x="-200" y="-13" width="400" height="26" rx="6" fill="rgba(232,169,81,0.20)" stroke="#e8a951" stroke-width="1.4"/>
+  <text x="0" y="3" text-anchor="middle" style="fill:#e8a951;font:700 8.5px Inter,sans-serif;letter-spacing:1.2px">HR2 FOLDS BACK ON HR1 → 6-HELIX BUNDLE</text>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">HR1 + HR2 are the two heptad repeat regions that drive membrane fusion</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="213" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="174" cy="162" r="26" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="22;32;22" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="326" cy="162" r="26" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="22;32;22" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

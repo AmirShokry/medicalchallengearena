@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 05 · CD4 &lt; 100 · TOXO + CRYPTO</text>
+
+<!-- Threshold marker -->
+<g transform="translate(250 60)">
+  <rect x="-60" y="-15" width="120" height="30" rx="6" fill="rgba(209,72,89,0.18)" stroke="#d14859" stroke-width="1.4"/>
+  <text x="0" y="3" text-anchor="middle" style="fill:#d14859;font:700 11px Inter,sans-serif;letter-spacing:1.5px">CD4 &lt; 100</text>
+</g>
+
+<!-- Two OIs side by side -->
+<g transform="translate(125 165)">
+  <circle cx="0" cy="-25" r="32" fill="rgba(147,112,185,0.12)" stroke="#9370b9" stroke-width="1.2"/>
+  <text x="0" y="-22" text-anchor="middle" style="fill:#9370b9;font:700 8px Inter,sans-serif">TOXO</text>
+  <text x="0" y="-10" text-anchor="middle" style="fill:#b4becf;font:7px 'JetBrains Mono',monospace">encephalitis</text>
+  <text x="0" y="14" text-anchor="middle" style="fill:#b4becf;font:7.5px Inter,sans-serif">ring-enhancing</text>
+  <text x="0" y="26" text-anchor="middle" style="fill:#b4becf;font:7.5px Inter,sans-serif">CNS lesions</text>
+  <text x="0" y="44" text-anchor="middle" style="fill:#6b7689;font:italic 6.5px Fraunces,serif">Toxoplasma gondii</text>
+</g>
+
+<g transform="translate(375 165)">
+  <circle cx="0" cy="-25" r="32" fill="rgba(79,184,168,0.12)" stroke="#4fb8a8" stroke-width="1.2"/>
+  <text x="0" y="-22" text-anchor="middle" style="fill:#4fb8a8;font:700 8px Inter,sans-serif">CRYPTO</text>
+  <text x="0" y="-10" text-anchor="middle" style="fill:#b4becf;font:7px 'JetBrains Mono',monospace">meningitis</text>
+  <text x="0" y="14" text-anchor="middle" style="fill:#b4becf;font:7.5px Inter,sans-serif">India ink +</text>
+  <text x="0" y="26" text-anchor="middle" style="fill:#b4becf;font:7.5px Inter,sans-serif">CrAg + in CSF</text>
+  <text x="0" y="44" text-anchor="middle" style="fill:#6b7689;font:italic 6.5px Fraunces,serif">Cryptococcus neoformans</text>
+</g>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="58" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

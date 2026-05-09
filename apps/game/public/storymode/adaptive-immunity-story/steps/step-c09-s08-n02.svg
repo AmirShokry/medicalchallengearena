@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 02 · ORTHOPOXVIRUS · SHARED ANTIGENS</text>
+
+                  <!-- Genus banner at top -->
+                  <g transform="translate(250 60)">
+                    <rect x="-130" y="-10" width="260" height="20" rx="10" fill="#e8a951" fill-opacity="0.25" stroke="#e8a951" stroke-width="1.4"></rect>
+                    <text x="0" y="3" text-anchor="middle" style="fill:#e8a951;font:700 8px Inter,sans-serif;letter-spacing:1.5px">GENUS · ORTHOPOXVIRUS</text>
+                  </g>
+
+                  <!-- Vaccinia -->
+                  <g transform="translate(140 165)">
+                    <g transform="translate(0 0)" opacity="1"><rect x="-30" y="-19" width="60" height="38" rx="6" fill="#4fb8a8" fill-opacity="0.65" stroke="#4fb8a8" stroke-width="1.5"></rect><g stroke="#4fb8a8" stroke-width="1.4" fill="none" opacity="0.4"><rect x="-24" y="-13" width="48" height="26" rx="4"></rect></g><g fill="#9370b9" fill-opacity="0.95" stroke="#9370b9" stroke-width="0.8"><rect x="-24" y="-25" width="6" height="8" rx="1"></rect><rect x="-10.2" y="-25" width="6" height="8" rx="1"></rect><rect x="4.2" y="-25" width="6" height="8" rx="1"></rect><rect x="18" y="-25" width="6" height="8" rx="1"></rect></g></g>
+                    <text x="0" y="38" text-anchor="middle" style="fill:#4fb8a8;font:700 9px Inter,sans-serif;letter-spacing:1.5px">VACCINIA</text>
+                  </g>
+
+                  <!-- Variola -->
+                  <g transform="translate(360 165)">
+                    <g transform="translate(0 0)" opacity="1"><rect x="-30" y="-19" width="60" height="38" rx="6" fill="#d14859" fill-opacity="0.65" stroke="#d14859" stroke-width="1.5"></rect><g stroke="#d14859" stroke-width="1.4" fill="none" opacity="0.4"><rect x="-24" y="-13" width="48" height="26" rx="4"></rect></g><g fill="#9370b9" fill-opacity="0.95" stroke="#9370b9" stroke-width="0.8"><rect x="-24" y="-25" width="6" height="8" rx="1"></rect><rect x="-10.2" y="-25" width="6" height="8" rx="1"></rect><rect x="4.2" y="-25" width="6" height="8" rx="1"></rect><rect x="18" y="-25" width="6" height="8" rx="1"></rect></g></g>
+                    <text x="0" y="38" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.5px">VARIOLA</text>
+                  </g>
+
+                  <!-- Connection between matching antigens (purple antigens are at y ~ 124 for both) -->
+                  <g stroke="#9370b9" stroke-width="1.4" fill="none" stroke-dasharray="2 2" opacity="0.7">
+                    <line x1="119" y1="131" x2="339" y2="131"></line>
+                    <line x1="133" y1="128" x2="353" y2="128"></line>
+                    <line x1="147" y1="128" x2="367" y2="128"></line>
+                    <line x1="161" y1="131" x2="381" y2="131"></line>
+                  </g>
+
+                  <!-- Label between viruses, on top of dashed lines -->
+                  <g transform="translate(250 110)">
+                    <rect x="-90" y="-10" width="180" height="20" rx="10" fill="#0a0e1a" stroke="#9370b9" stroke-width="1.2"></rect>
+                    <text x="0" y="3" text-anchor="middle" style="fill:#9370b9;font:700 8px Inter,sans-serif;letter-spacing:1.5px">SAME SURFACE ANTIGENS</text>
+                  </g>
+
+                  <text x="250" y="245" text-anchor="middle" style="fill:#b4becf;font:italic 7.5px Fraunces,serif">closely related genus · the surface proteins are nearly identical · the immune system can't tell them apart</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="108" r="32" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="28;38;28" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

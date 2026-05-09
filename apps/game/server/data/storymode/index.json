@@ -5,5 +5,12 @@
     "title": "High Yield NBME · Innate Immunity",
     "chapterCount": 4,
     "stationCount": 35
+  },
+  {
+    "name": "adaptive-immunity-story",
+    "displayName": "Adaptive Immunity",
+    "title": "High Yield NBME · Adaptive Immunity",
+    "chapterCount": 12,
+    "stationCount": 102
   }
 ]

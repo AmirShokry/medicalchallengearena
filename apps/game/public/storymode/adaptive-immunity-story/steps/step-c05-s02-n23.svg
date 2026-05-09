@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 17 · CLINICAL · SERUM SICKNESS</text>
+
+                  <!-- Patient silhouette on left -->
+                  <g transform="translate(110 145)">
+                    <!-- head -->
+                    <circle cx="0" cy="-30" r="14" fill="#b4becf" fill-opacity="0.55" stroke="#b4becf" stroke-width="1.4"></circle>
+                    <!-- body trapezoid -->
+                    <path d="M -18 -16 L 18 -16 L 26 35 L -26 35 Z" fill="#b4becf" fill-opacity="0.40" stroke="#b4becf" stroke-width="1.4"></path>
+                    <!-- urticaria spots on the body -->
+                    <g fill="#d14859" opacity="0.85">
+                      <circle cx="-8" cy="-5" r="2.5"></circle>
+                      <circle cx="6" cy="-2" r="2.5"></circle>
+                      <circle cx="-3" cy="8" r="2.5"></circle>
+                      <circle cx="11" cy="14" r="2.5"></circle>
+                      <circle cx="-12" cy="20" r="2.5"></circle>
+                    </g>
+                    <text x="0" y="60" text-anchor="middle" style="fill:#d14859;font:600 8px Inter,sans-serif;letter-spacing:1.2px">URTICARIA + FEVER</text>
+                    <text x="0" y="72" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">10 days post ceftriaxone</text>
+                  </g>
+
+                  <!-- Arrow toward complement activation -->
+                  <path d="M 165 145 L 215 145" stroke="#e8a951" stroke-width="1.5" fill="none" stroke-dasharray="3 2"></path>
+                  <polygon points="215,145 207,142 207,148" fill="#e8a951"></polygon>
+
+                  <!-- Right side: complement firing -->
+                  <g transform="translate(330 145)">
+                    <text x="0" y="-50" text-anchor="middle" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:1.5px">CLASSICAL PATHWAY · ON</text>
+                    <!-- Mini cascade with C3 and C5 highlighted -->
+                    <g>
+                      <circle cx="-50" cy="0" r="14" fill="#4fb8a8" fill-opacity="0.40" stroke="#4fb8a8" stroke-width="1.4"></circle>
+                      <text x="-50" y="4" text-anchor="middle" style="fill:#e8ecf3;font:700 9px Inter,sans-serif">C3</text>
+                      <line x1="-36" y1="0" x2="-14" y2="0" stroke="#3a4358" stroke-width="1.2"></line>
+                      <circle cx="0" cy="0" r="14" fill="#4fb8a8" fill-opacity="0.40" stroke="#4fb8a8" stroke-width="1.4"></circle>
+                      <text x="0" y="4" text-anchor="middle" style="fill:#e8ecf3;font:700 9px Inter,sans-serif">C5</text>
+                    </g>
+                    <!-- Both anaphylatoxins released -->
+                    <g transform="translate(-50 -32)">
+                      <circle cx="0" cy="0" r="11" fill="#e8a951" fill-opacity="0.85" stroke="#e8a951" stroke-width="1.4"></circle>
+                      <text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 8px Inter,sans-serif">C3a</text>
+                    </g>
+                    <g transform="translate(0 -32)">
+                      <circle cx="0" cy="0" r="11" fill="#e8a951" fill-opacity="0.85" stroke="#e8a951" stroke-width="1.4"></circle>
+                      <text x="0" y="3" text-anchor="middle" style="fill:#0a0e1a;font:700 8px Inter,sans-serif">C5a</text>
+                    </g>
+                    <text x="-25" y="35" text-anchor="middle" style="fill:#b4becf;font:italic 8px Fraunces,serif">both released</text>
+                  </g>
+
+                  <text x="250" y="252" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">drug-antibody complexes activate complement · both anaphylatoxins fire</text>
+              
+                  
+
+                  
+              
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="110" cy="212" r="36" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="32;42;32" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="330" cy="90" r="33" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="29;39;29" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="-25" cy="30" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+              </svg>

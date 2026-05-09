@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="22" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 03 · STEM HANDS US THE MECHANISM</text>
+
+                  <!-- Stem extract chip -->
+                  <g transform="translate(250 90)">
+                    <rect x="-200" y="-22" width="400" height="44" rx="8" fill="#9370b9" fill-opacity="0.18" stroke="#9370b9" stroke-width="1.4"></rect>
+                    <text x="0" y="-5" text-anchor="middle" style="fill:#9370b9;font:600 8px Inter,sans-serif;letter-spacing:1.5px">FROM THE STEM:</text>
+                    <text x="0" y="12" text-anchor="middle" style="fill:#e8ecf3;font:italic 600 11px Fraunces,serif">"activation of macrophages by Th1 cells"</text>
+                  </g>
+
+                  <!-- Two unknowns to find -->
+                  <g transform="translate(135 170)">
+                    <rect x="-65" y="-15" width="130" height="30" rx="6" fill="#e8a951" fill-opacity="0.18" stroke="#e8a951" stroke-width="1.5" stroke-dasharray="3 2"></rect>
+                    <text x="0" y="-2" text-anchor="middle" style="fill:#e8a951;font:600 8px Inter,sans-serif;letter-spacing:1.2px">WHICH CYTOKINE?</text>
+                    <text x="0" y="11" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">to be determined</text>
+                  </g>
+
+                  <g transform="translate(365 170)">
+                    <rect x="-65" y="-15" width="130" height="30" rx="6" fill="#e8a951" fill-opacity="0.18" stroke="#e8a951" stroke-width="1.5" stroke-dasharray="3 2"></rect>
+                    <text x="0" y="-2" text-anchor="middle" style="fill:#e8a951;font:600 8px Inter,sans-serif;letter-spacing:1.2px">ON WHICH CELL?</text>
+                    <text x="0" y="11" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">to be determined</text>
+                  </g>
+
+                  <text x="250" y="252" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">mechanism is given · just need to identify the cytokine and target cell</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="97" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="135" cy="163" r="22" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="18;28;18" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

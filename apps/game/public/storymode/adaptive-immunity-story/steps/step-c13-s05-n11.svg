@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 06 · SHARED TOXICITY · SYSTEMIC CaN INHIB</text>
+
+<!-- Body figure with 4 organ effects -->
+<g transform="translate(135 145)">
+  <text x="0" y="-92" text-anchor="middle" style="fill:#b4becf;font:700 8px Inter,sans-serif;letter-spacing:1.2px">CaN INHIBITED EVERYWHERE</text>
+  <!-- Body silhouette -->
+  <circle cx="0" cy="-65" r="14" fill="rgba(180,190,207,0.40)" stroke="#b4becf" stroke-width="1.4"/>
+  <path d="M -22 -52 L 22 -52 L 25 50 L -25 50 Z" fill="rgba(180,190,207,0.20)" stroke="#b4becf" stroke-width="1.4"/>
+  <!-- Arms -->
+  <rect x="-32" y="-50" width="8" height="36" rx="3" fill="rgba(180,190,207,0.20)" stroke="#b4becf" stroke-width="1"/>
+  <rect x="24" y="-50" width="8" height="36" rx="3" fill="rgba(180,190,207,0.20)" stroke="#b4becf" stroke-width="1"/>
+  
+  <!-- Brain (head with shading) -->
+  <text x="0" y="-65" text-anchor="middle" style="fill:#9370b9;font:700 6.5px Inter,sans-serif">CNS</text>
+  
+  <!-- Kidney highlighted on left side -->
+  <path d="M -10 -20 Q -16 -20 -16 -10 Q -16 0 -10 0 Q -4 0 -3 -10 Q -4 -20 -10 -20" 
+        fill="rgba(209,72,89,0.65)" stroke="#d14859" stroke-width="1.4"/>
+  
+  <!-- Pancreas marker -->
+  <ellipse cx="5" cy="-5" rx="6" ry="3" fill="rgba(232,169,81,0.65)" stroke="#e8a951" stroke-width="1"/>
+</g>
+
+<!-- 4 toxicity panels on right -->
+<g transform="translate(360 80)">
+  <rect x="-90" y="-15" width="180" height="30" rx="6" fill="rgba(209,72,89,0.20)" stroke="#d14859" stroke-width="1.4"/>
+  <!-- Kidney icon -->
+  <g transform="translate(-78 0)">
+    <path d="M -3 -5 Q -6 -5 -6 0 Q -6 5 -3 5 Q 0 5 1 0 Q 0 -5 -3 -5" fill="rgba(209,72,89,0.85)" stroke="#d14859"/>
+  </g>
+  <text x="-8" y="-2" text-anchor="middle" style="fill:#d14859;font:700 8px Inter,sans-serif">NEPHROTOXIC</text>
+  <text x="-8" y="9" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">afferent vasoconstriction</text>
+</g>
+
+<g transform="translate(360 122)">
+  <rect x="-90" y="-15" width="180" height="30" rx="6" fill="rgba(232,169,81,0.20)" stroke="#e8a951" stroke-width="1.4"/>
+  <!-- BP icon -->
+  <g transform="translate(-78 0)">
+    <line x1="0" y1="-7" x2="0" y2="7" stroke="#e8a951" stroke-width="2"/>
+    <polygon points="0,-7 -3,-1 3,-1" fill="#e8a951"/>
+  </g>
+  <text x="-8" y="-2" text-anchor="middle" style="fill:#e8a951;font:700 8px Inter,sans-serif">↑ HTN</text>
+  <text x="-8" y="9" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">peripheral vasoconstriction</text>
+</g>
+
+<g transform="translate(360 164)">
+  <rect x="-90" y="-15" width="180" height="30" rx="6" fill="rgba(232,169,81,0.20)" stroke="#e8a951" stroke-width="1.4"/>
+  <!-- Pancreas icon -->
+  <g transform="translate(-78 0)">
+    <ellipse cx="0" cy="0" rx="6" ry="3" fill="rgba(232,169,81,0.85)" stroke="#e8a951"/>
+  </g>
+  <text x="-8" y="-2" text-anchor="middle" style="fill:#e8a951;font:700 8px Inter,sans-serif">HYPERGLYCEMIA</text>
+  <text x="-8" y="9" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">β-cell toxicity</text>
+</g>
+
+<g transform="translate(360 206)">
+  <rect x="-90" y="-15" width="180" height="30" rx="6" fill="rgba(147,112,185,0.25)" stroke="#9370b9" stroke-width="1.4"/>
+  <!-- Brain icon -->
+  <g transform="translate(-78 0)">
+    <ellipse cx="0" cy="0" rx="6" ry="5" fill="rgba(147,112,185,0.85)" stroke="#9370b9"/>
+    <path d="M -3 -2 Q 0 -4 3 -2" stroke="#fff" stroke-width="0.8" fill="none"/>
+  </g>
+  <text x="-8" y="-2" text-anchor="middle" style="fill:#9370b9;font:700 8px Inter,sans-serif">NEUROTOXIC</text>
+  <text x="-8" y="9" text-anchor="middle" style="fill:#b4becf;font:6.5px Inter,sans-serif">tremor · seizure · headache</text>
+</g>
+
+<text x="250" y="245" text-anchor="middle" style="fill:#6b7689;font:italic 7.5px Fraunces,serif">Both drugs share same mechanism = same predictable toxicities</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="352" cy="126" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="352" cy="84" r="38" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="34;44;34" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

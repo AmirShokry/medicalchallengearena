@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 06 · SUBUNIT · NO DNA · NO INTEGRATION</text>
+
+                  <!-- HBsAg subunits (vaccine) -->
+                  <g transform="translate(110 145)">
+                    <text x="0" y="-65" text-anchor="middle" style="fill:#4fb8a8;font:700 9px Inter,sans-serif;letter-spacing:1.5px">HBsAg SUBUNIT</text>
+                    <g transform="translate(-18 0)" opacity="1"><g stroke="#4fb8a8" stroke-width="2.4" fill="none" stroke-linecap="round"><line x1="0" y1="-12" x2="0" y2="8"></line><circle cx="0" cy="-12" r="4" fill="#4fb8a8" stroke="none"></circle><rect x="-12" y="6" width="24" height="6" rx="1" fill="#4fb8a8" fill-opacity="0.55" stroke="none"></rect></g></g>
+                    <g transform="translate(0 -3)" opacity="1"><g stroke="#4fb8a8" stroke-width="2.4" fill="none" stroke-linecap="round"><line x1="0" y1="-12" x2="0" y2="8"></line><circle cx="0" cy="-12" r="4" fill="#4fb8a8" stroke="none"></circle><rect x="-12" y="6" width="24" height="6" rx="1" fill="#4fb8a8" fill-opacity="0.55" stroke="none"></rect></g></g>
+                    <g transform="translate(18 0)" opacity="1"><g stroke="#4fb8a8" stroke-width="2.4" fill="none" stroke-linecap="round"><line x1="0" y1="-12" x2="0" y2="8"></line><circle cx="0" cy="-12" r="4" fill="#4fb8a8" stroke="none"></circle><rect x="-12" y="6" width="24" height="6" rx="1" fill="#4fb8a8" fill-opacity="0.55" stroke="none"></rect></g></g>
+                    <text x="0" y="35" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">protein only</text>
+                  </g>
+
+                  <!-- Arrow -->
+                  <path d="M 175 145 L 220 145" stroke="#e8a951" stroke-width="1.6" fill="none"></path>
+                  <polygon points="220,145 213,141 213,149" fill="#e8a951"></polygon>
+
+                  <!-- Hepatocyte clean (no integration, no cccDNA) -->
+                  <g transform="translate(290 145)" opacity="1"><ellipse cx="0" cy="0" rx="65" ry="50" fill="#9370b9" fill-opacity="0.18" stroke="#9370b9" stroke-width="1.6"></ellipse><ellipse cx="0" cy="0" rx="35.75" ry="27.5" fill="#4a2d60" fill-opacity="0.55" stroke="#4a2d60" stroke-width="1.4"></ellipse><g stroke="#e8ecf3" stroke-width="1.2" stroke-linecap="round" opacity="0.75"><line x1="-25.025" y1="-13.8" x2="25.025" y2="-13.8"></line><line x1="-21.45" y1="11" x2="21.45" y2="11"></line></g></g>
+
+                  <!-- Verdict -->
+                  <g transform="translate(425 145)">
+                    <rect x="-50" y="-22" width="100" height="44" rx="6" fill="#6cc27d" fill-opacity="0.30" stroke="#6cc27d" stroke-width="1.6"></rect>
+                    <text x="0" y="-2" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif;letter-spacing:1.2px">NO DNA</text>
+                    <text x="0" y="11" text-anchor="middle" style="fill:#6cc27d;font:700 8px Inter,sans-serif;letter-spacing:1.2px">NO RISK</text>
+                  </g>
+
+                  <text x="250" y="245" text-anchor="middle" style="fill:#b4becf;font:italic 7.5px Fraunces,serif">subunit removes the entire problem · only one viral protein, no genome at all</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="425" cy="138" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

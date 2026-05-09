@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 280" preserveAspectRatio="xMidYMid meet">
+                <text x="20" y="26" style="fill:#e8a951;font:600 10px Inter,sans-serif;letter-spacing:2px">STEP 14 · THE ANSWER</text>
+                <rect x="40" y="50" width="420" height="200" rx="14" fill="#0e1422" stroke="#3a4358" stroke-width="1.2"/>
+
+                <!-- distractor row at top -->
+                <g transform="translate(250 70)">
+                  <rect x="-170" y="-12" width="340" height="22" rx="6" fill="#1a2030" opacity="0.5" stroke="#3a4358" stroke-width="1"/>
+                  <text x="0" y="3" text-anchor="middle" style="fill:#6b7689;font:9px Inter,sans-serif">A · CD4  ·  B · CD8  ·  C · BCR  ·  D · β-integrin</text>
+                </g>
+
+                <!-- Pedigree softly behind -->
+                <g opacity="0.45">
+                  <g transform="translate(160 120)"><rect x="-45" y="-16" width="90" height="32" rx="5" fill="#d14859" opacity="0.45" stroke="#d14859" stroke-width="1"/><text x="0" y="-1" text-anchor="middle" style="fill:#d14859;font:600 8px Inter,sans-serif">MOTHER · SLE</text><text x="0" y="11" text-anchor="middle" style="fill:#e8a951;font:600 9px Inter,sans-serif">DR2</text></g>
+                  <g transform="translate(340 120)"><rect x="-45" y="-16" width="90" height="32" rx="5" fill="#1a2030" stroke="#6b7689" stroke-width="1"/><text x="0" y="3" text-anchor="middle" style="fill:#b4becf;font:600 8px Inter,sans-serif">FATHER</text></g>
+                  <line x1="205" y1="120" x2="295" y2="120" stroke="#4fb8a8" stroke-width="1"/>
+                  <line x1="250" y1="120" x2="250" y2="148" stroke="#4fb8a8" stroke-width="1"/>
+                  <line x1="180" y1="148" x2="320" y2="148" stroke="#4fb8a8" stroke-width="1"/>
+                  <line x1="180" y1="148" x2="180" y2="170" stroke="#4fb8a8" stroke-width="1"/>
+                  <line x1="320" y1="148" x2="320" y2="170" stroke="#4fb8a8" stroke-width="1"/>
+                  <g transform="translate(180 185)"><rect x="-45" y="-16" width="90" height="32" rx="5" fill="#d14859" opacity="0.45" stroke="#d14859" stroke-width="1"/><text x="0" y="-1" text-anchor="middle" style="fill:#d14859;font:600 8px Inter,sans-serif">SISTER · RA</text><text x="0" y="11" text-anchor="middle" style="fill:#e8a951;font:600 9px Inter,sans-serif">DR4</text></g>
+                  <g transform="translate(320 185)"><rect x="-45" y="-16" width="90" height="32" rx="5" fill="#e8a951" opacity="0.5" stroke="#e8a951" stroke-width="1.4"/><text x="0" y="-1" text-anchor="middle" style="fill:#e8a951;font:600 8px Inter,sans-serif">PATIENT</text><text x="0" y="11" text-anchor="middle" style="fill:#e8a951;font:600 9px Inter,sans-serif">DR2 · DR4</text></g>
+                </g>
+
+                <!-- Hero answer banner across the middle -->
+                <g transform="translate(250 165)">
+                  <rect x="-200" y="-26" width="400" height="52" rx="10" fill="#e8a951" opacity="0.32" stroke="#e8a951" stroke-width="2.5"/>
+                  <text x="0" y="6" text-anchor="middle" style="fill:#e8a951;font:700 15px Inter,sans-serif;letter-spacing:2.5px">E · HISTOCOMPATIBILITY ANTIGENS</text>
+                </g>
+
+                <text x="250" y="240" text-anchor="middle" style="fill:#b4becf;font:italic 10px Fraunces,serif">HLA = MHC · inherited as haplotypes · varies between people · disease-linked</text>
+                <text x="250" y="270" text-anchor="middle" style="fill:#e8a951;font:italic 600 10px Fraunces,serif">the only option that's both inherited and disease-linked</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="166" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

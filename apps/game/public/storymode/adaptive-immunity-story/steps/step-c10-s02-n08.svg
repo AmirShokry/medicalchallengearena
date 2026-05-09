@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 07 · THE ANSWER</text>
+
+                  <!-- Ghosted: B-cell pipeline with BTK block -->
+                  <g opacity="0.30">
+                    <g transform="translate(95 130)" opacity="1"><circle cx="0" cy="0" r="14" fill="#9370b9" fill-opacity="0.40" stroke="#9370b9" stroke-width="1.4"></circle><ellipse cx="-2" cy="-1" rx="4.9" ry="4.2" fill="#4a2d60" opacity="0.7"></ellipse><text x="0" y="26" text-anchor="middle" style="fill:#9370b9;font:600 7px Inter,sans-serif;letter-spacing:1.2px">Pro-B</text></g>
+                    <g transform="translate(155 130)" opacity="1"><circle cx="0" cy="0" r="14" fill="#9370b9" fill-opacity="0.40" stroke="#9370b9" stroke-width="1.4"></circle><ellipse cx="-2" cy="-1" rx="4.9" ry="4.2" fill="#4a2d60" opacity="0.7"></ellipse><text x="0" y="26" text-anchor="middle" style="fill:#9370b9;font:600 7px Inter,sans-serif;letter-spacing:1.2px">Pre-B</text></g>
+                    <g transform="translate(205 130)">
+<line x1="-10" y1="-16" x2="10" y2="16" stroke="#d14859" stroke-width="2.5"></line>
+<line x1="-10" y1="16" x2="10" y2="-16" stroke="#d14859" stroke-width="2.5"></line>
+                    </g>
+                    <g transform="translate(255 130)" opacity="1"><circle cx="0" cy="0" r="14" fill="#6b7689" fill-opacity="0.15" stroke="#6b7689" stroke-width="1.2" stroke-dasharray="3 2"></circle><text x="0" y="26" text-anchor="middle" style="fill:#6b7689;font:600 7px Inter,sans-serif;letter-spacing:1.2px">Imm</text></g>
+                    <g transform="translate(310 130)" opacity="1"><circle cx="0" cy="0" r="14" fill="#6b7689" fill-opacity="0.15" stroke="#6b7689" stroke-width="1.2" stroke-dasharray="3 2"></circle><text x="0" y="26" text-anchor="middle" style="fill:#6b7689;font:600 7px Inter,sans-serif;letter-spacing:1.2px">Mat</text></g>
+                    <g transform="translate(365 130)" opacity="1"><circle cx="0" cy="0" r="14" fill="#6b7689" fill-opacity="0.15" stroke="#6b7689" stroke-width="1.2" stroke-dasharray="3 2"></circle><text x="0" y="26" text-anchor="middle" style="fill:#6b7689;font:600 7px Inter,sans-serif;letter-spacing:1.2px">Plas</text></g>
+                  </g>
+
+                  <!-- Distractors crossed out -->
+                  <g opacity="0.45" font-family="Inter,sans-serif">
+                    <text x="40" y="65" style="fill:#6b7689;font:9px Inter,sans-serif">A · CVID</text>
+                    <line x1="36" y1="61" x2="105" y2="61" stroke="#d14859" stroke-width="1" opacity="0.85"></line>
+                    <text x="125" y="65" style="fill:#6b7689;font:9px Inter,sans-serif">B · DiGeorge</text>
+                    <line x1="121" y1="61" x2="220" y2="61" stroke="#d14859" stroke-width="1" opacity="0.85"></line>
+                    <text x="240" y="65" style="fill:#6b7689;font:9px Inter,sans-serif">C · hyper-IgM</text>
+                    <line x1="236" y1="61" x2="335" y2="61" stroke="#d14859" stroke-width="1" opacity="0.85"></line>
+                    <text x="355" y="65" style="fill:#6b7689;font:9px Inter,sans-serif">D · IgA def</text>
+                    <line x1="351" y1="61" x2="445" y2="61" stroke="#d14859" stroke-width="1" opacity="0.85"></line>
+                  </g>
+
+                  <!-- Hero answer banner -->
+                  <g transform="translate(250 215)">
+                    <rect x="-225" y="-22" width="450" height="44" rx="10" fill="#e8a951" fill-opacity="0.42" stroke="#e8a951" stroke-width="2.6"></rect>
+                    <text x="0" y="0" text-anchor="middle" style="fill:#e8a951;font:700 11px Inter,sans-serif;letter-spacing:1.5px">E · X-LINKED AGAMMAGLOBULINEMIA</text>
+                    <text x="0" y="14" text-anchor="middle" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:1.5px">BTK mutation · pre-B arrest · IVIG for life</text>
+                  </g>
+
+                  <text x="250" y="245" text-anchor="middle" style="fill:#e8a951;font:italic 600 7.5px Fraunces,serif">Bruton's tyrosine kinase · the X-linked gate that determines whether B cells get to mature</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="250" cy="210" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

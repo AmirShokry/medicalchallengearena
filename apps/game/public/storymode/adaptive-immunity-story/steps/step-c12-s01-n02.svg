@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+<text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 02 · SENSITIVITY vs SPECIFICITY · DIFFERENT ROLES</text><g>
+    <rect x="20" y="30" width="220" height="16" rx="8" fill="rgba(232, 169, 81, 0.18)" stroke="#e8a951" stroke-width="1"/>
+    <text x="130" y="41" text-anchor="middle" style="fill:#e8a951;font:700 8px Inter,sans-serif;letter-spacing:1.2px">SENSITIVITY × SPECIFICITY MAP</text>
+  </g><g opacity="1">
+    <!-- X axis -->
+    <line x1="80" y1="170" x2="460" y2="170" stroke="#3a4358" stroke-width="1"/>
+    <!-- Y axis -->
+    <line x1="80" y1="70" x2="80" y2="170" stroke="#3a4358" stroke-width="1"/>
+    <!-- X axis label -->
+    <text x="270" y="184" text-anchor="middle" style="fill:#b4becf;font:600 8px Inter,sans-serif;letter-spacing:1.5px">SPECIFICITY →</text>
+    <!-- Y axis label (rotated) -->
+    <text x="65" y="120" text-anchor="middle" transform="rotate(-90 65 120)" style="fill:#b4becf;font:600 8px Inter,sans-serif;letter-spacing:1.5px">SENSITIVITY →</text>
+    <!-- X axis tick markers (low/high) -->
+    <text x="100" y="178" text-anchor="middle" style="fill:#6b7689;font:6.5px 'JetBrains Mono',monospace">LOW</text>
+    <text x="445" y="178" text-anchor="middle" style="fill:#6b7689;font:6.5px 'JetBrains Mono',monospace">HIGH</text>
+    <!-- Y axis tick markers -->
+    <text x="73" y="170" text-anchor="end" style="fill:#6b7689;font:6.5px 'JetBrains Mono',monospace">LOW</text>
+    <text x="73" y="76" text-anchor="end" style="fill:#6b7689;font:6.5px 'JetBrains Mono',monospace">HIGH</text>
+    <!-- Quadrant annotations (very subtle, in corners) -->
+    <text x="100" y="78" style="fill:#6b7689;font:italic 6.5px Fraunces,serif;opacity:0.7">screen</text>
+    <text x="455" y="78" text-anchor="end" style="fill:#6b7689;font:italic 6.5px Fraunces,serif;opacity:0.7">screen + confirm</text>
+    <text x="455" y="166" text-anchor="end" style="fill:#6b7689;font:italic 6.5px Fraunces,serif;opacity:0.7">confirm</text>
+  </g><g><circle cx="130" cy="90" r="5" fill="#4fb8a8" opacity="0.85" stroke="#4fb8a8" stroke-width="1.4"/><text x="138" y="84" style="fill:#b4becf;font:600 8px Inter,sans-serif">ANA</text><text x="138" y="93" style="fill:#6b7689;font:italic 6.5px Fraunces,serif">95% sens · 5% spec</text></g><g><circle cx="360" cy="115" r="5" fill="#4fb8a8" opacity="0.85" stroke="#4fb8a8" stroke-width="1.4"/><text x="368" y="109" style="fill:#b4becf;font:600 8px Inter,sans-serif">anti-dsDNA</text><text x="368" y="118" style="fill:#6b7689;font:italic 6.5px Fraunces,serif">70% sens · 95% spec</text></g><g><circle cx="410" cy="150" r="5" fill="#4fb8a8" opacity="0.85" stroke="#4fb8a8" stroke-width="1.4"/><text x="418" y="144" style="fill:#b4becf;font:600 8px Inter,sans-serif">anti-Sm</text><text x="418" y="153" style="fill:#6b7689;font:italic 6.5px Fraunces,serif">30% sens · 99% spec</text></g><g><circle cx="230" cy="130" r="5" fill="#4fb8a8" opacity="0.85" stroke="#4fb8a8" stroke-width="1.4"/><text x="238" y="124" style="fill:#b4becf;font:600 8px Inter,sans-serif">RF</text><text x="238" y="133" style="fill:#6b7689;font:italic 6.5px Fraunces,serif">for RA, not SLE</text></g><g transform="translate(415 56)">
+    <rect x="-50" y="-7" width="100" height="14" rx="4" fill="rgba(107, 118, 137, 0.12)" stroke="#6b7689" stroke-width="0.9" stroke-dasharray="3 2"/>
+    <text x="-45" y="3" style="fill:#b4becf;font:700 7.5px Inter,sans-serif">C3 · C4</text>
+    <text x="-15" y="3" style="fill:#6b7689;font:italic 6.5px Fraunces,serif">activity marker · not an Ab</text>
+  </g><g transform="translate(250 215)">
+    <rect x="-200" y="-15" width="400" height="32" rx="5" fill="rgba(232, 169, 81, 0.06)" stroke="#e8a951" stroke-width="0.8" opacity="0.7"/>
+    <text x="-190" y="-3" style="fill:#e8a951;font:700 7.5px Inter,sans-serif;letter-spacing:1px">SENS ↑</text>
+    <text x="-150" y="-3" style="fill:#b4becf;font:7.5px Inter,sans-serif">→ catches all true positives → use for SCREENING</text>
+    <text x="-190" y="11" style="fill:#e8a951;font:700 7.5px Inter,sans-serif;letter-spacing:1px">SPEC ↑</text>
+    <text x="-150" y="11" style="fill:#b4becf;font:7.5px Inter,sans-serif">→ excludes false positives → use to CONFIRM diagnosis</text>
+  </g>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="130" cy="36" r="40" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="36;46;36" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="455" cy="73" r="24" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="20;30;20" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="455" cy="161" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>

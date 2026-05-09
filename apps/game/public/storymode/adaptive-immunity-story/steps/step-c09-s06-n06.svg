@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auto-generated from the reference HTML by
+  scripts/storymode-extraction/extract.mjs.
+  Do not edit by hand — regenerate the file instead.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 260" preserveAspectRatio="xMidYMid meet">
+                  <text x="20" y="16" style="fill:#e8a951;font:600 9px Inter,sans-serif;letter-spacing:2px">STEP 03 · NO CORE Ag · NO ANTI-HBc</text>
+
+                  <!-- Vaccine subunits -->
+                  <g transform="translate(135 145)">
+                    <text x="0" y="-65" text-anchor="middle" style="fill:#4fb8a8;font:700 9px Inter,sans-serif;letter-spacing:1.5px">VACCINE</text>
+                    <g transform="translate(-15 0)" opacity="1"><g stroke="#4fb8a8" stroke-width="2.4" fill="none" stroke-linecap="round"><line x1="0" y1="-12" x2="0" y2="8"></line><circle cx="0" cy="-12" r="4" fill="#4fb8a8" stroke="none"></circle><rect x="-12" y="6" width="24" height="6" rx="1" fill="#4fb8a8" fill-opacity="0.55" stroke="none"></rect></g></g>
+                    <g transform="translate(0 -3)" opacity="1"><g stroke="#4fb8a8" stroke-width="2.4" fill="none" stroke-linecap="round"><line x1="0" y1="-12" x2="0" y2="8"></line><circle cx="0" cy="-12" r="4" fill="#4fb8a8" stroke="none"></circle><rect x="-12" y="6" width="24" height="6" rx="1" fill="#4fb8a8" fill-opacity="0.55" stroke="none"></rect></g></g>
+                    <g transform="translate(15 0)" opacity="1"><g stroke="#4fb8a8" stroke-width="2.4" fill="none" stroke-linecap="round"><line x1="0" y1="-12" x2="0" y2="8"></line><circle cx="0" cy="-12" r="4" fill="#4fb8a8" stroke="none"></circle><rect x="-12" y="6" width="24" height="6" rx="1" fill="#4fb8a8" fill-opacity="0.55" stroke="none"></rect></g></g>
+                    <!-- explicit "no core" indicator -->
+                    <g transform="translate(0 30)">
+<circle cx="0" cy="0" r="9" fill="none" stroke="#9370b9" stroke-width="1.4" stroke-dasharray="2 2" opacity="0.6"></circle>
+<line x1="-7" y1="-7" x2="7" y2="7" stroke="#d14859" stroke-width="2" stroke-linecap="round"></line>
+<line x1="-7" y1="7" x2="7" y2="-7" stroke="#d14859" stroke-width="2" stroke-linecap="round"></line>
+                    </g>
+                    <text x="0" y="55" text-anchor="middle" style="fill:#9370b9;font:600 7px Inter,sans-serif;letter-spacing:1.2px">no HBcAg</text>
+                  </g>
+
+                  <!-- Arrow -->
+                  <path d="M 200 145 L 250 145" stroke="#e8a951" stroke-width="1.6" fill="none"></path>
+                  <polygon points="250,145 243,141 243,149" fill="#e8a951"></polygon>
+
+                  <!-- B cell can't see HBcAg → no anti-HBc -->
+                  <g transform="translate(330 145)">
+                    <text x="0" y="-65" text-anchor="middle" style="fill:#d14859;font:700 9px Inter,sans-serif;letter-spacing:1.5px">NO ANTI-HBc</text>
+                    <!-- Big purple Y with X over it -->
+                    <g transform="translate(0 0) scale(1.6)" opacity="1"><g stroke="#9370b9" stroke-width="2" fill="none" stroke-linecap="round"><path d="M -7 -6 L -2 0 L 2 0 L 7 -6"></path><line x1="0" y1="0" x2="0" y2="9"></line></g></g>
+                    <g transform="translate(0 0)">
+<line x1="-15" y1="-12" x2="15" y2="14" stroke="#d14859" stroke-width="3" stroke-linecap="round"></line>
+<line x1="-15" y1="14" x2="15" y2="-12" stroke="#d14859" stroke-width="3" stroke-linecap="round"></line>
+                    </g>
+                    <text x="0" y="32" text-anchor="middle" style="fill:#b4becf;font:italic 7px Fraunces,serif">never produced</text>
+                  </g>
+
+                  <!-- Verdict -->
+                  <g transform="translate(420 145)">
+                    <rect x="-50" y="-22" width="100" height="44" rx="6" fill="#e8a951" fill-opacity="0.30" stroke="#e8a951" stroke-width="1.6"></rect>
+                    <text x="0" y="-2" text-anchor="middle" style="fill:#e8a951;font:700 8px Inter,sans-serif;letter-spacing:1.2px">DIAGNOSTIC</text>
+                    <text x="0" y="11" text-anchor="middle" style="fill:#e8a951;font:700 8px Inter,sans-serif;letter-spacing:1.2px">DISCRIMINATOR</text>
+                  </g>
+
+                  <text x="250" y="245" text-anchor="middle" style="fill:#b4becf;font:italic 7.5px Fraunces,serif">vaccine has only HBsAg · no HBcAg means no anti-HBc · this is what tells vaccine apart from infection</text>
+
+                  <!-- FOCUS · audio-aligned attention marker -->
+                  <circle cx="330" cy="75" r="20" fill="none" stroke="#d14859" stroke-width="1.8" stroke-dasharray="3 2" opacity="0.85">
+                    <animate attributeName="r" values="16;26;16" dur="2.4s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.85;0.20;0.85" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+</svg>
