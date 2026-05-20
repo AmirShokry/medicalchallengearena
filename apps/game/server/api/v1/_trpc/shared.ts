@@ -1,4 +1,12 @@
-import { db, getTableColumns, sql, inArray, and, eq } from "@package/database";
+import {
+  db,
+  getTableColumns,
+  sql,
+  inArray,
+  and,
+  eq,
+  caseTypeEnum,
+} from "@package/database";
 import { jsonAggBuildObject } from "@package/database/helpers";
 import {
   QuestionsChoicesCTE,
@@ -6,8 +14,18 @@ import {
   UnusedCasesGeneratorCTE,
 } from "@package/database/ctes";
 import { z } from "zod";
+
+/**
+ * Question/case step ("STEP 1" | "STEP 2" | "STEP 3"). Mirrors the
+ * `case_type` enum in the database schema. Defaults to "STEP 1" so any
+ * caller that predates the step selector keeps working unchanged.
+ */
+export const caseTypeSchema = z.enum(caseTypeEnum.enumValues);
+export type CaseType = z.infer<typeof caseTypeSchema>;
+
 export const allBlockByCategoriesIdsSchema = z.object({
   categoriesIds: z.array(z.number().min(1)),
+  caseType: caseTypeSchema.default("STEP 1"),
   options: z
     .object({
       count: z.number().min(1).default(10),
@@ -40,7 +58,12 @@ export async function allBlockByCategoriesIds(
     .from(cases_questions)
     .innerJoin(cases, eq(cases_questions.case_id, cases.id))
     .innerJoin(categories, eq(cases.category_id, categories.id))
-    .where(inArray(categories.id, input.categoriesIds))
+    .where(
+      and(
+        inArray(categories.id, input.categoriesIds),
+        eq(cases.type, input.caseType)
+      )
+    )
     .innerJoin(
       QuestionsChoicesCTE,
       and(
@@ -57,6 +80,7 @@ export const unusedBlockByCategoriesIdsSchema = z.object({
   categoriesIds: z.array(z.number().min(1)),
   userId: z.number().min(1),
   opponentId: z.number().min(1),
+  caseType: caseTypeSchema.default("STEP 1"),
   options: z.object({
     count: z.number().min(1).default(10),
     studyMode: z.boolean().default(false),
@@ -99,7 +123,12 @@ export async function unusedBlockByCategoriesIds(
       eq(cases.id, UnusedCasesIdsCTE.unused_case_id)
     )
     .innerJoin(categories, eq(cases.category_id, categories.id))
-    .where(inArray(categories.id, input.categoriesIds))
+    .where(
+      and(
+        inArray(categories.id, input.categoriesIds),
+        eq(cases.type, input.caseType)
+      )
+    )
     .innerJoin(
       QuestionsChoicesCTE,
       and(eq(cases_questions.question_id, QuestionsChoicesCTE.id))

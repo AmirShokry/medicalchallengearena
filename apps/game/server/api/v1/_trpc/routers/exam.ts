@@ -1,7 +1,11 @@
 import { createTRPCRouter, authProcedure } from "../init";
 import { CaseQuestionChoicesStudyModeOnlyCTE } from "@package/database/ctes";
 import { and, db, eq, sql } from "@package/database";
-import { allBlockByCategoriesIds, unusedBlockByCategoriesIds } from "../shared";
+import {
+  allBlockByCategoriesIds,
+  unusedBlockByCategoriesIds,
+  caseTypeSchema,
+} from "../shared";
 import { type RecordObject } from "@package/types";
 import z from "zod";
 
@@ -12,6 +16,7 @@ export const exam = createTRPCRouter({
         pool: z.enum(["all", "unused"]),
         casesCount: z.number().int().min(1),
         selectedCatIds: z.array(z.number().int().min(1)),
+        caseType: caseTypeSchema.default("STEP 1"),
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -20,6 +25,7 @@ export const exam = createTRPCRouter({
         input.pool === "all"
           ? await allBlockByCategoriesIds({
               categoriesIds: input.selectedCatIds,
+              caseType: input.caseType,
               options: {
                 count: input.casesCount,
                 studyMode: false,
@@ -27,6 +33,7 @@ export const exam = createTRPCRouter({
             })
           : await unusedBlockByCategoriesIds({
               categoriesIds: input.selectedCatIds,
+              caseType: input.caseType,
               userId: ctx.session?.user.id!,
               opponentId: ctx.session?.user.id!,
               options: {

@@ -32,25 +32,41 @@ onUnmounted(() => {
 
 const searchQuery = ref("");
 
-const { data, pending, error } = $trpc.systems.categories.useQuery(undefined, {
-  transform: (data) => {
-    return {
-      ...data,
-      systemsCategories: data.systemsCategories.map((system) => {
-        return {
-          ...system,
-          isChecked: false,
-          categories: system.categories.map((category) => {
-            return {
-              ...category,
-              isChecked: false,
-            };
-          }),
-        };
-      }),
-    };
+// Question/case step selector. Picking a step refetches only that step's
+// cases, so the used/unused counters reflect the chosen step. Defaults to
+// "STEP 1" per product requirement.
+const caseTypeOptions = [
+  { value: "STEP 1", label: "Step 1" },
+  { value: "STEP 2", label: "Step 2" },
+  { value: "STEP 3", label: "Step 3" },
+] as const;
+type CaseType = (typeof caseTypeOptions)[number]["value"];
+const selectedCaseType = ref<CaseType>("STEP 1");
+
+// Passing a getter as the query input makes trpc-nuxt watch it, so the
+// systems/categories (and their counts) refetch whenever the step changes.
+const { data, pending, error } = $trpc.systems.categories.useQuery(
+  () => ({ caseType: selectedCaseType.value }),
+  {
+    transform: (data) => {
+      return {
+        ...data,
+        systemsCategories: data.systemsCategories.map((system) => {
+          return {
+            ...system,
+            isChecked: false,
+            categories: system.categories.map((category) => {
+              return {
+                ...category,
+                isChecked: false,
+              };
+            }),
+          };
+        }),
+      };
+    },
   },
-});
+);
 
 watchEffect(() => {
   if (data.value) {
@@ -59,6 +75,11 @@ watchEffect(() => {
     selectedPool.value = data.value.unusedCount > 0 ? "unused" : "all";
   }
 });
+
+// Switching step changes the entire available pool, so drop any in-progress
+// case-count selection. Category checkboxes reset on their own once the
+// refetched systems/categories arrive via the watchEffect above.
+watch(selectedCaseType, () => resetCasesCounters());
 
 const systemsCategories = computed(() => {
   if (!searchQuery.value.trim()) return systemsCategoriesRaw.value;
@@ -135,6 +156,7 @@ function handleToggleCategory(sysIndex: number, catIndex: number) {
 async function handleContinueToGame() {
   const selections = {
     pool: selectedPool.value,
+    caseType: selectedCaseType.value,
     casesCount: selectedCasesCount.value,
     selectedCatIds: systemsCategories.value.flatMap((system) => {
       return system.categories
@@ -312,6 +334,25 @@ function canSelectContinueToGame() {
                 >
                   <SearchIcon class="size-4 text-muted-foreground" />
                 </span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-sm">Step</span>
+                <UiSelect v-model="selectedCaseType">
+                  <UiSelectTrigger size="sm" class="!text-xs">
+                    <UiSelectValue placeholder="Step" />
+                  </UiSelectTrigger>
+                  <UiSelectContent>
+                    <UiSelectGroup>
+                      <UiSelectItem
+                        v-for="option in caseTypeOptions"
+                        :key="option.value"
+                        :value="option.value"
+                      >
+                        {{ option.label }}
+                      </UiSelectItem>
+                    </UiSelectGroup>
+                  </UiSelectContent>
+                </UiSelect>
               </div>
               <div class="max-md:ml-0 ml-auto">
                 <UiRadioGroup

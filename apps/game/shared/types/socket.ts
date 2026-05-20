@@ -43,8 +43,10 @@ export namespace ToClientIO {
           | "category"
           | "questionsCount"
           | "allSystems"
-          | "selectAll";
+          | "selectAll"
+          | "caseType";
         pool?: "all" | "unused";
+        caseType?: "STEP 1" | "STEP 2" | "STEP 3";
         sysIndex?: number;
         catIndex?: number;
         questionsCount?: number;
@@ -280,8 +282,10 @@ export namespace ToServerIO {
           | "category"
           | "questionsCount"
           | "allSystems"
-          | "selectAll";
+          | "selectAll"
+          | "caseType";
         pool?: "all" | "unused";
+        caseType?: "STEP 1" | "STEP 2" | "STEP 3";
         sysIndex?: number;
         catIndex?: number;
         questionsCount?: number;
@@ -289,6 +293,7 @@ export namespace ToServerIO {
       userSentSelectionChat: (data: string) => void;
       userStartedGame: (data: {
         pool: "all" | "unused";
+        caseType: "STEP 1" | "STEP 2" | "STEP 3";
         casesCount: number;
         selectedCatIds: number[];
       }) => void;

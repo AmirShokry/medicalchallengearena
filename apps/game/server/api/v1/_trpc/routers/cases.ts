@@ -1,12 +1,14 @@
 import z from "zod";
 import { createTRPCRouter, authProcedure } from "../init";
-import { db, sql } from "@package/database";
+import { db, sql, eq } from "@package/database";
+import { caseTypeSchema } from "../shared";
 export const cases = createTRPCRouter({
 	mactchingCount: authProcedure
 		.input(
 			z.object({
 				user1Id: z.number().min(1),
 				user2Id: z.number().min(1),
+				caseType: caseTypeSchema.default("STEP 1"),
 			})
 		)
 		.query(async ({ input }) => {
@@ -24,19 +26,21 @@ export const cases = createTRPCRouter({
 							),
 						matching_count: sql<number>`
 				(SELECT COUNT(DISTINCT ${cases.id})
-				FROM ${cases} WHERE ${cases.id} NOT IN (
+				FROM ${cases} WHERE ${cases.type} = ${input.caseType}::case_type AND ${cases.id} NOT IN (
 					SELECT ${users_cases.case_id}
-					FROM ${users_cases} 
+					FROM ${users_cases}
 					WHERE ${users_cases.user_id} = ${input.user1Id} OR ${users_cases.user_id} = ${input.user2Id}
 					)
 				)::int
 				`.as("matching_count"),
 						total_count:
-							sql<number>`(SELECT COUNT(DISTINCT id)::int FROM ${cases})`.as(
+							sql<number>`(SELECT COUNT(DISTINCT id)::int FROM ${cases} WHERE type = ${input.caseType}::case_type)`.as(
 								"total_count"
 							),
 					})
 					.from(users_cases)
+					.innerJoin(cases, eq(cases.id, users_cases.case_id))
+					.where(eq(cases.type, input.caseType))
 			);
 
 			return await db

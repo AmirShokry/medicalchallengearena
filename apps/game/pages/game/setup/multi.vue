@@ -42,20 +42,38 @@ const counters = ref(
   }[],
 );
 
+// Question/case step selector (defaults to "STEP 1"). Only the room master
+// can change it; the choice is mirrored to the opponent over the socket so
+// both clients fetch counts for — and start the game from — the same step.
+const caseTypeOptions = [
+  { value: "STEP 1", label: "Step 1" },
+  { value: "STEP 2", label: "Step 2" },
+  { value: "STEP 3", label: "Step 3" },
+] as const;
+type CaseType = (typeof caseTypeOptions)[number]["value"];
+const selectedCaseType = ref<CaseType>("STEP 1");
+
+// Refetch the bilateral systems/categories and counters for the current
+// step. Called when an opponent is matched, when the step changes, and when
+// the server reports a stale (empty) pool.
+async function loadMatchingData() {
+  if (user2Id.value <= 0) return;
+  data.value = await $trpc.systems.matchingSystemCategories.query({
+    user1Id: user1Id.value,
+    user2Id: user2Id.value,
+    caseType: selectedCaseType.value,
+  });
+
+  counters.value = await $trpc.cases.mactchingCount.query({
+    user1Id: user1Id.value,
+    user2Id: user2Id.value,
+    caseType: selectedCaseType.value,
+  });
+}
+
 watch(
   user2Id,
-  async () => {
-    if (user2Id.value <= 0) return;
-    data.value = await $trpc.systems.matchingSystemCategories.query({
-      user1Id: user1Id.value,
-      user2Id: user2Id.value,
-    });
-
-    counters.value = await $trpc.cases.mactchingCount.query({
-      user1Id: user1Id.value,
-      user2Id: user2Id.value,
-    });
-  },
+  loadMatchingData,
   // immediate: counters MUST load when the page mounts even if user2Id was
   // already set before mount (e.g. re-entering setup after a previous match).
   // Without this, counters stay [], the user sees an empty UI, or worse the
@@ -132,6 +150,18 @@ function handlePoolSelected(value: "all" | "unused", isRemote?: boolean) {
     system.isChecked = false;
   });
 }
+
+async function handleCaseTypeSelected(value: CaseType, isRemote?: boolean) {
+  if (!isRemote)
+    gameSocket
+      .timeout(10000)
+      .emit("userSelected", { target: "caseType", caseType: value });
+  selectedCaseType.value = value;
+  resetCasesCounters();
+  // Refetch counts for the new step. The systemsCategories computed rebuilds
+  // from the fresh `data`, so every category comes back unchecked.
+  await loadMatchingData();
+}
 function handleToggleEntireSystemCategories(
   sysIndex: number,
   isRemote?: boolean,
@@ -207,6 +237,7 @@ function handleToggleCategory(
 function handleContinueToGame() {
   const selections = {
     pool: selectedPool.value,
+    caseType: selectedCaseType.value,
     casesCount: selectedCasesCount.value,
     selectedCatIds: systemsCategories.value.flatMap((system) => {
       return system.categories
@@ -333,6 +364,10 @@ gameSocket.onAny((event, ...args) => {
         if (!data.pool) return;
         handlePoolSelected(data.pool, true);
         break;
+      case "caseType":
+        if (!data.caseType) return;
+        handleCaseTypeSelected(data.caseType, true);
+        break;
       case "questionsCount":
         if (!Number.isInteger(data.questionsCount)) return;
         handleCasesCountUpdated(data.questionsCount!, true);
@@ -399,14 +434,7 @@ gameSocket.on("noCasesFound", async ({ reason }) => {
   $$game.flags.ingame.isGameStarted = false;
   toast.error(reason);
   if (user2Id.value > 0) {
-    counters.value = await $trpc.cases.mactchingCount.query({
-      user1Id: user1Id.value,
-      user2Id: user2Id.value,
-    });
-    data.value = await $trpc.systems.matchingSystemCategories.query({
-      user1Id: user1Id.value,
-      user2Id: user2Id.value,
-    });
+    await loadMatchingData();
     resetCasesCounters();
   }
 });
@@ -509,6 +537,37 @@ onUnmounted(() => {
                 >
                   <SearchIcon class="size-4 text-muted-foreground" />
                 </span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-sm">Step</span>
+                <UiSelect
+                  v-model="selectedCaseType"
+                  @update:model-value="
+                    (value) =>
+                      handleCaseTypeSelected(
+                        value as 'STEP 1' | 'STEP 2' | 'STEP 3',
+                      )
+                  "
+                >
+                  <UiSelectTrigger
+                    size="sm"
+                    class="!text-xs"
+                    :disabled="!isRoomMaster"
+                  >
+                    <UiSelectValue placeholder="Step" />
+                  </UiSelectTrigger>
+                  <UiSelectContent>
+                    <UiSelectGroup>
+                      <UiSelectItem
+                        v-for="option in caseTypeOptions"
+                        :key="option.value"
+                        :value="option.value"
+                      >
+                        {{ option.label }}
+                      </UiSelectItem>
+                    </UiSelectGroup>
+                  </UiSelectContent>
+                </UiSelect>
               </div>
               <div class="max-md:ml-0 ml-auto">
                 <UiRadioGroup

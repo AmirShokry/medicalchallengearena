@@ -2,6 +2,7 @@ import z from "zod";
 import { createTRPCRouter, authProcedure } from "../init";
 import { db, eq, or, sql, and, count } from "@package/database";
 import { jsonAggBuildObject } from "@package/database/helpers";
+import { caseTypeSchema, type CaseType } from "../shared";
 export const systems = createTRPCRouter({
 	self: authProcedure.query(
 		async () => await db.select().from(db.table.systems)
@@ -11,6 +12,7 @@ export const systems = createTRPCRouter({
 			z.object({
 				user1Id: z.number().min(1),
 				user2Id: z.number().min(1),
+				caseType: caseTypeSchema.default("STEP 1"),
 			})
 		)
 		.query(async ({ input }) => {
@@ -35,7 +37,13 @@ export const systems = createTRPCRouter({
 							),
 					})
 					.from(categories)
-					.leftJoin(cases, eq(cases.category_id, categories.id))
+					.leftJoin(
+						cases,
+						and(
+							eq(cases.category_id, categories.id),
+							eq(cases.type, input.caseType)
+						)
+					)
 					.leftJoin(
 						users_cases,
 						and(
@@ -79,14 +87,15 @@ export const systems = createTRPCRouter({
 						unusedCount2: sql<number>`(${CategoryStats.totalCases} - ${CategoryStats.user2UsedCases})::int`,
 						// A case is unused if neither user has used it
 						matchCount: sql<number>`
-                    (${CategoryStats.totalCases} - 
+                    (${CategoryStats.totalCases} -
                         (
                             SELECT COUNT(DISTINCT uc.case_id)
                             FROM users_cases uc
                             WHERE uc.case_id IN (
-                                SELECT c.id 
-                                FROM cases c 
+                                SELECT c.id
+                                FROM cases c
                                 WHERE c.category_id = ${CategoryStats.categoryId}
+                                AND c.type = ${input.caseType}::case_type
                             )
                             AND uc.user_id IN (${input.user1Id}, ${input.user2Id})
                         )
@@ -102,26 +111,43 @@ export const systems = createTRPCRouter({
 				.groupBy(systems.id);
 		}),
 
-	categories: authProcedure.query(async ({ ctx }) => {
-		const { cases, users_cases } = db.table;
-		const [{ allCount }] = await db
-			.select({ allCount: count() })
-			.from(cases);
+	categories: authProcedure
+		.input(
+			z
+				.object({ caseType: caseTypeSchema.default("STEP 1") })
+				.default({ caseType: "STEP 1" })
+		)
+		.query(async ({ ctx, input }) => {
+			const { cases, users_cases } = db.table;
+			const [{ allCount }] = await db
+				.select({ allCount: count() })
+				.from(cases)
+				.where(eq(cases.type, input.caseType));
 
-		const [{ usedCount }] = await db
-			.select({ usedCount: count() })
-			.from(users_cases)
-			.where(eq(users_cases.user_id, ctx.session?.user.id!));
-		const unusedCount = allCount - usedCount;
+			const [{ usedCount }] = await db
+				.select({ usedCount: count() })
+				.from(users_cases)
+				.innerJoin(cases, eq(cases.id, users_cases.case_id))
+				.where(
+					and(
+						eq(users_cases.user_id, ctx.session?.user.id!),
+						eq(cases.type, input.caseType)
+					)
+				);
+			const unusedCount = allCount - usedCount;
 
-		const systemsCategories = await getSystemsCategoriesByUserId(
-			ctx.session?.user.id!
-		);
+			const systemsCategories = await getSystemsCategoriesByUserId(
+				ctx.session?.user.id!,
+				input.caseType
+			);
 
-		return { systemsCategories, allCount, usedCount, unusedCount };
-	}),
+			return { systemsCategories, allCount, usedCount, unusedCount };
+		}),
 });
-export async function getSystemsCategoriesByUserId(userId: number) {
+export async function getSystemsCategoriesByUserId(
+	userId: number,
+	caseType: CaseType = "STEP 1"
+) {
 	// Single CTE to get all the necessary counts in one pass
 	const { systems, categories, cases, users_cases } = db.table;
 	const CategoryStats = db.$with("CategoryStats").as(
@@ -139,7 +165,13 @@ export async function getSystemsCategoriesByUserId(userId: number) {
 					),
 			})
 			.from(categories)
-			.leftJoin(cases, eq(cases.category_id, categories.id))
+			.leftJoin(
+				cases,
+				and(
+					eq(cases.category_id, categories.id),
+					eq(cases.type, caseType)
+				)
+			)
 			.leftJoin(
 				users_cases,
 				and(

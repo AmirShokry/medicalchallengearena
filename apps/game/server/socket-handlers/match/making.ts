@@ -285,10 +285,12 @@ export function registerMatchMaking(socket: GameSocket, io: GameIO) {
       data.pool === "all"
         ? await appRouterCaller.block.allBlockByCategoriesIds({
             categoriesIds: data.selectedCatIds,
+            caseType: data.caseType,
             options: { count: data.casesCount, studyMode: false },
           })
         : await appRouterCaller.block.unusedBlockByCategoriesIds({
             categoriesIds: data.selectedCatIds,
+            caseType: data.caseType,
             userId: socket.data.session?.id,
             opponentId: opponentSocket.data.session?.id,
             options: { count: data.casesCount, studyMode: false },
