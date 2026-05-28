@@ -5,7 +5,7 @@ import type { StationStatus, StorySystem } from "./types";
  * Per-system progress tracking, persisted in localStorage.
  *
  * Mirrors the rules from the original reference HTML:
- *   - The first station of chapter 1 is always available.
+ *   - The first station of the first chapter is always available.
  *   - A chapter is locked until every station of the previous chapter is
  *     completed.
  *   - Within an unlocked chapter, only the first not-yet-completed station
@@ -30,10 +30,30 @@ function load(systemName: string): Set<string> {
 		const raw = window.localStorage.getItem(storageKey(systemName));
 		if (!raw) return new Set();
 		const arr = JSON.parse(raw);
-		return Array.isArray(arr) ? new Set(arr) : new Set();
+		return Array.isArray(arr)
+			? new Set(arr.filter((key): key is string => typeof key === "string"))
+			: new Set();
 	} catch {
 		return new Set();
 	}
+}
+
+function setsEqual(left: Set<string>, right: Set<string>) {
+	if (left.size !== right.size) return false;
+	for (const item of left) if (!right.has(item)) return false;
+	return true;
+}
+
+function sanitizeCompleted(system: StorySystem, stored: Set<string>) {
+	const next = new Set<string>();
+	for (const chapter of system.chapters) {
+		for (let stationIdx = 0; stationIdx < chapter.stations.length; stationIdx++) {
+			const key = getStationKey(chapter.num, stationIdx);
+			if (!stored.has(key)) return next;
+			next.add(key);
+		}
+	}
+	return next;
 }
 
 function persist(systemName: string, completed: Set<string>) {
@@ -75,7 +95,10 @@ export function useStoryProgress(systemRef: () => StorySystem | null | undefined
 			}
 			if (currentSystemName.value === system.name) return;
 			currentSystemName.value = system.name;
-			completed.value = load(system.name);
+			const stored = load(system.name);
+			const sanitized = sanitizeCompleted(system, stored);
+			completed.value = sanitized;
+			if (!setsEqual(stored, sanitized)) persist(system.name, sanitized);
 		},
 		{ immediate: true },
 	);
@@ -155,6 +178,7 @@ export function useStoryProgress(systemRef: () => StorySystem | null | undefined
 	});
 
 	function markCompleted(chapterNum: number, stationIdx: number) {
+		if (getStatus(chapterNum, stationIdx) === "locked") return;
 		const next = new Set(completed.value);
 		next.add(getStationKey(chapterNum, stationIdx));
 		completed.value = next;

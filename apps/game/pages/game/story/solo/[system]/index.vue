@@ -62,7 +62,7 @@ function statusFor(chapterNum: number, stationIdx: number) {
 
 function openStation(chapterNum: number, stationIdx: number) {
 	if (!system.value) return;
-	const chapter = system.value.chapters[chapterNum - 1];
+	const chapter = system.value.chapters.find((c) => c.num === chapterNum);
 	if (!chapter) return;
 	const station = chapter.stations[stationIdx];
 	if (!station) return;
