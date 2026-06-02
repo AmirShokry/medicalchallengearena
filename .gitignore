@@ -5,6 +5,7 @@ node_modules
 .pnp
 .pnp.js
 *.md
+!question-generation-prompt.md
 # testing
 coverage
 

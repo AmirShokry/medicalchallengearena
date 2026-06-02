@@ -1,7 +1,11 @@
 <script setup lang="ts">
 //@ts-expect-error
 import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
-import { type CaseTypes, type Block } from "./Input/Index.vue";
+import {
+  type CaseTypes,
+  type Block,
+  ENTRY_PREFERENCES,
+} from "./Input/Index.vue";
 import {
   CheckCircle2Icon,
   NotebookPenIcon,
@@ -19,6 +23,13 @@ const { system, category, caseType } = defineProps<{
 const scrollerRef = useTemplateRef("scrollerRef");
 const inputStore = useInputStore();
 const previewStore = usePreviewStore();
+const xmlStore = useXmlImportStore();
+
+// When editing from the preview while in text-editor mode, we switch to the
+// GUI form to edit the case. If the text editor has unsaved content, confirm
+// first (the content is preserved, but we're navigating away from it).
+const showSwitchWarning = ref(false);
+const pendingEditId = ref<number | null>(null);
 
 watch(
   () => caseType,
@@ -55,6 +66,27 @@ watch(
 );
 
 function handleEditCase(itemId: number) {
+  // In text-editor mode, editing happens in the GUI form — switch modes first.
+  if (ENTRY_PREFERENCES.value.ENTRY_MODE === "text") {
+    if (xmlStore.hasContent) {
+      // Warn before pulling the user away from unsaved text-editor content.
+      pendingEditId.value = itemId;
+      showSwitchWarning.value = true;
+      return;
+    }
+    ENTRY_PREFERENCES.value.ENTRY_MODE = "gui";
+  }
+  doEditCase(itemId);
+}
+
+function confirmSwitchAndEdit() {
+  showSwitchWarning.value = false;
+  ENTRY_PREFERENCES.value.ENTRY_MODE = "gui";
+  if (pendingEditId.value !== null) doEditCase(pendingEditId.value);
+  pendingEditId.value = null;
+}
+
+function doEditCase(itemId: number) {
   const originalIndex = previewStore.preview.findIndex((p) => p.id === itemId);
   if (originalIndex === -1) return;
 
@@ -243,6 +275,28 @@ function isItemEditing(itemId: number): boolean {
     >
       <SvgoLoader class="text-6xl text-center delayed-fade" />
     </div>
+
+    <!-- Confirm switching from text-editor mode to GUI mode to edit a case -->
+    <Dialog v-model:open="showSwitchWarning">
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Switch to GUI mode?</DialogTitle>
+          <DialogDescription>
+            You have unsaved content in the text editor. Editing a case opens
+            the GUI form editor. Your text-editor content is preserved — switch
+            back to Text mode anytime to continue it.
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <DialogClose as-child>
+            <Button variant="ghost" @click="pendingEditId = null">Cancel</Button>
+          </DialogClose>
+          <Button class="cursor-pointer" @click="confirmSwitchAndEdit">
+            Switch &amp; edit
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   </section>
 </template>
 

@@ -7,10 +7,12 @@ import {
   AlertCircleIcon,
   CheckCircle2Icon,
   Loader2Icon,
+  DownloadIcon,
 } from "lucide-vue-next";
 import type { CaseTypes } from "@/components/entry/Input/Index.vue";
 import CodeEditor from "@/components/ui/code-editor/CodeEditor.vue";
 import EntryCaseCard from "@/components/entry/CaseCard.vue";
+import { downloadGenerationPrompt } from "@/lib/questionGenerationPrompt";
 
 const { caseType, system, category } = defineProps<{
   caseType: CaseTypes;
@@ -60,6 +62,16 @@ async function onImport() {
 function onClear() {
   store.reset();
 }
+
+const runtimeConfig = useRuntimeConfig();
+function onDownloadPrompt() {
+  downloadGenerationPrompt({
+    system,
+    category,
+    caseType,
+    imageApiKey: runtimeConfig.public.imageApiKey as string,
+  });
+}
 </script>
 
 <template>
@@ -78,6 +90,15 @@ function onClear() {
         <span class="font-medium text-featured-foreground">{{ caseType }}</span>
       </div>
 
+      <Button
+        variant="secondary"
+        size="sm"
+        class="cursor-pointer"
+        title="Download the AI generation prompt, pre-filled for this system & category"
+        @click="onDownloadPrompt"
+      >
+        <DownloadIcon class="mr-1" :size="15" /> Prompt
+      </Button>
       <Button
         variant="secondary"
         size="sm"
