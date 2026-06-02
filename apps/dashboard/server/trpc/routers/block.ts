@@ -1,19 +1,15 @@
 import { z } from "zod";
 import { authProcedure, createTRPCRouter } from "../init";
-import {
-  and,
-  db,
-  eq,
-  sql,
-  inArray,
-  SQL,
-  AnyColumn,
-  desc,
-} from "@package/database";
+import { and, db, eq, sql, inArray, desc } from "@package/database";
+import type { SQL, AnyColumn } from "@package/database";
 import { CasesQuestionsChoicesCTE } from "@package/database/ctes";
 import { TRPCError } from "@trpc/server";
-import { inputSchema } from "@/shared/schema/input";
+import { inputSchema, xmlImportSchema } from "@/shared/schema/input";
+import type { XmlCaseInput, XmlImportInput } from "@/shared/schema/input";
 import { getCache, setCache, delCache } from "@package/redis";
+
+/** Transaction handle type, as handed to the `db.transaction` callback. */
+type Tx = Parameters<Parameters<typeof db.transaction>[0]>[0];
 
 export const block = createTRPCRouter({
   get: authProcedure
@@ -241,6 +237,25 @@ export const block = createTRPCRouter({
             };
           }),
         };
+      });
+    }),
+
+  /**
+   * Bulk-insert many cases from the text-editor (XML) mode in ONE transaction.
+   * All-or-nothing: if any case fails, the whole batch rolls back. `type`
+   * (STEP) and `category_id` come from the page and apply to every case.
+   */
+  addMany: authProcedure
+    .input(xmlImportSchema)
+    .mutation(async ({ input }) => {
+      return await db.transaction(async (tx) => {
+        const created = [];
+        for (const caseInput of input.cases) {
+          created.push(
+            await insertCaseInTx(tx, caseInput, input.type, input.category_id)
+          );
+        }
+        return created;
       });
     }),
 
@@ -480,6 +495,132 @@ export const block = createTRPCRouter({
         .where(eq(db.table.cases.id, input.caseId));
     }),
 });
+
+/**
+ * Insert a single case (+ its questions, choices and join rows) inside an
+ * existing transaction and return the assembled, DB-shaped case — matching the
+ * shape produced by `block.add` so the client can render it directly.
+ */
+async function insertCaseInTx(
+  tx: Tx,
+  input: XmlCaseInput,
+  caseType: XmlImportInput["type"],
+  categoryId: number | null
+) {
+  const [caseResult] = await tx
+    .insert(db.table.cases)
+    .values({
+      body: input.body,
+      type: caseType,
+      imgUrls: input.imgUrls ?? [],
+      category_id: categoryId,
+    })
+    .returning();
+
+  if (!caseResult || !caseResult.id)
+    throw new TRPCError({
+      message: "Failed to add case",
+      code: "INTERNAL_SERVER_ERROR",
+    });
+
+  const questionsResults = await tx
+    .insert(db.table.questions)
+    .values(
+      input.questions.map((q) => ({
+        type: q.type,
+        body: q.body,
+        header: q.header || null,
+      }))
+    )
+    .returning();
+
+  if (!questionsResults.length)
+    throw new TRPCError({
+      message: "Failed to add questions",
+      code: "INTERNAL_SERVER_ERROR",
+    });
+
+  const casesQuestionsResults = await tx
+    .insert(db.table.cases_questions)
+    .values(
+      input.questions.map((q, i) => ({
+        case_id: caseResult.id,
+        question_id: questionsResults[i].id,
+        imgUrls: q.imgUrls,
+        isStudyMode: q.isStudyMode,
+        explanation: q.explanation,
+        explanationImgUrls: q.explanationImgUrls,
+      }))
+    )
+    .returning();
+
+  if (!casesQuestionsResults.length)
+    throw new TRPCError({
+      message: "Failed to assign cases questions",
+      code: "INTERNAL_SERVER_ERROR",
+    });
+
+  const choicesResults = await tx
+    .insert(db.table.choices)
+    .values(input.questions.flatMap((q) => q.choices.map((c) => ({ body: c.body }))))
+    .returning();
+
+  if (!choicesResults.length)
+    throw new TRPCError({
+      message: "Failed to add choices",
+      code: "INTERNAL_SERVER_ERROR",
+    });
+
+  const questionsChoicesValues: Array<{
+    question_id: number;
+    choice_id: number;
+    isCorrect: boolean;
+    explanation: string | null;
+  }> = [];
+  let choiceOffset = 0;
+  for (let qi = 0; qi < input.questions.length; qi++) {
+    const question = input.questions[qi];
+    for (let ci = 0; ci < question.choices.length; ci++) {
+      questionsChoicesValues.push({
+        question_id: questionsResults[qi].id,
+        choice_id: choicesResults[choiceOffset + ci].id,
+        isCorrect: question.choices[ci].isCorrect || false,
+        explanation: question.choices[ci].explanation || null,
+      });
+    }
+    choiceOffset += question.choices.length;
+  }
+
+  const questionsChoicesResults = await tx
+    .insert(db.table.questions_choices)
+    .values(questionsChoicesValues)
+    .returning();
+
+  if (!questionsChoicesResults.length)
+    throw new TRPCError({
+      message: "Failed to assign questions choices",
+      code: "INTERNAL_SERVER_ERROR",
+    });
+
+  return {
+    ...caseResult,
+    questions: questionsResults.map((question, qIndex) => {
+      const choicesCount = input.questions[qIndex].choices.length;
+      const start = input.questions
+        .slice(0, qIndex)
+        .reduce((acc, q) => acc + q.choices.length, 0);
+      const end = start + choicesCount;
+      return {
+        ...question,
+        ...casesQuestionsResults[qIndex],
+        choices: choicesResults.slice(start, end).map((choice, cIndex) => ({
+          ...choice,
+          ...questionsChoicesResults[start + cIndex],
+        })),
+      };
+    }),
+  };
+}
 
 function buildCaseSql<T extends { id: string | number }>(
   rows: T[],

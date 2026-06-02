@@ -5,6 +5,7 @@ import type { InjectionKey, ShallowRef } from "vue";
 export type Block = APIOutput["block"]["get"];
 export type QuestionType = "Default" | "Tabular";
 export type CaseTypes = (typeof CASE_TYPES)[number];
+export type EntryMode = "gui" | "text";
 export const CASE_TYPES = ["STEP 1", "STEP 2", "STEP 3"] as const;
 export const ENTRY_PREFERENCES = useStorage("entry-preferences", {
   CHOICES_ROWS: 4,
@@ -13,6 +14,8 @@ export const ENTRY_PREFERENCES = useStorage("entry-preferences", {
   CASE_TYPE: "STEP 1" as CaseTypes,
   INPUT_PANEL_SIZE: [70],
   IS_SIDEBAR_OPEN: false,
+  /** GUI (form) entry vs. bulk XML text-editor entry. */
+  ENTRY_MODE: "gui" as EntryMode,
 });
 const inputSectionRefKey = Symbol("inputSectionRef") as InjectionKey<
   ShallowRef<HTMLElement | null>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {
   type CaseTypes,
+  type EntryMode,
   ENTRY_PREFERENCES,
   CASE_TYPES,
 } from "@/components/entry/Input/Index.vue";
@@ -33,6 +34,10 @@ const initialCaseType: CaseTypes = (
 ) as CaseTypes;
 
 const activeCaseType = ref<CaseTypes>(initialCaseType);
+const entryMode = computed<EntryMode>({
+  get: () => ENTRY_PREFERENCES.value.ENTRY_MODE,
+  set: (mode) => (ENTRY_PREFERENCES.value.ENTRY_MODE = mode),
+});
 const inputStore = useInputStore();
 const previewStore = usePreviewStore();
 usePreviewStore().editedCaseIndex = null;
@@ -166,6 +171,42 @@ if (pendingEditCaseId != null && !Number.isNaN(pendingEditCaseId)) {
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
+
+        <!-- GUI vs. Text-editor mode toggle -->
+        <div
+          class="ml-2 inline-flex items-center rounded-md border border-border bg-featured/30 p-0.5"
+          role="tablist"
+          aria-label="Entry mode"
+        >
+          <button
+            type="button"
+            role="tab"
+            :aria-selected="entryMode === 'gui'"
+            class="cursor-pointer rounded-sm px-2.5 py-1 text-xs font-medium transition-colors"
+            :class="
+              entryMode === 'gui'
+                ? 'bg-primary text-primary-foreground'
+                : 'text-muted-foreground hover:text-foreground'
+            "
+            @click="entryMode = 'gui'"
+          >
+            GUI
+          </button>
+          <button
+            type="button"
+            role="tab"
+            :aria-selected="entryMode === 'text'"
+            class="cursor-pointer rounded-sm px-2.5 py-1 text-xs font-medium transition-colors"
+            :class="
+              entryMode === 'text'
+                ? 'bg-primary text-primary-foreground'
+                : 'text-muted-foreground hover:text-foreground'
+            "
+            @click="entryMode = 'text'"
+          >
+            Text
+          </button>
+        </div>
       </div>
 
       <!-- Search Bar -->
@@ -201,6 +242,13 @@ if (pendingEditCaseId != null && !Number.isNaN(pendingEditCaseId)) {
     <ResizablePanelGroup :direction="isMobile ? 'vertical' : 'horizontal'">
       <ResizablePanel :default-size="ENTRY_PREFERENCES.INPUT_PANEL_SIZE[0]">
         <EntryInput
+          v-if="entryMode === 'gui'"
+          :system="params.system"
+          :category="params.category"
+          :case-type="activeCaseType"
+        />
+        <EntryTextEditor
+          v-else
           :system="params.system"
           :category="params.category"
           :case-type="activeCaseType"
