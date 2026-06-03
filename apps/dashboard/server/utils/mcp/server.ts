@@ -16,11 +16,6 @@
  */
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
-import {
-  registerAppTool,
-  registerAppResource,
-  RESOURCE_MIME_TYPE,
-} from "@modelcontextprotocol/ext-apps/server";
 import { z } from "zod";
 import { appRouter } from "@/server/trpc/routers";
 import { CASE_TYPES, type XmlImportInput } from "@/shared/schema/input";
@@ -36,17 +31,7 @@ import {
   type SystemWithCategories,
 } from "./cases";
 import { uploadImage } from "./imghippo";
-import {
-  buildMarkdownPreview,
-  buildPreviewPayload,
-  countQuestions,
-  PREVIEW_META_KEY,
-} from "./preview";
-import {
-  PREVIEW_RESOURCE_URI,
-  panelHtml,
-  panelCspResourceDomains,
-} from "./panel";
+import { buildPreviewHtml, countQuestions } from "./preview";
 import { AUTHORING_GUIDE } from "./guide";
 
 export type BuildServerOptions = {
@@ -145,18 +130,21 @@ export function buildMcpServer(opts: BuildServerOptions): McpServer {
     }
   );
 
-  /* 3) preview_cases (MCP App + markdown fallback) ------------------ */
-  registerAppTool(
-    server,
+  /* 3) preview_cases — validate, stage a draft, and return a complete styled
+     HTML document for the host to render as an artifact (the side-panel review).
+     We use an HTML artifact rather than the MCP Apps panel because claude.ai web
+     reliably renders artifacts, whereas its MCP App (ui://) rendering has open
+     bugs. The result is plain text content (no structuredContent → no JSON blob). */
+  server.registerTool(
     "preview_cases",
     {
       title: "Preview cases",
       description:
-        "Validate generated cases and show the user a visual preview to review BEFORE " +
-        "anything is saved. Provide `system`, `category` and `caseType`, plus the cases as " +
-        "EITHER `cases` (structured JSON, preferred) OR `xml` (the <cases> format). " +
-        "Returns a draftId; once the user approves, call commit_cases with it. Nothing is " +
-        "written by this tool.",
+        "Validate generated cases and show the user a VISUAL preview to review BEFORE anything " +
+        "is saved. Provide `system`, `category` and `caseType`, plus the cases as EITHER `cases` " +
+        "(structured JSON, preferred) OR `xml`. The result contains a complete HTML document that " +
+        "you MUST render as an artifact for the user (do not paste the code). Returns a draftId; " +
+        "once the user approves, call commit_cases with it. Nothing is written by this tool.",
       inputSchema: {
         system: z.string().describe("Existing system name (see list_systems_and_categories)."),
         category: z.string().describe("Existing category name within that system."),
@@ -171,7 +159,6 @@ export function buildMcpServer(opts: BuildServerOptions): McpServer {
           .describe("Alternatively, a <cases>…</cases> XML document."),
       },
       annotations: { readOnlyHint: true, openWorldHint: false },
-      _meta: { ui: { resourceUri: PREVIEW_RESOURCE_URI } },
     },
     async (args): Promise<CallToolResult> => {
       const { system, category, caseType, cases, xml } = args;
@@ -190,7 +177,7 @@ export function buildMcpServer(opts: BuildServerOptions): McpServer {
         );
       }
 
-      // Stage a draft and render the preview.
+      // Stage a draft and build the styled HTML preview document.
       const draft = await saveDraft({
         system,
         category,
@@ -198,14 +185,23 @@ export function buildMcpServer(opts: BuildServerOptions): McpServer {
         type: caseType,
         cases: prep.cases,
       });
+      const total = countQuestions(draft.cases);
+      const html = buildPreviewHtml(draft);
 
-      // content = readable markdown (model + the fallback the user sees if the
-      // panel host isn't available). Panel render data goes in `_meta` — NOT
-      // `structuredContent`, which claude.ai would render as a raw JSON block.
-      return {
-        content: [{ type: "text", text: buildMarkdownPreview(draft) }],
-        _meta: { [PREVIEW_META_KEY]: buildPreviewPayload(draft) },
-      };
+      // Instruct the host to render the HTML as an artifact (the visual side
+      // panel), and how to commit. The full document is included verbatim.
+      const text =
+        `Prepared a preview of ${draft.cases.length} case(s) / ${total} question(s) for ` +
+        `**${draft.system} › ${draft.category}** (${draft.type}).\n\n` +
+        "**Render this for the user as an HTML artifact** (type `text/html`) titled " +
+        '"🩺 Case Preview" — show the rendered preview, do NOT paste the raw code. After it ' +
+        "renders, ask the user to review and confirm.\n\n" +
+        `When the user approves, call \`commit_cases\` with \`draftId: "${draft.id}"\` to append ` +
+        "them (append-only — nothing existing is changed). To revise, change the cases and preview again.\n\n" +
+        "```html\n" +
+        html +
+        "\n```";
+      return { content: [{ type: "text", text }] };
     }
   );
 
@@ -375,29 +371,6 @@ export function buildMcpServer(opts: BuildServerOptions): McpServer {
         ],
       };
     }
-  );
-
-  /* Resource: the review panel ------------------------------------- */
-  registerAppResource(
-    server,
-    "Case preview panel",
-    PREVIEW_RESOURCE_URI,
-    { description: "Interactive review of the staged USMLE cases." },
-    async () => ({
-      contents: [
-        {
-          uri: PREVIEW_RESOURCE_URI,
-          mimeType: RESOURCE_MIME_TYPE,
-          text: panelHtml(),
-          _meta: {
-            ui: {
-              csp: { resourceDomains: panelCspResourceDomains() },
-              prefersBorder: false,
-            },
-          },
-        },
-      ],
-    })
   );
 
   return server;

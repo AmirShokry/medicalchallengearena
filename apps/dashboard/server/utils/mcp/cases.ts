@@ -115,8 +115,13 @@ export const jsonQuestionSchema = z.object({
     .string()
     .optional()
     .describe(
-      "REQUIRED and non-empty. Why the correct answer is correct (and others wrong). Write this BEFORE calling preview_cases."
+      "REQUIRED and non-empty. The question-level rationale: why the correct answer is correct (and others wrong). Write this BEFORE calling preview_cases."
     ),
+  // Accepted aliases for the question rationale, in case the model uses a
+  // different field name. Any of these (or the correct choice's explanation)
+  // satisfies the required question explanation — see normalizeJsonCases.
+  rationale: z.string().optional().describe("Alias for explanation."),
+  feedback: z.string().optional().describe("Alias for explanation."),
   explanationImgUrls: z.array(z.string()).optional(),
   choices: z
     .array(jsonChoiceSchema)
@@ -164,20 +169,33 @@ export function normalizeJsonCases(cases: JsonCase[]): ParsedCase[] {
     questions: (c.questions ?? []).map((q: JsonQuestion) => {
       const isTabular = (q.type ?? "default").trim().toLowerCase() === "tabular";
       const headerRaw = cellsToTab(q.header);
+      const choices = (q.choices ?? []).map((ch) => ({
+        body: isTabular ? cellsToTab(ch.body) : asString(ch.body),
+        isCorrect: !!ch.isCorrect,
+        explanation:
+          ch.explanation && ch.explanation.length ? ch.explanation : null,
+      }));
+      // The question needs a non-empty rationale (DB column is NOT NULL). Accept
+      // it under any common field name, and if the model only put rationale on
+      // the choices, fall back to the correct choice's explanation — so the
+      // model's natural output validates instead of erroring.
+      const qAny = q as { rationale?: string; feedback?: string };
+      const explanation =
+        (q.explanation ?? "").trim() ||
+        (qAny.rationale ?? "").trim() ||
+        (qAny.feedback ?? "").trim() ||
+        choices.find((ch) => ch.isCorrect && ch.explanation)?.explanation ||
+        choices.find((ch) => ch.explanation)?.explanation ||
+        "";
       return {
         type: isTabular ? ("Tabular" as const) : ("Default" as const),
         body: q.body ?? "",
         header: isTabular && headerRaw ? headerRaw : null,
         isStudyMode: !!q.isStudyMode,
         imgUrls: q.imgUrls ?? [],
-        explanation: q.explanation ?? "",
+        explanation,
         explanationImgUrls: q.explanationImgUrls ?? [],
-        choices: (q.choices ?? []).map((ch) => ({
-          body: isTabular ? cellsToTab(ch.body) : asString(ch.body),
-          isCorrect: !!ch.isCorrect,
-          explanation:
-            ch.explanation && ch.explanation.length ? ch.explanation : null,
-        })),
+        choices,
       };
     }),
   }));

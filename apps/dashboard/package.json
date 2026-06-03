@@ -4,9 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "npm run build:mcp-panel && nuxt build",
-    "build:mcp-panel": "node mcp/build-panel.mjs",
-    "dev": "npm run build:mcp-panel && nuxt dev --port 3001",
+    "build": "nuxt build",
+    "dev": "nuxt dev --port 3001",
     "generate": "nuxt generate",
     "start": "node --env-file=./.env .output/server/index.mjs",
     "preview": "nuxt preview",
