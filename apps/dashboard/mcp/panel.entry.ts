@@ -211,10 +211,9 @@ const root = el("div", { class: "wrap" });
 document.body.appendChild(root);
 applyStyles();
 
-const app = new App(
-  { name: "med-arena-preview", version: "1.0.0" },
-  { serverTools: {} } as any
-);
+// No app capabilities to declare — we only call server tools (a host capability)
+// and render. Calling app.callServerTool works as long as the host supports it.
+const app = new App({ name: "med-arena-preview", version: "1.0.0" });
 
 let committed = false;
 

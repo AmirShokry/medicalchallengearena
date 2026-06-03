@@ -12,9 +12,6 @@ export default defineNuxtConfig({
     EMAIL_APP_PASSWORD: process.env.EMAIL_APP_PASSWORD,
     // MCP connector (server-only). Endpoint: POST /mcp/<MCP_SECRET>
     mcpSecret: process.env.MCP_SECRET,
-    // Optional: public https origin for the preview-panel script + CSP.
-    // Falls back to the incoming request origin when unset.
-    mcpPublicOrigin: process.env.MCP_PUBLIC_ORIGIN,
     // Optional: comma-separated Host allowlist (DNS-rebinding hardening).
     mcpAllowedHosts: process.env.MCP_ALLOWED_HOSTS,
     public: {

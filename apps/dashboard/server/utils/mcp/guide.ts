@@ -17,7 +17,7 @@ export const AUTHORING_GUIDE = `You are authoring USMLE-style cases and adding t
 3. **Images / diagrams (optional).** If a case benefits from an image (ECG, histology, algorithm, etc.), generate a clean **SVG** and host it: call \`upload_image\` with \`{ svg }\` (or \`{ base64 }\` for a raster image). Use the returned https URL. Never inline raw SVG or data: URIs into the cases — only hosted http(s) URLs are accepted.
 4. **Preview.** Call \`preview_cases\` with \`system\`, \`category\`, \`caseType\`, and \`cases\` (structured JSON — preferred). The user sees an interactive preview. If validation fails, fix the reported issues and preview again.
 5. **Revise on request.** If the user wants changes, regenerate and call \`preview_cases\` again (a new draft).
-6. **Commit only after approval.** When the user confirms, call \`commit_cases\` with the \`draftId\` from the preview. This APPENDS the cases (nothing existing is changed). Do not call commit_cases on your own initiative.
+6. **Commit only after approval.** The preview output shows a **Draft ID**. When the user confirms, call \`commit_cases\` with that \`draftId\`. (If you don't have the draftId for any reason, you may instead call \`commit_cases\` with the same \`system\`, \`category\`, \`caseType\` and \`cases\` you previewed — it is re-validated before insert.) Or, if the preview shows an interactive panel, the user can click its **Confirm & add** button. This APPENDS the cases (nothing existing is changed). Never call commit_cases before the user approves.
 
 ## Case JSON shape (preferred input to preview_cases)
 \`\`\`json

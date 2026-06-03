@@ -354,17 +354,76 @@ export async function resolveCategoryId(
 const DRAFT_TTL_SECONDS = 30 * 60; // 30 minutes
 const draftKey = (id: string) => `mcp:draft:${id}`;
 
-/** Persist a validated batch and return its draft id (the stage→commit handle). */
+/** Persist a validated batch and return its draft id (the stage→commit handle).
+ *  The id is short and human-friendly so it can be read/relayed easily. */
 export async function saveDraft(
   draft: Omit<CaseDraft, "id" | "createdAt">
 ): Promise<CaseDraft> {
   const full: CaseDraft = {
     ...draft,
-    id: crypto.randomUUID(),
+    id: crypto.randomUUID().replace(/-/g, "").slice(0, 12),
     createdAt: new Date().toISOString(),
   };
   await setCache(draftKey(full.id), full, DRAFT_TTL_SECONDS);
   return full;
+}
+
+/* ─────────────── shared prepare (resolve + normalize + validate) ─────────────── */
+
+export type PrepareInput = {
+  system: string;
+  category: string;
+  caseType: CaseType;
+  cases?: JsonCase[];
+  xml?: string;
+};
+
+export type PrepareResult =
+  | { ok: true; categoryId: number; cases: XmlImportInput["cases"] }
+  | { ok: false; needTarget?: boolean; issues: CaseIssue[] };
+
+/**
+ * Resolve the (system, category) target, normalize JSON-or-XML input, and validate
+ * against `xmlImportSchema`. Shared by `preview_cases` and the direct-commit
+ * fallback so both behave identically.
+ */
+export async function prepareImport(input: PrepareInput): Promise<PrepareResult> {
+  const categoryId = await resolveCategoryId(input.system, input.category);
+  if (categoryId === null)
+    return {
+      ok: false,
+      needTarget: true,
+      issues: [
+        {
+          where: "target",
+          message: `"${input.system} › ${input.category}" was not found (or they aren't related).`,
+        },
+      ],
+    };
+
+  const hasJson = !!input.cases?.length;
+  const hasXml = !!input.xml?.trim();
+  if (!hasJson && !hasXml)
+    return { ok: false, issues: [{ where: "input", message: "Provide either `cases` (JSON) or `xml`." }] };
+  if (hasJson && hasXml)
+    return { ok: false, issues: [{ where: "input", message: "Provide only one of `cases` or `xml`, not both." }] };
+
+  let normalized: ParsedCase[];
+  if (hasXml) {
+    const parsed = parseCasesXmlNode(input.xml!);
+    if (!parsed.ok) return { ok: false, issues: parsed.issues };
+    normalized = parsed.cases;
+  } else {
+    normalized = normalizeJsonCases(input.cases!);
+  }
+
+  const validated = validateCases({
+    category_id: categoryId,
+    type: input.caseType,
+    cases: normalized,
+  });
+  if (!validated.ok) return { ok: false, issues: validated.issues };
+  return { ok: true, categoryId, cases: validated.data.cases };
 }
 
 export async function loadDraft(id: string): Promise<CaseDraft | null> {

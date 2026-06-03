@@ -23,14 +23,12 @@ import {
 } from "@modelcontextprotocol/ext-apps/server";
 import { z } from "zod";
 import { appRouter } from "@/server/trpc/routers";
-import { CASE_TYPES } from "@/shared/schema/input";
+import { CASE_TYPES, type XmlImportInput } from "@/shared/schema/input";
 import {
   jsonCaseSchema,
-  normalizeJsonCases,
-  parseCasesXmlNode,
+  prepareImport,
   validateCases,
   listSystemsAndCategories,
-  resolveCategoryId,
   saveDraft,
   loadDraft,
   deleteDraft,
@@ -42,14 +40,11 @@ import { buildMarkdownPreview, buildPreviewPayload, countQuestions } from "./pre
 import {
   PREVIEW_RESOURCE_URI,
   panelHtml,
-  panelScriptSrc,
   panelCspResourceDomains,
 } from "./panel";
 import { AUTHORING_GUIDE } from "./guide";
 
 export type BuildServerOptions = {
-  /** Public https origin Claude reached (used for the panel script + CSP). */
-  publicOrigin: string;
   /** imghippo API key (runtimeConfig.public.imageApiKey). */
   imageApiKey: string;
 };
@@ -176,46 +171,27 @@ export function buildMcpServer(opts: BuildServerOptions): McpServer {
     async (args): Promise<CallToolResult> => {
       const { system, category, caseType, cases, xml } = args;
 
-      // (a) target must exist in the DB
-      const categoryId = await resolveCategoryId(system, category);
-      if (categoryId === null) {
-        const systems = await listSystemsAndCategories();
+      // Resolve target + normalize (JSON or XML) + validate against xmlImportSchema.
+      const prep = await prepareImport({ system, category, caseType, cases, xml });
+      if (!prep.ok) {
+        if (prep.needTarget) {
+          const systems = await listSystemsAndCategories();
+          return errorResult(
+            `${prep.issues[0].message} Pick an existing pair:\n\n${formatSystemsList(systems)}`
+          );
+        }
         return errorResult(
-          `"${system} › ${category}" was not found (or they aren't related). ` +
-            `Pick an existing pair:\n\n${formatSystemsList(systems)}`
+          `These cases need fixing before they can be added:\n${formatIssues(prep.issues)}`
         );
       }
 
-      // (b) normalize JSON or XML to the shared shape
-      if (!cases?.length && !xml?.trim())
-        return errorResult("Provide either `cases` (JSON) or `xml`.");
-      if (cases?.length && xml?.trim())
-        return errorResult("Provide only one of `cases` or `xml`, not both.");
-
-      let normalized;
-      if (xml?.trim()) {
-        const parsed = parseCasesXmlNode(xml);
-        if (!parsed.ok)
-          return errorResult(`The XML could not be read:\n${formatIssues(parsed.issues)}`);
-        normalized = parsed.cases;
-      } else {
-        normalized = normalizeJsonCases(cases!);
-      }
-
-      // (c) authoritative validation (same schema as the dashboard)
-      const validated = validateCases({ category_id: categoryId, type: caseType, cases: normalized });
-      if (!validated.ok)
-        return errorResult(
-          `These cases need fixing before they can be added:\n${formatIssues(validated.issues)}`
-        );
-
-      // (d) stage a draft + render preview
+      // Stage a draft and render the preview (markdown text + structured payload).
       const draft = await saveDraft({
         system,
         category,
-        category_id: categoryId,
+        category_id: prep.categoryId,
         type: caseType,
-        cases: validated.data.cases,
+        cases: prep.cases,
       });
 
       return textResult(buildMarkdownPreview(draft), buildPreviewPayload(draft));
@@ -228,11 +204,27 @@ export function buildMcpServer(opts: BuildServerOptions): McpServer {
     {
       title: "Commit cases (add to the website)",
       description:
-        "Append a previewed batch to the website, all-or-nothing. Pass the `draftId` from " +
-        "preview_cases. Only call this after the user has confirmed the preview. This APPENDS " +
-        "new cases; it never edits or deletes existing content.",
+        "Append a previewed batch to the website, all-or-nothing, after the user confirms. " +
+        "PREFERRED: pass the `draftId` from preview_cases (shown in its output). FALLBACK: if " +
+        "you don't have the draftId, pass the same `system`, `category`, `caseType` and `cases` " +
+        "(or `xml`) you previewed — they are re-validated before insert. Only call this once the " +
+        "user has approved the preview. APPENDS only; never edits or deletes existing content.",
       inputSchema: {
-        draftId: z.string().describe("The draftId returned by preview_cases."),
+        draftId: z
+          .string()
+          .optional()
+          .describe("The draftId from preview_cases (preferred path)."),
+        system: z.string().optional().describe("Fallback: target system (if no draftId)."),
+        category: z.string().optional().describe("Fallback: target category (if no draftId)."),
+        caseType: z
+          .enum(CASE_TYPES)
+          .optional()
+          .describe("Fallback: USMLE step (if no draftId)."),
+        cases: z
+          .array(jsonCaseSchema)
+          .optional()
+          .describe("Fallback: the cases to append (if no draftId)."),
+        xml: z.string().optional().describe("Fallback: <cases> XML (if no draftId)."),
       },
       annotations: {
         readOnlyHint: false,
@@ -241,55 +233,95 @@ export function buildMcpServer(opts: BuildServerOptions): McpServer {
         openWorldHint: false,
       },
     },
-    async ({ draftId }): Promise<CallToolResult> => {
-      const draft = await loadDraft(draftId);
-      if (!draft)
-        return errorResult(
-          "No pending preview was found for that id — it may have expired (drafts last " +
-            "30 minutes) or already been added. Run preview_cases again to get a fresh draftId."
-        );
+    async ({ draftId, system, category, caseType, cases, xml }): Promise<CallToolResult> => {
+      let toInsert: {
+        category_id: number | null;
+        type: (typeof CASE_TYPES)[number];
+        cases: XmlImportInput["cases"];
+      } | null = null;
+      let ctx: { system: string; category: string; type: string } | null = null;
+      let usedDraftId: string | null = null;
 
-      // Defense in depth: re-validate exactly what was staged.
-      const validated = validateCases({
-        category_id: draft.category_id,
-        type: draft.type,
-        cases: draft.cases,
-      });
-      if (!validated.ok)
-        return errorResult(
-          `The staged cases failed validation and were not added:\n${formatIssues(
-            validated.issues
-          )}`
-        );
+      // Preferred path: commit exactly what was staged under draftId.
+      if (draftId) {
+        const draft = await loadDraft(draftId);
+        if (draft) {
+          const validated = validateCases({
+            category_id: draft.category_id,
+            type: draft.type,
+            cases: draft.cases,
+          });
+          if (!validated.ok)
+            return errorResult(
+              `The staged cases failed validation and were not added:\n${formatIssues(
+                validated.issues
+              )}`
+            );
+          toInsert = {
+            category_id: draft.category_id,
+            type: draft.type,
+            cases: validated.data.cases,
+          };
+          ctx = { system: draft.system, category: draft.category, type: draft.type };
+          usedDraftId = draftId;
+        }
+      }
+
+      // Fallback path: the draftId wasn't available — re-validate provided content.
+      if (!toInsert) {
+        if (!system || !category || !caseType) {
+          return errorResult(
+            draftId
+              ? `No pending preview was found for draftId "${draftId}" (it may have expired after ` +
+                  "30 minutes or already been added). Re-run preview_cases, or call commit_cases " +
+                  "again with system, category, caseType and the cases."
+              : "Provide a `draftId` from preview_cases, or (system + category + caseType + cases) to commit directly."
+          );
+        }
+        const prep = await prepareImport({ system, category, caseType, cases, xml });
+        if (!prep.ok) {
+          if (prep.needTarget) {
+            const systems = await listSystemsAndCategories();
+            return errorResult(
+              `${prep.issues[0].message} Pick an existing pair:\n\n${formatSystemsList(systems)}`
+            );
+          }
+          return errorResult(
+            `These cases need fixing before they can be added:\n${formatIssues(prep.issues)}`
+          );
+        }
+        toInsert = { category_id: prep.categoryId, type: caseType, cases: prep.cases };
+        ctx = { system, category, type: caseType };
+      }
 
       try {
         const caller = appRouter.createCaller({
           session: { user: { id: 0, role: "admin" } },
         } as any);
         await caller.block.addMany({
-          category_id: draft.category_id,
-          type: draft.type,
-          cases: validated.data.cases as never,
+          category_id: toInsert.category_id,
+          type: toInsert.type,
+          cases: toInsert.cases as never,
         });
       } catch (e) {
-        // Transaction rolled back — keep the draft so the user can retry.
+        // Transaction rolled back — keep the draft (if any) so the user can retry.
         return errorResult(
           `Failed to add the cases (nothing was saved): ${(e as Error).message}`
         );
       }
 
-      await deleteDraft(draftId);
-      const questions = countQuestions(draft.cases);
+      if (usedDraftId) await deleteDraft(usedDraftId);
+      const questions = countQuestions(toInsert.cases);
       return textResult(
-        `✅ Added ${draft.cases.length} case(s) and ${questions} question(s) to ` +
-          `${draft.system} › ${draft.category} (${draft.type}).`,
+        `✅ Added ${toInsert.cases.length} case(s) and ${questions} question(s) to ` +
+          `${ctx!.system} › ${ctx!.category} (${ctx!.type}).`,
         {
           added: true,
-          cases: draft.cases.length,
+          cases: toInsert.cases.length,
           questions,
-          system: draft.system,
-          category: draft.category,
-          caseType: draft.type,
+          system: ctx!.system,
+          category: ctx!.category,
+          caseType: ctx!.type,
         }
       );
     }
@@ -345,10 +377,11 @@ export function buildMcpServer(opts: BuildServerOptions): McpServer {
         {
           uri: PREVIEW_RESOURCE_URI,
           mimeType: RESOURCE_MIME_TYPE,
-          text: panelHtml(panelScriptSrc(opts.publicOrigin)),
+          text: panelHtml(),
           _meta: {
             ui: {
-              csp: { resourceDomains: panelCspResourceDomains(opts.publicOrigin) },
+              csp: { resourceDomains: panelCspResourceDomains() },
+              prefersBorder: false,
             },
           },
         },

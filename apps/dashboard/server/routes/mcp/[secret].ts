@@ -16,7 +16,6 @@
 import {
   defineEventHandler,
   toWebRequest,
-  getRequestURL,
   getRequestHost,
   createError,
 } from "h3";
@@ -60,15 +59,13 @@ export default defineEventHandler(async (event) => {
   if (event.method !== "POST")
     throw createError({ statusCode: 405, statusMessage: "Method Not Allowed" });
 
-  const publicOrigin =
-    (cfg.mcpPublicOrigin as string) || getRequestURL(event).origin;
   const imageApiKey = (cfg.public.imageApiKey as string) || "";
 
   const transport = new WebStandardStreamableHTTPServerTransport({
     sessionIdGenerator: undefined, // stateless
     enableJsonResponse: true, // JSON, not SSE
   });
-  const server = buildMcpServer({ publicOrigin, imageApiKey });
+  const server = buildMcpServer({ imageApiKey });
 
   // Clean up the per-request server/transport once the response is flushed.
   event.node.res.once("close", () => {

@@ -42,3 +42,6 @@ docker-compose.prod.yml
 # vercel
 .vercel
 .vscode*
+
+# MCP connector generated panel bundle (rebuilt by build:mcp-panel)
+apps/dashboard/server/utils/mcp/panel.generated.ts

@@ -117,8 +117,11 @@ export function buildMarkdownPreview(draft: CaseDraft): string {
     "",
     `**Target:** ${draft.system} › ${draft.category} · ${draft.type}`,
     "",
-    "> Review below. To add these to the website, confirm and I'll commit them " +
-      "(append-only — nothing existing is changed). To revise, just tell me what to change.",
+    `**Draft ID:** \`${draft.id}\``,
+    "",
+    "> Review the cases below. **Nothing is saved yet.** When the user confirms, append " +
+      `them by calling \`commit_cases\` with \`draftId: "${draft.id}"\` (append-only — existing ` +
+      "content is never changed). To revise, just say what to change and I'll re-preview.",
     "",
     "---",
     "",
