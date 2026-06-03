@@ -56,13 +56,25 @@ export type ParseResult =
 
 /* ───────────────────────── DOM helpers ───────────────────────── */
 
-/** Direct child elements matching any of the given (case-insensitive) tags. */
+/**
+ * Direct child elements matching any of the given (case-insensitive) tags.
+ *
+ * Walks `childNodes` filtering by `nodeType === ELEMENT_NODE` rather than using
+ * `Element.children`, so this works identically under the browser `DOMParser`
+ * and under `@xmldom/xmldom` (which the MCP connector server uses to parse the
+ * same XML). Keep this dependency-light: only childNodes / tagName are touched.
+ */
 function children(el: Element | null, ...tags: string[]): Element[] {
   if (!el) return [];
   const want = tags.map((t) => t.toLowerCase());
-  return Array.from(el.children).filter((c) =>
-    want.includes(c.tagName.toLowerCase())
-  );
+  const out: Element[] = [];
+  for (const node of Array.from(el.childNodes)) {
+    if (node.nodeType === 1 /* ELEMENT_NODE */) {
+      const child = node as Element;
+      if (want.includes(child.tagName.toLowerCase())) out.push(child);
+    }
+  }
+  return out;
 }
 
 function firstChild(el: Element | null, ...tags: string[]): Element | null {
@@ -135,7 +147,7 @@ function imageUrls(container: Element | null): string[] {
 }
 
 /** Convert " a | b | c " (XML-friendly) into "a\tb\tc" (DB/GUI format). */
-function pipesToTabs(value: string): string {
+export function pipesToTabs(value: string): string {
   return value
     .split("|")
     .map((cell) => cell.trim())
@@ -201,7 +213,20 @@ export function parseCasesXml(xml: string): ParseResult {
       errors: [{ message: "No <case> elements found inside <cases>." }],
     };
 
-  const cases: ParsedCase[] = caseEls.map((caseEl) => {
+  return { ok: true, cases: normalizeCasesRoot(root) };
+}
+
+/**
+ * Normalize a `<cases>` root element into the DB-aligned `ParsedCase[]` shape.
+ *
+ * DOM-agnostic on purpose — it relies only on `childNodes` / `getAttribute` /
+ * `textContent` / `nodeType`, so the exact same normalization rules run under
+ * the browser `DOMParser` (dashboard text-editor mode) and under
+ * `@xmldom/xmldom` (the MCP connector server). This keeps XML → cases a single
+ * source of truth across both entry paths.
+ */
+export function normalizeCasesRoot(root: Element): ParsedCase[] {
+  const cases: ParsedCase[] = children(root, "case").map((caseEl) => {
     // Questions: direct <question> children, plus any inside a <questions> wrapper.
     const questionEls = [
       ...children(caseEl, "question"),
@@ -217,9 +242,12 @@ export function parseCasesXml(xml: string): ParseResult {
       // (legacy single-question layout) directly under the question's parent.
       // Only applied when the case has exactly ONE question — otherwise every
       // question would wrongly share the same sibling <choices>.
+      // Use parentNode (not parentElement) — @xmldom/xmldom doesn't implement
+      // parentElement, and here a <question>'s parent is always an element.
       let choicesEl = firstChild(qEl, "choices");
-      if (!choicesEl && questionEls.length === 1 && qEl.parentElement)
-        choicesEl = firstChild(qEl.parentElement, "choices");
+      const qParent = qEl.parentNode as Element | null;
+      if (!choicesEl && questionEls.length === 1 && qParent)
+        choicesEl = firstChild(qParent, "choices");
 
       const choices: ParsedChoice[] = children(choicesEl, "choice").map(
         (cEl) => {
@@ -257,7 +285,7 @@ export function parseCasesXml(xml: string): ParseResult {
     };
   });
 
-  return { ok: true, cases };
+  return cases;
 }
 
 /** Map a 1-based line/column to a 0-based character offset in `text`. */
