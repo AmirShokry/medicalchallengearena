@@ -273,10 +273,15 @@ function render(payload: PreviewPayload) {
   };
 }
 
+// The server delivers the render data in result._meta (see PREVIEW_META_KEY in
+// server/utils/mcp/preview.ts) rather than structuredContent. Keep this key in sync.
+const PREVIEW_META_KEY = "io.medarena/preview";
+
 // Register the result handler BEFORE connect() so we don't miss the one-shot
 // delivery of the preview_cases result.
 app.addEventListener("toolresult", (params: any) => {
-  const payload = params?.structuredContent as PreviewPayload | undefined;
+  const payload = (params?._meta?.[PREVIEW_META_KEY] ??
+    params?.structuredContent) as PreviewPayload | undefined;
   if (payload?.cases) render(payload);
 });
 

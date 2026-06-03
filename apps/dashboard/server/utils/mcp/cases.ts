@@ -67,10 +67,19 @@ export type CaseDraft = {
 
 const cellsSchema = z.union([z.string(), z.array(z.string())]);
 
+// NOTE: every field is intentionally OPTIONAL at this (SDK) layer. The SDK
+// validates tool input against this schema and rejects with a hard JSON-RPC
+// -32602 BEFORE our handler runs — which is jarring and makes the agent restart.
+// We instead keep this permissive (just a shape hint via `.describe`) and do the
+// REAL, authoritative validation in the handler via `xmlImportSchema`, which
+// returns friendly, actionable messages (e.g. "Explanation cannot be empty") that
+// the agent can fix in place without a hard protocol error.
 export const jsonChoiceSchema = z.object({
-  body: cellsSchema.describe(
-    "Choice text. For tabular questions, the row cells as an array (preferred) or a 'a | b | c' string."
-  ),
+  body: cellsSchema
+    .optional()
+    .describe(
+      "REQUIRED. Choice text. For tabular questions, the row cells as an array (preferred) or 'a | b | c'."
+    ),
   isCorrect: z
     .boolean()
     .optional()
@@ -87,7 +96,7 @@ export const jsonQuestionSchema = z.object({
     .string()
     .optional()
     .describe('"default" or "tabular" (case-insensitive). Defaults to default.'),
-  body: z.string().describe("The question prompt."),
+  body: z.string().optional().describe("REQUIRED. The question prompt."),
   header: cellsSchema
     .optional()
     .nullable()
@@ -102,15 +111,26 @@ export const jsonQuestionSchema = z.object({
     .array(z.string())
     .optional()
     .describe("Hosted http(s) image URLs (use upload_image first)."),
-  explanation: z.string().describe("Why the correct answer is correct."),
+  explanation: z
+    .string()
+    .optional()
+    .describe(
+      "REQUIRED and non-empty. Why the correct answer is correct (and others wrong). Write this BEFORE calling preview_cases."
+    ),
   explanationImgUrls: z.array(z.string()).optional(),
-  choices: z.array(jsonChoiceSchema).describe("At least 2; exactly one correct."),
+  choices: z
+    .array(jsonChoiceSchema)
+    .optional()
+    .describe("REQUIRED. At least 2 choices; exactly one with isCorrect:true."),
 });
 
 export const jsonCaseSchema = z.object({
-  body: z.string().describe("The clinical stem / vignette."),
+  body: z.string().optional().describe("REQUIRED. The clinical stem / vignette."),
   imgUrls: z.array(z.string()).optional(),
-  questions: z.array(jsonQuestionSchema).describe("One or more questions."),
+  questions: z
+    .array(jsonQuestionSchema)
+    .optional()
+    .describe("REQUIRED. One or more questions."),
 });
 
 export type JsonCase = z.infer<typeof jsonCaseSchema>;

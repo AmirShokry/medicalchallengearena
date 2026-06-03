@@ -17,6 +17,15 @@ type DraftQuestion = DraftCase["questions"][number];
 
 const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
+/**
+ * `_meta` key under which the panel's render data is delivered to the iframe.
+ * We pass data via `_meta` (not top-level `structuredContent`) because claude.ai
+ * renders `structuredContent` as a raw JSON block in the chat — which both looks
+ * bad and competes with the MCP App panel. The panel reads `result._meta[this]`
+ * in its `toolresult` handler. Keep this string in sync with `mcp/panel.entry.ts`.
+ */
+export const PREVIEW_META_KEY = "io.medarena/preview";
+
 /** Structured data handed to the panel (URLs only — stays well under size caps). */
 export type PreviewPayload = {
   draftId: string;

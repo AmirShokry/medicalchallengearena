@@ -36,7 +36,12 @@ import {
   type SystemWithCategories,
 } from "./cases";
 import { uploadImage } from "./imghippo";
-import { buildMarkdownPreview, buildPreviewPayload, countQuestions } from "./preview";
+import {
+  buildMarkdownPreview,
+  buildPreviewPayload,
+  countQuestions,
+  PREVIEW_META_KEY,
+} from "./preview";
 import {
   PREVIEW_RESOURCE_URI,
   panelHtml,
@@ -185,7 +190,7 @@ export function buildMcpServer(opts: BuildServerOptions): McpServer {
         );
       }
 
-      // Stage a draft and render the preview (markdown text + structured payload).
+      // Stage a draft and render the preview.
       const draft = await saveDraft({
         system,
         category,
@@ -194,7 +199,13 @@ export function buildMcpServer(opts: BuildServerOptions): McpServer {
         cases: prep.cases,
       });
 
-      return textResult(buildMarkdownPreview(draft), buildPreviewPayload(draft));
+      // content = readable markdown (model + the fallback the user sees if the
+      // panel host isn't available). Panel render data goes in `_meta` — NOT
+      // `structuredContent`, which claude.ai would render as a raw JSON block.
+      return {
+        content: [{ type: "text", text: buildMarkdownPreview(draft) }],
+        _meta: { [PREVIEW_META_KEY]: buildPreviewPayload(draft) },
+      };
     }
   );
 
